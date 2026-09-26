@@ -1,0 +1,7 @@
+Korpus,Dokumen,Bahasa,Label,Peran
+EMMediaTopic train,20000,4,GPT-4o + logit teacher,distilasi
+EMMediaTopic dev,1000,4,GPT-4o,evaluasi utama
+CC-News train,109842,69,logit teacher,distilasi
+CC-News train tambahan,156157,50,logit teacher,skala data
+CC-News held-out (domain baru),13549,68,logit teacher,fidelity 70 bahasa
+Test set LLM,320,16,LLM (prompt Kuzman),generalisasi lintas bahasa

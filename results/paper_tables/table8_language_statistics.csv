@@ -1,0 +1,8 @@
+Uji,statistik,p
+Spearman: kesepakatan vs log(dok latih),0.39066861501977757,0.002219681261506596
+Spearman: kesepakatan vs jumlah situs latih,0.34916772188387507,0.00671799092050692
+Spearman: kesepakatan vs confidence teacher,0.660601814941346,1.247082916797587e-08
+Kruskal-Wallis: kesepakatan antar sistem tulisan (H),8.690240338683704,0.12207579870309335
+R² regresi: log(data) saja,0.1086966566207157,
+R² regresi: sistem tulisan saja,0.1293526007366711,
+R² regresi: log(data) + sistem tulisan,0.21327401856691985,

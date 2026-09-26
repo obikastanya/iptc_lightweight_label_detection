@@ -1,0 +1,18 @@
+\begin{tabular}{llrrr}
+\toprule
+Kode & Varian & dev macro-F1 & LLM16 macro-F1 & kesepakatan teacher 70 bhs \\
+\midrule
+A & fastText, label GPT-4o, 4 bahasa (setting Kuzman) & 0.681 & 0.131 & NaN \\
+B & fastText, label teacher, 70 bahasa & 0.721 & 0.642 & 0.701 \\
+C & Static potion, KD 4 bahasa (20k) & 0.718 & 0.629 & NaN \\
+D & Static dari embedding teacher, KD 70 bahasa (130k) & 0.726 & 0.642 & 0.748 \\
+E & Static potion, KD 70 bahasa (130k) & 0.732 & 0.723 & 0.791 \\
+F & E + token dropout 0,2 & 0.746 & 0.737 & 0.796 \\
+G & E + kepala MLP 512 (+ token dropout 0,1) & 0.739 & 0.736 & 0.801 \\
+H & G dengan token dropout 0,2 & 0.729 & 0.729 & 0.801 \\
+J & F dilipat ke tabel 17 logit/token (fp16) & 0.746 & 0.737 & 0.796 \\
+I & F + data 286k (FINAL, format tabel) & 0.751 & 0.740 & 0.800 \\
+K & I + tokenizer dipangkas (min. frekuensi 10) & 0.751 & 0.730 & 0.789 \\
+L & I + tokenizer dipangkas (min. frekuensi 50) & 0.749 & 0.714 & 0.773 \\
+\bottomrule
+\end{tabular}

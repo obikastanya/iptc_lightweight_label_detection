@@ -1,0 +1,60 @@
+# ---------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Virtual environment (install ulang dari requirements, jangan di-push)
+/env/
+venv/
+.venv/
+
+# ---------------------------------------------------------------
+# Data (±4 GB, bisa di-generate ulang lewat code/data/*)
+# ---------------------------------------------------------------
+# Pakai "/" di depan supaya package code/data/ TIDAK ikut ter-ignore
+/data/
+
+# ---------------------------------------------------------------
+# Model & cache HuggingFace (ratusan MB – GB per file)
+# Metadata kecil (meta.json, train_meta.json, config.json) tetap di-push
+# ---------------------------------------------------------------
+models/hf_cache/
+models/**/*.bin
+models/**/*.ftz
+models/**/*.npz
+models/**/*.onnx
+models/**/*.safetensors
+models/**/tokenizer.json
+
+# ---------------------------------------------------------------
+# Folder kerja agent / file uji sementara
+# ---------------------------------------------------------------
+/scratch/
+.claude/
+test.py
+test_ori.py
+test_compare.py
+*.log
+
+# Bundle zip untuk Colab (hasil build, bisa dibuat ulang)
+*.zip
+
+# ---------------------------------------------------------------
+# Dokumen pihak lain (paper referensi berhak cipta & contoh tugas teman)
+# ---------------------------------------------------------------
+/reference/
+/sample/
+
+# ---------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------
+~$*
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

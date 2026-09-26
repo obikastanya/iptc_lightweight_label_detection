@@ -1,0 +1,18 @@
+\begin{tabular}{llrlrrlrrrr}
+\toprule
+Set & StaticKD vs & Δ macro-F1 & Δ CI95 & p bootstrap & Δ akurasi & McNemar b/c & p McNemar & p bootstrap (Holm) & p McNemar (Holm) & signifikan (Holm, 0.05) \\
+\midrule
+dev & Teacher XLM-R-large (ONNX int8) & -0.0763 & -0.109 s/d -0.042 & 0.0000 & -0.0670 & 50/117 & 0.0000 & 0.0000 & 0.0000 & True \\
+dev & Teacher XLM-R-large (PyTorch fp32) & -0.0690 & -0.103 s/d -0.034 & 0.0000 & -0.0650 & 47/112 & 0.0000 & 0.0000 & 0.0000 & True \\
+dev & MiniLM-L6 + KD (ONNX fp32) & -0.0119 & -0.046 s/d +0.026 & 0.5130 & -0.0080 & 79/87 & 0.5871 & 1.0000 & 0.7426 & False \\
+dev & fastText + KD, subword, quantized & 0.0231 & -0.018 s/d +0.063 & 0.2620 & 0.0290 & 83/54 & 0.0164 & 0.7860 & 0.0493 & False \\
+dev & fastText, label GPT-4o, subword & 0.0703 & +0.029 s/d +0.119 & 0.0000 & 0.0590 & 122/63 & 0.0000 & 0.0000 & 0.0001 & True \\
+dev & StaticKD 130k (tanpa data tambahan) & 0.0053 & -0.013 s/d +0.023 & 0.5470 & 0.0070 & 26/19 & 0.3713 & 1.0000 & 0.7426 & False \\
+llm\_test & Teacher XLM-R-large (ONNX int8) & -0.0957 & -0.171 s/d -0.020 & 0.0110 & -0.0938 & 11/41 & 0.0000 & 0.0440 & 0.0002 & True \\
+llm\_test & Teacher XLM-R-large (PyTorch fp32) & -0.0900 & -0.170 s/d -0.017 & 0.0110 & -0.0875 & 14/42 & 0.0002 & 0.0440 & 0.0009 & True \\
+llm\_test & MiniLM-L6 + KD (ONNX fp32) & -0.0084 & -0.079 s/d +0.057 & 0.7390 & -0.0219 & 30/37 & 0.4638 & 1.0000 & 0.9276 & False \\
+llm\_test & fastText + KD, subword, quantized & 0.0844 & +0.022 s/d +0.148 & 0.0080 & 0.0750 & 41/17 & 0.0022 & 0.0400 & 0.0067 & True \\
+llm\_test & fastText, label GPT-4o, subword & 0.6095 & +0.534 s/d +0.662 & 0.0000 & 0.5188 & 172/6 & 0.0000 & 0.0000 & 0.0000 & True \\
+llm\_test & StaticKD 130k (tanpa data tambahan) & 0.0033 & -0.032 s/d +0.037 & 0.9330 & 0.0031 & 10/9 & 1.0000 & 1.0000 & 1.0000 & False \\
+\bottomrule
+\end{tabular}

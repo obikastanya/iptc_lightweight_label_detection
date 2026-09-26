@@ -1,0 +1,6 @@
+Important project setup:
+- archive: folder berisi bahan mentah untuk menyusun proposal
+- reference: lokasi jurnal referensi
+- scratch: lokasi menulis file yang dibutuhkan agent untuk mempermudah kerja
+- code: lokasi kode python untuk reserach, pastikan clean code dan readable
+- env: lokasi installasi library yang dibutuhkan

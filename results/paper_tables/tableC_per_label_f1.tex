@@ -1,0 +1,23 @@
+\begin{tabular}{lrrrr}
+\toprule
+label & Teacher XLM-R-large (ONNX int8) & StaticKD (usulan) & fastText + KD, subword, quantized & gap StaticKD - teacher \\
+\midrule
+arts, culture, entertainment and media & 0.865 & 0.804 & 0.786 & -0.061 \\
+conflict, war and peace & 0.683 & 0.686 & 0.684 & 0.003 \\
+crime, law and justice & 0.867 & 0.783 & 0.776 & -0.085 \\
+disaster, accident and emergency incident & 0.875 & 0.861 & 0.776 & -0.014 \\
+economy, business and finance & 0.844 & 0.753 & 0.716 & -0.090 \\
+education & 0.889 & 0.806 & 0.787 & -0.083 \\
+environment & 0.806 & 0.710 & 0.721 & -0.096 \\
+health & 0.957 & 0.876 & 0.830 & -0.080 \\
+human interest & 0.740 & 0.612 & 0.620 & -0.128 \\
+labour & 0.778 & 0.727 & 0.800 & -0.051 \\
+lifestyle and leisure & 0.667 & 0.452 & 0.333 & -0.215 \\
+politics & 0.861 & 0.830 & 0.767 & -0.031 \\
+religion & 0.800 & 0.733 & 0.615 & -0.067 \\
+science and technology & 0.864 & 0.683 & 0.667 & -0.181 \\
+society & 0.697 & 0.625 & 0.557 & -0.072 \\
+sport & 0.987 & 0.940 & 0.940 & -0.047 \\
+weather & 0.889 & 0.889 & 1.000 & 0.000 \\
+\bottomrule
+\end{tabular}

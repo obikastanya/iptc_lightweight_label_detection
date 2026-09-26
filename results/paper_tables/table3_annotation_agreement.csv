@@ -1,0 +1,3 @@
+Pasangan,Kesepakatan %,Cohen kappa,Krippendorff alpha,alpha CI95
+Anotator LLM vs teacher (ini),83.125,0.8154536231110162,0.8155528709949861,0.764-0.856
+Manusia vs manusia (Kuzman 2025),,,0.728,-

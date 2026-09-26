@@ -1,0 +1,134 @@
+{
+ "dev": [
+  {
+   "threshold": 0.0,
+   "coverage": 1.0,
+   "accuracy_on_kept": 0.793,
+   "cascade_macro_f1": 0.7511674877617139,
+   "cascade_micro_f1": 0.793,
+   "teacher_share": 0.0
+  },
+  {
+   "threshold": 0.3,
+   "coverage": 0.981,
+   "accuracy_on_kept": 0.8012232415902141,
+   "cascade_macro_f1": 0.7626389288863176,
+   "cascade_micro_f1": 0.8,
+   "teacher_share": 0.019000000000000017
+  },
+  {
+   "threshold": 0.4,
+   "coverage": 0.94,
+   "accuracy_on_kept": 0.8202127659574469,
+   "cascade_macro_f1": 0.7707275536222085,
+   "cascade_micro_f1": 0.81,
+   "teacher_share": 0.06000000000000005
+  },
+  {
+   "threshold": 0.5,
+   "coverage": 0.886,
+   "accuracy_on_kept": 0.8431151241534989,
+   "cascade_macro_f1": 0.7811812087855257,
+   "cascade_micro_f1": 0.823,
+   "teacher_share": 0.11399999999999999
+  },
+  {
+   "threshold": 0.6,
+   "coverage": 0.817,
+   "accuracy_on_kept": 0.8714810281517748,
+   "cascade_macro_f1": 0.8003214599006118,
+   "cascade_micro_f1": 0.838,
+   "teacher_share": 0.18300000000000005
+  },
+  {
+   "threshold": 0.7,
+   "coverage": 0.729,
+   "accuracy_on_kept": 0.9039780521262003,
+   "cascade_macro_f1": 0.8143884721661396,
+   "cascade_micro_f1": 0.85,
+   "teacher_share": 0.271
+  },
+  {
+   "threshold": 0.8,
+   "coverage": 0.655,
+   "accuracy_on_kept": 0.9251908396946565,
+   "cascade_macro_f1": 0.8157474740428563,
+   "cascade_micro_f1": 0.855,
+   "teacher_share": 0.345
+  },
+  {
+   "threshold": 0.9,
+   "coverage": 0.558,
+   "accuracy_on_kept": 0.9408602150537635,
+   "cascade_macro_f1": 0.8177050863119949,
+   "cascade_micro_f1": 0.856,
+   "teacher_share": 0.44199999999999995
+  }
+ ],
+ "llm_test": [
+  {
+   "threshold": 0.0,
+   "coverage": 1.0,
+   "accuracy_on_kept": 0.74375,
+   "cascade_macro_f1": 0.7401696262663429,
+   "cascade_micro_f1": 0.74375,
+   "teacher_share": 0.0
+  },
+  {
+   "threshold": 0.3,
+   "coverage": 0.978125,
+   "accuracy_on_kept": 0.7539936102236422,
+   "cascade_macro_f1": 0.7502541857876582,
+   "cascade_micro_f1": 0.753125,
+   "teacher_share": 0.021874999999999978
+  },
+  {
+   "threshold": 0.4,
+   "coverage": 0.925,
+   "accuracy_on_kept": 0.7601351351351351,
+   "cascade_macro_f1": 0.7500465620415431,
+   "cascade_micro_f1": 0.746875,
+   "teacher_share": 0.07499999999999996
+  },
+  {
+   "threshold": 0.5,
+   "coverage": 0.853125,
+   "accuracy_on_kept": 0.8021978021978022,
+   "cascade_macro_f1": 0.781569185500319,
+   "cascade_micro_f1": 0.775,
+   "teacher_share": 0.14687499999999998
+  },
+  {
+   "threshold": 0.6,
+   "coverage": 0.80625,
+   "accuracy_on_kept": 0.8178294573643411,
+   "cascade_macro_f1": 0.7948167843819074,
+   "cascade_micro_f1": 0.7875,
+   "teacher_share": 0.19374999999999998
+  },
+  {
+   "threshold": 0.7,
+   "coverage": 0.75,
+   "accuracy_on_kept": 0.8416666666666667,
+   "cascade_macro_f1": 0.8078688978749153,
+   "cascade_micro_f1": 0.8,
+   "teacher_share": 0.25
+  },
+  {
+   "threshold": 0.8,
+   "coverage": 0.659375,
+   "accuracy_on_kept": 0.8815165876777251,
+   "cascade_macro_f1": 0.8343009880034102,
+   "cascade_micro_f1": 0.821875,
+   "teacher_share": 0.34062499999999996
+  },
+  {
+   "threshold": 0.9,
+   "coverage": 0.54375,
+   "accuracy_on_kept": 0.9195402298850575,
+   "cascade_macro_f1": 0.8500672357818295,
+   "cascade_micro_f1": 0.8375,
+   "teacher_share": 0.45625000000000004
+  }
+ ]
+}

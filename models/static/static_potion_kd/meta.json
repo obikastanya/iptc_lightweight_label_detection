@@ -1,0 +1,42 @@
+{
+ "base": "minishlab/potion-multilingual-128M",
+ "val_agreement_with_teacher": 0.8169448010269577,
+ "name": "static_potion_kd",
+ "sources": [
+  "emmediatopic",
+  "ccnews"
+ ],
+ "epochs": 10,
+ "batch_size": 64,
+ "lr_emb": 0.001,
+ "lr_head": 0.003,
+ "dropout": 0.1,
+ "temperature": 2.0,
+ "gpt_weight": 0.0,
+ "freeze": false,
+ "val_fraction": 0.03,
+ "min_count": 1,
+ "keep_all_vocab": true,
+ "seed": 0,
+ "labels": [
+  "arts, culture, entertainment and media",
+  "conflict, war and peace",
+  "crime, law and justice",
+  "disaster, accident and emergency incident",
+  "economy, business and finance",
+  "education",
+  "environment",
+  "health",
+  "human interest",
+  "labour",
+  "lifestyle and leisure",
+  "politics",
+  "religion",
+  "science and technology",
+  "society",
+  "sport",
+  "weather"
+ ],
+ "rows": 500353,
+ "dim": 256
+}

@@ -1,0 +1,12 @@
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Model & dev macro-F1 & LLM16 macro-F1 & Latensi p50 1c (ms) & Latensi p95 1c (ms) & Throughput 1c (dok/s) & Throughput 4c (dok/s) & RAM model (MB) & Ukuran file (MB) \\
+\midrule
+StaticKD (usulan) & 0.75 & 0.74 & 1.94 & 6.31 & 446.59 & 1683.19 & 505.10 & 33.98 \\
+StaticKD-compact (tokenizer 335k) & 0.75 & 0.73 & 1.68 & 5.01 & 567.47 & 2190.66 & 281.30 & 23.18 \\
+fastText + KD, subword, quantized & 0.73 & 0.66 & 1.36 & 3.28 & 638.75 & 1536.77 & 308.30 & 18.03 \\
+MiniLM-L6 + KD (ONNX fp32) & 0.76 & 0.75 & 70.55 & 106.70 & 12.45 & 20.62 & 1242.30 & 408.29 \\
+Teacher XLM-R-large (ONNX int8) & 0.83 & 0.84 & 912.75 & 1941.83 & 0.62 & 2.08 & 1382.90 & 536.74 \\
+Teacher XLM-R-large (PyTorch fp32) & 0.82 & 0.83 & 2600.27 & 4415.12 & 0.22 & 0.59 & 2957.10 & 2135.93 \\
+\bottomrule
+\end{tabular}
