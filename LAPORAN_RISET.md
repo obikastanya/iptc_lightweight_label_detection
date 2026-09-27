@@ -204,6 +204,80 @@ Probabilitas softmax StaticKD terkalibrasi dengan baik:
 
 Dengan ambang 0,8, akurasi setara teacher dapat dicapai dengan hanya ~34% panggilan ke teacher, sekitar 3× lebih hemat dari teacher saja. Namun biaya rata-rata tetap didominasi teacher (~0,34 × 913 ms ≈ 310 ms/dok per core), sehingga cascade cocok untuk jalur semi-real-time/batch, bukan pengganti StaticKD di jalur real-time. Label berconfidence rendah juga bisa diperlakukan sebagai kandidat multi-label, sesuai rencana future work Kuzman.
 
+### 4.6 Eksperimen lanjutan: bigram hashing dan ensemble seed
+Dua cara menaikkan akurasi yang tetap berupa lookup tabel (resep final, 286k dokumen, 6 epoch):
+- **Bigram hashing**: setiap pasangan token berurutan di-hash (Fibonacci hashing uint64) ke tabel 2^b × 17 yang dilatih langsung dalam bentuk terlipat (init nol, SparseAdam). Rata-rata bigram ditambahkan ke logit unigram. Opsi `--bigram-bits`, `--lr-bigram` di `students/static_student.py`.
+- **Ensemble seed**: rata-rata tabel dari 3 seed (`ensemble_tables`). Hasilnya identik dengan rata-rata logit karena modelnya linear, jadi biaya inferensinya nol.
+
+| Varian | dev macro | llm_test macro | Kesepakatan 70 bhs | File | Throughput 1c* |
+|---|---|---|---|---|---|
+| Baseline seed 0 / 1 / 2 | 0,751 / 0,748 / 0,750 | 0,740 / 0,763 / 0,732 | 0,800 / 0,799 / 0,802 | 34 MB | 600 dok/s |
+| Baseline rata-rata ± SD | 0,750 ± 0,002 | 0,745 ± 0,016 | 0,800 ± 0,002 | | |
+| Ensemble 3 seed | 0,753 | 0,722 | 0,803 | 34 MB | 600 dok/s |
+| Bigram 2^21, lr 1e-2 | 0,738 | 0,722 | 0,804 | 102 MB | 578 dok/s |
+| Bigram 2^20, lr 2e-3 | 0,742 | 0,716 | 0,803 | 68 MB | – |
+
+*Diukur ulang pada sesi yang sama (P-core 0). Angka absolutnya lebih tinggi dari Tabel 4.4 karena kondisi mesin berbeda, jadi hanya perbandingan relatifnya yang bermakna.
+
+Paired bootstrap terhadap seed 0 (`evaluation/compare_variants.py`, `results/variant_comparison.csv`):
+- Bigram 2^21: kesepakatan +0,004 (p = 0,02), dev −0,013 (p = 0,058), llm_test −0,018 (p = 0,25).
+- Ensemble: kesepakatan +0,003 (p = 0,01), dev +0,002 (p = 0,72).
+
+**Temuan:**
+1. **Bigram tidak menaikkan akurasi.** Bigram sedikit menaikkan kemiripan dengan teacher di domain CC-News, tetapi menurunkan akurasi terhadap label independen (dev GPT-4o dan test LLM). Dua konfigurasi memberi pola yang sama, dan skor dev/test keduanya berada di bawah rentang tiga seed baseline. Dugaan penyebabnya: bigram dilatih dari nol tanpa inisialisasi lintas bahasa, sehingga lebih banyak menghafal pola khas data distilasi daripada belajar sinyal topik yang tergeneralisasi. Biayanya: file 2–3× lebih besar, RAM +68 MB, latensi p50 +25%.
+2. **Ensemble seed juga praktis tidak berpengaruh**: +0,002–0,003, dalam batas noise.
+3. **Variasi antar-seed di llm_test (320 dokumen) sekitar 0,016 SD** (rentang 0,031), jauh lebih besar dari di dev (0,002). Selisih < 0,03 di llm_test tidak bisa diinterpretasikan tanpa beberapa seed.
+4. Bersama hasil sebelumnya (data ×2, kepala MLP, MiniLM-L6 dengan attention), ini memperkuat kesimpulan bahwa **student kecil tertahan di sekitar 0,75 macro-F1 dev** dengan resep distilasi ini.
+
+### 4.7 Eksplorasi akurasi dengan syarat model tetap ringan → StaticKD v2
+Syaratnya: format deployment tetap tabel token + bias, dan biaya inferensi tetap O(jumlah token). Protokolnya: dev dipakai untuk seleksi, kesepakatan 70 bahasa sebagai sinyal pendukung, dan LLM16 sebagai konfirmasi. Kandidat akhir diuji dengan 3 seed. Kode ada di `experiments/explore_inference.py` dan `experiments/run_queue.py`, dengan opsi baru `--temperature`, `--conf-weight`, `--gpt-weight`, `--label-smoothing`, `--max-tokens`, dan `--token-weight {idf,learned}` di `static_student.py`. Hasil lengkapnya di `results/exploration/`.
+
+**Tahap 1, inferensi saja (model v1 tidak diubah):**
+
+| Variasi | dev | LLM16 | Kesepakatan |
+|---|---|---|---|
+| Baseline (1.024 token) | 0,751 | 0,740 | 0,800 |
+| Potong input 128 / 256 / 384 / 512 / 768 token | 0,688 / 0,725 / 0,761 / 0,753 / 0,750 | 0,693 / 0,690 / 0,721 / 0,713 / 0,725 | 0,753 / 0,784 / 0,800 / 0,803 / 0,800 |
+| Bobot posisi (16–64 token pertama ×1,5–3) | 0,732–0,758 | 0,733–0,751 | 0,801–0,805 |
+| Pooling berbobot idf^0,5 / idf^1 | 0,749 / 0,745 | 0,738 / 0,743 | 0,807 / 0,807 |
+| Kalibrasi bias per kelas (5-fold CV di dev) | **0,721** | 0,747 | 0,787 |
+
+Tidak ada yang konsisten lebih baik. Kalibrasi bias overfit, dan memotong input merugikan dokumen multibahasa.
+
+**Tahap 2, training ulang (1 seed kecuali disebut lain):**
+
+| Variasi | dev | LLM16 | Kesepakatan |
+|---|---|---|---|
+| τ = 0,5 | 0,747 | 0,743 | 0,807 |
+| **τ = 1 (3 seed, rata-rata)** | **0,755 ± 0,002** | 0,748 ± 0,015 | **0,808 ± 0,000** |
+| τ = 2 (v1, 3 seed, rata-rata) | 0,750 ± 0,002 | 0,745 ± 0,016 | 0,800 ± 0,001 |
+| τ = 4 | 0,724 | 0,704 | 0,792 |
+| + CE label GPT-4o (bobot 1) | 0,736 | 0,720 | 0,797 |
+| + bobot keyakinan teacher (γ = 1) | 0,755 | 0,735 | 0,799 |
+| Maks. 512 token (training + inferensi) | 0,758 | 0,706 | 0,803 |
+| Pooling berbobot idf^0,5 (dilatih) | 0,748 | 0,737 | 0,801 |
+| Bobot token dipelajari (init idf^0,5) | 0,742 | 0,715 | 0,801 |
+
+**Tahap 3, kandidat akhir:**
+
+| Model | dev | LLM16 | Kesepakatan | File | RAM | p50 (1 core) |
+|---|---|---|---|---|---|---|
+| v1 (τ = 2, seed 0) | 0,751 | 0,740 | 0,800 | 34 MB | 504 MB | 1,30 ms |
+| **v2 = τ = 1, ensemble 3 seed** (`models/static/static_v2_table`) | **0,761** | **0,745** | **0,811** | 34 MB | 504 MB | 1,31 ms |
+| v1 compact10 | 0,751 | 0,730 | 0,789 | 23 MB | ±281 MB | – |
+| **v2 compact10** (`static_v2_table_compact10`) | 0,754 | 0,748 | 0,801 | 23 MB | ±281 MB | – |
+
+Uji statistik:
+- Pada level seed (Welch, 3 vs 3 seed), τ = 1 lebih baik dari τ = 2 untuk dev (+0,005; p = 0,014) dan kesepakatan (+0,008; p = 0,007). Untuk LLM16 tidak berbeda (p = 0,82).
+- Paired bootstrap v2 vs v1: kesepakatan +0,011 (p < 0,001), dev +0,010 (p = 0,43; 1.000 dokumen terlalu sedikit untuk selisih sebesar ini), LLM16 +0,005 (n.s.).
+- v2 compact10 vs v1 compact10: kesepakatan +0,012 (p < 0,001), LLM16 +0,017 (n.s.).
+
+**Kesimpulan eksplorasi:**
+1. Satu-satunya perbaikan yang konsisten adalah **suhu distilasi τ = 1**. Soft label yang lebih tajam lebih cocok untuk student berkapasitas rendah: τ tinggi memaksa student meniru distribusi ekor yang tidak mampu direpresentasikannya.
+2. **Ensemble seed** memberi tambahan kecil tanpa biaya inferensi, karena model linear sehingga tabel bisa dirata-rata.
+3. **v2 menggantikan v1 sebagai model rekomendasi.** Arsitektur, ukuran, dan kecepatannya identik, dengan akurasi +0,5–1,1 poin.
+4. Kenaikannya kecil. Batas atas sekitar 0,75–0,76 macro-F1 dev untuk student bag-of-tokens tetap berlaku. Semua ide lain (bigram, bobot token, bobot keyakinan, label GPT-4o, kalibrasi bias, pemotongan input) tidak membantu atau malah merugikan.
+
 ---
 
 ## 5. Seberapa "terbukti" solusinya?

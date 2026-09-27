@@ -44,6 +44,20 @@ test_compare.py
 *.zip
 
 # ---------------------------------------------------------------
+# Jurnal LaTeX: file hasil kompilasi & salinan template IEEE
+# (IEEEtran.cls/.bst yang dibutuhkan sudah ada di jurnal_latex/)
+# ---------------------------------------------------------------
+jurnal_latex/*.aux
+jurnal_latex/*.bbl
+jurnal_latex/*.blg
+jurnal_latex/*.out
+jurnal_latex/*.toc
+jurnal_latex/*.fls
+jurnal_latex/*.fdb_latexmk
+jurnal_latex/*.synctex.gz
+jurnal_latex/template_ieee/
+
+# ---------------------------------------------------------------
 # Dokumen pihak lain (paper referensi berhak cipta & contoh tugas teman)
 # ---------------------------------------------------------------
 /reference/

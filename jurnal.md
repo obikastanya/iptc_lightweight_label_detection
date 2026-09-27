@@ -206,6 +206,15 @@ Temuan utama: (i) StaticKD lebih rendah signifikan dari teacher. (ii) StaticKD *
 | I | F + data 286k (**final**) | 0,751 | 0,740 | 0,800 |
 | K | I + tokenizer dipangkas (min. 10) | 0,751 | 0,730 | 0,789 |
 | L | I + tokenizer dipangkas (min. 50) | 0,749 | 0,714 | 0,773 |
+| M | I, rata-rata 3 seed (± SD) | 0,750 ± 0,002 | 0,745 ± 0,016 | 0,800 ± 0,002 |
+| N | Ensemble 3 seed (rata-rata tabel) | 0,753 | 0,722 | 0,803 |
+| O | I + bigram hashing 2²¹ | 0,738 | 0,722 | 0,804 |
+| P | I + bigram hashing 2²⁰ (lr lebih kecil) | 0,742 | 0,716 | 0,803 |
+| Q | I dengan τ = 4 / τ = 0,5 | 0,724 / 0,747 | 0,704 / 0,743 | 0,792 / 0,807 |
+| R | I + CE label GPT-4o / + bobot keyakinan teacher | 0,736 / 0,755 | 0,720 / 0,735 | 0,797 / 0,799 |
+| S | I + pooling berbobot idf^0,5 / bobot token dipelajari | 0,748 / 0,742 | 0,737 / 0,715 | 0,801 / 0,801 |
+| T | I dengan τ = 1, rata-rata 3 seed (± SD) | 0,755 ± 0,002 | 0,748 ± 0,015 | 0,808 ± 0,000 |
+| **U** | **T, ensemble 3 seed (StaticKD v2)** | **0,761** | **0,745** | **0,811** |
 
 Pembacaan ablasi:
 - **Distilasi multibahasa adalah komponen terpenting** (A → B: +0,511 macro-F1 lintas bahasa). Tanpa data dari bahasa lain, model bag-of-words gagal total di luar 4 bahasa latih.
@@ -213,7 +222,10 @@ Pembacaan ablasi:
 - **Embedding yang didistilasi dari encoder teacher** (D) kalah dari potion untuk lintas bahasa (0,642 vs 0,723). Representasi token tunggal dari encoder yang di-*fine-tune* ternyata kurang selaras antarbahasa.
 - **Token dropout** memberi +0,014 (F), sedangkan kepala MLP tidak memberi tambahan (G, H) dan tidak bisa dilipat, sehingga ditolak.
 - **Pelipatan tabel tidak mengubah prediksi** (J = F) sambil memperkecil model dari 128 MB (embedding int8) menjadi 34 MB.
-- **Data ×2 hanya +0,005** (I; tidak signifikan, Tabel V). Kapasitas model bag-of-tokens sudah jenuh. Varian dengan seed berbeda memberi selisih ±0,007, sama besar dengan efek ini.
+- **Data ×2 hanya +0,005** (I; tidak signifikan, Tabel V). Kapasitas model bag-of-tokens sudah jenuh. Tiga seed berbeda (M) memberi simpangan baku 0,002 di dev tetapi 0,016 di test LLM (320 dokumen), sehingga selisih di bawah ±0,03 pada test LLM tidak dapat diinterpretasikan tanpa pengulangan seed.
+- **Penambahan kapasitas yang tetap dapat dilipat tidak membantu.** Ensemble tiga seed (N) hanya memberi +0,003 dev dan kesepakatan (dalam batas noise). Bigram hashing (O, P) yaitu tabel 17 logit per pasangan token berurutan yang dilatih dari nol, menaikkan kesepakatan dengan teacher secara signifikan tetapi kecil (+0,004; paired bootstrap p = 0,02). Sebaliknya, akurasinya terhadap label independen turun (dev −0,013, p = 0,058; test LLM −0,018, n.s.), dan ukuran file naik 2–3×. Bigram tidak memiliki inisialisasi yang selaras lintas bahasa sehingga cenderung menghafal pola khas data distilasi.
+- **Suhu distilasi adalah satu-satunya faktor yang konsisten** (Q, T). Menurunkan τ dari 2 ke 1 menaikkan dev +0,005 (Welch 3 vs 3 seed, p = 0,014) dan kesepakatan +0,008 (p = 0,007), tanpa perubahan di test LLM (p = 0,82). τ = 4 dan τ = 0,5 lebih buruk. Soft label yang lebih tajam cocok untuk student berkapasitas rendah, karena τ tinggi memaksa student meniru ekor distribusi teacher yang tidak mampu direpresentasikannya. Perubahan lain pada sinyal atau pooling (R, S), kalibrasi bias per kelas (5-fold CV di dev: 0,721), dan pemotongan input (512 token: test LLM 0,706) tidak membantu.
+- **StaticKD v2** (U) menggabungkan τ = 1 dengan ensemble tabel 3 seed. Hasilnya dev 0,761 dan kesepakatan 0,811 (+0,011 terhadap I; paired bootstrap p < 0,001). Ukuran (34 MB), RAM, dan latensinya identik dengan I. Versi tokenizer ringkasnya (23 MB, ±281 MB RAM) mencapai 0,754 / 0,748 / 0,801, yaitu setara model I penuh. Kenaikan ini kecil dan tidak mengubah kesimpulan tentang batas atas student bag-of-tokens.
 
 ![Gambar 3](results/figures/fig08_ablation_scaling.png)
 *Gambar 3. Ablasi komponen (kiri) dan skala data distilasi (kanan).*

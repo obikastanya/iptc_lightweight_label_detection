@@ -1,0 +1,550 @@
+% =====================================================================
+% StaticKD -- draf artikel jurnal (bahasa Indonesia), format IEEE Transactions
+% Kelas  : IEEEtran.cls (template resmi IEEE Author Center, lihat template_ieee/)
+% Kompil : pdflatex main && bibtex main && pdflatex main && pdflatex main
+% Catatan: teks merah [TODO: ...] menandai bagian yang masih harus dilengkapi.
+% =====================================================================
+\documentclass[journal]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage[hyphens]{url}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,fit,calc}
+
+% Istilah untuk naskah berbahasa Indonesia
+\renewcommand{\abstractname}{Abstrak}
+\renewcommand{\IEEEkeywordsname}{Kata Kunci}
+\renewcommand{\figurename}{Gbr.}
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\refname}{Referensi}
+
+\DeclareRobustCommand{\todo}[1]{{\color{red}[TODO: #1]}}
+\newcommand{\eng}[1]{\textit{#1}}   % istilah asing dicetak miring
+
+\emergencystretch=1.5em  % mengurangi overfull box (tanpa pola hyphenation bahasa Indonesia)
+
+\begin{document}
+
+\title{StaticKD: Klasifikasi Topik Berita IPTC Multibahasa yang Ringan untuk CPU melalui Distilasi Pengetahuan ke Model \eng{Static-Embedding}}
+
+\author{Obi~Kastanya and Ananta~Dwi~Prayoga~Alwy%
+\thanks{O. Kastanya (NRP 6025252015) dan A. D. P. Alwy (NRP 6025252007) berasal dari \todo{program studi, departemen, institusi, kota, negara}. E-mail: \todo{alamat e-mail penulis korespondensi}.}%
+\thanks{Naskah diterima \todo{tanggal}; direvisi \todo{tanggal}.}}
+
+\markboth{\todo{Nama Jurnal}, Vol.~XX, No.~X, \todo{Bulan} 2026}%
+{Kastanya dan Alwy: StaticKD, Klasifikasi Topik Berita IPTC Multibahasa yang Ringan}
+
+\maketitle
+
+% ---------------------------------------------------------------------
+\begin{abstract}
+Klasifikasi artikel berita ke dalam taksonomi IPTC Media Topic dibutuhkan untuk menyaring jutaan artikel per hari, tetapi pengklasifikasi multibahasa terbaik yang tersedia secara terbuka, berbasis XLM-RoBERTa-large, membutuhkan 0,9--2,6 detik per artikel pada satu \eng{core} CPU. Penelitian ini mengusulkan StaticKD, yaitu distilasi pengetahuan dari pengklasifikasi tersebut ke model \eng{student} berbasis \eng{static embedding} multibahasa: embedding token pra-latih yang dirata-rata lalu dipetakan secara linear ke 17 kelas. \eng{Teacher} melabeli 286 ribu artikel dari 70 bahasa, dan \eng{student} dilatih meminimalkan divergensi Kullback--Leibler terhadap distribusi \eng{teacher} yang dilunakkan temperatur. Karena kepala klasifikasinya linear, model akhir dapat dilipat menjadi tabel berisi 17 logit per token (34~MB) yang dijalankan hanya dengan NumPy. Pada data dev EMMediaTopic (4 bahasa) dan \eng{test set} 16 bahasa di luar data latih \eng{teacher}, StaticKD mencapai macro-F1 0,751 dan 0,740 (sekitar 90\% dari \eng{teacher}) dengan \eng{throughput} 447 artikel per detik per \eng{core}, sekitar 720 kali lebih cepat dari \eng{teacher} ONNX int8. StaticKD tidak berbeda signifikan dari \eng{student} MiniLM-L6 yang 36 kali lebih lambat, dan mengungguli fastText hasil distilasi yang sama pada bahasa di luar data latih (+0,084 macro-F1). Ablasi menunjukkan bahwa kunci keberhasilannya adalah data distilasi multibahasa dan embedding yang selaras lintas bahasa. Penambahan kapasitas yang tetap dapat dilipat tidak membantu, sedangkan penurunan temperatur ke $\tau=1$ disertai \eng{ensemble} tabel memberi kenaikan kecil (macro-F1 dev 0,761). Kelemahan per bahasa terutama ditentukan oleh jumlah data distilasi dan keyakinan \eng{teacher}, bukan oleh sistem tulisan.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Klasifikasi topik berita, IPTC Media Topic, \eng{knowledge distillation}, \eng{static embedding}, klasifikasi teks multibahasa, efisiensi inferensi, CPU.
+\end{IEEEkeywords}
+
+% =====================================================================
+\section{Pendahuluan}
+\IEEEPARstart{A}{rtikel} berita adalah salah satu sumber informasi utama dalam industri data analitik karena sifatnya yang faktual dan terkini. Agar analisis tetap terarah, artikel perlu dikelompokkan ke kategori terstandar, lalu hanya topik yang relevan yang diproses lebih lanjut. International Press Telecommunications Council (IPTC) Media Topic adalah standar pengkategorian berita yang dipakai kantor berita besar seperti Reuters, Associated Press, dan Agence France-Presse~\cite{kuzman2025llm,iptc2024mediatopics}. Level teratasnya terdiri dari 17 topik, antara lain \eng{politics}, \eng{economy, business and finance}, dan \eng{sport}.
+
+Kuzman dan Ljube\v{s}i\'c~\cite{kuzman2025llm} menunjukkan bahwa \eng{large language model} (LLM) dapat menggantikan anotator manusia dalam membangun data latih klasifikasi IPTC. GPT-4o melabeli 20.000 artikel berita berbahasa Slovenia, Kroasia, Katalan, dan Yunani secara \eng{zero-shot}, dengan kesepakatan terhadap manusia yang setara dengan kesepakatan antarmanusia. Label tersebut dipakai untuk melakukan \eng{fine-tuning} XLM-RoBERTa-large~\cite{conneau2020xlmr}, dan model yang dihasilkan (macro-F1 0,746 pada \eng{test set} manusia) dirilis sebagai pengklasifikasi IPTC multibahasa terbuka pertama. Namun penelitian tersebut tidak mengukur dimensi efisiensi: jumlah parameter, ukuran model, memori, dan latensi inferensi. Padahal alasan utama mengganti GPT dengan model yang lebih kecil adalah kebutuhan memproses jutaan artikel per hari. Model berbasis XLM-RoBERTa-large dengan 560 juta parameter pada praktiknya menuntut GPU, dan kebutuhan itu tidak terpenuhi oleh banyak \eng{pipeline} produksi yang berjalan di server kecil berbasis CPU.
+
+Kebutuhan praktis yang kami targetkan serupa dengan fastText \eng{language identification}~\cite{joulin2017bag}: satu model kecil yang mengenali banyak bahasa dalam hitungan milidetik di CPU. Proposal awal penelitian ini mempertimbangkan kombinasi \eng{knowledge distillation} (KD) dan \eng{low-rank adaptation} (LoRA)~\cite{hu2022lora,azimi2024kdlora}. Akan tetapi, LoRA hanya mengurangi jumlah parameter yang \emph{dilatih}, bukan biaya \emph{inferensi}: setelah adapter digabungkan, model tetap sebesar \eng{backbone}-nya. Karena itu penelitian ini beralih ke pertanyaan yang lebih mendasar: seberapa sederhana arsitektur \eng{student} yang masih mampu meniru \eng{teacher} IPTC multibahasa?
+
+Pertanyaan penelitian (\eng{research question}, RQ) yang dijawab adalah sebagai berikut.
+\begin{itemize}
+  \item \textbf{RQ1}: Seberapa akurat dan seberapa mahal pengklasifikasi IPTC Kuzman dan Ljube\v{s}i\'c bila dijalankan hanya dengan CPU?
+  \item \textbf{RQ2}: Dapatkah pengetahuan \eng{teacher} didistilasi ke model \eng{static-embedding} secepat fastText tanpa kehilangan kemampuan multibahasa?
+  \item \textbf{RQ3}: Komponen apa yang paling menentukan keberhasilan distilasi: sumber label, cakupan bahasa data, inisialisasi embedding, regularisasi, ukuran data, atau temperatur?
+  \item \textbf{RQ4}: Bagaimana \eng{trade-off} akurasi--efisiensi dibanding fastText dan \eng{student} transformer kecil, dan apakah ada bahasa atau label yang sistematis lebih lemah?
+\end{itemize}
+
+Kontribusi penelitian ini adalah sebagai berikut.
+\begin{enumerate}
+  \item Laporan efisiensi pertama pengklasifikasi IPTC Kuzman dan Ljube\v{s}i\'c di CPU (latensi, \eng{throughput}, memori, ukuran) dalam dua konfigurasi (PyTorch fp32 dan ONNX int8), dengan protokol \eng{benchmark} yang dapat direproduksi untuk CPU \eng{hybrid}.
+  \item StaticKD, resep distilasi \eng{teacher} ke \eng{static multilingual embedding} untuk klasifikasi topik berita yang menghasilkan model 34~MB dengan \eng{throughput} ratusan artikel per detik per \eng{core}, beserta ablasi kontribusi setiap komponen dan eksplorasi batas akurasinya.
+  \item Evaluasi lintas bahasa pada 16 bahasa di luar data latih \eng{teacher} dan 70 bahasa \eng{held-out}, termasuk analisis statistik faktor penentu kelemahan per bahasa.
+  \item Analisis kalibrasi dan mode \eng{cascade} \eng{student}--\eng{teacher} untuk kasus yang membutuhkan akurasi setara \eng{teacher}.
+\end{enumerate}
+
+Bagian~II membahas penelitian terkait. Bagian~III menjelaskan data, metode, dan protokol evaluasi. Bagian~IV menyajikan hasil, Bagian~V membahasnya, Bagian~VI memuat keterbatasan, dan Bagian~VII menyimpulkan.
+
+% =====================================================================
+\section{Penelitian Terkait}
+
+\subsection{Klasifikasi Topik Berita Berbasis IPTC}
+Dataset topik berita sebelumnya memakai skema sendiri, label yang tidak dianotasi manual, atau skema IPTC Subject Codes yang sudah usang~\cite{kuzman2025llm}. Kuzman dan Ljube\v{s}i\'c~\cite{kuzman2025llm} membangun EMMediaTopic, 21.000 artikel dari korpus MaCoCu (diekstrak dengan pengklasifikasi genre X-GENRE~\cite{kuzman2023genre}) yang dilabeli GPT-4o dengan 17 topik level atas IPTC Media Topic, beserta \eng{test set} manusia berisi 1.129 artikel. XLM-RoBERTa-large yang dilatih pada 15.000 artikel mencapai macro-F1 0,746, setara GPT-4o (0,731), dan model multibahasa tidak kalah dari model monolingual. \eng{Benchmark} lanjutan mereka~\cite{kuzman2025southslavic} menunjukkan bahwa pengklasifikasi ini bersaing dengan GPT-4o, GPT-5, dan Gemini~2.5, sedangkan \eng{baseline} non-neural (TF-IDF + SVC) hanya mencapai macro-F1 0,42. Tidak satu pun studi tersebut melaporkan biaya inferensi.
+
+\subsection{\eng{Parameter-Efficient Fine-Tuning}}
+Razuvayevskaya dkk.~\cite{razuvayevskaya2024peft} membandingkan LoRA, adapter, dan \eng{full fine-tuning} pada XLM-RoBERTa-large untuk klasifikasi berita multibahasa. PEFT memangkas parameter terlatih 140--280 kali dengan akurasi serupa. Azimi dkk.~\cite{azimi2024kdlora} menggabungkan KD dan LoRA (KD-LoRA) dan memperoleh 97\% kinerja \eng{full fine-tuning} dengan penurunan latensi 30\% pada GLUE. Penurunan latensi sebesar itu tidak cukup untuk kasus kami, yang membutuhkan penurunan dua sampai tiga orde besaran.
+
+\subsection{\eng{Knowledge Distillation} dan Model Ringan}
+Di antara teknik kompresi model (pemangkasan, kuantisasi, distilasi, faktorisasi)~\cite{zhu2024survey}, KD~\cite{hinton2015distilling} melatih \eng{student} untuk meniru distribusi probabilitas \eng{teacher} yang dilunakkan dengan temperatur. Distribusi ini membawa informasi kemiripan antarkelas yang tidak ada pada label keras. Efektivitas KD bergantung pada kesenjangan kapasitas \eng{teacher} dan \eng{student}~\cite{cho2019efficacy,mirzadeh2020ta}, dan kesesuaian prediksi \eng{student} dengan \eng{teacher} (\eng{fidelity}) tidak selalu sejalan dengan generalisasinya~\cite{stanton2021kd}. Varian transformer kecil seperti DistilBERT~\cite{sanh2019distilbert} dan MiniLMv2~\cite{wang2021minilmv2} mengurangi jumlah \eng{layer}, tetapi tetap memerlukan \eng{attention} atas seluruh token. Di sisi lain spektrum, fastText~\cite{joulin2017bag} adalah model \eng{bag-of-n-gram} yang sangat cepat, tetapi embedding-nya dilatih dari nol sehingga tidak ada transfer lintas bahasa. Model2Vec~\cite{tulkens2024model2vec} mendistilasi \eng{sentence transformer} menjadi embedding token statis. Varian \eng{potion-multilingual-128M} didistilasi dari BGE-M3~\cite{chen2024bgem3} untuk 101 bahasa, sehingga kata yang bermakna sama di bahasa berbeda memiliki vektor yang berdekatan. Piperno dkk.~\cite{piperno2025crosslingual} menunjukkan bahwa distilasi efektif memindahkan pengetahuan antarbahasa, terutama ketika data bahasa target sedikit.
+
+\subsection{Kesenjangan Penelitian}
+Ada tiga kesenjangan. Pertama, pengklasifikasi IPTC yang ada tidak dievaluasi efisiensinya di CPU. Kedua, distilasi \eng{teacher} transformer ke \eng{static embedding} multibahasa belum diuji untuk klasifikasi topik berita dengan banyak kelas. Ketiga, belum ada analisis sistematis mengenai bahasa mana yang lemah setelah model dikompresi dan mengapa. Ul\v{c}ar dkk.~\cite{ulcar2025mono} menunjukkan bahwa penurunan kinerja lintas bahasa bervariasi antartugas sehingga harus diukur langsung.
+
+% =====================================================================
+\section{Metodologi}
+
+\subsection{Kerangka Umum}
+Gbr.~\ref{fig:pipeline} merangkum \eng{pipeline} StaticKD. Pelabelan oleh \eng{teacher} dilakukan sekali secara \eng{offline} (GPU hanya dipakai untuk mempercepat proses ini), sedangkan model produksi berjalan sepenuhnya di CPU.
+
+\begin{figure*}[!t]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, font=\scriptsize, inner sep=3pt, minimum height=8mm},
+  data/.style={box, fill=gray!10},
+  model/.style={box, fill=blue!8},
+  prod/.style={box, fill=green!10},
+  arr/.style={-{Latex[length=1.8mm]}, thick},
+  lab/.style={font=\scriptsize}]
+  \node[data, text width=26mm] (cc)  at (1.4, 0.85)  {CC-News 2019--2021\\70 bahasa, 266 rb dok.};
+  \node[data, text width=26mm] (emm) at (1.4,-0.85)  {EMMediaTopic train\\4 bahasa, 20 rb dok.};
+  \node[model, text width=23mm] (t)  at (4.9, 0)     {\eng{Teacher}\\XLM-R-large\\560 jt parameter};
+  \node[data, text width=18mm] (soft) at (7.9, 0)    {Logit \eng{teacher}\\$\mathbf{z}^{T}\in\mathbb{R}^{17}$};
+  \node[model, text width=27mm] (s)  at (11.2, 0)    {\eng{Student}: tokenizer,\\embedding statis,\\rata-rata, linear};
+  \node[prod, text width=34mm] (tab) at (15.4, 0)    {Tabel $|V|\times 17$ (fp16)\\$\hat{y}=\arg\max\big(\frac{1}{n}\sum_i T_{t_i}+\mathbf{b}\big)$};
+  \draw[arr] (cc.east)  -- (t.160);
+  \draw[arr] (emm.east) -- (t.200);
+  \draw[arr] (t) -- (soft);
+  \draw[arr] (soft) -- node[lab, above]{KL, $\tau$} (s);
+  \draw[arr] (s) -- node[lab, above]{lipat $W$} (tab);
+  \draw[arr] (emm.east) ++(0.25,0) -- ++(0,-0.45) -| node[lab, pos=0.25, below]{teks dokumen} (s.south);
+  \node[lab, text=gray] at (8.0, 1.25) {\eng{offline}, sekali (GPU hanya untuk mempercepat)};
+  \node[lab, text=gray] at (15.4, 1.25) {produksi: NumPy, CPU};
+\end{tikzpicture}
+\caption{\eng{Pipeline} StaticKD. \eng{Teacher} melabeli korpus berita tak berlabel sekali secara \eng{offline}; \eng{student} dilatih meniru distribusi \eng{teacher}, lalu kepala linearnya dilipat ke dalam tabel token sehingga inferensi hanya berupa pencarian baris tabel dan rata-rata.}
+\label{fig:pipeline}
+\end{figure*}
+
+\subsection{Data}
+\textbf{EMMediaTopic 1.0}~\cite{kuzman2025llm} berisi 21.000 artikel (hr, sl, ca, el; 5.250 per bahasa) berlabel GPT-4o. Split \texttt{train} (20.000) dipakai untuk distilasi. Split \texttt{dev} (1.000) tidak pernah dipakai untuk melatih \eng{teacher} maupun \eng{student} dan menjadi set evaluasi utama.
+
+\textbf{Korpus CC-News multibahasa} diambil dari arsip Common Crawl News 2019--2021 yang dipisah per bahasa~\cite{cloversearch_ccnews}, dengan aturan berikut: (i) hanya dokumen yang bahasanya sama menurut metadata dan fastText-LID; (ii) judul dan isi, minimal 75 kata (200 karakter untuk ja, zh, th, my), dipotong ke 512 kata mengikuti praproses~\cite{kuzman2025llm}; (iii) maksimal 150 dokumen per situs; (iv) pemisahan \eng{held-out} per domain, yaitu seluruh dokumen dari sebagian situs disisihkan (maksimal 20\% per bahasa) sehingga evaluasi \eng{held-out} mengukur generalisasi ke situs berita yang belum pernah dilihat. Hasilnya adalah 109.842 dokumen latih (69 bahasa) dan 13.549 dokumen \eng{held-out} (68 bahasa). Untuk eksperimen skala data ditambahkan 156.157 dokumen (maksimal 5.000 per bahasa, tidak pernah dari domain \eng{held-out}), sehingga total data distilasi menjadi 285.999 dokumen.
+
+\textbf{\eng{Test set} LLM 16 bahasa} (selanjutnya LLM16) terdiri dari 320 artikel \eng{held-out} (20 per bahasa: en, de, fr, es, pt, it, ru, pl, tr, ar, zh, ja, id, vi, hi, sw) yang disebar merata antarsitus. Semua bahasa ini tidak ada di data \eng{fine-tuning} \eng{teacher}. Artikel dianotasi oleh LLM (Claude) menggunakan \eng{prompt} dan deskripsi label yang persis sama dengan yang dipakai Kuzman dan Ljube\v{s}i\'c untuk GPT-4o~\cite[Lampiran~B]{kuzman2025llm}, tanpa akses ke prediksi model mana pun. Ringkasan data ditunjukkan pada Tabel~\ref{tab:data}.
+
+\textbf{\eng{Test set} manusia.} \todo{Bagian ini akan diisi setelah \eng{test set} manusia selesai: sekitar 1.800 artikel CC-NEWS 2024--2026 dari situs yang tidak ada di data latih, 6 bahasa, sampling acak ditambah stratifikasi rubrik URL, deduplikasi \eng{near-duplicate} terhadap data latih, anotasi ganda, dan Cohen's~$\kappa$.}
+
+\begin{table}[!t]
+\caption{Ringkasan Data}
+\label{tab:data}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lrrll@{}}
+\toprule
+Korpus & Dokumen & Bahasa & Label & Peran \\
+\midrule
+EMMediaTopic train & 20.000 & 4 & GPT-4o + logit \eng{teacher} & distilasi \\
+EMMediaTopic dev & 1.000 & 4 & GPT-4o & evaluasi utama \\
+CC-News train & 109.842 & 69 & logit \eng{teacher} & distilasi \\
+CC-News tambahan & 156.157 & 50 & logit \eng{teacher} & skala data \\
+CC-News \eng{held-out} & 13.549 & 68 & logit \eng{teacher} & \eng{fidelity} \\
+LLM16 & 320 & 16 & LLM (\eng{prompt}~\cite{kuzman2025llm}) & lintas bahasa \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\subsection{\eng{Teacher} dan Pelabelan Distilasi}
+\eng{Teacher} adalah \url{classla/multilingual-IPTC-news-topic-classifier} (XLM-RoBERTa-large, 559,9 juta parameter, maksimal 512 token). Untuk setiap dokumen $d$ di korpus distilasi, \eng{teacher} menghasilkan logit $\mathbf{z}^{T}(d)\in\mathbb{R}^{17}$ yang disimpan utuh. Pelabelan dijalankan dalam fp16 dengan \eng{batch} yang diurutkan berdasarkan panjang teks, dengan kecepatan sekitar 51 dokumen per detik pada GPU RTX~4050. Distribusi label \eng{teacher} pada CC-News masuk akal (\eng{politics} 15,6\%, \eng{economy} 13,0\%, \eng{arts} 11,3\%, \eng{sport} 10,5\%, \eng{weather} 1,2\%), dan keyakinan rata-rata \eng{teacher} per bahasa berkisar 0,88--0,98.
+
+\subsection{\eng{Student} StaticKD}
+\textbf{Arsitektur.} Dokumen $d$ ditokenisasi menjadi $t_1,\dots,t_n$ menggunakan tokenizer Unigram 500.353 token milik \eng{potion-multilingual-128M}~\cite{tulkens2024model2vec} (maksimal 1.024 token). Setiap token memiliki embedding $\mathbf{e}_t\in\mathbb{R}^{256}$, dan
+\begin{equation}
+\mathbf{h}(d)=\frac{1}{n}\sum_{i=1}^{n}\mathbf{e}_{t_i},\qquad
+\mathbf{z}^{S}(d)=W\mathbf{h}(d)+\mathbf{b},
+\label{eq:student}
+\end{equation}
+dengan $W\in\mathbb{R}^{17\times 256}$. Matriks embedding $E$ diinisialisasi dari \eng{potion-multilingual-128M}, yaitu embedding statis 101 bahasa yang selaras lintas bahasa.
+
+\textbf{Fungsi \eng{loss}.} Dengan $p^{T}=\mathrm{softmax}(\mathbf{z}^{T}/\tau)$ dan $p^{S}=\mathrm{softmax}(\mathbf{z}^{S}/\tau)$,
+\begin{equation}
+\mathcal{L}_{\mathrm{KD}}=\tau^{2}\,\mathrm{KL}\!\left(p^{T}\,\middle\|\,p^{S}\right).
+\label{eq:kd}
+\end{equation}
+Model utama memakai $\tau=2$ (varian $\tau=1$ dibahas pada Subbagian~\ref{sec:v2}). Parameter $E$, $W$, dan $\mathbf{b}$ dilatih \eng{end-to-end}. $E$ memakai SparseAdam (\eng{learning rate} $10^{-3}$) sehingga hanya baris token yang muncul di \eng{batch} yang diperbarui, sedangkan $W$ dan $\mathbf{b}$ memakai AdamW (\eng{learning rate} $3\cdot 10^{-3}$). Ukuran \eng{batch} 64 dengan 6 \eng{epoch}.
+
+\textbf{\eng{Token dropout}.} Setiap token dokumen latih dibuang dengan probabilitas 0,2 sebagai augmentasi agar model tidak bergantung pada beberapa kata kunci.
+
+\textbf{Pemilihan model.} Sebanyak 3\% data latih disisihkan sebagai validasi internal dengan metrik kesepakatan terhadap \eng{teacher}. Set evaluasi tidak pernah dipakai untuk memilih hiperparameter.
+
+\textbf{Pelipatan tabel.} Karena kepala klasifikasinya linear,
+\begin{equation}
+W\Big(\frac{1}{n}\sum_{i}\mathbf{e}_{t_i}\Big)=\frac{1}{n}\sum_{i}T_{t_i},\qquad T=EW^{\top}\in\mathbb{R}^{|V|\times 17}.
+\label{eq:fold}
+\end{equation}
+Model produksi hanyalah tabel $T$ dalam fp16 ditambah bias dan tokenizer. Inferensi terdiri dari tokenisasi, rata-rata baris tabel, dan penambahan bias, tanpa perkalian matriks dan tanpa PyTorch.
+
+\textbf{Varian \eng{compact}.} Struktur internal tokenizer Unigram 500 ribu token membutuhkan sekitar 490~MB RAM. Varian \eng{compact} membuang potongan token yang muncul kurang dari 10 kali di korpus distilasi (karakter tunggal tetap dipertahankan), sehingga kosakata menjadi 335.441 token.
+
+\subsection{\eng{Baseline}}
+\begin{enumerate}
+  \item \textbf{fastText}~\cite{joulin2017bag} (dimensi 100, bigram kata, \eng{learning rate} 0,5, softmax) dalam beberapa varian: dilatih dengan label GPT-4o EMMediaTopic saja (setting Kuzman, 4 bahasa) atau dengan argmax \eng{teacher} (70 bahasa), masing-masing dengan token kata atau subword SentencePiece XLM-R, ditambah varian terkuantisasi (\texttt{.ftz}).
+  \item \textbf{MiniLM-L6 + KD}: mMiniLMv2-L6-H384 yang didistilasi dari XLM-R-large~\cite{wang2021minilmv2} dengan \eng{loss} KD yang sama ($\tau=2$), 2 \eng{epoch}, \eng{learning rate} $5\cdot10^{-5}$, maksimal 256 token, lalu diekspor ke ONNX fp32 dan int8 dinamis.
+  \item \textbf{\eng{Teacher}} dalam dua konfigurasi CPU: PyTorch fp32 (sesuai \eng{model card}) dan ONNX int8 (ekspor onnx-community), yang merupakan konfigurasi CPU terbaik untuk \eng{teacher}.
+\end{enumerate}
+
+\subsection{Protokol Evaluasi dan Uji Statistik}
+Metrik utama adalah macro-F1 seperti pada~\cite{kuzman2025llm}, ditambah micro-F1 (sama dengan akurasi). Interval kepercayaan 95\% dihitung dengan \eng{bootstrap percentile} (1.000 \eng{resampling}). Perbedaan dua model pada dokumen yang sama diuji dengan \eng{paired bootstrap} (2.000 \eng{resampling}) untuk $\Delta$macro-F1~\cite{koehn2004significance} dan uji McNemar eksak untuk akurasi~\cite{mcnemar1947}, dengan koreksi Holm--Bonferroni~\cite{holm1979} per set evaluasi. Validitas LLM16 diukur dengan Cohen's~$\kappa$ dan Krippendorff's~$\alpha$~\cite{krippendorff2018} antara anotator LLM dan \eng{teacher}. Kalibrasi diukur dengan \eng{expected calibration error} (ECE, 15 \eng{bin})~\cite{guo2017calibration}. Analisis per bahasa memakai korelasi Spearman, uji Kruskal--Wallis, dan perbandingan $R^2$ regresi. Pada eksplorasi Subbagian~\ref{sec:v2}, varian dibandingkan dengan tiga \eng{seed} dan uji Welch pada tingkat \eng{seed}.
+
+\subsection{Protokol Efisiensi}
+\eng{Benchmark} dijalankan hanya di CPU (GPU disembunyikan), dengan satu model per proses baru. Jumlah \eng{thread} dikunci pada seluruh pustaka (OMP, MKL, ONNX Runtime, \texttt{tokenizers}). Latensi diukur dengan satu dokumen per panggilan (skenario \eng{streaming}: rata-rata, p50, p95), sedangkan \eng{throughput} diukur dengan \eng{batch} 64 untuk \eng{student} ringan atau 8 untuk transformer. RAM model adalah kenaikan RSS setelah model dimuat. Sampel teks adalah dokumen dev (median 220 kata). Perangkat keras yang digunakan adalah Intel Core Ultra~7 155H dengan RAM 31~GB dan Windows~11. CPU ini bersifat \eng{hybrid} (6 P-\eng{core}, 8 E-\eng{core} yang sekitar 2,5 kali lebih lambat, dan 2 LP E-\eng{core} yang sekitar 3,7 kali lebih lambat). Tanpa \eng{pinning}, sistem operasi memindahkan \eng{thread} ke \eng{core} lambat sehingga hasil \eng{multi-thread} tidak stabil. Karena itu setiap proses dipin ke P-\eng{core} fisik (1 \eng{core}: CPU logis 0; 4 \eng{core}: CPU logis 0, 10, 12, 14) untuk mensimulasikan server kecil dengan \eng{core} seragam.
+
+% =====================================================================
+\section{Hasil}
+
+\subsection{Akurasi dan Efisiensi \eng{Teacher} (RQ1)}
+Tabel~\ref{tab:teacher} menunjukkan akurasi dan efisiensi \eng{teacher}. Skor dev lebih tinggi dari 0,746 pada paper asli karena labelnya berasal dari GPT-4o, yaitu label yang memang ditiru \eng{teacher}. \eng{Teacher} sangat kuat lintas bahasa: akurasi per bahasa pada LLM16 berkisar 0,65 (hi, ru) hingga 1,00 (es, sw). Kesepakatan anotator LLM dengan \eng{teacher} adalah 83,1\% ($\kappa=0{,}815$; $\alpha=0{,}816$, CI95 0,764--0,856), setara atau lebih tinggi dari kesepakatan antardua anotator manusia pada paper Kuzman ($\alpha=0{,}728$). Hal ini menunjukkan LLM16 layak sebagai rujukan tambahan. Kebingungan utama \eng{teacher}, yaitu \eng{human interest} dengan \eng{arts, culture, entertainment and media} serta \eng{society} dan \eng{economy} yang tertukar ke \eng{politics}, konsisten dengan~\cite{kuzman2025llm}.
+
+\begin{table}[!t]
+\caption{Akurasi dan Efisiensi \eng{Teacher} di CPU (P-\eng{core} Terpin)}
+\label{tab:teacher}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & PyTorch fp32 & ONNX int8 \\
+\midrule
+Macro-F1 dev [CI95] & 0,820 [0,779--0,849] & 0,828 [0,787--0,855] \\
+Micro-F1 dev & 0,858 & 0,860 \\
+Macro-F1 LLM16 [CI95] & 0,830 [0,769--0,872] & 0,836 [0,770--0,877] \\
+Micro-F1 LLM16 & 0,831 & 0,838 \\
+\midrule
+Latensi p50 / p95, 1 \eng{core} (ms) & 2.600 / 4.415 & 913 / 1.942 \\
+Latensi p50 / p95, 4 \eng{core} (ms) & 1.083 / 1.710 & 329 / 527 \\
+\eng{Throughput} 1 / 4 \eng{core} (dok/s) & 0,22 / 0,59 & 0,62 / 2,08 \\
+RAM model (MB) & 2.957 & 1.383 \\
+Ukuran file (MB) & 2.136 & 537 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Jawaban RQ1: \eng{teacher} akurat dan kuat lintas bahasa, tetapi untuk satu juta artikel per hari (sekitar 11,6 artikel per detik) dibutuhkan sekitar 18,7 \eng{core} (ONNX int8) sampai 52,6 \eng{core} (PyTorch) khusus untuk klasifikasi. Biaya ini tidak layak untuk \eng{pipeline} \eng{real-time} di server kecil.
+
+\subsection{Akurasi Seluruh Model (RQ2, RQ4)}
+Hasil utama ditunjukkan pada Tabel~\ref{tab:main} dan Gbr.~\ref{fig:main}. StaticKD mempertahankan 90,7\% macro-F1 \eng{teacher} ONNX di dev dan 88,5\% di 16 bahasa lain. Kuantisasi int8 dinamis tidak merugikan \eng{teacher}, tetapi menurunkan MiniLM-L6 secara drastis ($-0{,}130$ macro-F1 dev), bahkan dengan kuantisasi \eng{per-channel} yang hanya diterapkan pada operasi MatMul. Karena itu MiniLM dilaporkan dalam fp32.
+
+\begin{table*}[!t]
+\caption{Hasil Utama. ``Kesepakatan'' adalah Akurasi terhadap Prediksi \eng{Teacher} pada 13.549 Dokumen \eng{Held-Out} dari 70 Bahasa}
+\label{tab:main}
+\centering
+\footnotesize
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Model & Macro-F1 dev [CI95] & Micro-F1 dev & Macro-F1 LLM16 [CI95] & Micro-F1 LLM16 & Kesepakatan \\
+\midrule
+\eng{Teacher} (PyTorch fp32) & 0,820 [0,779--0,849] & 0,858 & 0,830 [0,769--0,872] & 0,831 & -- \\
+\eng{Teacher} (ONNX int8) & 0,828 [0,787--0,855] & 0,860 & 0,836 [0,770--0,877] & 0,838 & -- \\
+MiniLM-L6 + KD (ONNX fp32) & 0,763 [0,718--0,792] & 0,801 & 0,749 [0,678--0,797] & 0,766 & 0,814 \\
+MiniLM-L6 + KD (ONNX int8) & 0,633 [0,575--0,675] & 0,725 & 0,610 [0,523--0,668] & 0,669 & -- \\
+\textbf{StaticKD (usulan)} & \textbf{0,751 [0,708--0,783]} & \textbf{0,793} & \textbf{0,740 [0,659--0,787]} & \textbf{0,744} & \textbf{0,800} \\
+StaticKD-\eng{compact} & 0,751 [0,708--0,783] & 0,793 & 0,730 [0,647--0,776] & 0,738 & 0,789 \\
+fastText + KD, subword, terkuantisasi & 0,728 [0,690--0,759] & 0,764 & 0,656 [0,577--0,705] & 0,669 & 0,698 \\
+fastText + KD, subword & 0,721 [0,677--0,754] & 0,767 & 0,642 [0,567--0,692] & 0,675 & 0,701 \\
+fastText + KD, kata & 0,717 [0,675--0,750] & 0,764 & 0,619 [0,540--0,668] & 0,666 & 0,711 \\
+fastText, label GPT-4o, subword & 0,681 [0,628--0,717] & 0,734 & 0,131 [0,096--0,166] & 0,225 & -- \\
+fastText, label GPT-4o, kata & 0,652 [0,603--0,692] & 0,738 & 0,118 [0,076--0,155] & 0,222 & -- \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig07_main_accuracy.pdf}
+\caption{Macro-F1 dengan interval kepercayaan 95\% \eng{bootstrap} pada dua set evaluasi berlabel.}
+\label{fig:main}
+\end{figure}
+
+Uji berpasangan pada Tabel~\ref{tab:sig} menghasilkan tiga temuan. Pertama, StaticKD lebih rendah secara signifikan dari \eng{teacher}. Kedua, StaticKD tidak berbeda signifikan dari MiniLM-L6 + KD di kedua set. Ketiga, StaticKD signifikan lebih baik dari fastText + KD pada 16 bahasa lain, sedangkan pada 4 bahasa latih perbedaannya tidak signifikan. Jadi keunggulan StaticKD terutama terletak pada generalisasi lintas bahasa.
+
+\begin{table*}[!t]
+\caption{Uji Berpasangan StaticKD terhadap Model Lain ($p$ Dikoreksi Holm; $b/c$ = Jumlah Dokumen yang Hanya Benar di StaticKD / Hanya Benar di Model Pembanding)}
+\label{tab:sig}
+\centering
+\footnotesize
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Set & StaticKD vs & $\Delta$macro-F1 [CI95] & $p$ \eng{bootstrap} & $\Delta$akurasi & McNemar $b/c$ & $p$ McNemar \\
+\midrule
+\multirow{6}{*}{dev} & \eng{Teacher} ONNX int8 & $-$0,076 [$-$0,109; $-$0,042] & $<$0,001 & $-$0,067 & 50/117 & $<$0,001 \\
+ & \eng{Teacher} PyTorch & $-$0,069 [$-$0,103; $-$0,034] & $<$0,001 & $-$0,065 & 47/112 & $<$0,001 \\
+ & MiniLM-L6 + KD & $-$0,012 [$-$0,046; +0,026] & 1,000 & $-$0,008 & 79/87 & 0,743 \\
+ & fastText + KD (q) & +0,023 [$-$0,018; +0,063] & 0,786 & +0,029 & 83/54 & 0,049 \\
+ & fastText, GPT-4o & +0,070 [+0,029; +0,119] & $<$0,001 & +0,059 & 122/63 & $<$0,001 \\
+ & StaticKD 130 rb & +0,005 [$-$0,013; +0,023] & 1,000 & +0,007 & 26/19 & 0,743 \\
+\midrule
+\multirow{6}{*}{LLM16} & \eng{Teacher} ONNX int8 & $-$0,096 [$-$0,171; $-$0,020] & 0,044 & $-$0,094 & 11/41 & $<$0,001 \\
+ & \eng{Teacher} PyTorch & $-$0,090 [$-$0,170; $-$0,017] & 0,044 & $-$0,088 & 14/42 & 0,001 \\
+ & MiniLM-L6 + KD & $-$0,008 [$-$0,079; +0,057] & 1,000 & $-$0,022 & 30/37 & 0,928 \\
+ & fastText + KD (q) & +0,084 [+0,022; +0,148] & 0,040 & +0,075 & 41/17 & 0,007 \\
+ & fastText, GPT-4o & +0,610 [+0,534; +0,662] & $<$0,001 & +0,519 & 172/6 & $<$0,001 \\
+ & StaticKD 130 rb & +0,003 [$-$0,032; +0,037] & 1,000 & +0,003 & 10/9 & 1,000 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Ablasi (RQ3)}
+Tabel~\ref{tab:ablation} dan Gbr.~\ref{fig:ablation} menunjukkan kontribusi setiap komponen. Setiap baris mengubah satu faktor.
+
+\begin{table}[!t]
+\caption{Ablasi Komponen StaticKD}
+\label{tab:ablation}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}clccc@{}}
+\toprule
+Kode & Varian & dev & LLM16 & Kesep. \\
+\midrule
+A & fastText, label GPT-4o, 4 bahasa & 0,681 & 0,131 & -- \\
+B & fastText, label \eng{teacher}, 70 bahasa & 0,721 & 0,642 & 0,701 \\
+C & Static potion, KD 4 bahasa (20 rb) & 0,718 & 0,629 & -- \\
+D & Static dari embedding \eng{teacher}, KD 130 rb & 0,726 & 0,642 & 0,748 \\
+E & Static potion, KD 70 bahasa (130 rb) & 0,732 & 0,723 & 0,791 \\
+F & E + \eng{token dropout} 0,2 & 0,746 & 0,737 & 0,796 \\
+G & E + kepala MLP 512 (\eng{dropout} 0,1) & 0,739 & 0,736 & 0,801 \\
+H & G dengan \eng{token dropout} 0,2 & 0,729 & 0,729 & 0,801 \\
+J & F dilipat ke tabel fp16 & 0,746 & 0,737 & 0,796 \\
+I & F + data 286 rb (\textbf{final}) & 0,751 & 0,740 & 0,800 \\
+K & I + tokenizer dipangkas (min.~10) & 0,751 & 0,730 & 0,789 \\
+L & I + tokenizer dipangkas (min.~50) & 0,749 & 0,714 & 0,773 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/fig08_ablation_scaling.pdf}
+\caption{Ablasi komponen (kiri) dan skala data distilasi (kanan).}
+\label{fig:ablation}
+\end{figure*}
+
+Pembacaan ablasi adalah sebagai berikut.
+\begin{itemize}
+  \item \textbf{Distilasi multibahasa adalah komponen terpenting.} Dari A ke B, macro-F1 lintas bahasa naik 0,511. Tanpa data dari bahasa lain, model \eng{bag-of-words} gagal total di luar 4 bahasa latih.
+  \item \textbf{Embedding yang selaras lintas bahasa memberi transfer tanpa data bahasa target.} Dari A ke C, macro-F1 LLM16 naik dari 0,131 ke 0,629, dan gabungan keduanya adalah yang terbaik (E).
+  \item \textbf{Embedding yang didistilasi dari \eng{encoder} \eng{teacher}} (D) kalah dari potion untuk lintas bahasa (0,642 vs 0,723). Representasi token tunggal dari \eng{encoder} yang di-\eng{fine-tune} ternyata kurang selaras antarbahasa.
+  \item \textbf{\eng{Token dropout}} memberi +0,014 (F), sedangkan kepala MLP tidak memberi tambahan (G, H) dan tidak dapat dilipat, sehingga ditolak.
+  \item \textbf{Pelipatan tabel tidak mengubah prediksi} (J = F), sementara ukuran model turun dari 128~MB (embedding int8) menjadi 34~MB.
+  \item \textbf{Menggandakan data hanya memberi +0,005} (I; tidak signifikan, Tabel~\ref{tab:sig}), yang menandakan kapasitas model \eng{bag-of-tokens} sudah jenuh.
+\end{itemize}
+
+\subsection{Eksplorasi Peningkatan Akurasi dan StaticKD v2}
+\label{sec:v2}
+Untuk menguji apakah batas akurasi tersebut dapat dilampaui tanpa mengorbankan sifat ringannya, kami menguji perubahan yang mempertahankan format tabel token dan biaya inferensi $O(n)$. Konfigurasi dipilih berdasarkan dev, kesepakatan 70 bahasa dipakai sebagai sinyal pendukung, dan LLM16 sebagai konfirmasi. Hasilnya ditunjukkan pada Tabel~\ref{tab:explore}.
+
+\begin{table}[!t]
+\caption{Eksplorasi Peningkatan Akurasi (Resep I sebagai Titik Awal)}
+\label{tab:explore}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}clccc@{}}
+\toprule
+Kode & Varian & dev & LLM16 & Kesep. \\
+\midrule
+M & I, 3 \eng{seed} (rata-rata $\pm$ SD) & 0,750$\pm$0,002 & 0,745$\pm$0,016 & 0,800$\pm$0,002 \\
+N & \eng{Ensemble} 3 \eng{seed} (rata-rata tabel) & 0,753 & 0,722 & 0,803 \\
+O & I + bigram \eng{hashing} $2^{21}$ & 0,738 & 0,722 & 0,804 \\
+P & I + bigram \eng{hashing} $2^{20}$ & 0,742 & 0,716 & 0,803 \\
+Q1 & I dengan $\tau=4$ & 0,724 & 0,704 & 0,792 \\
+Q2 & I dengan $\tau=0{,}5$ & 0,747 & 0,743 & 0,807 \\
+R1 & I + CE label GPT-4o & 0,736 & 0,720 & 0,797 \\
+R2 & I + bobot keyakinan \eng{teacher} & 0,755 & 0,735 & 0,799 \\
+S1 & I + \eng{pooling} berbobot idf$^{0{,}5}$ & 0,748 & 0,737 & 0,801 \\
+S2 & I + bobot token dipelajari & 0,742 & 0,715 & 0,801 \\
+T & I dengan $\tau=1$, 3 \eng{seed} & 0,755$\pm$0,002 & 0,748$\pm$0,015 & 0,808$\pm$0,000 \\
+\textbf{U} & \textbf{T, \eng{ensemble} 3 \eng{seed} (v2)} & \textbf{0,761} & \textbf{0,745} & \textbf{0,811} \\
+V & U + tokenizer dipangkas (min.~10) & 0,754 & 0,748 & 0,801 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Empat temuan diperoleh dari eksplorasi ini.
+\begin{itemize}
+  \item \textbf{Variasi antar-\eng{seed} pada LLM16 besar.} Tiga \eng{seed} (M) memberi simpangan baku 0,002 di dev tetapi 0,016 di LLM16 (320 dokumen). Selisih di bawah sekitar 0,03 pada LLM16 tidak dapat diinterpretasikan tanpa pengulangan \eng{seed}.
+  \item \textbf{\eng{Fidelity} tidak sama dengan akurasi.} Bigram \eng{hashing} (O, P), yaitu tabel 17 logit per pasangan token berurutan yang dilatih dari nol, menaikkan kesepakatan dengan \eng{teacher} secara signifikan tetapi kecil (+0,004; \eng{paired bootstrap} $p=0{,}02$), sedangkan akurasinya terhadap label independen turun (dev $-0{,}013$, $p=0{,}058$; LLM16 $-0{,}018$, tidak signifikan) dan ukuran file naik 2--3 kali. Perubahan sinyal distilasi atau \eng{pooling} lainnya (R, S), kalibrasi bias per kelas (5-\eng{fold} CV di dev: 0,721), dan pemotongan input ke 512 token (LLM16: 0,706) juga tidak membantu.
+  \item \textbf{Temperatur adalah satu-satunya faktor yang konsisten.} Menurunkan $\tau$ dari 2 ke 1 (T vs M) menaikkan dev +0,005 (uji Welch tiga \eng{seed}, $p=0{,}014$) dan kesepakatan +0,008 ($p=0{,}007$), tanpa perubahan di LLM16 ($p=0{,}82$). Nilai $\tau=4$ dan $\tau=0{,}5$ lebih buruk.
+  \item \textbf{StaticKD v2} (U) menggabungkan $\tau=1$ dengan \eng{ensemble} tiga \eng{seed}. Karena model linear terhadap tabelnya, rata-rata logit tiga model sama dengan logit satu model dengan tabel rata-rata, sehingga \eng{ensemble} tidak menambah biaya inferensi. Hasilnya adalah dev 0,761 dan kesepakatan 0,811 (+0,011 terhadap I; $p<0{,}001$), dengan ukuran, RAM, dan latensi yang identik dengan I. Versi tokenizer ringkasnya (V) setara dengan model I penuh.
+\end{itemize}
+\todo{Tabel utama, uji signifikansi, analisis per bahasa, kalibrasi, dan \eng{cascade} akan diperbarui ke StaticKD v2 dan dievaluasi pada \eng{test set} manusia.}
+
+\subsection{Efisiensi (RQ4)}
+Tabel~\ref{tab:eff} dan Gbr.~\ref{fig:tradeoff}--\ref{fig:latency} menunjukkan efisiensi seluruh model. StaticKD 720 kali lebih cepat dari \eng{teacher} ONNX int8 dan 2.030 kali lebih cepat dari \eng{teacher} PyTorch (\eng{throughput} 1 \eng{core}), serta 36 kali lebih cepat dari MiniLM-L6. Satu juta artikel per hari hanya membutuhkan sekitar 0,03 \eng{core}. Kecepatannya setara fastText, tetapi akurasi lintas bahasanya jauh lebih baik. Pada StaticKD, sekitar 490~MB dari 505~MB RAM adalah struktur tokenizer Unigram, sedangkan tabel modelnya hanya 19~MB. Pemangkasan tokenizer (varian \eng{compact}) menurunkan RAM menjadi 281~MB dengan biaya $-0{,}010$ macro-F1 lintas bahasa.
+
+\begin{table*}[!t]
+\caption{Efisiensi CPU (P-\eng{Core} Terpin; 1c/4c = 1/4 \eng{Core})}
+\label{tab:eff}
+\centering
+\footnotesize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccl@{}}
+\toprule
+Model & Latensi p50 / p95, 1c (ms) & \eng{Throughput} 1c (dok/s) & \eng{Throughput} 4c (dok/s) & RAM model (MB) & Ukuran file (MB) & Dependensi \\
+\midrule
+\eng{Teacher} PyTorch fp32 & 2.600 / 4.415 & 0,22 & 0,59 & 2.957 & 2.136 & torch \\
+\eng{Teacher} ONNX int8 & 913 / 1.942 & 0,62 & 2,08 & 1.383 & 537 & onnxruntime \\
+MiniLM-L6 + KD & 70,6 / 106,7 & 12,5 & 20,6 & 1.242 & 408 & onnxruntime \\
+\textbf{StaticKD} & \textbf{1,94 / 6,31} & \textbf{447} & \textbf{1.683} & 505 & \textbf{34} & numpy, tokenizers \\
+StaticKD-\eng{compact} & 1,68 / 5,01 & 567 & 2.191 & 281 & 23 & numpy, tokenizers \\
+fastText + KD (q) & 1,36 / 3,28 & 639 & 1.537 & 308 & 18 & fasttext, tokenizers \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig09_accuracy_vs_throughput.pdf}
+\caption{\eng{Trade-off} akurasi (macro-F1 LLM16) terhadap \eng{throughput} 1 \eng{core} CPU (skala log).}
+\label{fig:tradeoff}
+\end{figure}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig10_latency_ram_size.pdf}
+\caption{Latensi per artikel, RAM model, dan ukuran file (skala log).}
+\label{fig:latency}
+\end{figure*}
+
+\subsection{Analisis per Bahasa (RQ4)}
+Kinerja per bahasa diukur sebagai kesepakatan StaticKD dengan \eng{teacher} pada \eng{held-out} untuk 59 bahasa dengan minimal 20 dokumen \eng{held-out} (Tabel~\ref{tab:lang}, Gbr.~\ref{fig:lang}). Rata-rata kesepakatan per sistem tulisan adalah Arab 0,867, Sirilik 0,830, Latin 0,790, CJK/Thai/Myanmar 0,775, Indik 0,770, dan lainnya 0,745.
+
+\begin{table}[!t]
+\caption{Faktor Penentu Kinerja per Bahasa}
+\label{tab:lang}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Uji & Statistik & $p$ \\
+\midrule
+Spearman: kesepakatan vs log(dokumen latih) & $\rho=0{,}391$ & 0,002 \\
+Spearman: kesepakatan vs jumlah situs latih & $\rho=0{,}349$ & 0,007 \\
+Spearman: kesepakatan vs keyakinan \eng{teacher} & $\rho=0{,}661$ & $<$0,001 \\
+Kruskal--Wallis: antarsistem tulisan & $H=8{,}69$ & 0,122 \\
+$R^2$: log(data) / sistem tulisan / keduanya & 0,109 / 0,129 / 0,213 & -- \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig11_per_language.pdf}
+\caption{Kiri: kesepakatan per bahasa terhadap jumlah data latih (\eng{marker} = sistem tulisan, ukuran = jumlah \eng{held-out}). Kanan: StaticKD vs fastText per bahasa.}
+\label{fig:lang}
+\end{figure*}
+
+Temuannya adalah sebagai berikut.
+\begin{enumerate}
+  \item \textbf{Jumlah data dan keragaman sumber berkorelasi positif dengan kinerja.} Kelima bahasa terlemah (ps 0,22; ne 0,25; am 0,40; ms 0,47; ur 0,47) semuanya memiliki kurang dari 50 dokumen latih.
+  \item \textbf{Sistem tulisan tidak berpengaruh signifikan.} Bahasa beraksara non-Latin dengan data cukup berkinerja baik (ar 0,86; ru 0,87; hi 0,80; zh 0,82) berkat embedding yang selaras lintas bahasa. Sebaliknya, fastText + KD jatuh pada aksara non-Latin (be 0,06; pa 0,19; zh 0,41; ka 0,30), dan StaticKD lebih baik dari fastText di 94\% bahasa.
+  \item \textbf{Keyakinan \eng{teacher} adalah prediktor terkuat.} Pada bahasa tempat \eng{teacher} sendiri ragu, \eng{student} lebih sering berbeda, sehingga sebagian kelemahan adalah ketidakpastian \eng{teacher} yang ikut tertiru.
+  \item \textbf{Anomali bahasa Turki.} Pada LLM16, akurasi bahasa Turki hanya 0,25 (\eng{teacher} 0,65), padahal datanya cukup (sekitar 3.400 dokumen) dan kesepakatan \eng{held-out}-nya 0,74. Dengan hanya 20 dokumen uji dan sumber berita yang homogen, kasus ini memerlukan investigasi lanjutan. Bahasa Indonesia berkinerja setara \eng{teacher} (0,85 vs 0,85).
+\end{enumerate}
+
+\subsection{Analisis per Label}
+Label tersulit bagi StaticKD (F1 dev) adalah \eng{lifestyle and leisure} (0,452), \eng{human interest} (0,612), \eng{society} (0,625), dan \eng{science and technology} (0,683), sedangkan label termudah adalah \eng{sport} (0,940), \eng{weather} (0,889), dan \eng{health} (0,876) (Gbr.~\ref{fig:label}). Pola ini sama dengan \eng{teacher} (\eng{lifestyle} 0,667, \eng{society} 0,697, \eng{human interest} 0,740) dan dengan kesepakatan antaranotator manusia yang dilaporkan~\cite{kuzman2025llm}, tetapi lebih tajam. Selisih terbesar terhadap \eng{teacher} ada pada \eng{lifestyle} ($-0{,}215$) dan \eng{science and technology} ($-0{,}181$), dua label yang sangat bergantung pada konteks, bukan kata kunci. Pada data dev terdapat 117 dokumen (11,7\%) yang benar di \eng{teacher} tetapi salah di StaticKD, dan 50 dokumen sebaliknya.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig12_per_label.pdf}
+\caption{F1 per label (kiri) dan \eng{confusion matrix} ternormalisasi StaticKD pada dev (kanan).}
+\label{fig:label}
+\end{figure*}
+
+\subsection{Kalibrasi dan Mode \eng{Cascade}}
+Probabilitas StaticKD terkalibrasi baik pada bahasa latih (ECE 0,047) dan cukup baik pada 16 bahasa lain (ECE 0,107, cenderung \eng{overconfident}) (Gbr.~\ref{fig:calib}). Hal ini memungkinkan mode \eng{cascade}: artikel dengan \eng{confidence} minimal $\theta$ diputuskan StaticKD, sedangkan sisanya dikirim ke \eng{teacher} (Tabel~\ref{tab:cascade}, Gbr.~\ref{fig:cascade}). Dengan $\theta=0{,}8$, StaticKD memutuskan dua pertiga artikel dengan akurasi 92,5\%, dan \eng{cascade} mencapai akurasi setara \eng{teacher} dengan beban \eng{teacher} tinggal sekitar 34\%. \eng{Throughput}-nya tetap dibatasi \eng{teacher}, sehingga \eng{cascade} cocok untuk jalur \eng{batch}, bukan \eng{real-time}.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig13_calibration.pdf}
+\caption{Diagram reliabilitas StaticKD pada dev dan LLM16.}
+\label{fig:calib}
+\end{figure}
+
+\begin{table}[!t]
+\caption{\eng{Cascade} StaticKD ke \eng{Teacher} ONNX int8 (\eng{Throughput} Efektif 1 \eng{Core})}
+\label{tab:cascade}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+$\theta$ & Porsi & Akurasi & Micro-F1 & Macro-F1 & \eng{Throughput} \\
+ & StaticKD & porsi & dev & LLM16 & (dok/s) \\
+\midrule
+0 (StaticKD saja) & 100\% & 0,793 & 0,793 & 0,740 & 447 \\
+0,6 & 81,7\% & 0,871 & 0,840 & 0,804 & 3,4 \\
+0,7 & 72,9\% & 0,904 & 0,852 & 0,819 & 2,3 \\
+0,8 & 65,5\% & 0,925 & 0,854 & 0,845 & 1,8 \\
+\eng{Teacher} saja & 0\% & -- & 0,860 & 0,836 & 0,62 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/fig14_cascade.pdf}
+\caption{Akurasi terhadap \eng{coverage} StaticKD (kiri) dan akurasi \eng{cascade} terhadap \eng{throughput} (kanan; garis titik = \eng{teacher} saja).}
+\label{fig:cascade}
+\end{figure*}
+
+% =====================================================================
+\section{Pembahasan}
+
+\textbf{Distilasi ke model \eng{static-embedding} berhasil (RQ2).} Model yang secara komputasi setara fastText mempertahankan sekitar 90\% kinerja \eng{teacher}, baik pada bahasa latih maupun pada 16 bahasa yang tidak pernah dilihat \eng{teacher} saat \eng{fine-tuning}. Dua faktor saling melengkapi. Pertama, \eng{teacher} yang kuat lintas bahasa dapat melabeli data berita dalam bahasa apa pun tanpa biaya anotasi, sehingga keterbatasan data berlabel Kuzman (4 bahasa) dapat diatasi. Kedua, embedding statis yang selaras lintas bahasa memungkinkan pengetahuan dari bahasa kaya data berpindah ke bahasa lain. Faktor kedua inilah yang tidak dimiliki fastText.
+
+\textbf{Mengapa model \eng{bag-of-tokens} cukup?} Topik berita sebagian besar ditentukan oleh kosakata (nama lembaga, istilah olahraga, istilah medis). Hal ini berbeda dari tugas yang sangat bergantung pada urutan dan konteks, seperti sentimen, sarkasme, atau inferensi. Konteks penuh transformer 6 \eng{layer} hanya menambah 0,9--1,2 poin yang tidak signifikan dengan biaya 36 kali lebih lambat. Batas kesalahan StaticKD ada pada label yang ambigu bahkan bagi manusia (\eng{lifestyle}, \eng{human interest}, \eng{society}), di mana informasi konteks lebih berperan.
+
+\textbf{Batas kapasitas dan temperatur (RQ3).} Seluruh upaya menambah kapasitas, yaitu data dua kali lipat, kepala MLP, bigram, bobot token, maupun \eng{student} transformer dengan \eng{attention}, tertahan di sekitar 0,75--0,76 macro-F1 dev. Satu-satunya perbaikan yang konsisten adalah temperatur yang lebih rendah. Temuan ini sejalan dengan literatur kesenjangan kapasitas~\cite{cho2019efficacy,mirzadeh2020ta}: \eng{student} berkapasitas sangat rendah tidak mampu merepresentasikan ekor distribusi \eng{teacher}, sehingga target yang lebih tajam ($\tau=1$) lebih bermanfaat daripada target yang lunak ($\tau\geq 2$). Kasus bigram juga menunjukkan bahwa kenaikan \eng{fidelity} terhadap \eng{teacher} dapat disertai penurunan akurasi terhadap label independen, sesuai pengamatan Stanton dkk.~\cite{stanton2021kd}. Karena itu \eng{fidelity} tidak dapat dijadikan satu-satunya kriteria pemilihan \eng{student}.
+
+\textbf{Posisi terhadap KD + LoRA.} LoRA~\cite{hu2022lora,razuvayevskaya2024peft} menurunkan biaya \eng{training}, sedangkan masalah yang dihadapi adalah biaya inferensi. KD ke transformer kecil (setara KD-LoRA~\cite{azimi2024kdlora} tanpa adapter) memang mempercepat inferensi sekitar satu orde besaran (MiniLM: 12,5 dok/s), tetapi masih dua orde lebih lambat dari StaticKD dengan akurasi yang tidak berbeda signifikan. Selain itu, transformer kecil ini rentan terhadap kuantisasi int8, sedangkan StaticKD tidak memerlukan kuantisasi agresif karena biaya inferensinya sudah sangat rendah.
+
+\textbf{Implikasi praktis.} Untuk \eng{pipeline} \eng{real-time} di server tanpa GPU, StaticKD dapat menggantikan \eng{teacher} dengan biaya sekitar 0,03 \eng{core} per satu juta artikel per hari, file 23--34~MB, dan hanya bergantung pada \texttt{numpy} dan \texttt{tokenizers}. Untuk bahasa target yang lemah, solusi termurah adalah menambah berita bahasa tersebut dan melabelinya dengan \eng{teacher}, tanpa mengubah arsitektur. Bila dibutuhkan akurasi setara \eng{teacher}, mode \eng{cascade} memberikan titik tengah yang terkontrol melalui satu parameter $\theta$.
+
+% =====================================================================
+\section{Keterbatasan}
+\begin{enumerate}
+  \item \textbf{Belum ada evaluasi pada \eng{test set} manusia.} Data dev berlabel GPT-4o dan LLM16 berlabel LLM dengan satu anotator dan 20 dokumen per bahasa, sehingga interval kepercayaannya lebar. \todo{Ganti butir ini setelah evaluasi pada \eng{test set} manusia selesai.}
+  \item \textbf{Anotator LLM16 adalah Claude.} Anotasi dilakukan tanpa akses ke prediksi model dan memakai \eng{prompt} Kuzman, dan kesepakatannya dengan \eng{teacher} setara dengan kesepakatan antarmanusia. Meski demikian, validasi manusia pada sampel tetap diperlukan.
+  \item \textbf{Batas atas \eng{student} adalah \eng{teacher}.} Bias dan kesalahan \eng{teacher} ikut tertiru, dan kesepakatan 70 bahasa mengukur \eng{fidelity} terhadap \eng{teacher}, bukan kebenaran absolut.
+  \item \textbf{\eng{Benchmark} dilakukan pada satu perangkat} (laptop dengan CPU \eng{hybrid} yang dipin ke P-\eng{core}). Angka absolut di server akan berbeda, tetapi rasio antarmodel tetap informatif.
+  \item \textbf{Cakupan bahasa bergantung pada ketersediaan berita di CC-News.} Bahasa dengan data sangat sedikit (ps, ne, am, ur, ms) masih lemah.
+\end{enumerate}
+
+% =====================================================================
+\section{Kesimpulan}
+Penelitian ini mengukur untuk pertama kalinya biaya CPU pengklasifikasi IPTC multibahasa Kuzman dan Ljube\v{s}i\'c, yaitu 0,9--2,6 detik per artikel per \eng{core}, sehingga tidak layak untuk \eng{pipeline} \eng{real-time} tanpa GPU. Kami mengusulkan StaticKD, distilasi \eng{teacher} ke model \eng{static-embedding} multibahasa yang dilatih dengan divergensi Kullback--Leibler pada 286 ribu artikel dari 70 bahasa, lalu dilipat menjadi tabel 17 logit per token. StaticKD mencapai macro-F1 0,751 (4 bahasa latih) dan 0,740 (16 bahasa lain), yaitu sekitar 90\% kinerja \eng{teacher}, dengan latensi 1,9~ms dan \eng{throughput} 447 artikel per detik per \eng{core}. Angka ini sekitar 720 kali lebih cepat dari \eng{teacher} teroptimasi, dengan model 34~MB tanpa PyTorch. Ablasi menunjukkan bahwa kunci keberhasilannya adalah kombinasi distilasi pada data multibahasa dan inisialisasi embedding yang selaras lintas bahasa, dan bahwa \eng{student} \eng{bag-of-tokens} memiliki batas kapasitas yang hanya sedikit bergeser dengan temperatur $\tau=1$ dan \eng{ensemble} tabel (StaticKD v2, macro-F1 dev 0,761). Kelemahan per bahasa ditentukan oleh jumlah data dan ketidakpastian \eng{teacher}, bukan oleh sistem tulisan. Penelitian lanjutan mencakup evaluasi pada \eng{test set} manusia multibahasa, penambahan data untuk bahasa lemah, perluasan ke label IPTC level-2 secara hierarkis, dan pemanfaatan probabilitas terkalibrasi untuk klasifikasi multi-label.
+
+% =====================================================================
+\section*{Ketersediaan Kode dan Data}
+Seluruh kode (pengumpulan data, pelabelan \eng{teacher}, \eng{training}, evaluasi, \eng{benchmark}, dan analisis) serta notebook Google Colab yang mereproduksi semua tabel dan gambar tersedia di \todo{URL repositori publik}. EMMediaTopic tersedia di CLARIN.SI (\url{http://hdl.handle.net/11356/1991}), dan CC-News multibahasa tersedia di Hugging Face~\cite{cloversearch_ccnews}.
+
+\section*{Ucapan Terima Kasih}
+\todo{Ucapan terima kasih (pembimbing, pendanaan, fasilitas).}
+\todo{Pernyataan penggunaan AI sesuai kebijakan jurnal, misalnya: ``Penulis menggunakan asisten AI (Claude, Anthropic) untuk membantu penulisan kode eksperimen, analisis, dan penyusunan draf naskah, serta sebagai anotator LLM16; seluruh hasil telah diperiksa dan menjadi tanggung jawab penulis.''}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
