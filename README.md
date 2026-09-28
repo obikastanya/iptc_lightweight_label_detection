@@ -1,4 +1,4 @@
-# StaticKD: Klasifikasi Topik Berita IPTC Multibahasa Secepat *Language Identification*
+# StaticKD: *Knowledge Distillation* Pengklasifikasi Topik Berita IPTC Multibahasa ke Tabel Logit Token Statis untuk Inferensi Ringan di CPU
 
 Riset ini mendistilasi pengklasifikasi IPTC Media Topic milik Kuzman & Ljubešić (2025), XLM-RoBERTa-large
 dengan 560 juta parameter, menjadi **StaticKD**. Setelah *training*, StaticKD hanya berupa satu tabel berisi

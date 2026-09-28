@@ -38,7 +38,7 @@
 
 \begin{document}
 
-\title{StaticKD: Klasifikasi Topik Berita IPTC Multibahasa Secepat \eng{Language Identification} melalui \eng{Knowledge Distillation} ke Tabel Logit Token Statis}
+\title{StaticKD: \eng{Knowledge Distillation} Pengklasifikasi Topik Berita IPTC Multibahasa ke Tabel Logit Token Statis untuk Inferensi Ringan di CPU}
 
 \author{Obi~Kastanya and Ananta~Dwi~Prayoga~Alwy%
 \thanks{O. Kastanya (NRP 6025252015) dan A. D. P. Alwy (NRP 6025252007) berasal dari \todo{program studi, departemen, institusi, kota, negara}. E-mail: \todo{alamat e-mail penulis korespondensi}.}}
@@ -61,25 +61,24 @@ Klasifikasi topik berita, IPTC Media Topic, \eng{knowledge distillation}, \eng{s
 \section{Pendahuluan}
 \IEEEPARstart{I}{ndustri} data analitik memproses jutaan artikel berita setiap hari dalam puluhan bahasa. Agar analisis lanjutan tetap terarah dan murah, artikel perlu dikelompokkan ke topik terstandar sedini mungkin di dalam \eng{pipeline}, sehingga hanya topik yang relevan yang diproses lebih jauh. Taksonomi yang paling banyak dipakai kantor berita adalah IPTC Media Topic dari International Press Telecommunications Council, yang level teratasnya terdiri atas 17 topik seperti \eng{politics}, \eng{economy, business and finance}, dan \eng{sport}~\cite{iptc2024mediatopics,kuzman2025llm}.
 
-Kuzman dan Ljube\v{s}i\'c~\cite{kuzman2025llm} merilis pengklasifikasi IPTC multibahasa terbuka pertama. GPT-4o melabeli ribuan artikel dalam empat bahasa, lalu label tersebut dipakai untuk melakukan \eng{fine-tuning} XLM-RoBERTa-large~\cite{conneau2020xlmr}. Model yang dihasilkan menyamai GPT-4o pada \eng{test set} manusia, dan resep \eng{LLM teacher}--\eng{encoder student} yang sama kemudian dipakai untuk melabeli jutaan pidato parlemen~\cite{kuzmanpungersek2026parlacap}. Kelompok yang sama juga menegaskan bahwa \eng{encoder} yang di-\eng{fine-tune} lebih praktis daripada LLM untuk anotasi berskala besar karena biaya dan latensinya lebih rendah~\cite{kuzman2025southslavic,kuzman2023genre}. Namun \eng{encoder} berukuran \val{teacher.params}~juta parameter tetap mahal. Tanpa GPU, satu artikel membutuhkan \val{eff.teacher.latency_ms_p50_1c}~ms per \eng{core} CPU, dan konfigurasi CPU tercepatnya (ONNX int8) masih membutuhkan \val{eff.teacher_onnx_int8.latency_ms_p50_1c}~ms (Subbagian~\ref{sec:res-eff}). Biaya inferensi ini tidak dilaporkan dalam penelitian-penelitian tersebut, padahal inferensi mendominasi jejak biaya dan energi model yang sudah di-\eng{deploy}~\cite{luccioni2024power,treviso2023efficient}.
+Kuzman dan Ljube\v{s}i\'c~\cite{kuzman2025llm} merilis pengklasifikasi IPTC multibahasa terbuka pertama. GPT-4o melabeli ribuan artikel dalam empat bahasa, lalu label tersebut dipakai untuk melakukan \eng{fine-tuning} XLM-RoBERTa-large~\cite{conneau2020xlmr}. Model yang dihasilkan menyamai GPT-4o pada \eng{test set} manusia. Kelompok yang sama juga menegaskan bahwa \eng{encoder} yang di-\eng{fine-tune} lebih praktis daripada LLM untuk anotasi berskala besar karena biaya dan latensinya lebih rendah~\cite{kuzman2025southslavic}. Namun \eng{encoder} berukuran \val{teacher.params}~juta parameter tetap mahal. Tanpa GPU, satu artikel membutuhkan \val{eff.teacher.latency_ms_p50_1c}~ms per \eng{core} CPU, dan konfigurasi CPU tercepatnya (ONNX int8) masih membutuhkan \val{eff.teacher_onnx_int8.latency_ms_p50_1c}~ms (Subbagian~\ref{sec:res-eff}). Biaya inferensi ini tidak dilaporkan dalam penelitian-penelitian tersebut, padahal inferensi mendominasi jejak biaya dan energi model yang sudah di-\eng{deploy}~\cite{luccioni2024power}.
 
-Kebutuhan praktis yang kami targetkan serupa dengan fastText \eng{language identification}~\cite{joulin2017bag}: satu model kecil yang bekerja untuk banyak bahasa dalam hitungan milidetik di CPU. Alternatif yang ada belum memenuhi kebutuhan ini.
+Kebutuhan praktis yang kami targetkan adalah pengklasifikasi topik yang bekerja untuk banyak bahasa dalam hitungan milidetik per artikel di CPU biasa, dengan ukuran dan dependensi minimal. Alternatif yang ada belum memenuhi kebutuhan ini.
 \begin{itemize}
-  \item \eng{Parameter-efficient fine-tuning} seperti LoRA~\cite{hu2022lora,razuvayevskaya2024peft} dan KD-LoRA~\cite{azimi2024kdlora} menurunkan biaya \eng{training}, bukan biaya inferensi. Setelah adapter digabungkan, model tetap sebesar \eng{backbone}-nya.
-  \item Transformer kecil hasil distilasi~\cite{wang2021minilmv2,jiao2020tinybert} hanya mempercepat satu orde besaran.
-  \item Kuantisasi~\cite{yao2022zeroquant} hanya memberi percepatan dengan faktor konstan.
-  \item fastText sangat cepat, tetapi embedding-nya dilatih dari nol sehingga tidak ada transfer lintas bahasa. Padahal data berlabel IPTC hanya tersedia untuk empat bahasa.
+  \item \eng{Parameter-efficient fine-tuning} seperti LoRA~\cite{hu2022lora,razuvayevskaya2024peft} menurunkan biaya \eng{training}, bukan biaya inferensi. Setelah adapter digabungkan, model tetap sebesar \eng{backbone}-nya.
+  \item Transformer kecil hasil distilasi~\cite{wang2021minilmv2} hanya mempercepat satu orde besaran, dan kuantisasi hanya memberi percepatan dengan faktor konstan.
+  \item fastText~\cite{joulin2017bag} sangat cepat, tetapi embedding-nya dilatih dari nol sehingga tidak ada transfer lintas bahasa. Padahal data berlabel IPTC hanya tersedia untuk empat bahasa.
 \end{itemize}
 
-Penelitian ini mengajukan StaticKD, yaitu \eng{knowledge distillation}~\cite{hinton2015distilling,bucilua2006model} dari pengklasifikasi IPTC XLM-R-large ke \eng{student} yang, setelah \eng{training}, hanya berupa \emph{satu tabel berisi 17 logit per token}. Tiga pengamatan mendasarinya:
+Penelitian ini mengajukan StaticKD, yaitu \eng{knowledge distillation}~\cite{hinton2015distilling} dari pengklasifikasi IPTC XLM-R-large ke \eng{student} yang, setelah \eng{training}, hanya berupa \emph{satu tabel berisi 17 logit per token}. Tiga pengamatan mendasarinya:
 \begin{enumerate}
   \item \eng{Teacher} yang kuat lintas bahasa dapat melabeli berita tak berlabel dalam bahasa apa pun tanpa biaya anotasi.
   \item \eng{Static embedding} multibahasa yang didistilasi dari \eng{sentence encoder}~\cite{tulkens2024model2vec,wada2025static,chen2024bgem3} menempatkan kata yang bermakna sama dalam bahasa berbeda di posisi yang berdekatan, dengan biaya inferensi berupa \eng{lookup}.
-  \item Topik berita sangat ditentukan oleh kosakata, sehingga representasi \eng{bag-of-words} cukup kompetitif untuk klasifikasi topik~\cite{galke2022bow,iyyer2015dan}.
+  \item Topik berita sangat ditentukan oleh kosakata, sehingga representasi \eng{bag-of-words} cukup kompetitif untuk klasifikasi topik~\cite{galke2022bow}.
 \end{enumerate}
 Karena kepala klasifikasinya linear, rata-rata embedding dan kepala tersebut dapat dilipat menjadi tabel token. Inferensi kemudian hanya berupa tokenisasi dan rata-rata baris tabel, cukup dengan NumPy.
 
-Klaim multibahasa membutuhkan evaluasi multibahasa dengan label yang independen dari \eng{teacher}. \eng{Test set} manusia Kuzman dan Ljube\v{s}i\'c tidak publik dan hanya mencakup empat bahasa, sedangkan SIB-200~\cite{adelani2024sib200} mencakup 205 bahasa tetapi berupa kalimat pendek dengan taksonomi non-IPTC. Karena itu kami membangun set uji gabungan berisi \val{ts.docs} artikel dari \val{ts.langs} bahasa. Set ini menggabungkan artikel CC-NEWS 2024--2026 berlabel rubrik penerbit (metadata JSON-LD schema.org~\cite{guha2016schema}) dan dataset publik berlabel manusia maupun kategori penerbit~\cite{adelani2023masakhanews,petukhova2023mnds,mirashi2023indicnews,hossain2025banglanews}. Seluruh label dipetakan ke pohon IPTC Media Topic resmi.
+Klaim multibahasa membutuhkan evaluasi multibahasa dengan label yang independen dari \eng{teacher}. \eng{Test set} manusia Kuzman dan Ljube\v{s}i\'c tidak publik dan hanya mencakup empat bahasa, sedangkan SIB-200~\cite{adelani2024sib200} mencakup 205 bahasa tetapi berupa kalimat pendek dengan taksonomi non-IPTC. Karena itu kami membangun set uji gabungan berisi \val{ts.docs} artikel dari \val{ts.langs} bahasa. Set ini menggabungkan artikel CC-NEWS 2024--2026 berlabel rubrik penerbit (metadata JSON-LD schema.org) dan dataset publik berlabel manusia maupun kategori penerbit~\cite{adelani2023masakhanews,petukhova2023mnds,mirashi2023indicnews,hossain2025banglanews}. Seluruh label dipetakan ke pohon IPTC Media Topic resmi.
 
 Pertanyaan penelitian (\eng{research question}, RQ) yang dijawab adalah sebagai berikut.
 \begin{itemize}
@@ -109,42 +108,25 @@ Bagian~\ref{sec:related} membahas penelitian terkait. Bagian~\ref{sec:method} me
 \label{sec:related}
 
 \subsection{Klasifikasi Topik Berita Multibahasa dan Skema IPTC}
-Sumber daya klasifikasi topik berita umumnya memakai taksonomi yang berbeda-beda dan berfokus pada satu bahasa atau satu wilayah. Contohnya:
-\begin{itemize}
-  \item MasakhaNEWS: 16 bahasa Afrika dan en/fr, 7 kategori~\cite{adelani2023masakhanews};
-  \item L3Cube-IndicNews: 10 bahasa India, kategori situs penerbit~\cite{mirashi2023indicnews};
-  \item berita Bangla, 8 kategori penerbit~\cite{hossain2025banglanews};
-  \item N24News: rubrik New York Times~\cite{wang2022n24news}.
-\end{itemize}
-MN-DS~\cite{petukhova2023mnds} adalah satu-satunya dataset publik yang dianotasi manusia langsung dengan topik IPTC level atas, tetapi hanya berbahasa Inggris. SIB-200~\cite{adelani2024sib200} mencakup 205 bahasa, tetapi berupa kalimat Flores-200 dengan tujuh topik non-IPTC. Kuzman dan Ljube\v{s}i\'c~\cite{kuzman2025llm} menunjukkan bahwa label GPT-4o dapat menggantikan anotasi manusia untuk IPTC, sejalan dengan temuan bahwa LLM dapat menyaingi anotator \eng{crowd}~\cite{gilardi2023chatgpt}. Meski begitu, LLM belum menggantikan model yang di-\eng{fine-tune} untuk klasifikasi berskala besar~\cite{ziems2024css,kuzman2025southslavic}. Satu-satunya pengklasifikasi IPTC multibahasa terbuka adalah \eng{encoder} 560 juta parameter, dan belum ada pengklasifikasi IPTC murah yang dievaluasi pada berita nyata di banyak bahasa.
+Sumber daya klasifikasi topik berita umumnya memakai taksonomi sendiri dan berfokus pada satu bahasa atau satu wilayah. MasakhaNEWS mencakup 16 bahasa Afrika serta en/fr dengan tujuh kategori berlabel manusia~\cite{adelani2023masakhanews}. L3Cube-IndicNews mencakup 10 bahasa India dengan kategori yang diambil dari situs penerbit~\cite{mirashi2023indicnews}, dan dataset berita Bangla memakai delapan kategori penerbit~\cite{hossain2025banglanews}. MN-DS~\cite{petukhova2023mnds} adalah satu-satunya dataset publik yang dianotasi manusia langsung dengan topik IPTC level atas, tetapi hanya berbahasa Inggris. SIB-200~\cite{adelani2024sib200} mencakup 205 bahasa, tetapi berupa kalimat Flores-200 dengan tujuh topik non-IPTC. Kuzman dan Ljube\v{s}i\'c~\cite{kuzman2025llm} menunjukkan bahwa label GPT-4o dapat menggantikan anotasi manusia untuk melatih pengklasifikasi IPTC, dan penelitian lanjutan mereka menegaskan bahwa \eng{encoder} yang di-\eng{fine-tune} tetap lebih praktis daripada LLM untuk anotasi berskala besar~\cite{kuzman2025southslavic}. Hasilnya, satu-satunya pengklasifikasi IPTC multibahasa terbuka adalah \eng{encoder} 560 juta parameter, dan belum ada pengklasifikasi IPTC murah yang dievaluasi pada berita nyata di banyak bahasa.
 
 \subsection{Distilasi Pengklasifikasi Transformer ke \eng{Student} Ringkas}
-Distilasi melatih model murah untuk meniru model mahal, sering kali pada data tak berlabel yang dilabeli \eng{teacher}~\cite{bucilua2006model,hinton2015distilling}. Pada klasifikasi teks, hampir semua penelitian mempertahankan \eng{student} transformer: TinyBERT, MiniLMv2, XtremeDistil~\cite{jiao2020tinybert,wang2021minilmv2,mukherjee2020xtremedistil}, distilasi LLM ke T5~\cite{hsieh2023distilling}, dan distilasi lintas bahasa untuk bahasa sumber daya rendah~\cite{gupta2023clkd,piperno2025crosslingual,reimers2020multilingual}. Survei terbaru~\cite{yang2025kdsurvey,zhu2024survey} menempatkan distilasi berdampingan dengan kuantisasi dan pemangkasan sebagai teknik kompresi utama.
-
-Karya yang paling dekat dengan StaticKD adalah \eng{Sparse Distillation}~\cite{ye2022sparse}. RoBERTa-large didistilasi ke \eng{deep averaging network} dengan tabel n-gram yang sangat besar, dan hasilnya ratusan kali lebih cepat pada tugas satu kalimat berbahasa Inggris. StaticKD berbeda dalam tiga hal:
+\eng{Knowledge distillation} melatih model murah untuk meniru distribusi probabilitas model mahal yang dilunakkan dengan \eng{temperature}~\cite{hinton2015distilling}. Pada klasifikasi teks, hampir semua penelitian mempertahankan \eng{student} transformer, misalnya MiniLMv2~\cite{wang2021minilmv2}, termasuk distilasi lintas bahasa yang memindahkan pengetahuan dari \eng{teacher} ke bahasa dengan data sedikit~\cite{piperno2025crosslingual}. Karya yang paling dekat dengan StaticKD adalah \eng{Sparse Distillation}~\cite{ye2022sparse}: RoBERTa-large didistilasi ke \eng{deep averaging network} dengan tabel n-gram yang sangat besar, dan hasilnya ratusan kali lebih cepat pada tugas satu kalimat berbahasa Inggris. StaticKD berbeda dalam tiga hal:
 \begin{enumerate}
   \item tabelnya diinisialisasi dari \eng{static embedding} multibahasa yang sudah selaras lintas bahasa, bukan dilatih dari nol;
   \item kepala linearnya dilipat sehingga setiap token hanya menyimpan 17 angka;
   \item sasarannya klasifikasi dokumen berita dalam \val{data.pool.langs} bahasa, termasuk evaluasi pada bahasa yang tidak ada di data distilasi.
 \end{enumerate}
-LoRA dan KD-LoRA~\cite{hu2022lora,azimi2024kdlora,razuvayevskaya2024peft,ding2023peft} tidak termasuk kategori ini karena biaya inferensinya tetap sebesar \eng{backbone}.
+Pendekatan PEFT seperti LoRA~\cite{hu2022lora,razuvayevskaya2024peft} tidak termasuk kategori ini, karena biaya inferensinya tetap sebesar \eng{backbone}.
 
 \subsection{\eng{Temperature} dan \eng{Capacity Gap}}
-Efektivitas distilasi bergantung pada kesenjangan kapasitas \eng{teacher} dan \eng{student}~\cite{cho2019efficacy,mirzadeh2020ta}. Kesenjangan optimal pada distilasi model bahasa bahkan mengikuti hukum empiris~\cite{zhang2025law,zhang2023lifting}. Beberapa penelitian terkait membahas cara mengatasinya:
-\begin{itemize}
-  \item DIST melonggarkan pencocokan KL ketika \eng{teacher} jauh lebih kuat~\cite{huang2022dist};
-  \item \eng{temperature} dijadikan hiperparameter yang dipelajari~\cite{li2023ctkd} atau dibuat asimetris~\cite{li2022ats};
-  \item standardisasi logit menghilangkan kewajiban \eng{student} meniru skala logit \eng{teacher}~\cite{sun2024logit};
-  \item KL dipecah menjadi bagian kelas target dan non-target~\cite{zhao2022dkd};
-  \item analisis terbaru menunjukkan bahwa KL di bawah \eng{capacity mismatch} mendistorsi peringkat kelas~\cite{wang2026rckd}.
-\end{itemize}
-Distilasi dipandang sebagai \eng{function matching} yang diuntungkan oleh augmentasi konsisten~\cite{beyer2022patient}, dan \eng{fidelity} terhadap \eng{teacher} tidak selalu sejalan dengan generalisasi~\cite{stanton2021kd,ojha2023knowledge}. Hampir semua temuan ini berasal dari \eng{student} jaringan dalam. Perilaku \eng{temperature} pada kesenjangan ekstrem, yaitu dari 560 juta parameter ke satu lapisan linear di atas rata-rata embedding, belum dikarakterisasi.
+Efektivitas distilasi bergantung pada kesenjangan kapasitas \eng{teacher} dan \eng{student}; pada model bahasa, ukuran \eng{teacher} yang optimal bahkan mengikuti hukum empiris terhadap ukuran \eng{student}~\cite{zhang2025law}. \eng{Temperature} diperlakukan sebagai hiperparameter penting yang dapat dipelajari~\cite{li2023ctkd}. KL dapat dipecah menjadi bagian kelas target dan non-target (\eng{dark knowledge})~\cite{zhao2022dkd}, dan analisis terbaru menunjukkan bahwa KL di bawah \eng{capacity mismatch} mendistorsi peringkat kelas~\cite{wang2026rckd}. Selain itu, \eng{fidelity} terhadap \eng{teacher} tidak selalu sejalan dengan generalisasi~\cite{stanton2021kd}. Hampir semua temuan ini berasal dari \eng{student} jaringan dalam. Perilaku \eng{temperature} dan \eng{soft label} pada kesenjangan ekstrem, yaitu dari 560 juta parameter ke satu lapisan linear di atas rata-rata embedding, belum dikarakterisasi.
 
 \subsection{\eng{Static Embedding} dan Inferensi Efisien di CPU}
-Model2Vec~\cite{tulkens2024model2vec} dan Wada dkk.~\cite{wada2025static} mengekstrak embedding kata statis dari \eng{sentence transformer}, dan rata-ratanya menghasilkan embedding kalimat yang kompetitif. Varian potion-multilingual didistilasi dari BGE-M3~\cite{chen2024bgem3} untuk 101 bahasa, dan penelitian lain menunjukkan bahwa agregasi token statis dapat mendekati model BERT~\cite{gupta2021static,stankevicius2024extracting}. Embedding ini umumnya dievaluasi sebagai embedding umum pada \eng{benchmark} bergaya MTEB~\cite{enevoldsen2025mmteb}, bukan sebagai \eng{student} distilasi untuk taksonomi tertentu. Penelitian efisiensi NLP~\cite{treviso2023efficient,luccioni2024power} menganjurkan pelaporan biaya inferensi. Namun sedikit yang melaporkan latensi CPU dengan sedikit \eng{thread} terhadap \eng{teacher} terkuantisasi, dan sedikit pula yang memperhitungkan bahwa biaya per bahasa bergantung pada tokenisasi~\cite{petrov2023tokenizers}.
+Model2Vec~\cite{tulkens2024model2vec} dan Wada dkk.~\cite{wada2025static} mengekstrak embedding kata statis dari \eng{sentence transformer}, dan rata-ratanya menghasilkan embedding kalimat yang kompetitif. Varian potion-multilingual didistilasi dari BGE-M3~\cite{chen2024bgem3} untuk 101 bahasa. Embedding seperti ini umumnya dievaluasi sebagai embedding umum, bukan sebagai \eng{student} distilasi untuk taksonomi tertentu. Di sisi lain, representasi \eng{bag-of-words} sederhana terbukti kompetitif untuk klasifikasi topik~\cite{galke2022bow}. Penelitian efisiensi menganjurkan pelaporan biaya inferensi karena biaya inilah yang dominan setelah model di-\eng{deploy}~\cite{luccioni2024power}, tetapi sedikit penelitian yang melaporkan latensi CPU dengan sedikit \eng{thread} terhadap \eng{teacher} terkuantisasi.
 
 \subsection{Set Uji Berlabel Silver, Kontaminasi, dan Ketergantungan Sampel}
-Kategori penerbit sudah lama dipakai sebagai label topik~\cite{wang2022n24news,mirashi2023indicnews}, tetapi biasanya hanya untuk satu penerbit atau satu bahasa. Metadata \texttt{articleSection} schema.org~\cite{guha2016schema} belum pernah dipetakan ke taksonomi standar lintas puluhan bahasa. Label silver mengandung kesalahan~\cite{klie2023aed,song2023noisy,northcutt2021pervasive}, sehingga validitasnya perlu diperiksa. Kontaminasi antara data latih dan data uji perlu diukur untuk setiap \eng{benchmark}~\cite{sainz2023contamination,magar2022contamination,deng2024contamination}, dan deduplikasi \eng{near-duplicate} dengan MinHash~\cite{broder1997resemblance,lee2022dedup} menjadi praktik standar. Uji signifikansi di NLP~\cite{koehn2004significance,dror2018hitchhiker} umumnya mengasumsikan sampel independen, padahal artikel dari situs yang sama saling bergantung. Karena itu kami memakai \eng{cluster bootstrap}~\cite{field2007bootstrapping} dan melaporkan variasi antar-\eng{seed}~\cite{hagmann2023inferential}.
+Kategori dari situs penerbit sudah dipakai sebagai label topik~\cite{mirashi2023indicnews}, tetapi biasanya hanya untuk satu penerbit atau satu wilayah. Metadata \texttt{articleSection} schema.org belum pernah dipetakan ke taksonomi standar lintas puluhan bahasa. Kebocoran antara data latih dan data uji juga harus dikendalikan; deduplikasi \eng{near-duplicate} dengan MinHash telah menjadi praktik standar~\cite{lee2022dedup}. Uji signifikansi di NLP, misalnya \eng{paired bootstrap}~\cite{koehn2004significance}, umumnya mengasumsikan sampel independen, padahal artikel dari situs yang sama saling bergantung. Karena itu kami memakai \eng{cluster bootstrap}~\cite{field2007bootstrapping}.
 
 \input{sections/tab_related}
 
@@ -199,13 +181,13 @@ Tahap 1--3 dan 4 dijalankan terpisah: resep StaticKD ditetapkan dari set \eng{de
 Diberikan artikel berita $d$ (judul dan isi, 512 kata pertama, sama dengan~\cite{kuzman2025llm}) dalam bahasa apa pun, model memprediksi satu label $y\in\mathcal{Y}$ dari 17 topik IPTC level atas. \eng{Teacher} $f_T$ menghasilkan logit $\mathbf{z}^T(d)\in\mathbb{R}^{17}$. Tujuannya adalah \eng{student} $f_S$ dengan biaya inferensi $O(n)$ operasi penjumlahan untuk $n$ token, tanpa perkalian matriks dan tanpa pustaka \eng{deep learning}, yang akurasinya terhadap label independen sedekat mungkin dengan $f_T$.
 
 \subsection{Data Distilasi dan Set \eng{Development}}
-\textbf{EMMediaTopic 1.0}~\cite{kuzman2025llm,emmediatopic2025} berisi artikel berbahasa Katalan, Yunani, Kroasia, dan Slovenia yang dilabeli GPT-4o.
+\textbf{EMMediaTopic 1.0}~\cite{kuzman2025llm}\footnote{\url{http://hdl.handle.net/11356/1991}} berisi artikel berbahasa Katalan, Yunani, Kroasia, dan Slovenia yang dilabeli GPT-4o.
 \begin{itemize}
   \item Split \eng{train} (\val{emm.train} artikel) dipakai sebagai data distilasi.
   \item Split \eng{dev} (\val{emm.dev} artikel, median \val{emm.dev.words} kata) tidak pernah dipakai melatih \eng{teacher} maupun \eng{student}. Split ini menjadi set \eng{development} untuk memilih resep.
 \end{itemize}
 
-\textbf{Korpus CC-News multibahasa}~\cite{cloversearch_ccnews} diambil dari arsip 2019--2021 dengan aturan berikut.
+\textbf{Korpus CC-News multibahasa}\footnote{\url{https://huggingface.co/datasets/CloverSearch/cc-news-mutlilingual}} diambil dari arsip 2019--2021 dengan aturan berikut.
 \begin{enumerate}
   \item Hanya dokumen yang bahasa metadatanya sama dengan hasil fastText-LID.
   \item Teks berupa judul dan isi, minimal 75 kata (200 karakter untuk ja, zh, th, my), dipotong ke 512 kata.
@@ -219,12 +201,12 @@ Split \eng{held-out} bersifat \eng{domain-disjoint} di dalam setiap bahasa. Bebe
 
 \subsection{Konstruksi Set Uji Gabungan}
 \label{sec:testset}
-\textbf{Sumber (a): CC-NEWS 2024--2026.} Satu file WARC per bulan, Januari 2024 sampai Agustus 2026 (32 file), diunduh dari Common Crawl~\cite{commoncrawl2026ccnews}. Dari setiap halaman diambil blok JSON-LD schema.org~\cite{guha2016schema} bertipe \texttt{NewsArticle} dan turunannya, beserta bidang \texttt{articleSection}, \texttt{BreadcrumbList}, \texttt{inLanguage}, \texttt{datePublished}, \texttt{isAccessibleForFree}, dan \texttt{articleBody}. Teks diambil dari \texttt{articleBody} bila berisi minimal 30 kata; jika tidak, teks diekstrak dengan Trafilatura~\cite{barbaresi2021trafilatura}. Situs yang ada di data distilasi atau set evaluasi lain dikeluarkan. Hasilnya adalah \val{ts.html_articles} artikel dari situs baru.
+\textbf{Sumber (a): CC-NEWS 2024--2026.} Satu file WARC per bulan, Januari 2024 sampai Agustus 2026 (32 file), diunduh dari arsip CC-NEWS Common Crawl\footnote{\url{https://data.commoncrawl.org/crawl-data/CC-NEWS/}}. Dari setiap halaman diambil blok JSON-LD schema.org\footnote{\url{https://schema.org/NewsArticle}} bertipe \texttt{NewsArticle} dan turunannya, beserta bidang \texttt{articleSection}, \texttt{BreadcrumbList}, \texttt{inLanguage}, \texttt{datePublished}, \texttt{isAccessibleForFree}, dan \texttt{articleBody}. Teks diambil dari \texttt{articleBody} bila berisi minimal 30 kata; jika tidak, teks diekstrak dengan Trafilatura\footnote{\url{https://github.com/adbar/trafilatura}}. Situs yang ada di data distilasi atau set evaluasi lain dikeluarkan. Hasilnya adalah \val{ts.html_articles} artikel dari situs baru.
 
 \textbf{Sumber (b): dataset publik.}
 \begin{itemize}
   \item Berlabel manusia: MasakhaNEWS~\cite{adelani2023masakhanews} dan MN-DS~\cite{petukhova2023mnds}.
-  \item Berlabel kategori penerbit: L3Cube-IndicNews (split LDC)~\cite{mirashi2023indicnews}, berita Bangla~\cite{hossain2025banglanews}, IndoNews~\cite{indonews2021}, berita Amharik~\cite{amharicnews2024}, dan berita Swahili~\cite{swahilinews2020}. Dua sumber terakhir diproses dengan cara yang sama, tetapi tidak terpilih saat sampling karena sel bahasanya sudah terisi MasakhaNEWS yang berlabel manusia.
+  \item Berlabel kategori penerbit: L3Cube-IndicNews (split LDC)~\cite{mirashi2023indicnews}, berita Bangla~\cite{hossain2025banglanews}, IndoNews\footnote{\url{https://huggingface.co/datasets/jakartaresearch/indonews}}, berita Amharik\footnote{\url{https://huggingface.co/datasets/rasyosef/amharic-news-category-classification}}, dan berita Swahili\footnote{\url{https://doi.org/10.5281/zenodo.5514203}}. Dua sumber terakhir diproses dengan cara yang sama, tetapi tidak terpilih saat sampling karena sel bahasanya sudah terisi MasakhaNEWS yang berlabel manusia.
 \end{itemize}
 Totalnya \val{ts.ext_loaded} artikel.
 
@@ -242,7 +224,7 @@ Rubrik astrologi ditolak. Validasi otomatis memeriksa bahwa setiap node tujuan a
   \item Artikel tidak berbayar.
   \item Bahasa yang dideklarasikan cocok dengan fastText lid.176 (bila bahasanya dikenal).
   \item Panjang $\ge$ 75 kata.
-  \item Deduplikasi URL, teks identik, dan \eng{near-duplicate} (MinHash, Jaccard $\ge$ 0,7~\cite{broder1997resemblance,lee2022dedup}) \emph{lintas semua sumber}.
+  \item Deduplikasi URL, teks identik, dan \eng{near-duplicate} (MinHash, Jaccard $\ge$ 0,7~\cite{lee2022dedup}) \emph{lintas semua sumber}.
   \item Kontaminasi: artikel dibuang bila $\ge$ 30\% 8-gram katanya muncul di salah satu dari $\sim$300 ribu dokumen latih atau evaluasi. Filter ini membuang \val{ts.contam_removed} artikel, sebagian besar dari MasakhaNEWS yang juga bersumber dari BBC.
 \end{enumerate}
 
@@ -308,7 +290,7 @@ dengan $W\in\mathbb{R}^{17\times 256}$ dan \eng{dropout} 0,1 selama \eng{trainin
   \item $E$ memakai SparseAdam ($\eta=10^{-3}$), sehingga hanya baris token yang muncul di \eng{batch} yang diperbarui.
   \item $W$ dan $\mathbf{b}$ memakai AdamW ($\eta=3\cdot 10^{-3}$, \eng{weight decay} $10^{-4}$).
   \item Ukuran \eng{batch} 64 dan 6 \eng{epoch}.
-  \item \eng{Token dropout}: setiap token dokumen latih dibuang dengan probabilitas 0,2 pada setiap langkah, sebagai augmentasi yang konsisten~\cite{beyer2022patient}.
+  \item \eng{Token dropout}: setiap token dokumen latih dibuang dengan probabilitas 0,2 pada setiap langkah, sebagai augmentasi murah agar model tidak bergantung pada beberapa kata kunci.
   \item Sebanyak 3\% data distilasi (\val{train.val_docs} dokumen) disisihkan sebagai validasi internal. \eng{Epoch} dengan kesepakatan \eng{argmax} tertinggi terhadap \eng{teacher} dipilih.
 \end{itemize}
 
@@ -346,8 +328,8 @@ Semua \eng{baseline} dilatih pada data distilasi yang sama (\val{data.pool.docs}
   \item \textbf{fastText, label GPT-4o}: dilatih hanya pada EMMediaTopic \eng{train}, sama dengan data berlabel yang tersedia bagi~\cite{kuzman2025llm}.
   \item \textbf{TF-IDF + SVM + KD}: \eng{baseline} non-neural Kuzman dan Ljube\v{s}i\'c (TF-IDF + SVC), dilatih dengan \eng{argmax} \eng{teacher} di atas subword XLM-R.
   \item \textbf{MiniLM-L6 + KD}: mMiniLMv2-L6-H384 yang didistilasi dari XLM-R-large~\cite{wang2021minilmv2}. \eng{Temperature} $\tau\in\{1,2\}$ dipilih pada set \eng{development}.
-  \item \textbf{DistilmBERT + KD}: \url{distilbert-base-multilingual-cased}~\cite{sanh2019distilbert} dengan resep yang sama. Kedua transformer diekspor ke ONNX fp32 untuk \eng{benchmark} CPU.
-  \item \textbf{\eng{Teacher} ONNX int8}: ekspor kuantisasi \eng{dynamic} int8 dari \eng{teacher}, konfigurasi CPU tercepat untuk \eng{teacher}~\cite{yao2022zeroquant}.
+  \item \textbf{DistilmBERT + KD}: \url{distilbert-base-multilingual-cased} dengan resep yang sama. Kedua transformer diekspor ke ONNX fp32 untuk \eng{benchmark} CPU.
+  \item \textbf{\eng{Teacher} ONNX int8}: ekspor kuantisasi \eng{dynamic} int8 dari \eng{teacher}, konfigurasi CPU tercepat untuk \eng{teacher}.
 \end{enumerate}
 
 \subsection{Protokol Evaluasi dan Uji Statistik}
@@ -365,15 +347,15 @@ Semua \eng{baseline} dilatih pada data distilasi yang sama (\val{data.pool.docs}
 \textbf{Perbandingan dua model} pada dokumen yang sama:
 \begin{itemize}
   \item \eng{paired (cluster) bootstrap} 2.000 kali untuk $\Delta$macro-F1~\cite{koehn2004significance};
-  \item uji McNemar eksak untuk akurasi~\cite{mcnemar1947};
-  \item koreksi Holm--Bonferroni~\cite{holm1979} per set.
+  \item uji McNemar eksak untuk akurasi;
+  \item koreksi Holm--Bonferroni per set.
 \end{itemize}
 
-\textbf{Variasi antar-\eng{seed}.} Setiap varian ablasi dilatih dengan lima \eng{seed} dan resep final dengan sepuluh \eng{seed}. Perbedaannya diuji dengan uji Welch pada tingkat \eng{seed}, dikoreksi Holm~\cite{hagmann2023inferential}.
+\textbf{Variasi antar-\eng{seed}.} Setiap varian ablasi dilatih dengan lima \eng{seed} dan resep final dengan sepuluh \eng{seed}. Perbedaannya diuji dengan uji Welch pada tingkat \eng{seed}, dikoreksi Holm.
 
 \textbf{Analisis subkelompok} dilakukan menurut asal label, wilayah, jumlah data distilasi bahasa, keragaman situs, sistem tulisan, bahasa, dan label.
 
-\textbf{Kalibrasi} diukur dengan \eng{expected calibration error} (ECE, 15 \eng{bin})~\cite{guo2017calibration}.
+\textbf{Kalibrasi} diukur dengan \eng{expected calibration error} (ECE, 15 \eng{bin}).
 
 \subsection{Protokol Efisiensi}
 \label{sec:effprotocol}
@@ -425,7 +407,7 @@ Satu run StaticKD rata-rata membutuhkan \val{train.seconds} menit pada RTX~4050.
 
 % =====================================================================
 \section*{Ketersediaan Kode, Model, dan Data}
-Kode (pengumpulan data, konstruksi set uji, pelabelan \eng{teacher}, \eng{training}, evaluasi, \eng{benchmark}) dan notebook yang mereproduksi setiap angka, tabel, dan gambar naskah ini tersedia di \todo{URL GitHub}. Model StaticKD tersedia di \todo{URL Hugging Face}. Set uji dirilis sebagai manifest berisi URL/ID artikel, label, dan asal label, beserta skrip rekonstruksi. Teks artikel tidak dirilis ulang karena hak cipta penerbit dan lisensi dataset sumber (misalnya CC BY-NC untuk MasakhaNEWS). EMMediaTopic tersedia di CLARIN.SI~\cite{emmediatopic2025}.
+Kode (pengumpulan data, konstruksi set uji, pelabelan \eng{teacher}, \eng{training}, evaluasi, \eng{benchmark}) dan notebook yang mereproduksi setiap angka, tabel, dan gambar naskah ini tersedia di \todo{URL GitHub}. Model StaticKD tersedia di \todo{URL Hugging Face}. Set uji dirilis sebagai manifest berisi URL/ID artikel, label, dan asal label, beserta skrip rekonstruksi. Teks artikel tidak dirilis ulang karena hak cipta penerbit dan lisensi dataset sumber (misalnya CC BY-NC untuk MasakhaNEWS). EMMediaTopic tersedia di CLARIN.SI.
 
 \section*{Pernyataan Penggunaan AI}
 \todo{Sesuaikan dengan kebijakan jurnal.} Penulis menggunakan asisten AI (Claude, Anthropic) untuk membantu penulisan kode eksperimen, analisis, dan penyusunan draf naskah. Seluruh desain, hasil, dan klaim telah diperiksa dan menjadi tanggung jawab penulis.

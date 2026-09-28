@@ -6,8 +6,7 @@ Istilah teknis berbahasa Inggris sengaja tidak diterjemahkan.
 
 ## 1. Judul
 
-**StaticKD: Klasifikasi Topik Berita IPTC Multibahasa Secepat *Language Identification* melalui
-*Knowledge Distillation* ke Tabel Logit Token Statis**
+**StaticKD: *Knowledge Distillation* Pengklasifikasi Topik Berita IPTC Multibahasa ke Tabel Logit Token Statis untuk Inferensi Ringan di CPU**
 
 Judul pendek (*running head*): *StaticKD: Klasifikasi Topik Berita IPTC Multibahasa di CPU*
 

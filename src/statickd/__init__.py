@@ -1,4 +1,4 @@
-"""StaticKD: multilingual IPTC news topic classification at language-identification cost.
+"""StaticKD: distilling a multilingual IPTC news topic classifier into a static token-logit table for lightweight CPU inference.
 
 A multilingual XLM-R-large teacher is distilled into a static-embedding student whose linear head is
 folded into one table of 17 logits per token. Inference needs only NumPy and `tokenizers`.

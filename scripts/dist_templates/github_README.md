@@ -1,4 +1,4 @@
-# StaticKD: multilingual IPTC news topic classification at language-identification cost
+# StaticKD: distilling a multilingual IPTC news topic classifier into a static token-logit table for lightweight CPU inference
 
 StaticKD distils the multilingual XLM-RoBERTa-large IPTC Media Topic classifier of Kuzman & Ljubešić
 (IEEE Access 2025) into a student that, after training, is **a single table of 17 logits per token**.

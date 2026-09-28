@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or the test-set manifest, please cite it as below."
-title: "StaticKD: Multilingual IPTC news topic classification at language-identification cost"
+title: "StaticKD: Distilling a multilingual IPTC news topic classifier into a static token-logit table for lightweight CPU inference"
 authors:
   - family-names: Kastanya
     given-names: Obi

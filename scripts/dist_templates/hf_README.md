@@ -16,7 +16,7 @@ base_model:
 - classla/multilingual-IPTC-news-topic-classifier
 ---
 
-# {{VARIANT}}: multilingual IPTC news topic classification at language-identification cost
+# {{VARIANT}}: lightweight multilingual IPTC news topic classification on CPU
 
 {{VARIANT}} classifies a news article (title + body, first 512 words) into one of the 17 top-level
 [IPTC Media Topics](https://www.iptc.org/std/NewsCodes/treeview/mediatopic/mediatopic-en-GB.html).
@@ -74,5 +74,5 @@ CC BY-SA 4.0, inherited from the teacher model. The base static embeddings are M
 
 ## Citation
 
-Kastanya, O., & Alwy, A. D. P. (2026). *StaticKD: Klasifikasi Topik Berita IPTC Multibahasa Secepat
-Language Identification melalui Knowledge Distillation ke Tabel Logit Token Statis*. Draft.
+Kastanya, O., & Alwy, A. D. P. (2026). *StaticKD: Knowledge Distillation Pengklasifikasi Topik Berita IPTC Multibahasa ke Tabel Logit Token Statis
+untuk Inferensi Ringan di CPU*. Draft.

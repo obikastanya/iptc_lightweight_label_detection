@@ -10,8 +10,8 @@
 Pendekatan & Bentuk model saat inferensi & Multibahasa & Transfer lintas bahasa & Tanpa pustaka \eng{deep learning} & Biaya CPU dilaporkan & Label IPTC \\
 \midrule
 Kuzman \& Ljube\v{s}i\'c~\cite{kuzman2025llm} & XLM-R-large (560 jt parameter) & ya & ya & tidak & tidak & ya \\
-KD-LoRA~\cite{azimi2024kdlora}, PEFT~\cite{razuvayevskaya2024peft} & transformer \eng{backbone} utuh & sebagian & ya & tidak & tidak & tidak \\
-TinyBERT/MiniLMv2~\cite{jiao2020tinybert,wang2021minilmv2} & transformer 4--6 \eng{layer} & sebagian & ya & tidak & sebagian & tidak \\
+LoRA/PEFT~\cite{hu2022lora,razuvayevskaya2024peft} & transformer \eng{backbone} utuh & sebagian & ya & tidak & tidak & tidak \\
+MiniLMv2~\cite{wang2021minilmv2} & transformer 6 \eng{layer} & sebagian & ya & tidak & sebagian & tidak \\
 \eng{Sparse Distillation}~\cite{ye2022sparse} & \eng{averaging network} + tabel n-gram & tidak (en) & tidak & ya & ya & tidak \\
 Model2Vec~\cite{tulkens2024model2vec}, Wada dkk.~\cite{wada2025static} & embedding statis (umum) & ya & ya & ya & sebagian & tidak \\
 fastText~\cite{joulin2017bag} & \eng{bag of n-grams} & per bahasa & tidak & ya & ya & tidak \\

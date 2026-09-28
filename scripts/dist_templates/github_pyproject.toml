@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "statickd"
 version = "1.0.0"
-description = "Multilingual IPTC news topic classification at language-identification cost (knowledge distillation into a token-logit table)"
+description = "Multilingual IPTC news topic classification by knowledge distillation into a static token-logit table (CPU, NumPy only)"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
