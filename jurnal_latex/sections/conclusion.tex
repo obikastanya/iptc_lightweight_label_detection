@@ -1,0 +1,19 @@
+Penelitian ini mengukur biaya CPU pengklasifikasi IPTC multibahasa terbuka dan menunjukkan bahwa biayanya dapat diturunkan dua sampai tiga orde besaran (terhadap \eng{teacher} ONNX int8 dan PyTorch) sambil mempertahankan sebagian besar akurasinya. StaticKD mendistilasi \eng{teacher} XLM-R-large ke tabel 17 logit per token. Tabel ini diinisialisasi dari \eng{static embedding} multibahasa dan dilatih pada \val{data.pool.docs} artikel dari \val{data.pool.langs} bahasa yang dilabeli \eng{teacher}.
+\begin{itemize}
+  \item Pada set uji gabungan (\val{ts.docs} artikel, \val{ts.langs} bahasa) yang labelnya independen dari \eng{teacher}, StaticKD mencapai macro-F1 \val{statickd.test.macro}, atau \val{statickd.test.pct_teacher} dari \eng{teacher}.
+  \item Kecepatannya \val{eff.statickd.docs_per_sec_1c} artikel per detik per \eng{core} CPU, sekitar \val{eff.statickd.speedup_onnx} kali lebih cepat dari \eng{teacher} ONNX int8, dengan model \val{final.size}~MB tanpa pustaka \eng{deep learning}.
+  \item Kunci keberhasilannya adalah \eng{transfer set} multibahasa dan embedding yang selaras lintas bahasa. Pada \eng{student} berkapasitas sangat rendah, \eng{soft label} dan \eng{temperature} tinggi tidak memberi manfaat, sedangkan \eng{ensemble} beberapa \eng{seed} dapat dilipat menjadi satu tabel tanpa biaya.
+  \item \eng{Fine-tuning} embedding menaikkan akurasi pada bahasa yang ada di data distilasi, tetapi menurunkannya pada bahasa tanpa data distilasi. Transfer ke bahasa-bahasa tersebut dibawa oleh embedding pra-latih yang tidak ikut dilatih.
+  \item Set uji dengan pemetaan rubrik ke pohon IPTC, kontrol kontaminasi, dan \eng{site-cluster bootstrap} dapat dipakai ulang untuk mengevaluasi pengklasifikasi IPTC lain.
+\end{itemize}
+
+Penelitian lanjutan mencakup:
+\begin{itemize}
+  \item memperluas \eng{transfer set} ke bahasa yang lemah, terutama bahasa Afrika di luar pra-latih XLM-R;
+  \item regularisasi \eng{fine-tuning} yang menahan embedding dekat ke ruang pra-latih, supaya akurasi in-distribusi dan transfer lintas bahasa dapat diperoleh bersamaan;
+  \item kepala non-linear yang tetap murah dengan embedding terkuantisasi, mengingat kepala MLP memberi kenaikan kecil;
+  \item tokenizer yang lebih cepat (misalnya pencarian kata langsung ke tabel), karena tokenisasi mengambil \val{prof.statickd.tokshare} waktu inferensi;
+  \item pemangkasan tokenizer yang mempertahankan token lintas bahasa;
+  \item klasifikasi hierarkis ke IPTC level 2 dan klasifikasi multi-label;
+  \item validasi dengan anotasi manusia IPTC multibahasa pada sampel set uji.
+\end{itemize}

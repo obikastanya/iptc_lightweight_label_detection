@@ -1,0 +1,2 @@
+{"model": "statickd", "profile": true, "threads": 1, "n_docs": 1280, "mean_tokens": 579.346875, "tokenize_docs_per_sec": 557.2979825330414, "pool_docs_per_sec": 28754.61083843446, "tokenize_share": 0.9809873186377275, "pinned_cpus": [0]}
+{"model": "statickd_compact", "profile": true, "threads": 1, "n_docs": 1280, "mean_tokens": 638.27421875, "tokenize_docs_per_sec": 605.5097699283125, "pool_docs_per_sec": 26518.989074073772, "tokenize_share": 0.9776766467314029, "pinned_cpus": [0]}

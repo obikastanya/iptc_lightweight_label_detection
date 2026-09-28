@@ -1,0 +1,95 @@
+{
+ "config": {
+  "name": "hard_s0",
+  "sources": [
+   "emmediatopic",
+   "ccnews",
+   "ccnews_extra"
+  ],
+  "seed": 0,
+  "init": "potion",
+  "freeze_embeddings": false,
+  "hidden": 0,
+  "dropout": 0.1,
+  "loss": "hard",
+  "temperature": 1.0,
+  "token_dropout": 0.2,
+  "epochs": 6,
+  "batch_size": 64,
+  "lr_emb": 0.001,
+  "lr_head": 0.003,
+  "val_fraction": 0.03,
+  "max_docs": 0,
+  "bigram_bits": 0,
+  "lr_bigram": 0.01,
+  "idf_power": 0.0,
+  "conf_weight": 0.0,
+  "gpt_weight": 0.0,
+  "base": "minishlab/potion-multilingual-128M",
+  "extra": {}
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "loss": 0.7763039902107035,
+   "val_agreement": 0.8192096981000117,
+   "seconds": 50.38688700000057
+  },
+  {
+   "epoch": 2,
+   "loss": 0.4008025240323265,
+   "val_agreement": 0.8280685394568131,
+   "seconds": 107.4903287999914
+  },
+  {
+   "epoch": 3,
+   "loss": 0.26781045014221766,
+   "val_agreement": 0.8306329409022031,
+   "seconds": 163.76316729997052
+  },
+  {
+   "epoch": 4,
+   "loss": 0.18244393694033587,
+   "val_agreement": 0.8315654505187084,
+   "seconds": 220.43942249997053
+  },
+  {
+   "epoch": 5,
+   "loss": 0.1273457652050701,
+   "val_agreement": 0.8298169949877608,
+   "seconds": 276.4681340000243
+  },
+  {
+   "epoch": 6,
+   "loss": 0.0905376696448995,
+   "val_agreement": 0.8288844853712554,
+   "seconds": 333.83042030001525
+  }
+ ],
+ "best_val_agreement": 0.8315654505187084,
+ "train_docs": 277420,
+ "val_docs": 8579,
+ "device": "cuda",
+ "train_seconds": 333.8319303999888,
+ "format": "token_table_fp16",
+ "labels": [
+  "arts, culture, entertainment and media",
+  "conflict, war and peace",
+  "crime, law and justice",
+  "disaster, accident and emergency incident",
+  "economy, business and finance",
+  "education",
+  "environment",
+  "health",
+  "human interest",
+  "labour",
+  "lifestyle and leisure",
+  "politics",
+  "religion",
+  "science and technology",
+  "society",
+  "sport",
+  "weather"
+ ],
+ "max_tokens": 1024
+}

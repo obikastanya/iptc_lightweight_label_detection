@@ -1,0 +1,4 @@
+# inference only
+numpy>=1.26
+tokenizers>=0.15
+safetensors>=0.4

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software or the test-set manifest, please cite it as below."
+title: "StaticKD: Multilingual IPTC news topic classification at language-identification cost"
+authors:
+  - family-names: Kastanya
+    given-names: Obi
+  - family-names: Alwy
+    given-names: Ananta Dwi Prayoga
+version: 1.0.0
+date-released: 2026-09-28
+license: MIT

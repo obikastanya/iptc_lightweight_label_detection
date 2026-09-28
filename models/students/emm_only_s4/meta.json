@@ -1,0 +1,117 @@
+{
+ "config": {
+  "name": "emm_only_s4",
+  "sources": [
+   "emmediatopic"
+  ],
+  "seed": 4,
+  "init": "potion",
+  "freeze_embeddings": false,
+  "hidden": 0,
+  "dropout": 0.1,
+  "loss": "kd",
+  "temperature": 1.0,
+  "token_dropout": 0.2,
+  "epochs": 10,
+  "batch_size": 64,
+  "lr_emb": 0.001,
+  "lr_head": 0.003,
+  "val_fraction": 0.03,
+  "max_docs": 0,
+  "bigram_bits": 0,
+  "lr_bigram": 0.01,
+  "idf_power": 0.0,
+  "conf_weight": 0.0,
+  "gpt_weight": 0.0,
+  "base": "minishlab/potion-multilingual-128M",
+  "extra": {}
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "loss": 1.736100428175218,
+   "val_agreement": 0.685,
+   "seconds": 3.768665899988264
+  },
+  {
+   "epoch": 2,
+   "loss": 0.976504905782517,
+   "val_agreement": 0.76,
+   "seconds": 7.80314560001716
+  },
+  {
+   "epoch": 3,
+   "loss": 0.683764797331083,
+   "val_agreement": 0.77,
+   "seconds": 11.659526699979324
+  },
+  {
+   "epoch": 4,
+   "loss": 0.517510840896726,
+   "val_agreement": 0.7833333333333333,
+   "seconds": 15.663173999986611
+  },
+  {
+   "epoch": 5,
+   "loss": 0.399768204283793,
+   "val_agreement": 0.79,
+   "seconds": 19.358722399978433
+  },
+  {
+   "epoch": 6,
+   "loss": 0.31136856786291983,
+   "val_agreement": 0.7833333333333333,
+   "seconds": 23.279550099978223
+  },
+  {
+   "epoch": 7,
+   "loss": 0.24503555785704761,
+   "val_agreement": 0.8,
+   "seconds": 26.844868700020015
+  },
+  {
+   "epoch": 8,
+   "loss": 0.19519705209795005,
+   "val_agreement": 0.7916666666666666,
+   "seconds": 31.221160700020846
+  },
+  {
+   "epoch": 9,
+   "loss": 0.15661265327297028,
+   "val_agreement": 0.7966666666666666,
+   "seconds": 35.37196690001292
+  },
+  {
+   "epoch": 10,
+   "loss": 0.1255911153559834,
+   "val_agreement": 0.795,
+   "seconds": 39.48977460002061
+  }
+ ],
+ "best_val_agreement": 0.8,
+ "train_docs": 19400,
+ "val_docs": 600,
+ "device": "cuda",
+ "train_seconds": 39.48986849997891,
+ "format": "token_table_fp16",
+ "labels": [
+  "arts, culture, entertainment and media",
+  "conflict, war and peace",
+  "crime, law and justice",
+  "disaster, accident and emergency incident",
+  "economy, business and finance",
+  "education",
+  "environment",
+  "health",
+  "human interest",
+  "labour",
+  "lifestyle and leisure",
+  "politics",
+  "religion",
+  "science and technology",
+  "society",
+  "sport",
+  "weather"
+ ],
+ "max_tokens": 1024
+}

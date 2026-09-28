@@ -43,6 +43,9 @@ test_compare.py
 # Bundle zip untuk Colab (hasil build, bisa dibuat ulang)
 *.zip
 
+# Paket zip file besar untuk diunggah ke Google Drive
+/gdrive_upload/
+
 # ---------------------------------------------------------------
 # Jurnal LaTeX: file hasil kompilasi & salinan template IEEE
 # (IEEEtran.cls/.bst yang dibutuhkan sudah ada di jurnal_latex/)
@@ -72,3 +75,11 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# final study: stored predictions (136 MB) go to Google Drive with models/
+results/final/predictions/
+models/**/*.joblib
+models/**/*.onnx_data
+models/**/sentencepiece.bpe.model
+# release folders are build output (scripts/build_dist.py); pushed/uploaded separately
+dist/

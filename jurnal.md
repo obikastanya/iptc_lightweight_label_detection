@@ -1,3 +1,5 @@
+> **Arsip tahap eksplorasi (26–27 Sep 2026).** Angka di dokumen ini berasal dari eksperimen awal (v1/v2, test set LLM16). Hasil final penelitian ada di `notebooks/StaticKD_IPTC_final.ipynb` dan `jurnal_latex/main.tex`, yang memakai set uji gabungan 47 bahasa dan 72 run ulang dengan kode final di `src/statickd/`.
+
 # StaticKD: Klasifikasi Topik Berita IPTC Multibahasa yang Ringan untuk CPU melalui Distilasi Pengetahuan ke Model *Static-Embedding*
 
 **Obi Kastanya** (6025252015) dan **Ananta Dwi Prayoga Alwy** (6025252007)

@@ -1,0 +1,18 @@
+{
+ "python": "3.12.4",
+ "os": "Windows-11-10.0.26200-SP0",
+ "cpu": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
+ "logical_cpus": 22,
+ "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+ "numpy": "2.5.3",
+ "pandas": "3.0.6",
+ "scikit-learn": "1.9.1",
+ "scipy": "1.18.1",
+ "torch": "2.6.0+cu124",
+ "transformers": "5.17.0",
+ "tokenizers": "0.23.2",
+ "onnxruntime": "1.30.0",
+ "fasttext-wheel": "0.9.2",
+ "datasketch": "2.0.0",
+ "trafilatura": "2.2.0"
+}

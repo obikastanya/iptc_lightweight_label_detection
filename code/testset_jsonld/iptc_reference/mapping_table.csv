@@ -1,0 +1,142 @@
+﻿label,iptc_node_id,iptc_node_path,n_terms,section_names
+"arts, culture, entertainment and media",medtop:01000000,"arts, culture, entertainment and media",32,art; art & design; arts; arts & culture; arts & entertainment; arts and culture; budaya; cultura; culture; culture & arts; kebudayaan; kultur; kultur & kunst; kultura; kültür; kültür - sanat; kültür sanat; kültür sanat haberleri; kültür-sanat; sanat; seni; seni budaya; văn hóa; πολιτισμός; культура; الثقافة; ثقافة; فرهنگ; संस्कृति; วัฒนธรรม; 文化; 문화
+"arts, culture, entertainment and media",medtop:20000018,"arts, culture, entertainment and media > arts and entertainment > music",11,music; musica; musik; musique; música; müzik; музыка; موسيقى; संगीत; 音乐; 음악
+"arts, culture, entertainment and media",medtop:20000005,"arts, culture, entertainment and media > arts and entertainment > cinema",13,cine; cinema; film; films; kino; movie; movies; sinema; кино; سينما; फिल्म; 电影; 영화
+"arts, culture, entertainment and media",medtop:20000013,"arts, culture, entertainment and media > arts and entertainment > literature",10,book; books; buku; bücher; kitap; libros; literatura; literature; livres; sastra
+"arts, culture, entertainment and media",medtop:20000051,"arts, culture, entertainment and media > mass media > television",7,televisi; television; televisione; televisión; tv; tv & radio; tv and radio
+"arts, culture, entertainment and media",medtop:20000029,"arts, culture, entertainment and media > arts and entertainment > theatre",4,stage; teatro; theater; theatre
+"arts, culture, entertainment and media",medtop:20000011,"arts, culture, entertainment and media > arts and entertainment > fashion",3,fashion; moda; mode
+"arts, culture, entertainment and media",medtop:20000045,"arts, culture, entertainment and media > mass media",2,media; medios
+"arts, culture, entertainment and media",medtop:20000043,"arts, culture, entertainment and media > culture > library and museum",1,museums
+"conflict, war and peace",medtop:20000062,"conflict, war and peace > armed conflict > war",26,chiến tranh; conflict; conflicts; gaza war; guerra; guerre; israel-gaza war; israel-hamas war; krieg; military conflict; perang; russia-ukraine war; savaş; ukraine war; war; war & peace; war in ukraine; wojna; война; війна; الحرب; حرب; जंग; युद्ध; 战争; 전쟁
+"crime, law and justice",medtop:02000000,"crime, law and justice",24,crime; crime & courts; crime and courts; crimen; crimes; criminalità; hukum & kriminal; hukum dan kriminal; jenayah; justice; justice & police; kriminal; kriminalitas; kriminalität; law & order; przestępczość; true crime; криминал; الجريمة; جريمة; अपराध; क्राइम; อาชญากรรม; 犯罪
+"crime, law and justice",medtop:20000107,"crime, law and justice > judiciary > court",12,adliye; court; courts; judicial; judiciales; mahkamah; tribunais; tribunale; tribunales; yargı; суд; قضاء
+"crime, law and justice",medtop:20000121,"crime, law and justice > law",11,giustizia; hukum; justicia; justiz; justiça; law; legal; pháp luật; право; 法律; 法治
+"crime, law and justice",medtop:20000133,"crime, law and justice > law enforcement > police",8,asayiş; police; policia; policial; policiales; policía; polisi; polizei
+"disaster, accident and emergency incident",medtop:03000000,"disaster, accident and emergency incident",13,afet; bencana; catastrophes; catástrofes; desastres; disaster; disasters; emergencies; katastrofy; катастрофы; كوارث; 灾害; 재난
+"disaster, accident and emergency incident",medtop:20000151,"disaster, accident and emergency incident > disaster > natural disaster",6,bencana alam; deprem; earthquake; gempa; natural disasters; thiên tai
+"disaster, accident and emergency incident",medtop:20000150,"disaster, accident and emergency incident > disaster > fire",3,fires; kebakaran; wildfires
+"disaster, accident and emergency incident",medtop:20000139,"disaster, accident and emergency incident > accident and emergency incident",11,accident; accidents; incidenti; kazalar; kecelakaan; tai nạn; unfälle; wypadki; аварии; दुर्घटना; 事故
+"disaster, accident and emergency incident",medtop:20000147,"disaster, accident and emergency incident > accident and emergency incident > transportation accident and incident > road accident and incident",2,дтп; حوادث الطرق
+"economy, business and finance",medtop:04000000,"economy, business and finance",56,bisnis; biznes; business; business news; companies; economia; economy; economy news; economía; ekbis; ekonomi; ekonomi bisnis; ekonomi dan bisnis; ekonomika; empresas; finance; finance & economy; finances; finansial; finanza; finanzas; finanzen; finanças; gospodarka; industry; keuangan; kinh doanh; kinh tế; money; negocio; negocios; negócios; talous; uchumi; wirtschaft; économie; οικονομία; бизнес; економіка; финансы; экономика; اقتصاد; اقتصادی; الاقتصاد; अर्थव्यवस्था; बिज़नेस; व्यापार; เศรษฐกิจ; ቢዝነስ; 商业; 経済; 經濟; 经济; 財經; 财经; 경제
+"economy, business and finance",medtop:20000385,"economy, business and finance > market and exchange",13,aktien; bolsa; borsa; börse; capital market news; giełda; markets; markets news; mercados; pasar modal; saham; stock market; stocks
+"economy, business and finance",medtop:20001370,"economy, business and finance > products and services > financial service",3,banking; perbankan; personal finance
+"economy, business and finance",medtop:20000235,"economy, business and finance > products and services > construction and property",3,properti; property; real estate
+"economy, business and finance",medtop:20001279,"economy, business and finance > economy > currency > cryptocurrency",3,crypto; cryptocurrency; kripto
+"economy, business and finance",medtop:20000210,"economy, business and finance > products and services > agriculture",10,agribusiness; agricoltura; agricultura; agriculture; pertanian; tarım; сельское хозяйство; الزراعة; कृषि; 农业
+"economy, business and finance",medtop:20000256,"economy, business and finance > products and services > energy and resource",1,energy business
+education,medtop:05000000,education,22,bildung; educación; education; educação; edukacja; edukasi; eğitim; giáo dục; istruzione; pendidikan; éducation; εκπαίδευση; παιδεία; образование; освіта; آموزش; التعليم; تعليم; शिक्षा; การศึกษา; 教育; 교육
+education,medtop:20000400,education > school,4,k-12; school; schools; scuola
+education,medtop:20000405,education > school > college and university,6,campus; higher education; kampus; universidad; universities; university
+environment,medtop:06000000,environment,23,ambiente; ekologia; environment; environmental; environnement; lingkungan; lingkungan hidup; medio ambiente; meio ambiente; môi trường; umwelt; çevre; środowisko; περιβάλλον; экология; البيئة; بيئة; محیط زیست; पर्यावरण; สิ่งแวดล้อม; 环保; 环境; 환경
+environment,medtop:20000418,environment > climate change,6,cambio climático; climate; climate change; climate crisis; iklim; klima
+environment,medtop:20000441,environment > nature,3,animals; nature; wildlife
+environment,medtop:20001374,environment > sustainability,2,keberlanjutan; sustainability
+health,medtop:07000000,health,29,afya; gesundheit; health; health news; healthcare; kesehatan; kesihatan; medis; salud; salute; sante; santé; saúde; sağlık; sehat; sức khỏe; zdrowie; υγεία; υγεια; здоров'я; здоровье; الصحة; سلامت; صحة; सेहत; स्वास्थ्य; สุขภาพ; 健康; 건강
+health,medtop:20000458,health > disease and condition > mental health and disorder,1,mental health
+health,medtop:20000448,health > disease and condition > communicable disease,3,coronavirus; covid; covid-19
+health,medtop:20000485,health > medical profession,3,medical; medicina; medicine
+human interest,medtop:20000505,human interest > celebrity,18,celebridades; celebrities; celebrity; celebrity news; celebs; célébrités; famosos; gosip; seleb; selebritas; selebriti; ünlüler; звезды; звёзды; مشاهير; सेलिब्रिटी; 明星; 셀럽
+human interest,medtop:20000506,human interest > high society > royalty,3,royal family; royals; the royals
+human interest,medtop:20000503,human interest > human mishap,4,bizarre; odd news; offbeat; weird news
+labour,medtop:09000000,labour,12,arbeit; buruh; ketenagakerjaan; labor; labour; lavoro; praca; tenaga kerja; çalışma hayatı; труд; 劳动; 노동
+labour,medtop:20000509,labour > employment,15,career; careers; empleo; emploi; employment; emprego; istihdam; karier; karir; việc làm; work & careers; работа и карьера; توظيف; रोज़गार; 就业
+labour,medtop:20000523,labour > labour market,2,arbeitsmarkt; rynek pracy
+labour,medtop:20000536,labour > unions,1,unions
+lifestyle and leisure,medtop:20000563,lifestyle and leisure > leisure > travel and tourism,20,du lịch; podróże; reise; reisen; seyahat; travel; travel news; traveling; viagem; viaggi; viajes; voyage; voyages; wisata; путешествия; سفر; यात्रा; ท่องเที่ยว; 旅行; 여행
+lifestyle and leisure,medtop:20000568,lifestyle and leisure > leisure > hobby > food and drink enthusiasm,25,cuisine; dining; food; food & drink; food and drink; gastronomia; gastronomie; gastronomía; kuliner; receitas; recetas; recipes; resep; restaurants; ricette; tarifler; wine; yemek; кулинария; рецепты; طبخ; व्यंजन; ẩm thực; 美食; 요리
+lifestyle and leisure,medtop:20000570,lifestyle and leisure > lifestyle > house and home,4,garden; gardening; home & garden; home and garden
+lifestyle and leisure,medtop:20000550,lifestyle and leisure > leisure > hobby,1,hobbies
+lifestyle and leisure,medtop:20000538,lifestyle and leisure > leisure,1,leisure
+lifestyle and leisure,medtop:20000560,lifestyle and leisure > leisure > outdoor recreational activities,3,fishing; hunting; outdoors
+lifestyle and leisure,medtop:20001239,lifestyle and leisure > wellness > exercise and fitness,1,fitness
+lifestyle and leisure,medtop:20001339,lifestyle and leisure > wellness,3,well-being; wellbeing; wellness
+lifestyle and leisure,medtop:20000549,lifestyle and leisure > leisure > gaming and lottery,1,lottery
+politics,medtop:11000000,politics and government,29,chính trị; politica; politica interna; politica nazionale; political; politics; politiek; politiikka; politik; politik dalam negeri; politika; politique; polityka; polityka krajowa; política; siyaset; πολιτική; πολιτικη; политика; політика; політика україни; السياسة; سياسة; سیاسی; राजनीति; การเมือง; ፖለቲካ; 政治; 정치
+politics,medtop:20000574,politics and government > election,11,elecciones; election; election 2024; elections; eleições; pemilu; pilkada; seçim; wahlen; élections; выборы
+politics,medtop:20000593,politics and government > government,7,congress; gobierno; government; parlamento; parliament; pemerintahan; white house
+politics,medtop:20000639,politics and government > international relations > diplomacy,1,diplomacy
+religion,medtop:12000000,religion,21,agama; faith; faith & values; religia; religion; religione; religions; religious; religião; religión; réligion; spirituality; tôn giáo; религия; الدين; دين; مذهب; धर्म; ศาสนา; 宗教; 종교
+religion,medtop:20000677,religion > belief systems > Islam,4,islam; islami; islamic; khazanah islam
+religion,medtop:20000698,religion > religious facility > church,3,chiesa; church; iglesia
+religion,medtop:20000704,religion > religious leader > pope,2,vatican; vaticano
+science and technology,medtop:13000000,science and technology,29,bilim; bilim teknoloji; bilim ve teknoloji; bilim-teknoloji; ciencia; ciência; iptek; khoa học; nauka; sains; sains dan teknologi; sci-tech; science; science & technology; science and technology; sciences; scienza; scitech; technologie & wissenschaft; wissenschaft; επιστήμη; наука; наука и техника; наука и технологии; علم و فناوری; علوم; विज्ञान; 科学; 과학
+science and technology,medtop:20001298,science and technology > technology and engineering > information technology and computer science > artificial intelligence,2,ai; artificial intelligence
+science and technology,medtop:20000739,science and technology > scientific research > scientific exploration > space exploration,1,space
+society,medtop:14000000,society,2,social affairs; social issues
+society,medtop:20000780,society > family,17,aile; famiglia; familia; familie; famille; family; família; gia đình; keluarga; parenting; parenting & family; rodzina; семья; الأسرة; परिवार; 家庭; 가족
+society,medtop:20000782,society > family > Dating and Relationships,3,dating; relationship; relationships
+society,medtop:20000771,society > immigration,6,göç; immigration; inmigración; migration; migrazione; миграция
+society,medtop:20000788,society > demographic group,5,gender; gender equality; lgbt; lgbtq; lgbtq+
+society,medtop:20000799,society > social condition,2,kemiskinan; poverty
+society,medtop:20000817,society > welfare,2,charity; welfare
+society,medtop:20000587,society > fundamental rights,3,derechos humanos; hak asasi manusia; human rights
+society,medtop:20000770,society > demographics,2,demography; population
+sport,medtop:15000000,sport,49,altri sport; college sports; deporte; deportes; desporto; esportes; high school sports; idrett; khel; michezo; motori e sport; olahraga; prep sports; spor; sport; sport locali; sport news; sportas; sporten; sportif; sportivo; sports; sports news; sportul; sporty; sukan; thể thao; urheilu; šport; αθλητικά; αθλητισμός; спорт; спорт новости; ספורט; أخبار الرياضة; اخبار الرياضه; الرياضة; رياضة; رياضه; ورزش; ورزشی; खेल; กีฬา; ስፖርት; スポーツ; 体育; 体育新闻; 體育; 스포츠
+sport,medtop:20000822,sport > competition discipline,78,afl; athletics; atletismo; badminton; baloncesto; baseball; basket; basketball; basquete; bola; boxeo; boxing; bulu tangkis; bundesliga; béisbol; calcio; calciomercato; champions league; ciclismo; college football; cricket; cycling; europa league; f1; football; formula 1; formula one; formula1; fussball; futbol; futbol haberleri; futebol; fußball; fútbol; golf; hockey; ipl; la liga; laliga; liga 1; liga champions; liga inggris; ligue 1; mlb; mma; motogp; motorsport; motorsports; nba; nfl; nhl; nrl; pallavolo; piłka nożna; premier league; rugby; sepak bola; sepakbola; serie a; soccer; süper lig; t20 world cup; tenis; tennis; ufc; voleibol; voli; volley; volleyball; wrestling; μπάσκετ; ποδοσφαιρο; ποδόσφαιρο; баскетбол; теннис; футбол; хоккей; كرة القدم
+sport,medtop:20001177,sport > sport event > Olympic Games,4,juegos olímpicos; olimpiadi; olympic games; olympics
+weather,medtop:17000000,weather,22,cuaca; cuaca hari ini; hava durumu; meteo; meteorologia; meteorología; météo; pogoda; thời tiết; weather; weather news; wetter; καιρος; καιρός; погода; آب و هوا; الطقس; طقس; मौसम; 天气; 天氣; 날씨
+weather,medtop:20001128,weather > weather forecast,4,prakiraan cuaca; previsioni meteo; weather forecast; พยากรณ์อากาศ
+weather,medtop:20001129,weather > weather phenomena,1,cuaca ekstrem
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,cultura y espectáculos
+(not mapped: ambiguous),,"conflict, war and peace > cyber warfare  |  crime, law and justice > crime > cyber crime",1,cyber
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,công nghệ
+(not mapped: ambiguous),,"science and technology > social sciences > economics  |  economy, business and finance",1,economics
+(not mapped: ambiguous),,economy > products and services > energy and resource  |  environment,1,energy & environment
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,entertainment
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,espectáculos
+(not mapped: ambiguous),,lifestyle and leisure  |  arts > fashion  |  health (catch-all lifestyle section),1,estilo de vida
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,gadget
+(not mapped: ambiguous),,lifestyle and leisure  |  arts > fashion  |  health (catch-all lifestyle section),1,gaya hidup
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,hiburan
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,innovation
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,inovasi
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,internet
+(not mapped: ambiguous),,lifestyle and leisure  |  arts > fashion  |  health (catch-all lifestyle section),1,lifestyle
+(not mapped: ambiguous),,economy > market and exchange  |  classified / marketplace pages,1,market
+(not mapped: ambiguous),,"conflict, war and peace > armed conflict  |  politics > national security > armed forces",1,military
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,mobile
+(not mapped: ambiguous),,human interest > ceremony > funeral and memorial service  |  society > values > death and dying,1,nekrolog
+(not mapped: ambiguous),,human interest > ceremony > funeral and memorial service  |  society > values > death and dying,1,obits
+(not mapped: ambiguous),,human interest > ceremony > funeral and memorial service  |  society > values > death and dying,1,obituaries
+(not mapped: ambiguous),,human interest > ceremony > funeral and memorial service  |  society > values > death and dying,1,obituary
+(not mapped: ambiguous),,lifestyle and leisure > travel and tourism  |  economy > products and services > tourism and leisure industry,1,pariwisata
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,show
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,smartphones
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,spettacoli
+(not mapped: ambiguous),,lifestyle and leisure  |  arts > fashion  |  health (catch-all lifestyle section),1,stile di vita
+(not mapped: ambiguous),,arts > television / series  |  economy > media and entertainment industry,1,streaming
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,tech
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,tech news
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,technik
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,technologie
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,technology
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,tecnologia
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,tecnología
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,tekno
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,teknologi
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,teknoloji
+(not mapped: ambiguous),,"conflict, war and peace > act of terror  |  crime, law and justice > crime > terrorism",1,terrorism
+(not mapped: ambiguous),,"conflict, war and peace > act of terror  |  crime, law and justice > crime > terrorism",1,terrorisme
+(not mapped: ambiguous),,"conflict, war and peace > act of terror  |  crime, law and justice > crime > terrorism",1,terrorismo
+(not mapped: ambiguous),,"conflict, war and peace > act of terror  |  crime, law and justice > crime > terrorism",1,terörle mücadele
+(not mapped: ambiguous),,lifestyle and leisure > travel and tourism  |  economy > products and services > tourism and leisure industry,1,tourism
+(not mapped: ambiguous),,lifestyle and leisure > travel and tourism  |  economy > products and services > tourism and leisure industry,1,turismo
+(not mapped: ambiguous),,lifestyle and leisure > travel and tourism  |  economy > products and services > tourism and leisure industry,1,turizm
+(not mapped: ambiguous),,lifestyle and leisure  |  arts > fashion  |  health (catch-all lifestyle section),1,vida y estilo
+(not mapped: ambiguous),,lifestyle and leisure  |  arts > fashion  |  health (catch-all lifestyle section),1,yaşam
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,τεχνολογία
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,технологии
+(not mapped: ambiguous),,lifestyle and leisure > travel and tourism  |  economy > products and services > tourism and leisure industry,1,туризм
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,التكنولوجيا
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,تقنية
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,تكنولوجيا
+(not mapped: ambiguous),,lifestyle and leisure > travel and tourism  |  economy > products and services > tourism and leisure industry,1,سياحة
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,टेक
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,प्रौद्योगिकी
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,मनोरंजन
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,เทคโนโลยี
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,娱乐
+(not mapped: ambiguous),,lifestyle and leisure > travel and tourism  |  economy > products and services > tourism and leisure industry,1,旅游
+(not mapped: ambiguous),,science and technology > technology and engineering  |  economy > products and services > computing and information technology,1,科技
+(not mapped: ambiguous),,arts > arts and entertainment  |  human interest > celebrity,1,연예

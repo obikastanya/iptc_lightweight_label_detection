@@ -1,0 +1,117 @@
+{
+ "config": {
+  "name": "emm_only_s3",
+  "sources": [
+   "emmediatopic"
+  ],
+  "seed": 3,
+  "init": "potion",
+  "freeze_embeddings": false,
+  "hidden": 0,
+  "dropout": 0.1,
+  "loss": "kd",
+  "temperature": 1.0,
+  "token_dropout": 0.2,
+  "epochs": 10,
+  "batch_size": 64,
+  "lr_emb": 0.001,
+  "lr_head": 0.003,
+  "val_fraction": 0.03,
+  "max_docs": 0,
+  "bigram_bits": 0,
+  "lr_bigram": 0.01,
+  "idf_power": 0.0,
+  "conf_weight": 0.0,
+  "gpt_weight": 0.0,
+  "base": "minishlab/potion-multilingual-128M",
+  "extra": {}
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "loss": 1.734079641870933,
+   "val_agreement": 0.6533333333333333,
+   "seconds": 3.3125962000340223
+  },
+  {
+   "epoch": 2,
+   "loss": 0.9727939038780262,
+   "val_agreement": 0.7566666666666667,
+   "seconds": 7.297572500014212
+  },
+  {
+   "epoch": 3,
+   "loss": 0.6833020153612194,
+   "val_agreement": 0.7666666666666667,
+   "seconds": 11.494542000000365
+  },
+  {
+   "epoch": 4,
+   "loss": 0.5159421031034426,
+   "val_agreement": 0.7716666666666666,
+   "seconds": 16.22416450001765
+  },
+  {
+   "epoch": 5,
+   "loss": 0.40149795025488727,
+   "val_agreement": 0.785,
+   "seconds": 44.16635990003124
+  },
+  {
+   "epoch": 6,
+   "loss": 0.31153629607099903,
+   "val_agreement": 0.7866666666666666,
+   "seconds": 62.822272400022484
+  },
+  {
+   "epoch": 7,
+   "loss": 0.24438026419567196,
+   "val_agreement": 0.7983333333333333,
+   "seconds": 77.00379009998869
+  },
+  {
+   "epoch": 8,
+   "loss": 0.1932648629343549,
+   "val_agreement": 0.8016666666666666,
+   "seconds": 93.13781510002445
+  },
+  {
+   "epoch": 9,
+   "loss": 0.15599376695974432,
+   "val_agreement": 0.8083333333333333,
+   "seconds": 97.61169609997887
+  },
+  {
+   "epoch": 10,
+   "loss": 0.12440990533667429,
+   "val_agreement": 0.81,
+   "seconds": 101.99704480002401
+  }
+ ],
+ "best_val_agreement": 0.81,
+ "train_docs": 19400,
+ "val_docs": 600,
+ "device": "cuda",
+ "train_seconds": 102.57908390002558,
+ "format": "token_table_fp16",
+ "labels": [
+  "arts, culture, entertainment and media",
+  "conflict, war and peace",
+  "crime, law and justice",
+  "disaster, accident and emergency incident",
+  "economy, business and finance",
+  "education",
+  "environment",
+  "health",
+  "human interest",
+  "labour",
+  "lifestyle and leisure",
+  "politics",
+  "religion",
+  "science and technology",
+  "society",
+  "sport",
+  "weather"
+ ],
+ "max_tokens": 1024
+}

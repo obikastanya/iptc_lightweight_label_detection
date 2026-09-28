@@ -1,3 +1,5 @@
+> **Arsip tahap eksplorasi (26–27 Sep 2026).** Angka di dokumen ini berasal dari eksperimen awal (v1/v2, test set LLM16). Hasil final penelitian ada di `notebooks/StaticKD_IPTC_final.ipynb` dan `jurnal_latex/main.tex`, yang memakai set uji gabungan 47 bahasa dan 72 run ulang dengan kode final di `src/statickd/`.
+
 # Lightweight multilingual IPTC news topic classification — research code
 
 Distils the XLM-R-large IPTC classifier of Kuzman & Ljubešić (2025)
