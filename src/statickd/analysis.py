@@ -18,14 +18,14 @@ MODELS = {
     "teacher_onnx_int8": ("Teacher XLM-R-large, ONNX int8", "teacher-onnx-int8"),
     "distilmbert_kd":    ("DistilmBERT + KD", f"onnx:{BASELINES_DIR / 'distilmbert_kd'}"),
     "minilm_kd":         ("MiniLM-L6 + KD", f"onnx:{BASELINES_DIR / 'minilm_kd'}"),
-    "statickd":          ("StaticKD (usulan)", f"static:{FINAL_MODELS_DIR / 'statickd'}"),
+    "statickd":          ("StaticKD (proposed)", f"static:{FINAL_MODELS_DIR / 'statickd'}"),
     "statickd_compact":  ("StaticKD-compact", f"static:{FINAL_MODELS_DIR / 'statickd_compact'}"),
-    "ft_kd_subword_q":   ("fastText + KD, subword, kuantisasi", f"fasttext:{BASELINES_DIR / 'ft_kd_subword_q.ftz'}"),
+    "ft_kd_subword_q":   ("fastText + KD, subword, quantized", f"fasttext:{BASELINES_DIR / 'ft_kd_subword_q.ftz'}"),
     "ft_kd_subword":     ("fastText + KD, subword", f"fasttext:{BASELINES_DIR / 'ft_kd_subword.bin'}"),
-    "ft_kd_word":        ("fastText + KD, kata", f"fasttext:{BASELINES_DIR / 'ft_kd_word.bin'}"),
+    "ft_kd_word":        ("fastText + KD, word", f"fasttext:{BASELINES_DIR / 'ft_kd_word.bin'}"),
     "tfidf_svm_kd":      ("TF-IDF + SVM + KD", f"tfidf:{BASELINES_DIR / 'tfidf_svm_kd.joblib'}"),
-    "ft_gpt_subword":    ("fastText, label GPT-4o, subword", f"fasttext:{BASELINES_DIR / 'ft_gpt_subword.bin'}"),
-    "ft_gpt_word":       ("fastText, label GPT-4o, kata", f"fasttext:{BASELINES_DIR / 'ft_gpt_word.bin'}"),
+    "ft_gpt_subword":    ("fastText, GPT-4o labels, subword", f"fasttext:{BASELINES_DIR / 'ft_gpt_subword.bin'}"),
+    "ft_gpt_word":       ("fastText, GPT-4o labels, word", f"fasttext:{BASELINES_DIR / 'ft_gpt_word.bin'}"),
 }
 
 REGION = {
@@ -46,6 +46,21 @@ SCRIPT = {
 XLMR_LANGS = set("""af am ar as az be bg bn br bs ca cs cy da de el en eo es et eu fa fi fr fy ga gd gl gu ha he hi hr hu
 hy id is it ja jv ka kk km kn ko ku ky la lo lt lv mg mk ml mn mr ms my ne nl no om or pa pl ps pt ro ru sa sd si sk
 sl so sq sr su sv sw ta te th tl tr ug uk ur uz vi xh yi zh""".split())
+# English names of subgroup values for the paper (internal values stay Indonesian: they form number keys)
+EN = {"human_annotation": "human annotation", "publisher_category": "publisher category",
+      "publisher_section_jsonld": "JSON-LD section",
+      "tidak ada (0)": "none (0)", "sedikit (<500)": "few (<500)", "cukup (≥500)": "sufficient (≥500)",
+      "tercakup pra-latih XLM-R": "in XLM-R pre-training", "di luar pra-latih XLM-R": "outside XLM-R pre-training",
+      "beragam (≥10)": "diverse (≥10)", "sedang (3–10)": "medium (3–10)", "satu penerbit (<3)": "single publisher (<3)",
+      "Eropa": "Europe", "Asia Selatan": "South Asia", "Afrika": "Africa",
+      "Asia Timur/Tenggara & Timur Tengah": "East/Southeast Asia & Middle East",
+      "Sirilik/Yunani": "Cyrillic/Greek", "Arab": "Arabic", "lainnya": "other"}
+
+
+def en(value) -> str:
+    return EN.get(value, value)
+
+
 ORIGIN_NAMES = {"human_annotation": "anotasi manusia", "publisher_category": "kategori penerbit",
                 "publisher_section_jsonld": "rubrik JSON-LD"}
 

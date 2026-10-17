@@ -1,0 +1,119 @@
+\subsection{Accuracy of All Models (RQ2)}
+\label{sec:res-acc}
+\TabMain
+Table~\ref{tab:main} gives the main results. On the unified test set the teacher reaches a macro-F1 of \val{teacher.test.macro} [\val{teacher.test.ci}] and an accuracy of \val{teacher.test.acc}. This is far below its development score (\val{teacher.dev.macro}), because the test set covers languages, sources, and a period the teacher has never seen. StaticKD reaches a macro-F1 of \val{statickd.test.macro} [\val{statickd.test.ci}] and an accuracy of \val{statickd.test.acc}, which is \val{statickd.test.pct_teacher} of the teacher macro-F1. On the development set StaticKD keeps \val{statickd.dev.pct_teacher} of the teacher macro-F1 (\val{statickd.dev.macro} against \val{teacher.dev.macro}), and its agreement with the teacher over the \val{data.heldout.strict.langs} held-out languages is \val{statickd.heldout.acc}. A single student without ensembling reaches \val{single.test_macro.mean} $\pm$ \val{single.test_macro.sd} on the test set and \val{single.dev_macro.mean} $\pm$ \val{single.dev_macro.sd} on the development set (10 seeds).
+
+Among the small distilled transformers, MiniLM-L6 (\val{minilm_kd.test.macro}), which starts from a distillation of XLM-R-large, lies between StaticKD and the teacher. DistilmBERT (\val{distilmbert_kd.test.macro}) is on par with StaticKD while being much more expensive. The two baselines of similar cost, fastText + KD and TF-IDF + SVM + KD, fall below StaticKD. fastText trained only on the GPT-4o labels of four languages fails outside its training languages, with a test macro-F1 of \val{ft_gpt_subword.test.macro} against \val{ft_gpt_subword.dev.macro} on the development set.
+
+\TabSig
+Table~\ref{tab:sig} reports paired tests with $\Delta$ = StaticKD $-$ comparison model on the test set. Against the teacher, $\Delta$macro-F1 is \val{sig.test.teacher.delta} [\val{sig.test.teacher.ci}] ($p$ \val{sig.test.teacher.p}), and against MiniLM-L6 it is \val{sig.test.minilm_kd.delta} [\val{sig.test.minilm_kd.ci}] ($p$ \val{sig.test.minilm_kd.p}). The difference to DistilmBERT, \val{sig.test.distilmbert_kd.delta} [\val{sig.test.distilmbert_kd.ci}], is not significant ($p$ \val{sig.test.distilmbert_kd.p}). StaticKD is correct on more test documents than DistilmBERT (McNemar $p$ \val{sig.test.distilmbert_kd.pm}), but the McNemar test treats documents as independent and ignores the dependence between articles of the same site. StaticKD outperforms the quantized fastText + KD by \val{sig.test.ft_kd_subword_q.delta} [\val{sig.test.ft_kd_subword_q.ci}] ($p$ \val{sig.test.ft_kd_subword_q.p}) and TF-IDF + SVM by \val{sig.test.tfidf_svm_kd.delta} [\val{sig.test.tfidf_svm_kd.ci}] ($p$ \val{sig.test.tfidf_svm_kd.p}).
+
+These two advantages differ in strength when examined per language. StaticKD has a higher macro-F1 than fastText + KD in \val{lang.static_better_macro.ft_kd_subword_q} of \val{lang.n} languages (Wilcoxon $p$ \val{lang.wilcoxon_macro.ft_kd_subword_q.p}) and a higher accuracy in \val{lang.static_better.ft_kd_subword_q} (Wilcoxon $p$ \val{lang.wilcoxon.ft_kd_subword_q.p}). Against TF-IDF + SVM it has a higher macro-F1 in \val{lang.static_better_macro.tfidf_svm_kd} of \val{lang.n} languages (Wilcoxon $p$ \val{lang.wilcoxon_macro.tfidf_svm_kd.p}), but a higher accuracy in only \val{lang.static_better.tfidf_svm_kd} and a lower accuracy in \val{lang.static_worse.tfidf_svm_kd} (Wilcoxon $p$ \val{lang.wilcoxon.tfidf_svm_kd.p}). The advantage over TF-IDF + SVM is thus consistent across languages on the main metric, while the per-language accuracies of the two models are close. Against DistilmBERT neither metric differs consistently across languages (Wilcoxon $p$ \val{lang.wilcoxon_macro.distilmbert_kd.p} for macro-F1 and \val{lang.wilcoxon.distilmbert_kd.p} for accuracy). StaticKD beats the teacher in only \val{lang.static_better.teacher} of \val{lang.n} languages (Wilcoxon $p$ \val{lang.wilcoxon.teacher.p}).
+
+By label origin (Table~\ref{tab:groups}, Fig.~\ref{fig:groups}), StaticKD retains \val{grp.label_origin.publishersection.pct} of the teacher score on articles with JSON-LD section labels, \val{grp.label_origin.publishercategor.pct} on publisher categories, and \val{grp.label_origin.humanannotation.pct} on human annotations. By the distillation data of the language, it retains \val{grp.distil_tier.cukup.pct} in languages with sufficient data, \val{grp.distil_tier.sedikit.pct} in languages with little data, and \val{grp.distil_tier.tidakada.pct} in languages with no distillation data at all. On a subset with at most five articles per site and cell (\val{sens.n} articles), the model ranking is \val{sens.rank_same} relative to the full test set (StaticKD \val{sens.statickd}, teacher \val{sens.teacher}).
+
+\TabGroups
+
+Table~\ref{tab:sources} splits the test set by source. On MN-DS, the only source annotated directly with IPTC topics, StaticKD keeps \val{src.mnds.pct} of the teacher score (\val{src.mnds.statickd} against \val{src.mnds.teacher}), and the teacher itself reaches its lowest macro-F1 of all sources there. The lowest retention is on MasakhaNEWS (\val{src.masakhanews.pct}), whose human labels follow a non-IPTC scheme and most of whose African languages are absent from the distillation data. Bangla is also absent from the distillation data. On Bangla news, fastText + KD and TF-IDF + SVM collapse to \val{src.bangla_plos.ft_kd_subword_q} and \val{src.bangla_plos.tfidf_svm_kd}, while StaticKD reaches \val{src.bangla_plos.statickd}. This gap shows the cross-lingual transfer that baselines without pre-trained embeddings lack.
+
+\TabSources
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/fig_groups.pdf}
+\caption{Test macro-F1 by label origin (left) and by the amount of distillation data in the language of the article (right).}
+\label{fig:groups}
+\end{figure*}
+
+\subsection{Validity of the Editorial Labels}
+\label{sec:res-validity}
+Section and category labels record newsroom decisions, so the question is whether they agree with human labels in the same language.
+
+All English cells of the test set are filled with human-labeled sources. As a comparison within the same language, a separate sample of \val{valid.en.silver.n} English CC-NEWS articles with JSON-LD section labels was therefore drawn from \val{valid.en.silver.sites} sites outside the test set, at most 50 per label. The teacher reaches an accuracy of \val{valid.en.silver.acc} on the section labels (macro-F1 \val{valid.en.silver.macro}) and \val{valid.en.human.acc} on the MN-DS and MasakhaNEWS human labels (macro-F1 \val{valid.en.human.macro}). Accuracy on section labels is higher for \val{valid.en.labels_higher} of the 17 labels (Wilcoxon $p$ \val{valid.en.wilcoxon.p}), and the ranking of label difficulty correlates between the two label types ($\rho=\val{valid.en.label_rho}$, $p$ \val{valid.en.label_rho.p}). The hard labels, \emph{society}, \emph{human interest}, and \emph{religion}, are hard under both.
+
+French offers a second comparison inside the test set. The teacher reaches an accuracy of \val{valid.fr.rubrik.acc} on \val{valid.fr.rubrik.n} articles with section labels and \val{valid.fr.anotasi.acc} on \val{valid.fr.anotasi.n} human-labeled MasakhaNEWS articles.
+
+A last check looks at each source category, restricted to languages covered by XLM-R pre-training. The median agreement of the teacher with the mapped label per category is \val{mapcheck.masakhanews.median} for MasakhaNEWS, \val{mapcheck.mnds.median} for MN-DS, \val{mapcheck.l3cube_indic.median} for L3Cube, and \val{mapcheck.ccnews_jsonld.median} for CC-NEWS sections. The lowest agreement occurs for source categories that are broader than their IPTC target. For example, only \val{mapcheck.masakha_politics} of MasakhaNEWS \emph{politics} articles are predicted as \emph{politics}, with \val{mapcheck.masakha_politics.alt} as the main alternative. Agreement is also low for labels whose boundaries are unclear even to human annotators, such as \emph{society} in MN-DS, in line with the low inter-annotator agreement reported for that label~\cite{kuzman2025llm}. Such mismatches reflect differences between the category scheme of a source and IPTC. Since every model is scored against the same labels, comparisons between models are unaffected, and absolute scores read as agreement with the editorial categorization.
+
+\subsection{Ablation, Temperature, and Ensembling (RQ3)}
+\TabAblation
+\TabAblationGroups
+Table~\ref{tab:ablation} gives the contribution of each component with five seeds per variant. Multilingual distillation data matter most. Distilling on EMMediaTopic alone (4 languages) lowers the test macro-F1 by \val{abl.emm_only.test_macro.delta} and the held-out agreement by \val{abl.emm_only.heldout_acc.delta}. Random initialization changes the test macro-F1 by \val{abl.random_init.test_macro.delta} ($p$ \val{abl.random_init.test_macro.p}), so the cross-lingually aligned embeddings account for a large share of the accuracy.
+
+Freezing the embeddings and training only the linear head on top of potion lowers the development score by \val{abl.frozen.dev_macro.delta} ($p$ \val{abl.frozen.dev_macro.p}) and the held-out agreement by \val{abl.frozen.heldout_acc.delta} ($p$ \val{abl.frozen.heldout_acc.p}). On the test set the same variant raises macro-F1 by \val{abl.frozen.test_macro.delta} ($p$ \val{abl.frozen.test_macro.p}). Table~\ref{tab:ablation-groups} shows that this gain comes from languages with little distillation data (\val{ablgrp.frozen.sedikit.delta}) and with none (\val{ablgrp.frozen.tidakada.delta}). In data-rich languages the frozen embeddings are weaker (\val{ablgrp.frozen.cukup.delta}).
+
+Hard teacher labels change the test macro-F1 by \val{abl.hard.test_macro.delta} ($p$ \val{abl.hard.test_macro.p}) and the development score by \val{abl.hard.dev_macro.delta} ($p$ \val{abl.hard.dev_macro.p}), so they do not differ from soft labels. Reducing the data to 130 thousand documents changes the test macro-F1 by \val{abl.data130k.test_macro.delta} ($p$ \val{abl.data130k.test_macro.p}), removing token dropout by \val{abl.no_tdrop.test_macro.delta} ($p$ \val{abl.no_tdrop.test_macro.p}), and an MLP head that cannot be folded by \val{abl.mlp.test_macro.delta} ($p$ \val{abl.mlp.test_macro.p}).
+
+Fig.~\ref{fig:temperature} shows the effect of temperature. Compared with $\tau=1$, the common choice $\tau=2$~\cite{hinton2015distilling} lowers the held-out agreement by \val{abl.tau2.heldout_acc.delta} ($p$ \val{abl.tau2.heldout_acc.p}). Its changes on the test macro-F1 (\val{abl.tau2.test_macro.delta}, $p$ \val{abl.tau2.test_macro.p}) and on the development set (\val{abl.tau2.dev_macro.delta}, $p$ \val{abl.tau2.dev_macro.p}) are not significant. With $\tau=4$ all three metrics drop, and on the test set the drop is \val{abl.tau4.test_macro.delta} ($p$ \val{abl.tau4.test_macro.p}). None of the four exploratory variants improves the test set: bigram hashing \val{abl.bigram.test_macro.delta}, idf pooling \val{abl.idf.test_macro.delta}, confidence weights \val{abl.conf.test_macro.delta}, and cross-entropy on GPT-4o labels \val{abl.gpt_ce.test_macro.delta}.
+
+Growing the ensemble from one to three seeds moves the test macro-F1 from \val{ens.k1.test_macro} to \val{ens.k3.test_macro} and the held-out agreement from \val{ens.k1.heldout_acc} to \val{ens.k3.heldout_acc} (Fig.~\ref{fig:ensemble}). Ten seeds give \val{ens.k10.test_macro}. The gain is small, but it costs nothing at inference time because every ensemble size is still one table.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig_temperature.pdf}
+\caption{Effect of the distillation temperature. Each dot is one seed; the line connects the means.}
+\label{fig:temperature}
+\end{figure*}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.85\columnwidth]{figures/fig_ensemble_size.pdf}
+\caption{Effect of the table ensemble size (mean $\pm$ standard deviation over seed combinations).}
+\label{fig:ensemble}
+\end{figure}
+
+\subsection{CPU Efficiency (RQ1)}
+\label{sec:res-eff}
+\TabEff
+Table~\ref{tab:eff} and Figs.~\ref{fig:tradeoff} and~\ref{fig:latency} show the efficiency of all models. In PyTorch fp32 the teacher needs \val{eff.teacher.latency_ms_p50_1c}~ms per article on one core, with a throughput of \val{eff.teacher.docs_per_sec_1c} articles per second. Its best CPU configuration, ONNX int8, needs \val{eff.teacher_onnx_int8.latency_ms_p50_1c}~ms with a throughput of \val{eff.teacher_onnx_int8.docs_per_sec_1c} articles per second. Classifying one million articles per day would take \val{eff.teacher_onnx_int8.cores1M} cores (ONNX int8) to \val{eff.teacher.cores1M} cores (PyTorch) for this step alone.
+
+StaticKD needs \val{eff.statickd.latency_ms_p50_1c}~ms per article and processes \val{eff.statickd.docs_per_sec_1c} articles per second per core. This is about \val{eff.statickd.speedup_onnx} times faster than the ONNX int8 teacher, \val{eff.statickd.speedup_pt} times faster than the PyTorch teacher, and \val{eff.speed_vs_minilm} times faster than MiniLM-L6. Its file is \val{eff.size_ratio_onnx} times smaller than the ONNX int8 teacher, and one million articles per day need \val{eff.statickd.cores1M} cores. Its model RAM is \val{eff.statickd.ram}~MB, mostly for the tokenizer structure. The compact variant reduces it to \val{eff.statickd_compact.ram}~MB. With one thread, tokenization (\val{prof.statickd.tokens} tokens per article on average) takes \val{prof.statickd.tokshare} of the prediction time, while table pooling alone runs at \val{prof.statickd.pool_dps} articles per second. The speed limit of StaticKD is thus set by the tokenizer implementation.
+
+StaticKD is not the fastest model in the table. The quantized fastText + KD is slightly faster (\val{eff.ft_kd_subword_q.docs_per_sec_1c} articles per second), smaller (\val{eff.ft_kd_subword_q.size}~MB), and uses less RAM (\val{eff.ft_kd_subword_q.ram}~MB), but its test macro-F1 is \val{ft_kd_subword_q.test.macro} against \val{statickd.test.macro} for StaticKD. Among the models with comparable latency, namely StaticKD, its compact variant, fastText, and TF-IDF + SVM, StaticKD is the most accurate (Fig.~\ref{fig:tradeoff}).
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_tradeoff.pdf}
+\caption{Test macro-F1 on the unified test set against single-core CPU throughput (log scale).}
+\label{fig:tradeoff}
+\end{figure}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig_latency_ram_size.pdf}
+\caption{Latency per article, model RAM, and file size (log scale).}
+\label{fig:latency}
+\end{figure*}
+
+\subsection{Analysis by Language and Label (RQ4)}
+\TabFactors
+The median per-language accuracy gap between StaticKD and the teacher is \val{lang.gap.median} (Fig.~\ref{fig:lang}). On the held-out set (\val{fac.langs} languages with at least 20 documents), the agreement of StaticKD correlates with the log amount of distillation data ($\rho=\val{fac.data.rho}$, $p$ \val{fac.data.p}) and with teacher confidence ($\rho=\val{fac.conf.rho}$, $p$ \val{fac.conf.p}), but does not differ across scripts (Kruskal--Wallis $H=\val{fac.kw.H}$, $p$ \val{fac.kw.p}; Table~\ref{tab:factors}). On languages outside XLM-R pre-training that are also absent from the distillation data (\val{lang.outxlmr.langs}), StaticKD reaches a mean accuracy of only \val{lang.outxlmr.static_acc}, while the teacher reaches \val{lang.outxlmr.teacher_acc}.
+
+In \val{lang.vlowcov.n} languages (\val{lang.vlowcov.langs}), fewer than half of the token occurrences belong to tokens seen at least 10 times in the distillation data (at most \val{lang.vlowcov.cov_max}). StaticKD still reaches a mean accuracy of \val{lang.vlowcov.static_acc} in these languages (teacher \val{lang.vlowcov.teacher_acc}). The compact variant removes those tokens from the tokenizer, and its accuracy in these languages falls to \val{lang.vlowcov.compact_acc}. In the remaining languages the compact variant reaches \val{lang.restcov.compact_acc} against \val{lang.restcov.static_acc} for the full StaticKD. Section~\ref{sec:discussion} discusses the mechanism behind this pattern.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig_per_language.pdf}
+\caption{Left: StaticKD accuracy against teacher accuracy per test language (color shows the distillation data of the language, size the number of articles). Right: held-out agreement per language against the amount of distillation data for StaticKD and fastText + KD.}
+\label{fig:lang}
+\end{figure*}
+
+Per label (Fig.~\ref{fig:label}), the hardest labels for StaticKD are \val{label.hardest}, and the easiest are \val{label.easiest}. The largest gaps to the teacher occur for \val{label.biggest_gap}, and the most frequent confusions are \val{label.top_confusions}.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig_per_label.pdf}
+\caption{F1 per label on the test set (left) and the StaticKD confusion matrix normalized per reference label (right).}
+\label{fig:label}
+\end{figure*}
+
+\subsection{Calibration and Cascade Mode}
+\TabCascade
+The ECE of StaticKD is \val{ece.statickd.dev} on the development set and \val{ece.statickd.test} on the test set, lower than that of the teacher (\val{ece.teacher.dev} and \val{ece.teacher.test}). Both models become overconfident on the test set, which lies outside the training distribution (Fig.~\ref{fig:calib}). In cascade mode, StaticKD decides the articles on which its confidence is at least $\theta$ and sends the rest to the teacher (Table~\ref{tab:cascade}). With $\theta=0.8$, StaticKD decides \val{casc.08.coverage} of the articles with an accuracy of \val{casc.08.acc_covered}. The cascade reaches an overall accuracy of \val{casc.08.accuracy} and a macro-F1 of \val{casc.08.macro_f1}, against \val{casc.101.accuracy} and \val{casc.101.macro_f1} for the teacher alone, at an effective throughput of \val{casc.08.docs_per_sec} articles per second per core against \val{casc.101.docs_per_sec}. Sending about two fifths of the articles to the teacher is enough for the cascade to match the teacher accuracy.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.8\columnwidth]{figures/fig_calibration.pdf}
+\caption{Reliability diagram of StaticKD on the development and test sets.}
+\label{fig:calib}
+\end{figure}

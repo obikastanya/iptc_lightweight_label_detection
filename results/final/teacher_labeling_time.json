@@ -1,0 +1,12 @@
+{
+ "n_docs": 5000,
+ "seconds": 99.73,
+ "docs_per_sec": 50.13,
+ "pool_docs": 285999,
+ "estimated_pool_hours": 1.58,
+ "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+ "fp16": true,
+ "batch_size": 16,
+ "argmax_agreement_with_stored": 1.0,
+ "max_abs_logit_diff": 0.111328125
+}

@@ -1,0 +1,139 @@
+AI TEXT CRITERIA TO BE AVOIDED
+==============================
+
+Tujuan: panduan untuk agent yang menulis atau merevisi naskah paper (jurnal_latex/).
+Setiap kalimat yang ditulis harus terdengar seperti tulisan peneliti, bukan keluaran
+LLM. Pakai bersama paper_quality_check.md: checklist itu menentukan ISI, file ini
+menentukan GAYA.
+
+Aturan utama:
+- Satu pola di bawah belum tentu salah. Yang harus dihindari adalah penumpukan pola.
+- Setiap klaim harus spesifik: angka, nama dataset, nama baseline, nama metrik.
+- Kalau ragu antara kalimat "indah" dan kalimat lugas, pilih yang lugas.
+- Setelah menulis satu bagian, baca ulang dengan daftar cek di bagian 8.
+
+
+1. PILIHAN KATA YANG DIHINDARI
+------------------------------
+Kata-kata ini frekuensinya melonjak di paper sejak LLM banyak dipakai
+(Kobak et al., "Delving into ChatGPT usage in academic writing through excess
+vocabulary"; Liang et al., ICML 2024). Jangan dipakai kecuali benar-benar tepat
+makna dan tidak ada padanan yang lebih sederhana.
+
+Bahasa Inggris (abstrak, istilah, kutipan):
+  delve, intricate, pivotal, underscore, showcase, leverage (sebagai kata kerja umum),
+  seamless, robust (tanpa uji robustness), comprehensive, meticulous, commendable,
+  notably, multifaceted, paramount, landscape, realm, tapestry, shed light on,
+  pave the way, a testament to, harness, unlock, elevate, crucial role, game-changer,
+  cutting-edge, groundbreaking, in today's fast-paced world, it is worth noting that
+
+Bahasa Indonesia:
+  Hindari                                  Ganti dengan
+  "memainkan peran krusial/penting"        sebutkan perannya secara langsung
+  "menyoroti" / "menggarisbawahi"          "menunjukkan", atau langsung sebut temuannya
+  "lanskap penelitian"                     "penelitian tentang X"
+  "komprehensif", "holistik"               sebutkan cakupannya (mis. "17 kelas, 3 domain")
+  "memberikan wawasan berharga"            sebutkan wawasannya
+  "membuka jalan bagi"                     "memungkinkan X" atau hapus
+  "secara signifikan"                      hanya bila ada uji statistik; sertakan p/CI
+  "inovatif", "mutakhir", "revolusioner"   hapus; biarkan hasil yang berbicara
+  "sangat efektif", "sangat efisien"       angka: "F1 0,xx", "34 MB", "xxx dok/s"
+  "mulus" (seamless), "tangguh" (robust)   jelaskan kondisi ujinya
+  "di era digital saat ini"                hapus; mulai langsung dari masalah
+  "perlu dicatat bahwa", "penting untuk    hapus; tulis faktanya saja
+   dicatat bahwa"
+
+
+2. STRUKTUR KALIMAT YANG DIHINDARI
+---------------------------------
+- Panjang kalimat seragam. Campur kalimat pendek (5-10 kata) dengan kalimat panjang.
+- Pola tiga hal berulang ("efisien, akurat, dan skalabel"). Sebut jumlah yang memang ada.
+- "Tidak hanya X, tetapi juga Y" / "Bukan sekadar X, melainkan Y" / "not only... but also".
+  Maksimal sekali di seluruh naskah, lebih baik tidak sama sekali.
+- Setiap kalimat diawali kata transisi (Selain itu, Lebih lanjut, Dengan demikian,
+  Oleh karena itu, Furthermore, Moreover, Additionally). Paling banyak satu per paragraf.
+- Em-dash (—) dan titik dua berlebihan. Pakai titik dan kalimat baru.
+- Paragraf ditutup kalimat rangkuman ("Secara keseluruhan, ...", "Overall, ...",
+  "Hal ini menunjukkan pentingnya ..."). Akhiri dengan fakta atau implikasi spesifik.
+- Pertanyaan retoris ("Namun, bagaimana jika ...?").
+- Kalimat pasif bertumpuk yang menyembunyikan pelaku. Tulis "kami melatih ..." bila
+  jelas siapa pelakunya.
+
+
+3. POLA PARAGRAF DAN WACANA YANG DIHINDARI
+------------------------------------------
+- Semua paragraf berpola sama: kalimat topik, tiga poin, kalimat kesimpulan.
+- Penanda arah tanpa isi ("Pada bagian ini, kami akan membahas ..."). Cukup satu kalimat
+  peta di akhir Pendahuluan; bagian lain langsung ke isi.
+- Mengulang gagasan yang sama dengan kata lain dalam paragraf yang sama.
+- Hedging berlapis ("berpotensi dapat mungkin meningkatkan"). Satu tingkat hedging saja,
+  dan hanya bila memang tidak pasti.
+- Nada selalu positif dan seimbang. Sebut kelemahan dengan tegas dan spesifik.
+- Klaim umum tanpa rujukan atau angka ("model transformer sangat populer").
+
+
+4. CIRI KHUSUS PAPER YANG WAJIB DIHINDARI
+-----------------------------------------
+- Sitasi halusinasi: paper tidak ada, DOI salah, tahun/venue/penulis keliru.
+  Setiap entri .bib harus bisa diverifikasi (DOI, arXiv ID, atau URL resmi).
+- Sitasi yang tidak mendukung klaim: jangan mengutip paper hanya karena judulnya cocok.
+- Angka tidak konsisten antara abstrak, teks, tabel, dan gambar. Ambil angka dari
+  jurnal_latex/generated/ atau results/, jangan diketik ulang dari ingatan.
+- Kontribusi generik ("kami mengusulkan kerangka kerja baru yang secara signifikan
+  meningkatkan performa"). Tulis: metode apa, dibanding baseline apa, naik berapa,
+  pada data apa.
+- Tinjauan pustaka berupa daftar ringkasan ("A et al. melakukan X. B et al. melakukan
+  Y."). Kelompokkan per pendekatan, bandingkan, lalu tunjukkan celahnya.
+- Limitasi dan saran klise ("penelitian selanjutnya dapat menggunakan dataset lebih
+  besar"). Tulis limitasi yang spesifik untuk studi ini dan konsekuensinya.
+- "To the best of our knowledge" / "sepengetahuan kami": maksimal sekali, hanya untuk
+  klaim kebaruan yang sudah dicek ke literatur.
+- Detail teknis yang hilang: hyperparameter, seed, hardware (CPU, jumlah thread),
+  ukuran tiap split. Ketiadaan detail adalah tanda tulisan generik.
+- Artefak keluaran LLM: "Certainly! Here is ...", "As an AI language model",
+  "[insert citation]", "[citation needed]", "as of my knowledge cutoff", "Berikut
+  adalah ...", placeholder "XX", "TODO".
+
+
+5. FORMAT YANG DIHINDARI
+------------------------
+- Bullet point di bagian yang seharusnya prosa (Pendahuluan, Tinjauan Pustaka,
+  Pembahasan). Daftar hanya untuk kontribusi atau langkah prosedur bila memang perlu.
+- Label tebal di tengah paragraf ("\textbf{Efisiensi:} ...").
+- Sisa markdown di file .tex: **, ##, `kode`, emoji.
+- Judul subbab yang tidak mengikuti template IEEE (Title Case acak, judul berupa
+  kalimat panjang atau pertanyaan).
+- Tanda kutip dan karakter Unicode yang tidak dikonversi ke LaTeX (“ ” — …).
+
+
+6. CATATAN TENTANG DETEKTOR AI
+------------------------------
+Detektor (GPTZero, Turnitin AI, Originality.ai, Binoculars, DetectGPT) mengukur
+perplexity dan burstiness rendah. Detektor sering salah menandai tulisan penulis
+non-native English (Liang et al., 2023, Patterns, "GPT detectors are biased against
+non-native English writers"). Tujuan file ini bukan mengakali detektor, tetapi
+menghasilkan tulisan yang spesifik, jujur, dan dapat diverifikasi.
+
+
+7. KEBIJAKAN IEEE
+-----------------
+IEEE mewajibkan pengungkapan penggunaan konten hasil AI (teks, gambar, kode) di
+bagian Acknowledgment, termasuk bagian mana dan alat apa yang dipakai. Perbaikan tata
+bahasa dan penyuntingan ringan dianggap praktik umum di luar inti kebijakan ini, tetapi
+pengungkapannya tetap direkomendasikan. Agent tidak
+boleh menghapus atau melewatkan pernyataan ini bila ada bagian yang disusun dengan
+bantuan AI.
+
+
+8. DAFTAR CEK SETELAH MENULIS SATU BAGIAN
+-----------------------------------------
+[ ] Tidak ada kata dari daftar di bagian 1 (atau ada alasan kuat untuk memakainya).
+[ ] Kata transisi di awal kalimat paling banyak satu per paragraf.
+[ ] Tidak ada "tidak hanya ... tetapi juga" / "not only ... but also".
+[ ] Panjang kalimat bervariasi.
+[ ] Paragraf tidak ditutup kalimat rangkuman generik.
+[ ] Setiap klaim punya angka, rujukan, atau lokasi evidence.
+[ ] Semua angka sama dengan sumber di generated/ atau results/.
+[ ] Semua sitasi ada di .bib dan dapat diverifikasi.
+[ ] Tidak ada artefak LLM, placeholder, sisa markdown, atau emoji.
+[ ] Limitasi dan saran spesifik untuk studi ini.

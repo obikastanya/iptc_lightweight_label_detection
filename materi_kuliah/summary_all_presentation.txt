@@ -1,0 +1,219 @@
+
+Resume AI: 1_Scientific_Research_Roadmap.pptx
+✕
+🔹 Slide 1
+Metodologi Penelitian: Peta Jalan Menuju Kebenaran Ilmiah.
+
+🔹 Slide 2
+Definisi Penelitian: Usaha sistematis untuk mencari kebenaran, bukan sekadar membenarkan kebiasaan. Karakteristik: Sistematis, Logis, Empiris, Objektif.
+
+🔹 Slide 3
+Kontrak Kuliah: 40% UTS, 20% UAS, 30% Tugas/Diskusi, 10% Sikap. Goal Akhir: Proposal Penelitian.
+
+🔹 Slide 4
+3 Prinsip Etik Dasar: Respect for Persons (Informed Consent), Beneficence (Do No Harm), Justice (Keadilan).
+
+🔹 Slide 5
+Zona Bahaya: Fabrikasi (mengarang data), Falsifikasi (manipulasi data), Plagiarisme (mengambil karya tanpa kredit).
+
+🔹 Slide 6
+Metodologi (Strategy) vs Metode (Tools). Metodologi menjawab 'Mengapa', Metode menjawab 'Apa alatnya'.
+
+🔹 Slide 7
+Menentukan Ruang Lingkup (Scope): Berdasarkan Urgensi, Ketersediaan Data, dan Feasibility.
+
+🔹 Slide 8
+Roadmap Skripsi: Studi Literatur -> Penulisan Proposal -> Pengambilan Data -> Analisis -> Sidang & Revisi.
+
+
+🔹 Slide 1
+Metodologi Penelitian: Perjalanan dari Rasa Ingin Tahu Menuju Fakta Ilmiah.
+
+🔹 Slide 2
+Hakikat Penelitian: Jembatan dari Pengetahuan (Common Sense) menuju Ilmu (Science). Bukan sekadar menduga, tapi membuktikan.
+
+🔹 Slide 3
+Komponen Paradigma: Ontologi (Apa yang nyata?), Epistemologi (Bagaimana kita tahu?), Metodologi (Teknik & Prosedur).
+
+🔹 Slide 4
+Jalur Kuantitatif (Positivisme): Deduktif (Teori -> Data), Objektif, bertujuan untuk Generalisasi & Hubungan Sebab-Akibat.
+
+🔹 Slide 5
+Jalur Kualitatif (Interpretivisme): Induktif (Fakta -> Teori), Subjektif, bertujuan untuk Pemahaman Mendalam (Thick Description).
+
+🔹 Slide 6
+Mixed Methods (Pragmatisme): Menggabungkan Kuantitatif dan Kualitatif untuk triangulasi (validasi & melengkapi).
+
+🔹 Slide 7
+Strategi Mixed Methods: Sequential Explanatory, Sequential Exploratory, dan Concurrent.
+
+🔹 Slide 8
+Peta Jalan: Identifikasi Masalah -> Kajian Pustaka -> Menentukan Metode -> Pengumpulan Data -> Analisis -> Kesimpulan.
+
+🔹 Slide 1
+Mastering Research Methodology: Dari Rumusan Masalah Menuju Publikasi Ilmiah.
+
+🔹 Slide 2
+Masalah Penelitian: Kesenjangan (GAP) antara Kondisi Ideal (Das Sollen) dan Kondisi Faktual (Das Sein).
+
+🔹 Slide 3
+Rumusan Masalah (Statement) vs Pertanyaan Penelitian (Question). RM menjelaskan akar isu, PP adalah pintu masuk mencari jawaban.
+
+🔹 Slide 4
+Formula 3 Langkah Problem Statement: Konteks (situasi) + Urgensi (mengapa penting) + Tujuan (apa yang dicapai).
+
+🔹 Slide 5
+Research Gap: Menemukan celah yang belum dijawab peneliti sebelumnya (signals: However, Little is known, Not addressed).
+
+🔹 Slide 6
+Manajemen Referensi: Gunakan Mendeley atau Zotero untuk repository terpusat, integrasi MS Word, dan urutan otomatis.
+
+🔹 Slide 7
+Kualitas Referensi: Minimal 30% pustaka harus dari Jurnal Ilmiah bereputasi (Scopus Q1-Q4 atau Sinta 1-2).
+
+🔹 Slide 8
+Quality Control: Cek Similarity (Turnitin/iThenticate) dengan target aman < 25%.
+
+🔹 Slide 9
+Workflow Peneliti Cerdas: Draft -> Kelola Referensi -> Cek Plagiasi -> Parafrase -> Submit Publikasi.
+
+🔹 Slide 1
+Peta Menuju Kebaruan Riset: Panduan SLR & State of the Art (SotA).
+
+🔹 Slide 2
+Komponen Kebaruan: Literature Review (Analisis kritis) -> SotA (Peta posisi saat ini) -> Research Gap (Celah kosong) -> Novelty (Kontribusi Anda).
+
+🔹 Slide 3
+Systematic Literature Review (SLR): Beralih dari opini subjektif ke bukti ilmiah yang objektif, transparan, dan reproducible.
+
+🔹 Slide 4
+3 Fase SLR: 1. Planning (PICO & Protokol) 2. Conducting (Search & Screening) 3. Reporting (Temuan & Future Work).
+
+🔹 Slide 5
+Framework PICO: Population (Masalah), Intervention (Solusi), Comparison (Pembanding), Outcome (Hasil).
+
+🔹 Slide 6
+Strategi Pencarian (The Hunt): Gunakan Database (Lens.org/Scopus) dan Operator Boolean (AND, OR, NOT).
+
+🔹 Slide 7
+PRISMA Flow: Diagram seleksi dari Identification -> Screening -> Eligibility -> Included.
+
+🔹 Slide 8
+Jenis Research Gap: Evidence Gap, Knowledge Gap, Practical-Knowledge Gap, Methodological Gap, Empirical Gap, Theoretical Gap, Population Gap.
+
+🔹 Slide 9
+Template Kalimat Novelty: 'Karena penelitian A, B, C hanya fokus pada X... maka penelitian ini menawarkan [NOVELTY] untuk mengisi celah tersebut.'
+
+Resume AI: 5_Research_and_Publication_Roadmap.pptx
+✕
+🔹 Slide 1
+Metodologi Penelitian & Manajemen Referensi: Dari Hipotesis hingga Publikasi.
+
+🔹 Slide 2
+Definisi Hipotesis: Jawaban sementara terhadap masalah penelitian yang lahir dari TEORI (bukan jatuh dari langit).
+
+🔹 Slide 3
+Variabel Penelitian: Sesuatu yang nilainya berubah/bervariasi. Jembatan antara teori abstrak dengan data terukur di dunia nyata.
+
+🔹 Slide 4
+Hubungan Variabel: Variabel Bebas (Independent/Sebab) -> Variabel Terikat (Dependent/Akibat).
+
+🔹 Slide 5
+Dari Variabel ke Indikator: Menurunkan variabel menjadi alat ukur spesifik untuk menyusun pertanyaan kuesioner.
+
+🔹 Slide 6
+Desain Penelitian (Rencana Permainan): Desain Tetap (Kuantitatif) vs Desain Fleksibel (Kualitatif).
+
+🔹 Slide 7
+Penelitian Eksperimen: Mencari sebab-akibat dengan manipulasi pada situasi terkontrol.
+
+🔹 Slide 8
+Gaya Sitasi: Harvard Style (Nama, Tahun) vs ACM Style [Angka].
+
+🔹 Slide 9
+Target Akhir Publikasi S2: Nilai A (Journal Scopus Q1-Q4 / Sinta 1-2), Nilai AB (Seminar Internasional / Sinta 3-4).
+
+Resume AI: 6_Research_Roadmap.pptx
+✕
+🔹 Slide 1
+Peta Jalan Peneliti: Dari Rasa Ingin Tahu Menuju Penemuan Ilmiah.
+
+🔹 Slide 2
+Metodologi (Strategi) vs Metode (Teknis). Analogi: Ilmu gizi/Resep (Metodologi) vs Teknik memotong/Alat masak (Metode).
+
+🔹 Slide 3
+Checklist Kualitas Masalah: Menarik minat, Data tersedia, dan Bermanfaat.
+
+🔹 Slide 4
+Kuantitatif: Fokus Angka & Generalisasi (Broad & Shallow). Kualitatif: Fokus Makna & Eksplorasi (Narrow & Deep).
+
+🔹 Slide 5
+Desain Eksperimen: Mencari Sebab-Akibat (Aroma Parfum Test case). Ada Variabel Bebas, Terikat, dan Kontrol.
+
+🔹 Slide 6
+Struktur Kuesioner Efektif: 1. Pengantar 2. Screening 3. Pertanyaan Inti (Skala Likert) 4. Data Demografi.
+
+🔹 Slide 7
+Populasi & Sampel: Teknik Random (Acak) untuk generalisasi vs Teknik Purposive (Bertujuan) untuk kedalaman.
+
+🔹 Slide 8
+Validitas (Akurasi): Mengukur apa yang seharusnya diukur. Reliabilitas (Konsistensi): Hasil tetap sama jika diulang.
+
+🔹 Slide 9
+Analis Data: Mengolah angka (Statistik) atau kata (Coding/Thematic).
+
+Resume AI: 7_The_Research_Kitchen.pptx
+✕
+🔹 Slide 1
+Metodologi Penelitian: Dapur Pengolah Data Menjadi Makna.
+
+🔹 Slide 2
+Tahapan: 1. Siapkan Alat (Instrumen) 2. Kumpulkan Bahan (Data) 3. Uji Kualitas (Validitas) 4. Sajikan (Diskusi).
+
+🔹 Slide 3
+Skala Pengukuran: Skala Likert (Tingkat kesetujuan 1-5) dan Skala Guttman (Jawaban tegas Ya/Tidak).
+
+🔹 Slide 4
+Teknik Pengumpulan: Data Primer (Langsung: Kuesioner, Wawancara) vs Data Sekunder (Dokumen, Rekam Medis).
+
+🔹 Slide 5
+Triangulasi Data: Mengecek kebenaran dari berbagai sudut (Sumber, Metode, Waktu).
+
+🔹 Slide 6
+Uji Validitas: Korelasi Pearson (r-hitung > r-tabel dianggap valid).
+
+🔹 Slide 7
+Uji Reliabilitas: Cronbach's Alpha > 0.6 dianggap andal/konsisten.
+
+🔹 Slide 8
+Pengolahan Data: Editing -> Coding -> Entry -> Cleaning.
+
+🔹 Slide 9
+Bab Diskusi: Interpretasi temuan, Bandingkan dengan teori, dan tentukan posisi penelitian terhadap riset terdahulu.
+Resume AI: 8_Sempro_Success_Blueprint.pptx
+✕
+🔹 Slide 1
+Strategi Tembus Seminar Proposal (SEMPRO): Menaklukkan Bab 1-3.
+
+🔹 Slide 2
+Sempro vs Sidang Skripsi: Sempro memvalidasi rencana (kelayakan), Sidang Skripsi mempertanggungjawabkan hasil (validitas data).
+
+🔹 Slide 3
+Segitiga Emas Logika Penelitian: Koneksi kuat antara Masalah (Why), Teori (What), dan Metode (How).
+
+🔹 Slide 4
+Bab 1: Pendahulan. Harus menunjukkan GAP nyata antara Harapan vs Kenyataan menggunakan data awal.
+
+🔹 Slide 5
+Bab 2: Tinjauan Pustaka sebagai FONDASI. Referensi terbaru 3-5 tahun terakhir.
+
+🔹 Slide 6
+Bab 3: Metode sebagai ALAT KERJA. Harus pas dan transparan agar riset bisa direplikasi.
+
+🔹 Slide 7
+7 Pertanyaan Maut Sempro: Alasan judul, Rumusan masalah, Validitas masalah, Teori yang dipakai, Subjek penelitian, Metode, dan Teknik data.
+
+🔹 Slide 8
+Tips Slide: Visual > Teks, Maks 15 Slide, Hindari Wall of Text. Mantra: 'Ini diskusi ilmiah, bukan interogasi.'
+
+👤 obi kastanya

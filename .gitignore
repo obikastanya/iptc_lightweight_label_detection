@@ -83,3 +83,12 @@ models/**/*.onnx_data
 models/**/sentencepiece.bpe.model
 # release folders are build output (scripts/build_dist.py); pushed/uploaded separately
 dist/
+
+# Final paper (jurnal_final/): LaTeX build artifacts; main.pdf is kept like jurnal_latex/
+jurnal_final/*.aux
+jurnal_final/*.bbl
+jurnal_final/*.blg
+jurnal_final/*.out
+jurnal_final/*.synctex.gz
+# IEEE Access template (contains licensed fonts; download again from ieeeaccess.ieee.org)
+research_final/template_ieeeaccess/

@@ -1,0 +1,18 @@
+{
+ "date": "2026-10-17",
+ "reviewer": "Obi Kastanya (author)",
+ "file": "research_final/mapping_review.xlsx",
+ "mapping_source": "src/statickd/testset/iptc_map.py",
+ "result": "all rules accepted, no changes",
+ "mapped_names": {
+  "total": 814,
+  "auto_accepted_identical_or_plural": 48,
+  "accepted_by_reviewer": 766,
+  "rejected": 0
+ },
+ "other_rules": {
+  "total": 102,
+  "accepted": 102,
+  "rejected": 0
+ }
+}

@@ -61,29 +61,47 @@ def tokenize(texts: list[str], mode: str) -> list[str]:
 
 
 # ----------------------------------------------------------------------------- fastText
-def train_fasttext(texts: list[str], labels: np.ndarray, out: Path, tokens: str = "subword",
-                   dim: int = 100, epoch: int = 15, lr: float = 0.5, word_ngrams: int = 2,
-                   quantize: bool = False, threads: int = 8, seed: int = 0) -> Path:
-    """Supervised fastText (Joulin et al., 2017) on hard labels (GPT-4o or teacher arg-max)."""
-    import fasttext
-
-    docs = tokenize(texts, tokens)
+def fasttext_train_file(docs: list[str], labels: np.ndarray, seed: int = 0) -> str:
+    """Write tokenised documents in fastText's supervised format (shuffled) and return the file path."""
     lines = [f"__label__{int(y)} {d}" for d, y in zip(docs, labels)]
     np.random.default_rng(seed).shuffle(lines)
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf8") as f:
         f.write("\n".join(lines) + "\n")
-        train_path = f.name
-    model = fasttext.train_supervised(
+        return f.name
+
+
+def fit_fasttext(train_path: str, tokens: str, dim: int = 100, epoch: int = 15, lr: float = 0.5,
+                 word_ngrams: int = 2, threads: int = 8, seed: int = 0):
+    """Supervised fastText (Joulin et al., 2017) on a training file from fasttext_train_file."""
+    import fasttext
+
+    return fasttext.train_supervised(
         input=train_path, dim=dim, epoch=epoch, lr=lr, wordNgrams=word_ngrams,
         minn=2 if tokens == "word" else 0, maxn=5 if tokens == "word" else 0,
         bucket=2_000_000, loss="softmax", thread=threads, seed=seed, verbose=0)
+
+
+def fasttext_predict(model, docs: list[str]) -> np.ndarray:
+    """Arg-max label of tokenised documents (f.predict: NumPy-2-safe path of the fasttext bindings)."""
+    return np.array([int(model.f.predict(d.replace("\n", " "), 1, 0.0, "strict")[0][1].removeprefix("__label__"))
+                     for d in docs])
+
+
+def train_fasttext(texts: list[str], labels: np.ndarray, out: Path, tokens: str = "subword",
+                   dim: int = 100, epoch: int = 15, lr: float = 0.5, word_ngrams: int = 2,
+                   quantize: bool = False, threads: int = 8, seed: int = 0) -> Path:
+    """Supervised fastText (Joulin et al., 2017) on hard labels (GPT-4o or teacher arg-max)."""
+    train_path = fasttext_train_file(tokenize(texts, tokens), labels, seed)
+    model = fit_fasttext(train_path, tokens, dim=dim, epoch=epoch, lr=lr, word_ngrams=word_ngrams,
+                         threads=threads, seed=seed)
     if quantize:
         model.quantize(input=train_path, qnorm=True, retrain=True, cutoff=300_000, thread=threads)
     os.unlink(train_path)
     out = Path(out).with_suffix(".ftz" if quantize else ".bin")
     out.parent.mkdir(parents=True, exist_ok=True)
     model.save_model(str(out))
-    out.with_suffix(".json").write_text(json.dumps({"tokens": tokens, "quantized": quantize}))
+    out.with_suffix(".json").write_text(json.dumps({"tokens": tokens, "quantized": quantize, "dim": dim,
+                                                    "epoch": epoch, "lr": lr, "word_ngrams": word_ngrams}))
     return out
 
 
@@ -108,22 +126,26 @@ class FastTextPredictor:
         return out
 
     def predict(self, texts):
-        docs = [d.replace("\n", " ") for d in tokenize(texts, self.tokens)]
-        return np.array([int(self.model.f.predict(d, 1, 0.0, "strict")[0][1].removeprefix("__label__"))
-                         for d in docs])
+        return fasttext_predict(self.model, tokenize(texts, self.tokens))
 
 
 # ----------------------------------------------------------------------------- TF-IDF + linear SVM
+def tfidf_vectorizer(max_features: int = 1_000_000):
+    """TF-IDF over lower-cased XLM-R subword uni+bigrams (input: space-joined subword tokens)."""
+    from sklearn.feature_extraction.text import TfidfVectorizer
+
+    return TfidfVectorizer(tokenizer=str.split, token_pattern=None, lowercase=False, ngram_range=(1, 2),
+                           min_df=3, max_features=max_features, sublinear_tf=True, dtype=np.float32)
+
+
 def train_tfidf(texts: list[str], labels: np.ndarray, out: Path, max_features: int = 1_000_000,
                 c: float = 0.5, seed: int = 0) -> Path:
     """TF-IDF over lower-cased XLM-R subword uni+bigrams and a linear SVM, the non-neural baseline of
     Kuzman & Ljubesic (TF-IDF + SVC), here trained on the same teacher labels as the students."""
     import joblib
-    from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.svm import LinearSVC
 
-    vec = TfidfVectorizer(tokenizer=str.split, token_pattern=None, lowercase=False, ngram_range=(1, 2),
-                          min_df=3, max_features=max_features, sublinear_tf=True, dtype=np.float32)
+    vec = tfidf_vectorizer(max_features)
     x = vec.fit_transform(subword_tokens(texts))
     clf = LinearSVC(C=c, random_state=seed).fit(x, labels)
     out = Path(out).with_suffix(".joblib")

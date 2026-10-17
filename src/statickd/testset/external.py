@@ -6,7 +6,7 @@ GitHub release; MN-DS from Zenodo.
 
 | source         | languages                          | labels                          | licence      |
 |----------------|------------------------------------|---------------------------------|--------------|
-| masakhanews    | 16 African languages (+ en, fr)    | human-annotated, 7 topics       | CC BY-NC 4.0 |
+| masakhanews    | 16 languages (14 African + en, fr) | human-annotated, 7 topics       | CC BY-NC 4.0 |
 | l3cube_indic   | 10 Indic languages (LDC, full docs)| publisher URL category          | CC BY 4.0    |
 | bangla_plos    | Bengali                            | publisher category              | see HF card  |
 | amharic_news   | Amharic (press.et)                 | publisher category              | CC BY 4.0    |

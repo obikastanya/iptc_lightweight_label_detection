@@ -1,0 +1,85 @@
+% Tables written by hand (TabRelated, TabLicense) or whose rows come from generated/ (TabTestset, TabHparams).
+
+\newcommand{\TabRelated}{%
+\begin{table*}[!t]
+\caption{Position of StaticKD Relative to Related Approaches}
+\label{tab:related}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Approach & Model at inference time & Multilingual & Cross-lingual transfer & No deep learning library & CPU cost reported & IPTC labels \\
+\midrule
+Kuzman \& Ljube\v{s}i\'c~\cite{kuzman2025llm} & XLM-R-large (\val{teacher.params}M parameters) & yes & yes & no & no & yes \\
+LoRA/PEFT~\cite{hu2022lora,razuvayevskaya2024peft} & full transformer backbone & partly & yes & no & no & no \\
+DistilBERT, MiniLMv2~\cite{sanh2019distilbert,wang2021minilmv2} & 6-layer transformer & partly & yes & no & partly & no \\
+Sparse Distillation~\cite{ye2022sparse} & deep averaging network + n-gram table & no (en) & no & yes & yes & no \\
+Model2Vec~\cite{tulkens2024model2vec}, Wada et al.~\cite{wada2025static} & static embeddings, optional MLP classifier & yes & yes & yes & partly & no \\
+fastText~\cite{joulin2017bag} & bag of n-grams & per language & no & yes & yes & no \\
+StaticKD (proposed) & table of 17 logits per token & yes & yes & yes & yes & yes \\
+\bottomrule
+\end{tabular}}
+\end{table*}}
+
+\newcommand{\TabTestset}{%
+\begin{table}[!t]
+\caption{Composition of the Unified Test Set by Source}
+\label{tab:testset}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Source & Label origin & Articles & Languages & Sites/sources \\
+\midrule
+\rows{generated/tab_testset}
+\bottomrule
+\end{tabular}}
+\end{table}}
+
+\newcommand{\TabHparams}{%
+\begin{table}[!t]
+\caption{Hyperparameters of All Models}
+\label{tab:hparams}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}ll@{}}
+\toprule
+Component & Value \\
+\midrule
+\rows{generated/tab_hparams}
+\bottomrule
+\end{tabular}}
+\end{table}}
+
+\newcommand{\TabLicense}{%
+\begin{table}[!t]
+\caption{Licenses of the Assets Used and Released}
+\label{tab:license}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{@{}ll@{}}
+\toprule
+Asset & License \\
+\midrule
+Teacher \texttt{classla/multilingual-IPTC-news-topic-classifier} & CC BY-SA 4.0 \\
+Embeddings \texttt{minishlab/potion-multilingual-128M} & MIT \\
+MasakhaNEWS & CC BY-NC 4.0 \\
+MN-DS, L3Cube-IndicNews, IndoNews, Amharic news & CC BY 4.0 \\
+Bangla news~\cite{hossain2025banglanews} & not stated on the dataset card \\
+EMMediaTopic 1.0 & CC BY-SA 4.0 \\
+CC-News 2019--2021, CC-NEWS 2024--2026 & Common Crawl terms of use \\
+\midrule
+StaticKD code (release) & MIT \\
+StaticKD models (release) & CC BY-SA 4.0 (inherited from the teacher) \\
+Test-set manifest (release) & CC BY-SA 4.0 \\
+\bottomrule
+\end{tabular}}
+\end{table}}

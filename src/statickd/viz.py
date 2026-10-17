@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from statickd.config import ROOT
 
-FIG_DIR = ROOT / "jurnal_latex" / "figures"
+FIG_DIR = ROOT / "results" / "final" / "figures"   # build_paper.py copies the figures the paper uses
 
 # fixed colour per model family (colour-blind safe, Okabe-Ito)
 COLORS = {

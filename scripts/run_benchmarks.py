@@ -1,10 +1,10 @@
 """CPU benchmark of every deployable model in ONE session, each run in a fresh process (1 and 4 cores).
 
-Run it on an otherwise idle machine. Results are appended to results/final/cpu_benchmark.jsonl; the
-notebook keeps the last row per (model, threads).
+Run it on an otherwise idle machine, three times in separate sessions (--run 1, 2, 3). Results are
+appended to results/final/cpu_benchmark.jsonl; the notebook reports the median over runs per (model, threads).
 
 Usage (from the project root):
-    python scripts/run_benchmarks.py [--minilm minilm_kd_t1] [--threads 1 4]
+    python scripts/run_benchmarks.py --run 1 [--minilm minilm_kd_t1] [--threads 1 4]
 """
 import argparse
 import subprocess
@@ -21,6 +21,7 @@ def main() -> None:
     parser.add_argument("--minilm", default="minilm_kd_t1", help="the MiniLM student chosen on the dev set")
     parser.add_argument("--threads", nargs="*", type=int, default=[1, 4])
     parser.add_argument("--only", nargs="*", default=None)
+    parser.add_argument("--run", type=int, required=True, help="repetition id (1, 2, 3)")
     args = parser.parse_args()
     models = {
         "teacher": "teacher-pytorch",
@@ -40,11 +41,11 @@ def main() -> None:
         for threads in args.threads:
             print(f"== {name} ({threads} thread)", flush=True)
             subprocess.run([sys.executable, "-m", "statickd.benchmark", "--model", spec, "--name", name,
-                            "--threads", str(threads)], cwd=ROOT, env=env, check=True)
+                            "--threads", str(threads), "--run", str(args.run)], cwd=ROOT, env=env, check=True)
     for name in ("statickd", "statickd_compact"):   # where does the StaticKD time go?
         if not args.only or name in args.only:
             subprocess.run([sys.executable, "-m", "statickd.benchmark", "--model", models[name], "--name", name,
-                            "--threads", "1", "--profile"], cwd=ROOT, env=env, check=True)
+                            "--threads", "1", "--profile", "--run", str(args.run)], cwd=ROOT, env=env, check=True)
 
 
 if __name__ == "__main__":

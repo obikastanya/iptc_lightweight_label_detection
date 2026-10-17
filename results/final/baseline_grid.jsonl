@@ -1,0 +1,2 @@
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 0.1, "dim": 100, "epoch": 5, "dev_macro_f1": 0.35788, "dev_accuracy": 0.589, "train_seconds": 446.3}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 0.1, "dim": 100, "epoch": 15, "dev_macro_f1": 0.63942, "dev_accuracy": 0.732, "train_seconds": 1312.0}

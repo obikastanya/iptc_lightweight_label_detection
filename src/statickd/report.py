@@ -1,13 +1,12 @@
-"""Export numbers and tables from the notebook to the LaTeX paper, so that no number is typed by hand.
+"""Export numbers and tables from the notebook for the LaTeX paper, so that no number is typed by hand.
 
     numbers = Numbers()
     numbers.add("statickd.test.macro", 0.5447, digits=3)  # -> \\val{statickd.test.macro} = 0,545
-    numbers.write()                                    # jurnal_latex/generated/numbers.tex
-    write_table("main", body_lines)                    # jurnal_latex/generated/tab_main.tex
+    numbers.write()                                    # results/final/paper_generated/numbers.tex
+    write_table("main", body_lines)                    # results/final/paper_generated/tab_main.tex
 
-In main.tex:  \\input{generated/numbers}, and inside a tabular  \\rows{generated/tab_main}  (primitive input,
-see the preamble of main.tex). An unknown key prints a red
-"??" so that a missing number is visible in the PDF. Numbers use Indonesian notation (0,761; 12.744).
+The paper sources in src/paper/ use \\val{key} and \\rows{generated/tab_main}; scripts/build_paper.py turns them
+into the single file jurnal_final/main.tex with literal numbers. Numbers use English notation (0.761; 12,744).
 """
 from __future__ import annotations
 
@@ -17,20 +16,19 @@ from pathlib import Path
 
 from statickd.config import FINAL_DIR, ROOT
 
-LATEX_DIR = ROOT / "jurnal_latex"
-GENERATED_DIR = LATEX_DIR / "generated"
+GENERATED_DIR = FINAL_DIR / "paper_generated"   # read by scripts/build_paper.py
 
 
 def fmt(x, digits: int = 3, sign: bool = False, percent: bool = False) -> str:
-    """Indonesian number format: decimal comma, dot as thousands separator."""
+    """English number format: decimal point, comma as thousands separator."""
     if x is None or (isinstance(x, float) and math.isnan(x)):
         return "--"
     if percent:
         x = 100 * x
     if isinstance(x, int) or (digits == 0):
-        s = f"{int(round(x)):,}".replace(",", ".")
+        s = f"{int(round(x)):,}"
     else:
-        s = f"{abs(x):,.{digits}f}".replace(",", "_").replace(".", ",").replace("_", ".")
+        s = f"{abs(x):,.{digits}f}"
         s = ("-" if x < 0 else "") + s
     if sign and x > 0:
         s = "+" + s
@@ -40,7 +38,7 @@ def fmt(x, digits: int = 3, sign: bool = False, percent: bool = False) -> str:
 
 
 def fmt_p(p: float) -> str:
-    return "$<$0,001" if p < 0.001 else fmt(p, 3)
+    return "$<$0.001" if p < 0.001 else fmt(p, 3)
 
 
 class Numbers:

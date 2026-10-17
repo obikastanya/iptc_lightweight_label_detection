@@ -1,0 +1,130 @@
+\subsection{Study Design}
+Fig.~\ref{fig:pipeline} summarizes the study. The teacher labels a distillation corpus, on which StaticKD and all baselines are trained. A separate test set, whose labels do not come from the teacher, serves for the accuracy evaluation with statistical tests and for the subgroup analyses, and inference cost is measured on CPU. The StaticKD recipe was fixed on the development set \emph{before} the test set was built, and no hyperparameter was selected on the test set. During this exploration, a small check set of 320 CC-News articles in 16 languages, labeled by Claude with the prompt and label descriptions of~\cite{kuzman2025llm}, also served as a secondary signal next to the development set and the held-out agreement. It accompanied the choice of $\tau=1$ and of the three-seed table ensemble, formed from the three seeds run in that phase. LLM labels are too close to the teacher setting to serve as an independent test, so this check set was dropped from the final evaluation.
+
+\begin{figure*}[!t]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, font=\scriptsize, inner sep=3pt, minimum height=8mm},
+  data/.style={box, fill=gray!10},
+  model/.style={box, fill=blue!8},
+  prod/.style={box, fill=green!10},
+  test/.style={box, fill=orange!12},
+  arr/.style={-{Latex[length=1.8mm]}, thick},
+  lab/.style={font=\scriptsize}]
+  \node[data, text width=27mm] (cc)  at (1.4, 0.85)  {CC-News 2019--2021\\\val{data.pool.langs} languages, \val{data.pool.sites} sites};
+  \node[data, text width=27mm] (emm) at (1.4,-0.85)  {EMMediaTopic train\\4 languages, \val{emm.train} docs};
+  \node[model, text width=23mm] (t)  at (4.9, 0)     {Teacher\\XLM-R-large\\\val{teacher.params}M parameters};
+  \node[data, text width=19mm] (soft) at (7.9, 0)    {Teacher logits\\$\mathbf{z}^{T}\in\mathbb{R}^{17}$\\\val{data.pool.docs} docs};
+  \node[model, text width=27mm] (s)  at (11.2, 0)    {Student: tokenizer,\\static embeddings (potion),\\mean, linear};
+  \node[prod, text width=34mm] (tab) at (15.4, 0)    {Table $|V|\times 17$ (fp16)\\$\hat{y}=\arg\max\big(\frac{1}{n}\sum_i T_{t_i}+\mathbf{b}\big)$};
+  \node[test, text width=34mm] (ts) at (15.4, -1.75)  {Unified test set\\\val{ts.docs} docs, \val{ts.langs} languages, editorial labels};
+  \draw[arr] (cc.east)  -- (t.160);
+  \draw[arr] (emm.east) -- (t.200);
+  \draw[arr] (t) -- (soft);
+  \draw[arr] (soft) -- node[lab, above]{KL, $\tau$} (s);
+  \draw[arr] (s) -- node[lab, above]{fold $W$} (tab);
+  \draw[arr] (ts.north) -- (tab.south);
+  \node[lab, text=gray] at (8.0, 1.3) {offline, once (a GPU only speeds it up)};
+  \node[lab, text=gray] at (15.4, 1.3) {production: NumPy, CPU};
+\end{tikzpicture}
+\caption{StaticKD pipeline. The teacher labels an unlabeled news corpus once, offline. The student learns to imitate the teacher distribution, and its linear head is then folded into a token table, so inference only looks up and averages table rows. The final evaluation uses a test set whose labels do not come from the teacher.}
+\label{fig:pipeline}
+\end{figure*}
+
+\subsection{Problem Formulation}
+Given a news article $d$ in any language, consisting of its title and body truncated to the first 512 words as in~\cite{kuzman2025llm}, a model predicts one label $y\in\mathcal{Y}$ among the 17 top-level IPTC topics. The teacher $f_T$ outputs logits $\mathbf{z}^T(d)\in\mathbb{R}^{17}$. The goal is a student $f_S$ whose inference costs $O(n)$ additions for $n$ tokens, without matrix multiplication and without a deep learning library, and whose accuracy against independent labels is as close as possible to that of $f_T$.
+
+\subsection{Distillation Data and Development Set}
+EMMediaTopic 1.0~\cite{emmediatopic2025,kuzman2025llm} contains Catalan, Greek, Croatian, and Slovenian articles labeled by GPT-4o. Its training split (\val{emm.train} articles) is part of the distillation data. Its development split (\val{emm.dev} articles, median \val{emm.dev.words} words) was never used to train the teacher or the student and serves as the development set for choosing the recipe.
+
+The multilingual CC-News corpus~\cite{cloversearch_ccnews} from the 2019--2021 archive was processed with the following steps.
+\begin{enumerate}
+  \item Keep only documents whose metadata language agrees with fastText language identification~\cite{joulin2017bag}.
+  \item Take the title and body with at least 75 words (200 characters for ja, zh, th, my) and truncate to 512 words.
+  \item Keep at most 150 documents per site.
+  \item Form a held-out split by domain: all documents of some sites are set aside, at most 20\% per language.
+  \item Add \val{data.ccextra.docs} documents from training sites only (at most 5,000 per language and 400 per site).
+\end{enumerate}
+The distillation data contain \val{data.pool.docs} documents in \val{data.pool.langs} languages from \val{data.pool.sites} sites, with a median of \val{data.pool.words} words. The held-out split is domain-disjoint within each language. A few multilingual sites (for example bbc.com) also appear in other languages of the distillation data, so their articles were removed. The remaining fidelity set has \val{data.heldout.strict} documents in \val{data.heldout.strict.langs} languages from \val{data.heldout.strict.sites} sites that never occur in the distillation data.
+
+\subsection{Unified Test Set Construction}
+\label{sec:testset}
+The first source is CC-NEWS 2024--2026, sampled as one WARC file per month from January 2024 to August 2026 (32 files) of the Common Crawl CC-NEWS archive~\cite{commoncrawl2026ccnews}. From each page, the schema.org JSON-LD blocks~\cite{guha2016schema} of type \texttt{NewsArticle} and its subtypes were extracted, with the fields \texttt{articleSection}, \texttt{BreadcrumbList}, \texttt{inLanguage}, \texttt{datePublished}, \texttt{isAccessibleForFree}, and \texttt{articleBody}. The text comes from \texttt{articleBody} when it has at least 30 words and is otherwise extracted with Trafilatura~\cite{barbaresi2021trafilatura}. Sites that occur in the distillation data or in another evaluation set were removed, which leaves \val{ts.html_articles} articles from new sites.
+
+The second source is public datasets. MasakhaNEWS~\cite{adelani2023masakhanews} and MN-DS~\cite{petukhova2023mnds} are labeled by humans. L3Cube-IndicNews (LDC split)~\cite{mirashi2023indicnews}, Bangla news~\cite{hossain2025banglanews}, IndoNews~\cite{indonews2021}, Amharic news~\cite{amharicnews2024}, and Swahili news~\cite{swahilinews2020} carry publisher categories. The last two were processed in the same way but were not selected during sampling, because MasakhaNEWS already filled their language cells with human labels. The second source holds \val{ts.ext_loaded} articles in total.
+
+Section and category labels represent \emph{editorial topics}, that is, the decision of the newsroom about where an article belongs when it is published. These labels come from no model that reads the article text, so they are not circular with respect to the teacher. The only added step is translating section names onto the official IPTC Media Topic tree (\val{iptc.nodes} active nodes). Section names are normalized (case, diacritics) and mapped conservatively. A name is mapped only if the content usually found under that section belongs to one top-level topic. This gives \val{map.names} names mapped to \val{map.nodes} nodes. The table deliberately leaves \val{map.ambiguous} ambiguous names unmapped, for example \emph{tech}, which can be \emph{science and technology} or the information technology industry under \emph{economy}. Likewise, \emph{entertainment} can be \emph{arts} or \emph{lifestyle}, and \emph{terrorism} can be \emph{conflict} or \emph{crime}. Astrology sections are rejected. An automatic check verifies that every target node exists in the IPTC tree, is not retired, and has the target label as its level-1 ancestor. Articles whose sections map to different labels are rejected. MN-DS needs no mapping, because its labels already are IPTC topics. The mapping table was drafted with artificial intelligence assistance, and the first author reviewed all of its \val{map.review.total} rules (\val{map.names} mapped names and \val{map.review.other} ambiguous, language-specific, and rejecting rules) and accepted them without changes.
+
+Quality and leakage filters are applied in order.
+\begin{enumerate}
+  \item Publication date on or after 1 January 2024 (CC-NEWS only).
+  \item Not behind a paywall.
+  \item Declared language agrees with fastText language identification when the language is supported.
+  \item At least 75 words.
+  \item Deduplication of uniform resource locators (URLs), identical texts, and near-duplicates (MinHash~\cite{broder1997resemblance}, Jaccard $\ge 0.7$~\cite{lee2022dedup}) across all sources.
+  \item Contamination: an article is dropped when $\ge 30\%$ of its word 8-grams occur in any of about 300 thousand training or evaluation documents. This filter removed \val{ts.contam_removed} articles, mostly from MasakhaNEWS, which also draws on BBC.
+\end{enumerate}
+
+Sampling takes at most 50 articles per language $\times$ label cell, preferring human-labeled sources, then publisher categories, then JSON-LD sections. Languages with fewer than 30 articles are dropped. The number of articles per site is not capped, because most cells come from few sites and such a cap would discard data without adding diversity. The evaluation handles the dependence between articles of the same site with a site-cluster bootstrap, and Section~\ref{sec:res-acc} reports a sensitivity test with at most five articles per site.
+
+The final test set contains \val{ts.docs} articles in \val{ts.langs} languages, with \val{ts.labels} labels and \val{ts.sites} sites or sources and a median of \val{ts.words} words. Of these, \val{ts.origin.human_annotation} articles (\val{ts.origin.human_annotation.pct}) carry human annotations, \val{ts.origin.publisher_category} (\val{ts.origin.publisher_category.pct}) publisher categories, and \val{ts.origin.publisher_section_jsonld} (\val{ts.origin.publisher_section_jsonld.pct}) JSON-LD sections. By the distillation data in their language, \val{ts.distil.tidak.langs} languages are entirely absent from the distillation data (for example ha, yo, ig, bn, pa), \val{ts.distil.sedikit.langs} have fewer than 500 documents, and \val{ts.distil.cukup.langs} have more. By site diversity, \val{ts.div.beragam.langs} languages have at least 10 effective sites, while \val{ts.div.satu.langs} languages come from practically one publisher. Table~\ref{tab:testset} summarizes the sources and Fig.~\ref{fig:testset} shows the language $\times$ label coverage.
+
+\TabTestset
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_testset_heatmap.pdf}
+\caption{Articles in the unified test set per language and label (at most 50 per cell). The label origin in brackets is the dominant one for that language.}
+\label{fig:testset}
+\end{figure}
+
+\subsection{Teacher and Distillation Labels}
+The teacher is the IPTC classifier of~\cite{kuzman2025llm}, published as \url{classla/multilingual-IPTC-news-topic-classifier}. It is an XLM-RoBERTa-large model with \val{teacher.layers} layers, \val{teacher.params} million parameters, and inputs of at most 512 tokens. Its architecture limits the input to 512 XLM-R tokens. The 512-word input of \val{trunc.teacher.pct} of the test articles exceeds this limit, and for those articles the teacher reads about \val{trunc.teacher.words_kept} of \val{trunc.teacher.words_total} words (medians). For every distillation document the teacher produces a logit vector $\mathbf{z}^{T}(d)\in\mathbb{R}^{17}$, which is stored in full. Labeling ran once in fp16 on an NVIDIA RTX~4050 Laptop GPU (6~GB), with batches sorted by text length. On a fixed sample of \val{teacher.label_sample} documents the teacher labels \val{teacher.label_dps} documents per second, so the whole distillation set takes about \val{teacher.label_hours} GPU hours. The arg-max predictions of this re-run agree with the stored labels for \val{teacher.label_agree} of the documents. The teacher label distribution on CC-News is plausible (\emph{politics} \val{teacher.share.politics}, \emph{economy} \val{teacher.share.economy}, \emph{sport} \val{teacher.share.sport}, \emph{weather} \val{teacher.share.weather}), and its mean confidence per language ranges from \val{teacher.conf.min} to \val{teacher.conf.max}.
+
+\subsection{The StaticKD Student}
+A document $d$ is tokenized into $t_1,\dots,t_n$ with the potion-multilingual-128M Unigram tokenizer~\cite{tulkens2024model2vec}, which has \val{student.vocab} tokens. Special tokens are not used, unknown tokens are dropped, and the length is capped at 1,024 tokens. Averaging has no position limit, so the cap only bounds the cost. Only \val{trunc.statickd.pct} of the test articles exceed it. Each token has an embedding $\mathbf{e}_t\in\mathbb{R}^{\val{student.dim}}$, and
+\begin{equation}
+\mathbf{h}(d)=\frac{1}{n}\sum_{i=1}^{n}\mathbf{e}_{t_i},\qquad
+\mathbf{z}^{S}(d)=W\,\mathrm{drop}(\mathbf{h}(d))+\mathbf{b},
+\label{eq:student}
+\end{equation}
+with $W\in\mathbb{R}^{17\times 256}$ and dropout 0.1 during training. The embedding matrix $E$ is initialized from potion-multilingual, static embeddings for 101 languages distilled from BGE-M3~\cite{chen2024bgem3}.
+
+The loss in \eqref{eq:kd} uses $p^{T}=\mathrm{softmax}(\mathbf{z}^{T}/\tau)$ and $p^{S}=\mathrm{softmax}(\mathbf{z}^{S}/\tau)$:
+\begin{equation}
+\mathcal{L}_{\mathrm{KD}}=\tau^{2}\,\mathrm{KL}\!\left(p^{T}\,\middle\|\,p^{S}\right),\qquad \tau=1 .
+\label{eq:kd}
+\end{equation}
+$E$, $W$, and $\mathbf{b}$ are trained end to end. $E$ uses SparseAdam ($\eta=10^{-3}$), so only the rows of tokens present in a batch are updated, while $W$ and $\mathbf{b}$ use AdamW ($\eta=3\cdot 10^{-3}$, weight decay $10^{-4}$). The batch size is 64 and training runs for 6 epochs. As a cheap augmentation, each token of a training document is dropped with probability 0.2 at every step (token dropout), so that the model does not rely on a few keywords. Internal validation uses 3\% of the distillation data (\val{train.val_docs} documents), and the epoch with the highest arg-max agreement with the teacher is kept.
+
+Because the classification head is linear, \eqref{eq:student} can be rewritten as
+\begin{equation}
+W\Big(\frac{1}{n}\sum_{i}\mathbf{e}_{t_i}\Big)+\mathbf{b}=\frac{1}{n}\sum_{i}T_{t_i}+\mathbf{b},
+\label{eq:fold}
+\end{equation}
+with the table $T=EW^{\top}\in\mathbb{R}^{|V|\times 17}$. The production model consists only of $T$ (fp16), $\mathbf{b}$, and the tokenizer, and inference is tokenization, averaging table rows, and adding the bias. Averaging the logits of $K$ students trained with different seeds is likewise equal to the logits of a single student with table $\bar{T}=\frac{1}{K}\sum_k T^{(k)}$ and bias $\bar{\mathbf{b}}$, because \eqref{eq:fold} is linear in $T$. The final StaticKD model is the table ensemble of seeds 0, 1, and 2 ($K=3$), with \val{final.params} million parameters and a size of \val{final.size}~MB.
+
+The internal structure of the Unigram tokenizer needs much more random-access memory (RAM) than the table itself (\val{final.table_mb}~MB). A compact variant shrinks that structure by removing token pieces that occur fewer than 10 times in the distillation corpus, keeping single characters. Its vocabulary has \val{compact.vocab} tokens and the model takes \val{compact.size}~MB. Table~\ref{tab:hparams} lists the hyperparameters of all models.
+
+\TabHparams
+
+\subsection{Baselines}
+All baselines are trained on the same distillation data (\val{data.pool.docs} documents) with targets from the same teacher. fastText + KD~\cite{joulin2017bag} is trained on teacher arg-max labels with word tokens (plus character n-grams) or XLM-R subwords, together with a quantized variant (\texttt{.ftz}). As a reference equivalent to the labeled data available to~\cite{kuzman2025llm}, fastText is also trained only on the GPT-4o labels of the EMMediaTopic training split. TF-IDF + SVM + KD is the non-neural baseline of Kuzman and Ljube\v{s}i\'c (TF-IDF features with a support vector classifier), trained on teacher arg-max labels over XLM-R subwords. The hyperparameters of these non-transformer baselines were set once, as listed in Table~\ref{tab:hparams}, without a search. MiniLM-L6 + KD uses mMiniLMv2-L6-H384, distilled from XLM-R-large~\cite{wang2021minilmv2}, with the temperature $\tau\in\{1,2\}$ chosen on the development set. DistilmBERT + KD uses \texttt{distilbert-base-multilingual-cased}~\cite{sanh2019distilbert} with the same recipe. Both transformers read at most 256 tokens, which truncates \val{trunc.minilm_kd.pct} (MiniLM-L6) and \val{trunc.distilmbert_kd.pct} (DistilmBERT) of the test articles to about \val{trunc.minilm_kd.words_kept} and \val{trunc.distilmbert_kd.words_kept} words. Both are exported to ONNX fp32 for the CPU benchmark. The ONNX int8 teacher is a dynamic int8 quantized export of the teacher and is its fastest CPU configuration.
+
+Sparse Distillation~\cite{ye2022sparse}, the closest prior work, was not reproduced in full. Two experiments of this study cover its core ideas. fastText + KD is a bag-of-n-grams model with averaging and a linear head, trained on teacher labels over the same transfer set. The random-initialization ablation (Section~\ref{sec:design}) trains the embedding table from scratch. What remains different is the hidden layers of the deep averaging network, the soft-logit targets, and the billion-parameter n-gram table designed for English. The frozen-embedding ablation, which trains only the linear head on top of potion, serves as an off-the-shelf Model2Vec baseline with a distilled head. The classifier trainer of the Model2Vec library was not run as a baseline. Its default configuration trains on hard labels and adds a 512-unit hidden layer. It also learns a weight per token. The ablations replace soft labels with hard labels and the linear head with a 512-unit hidden layer one at a time, and neither change differs significantly from the final recipe on the development or test set (Table~\ref{tab:ablation}). The two changes together and the learned token weights were not tested. A hidden layer also prevents folding the model into one table.
+
+\subsection{Evaluation Protocol and Statistical Tests}
+\label{sec:protocol}
+The main metric is macro-F1 over the labels present in the reference, as in the evaluation code of~\cite{kuzman2025llm}, because the label distribution is imbalanced. The evaluation also reports accuracy, macro-F1 per language averaged over languages so that large languages do not dominate, and agreement with the teacher on the fidelity set. On editorial labels, macro-F1 reads as agreement between the predictions and the categorization of the publisher.
+
+95\% confidence intervals come from a percentile bootstrap with 1,000 resamples. On the test set, the resampling unit is the site, or the source dataset when no URL is available (site-cluster bootstrap~\cite{field2007bootstrapping}). On the development set, the unit is the document. Two models on the same documents are compared with a paired (cluster) bootstrap with 2,000 resamples for $\Delta$macro-F1~\cite{koehn2004significance} and an exact McNemar test for accuracy~\cite{mcnemar1947}, with Holm correction~\cite{holm1979} within each set. Each ablation variant uses five seeds, and the final recipe uses ten. Differences between variants are tested with Welch tests at the seed level, Holm-corrected. Whether a difference holds consistently across languages is tested with a Wilcoxon signed-rank test on per-language macro-F1 and accuracy~\cite{dror2018hitchhiker}. Subgroup analyses cover label origin, region, the amount of distillation data of the language, site diversity, script, language, and label. Calibration is measured with the expected calibration error (ECE, 15 bins)~\cite{guo2017calibration}.
+
+\subsection{Efficiency Protocol}
+\label{sec:effprotocol}
+The benchmark runs on CPU only, with the GPU hidden. Each model runs in a fresh process, and the thread count is pinned in every library (OMP, MKL, OpenBLAS, ONNX Runtime, \texttt{tokenizers}). Latency is measured with one article per call, as in a streaming setting (p50 and p95), and throughput with batches of 64, or 8 for transformers. Model RAM is the increase in resident set size after loading the model. The text sample is drawn at random from the unified test set and is the same for every model: \val{eff.teacher.n_latency} latency and \val{eff.teacher.n_throughput} throughput documents for the teacher and the transformers, and \val{eff.statickd.n_latency} and \val{eff.statickd.n_throughput} for the light models. All models are measured in one session on an idle machine. StaticKD reads up to 1,024 tokens per article while the teacher stops at 512, so the speed comparison does not favor StaticKD.
+
+The machine is a laptop with an Intel Core Ultra~7 155H, 31~GB of RAM, and Windows~11. This CPU is hybrid, with 6 P-cores, 8 slower E-cores, and 2 low-power E-cores. Without pinning, the operating system moves threads to the slow cores. Each process is therefore pinned to physical P-cores (logical CPU 0 for one core; logical CPUs 0, 10, 12, and 14 for four cores), which approximates a small server with uniform cores.
+
+\subsection{Experimental Design and Implementation Details}
+\label{sec:design}
+Table~\ref{tab:ablation} lists all \val{runs.total} StaticKD runs. Each ablation variant changes one factor of the final recipe: hard labels instead of soft labels; EMMediaTopic data only (4 languages, 10 epochs); 130 thousand documents without the extra CC-News data; random initialization with the same standard deviation as potion; frozen embeddings; no token dropout; a 512-unit multilayer perceptron (MLP) head; and $\tau\in\{0.5,\,2,\,4\}$. Four exploratory variants were also tested: bigram hashing ($2^{21}$ buckets), idf$^{0.5}$-weighted pooling, document weights from teacher confidence, and an additional cross-entropy term on the GPT-4o labels. One StaticKD run takes \val{train.seconds} minutes on average on the same GPU. The implementation uses Python~3.12, NumPy~2.5, PyTorch~2.6, transformers~5.17, \texttt{tokenizers}~0.23, ONNX Runtime~1.30, scikit-learn~1.9, and fastText~0.9.2. The seed, library versions, and training history of every run are stored with the model.

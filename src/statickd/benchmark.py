@@ -7,6 +7,9 @@ Protocol (simulates a small server without GPU):
   * latency = one article per call (streaming); throughput = batches of 64 (8 for transformers);
   * RAM = resident-set growth caused by loading the model;
   * sample = a fixed random sample of the unified test set (47 languages, median ~310 words).
+  * sample size: 100 latency / 96 throughput documents for the teacher and transformer students,
+    500 / 3000 for the light models; the whole benchmark is repeated in separate sessions
+    (--run 1, 2, 3) and the paper reports the median over runs.
 
 Usage (from the project root):
     python -m statickd.benchmark --model static:models/final/statickd --name statickd --threads 1
@@ -119,6 +122,7 @@ def main() -> None:
     parser.add_argument("--n-throughput", type=int, default=None)
     parser.add_argument("--batch-size", type=int, default=None)
     parser.add_argument("--out", default=None)
+    parser.add_argument("--run", type=int, default=0, help="repetition id (separate sessions)")
     args = parser.parse_args()
     heavy = args.model.startswith(HEAVY_PREFIXES)
     _set_threads(args.threads)
@@ -134,9 +138,10 @@ def main() -> None:
         result = profile_static(args.model.partition(":")[2], args.name)
     else:
         result = run(args.model, args.name, args.threads,
-                     args.n_latency or (30 if heavy else 500), args.n_throughput or (48 if heavy else 3000),
+                     args.n_latency or (100 if heavy else 500), args.n_throughput or (96 if heavy else 3000),
                      args.batch_size or (8 if heavy else 64))
     result["pinned_cpus"] = pinned
+    result["run"] = args.run
     print(json.dumps(result), flush=True)
     out = Path(args.out) if args.out else FINAL_DIR / ("cpu_profile.jsonl" if args.profile else "cpu_benchmark.jsonl")
     out.parent.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,461 @@
+\documentclass[conference,a4paper]{IEEEtran}
+
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{multirow}
+\usepackage{url}
+\urlstyle{same}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\setlength{\textfloatsep}{10pt plus 2pt minus 4pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+
+\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
+
+\raggedbottom
+\begin{document}
+
+\title{Transformer-based Piano Music Generation with Structural Modeling for Study Ambience\\
+}
+
+\author{
+\begin{tabular}{c@{\hspace{2cm}}c}
+
+1\textsuperscript{st} Obi Kastanya &
+2\textsuperscript{nd} Kafiyatul Fithri \\
+
+Department of Informatics Engineering &
+Department of Informatics Engineering \\
+
+Sepuluh Nopember Institute of Technology &
+Sepuluh Nopember Institute of Technology \\
+
+Surabaya, Indonesia &
+Surabaya, Indonesia \\
+
+6025252015@student.its.ac.id &
+6025252002@student.its.ac.id \\[1em]
+
+3\textsuperscript{rd} Yoan Amri Akbar &
+4\textsuperscript{th} Sarwosri \\
+
+Department of Informatics Engineering &
+Department of Informatics Engineering \\
+
+Sepuluh Nopember Institute of Technology &
+Sepuluh Nopember Institute of Technology \\
+
+Surabaya, Indonesia &
+Surabaya, Indonesia \\
+
+6025252010@student.its.ac.id &
+sarwosri@its.ac.id
+
+\end{tabular}
+}
+
+\maketitle
+
+\begin{abstract}
+Automatic music generation has become an important research area in deep learning, enabling systems to compose music with minimal human intervention. However, many existing approaches struggle to maintain long-range musical coherence, often producing repetitive or fragmented outputs. This study proposes a Transformer-based piano music generation model enhanced with structural tokens, including introductions, ambient loops, and variations, to improve compositional organization for study ambience. Using REMI representation and an ambient-filtered dataset, the best model achieved a validation perplexity of 7.8. Objective evaluation on 50 paired pieces per strategy showed no significant differences in REMI-token perplexity (4.40 vs. 4.60) or repetition rate (RR($k=4$) = 0.063 vs. 0.087), with generative collapse in at most one piece per strategy. However, Struct-Only produced significantly softer and more variable outputs. In a listening test with 65 participants, Struct-Only received a slightly higher Mean Opinion Score (MOS) than Full-Injection (3.27 vs. 3.17), although the difference was not statistically significant. These results suggest that explicit bar-level injection mainly improves consistency and controllability, while listeners gave slightly higher ratings to the softer outputs of Struct-Only.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Symbolic music generation, Transformer, Structural token injection
+\end{IEEEkeywords}
+
+\section{Introduction}
+Music serves as a broad psycho-acoustic stimulus that shapes human cognitive states and exerts a tangible impact on academic performance. Advances in computational musicology reveal a major shift from stochastic models such as Markov Chains which often fail to preserve long-term structural consistency toward deep learning architectures that more effectively capture complex compositional relationships. The work of Oore et al. [1] marked a significant milestone by applying Long Short-Term Memory (LSTM) networks to generate expressive musical sequences, though limitations such as the vanishing gradient problem [2] continued to hinder the modeling of extended temporal patterns. The emergence of the Transformer architecture subsequently revolutionized the field through multi-head self-attention mechanisms that enable long-range dependencies [3], further enhanced by the REMI (REvamped MIDI) framework to improve rhythmic precision and structural coherence [4]. Although several technical breakthroughs have been achieved, the development of functional music particularly designed to foster a study-oriented atmosphere remains relatively underexplored. Empirical evidence indicates that background piano music can reduce cortisol levels while enhancing cognitive concentration [5,6]. Unfortunately, most contemporary generative models emphasize general-purpose composition and often fail to integrate note-level detail with macro structural organization. Transformer-based symbolic music generators still struggle to produce coherent repetition structures over long sequences [7], and likelihood-trained models are known to fall into repetition loops in text generation [8]. This gap can result in `generative collapse', where outputs are repetitive, disconnected, or monotonous and lack the pacing needed to sustain study-focused engagement.
+
+To address these limitations, this study proposes a Transformer-based piano music generation system designed for study ambience. Unlike Music Transformer [3] and Pop Music Transformer [4], which learn structure only implicitly, the proposed decoder-only model is explicitly conditioned on section-level markers (\textit{introduction}, \textit{ambient loop}, \textit{variation}, \textit{ending}) and bar-level descriptors (density and velocity), and is trained on a curated MIDI dataset filtered for low-intensity ambient piano. The contributions of this work are: (1) a dual-layer structural token scheme added to REMI; (2) a controlled comparison of two injection strategies, Full-Injection and Struct-Only, on 50 seed-paired pieces each and a 65-participant listening test; and (3) evidence that bar-level injection mainly improves controllability and consistency of dynamics, without significant differences in perplexity, repetition, or perceived quality.
+
+\section{Related Work}
+This section provides an overview of prior research employing deep learning architectures for music generation [9], alongside the application of structural constraints to reinforce musical quality.
+
+\subsection{Sequential Processing and Attention-Based Models}
+Early progress in automated music generation largely relied on Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) networks, to model temporal dependencies such as recurring melodies and harmonic structures. The study by S. Oore et al. demonstrated the use of LSTMs for expressive music generation through an event-based MIDI representation [1]. While LSTMs can produce coherent and expressive outputs, their sequential processing nature restricts computational efficiency and limits the ability to handle extended musical sequences. In larger compositions, these models often lose long-term contextual information, reducing consistency across different sections of the music. These shortcomings led to the emergence of Transformer-based architectures, first introduced in the Attention Is All You Need paper [10]. Unlike RNNs, Transformers employ self-attention mechanisms to process sequential data in parallel, enabling more effective modeling of long-range dependencies. This innovation was further advanced by C.-Z. A. Huang et al. with the Music Transformer, which applies relative self-attention to capture long-distance relationships between musical events [3].
+The complete blueprint of the architecture specialized for musical sequence generation is illustrated in Figure \ref{fig:overview}. Subsequently, Huang and Yang introduced REMI (REvamped MIDI) [4], a representation method that enhances rhythmic and structural modeling by employing bar and position tokens.
+Despite these advancements, most Transformer-based approaches to music generation remain oriented toward highly dynamic and complex compositions. Such characteristics often lead to abrupt transitions and excessive variation, making them less suitable for functional purposes. Therefore, a dedicated approach is required to emphasize structural consistency, smoother transitions, and stable musical patterns [11]. Other works have also added structure or control to Transformer models. Museformer [7] lets each bar attend to the bars most related to it, and Compound Word Transformer [12] groups tokens to handle full-length songs. MuseMorphose [13] and FIGARO [14] can control the music bar by bar, but they need an encoder that reads a reference piece or a description. The proposed model uses only a decoder, and the section labels and bar descriptors are part of the token sequence.
+
+\subsection{MIDI Representations and Dataset Characteristics}
+The shift from raw audio to symbolic representation has long posed challenges in modeling musical information. For instance, several studies employed Band-Pass Filters (BPF) to extract symbolic notation from recordings of traditional instruments such as the Gamelan Saron [15]. In contrast, piano recordings are typically represented using the MIDI format [16]. 
+As illustrated in Figure \ref{fig:midi_struct}, a MIDI object is composed of two fundamental elements: a file header and multiple tracks [17]. The file header provides general information applicable to the entire file, such as the data organization format, the number of tracks, and timing details. Each track, in turn, records a chronological sequence of musical events, including delta time and MIDI events [18] (Figure~\ref{fig:midi_event}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{rpl-figure3.png}
+    \caption{The Main Structure of a MIDI Object}
+    \label{fig:midi_struct}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\columnwidth]{rpl-figure4.png}
+    \caption{MIDI Event Attributes}
+    \label{fig:midi_event}
+\end{figure}
+
+The effectiveness of MIDI-based music generation models is largely determined by the quality, scope, and specific domain of the training dataset. Whereas classical repositories typically emphasize expressive, concert-style performances, recent advances in symbolic music modeling have introduced large-scale, systematically structured corpora. For example, Bradshaw and Colton introduced the Aria-MIDI dataset [19], which offers an extensive collection of piano MIDI files tailored for modern sequence learning and generative architectures. Unlike traditional datasets limited to complex classical arrangements, Aria-MIDI provides diverse genre annotations and rich metadata, enabling targeted subset extraction and making it particularly suitable for specialized musical domains such as minimalist or study ambience music.
+
+\subsection{Music for Functional Ambience and Focus}
+The use of AI-generated music to shape specific psychological states, such as study ambience, has emerged as a key area of research. Several studies indicate that predictable harmonic progressions play a role in sustaining a `flow state' [20]. Experiments with music further highlight that reducing abrupt auditory changes is important for maintaining background concentration [21].
+Nevertheless, many contemporary ambient generators lack deep structural modeling, often producing repetitive loops that become monotonous or even `uncanny' over time, failing to deliver the complex structural evolution required for sustained academic engagement. This performance gap underscores the need for specialized structural modeling capable of preserving long-term thematic coherence, enabling smoother transitions, and creating a stable auditory environment specifically tailored for academic contexts.
+
+\section{Methodology}
+This study introduces a Transformer-based piano music generation model enhanced with structural modeling to improve musical coherence, particularly for study ambience applications. The sequence of research stages is illustrated in Figure \ref{fig:overview}.
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{rpl-figure5-new.png}
+    \caption{Workflow of music generation pipeline.}
+    \label{fig:overview}
+\end{figure*}
+
+\subsection{Dataset}
+In system development, the requirements gathering phase is critical for identifying and managing the data necessary for the proposed system [22]. Within this study, selecting an appropriate music dataset constitutes the primary requirement. The Aria-MIDI v1 (pruned-ext) dataset was chosen due to its large-scale symbolic piano MIDI collection and comprehensive metadata annotations. This dataset comprises hundreds of thousands of MIDI files spanning diverse musical genres and performance styles. Each file is accompanied by metadata, including genre labels and audio quality scores, enabling selective filtering based on musical characteristics and data quality. To align with the target features of study ambience music, only MIDI files categorized as ambient were retained. Additional filtering based on audio alignment quality and musical content analysis was applied to exclude noisy or unsuitable samples. The final curated dataset consists of high-quality symbolic piano MIDI files that meet the desired ambience criteria, serving as the foundation for subsequent training and generation stages.
+
+\subsection{Filtering}
+To preserve the integrity of training signals, raw MIDI files are subjected to a two-stage filtering process utilizing both metadata and musical content analysis. In the first stage, only compositions labeled as ambient genre and with audio quality scores above a predefined threshold are selected to ensure data quality and consistency. The second stage involves analyzing the musical content of each MIDI file, retaining only compositions with a minimum duration of 60 seconds to provide sufficient temporal context. Note density is constrained within a controlled range to avoid pieces that are excessively sparse or overly dense. Furthermore, average note duration and velocity are regulated to maintain the smooth and soft qualities typically associated with study ambience music. Following this refinement, the dataset is distilled into a curated collection of high-quality symbolic piano MIDI files suitable for Transformer-based music generation.
+
+\subsection{REMI Tokenization and Vocabulary Design}
+To convert the filtered symbolic MIDI data into a discrete sequential format suitable for autoregressive modeling, a symbolic tokenization framework is designed. This approach discards traditional absolute time-stamp methods and adopts the Revamped MIDI Representation (REMI) framework. Under this design, musical events are represented as a continuous stream of grid-based tokens—time-shift, pitch, velocity, and duration—bounded by explicit bar markers. This abstraction tightly couples rhythmic and tempo structures, while establishing a standardized vocabulary mapping that preserves a stable, unquantized performance flow required for study environments.
+
+\subsection{Sequence Construction and Dataset Partitioning}
+Following tokenization, token sequences are arranged into a structured format compatible with autoregressive training. Since musical compositions often produce token streams that exceed the Transformer's context window, the data is segmented into fixed-length ``chunks'' of 
+$512$ tokens. To enable the model to capture temporal transitions between adjacent segments, a sliding window method with  $50\%$ overlap is applied, thereby preserving musical continuity. Chunks containing fewer than $50$ tokens are discarded to maintain training signal robustness. For the autoregressive objective, each chunk is converted into input-target pairs using a one-token shift mechanism, ultimately resulting in approximately 
+$10{,}000$ training windows (9,148 for training and 758 for validation).
+To ensure rigorous performance evaluation, the dataset is divided into training and validation subsets with a $90:10$ ratio at the piece level (211 and 24 pieces). Unlike random sequence-level splitting, this study adopts a piece-level strategy based on unique \texttt{piece\_id} identifiers. This guarantees that all segments from the same musical composition are assigned exclusively to either the training or validation set. By reserving $10\%$ of unique musical pieces for validation, an independent benchmark is established to assess the model’s generalization ability on unseen compositions. This separation strategy is critical for preventing data leakage caused by similar segments appearing in both subsets, ensuring that evaluation reflects the model’s capacity to generalize musical structures rather than simply memorizing recurring patterns.
+
+\subsection{Model Configuration and Training Setup}
+The generative system is designed using a Transformer Decoder-Only architecture optimized for autoregressive next-token prediction. As depicted in Figure \ref{fig:overview}, the model learns the conditional probability of musical sequences by predicting each token from its preceding context. The architecture comprises six Transformer Decoder layers with masked multi-head self-attention, ensuring causal sequence generation and preventing future-token information leakage during training. Musical tokens and sequential order are represented through learned token embeddings and positional embeddings. Each decoder layer adopts a pre-layer normalization strategy and incorporates a Feed-Forward Network with a hidden dimension of 2048. The model employs eight attention heads with a hidden embedding dimension of 512, resulting in approximately 19 million trainable parameters. Furthermore, weight tying is applied between the token embedding layer and the output projection layer to enhance parameter efficiency and representation consistency.
+The model is trained using the AdamW optimizer with a learning rate of 
+$1\times10^{-4}$ and a weight decay of $0.01$. A learning rate scheduler with 1{,}000 warmup steps followed by cosine decay is applied across 100 epochs to maintain training stability. Training is conducted with a batch size of 16, using Cross-Entropy Loss as the optimization objective. To enhance computational efficiency and numerical stability, Automatic Mixed Precision (AMP) and gradient clipping with a threshold of $1.0$ are employed throughout the training process. This configuration enables the model to learn both local musical transitions and long-term structural dependencies while ensuring stable optimization during large-scale sequence learning.
+
+\subsection{Music Generation}
+The final stage involves autoregressive generation of new musical compositions initiated with a \texttt{BOS} token. To strengthen long-term musical organization, a structural injection mechanism embeds section-level and bar-level tokens into the sequence according to a planned progression, guiding the model’s prediction of REMI-based musical content (note positions, pitch, duration, and velocity). This study compares two generation strategies:
+\begin{itemize}
+    \item \textbf{Full-Injection}: Section-level and bar-level tokens are strictly embedded, restricting the model to predict only REMI musical content tokens.
+    \item \textbf{Struct-Only}: Only section-level tokens are embedded, allowing the model to autonomously predict bar-level descriptors along with REMI tokens.
+\end{itemize}
+
+Both levels are written into the same token sequence. A section token is added at the start of each section. Every bar starts with a \texttt{BAR} token, a density token, and a velocity token, and the model then predicts the notes of that bar as REMI tokens. The bar is closed when the model outputs a structural token or reaches 60 REMI tokens. Since these tokens share one context window, the model sees the current section and the bar targets when it predicts each note. In Full-Injection, the density and velocity tokens are taken from the plan. In Struct-Only, the model selects them, but only from the three allowed values of each token.
+
+Decoding employs top-$k$ and top-$p$ sampling to balance diversity and coherence. The generated token sequences are subsequently detokenized into symbolic MIDI format, mapping REMI tokens to note events while structural tokens preserve the composition’s timing and organization. Final post-processing steps—including pitch range normalization, scale quantization, note extension, and velocity smoothing—are applied to produce a \texttt{.mid} file optimized for study ambience.
+
+\subsection{Training and Evaluation}
+
+Model performance is quantitatively assessed using Perplexity (PPL) and Repetition Rate (RR). Perplexity evaluates the model’s confidence in predicting the next token within a sequence $W=\{w_1,w_2,\dots,w_N\}$, as defined in Equation \ref{eq:perplexity}:
+
+
+\begin{equation}
+PP(W)=\exp\left(-\frac{1}{N}\sum_{i=1}^{N}\log P(w_i|w_{<i})\right)
+\label{eq:perplexity}
+\end{equation}
+
+\noindent where $w_i$ denotes the $i$-th token, $P(w_i|w_{<i})$ represents the conditional probability given the preceding context, and $N$ is the total number of tokens. A lower PPL indicates stronger predictive performance. To assess the accuracy of musical content prediction, PPL is computed exclusively on REMI-based musical tokens, excluding injected structural tokens. To examine structural diversity and detect recurring patterns, the Repetition Rate (RR) with a pattern window size $k$ is formulated as shown in Equation \ref{eq:rr}:
+
+\begin{equation}
+RR(k)=1-\frac{|\text{unique }k\text{-grams}|}{N-k+1}
+\label{eq:rr}
+\end{equation}
+
+\noindent where $|\text{unique }k\text{-grams}|$ denotes the number of distinct subsequences of length $k$ within a sequence of length $N$. Higher RR values indicate excessive, monotonous repetition. This study evaluates short-term motifs and long-term structural repetition using $k=4$ and $k=8$, respectively. Both metrics are computed on the raw generated tokens before post-processing. Differences between the two strategies are tested with the two-sided Wilcoxon signed-rank test, paired by seed, at $\alpha = 0.05$. A piece is counted as a generative collapse when $\text{RR}(k=4)$ exceeds $0.5$. Complementing quantitative metrics, qualitative assessment is conducted through human listening tests to capture subjective aspects not reflected numerically [23,24]. Participants rate generated samples on a 5-point Likert scale across three criteria: \textit{Musical Coherence} (logical melodic flow), \textit{Relaxation Quality} (calming effect), and \textit{Suitability for Study Ambience} (non-intrusive background compatibility). Individual ratings are then aggregated using the Mean Opinion Score (MOS).
+
+\section{Experiment and Results}
+The experimental process in this study was conducted using the free Google Colab platform. The specifications of the runtime environment, including GPU, RAM, and storage capacity, are summarized in Table~\ref{tab:colab_specs}. The entire system was developed in Python using the Jupyter Notebook (\texttt{.ipynb}) format and executed within the Google Colab environment. 
+
+\begin{table}[htbp]
+\centering
+\caption{Google Colab Environment Specifications}
+\label{tab:colab_specs}
+\begin{tabular}{lc}
+\hline
+\textbf{Component} & \textbf{Specification (Colab Free)} \\
+\hline
+GPU               & NVIDIA Tesla T4 (15 GB VRAM) \\
+RAM               & 12.7 GB \\
+Disk (Storage)    & 112.6 GB \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Dataset Preprocessing and Filtering}
+The data preparation pipeline begins with the Aria-MIDI v1 (pruned-ext) dataset, a large-scale collection of symbolic MIDI files. To ensure the training corpus strictly aligns with the target characteristics of functional study ambience, a rigorous two-stage filtering process is applied. The first stage employs metadata-based selection, constraining MIDI files by the \textit{ambient} genre tag and an audio quality score of $\geq 0.75$. This score serves as a key proxy for the audio quality of the original piano recordings, effectively eliminating noisy or poorly transcribed samples. The second stage involves direct musical content analysis. To maintain the calm and non-intrusive auditory profile essential for academic engagement, several constraints are enforced:
+\begin{itemize}
+    \item \textbf{Duration:} Minimum of $60$ seconds.
+    \item \textbf{Note Density:} Ranging between $0.3$ and $8.0$ notes per second.
+    \item \textbf{Note Duration:} Average length of $\geq 0.4$ seconds.
+    \item \textbf{Velocity:} Average velocity of $\leq 80$.
+\end{itemize}
+
+This dual-layer filtering approach reduces an initial subset of $29{,}323$ MIDI files into a curated dataset containing $392$ high-quality MIDI files derived from 
+$235$ unique musical compositions. This refined dataset serves as the foundation for subsequent tokenization and Transformer training stages.
+
+\subsection{Tokenization}
+The tokenization process converts symbolic MIDI data into discrete token sequences suitable for Transformer-based autoregressive learning. This study adopts the REMI (REvamped MIDI) representation and extends it with dual-layer structural tokens to capture both local musical events and higher-level compositional structures. The vocabulary comprises 239 tokens divided into two main categories: structural tokens and REMI-based musical tokens. Structural tokens include sequence control tokens (\texttt{PAD}, \texttt{BOS}, \texttt{EOS}, \texttt{UNK}), section-level tokens (\texttt{STRUCT\_INTRO}, \texttt{STRUCT\_AMBIENT\_LOOP}, \texttt{STRUCT\_VARIATION}, \texttt{STRUCT\_ENDING}), and bar-level descriptors such as \texttt{BAR\_DENSITY} and \texttt{BAR\_VEL}. REMI tokens represent musical attributes including note position, pitch, duration, and velocity shown in Table \ref{tab:musical_params}.
+
+\begin{table}[htbp]
+\centering
+\caption{Musical Token Specifications}
+\label{tab:musical_params}
+\begin{tabular}{l|p{0.58\linewidth}}
+\hline
+\textbf{Parameter} & \textbf{Value Specification} \\
+\hline
+Special Tokens      & PAD, BOS, EOS, UNK \\
+Structural Tokens   & INTRO, AMBIENT\_LOOP, VARIATION, ENDING \\
+Bar Tokens          & BAR, BAR\_DENSITY, BAR\_VEL \\
+POSITION            & 0--31 (1/32 bar resolution) \\
+PITCH               & 0--127 (MIDI pitch scale) \\
+DURATION            & 32 quantized bins (0.125--4.0 s) \\
+VELOCITY            & 32 quantized bins (1--127) \\
+\hline
+\end{tabular}
+\end{table}
+
+\noindent Unlike conventional REMI implementations that incorporate tempo tokens, this study employs a fixed tempo of 80 BPM to ensure consistent rhythmic interpretation across all generated compositions. This design allows positional tokens to retain stable temporal meaning throughout the dataset.
+During tokenization, each MIDI note is transformed into a sequence of REMI tokens consisting of \texttt{POSITION}, \texttt{PITCH}, \texttt{DURATION}, and \texttt{VELOCITY}. Structural tokens are inserted based on musical content analysis. Section-level structural labels are assigned according to the density and dynamic characteristics of each musical segment, while bar-level tokens describe note density and velocity intensity for each bar.
+
+\noindent The resulting token sequence follows the general structure:
+
+\begin{center}
+\texttt{BOS → STRUCT\_INTRO → BAR → BAR\_DENSITY → BAR\_VEL → POSITION → PITCH → DURATION → VELOCITY → ... → EOS}
+\end{center}
+
+\noindent After tokenization, 367 training and 25 validation token streams (one per MIDI file) were obtained. Sequence lengths varied considerably depending on the duration and complexity of each composition, with median lengths exceeding 3,700 tokens. To prepare the data for Transformer training, each sequence was further segmented using a sliding window mechanism with 50\% overlap and a fixed context size of 512 tokens.
+
+\subsection{Model Training and Convergence Analysis}
+The training execution was strictly carried out in accordance with the optimization parameters defined in Section~III-E. To ensure robust empirical evaluation, the sequence compilation generated during tokenization was partitioned using the piece-level split strategy. This partition yielded $367$ training and $25$ validation token streams. The architectural hyperparameters, sequence boundaries, and explicit token mappings employed in this experimental run are systematically summarized in Table~\ref{tab:transformer_config}.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Transformer Configuration}
+\label{tab:transformer_config}
+\begin{tabular}{l|l}
+\hline
+\textbf{Category} & \textbf{Configuration} \\
+\hline
+Sequence \& Batch & seq\_len=512, batch\_size=16 \\
+Transformer Arch. & d\_model=512, n\_heads=8, n\_layers=6, d\_ff=2048 \\
+Regularization    & dropout=0.1, clip\_grad=1.0 \\
+Optimizer \& Training & lr=0.0001, epochs=100, warmup\_steps=1000 \\
+Vocabulary        & vocab\_size=239, PAD=0, BOS=1, EOS=2 \\
+\hline
+\end{tabular}
+\end{table}
+
+By combining Cross-Entropy Loss with Automatic Mixed Precision (AMP), the training pipeline achieved high computational throughput and numerical stability. Optimal convergence was reached at approximately the 13\textsuperscript{th} epoch, minimizing to the lowest validation loss of 
+$2.0565$. Beyond this point, the model began to show signs of over-fitting, so training was stopped early at epoch 28. This also suggests that the piece-level split worked as intended, since data leakage would have kept the validation loss low. The weights from this training checkpoint were extracted and preserved as the core generative engine for subsequent music generation analysis.
+
+\subsection{Music Generation}
+Musical compositions are generated autoregressively using the trained Decoder-Only Transformer model. Generation begins with a \texttt{BOS} token, where the model predicts the probability distribution of subsequent tokens conditioned on the preceding context. To assess the impact of structural constraints, generation experiments are conducted under two predefined strategies: \textit{Full-Injection} and \textit{Struct-Only}. The default structural plan consists of 80 bars at a fixed tempo of 80~BPM ($\approx$4 minutes of music), sequentially guiding the model through introduction, ambient loop, variation, and ending sections via structural tokens.
+During decoding, top-$k$ and top-$p$ sampling are applied to balance diversity and coherence, controlled by the \textit{temperature} parameter. The generated token sequences are detokenized to restore standard MIDI attributes (pitch, duration, velocity, and timing). Post-processing refinements including pitch range normalization, scale quantization, note extension, and velocity smoothing are applied to optimize musical quality before synthesizing the final \texttt{.mid} files into playable ambient piano audio via FluidSynth. For the quantitative evaluation, 50 pieces were generated per strategy using the same 50 random seeds (0--49) for both strategies, a fixed temperature of $0.9$, $\text{top-}k = 50$, $\text{top-}p = 0.95$, a maximum of 60 REMI tokens per bar, and the default 80-bar plan, yielding 100 pieces in total. All generation parameters, seeds, and the checkpoint hash were recorded, so every piece can be regenerated.
+
+\subsection{Quantitative Evaluation}
+
+The generated music samples were evaluated using Perplexity (PPL) on REMI-based musical tokens (excluding structural tokens) to assess predictive confidence, along with Repetition Rate ($k=4$ and $k=8$) to measure diversity and detect monotonous generation. Table~\ref{tab:evaluation_results} summarizes the results over 50 paired pieces per strategy. No significant differences were found in REMI-token perplexity ($4.40$ vs. $4.60$, $p = 0.45$) or repetition rate ($\text{RR}(k=4)$: $0.063$ vs. $0.087$, $p = 0.30$; $\text{RR}(k=8)$: $0.001$ vs. $0.005$, $p = 0.12$). Generative collapse was rare. None of the 50 Full-Injection pieces and only one of the 50 Struct-Only pieces exceeded $\text{RR}(k=4) = 0.5$ ($2\%$, Wilson $95\%$ CI $0\text{--}10\%$). The largest difference was in dynamics. Struct-Only pieces were significantly softer (mean velocity $37.0$ vs. $50.7$, $p < 0.001$, rank-biserial $r = 0.70$). On average, the model selected \texttt{BAR\_VEL\_SOFT} for $45.3$ of the 80 bars, while the Full-Injection plan uses it for only 16 bars. Struct-Only outputs were also more variable across seeds (SD of note count 244 vs. 81; SD of mean velocity $16.0$ vs. $7.0$).
+
+All generated pieces lasted approximately four minutes (80 bars), with $854 \pm 81$ notes for Full-Injection and $791 \pm 244$ notes for Struct-Only. The two strategies did not differ in perplexity or repetition. Explicit bar-level injection mainly made the outputs more consistent and closer to the planned dynamics.
+
+\begin{table}[htbp]
+\centering
+\caption{Quantitative Evaluation of Generated Music}
+\label{tab:evaluation_results}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{p{3.5cm} c c c}
+\hline
+\textbf{Metric} & \textbf{Full-Inj.} & \textbf{Struct-Only} & \textbf{\textit{p}} \\
+\hline
+PPL (REMI tokens) & $4.40 \pm 0.70$ & $4.60 \pm 1.17$ & $0.45$ \\
+$\text{RR}(k=4)$ & $0.063 \pm 0.044$ & $0.087 \pm 0.099$ & $0.30$ \\
+$\text{RR}(k=8)$ & $0.001 \pm 0.002$ & $0.005 \pm 0.024$ & $0.12$ \\
+Notes per piece & $854 \pm 81$ & $791 \pm 244$ & $0.19$ \\
+Mean velocity & $50.7 \pm 7.0$ & $37.0 \pm 16.0$ & $< 0.001$ \\
+Mean note duration (s) & $1.04 \pm 0.36$ & $1.25 \pm 0.68$ & $0.11$ \\
+Collapsed pieces\newline ($\text{RR}(k=4) > 0.5$) & $0/50$ & $1/50$ & -- \\
+\hline
+\end{tabular}%
+}
+\vspace{2pt}
+\parbox{\columnwidth}{\small \textit{Note:} Mean $\pm$ SD over 50 pieces per strategy generated with identical seeds; \textit{p} from two-sided Wilcoxon signed-rank tests paired by seed.}
+\end{table}
+
+\subsection{Human Listening Test}
+To assess the subjective quality and functional effectiveness of the generated music, a qualitative human listening test was conducted. The listening test involved 65 participants aged 19 to 40 years, consisting of students and workers recruited from the authors' academic and professional contacts. Regarding how often they listen to music while studying, 3\% answered rarely, 42\% sometimes, 35\% often, and 20\% very often. The test used all 100 pieces from Section~IV-E, divided into 10 groups of five seeds. Each participant listened to one group, which consisted of the Struct-Only and Full-Injection versions of five seeds, played as 60-second excerpts taken from bars 31 to 50. The two versions of each seed were presented as ``Sample~A'' and ``Sample~B'' without revealing the strategy, and their order was balanced across participants. Participants rated the compositions using a 5-point Likert scale based on the evaluation criteria. To ensure reliability, each high-level criterion was calculated by aggregating multiple related sub-parameters from the questionnaire. The aggregated Mean Opinion Scores (MOS) and their 95\% confidence intervals are presented in Table~\ref{tab:human_evaluation}. Differences between the two strategies were tested with mixed-effects models using participants, seeds, and excerpts as random effects, with Holm correction for the three criteria.
+
+\begin{table}[htbp]
+\caption{Human Listening Test Results (Mean Opinion Score)}
+\label{tab:human_evaluation}
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+\textbf{Evaluation Criteria} & \textbf{Full-Injection} & \textbf{Struct-Only} & \textbf{\textit{p}} \\
+\midrule
+Musical Coherence              & 3.21 [3.01, 3.39] & 3.23 [3.05, 3.44] & 0.68 \\
+Relaxation Quality             & 3.17 [2.97, 3.38] & 3.32 [3.11, 3.53] & 0.52 \\
+Suitability for Study Ambience & 3.14 [2.92, 3.35] & 3.25 [3.04, 3.47] & 0.57 \\
+\midrule
+\textbf{Average MOS}           & \textbf{3.17}     & \textbf{3.27}     & -- \\
+\bottomrule
+\end{tabular}%
+}
+\vspace{2pt}
+\parbox{\columnwidth}{\small \textit{Note:} MOS [95\% CI] over 65 participants; \textit{p} Holm-corrected.}
+\end{table}
+
+As shown in Table~\ref{tab:human_evaluation}, Struct-Only was rated slightly higher than Full-Injection on all three criteria, with an average MOS of 3.27 compared to 3.17. However, the differences were small and not statistically significant.
+
+\section{Conclusion}
+
+This study proposed a Transformer-based piano music generation system enhanced with dual-layer structural tokens to improve musical coherence and long-term organization for study ambience. By integrating REMI-based tokenization with section- and bar-level representations, the model successfully captured both local musical features and high-level structural progression, achieving a validation loss of 2.0565 and a validation perplexity of approximately 7.8.
+
+Objective evaluation on 50 paired pieces per strategy showed no significant differences in REMI-token perplexity ($4.40$ vs. $4.60$) or repetition rate ($\text{RR}(k=4) = 0.063$ vs. $0.087$), and generative collapse was rare under both strategies ($0/50$ and $1/50$). The main difference was in dynamics and consistency. Struct-Only produced significantly softer and more variable outputs, while Full-Injection produced more consistent outputs that follow the planned dynamics. In the listening test, Struct-Only received a slightly higher average MOS than Full-Injection ($3.27$ vs. $3.17$), although the differences were not statistically significant. This small difference may be partly explained by the softer dynamics of Struct-Only.
+
+Future work will emphasize the development of adaptive and interactive music generation systems, enabling dynamic user control over both structural and emotional progression. Furthermore, expanding the system to multi-instrument arrangements and conducting broader subjective evaluations will be pursued to enhance the realism and functional utility of the generated ambience.
+
+\section*{Acknowledgment}
+The authors would like to extend their heartfelt gratitude to all individuals and institutions who contributed to this research. Special appreciation is given to the lecturers for their invaluable guidance, insightful feedback, and continuous support throughout the research process. The authors also thank the creators and contributors of the Aria-MIDI v1 dataset for providing the high-quality symbolic music resources utilized in this study, as well as all participants involved in the human listening evaluation. Finally, gratitude is expressed to the Department of Informatics ITS for providing the academic environment essential to this research.
+
+\begin{thebibliography}{99}
+
+\bibitem{oore2020feeling}
+S. Oore, I. Simon, S. Dieleman, D. Eck, and K. Simonyan, ``This Time with Feeling: Learning Expressive Musical Performance,'' \textit{Neural Computing and Applications}, vol. 32, no. 4, pp. 955--967, 2020.
+
+\bibitem{noble2025lstm}
+J. Noble,
+``What is long short-term memory (LSTM)?,''
+\textit{IBM Think}, Dec. 2025. [Online].
+Available: \url{https://www.ibm.com/think/topics/lstm}
+
+\bibitem{huang2019music}
+C.-Z. A. Huang, A. Vaswani, J. Uszkoreit, N. Shazeer, I. Simon, C. Hawthorne, A. M. Dai, M. D. Hoffman, M. Dinculescu, and D. Eck,
+``Music Transformer: Generating Music with Long-Term Structure,''
+in \textit{International Conference on Learning Representations (ICLR)}, 2019.
+
+\bibitem{huang2020pop}
+Y.-S. Huang and Y.-H. Yang, ``Pop Music Transformer: Beat-Based Modeling and Generation of Expressive Pop Piano Compositions,''
+in \textit{Proc. 28th ACM International Conference on Multimedia (MM)}, 2020, pp. 1180--1188.
+
+\bibitem{zou2025creation}
+J. Zou and P. Phokha,
+``The Creation of Music Therapy for Stress, Using Different Style of Piano Playing Analysis,''
+\textit{Edelweiss Applied Science and Technology}, vol. 9, no. 3, pp. 1870–1891, 2025.
+
+\bibitem{cheah2022background}
+Y. Cheah, H. K. Wong, M. Spitzer, and E. Coutinho,
+``Background Music and Cognitive Task Performance: A Systematic Review of Task, Music, and Population Impact,''
+\textit{Music \& Science}, vol. 5, Art. no. 20592043221134392, 2022.
+
+\bibitem{yu2022museformer}
+B. Yu, P. Lu, R. Wang, W. Hu, X. Tan, W. Ye, S. Zhang, T. Qin, and T.-Y. Liu,
+``Museformer: Transformer with Fine- and Coarse-Grained Attention for Music Generation,''
+in \textit{Advances in Neural Information Processing Systems}, vol. 35, 2022.
+
+\bibitem{holtzman2020curious}
+A. Holtzman, J. Buys, L. Du, M. Forbes, and Y. Choi,
+``The Curious Case of Neural Text Degeneration,''
+in \textit{International Conference on Learning Representations (ICLR)}, 2020.
+
+\bibitem{paitan2024application}
+F. M. G. Paitan, M. A. Meléndez, and C. Ovalle,
+``Application of artificial intelligence in music generation: a systematic review,''
+\textit{IAES International Journal of Artificial Intelligence (IJ-AI)}, vol. 13, no. 4, pp. 3715--3726, Dec. 2024.
+
+\bibitem{vaswani2017attention}
+A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, L. Kaiser, and I. Polosukhin,
+``Attention Is All You Need,''
+in \textit{Advances in Neural Information Processing Systems}, vol. 30, 2017.
+
+\bibitem{buentello2025transformer}
+B. Buentello,
+``Transformer-Based Symbolic Music Generation,''
+Master's thesis, Dept. Elect. Eng., Bucknell Univ., Lewisburg, PA, 2025.
+
+\bibitem{hsiao2021compound}
+W.-Y. Hsiao, J.-Y. Liu, Y.-C. Yeh, and Y.-H. Yang,
+``Compound Word Transformer: Learning to Compose Full-Song Music over Dynamic Directed Hypergraphs,''
+in \textit{Proc. AAAI Conference on Artificial Intelligence}, vol. 35, no. 1, 2021, pp. 178--186.
+
+\bibitem{wu2023musemorphose}
+S.-L. Wu and Y.-H. Yang,
+``MuseMorphose: Full-Song and Fine-Grained Piano Music Style Transfer With One Transformer VAE,''
+\textit{IEEE/ACM Transactions on Audio, Speech, and Language Processing}, vol. 31, pp. 1953--1967, 2023.
+
+\bibitem{vonrutte2023figaro}
+D. von R\"{u}tte, L. Biggio, Y. Kilcher, and T. Hofmann,
+``FIGARO: Controllable Music Generation using Expert and Learned Features,''
+in \textit{International Conference on Learning Representations (ICLR)}, 2023.
+
+\bibitem{suprapto2019gamelan}
+Y. Suprapto, E. M. Yuniarno, and K. Fithri,
+``Gamelan Notation Generating Using Band Pass Filter for Saron Instrument,''
+in \textit{Proc. 2019 International Conference on Computer Engineering, Network, and Intelligent Multimedia (CENIM)},
+Surabaya, Indonesia, 2019, pp. 1--6.
+
+\bibitem{ellis1984midi}
+D. Ellis,
+``Inside MIDI,''
+\textit{Electronics \& Music Maker}, Jun. 1984. [Online].
+Available: \url{https://www.muzines.co.uk/articles/inside-midi/7894}
+% \bibitem{spiliotopoulos2022exploring}
+% A. A. Spiliotopoulos,
+% ``Exploring Automatic Music Generation using Transformer encoder-based Language Models,''
+% BSc Thesis, Dept. Informatics and Telecommunications, National and Kapodistrian Univ. Athens, Athens, Greece, 2022.
+
+\bibitem{sapp_midifile}
+C. Sapp,
+``Standard MIDI File Structure,''
+\textit{Stanford University CCRMA}. [Online].
+Available: \url{https://ccrma.stanford.edu/~craig/14q/midifile/MidiFileFormat.html} (accessed Oct. 2026).
+
+\bibitem{oliveira2017midi}
+H. M. de Oliveira and R. C. de Oliveira,
+``Understanding MIDI: A Painless Tutorial on MIDI Format,''
+\textit{arXiv preprint arXiv:1705.05322}, pp. 1–7, 2017.
+
+\bibitem{bradshaw2025aria}
+L. Bradshaw and S. Colton, ``Aria-MIDI: A Dataset of Piano MIDI Files for Symbolic Music Modeling,'' in \textit{International Conference on Learning Representations (ICLR)}, 2025.
+
+\bibitem{sun2025impact}
+Y. Sun,
+``The Impact of Background Music on Flow, Work Engagement and Task Performance: A Randomized Controlled Study,''
+\textit{Behavioral Sciences}, vol. 15, no. 4, p. 416, 2025.
+
+\bibitem{schweppe2020irrelevant}
+J. Schweppe and J. Knigge,
+``Irrelevant music: How suprasegmental changes of a melody's tempo and mode affect the disruptive potential of music on serial recall,''
+\textit{Memory \& Cognition}, vol. 48, no. 6, pp. 982--993, 2020.
+
+\bibitem{sarwosri2022identification}
+Sarwosri, U. L. Yuhana, and S. Rochimah,
+``Identification of Conflicts in User Story Requirements Using the Clustering Algorithm,''
+in \textit{Proc. 2022 International Conference on Computer Engineering, Network, and Intelligent Multimedia (CENIM)},
+Surabaya, Indonesia, 2022, pp. 308--312.
+
+\bibitem{sugiyanto2016improvement}
+Sugiyanto, S. Rochimah, and Sarwosri,
+``The improvement of Software Quality Model for Academic Websites Based on Multi-Perspective Approach,''
+\textit{Journal of Theoretical and Applied Information Technology}, vol. 86, no. 3, pp. 464--471, Apr. 2016.
+
+\bibitem{ferreira2023generating}
+P. Ferreira, R. Limongi, and L. P. Fávero,
+``Generating Music with Data: Application of Deep Learning Models for Symbolic Music Composition,''
+\textit{Applied Sciences}, vol. 13, no. 7, p. 4543, Mar. 2023.
+
+\end{thebibliography}
+
+\end{document}
