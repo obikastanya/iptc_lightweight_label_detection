@@ -275,6 +275,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - **Status:** ⚠️
 - **Evidence:** analisis `main.aux` + `references.bib` (tahun dan field journal/booktitle).
   - **Naskah final (2026-10-17):** 46 referensi; artikel jurnal 11 (24%) < 30% (aturan MK). Penyimpangan diterima sesuai keputusan D6 (tidak menambah referensi demi kuota). 2022–2026: 26 dari 45 referensi bertahun (58%); referensi lama adalah karya fondasi metode dan statistik.
+  - **Pembaruan 2026-10-18:** LoRA/PEFT dibuang karena tidak relevan ([change_log.md](change_log.md) §2.9). Sekarang 44 referensi, artikel jurnal 10 (22.7%). Kesegaran: 2022–2026 24 dari 43 referensi bertahun (56%); 2021–2026 29/43 (67%). Untuk Juknis akreditasi F.7, sumber primer (jurnal + prosiding) 34/44 = 77.3%.
 - **Tindakan (diperbarui 2026-10-17):**
   - **Sudah dikerjakan:** kandidat jurnal yang relevan (`treviso2023efficient`, `yang2025kdsurvey`, McNemar, Holm) sudah disitasi. Total referensi naik dari 29 menjadi 46.
   - **Yang tersisa:** proporsi jurnal 24% masih di bawah aturan MK (30%). Kesegaran 58% (2022–2026) dari 45 referensi bertahun.

@@ -156,7 +156,7 @@
   "count": 1
  },
  "casc.08.docs_per_sec": {
-  "value": "1.9",
+  "value": "1.92",
   "count": 2
  },
  "casc.08.macro_f1": {
@@ -168,7 +168,7 @@
   "count": 2
  },
  "casc.101.docs_per_sec": {
-  "value": "0.8",
+  "value": "0.77",
   "count": 1
  },
  "casc.101.macro_f1": {
@@ -850,6 +850,18 @@
  "teacher.test.macro": {
   "value": "0.598",
   "count": 2
+ },
+ "tok.rand10.macro": {
+  "value": "0.435",
+  "count": 1
+ },
+ "tok.top10.macro": {
+  "value": "0.543",
+  "count": 1
+ },
+ "tok.top10.n_tokens": {
+  "value": "58",
+  "count": 1
  },
  "train.seconds": {
   "value": "5.2",

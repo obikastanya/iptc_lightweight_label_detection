@@ -569,24 +569,6 @@
 
 
 % =====================================================================
-% G. Parameter-efficient fine-tuning vs. inference cost
-%    (hu2022lora, razuvayevskaya2024peft, azimi2024kdlora are in the
-%     CORRECTED EXISTING ENTRIES section below)
-% =====================================================================
-
-@article{ding2023peft,
-  author  = {Ding, Ning and Qin, Yujia and Yang, Guang and Wei, Fuchao and Yang, Zonghan and Su, Yusheng and Hu, Shengding and Chen, Yulin and Chan, Chi-Min and Chen, Weize and Yi, Jing and Zhao, Weilin and Wang, Xiaozhi and Liu, Zhiyuan and Zheng, Hai-Tao and Chen, Jianfei and Liu, Yang and Tang, Jie and Li, Juanzi and Sun, Maosong},
-  title   = {Parameter-Efficient Fine-Tuning of Large-Scale Pre-Trained Language Models},
-  journal = {Nature Mach. Intell.},
-  volume  = {5},
-  number  = {3},
-  pages   = {220--235},
-  year    = {2023},
-  doi     = {10.1038/s42256-023-00626-4}
-}
-
-
-% =====================================================================
 % FOUNDATIONAL (pre-2022, peer-reviewed; cite sparingly)
 % =====================================================================
 
@@ -724,8 +706,8 @@
   doi     = {10.3390/make5030059}
 }
 
-% [A] CORRECTED: was @misc arXiv:2511.07989 (2025, "Kuzman and others").
-% Now peer-reviewed at the LLMs4SSH workshop @ LREC 2026. Note the first author's
+% [A] CORRECTED: was a misc entry, arXiv:2511.07989 (2025, "Kuzman and others").
+% Now peer-reviewed at the LLMs4SSH workshop at LREC 2026. Note the first author's
 % name as published: "Kuzman Pungersek, Taja". Key kept for compatibility.
 @inproceedings{kuzman2025southslavic,
   author    = {Kuzman Punger{\v{s}}ek, Taja and Rupnik, Peter and Porupski, Ivan and Dini{\'c}, Vuk and Ljube{\v{s}}i{\'c}, Nikola},
@@ -789,37 +771,6 @@
   pages   = {101852},
   year    = {2026},
   doi     = {10.1016/j.csl.2025.101852}
-}
-
-% [G] verified at iclr.cc (ICLR 2022 poster); unchanged
-@inproceedings{hu2022lora,
-  author    = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
-  title     = {{LoRA}: Low-Rank Adaptation of Large Language Models},
-  booktitle = {Proc. 10th Int. Conf. Learn. Represent. (ICLR)},
-  year      = {2022}
-}
-
-% [G] CORRECTED: full author list (was "Razuvayevskaya and others"); article number added
-@article{razuvayevskaya2024peft,
-  author  = {Razuvayevskaya, Olesya and Wu, Ben and Leite, Jo{\~a}o A. and Heppell, Freddy and Srba, Ivan and Scarton, Carolina and Bontcheva, Kalina and Song, Xingyi},
-  title   = {Comparison Between Parameter-Efficient Techniques and Full Fine-Tuning: A Case Study on Multilingual News Article Classification},
-  journal = {PLOS ONE},
-  volume  = {19},
-  number  = {5},
-  pages   = {e0301738},
-  year    = {2024},
-  doi     = {10.1371/journal.pone.0301738}
-}
-
-% [G] verified at PMLR v262 (peer-reviewed workshop, archival PMLR volume); unchanged
-@inproceedings{azimi2024kdlora,
-  author    = {Azimi, Rambod and Rishav, Rishav and Teichmann, Marek and Ebrahimi Kahou, Samira},
-  title     = {{KD-LoRA}: A Hybrid Approach to Efficient Fine-Tuning With {LoRA} and Knowledge Distillation},
-  booktitle = {Proc. 4th NeurIPS Efficient Natural Language and Speech Processing Workshop},
-  series    = {Proc. Mach. Learn. Res.},
-  volume    = {262},
-  pages     = {73--80},
-  year      = {2024}
 }
 
 % [Foundational] verified, doi added
@@ -988,20 +939,6 @@
   author       = {{Jakarta Artificial Intelligence Research}},
   title        = {{IndoNews}: Indonesian News Topic Classification Dataset (Liputan6)},
   howpublished = {Hugging Face dataset \texttt{jakartaresearch/indonews}},
-  year         = {2021}
-}
-
-@misc{swahilinews2020,
-  author       = {David, Davis},
-  title        = {Swahili: News Classification Dataset},
-  howpublished = {Zenodo, doi:10.5281/zenodo.5514203; Hugging Face dataset \texttt{community-datasets/swahili\_news}},
-  year         = {2020}
-}
-
-@misc{amharicnews2024,
-  author       = {Azime, Israel Abebe and Mohammed, Nebil},
-  title        = {An {Amharic} News Text Classification Dataset},
-  howpublished = {arXiv:2103.05639 (dataset); Hugging Face \texttt{rasyosef/amharic-news-category-classification}},
   year         = {2021}
 }
 

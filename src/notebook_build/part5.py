@@ -349,14 +349,15 @@ casc = pd.DataFrame(casc)
 for _, r in casc.iterrows():
     k = f"casc.{str(r.theta).replace('.', '')}"
     NUM.add(f"{k}.coverage", r.coverage, 1, percent=True)
-    NUM.add(f"{k}.docs_per_sec", r.docs_per_sec, 1)
+    # same precision rule as the efficiency table (Table X), so the teacher-only throughput reads 0.77 in both
+    NUM.add(f"{k}.docs_per_sec", r.docs_per_sec, 2 if r.docs_per_sec < 10 else (1 if r.docs_per_sec < 100 else 0))
     for c in ["acc_covered", "macro_f1", "accuracy"]:
         NUM.add(f"{k}.{c}", r[c], 3)
 lines = []
 for _, r in casc.iterrows():
     th = "0 (StaticKD only)" if r.theta == 0 else ("\\eng{Teacher} only" if r.theta > 1 else fmt(r.theta, 1))
     lines.append(" & ".join([th, fmt(r.coverage, 1, percent=True), fmt(r.acc_covered) if pd.notna(r.acc_covered) else "--",
-                             fmt(r.macro_f1), fmt(r.accuracy), fmt(r.docs_per_sec, 1 if r.docs_per_sec < 100 else 0)]) + " \\\\")
+                             fmt(r.macro_f1), fmt(r.accuracy), n(r.docs_per_sec)]) + " \\\\")
 write_table("cascade", lines)
 show(casc, f"Cascade StaticKD -> {teacher_cpu} di set uji")
 """),

@@ -198,6 +198,36 @@ Keputusan penulis: naskah kembali ke gaya draf lama, yaitu impersonal atau pasif
 - **Diperbaiki sekalian:** Evaluation Protocol kini menulis Wilcoxon "on per-language macro-F1 and accuracy", sesuai Results setelah audit §2.5.
 - **Tidak diubah:** "they/their" (mengacu ke benda) dan Acknowledgment (sudah orang ketiga).
 
+### 2.8 Konsistensi throughput teacher di mode cascade, 2026-10-17
+
+Throughput teacher ONNX int8 satu core tertulis **0.8** di Results (paragraf cascade) dan Tabel XII, tetapi **0.77** di Discussion dan Tabel X. Nilainya sama; hanya presisinya yang berbeda. Tabel cascade di [part5.py](../src/notebook_build/part5.py) kini memakai aturan presisi yang sama dengan tabel efisiensi: 2 desimal untuk nilai < 10, 1 desimal untuk < 100, bilangan bulat di atasnya. Hasilnya:
+- "Teacher only" = 0.77 di Results, Discussion, Tabel X, dan Tabel XII;
+- throughput cascade di θ = 0.8 menjadi 1.92 (sebelumnya 1.9);
+- kolom throughput Tabel XII lainnya menjadi 3.97, 2.93, 2.34, dan 1.58.
+
+Tidak ada nilai lain yang berubah.
+
+### 2.9 Pembuangan LoRA/PEFT (tidak relevan), 2026-10-18
+
+Diverifikasi terhadap naskah. Masalah paper ini adalah biaya **inference** di CPU, sedangkan LoRA/PEFT adalah metode menghemat biaya **training**. LoRA/PEFT tidak dipakai di eksperimen, RQ, maupun hasil mana pun, dan teacher tidak dilatih dengan LoRA. Kalimat-kalimatnya adalah sisa arah penelitian lama: LoRA sudah dibuang dari topik.
+
+Yang dibuang:
+- **Pendahuluan:** kalimat "Low-rank adaptation (LoRA) and other parameter-efficient fine-tuning (PEFT) methods … reduce the cost of training, not of inference …".
+- **Related Work:** kalimat "PEFT methods such as LoRA … do not belong to this group …".
+- **Tabel I:** baris "LoRA/PEFT".
+- **Discussion:** kalimat "Compared with LoRA and PEFT …, StaticKD lowers the cost of inference rather than of training." Kalimat berikutnya ("Inference is the recurring cost in a news pipeline …") tetap.
+
+Akibatnya:
+- dua referensi tidak lagi disitasi (`hu2022lora`, `razuvayevskaya2024peft`), sehingga total referensi 46 → **44** dan artikel jurnal 11 → **10** (22.7%);
+- nomor sitasi setelah [5] bergeser dua.
+
+Lembar rewrite (`paper_rewrite.md`) dan PDF bacaan bahasa Indonesia ikut diperbarui dan divalidasi ulang.
+
+Yang **tidak** dibuang setelah diverifikasi:
+- Sparse Distillation: karya terdekat; dasar klaim pembeda dan pemetaan baseline;
+- trainer classifier Model2Vec: menjawab risiko novelty;
+- baseline LLM: memang tidak pernah ada di naskah.
+
 ## 3. Yang belum dilakukan
 
 > **Keputusan D21 (2026-10-17):** tidak ada eksperimen baru sebelum submit karena keterbatasan waktu. Eksperimen di 3.1 dikerjakan **saat revisi**, bila reviewer memintanya. Limitations sudah menyebut setiap batasannya.

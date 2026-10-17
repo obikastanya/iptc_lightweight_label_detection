@@ -13,7 +13,6 @@
 Approach & Model at inference time & Multilingual & Cross-lingual transfer & No deep learning library & CPU cost reported & IPTC labels \\
 \midrule
 Kuzman \& Ljube\v{s}i\'c~\cite{kuzman2025llm} & XLM-R-large (\val{teacher.params}M parameters) & yes & yes & no & no & yes \\
-LoRA/PEFT~\cite{hu2022lora,razuvayevskaya2024peft} & full transformer backbone & partly & yes & no & no & no \\
 DistilBERT, MiniLMv2~\cite{sanh2019distilbert,wang2021minilmv2} & 6-layer transformer & partly & yes & no & partly & no \\
 Sparse Distillation~\cite{ye2022sparse} & deep averaging network + n-gram table & no (en) & no & yes & yes & no \\
 Model2Vec~\cite{tulkens2024model2vec}, Wada et al.~\cite{wada2025static} & static embeddings, optional MLP classifier & yes & yes & yes & partly & no \\
