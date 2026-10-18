@@ -38,6 +38,8 @@ def ref_name(label: str, num: str) -> str:
         return f"Fig. {num}"
     if label.startswith("eq:"):
         return f"({num})"
+    if label.startswith("alg:"):
+        return f"Algorithm {num}"
     return f"Section {num}"
 
 
@@ -114,11 +116,12 @@ def main() -> None:
             while not lines[j].strip().startswith(BS + "end{" + name + "}"):
                 j += 1
             body = "\n".join(lines[i: j + 1])
-            if name in ("figure", "figure*", "table", "table*"):
+            if name in ("figure", "figure*", "table", "table*", "algorithm"):
                 cap = re.search(re.escape(BS) + r"caption\{(.*?)\}\s*\n" + re.escape(BS) + "label", body, re.S)
                 lab = re.search(re.escape(BS) + r"label\{([^}]*)\}", body)
                 label = lab.group(1) if lab else ""
-                add("table" if name.startswith("table") else "figure", i, cap.group(1) if cap else "",
+                kind = "algorithm" if name == "algorithm" else "table" if name.startswith("table") else "figure"
+                add(kind, i, cap.group(1) if cap else "",
                     {"label": label, "number": ref_name(label, labels.get(label, "?")) if label else ""})
             elif name in ("itemize", "enumerate"):
                 items = re.split(re.escape(BS) + r"item\s", body)[1:]

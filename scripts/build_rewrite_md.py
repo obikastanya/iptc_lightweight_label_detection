@@ -104,12 +104,13 @@ def to_plain(t: str, labels: dict, cites: dict) -> str:
 def id_name(ref: str) -> str:
     if ref.startswith("("):
         return "Persamaan " + ref
-    return ref.replace("Table ", "Tabel ").replace("Fig. ", "Gambar ").replace("Section ", "Bagian ")
+    return (ref.replace("Table ", "Tabel ").replace("Fig. ", "Gambar ").replace("Section ", "Bagian ")
+            .replace("Algorithm ", "Algoritma "))
 
 
 def bare_numbers(text: str) -> list[str]:
     text = re.sub(r"\[\d+\]", " ", text)
-    text = re.sub(r"\b(RQ|Bagian|Tabel|Gambar|Persamaan)\s*[\dIVX-]+[A-Z]?\b", " ", text)
+    text = re.sub(r"\b(RQ|Bagian|Tabel|Gambar|Persamaan|Algoritma)\s*[\dIVX-]+[A-Z]?\b", " ", text)
     return [n.lstrip("+-") for n in re.findall(r"(?<![\w.])[-+]?\d(?:[\d,]*\d)?(?:\.\d+)?(?![\w])", text)]
 
 
@@ -118,7 +119,7 @@ def block_ids(blocks: list) -> list[str]:
     for b in blocks:
         if b["section"] == "Front matter":
             ids.append(FRONT[b["kind"]])
-        elif b["kind"] in ("table", "figure", "equation"):
+        elif b["kind"] in ("table", "figure", "equation", "algorithm"):
             ids.append(b["number"])
         else:
             p = PREFIX[b["section"]]
@@ -133,7 +134,7 @@ def existing_paraphrases() -> dict:
         return {}
     found = {}
     # a paraphrase ends at the next block, section heading, separator or table/figure/equation placeholder
-    end = r"(?=^### |^## |^---\s*$|^\[(?:TABEL|GAMBAR|PERSAMAAN) |\Z)"
+    end = r"(?=^### |^## |^---\s*$|^\[(?:TABEL|GAMBAR|PERSAMAAN|ALGORITMA) |\Z)"
     for m in re.finditer(r"^### (\S+)[^\n]*\n(.*?)" + end, OUT.read_text(encoding="utf8"), re.S | re.M):
         p = re.search(r"\*\*Paraphrase:\*\*\s*\n(.*)", m.group(2), re.S)
         if p:
@@ -185,8 +186,8 @@ def main() -> None:
             if want != have:
                 problems.append(f"{bid}: citations differ: paragraph {sorted(want)} vs text {sorted(have)}")
 
-        if b["kind"] in ("table", "figure", "equation"):
-            what = {"table": "TABEL", "figure": "GAMBAR", "equation": "PERSAMAAN"}[b["kind"]]
+        if b["kind"] in ("table", "figure", "equation", "algorithm"):
+            what = {"table": "TABEL", "figure": "GAMBAR", "equation": "PERSAMAAN", "algorithm": "ALGORITMA"}[b["kind"]]
             out.append(f"\n[{what} {id_name(b['number']).split(' ', 1)[1]} — placeholder] {meaning}\n")
             continue
         head = FRONT_NAME.get(b["kind"], b["subsection"] or "")
@@ -239,7 +240,7 @@ Lembar kerja untuk menulis ulang naskah paragraf demi paragraf. Untuk setiap blo
 2. Tulis versi Anda di bawah **Paraphrase:** (ganti tulisan "(tulis di sini)"). Cukup teks biasa; sitasi ditulis seperti di Current, misalnya [2], dan rujukan seperti "Section IV-D" atau "Table IV".
 3. Pastikan semua yang ada di **Locked** muncul lagi di tulisan Anda: angka sama persis, nomor sitasi tetap menempel pada klaim yang sama.
 
-Aturan singkat: tanpa *we/our* (gaya impersonal); istilah teknis tetap bahasa Inggris; definisikan singkatan saat pertama muncul; hindari pola di [ai_text_criteria_to_be_avoided.txt](ai_text_criteria_to_be_avoided.txt). Tabel, gambar, dan persamaan hanya placeholder.
+Aturan singkat: mudah dipahami dan benar; gaya impersonal, tanpa subjek orang (*I, you, we, they*); istilah teknis tetap bahasa Inggris; definisikan singkatan saat pertama muncul; hindari pola di [ai_text_criteria_to_be_avoided.txt](ai_text_criteria_to_be_avoided.txt). Tabel, gambar, dan persamaan hanya placeholder.
 
 Membangun ulang file ini (`python scripts/rewrite_lock.py && python scripts/build_rewrite_md.py`) tidak menghapus Paraphrase yang sudah diisi.
 """
