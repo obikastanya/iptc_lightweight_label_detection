@@ -1,0 +1,34 @@
+{
+ "name": "distilmbert_kd_len512",
+ "base": "distilbert/distilbert-base-multilingual-cased",
+ "sources": [
+  "emmediatopic",
+  "ccnews",
+  "ccnews_extra"
+ ],
+ "epochs": 2,
+ "batch_size": 32,
+ "lr": 5e-05,
+ "max_length": 512,
+ "temperature": 1.0,
+ "val_fraction": 0.03,
+ "seed": 0,
+ "grad_accum": 4,
+ "history": [
+  {
+   "epoch": 1,
+   "val_agreement": 0.8342464156661615,
+   "seconds": 5642.318220099987
+  },
+  {
+   "epoch": 2,
+   "val_agreement": 0.8478843688075534,
+   "seconds": 11382.677237800002
+  }
+ ],
+ "best_val_agreement": 0.8478843688075534,
+ "train_seconds": 11383.70965949999,
+ "oom_retried_steps": 0,
+ "oom_skipped_steps": 0,
+ "onnx_vs_pytorch_agreement_dev200": 1.0
+}
