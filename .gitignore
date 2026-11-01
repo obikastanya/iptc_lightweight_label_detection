@@ -34,7 +34,8 @@ models/**/tokenizer.json
 # Folder kerja agent / file uji sementara
 # ---------------------------------------------------------------
 /scratch/
-.claude/
+.claude/*
+!.claude/skills/
 test.py
 test_ori.py
 test_compare.py
