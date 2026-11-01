@@ -11,6 +11,7 @@ Every predictor exposes `logits(texts) -> (n, 17)` in config.LABELS order, `size
 | fasttext:<file>         | a fastText student                                                  |
 | tfidf:<file>            | TF-IDF (XLM-R subword tokens, uni+bigrams) + linear SVM             |
 | static:<dir>            | a StaticKD student                                                  |
+| model2vec:<dir>         | a Model2Vec classifier pipeline (static embeddings + MLP head)      |
 """
 from __future__ import annotations
 
@@ -174,6 +175,32 @@ class TfidfPredictor:
         return self.logits(texts).argmax(1)
 
 
+class Model2VecPredictor:
+    """Model2Vec classifier (StaticModelForClassification) exported with to_pipeline(): static embeddings,
+    mean pooling, and a scikit-learn MLP head, run with NumPy. Inputs are cut at the library default of 512 tokens."""
+
+    def __init__(self, path, max_length: int = 512):
+        from model2vec.inference import StaticModelPipeline
+
+        self.pipeline = StaticModelPipeline.from_pretrained(str(path))
+        self.max_length = max_length
+        self.classes = np.asarray(self.pipeline.head.classes_, dtype=np.int64)
+        self.size_mb = dir_size_mb(path)
+        emb = self.pipeline.model.embedding
+        mlp = self.pipeline.head.steps[-1][1] if hasattr(self.pipeline.head, "steps") else self.pipeline.head
+        self.num_parameters = int(np.asarray(emb).size + sum(w.size for w in getattr(mlp, "coefs_", []))
+                                  + sum(b.size for b in getattr(mlp, "intercepts_", [])))
+
+    def logits(self, texts):
+        probs = self.pipeline.predict_proba(list(texts), max_length=self.max_length, use_multiprocessing=False)
+        out = np.full((len(texts), NUM_LABELS), -1e4, dtype=np.float32)
+        out[:, self.classes] = np.log(np.clip(probs, 1e-12, 1.0))
+        return out
+
+    def predict(self, texts):
+        return self.logits(texts).argmax(1)
+
+
 # ----------------------------------------------------------------------------- transformers on CPU
 class TeacherPyTorch:
     def __init__(self, threads: int = 1):
@@ -257,6 +284,8 @@ def load_predictor(spec: str, threads: int = 1):
     if kind == "static":
         from statickd.student import StaticKDModel
         return StaticKDModel(path)
+    if kind == "model2vec":
+        return Model2VecPredictor(path)
     raise ValueError(f"unknown model spec: {spec}")
 
 

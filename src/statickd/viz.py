@@ -20,6 +20,7 @@ COLORS = {
     "statickd_compact": "#56B4E9",
     "fasttext": "#D55E00",
     "tfidf": "#009E73",
+    "model2vec": "#882255",
     "other": "#999999",
 }
 ORIGIN_COLORS = {"human_annotation": "#0072B2", "publisher_category": "#E69F00",
@@ -38,7 +39,7 @@ def apply_style() -> None:
 
 def family(model: str) -> str:
     for key in ("teacher_onnx_int8", "teacher", "distilmbert", "minilm", "compact", "statickd", "full",
-                "ft_", "tfidf"):
+                "ft_", "tfidf", "model2vec"):
         if key in model:
             return {"compact": "statickd_compact", "full": "statickd", "ft_": "fasttext"}.get(key, key)
     return "other"

@@ -1,0 +1,28 @@
+{
+ "name": "model2vec_clf",
+ "base_embeddings": "minishlab/potion-multilingual-128M",
+ "model2vec_version": "0.9.0",
+ "labels": "teacher arg-max (hard)",
+ "train_docs": 285999,
+ "seed": 0,
+ "settings": "library defaults: n_layers=1, hidden_dim=512, learned token weights, fine-tuned embeddings, lr=1e-3, early stopping (patience 5) on a 10% validation split, max 512 tokens",
+ "train_seconds": 1194.5,
+ "device": "auto",
+ "eval": {
+  "dev": {
+   "macro_f1": 0.74363,
+   "accuracy": 0.78,
+   "n": 1000
+  },
+  "heldout": {
+   "macro_f1": 0.77571,
+   "accuracy": 0.80452,
+   "n": 12554
+  },
+  "test": {
+   "macro_f1": 0.54692,
+   "accuracy": 0.64171,
+   "n": 12744
+  }
+ }
+}

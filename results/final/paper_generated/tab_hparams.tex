@@ -16,7 +16,7 @@
 \quad quantization & \texttt{quantize}, \eng{cutoff} 300k, \eng{retrain} \\
 \multicolumn{2}{@{}l}{\textit{TF-IDF + SVM}} \\
 \quad features & XLM-R subword uni+bigrams, min.\ df 3, max.\ 1,000,000, \eng{sublinear tf} \\
-\quad classifier (fixed) & LinearSVC, $C=0.50$ \\
+\quad classifier (chosen on dev) & LinearSVC, $C=0.50$ \\
 \multicolumn{2}{@{}l}{\textit{MiniLM-L6 / DistilmBERT + KD}} \\
 \quad optimizer & AdamW $5\cdot 10^{-5}$, wd 0.01, \eng{warmup} 6\%, linear, fp16 \\
 \quad \eng{batch}, \eng{epoch}, max. tokens & 32, 2, 256 \\

@@ -33,6 +33,7 @@ def main() -> None:
         "ft_kd_subword_q": f"fasttext:{B / 'ft_kd_subword_q.ftz'}",
         "ft_kd_subword": f"fasttext:{B / 'ft_kd_subword.bin'}",
         "tfidf_svm_kd": f"tfidf:{B / 'tfidf_svm_kd.joblib'}",
+        "model2vec_clf": f"model2vec:{B / 'model2vec_clf'}",
     }
     env = {**__import__("os").environ, "PYTHONPATH": str(ROOT / "src")}
     for name, spec in models.items():

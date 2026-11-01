@@ -24,6 +24,7 @@ MODELS = {
     "ft_kd_subword":     ("fastText + KD, subword", f"fasttext:{BASELINES_DIR / 'ft_kd_subword.bin'}"),
     "ft_kd_word":        ("fastText + KD, word", f"fasttext:{BASELINES_DIR / 'ft_kd_word.bin'}"),
     "tfidf_svm_kd":      ("TF-IDF + SVM + KD", f"tfidf:{BASELINES_DIR / 'tfidf_svm_kd.joblib'}"),
+    "model2vec_clf":     ("Model2Vec classifier + KD", f"model2vec:{BASELINES_DIR / 'model2vec_clf'}"),
     "ft_gpt_subword":    ("fastText, GPT-4o labels, subword", f"fasttext:{BASELINES_DIR / 'ft_gpt_subword.bin'}"),
     "ft_gpt_word":       ("fastText, GPT-4o labels, word", f"fasttext:{BASELINES_DIR / 'ft_gpt_word.bin'}"),
 }
