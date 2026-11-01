@@ -1,6 +1,6 @@
 # Change Log: Draf Lama → Naskah Final
 
-Catatan perubahan dari draf lama [jurnal_latex/main.tex](../jurnal_latex/main.tex) (28-09-2026) ke naskah final [jurnal_final/main.tex](../jurnal_final/main.tex) (17-10-2026), beserta pekerjaan yang belum dilakukan.
+Catatan perubahan dari draf lama [_archive/jurnal_latex_v1/main.tex](../_archive/jurnal_latex_v1/main.tex) (28-09-2026) ke naskah final [paper_final/main.tex](../paper_final/main.tex) (17-10-2026), beserta pekerjaan yang belum dilakukan.
 
 Rujukan keputusan (D1–D21) dan status setiap poin kualitas ada di [paper_quality_check_filled.md](paper_quality_check_filled.md).
 
@@ -8,7 +8,7 @@ Rujukan keputusan (D1–D21) dan status setiap poin kualitas ada di [paper_quali
 
 | Aspek | Draf lama | Naskah final |
 |---|---|---|
-| Lokasi | `jurnal_latex/` (dibekukan sebagai arsip) | `jurnal_final/` |
+| Lokasi | `_archive/jurnal_latex_v1/` (dibekukan sebagai arsip) | `paper_final/` |
 | Bahasa | Indonesia | **Inggris** |
 | Struktur file | `main.tex` + 7 file `sections/` + `generated/` | **satu file `main.tex`** |
 | Angka | `\val{kunci}` dari notebook | **angka literal**, dicek dengan `scripts/check_paper.py` |
@@ -92,9 +92,9 @@ Rujukan keputusan (D1–D21) dan status setiap poin kualitas ada di [paper_quali
 | Bagian | Sebelum | Sesudah |
 |---|---|---|
 | Sumber notebook | `scratch/nb_final/` (di-ignore git, tidak tersimpan) | [src/notebook_build/](../src/notebook_build/) (tersimpan di git) |
-| Sumber naskah modular | `jurnal_latex/sections/` | [src/paper/](../src/paper/) |
-| Output angka dan tabel notebook | `jurnal_latex/generated/` | `results/final/paper_generated/` |
-| Output gambar notebook | `jurnal_latex/figures/` | `results/final/figures/`; hanya 9 gambar yang dipakai yang disalin ke `jurnal_final/figures/` |
+| Sumber naskah modular | `_archive/jurnal_latex_v1/sections/` | [src/paper/](../src/paper/) |
+| Output angka dan tabel notebook | `_archive/jurnal_latex_v1/generated/` | `results/final/paper_generated/` |
+| Output gambar notebook | `_archive/jurnal_latex_v1/figures/` | `results/final/figures/`; hanya 9 gambar yang dipakai yang disalin ke `paper_final/figures/` |
 | Pembangun naskah | – | [scripts/build_paper.py](../scripts/build_paper.py): menggabungkan sumber menjadi satu `main.tex` berangka literal; menolak menimpa naskah yang sudah disunting |
 | Format angka output | Indonesia (0,545; 12.744) | Inggris (0.545; 12,744) |
 | Teks tabel dan gambar | Indonesia | Inggris (nilai internal yang membentuk kunci angka tidak diubah) |
@@ -273,4 +273,4 @@ Setelah eksperimen di atas selesai:
 ### 3.4 Verifikasi teknis
 
 - **Notebook belum dijalankan penuh sejak jalur output dipindah** ke `results/final/`. File hasil sudah dipindah secara manual, dan jalurnya sudah dicek lewat impor modul. Lakukan satu kali jalankan penuh untuk memastikan semuanya tertulis ke lokasi baru.
-- **Kalau naskah disunting di Overleaf**, unduh kembali `main.tex` ke `jurnal_final/` sebelum menjalankan `scripts/check_paper.py`.
+- **Kalau naskah disunting di Overleaf**, unduh kembali `main.tex` ke `paper_final/` sebelum menjalankan `scripts/check_paper.py`.

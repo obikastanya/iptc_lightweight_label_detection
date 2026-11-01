@@ -1,6 +1,6 @@
 """Hyper-parameter grid for the non-transformer KD baselines, selected on the development set only.
 
-The grid was fixed before running (research_final/paper_quality_check_filled.md, decision D3):
+The grid was fixed before running (paper_writing/paper_quality_check_filled.md, decision D3):
   * fastText + KD (word and XLM-R subword tokens): lr {0.1, 0.5, 1.0} x dim {100, 300} x epoch {5, 15, 25}
   * TF-IDF + SVM + KD: C {0.1, 0.25, 0.5, 1, 2}
 Selection criterion: macro-F1 on the EMMediaTopic dev split, the same criterion used to fix the

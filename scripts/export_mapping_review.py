@@ -5,7 +5,7 @@ carry that name, and up to three example headlines. The reviewer fills the last 
 Language-specific overrides, ambiguous names that are deliberately NOT mapped, and the names that reject
 an article (astrology) follow the mapped names (status column), so the whole rule set is in one file.
 
-Output: research_final/mapping_review.xlsx with three sheets:
+Output: paper_writing/mapping_review.xlsx with three sheets:
   Petunjuk     how to review, an example row, and a live count of reviewed rows
   Dipetakan    the 814 mapped names, most used in the test set first
   Aturan lain  language-specific rules, ambiguous names, rejecting names
@@ -27,7 +27,7 @@ import pandas as pd  # noqa: E402
 from statickd.data import load_unified_test  # noqa: E402
 from statickd.testset import iptc_map  # noqa: E402
 
-OUT = ROOT / "research_final" / "mapping_review.xlsx"
+OUT = ROOT / "paper_writing" / "mapping_review.xlsx"
 # English glosses (reading aid only; written by Claude, see the _note in the file)
 GLOSS = json.loads((ROOT / "src/statickd/testset/iptc_reference/section_names_en.json").read_text(encoding="utf8"))
 EN_COL = "nama_rubrik_en (terjemahan Claude)"

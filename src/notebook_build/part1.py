@@ -5,7 +5,7 @@ md(r"""
 # StaticKD: *Knowledge Distillation* Pengklasifikasi Topik Berita IPTC Multibahasa ke Tabel Logit Token Statis untuk Inferensi Ringan di CPU
 
 **Notebook implementasi dan hasil penelitian.** Setiap angka, tabel, dan gambar di jurnal
-(`jurnal_final/main.tex`) dihasilkan oleh notebook ini. Bagian 11 menulis angka-angka tersebut ke
+(`paper_final/main.tex`) dihasilkan oleh notebook ini. Bagian 11 menulis angka-angka tersebut ke
 `results/final/paper_generated/`, lalu `scripts/build_paper.py` menyusun satu file `main.tex` dengan angka itu,
 sehingga tidak ada angka yang diketik manual.
 
@@ -296,7 +296,7 @@ NUM.add("map.nodes", len(mapping), 0)
 NUM.add("map.names", int(mapping.n_terms.sum()), 0)
 NUM.add("map.ambiguous", len(iptc_map.AMBIGUOUS), 0)
 print(f"{mapping.n_terms.sum()} nama rubrik/kategori dipetakan ke {len(mapping)} node IPTC; {len(iptc_map.AMBIGUOUS)} nama ambigu sengaja tidak dipetakan")
-# author review of the mapping table (scripts/export_mapping_review.py -> research_final/mapping_review.xlsx)
+# author review of the mapping table (scripts/export_mapping_review.py -> paper_writing/mapping_review.xlsx)
 review = json.loads((ROOT / "src/statickd/testset/iptc_reference/mapping_review_record.json").read_text(encoding="utf8"))
 assert review["mapped_names"]["total"] == int(mapping.n_terms.sum()), "review record does not match the mapping table"
 NUM.add("map.review.total", review["mapped_names"]["total"] + review["other_rules"]["total"], 0)

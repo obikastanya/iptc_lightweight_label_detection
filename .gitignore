@@ -44,21 +44,21 @@ test_compare.py
 *.zip
 
 # Paket zip file besar untuk diunggah ke Google Drive
-/gdrive_upload/
+/_archive/gdrive_upload_v1/
 
 # ---------------------------------------------------------------
 # Jurnal LaTeX: file hasil kompilasi & salinan template IEEE
-# (IEEEtran.cls/.bst yang dibutuhkan sudah ada di jurnal_latex/)
+# (IEEEtran.cls/.bst yang dibutuhkan sudah ada di _archive/jurnal_latex_v1/)
 # ---------------------------------------------------------------
-jurnal_latex/*.aux
-jurnal_latex/*.bbl
-jurnal_latex/*.blg
-jurnal_latex/*.out
-jurnal_latex/*.toc
-jurnal_latex/*.fls
-jurnal_latex/*.fdb_latexmk
-jurnal_latex/*.synctex.gz
-jurnal_latex/template_ieee/
+_archive/jurnal_latex_v1/*.aux
+_archive/jurnal_latex_v1/*.bbl
+_archive/jurnal_latex_v1/*.blg
+_archive/jurnal_latex_v1/*.out
+_archive/jurnal_latex_v1/*.toc
+_archive/jurnal_latex_v1/*.fls
+_archive/jurnal_latex_v1/*.fdb_latexmk
+_archive/jurnal_latex_v1/*.synctex.gz
+_archive/jurnal_latex_v1/template_ieee/
 
 # ---------------------------------------------------------------
 # Dokumen pihak lain (paper referensi berhak cipta & contoh tugas teman)
@@ -84,11 +84,14 @@ models/**/sentencepiece.bpe.model
 # release folders are build output (scripts/build_dist.py); pushed/uploaded separately
 dist/
 
-# Final paper (jurnal_final/): LaTeX build artifacts; main.pdf is kept like jurnal_latex/
-jurnal_final/*.aux
-jurnal_final/*.bbl
-jurnal_final/*.blg
-jurnal_final/*.out
-jurnal_final/*.synctex.gz
+# Final paper (paper_final/): LaTeX build artifacts; main.pdf is kept like _archive/jurnal_latex_v1/
+paper_final/*.aux
+paper_final/*.bbl
+paper_final/*.blg
+paper_final/*.out
+paper_final/*.synctex.gz
 # IEEE Access template (contains licensed fonts; download again from ieeeaccess.ieee.org)
-research_final/template_ieeeaccess/
+paper_writing/template_ieeeaccess/
+
+# Video presentasi (besar, disimpan lokal / Drive)
+/presentation/*.mp4

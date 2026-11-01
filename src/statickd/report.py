@@ -6,7 +6,7 @@
     write_table("main", body_lines)                    # results/final/paper_generated/tab_main.tex
 
 The paper sources in src/paper/ use \\val{key} and \\rows{generated/tab_main}; scripts/build_paper.py turns them
-into the single file jurnal_final/main.tex with literal numbers. Numbers use English notation (0.761; 12,744).
+into the single file paper_final/main.tex with literal numbers. Numbers use English notation (0.761; 12,744).
 """
 from __future__ import annotations
 

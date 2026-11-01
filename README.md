@@ -12,24 +12,49 @@ Indonesia). Ringkasan hasil ada di Bagian 10.6 notebook dan di
 
 ---
 
+## Peta cepat: mana yang final?
+
+| Yang dicari | Lokasi |
+|---|---|
+| **Paper final (bahasa Inggris)** | [`paper_final/main.tex`](paper_final/main.tex) dan [`paper_final/main.pdf`](paper_final/main.pdf). Edit teks **langsung di file ini**. |
+| Terjemahan bahasa Indonesia (untuk dibaca) | [`paper_final_id/paper_id_final.pdf`](paper_final_id/) dan ringkasan presentasi `ringkasan_presentasi_StaticKD.docx` |
+| **Kode final** | [`src/statickd/`](src/statickd/) (paket Python) dan [`scripts/`](scripts/) |
+| **Notebook final** | [`notebooks/StaticKD_IPTC_final.ipynb`](notebooks/StaticKD_IPTC_final.ipynb) (dibangkitkan dari `src/notebook_build/`) |
+| Hasil yang dilaporkan paper | [`results/final/`](results/final/) (angka, gambar, benchmark, prediksi) |
+| Model final | `models/final/statickd/` dan `models/final/statickd_compact/` |
+| Lembar kerja penulisan, panduan gaya, review pemetaan | [`paper_writing/`](paper_writing/) |
+| Desain penelitian | [`docs/RANCANGAN_PENELITIAN.md`](docs/RANCANGAN_PENELITIAN.md) |
+| Arsip tahap eksplorasi (v1/v2), **tidak dipakai lagi** | [`_archive/`](_archive/), `models/_archive_v1/`, `results/_archive_v1/` |
+
+**Peringatan.** `scripts/build_paper.py` menyusun `paper_final/main.tex` dari sumber modular `src/paper/`.
+Sumber itu sudah ketinggalan dari revisi teks manual. Jangan jalankan `build_paper.py --force`, karena semua
+revisi di `paper_final/main.tex` akan tertimpa.
+
 ## Struktur proyek
 
 | Path | Isi |
 |---|---|
-| `src/statickd/` | **Kode final** (paket Python): data, set uji, *teacher*, StaticKD, *baseline*, evaluasi, *benchmark*, ekspor ke LaTeX |
-| `scripts/` | Titik masuk langkah berat: `train_statickd.py`, `train_baselines.py`, `train_transformers.py`, `evaluate_model.py`, `label_with_teacher.py`, `validity_silver.py`, `build_dist.py` |
+| `paper_final/` | **Naskah final IEEE Access**: `main.tex`, `main.pdf`, `references.bib`, `figures/` |
+| `paper_final_id/` | Terjemahan bahasa Indonesia dan ringkasan presentasi (bukan naskah resmi) |
+| `paper_writing/` | Lembar kerja parafrase, panduan gaya (`ai_text_revision_guide*.md`), `change_log.md`, `mapping_review.xlsx`, template IEEE Access (tidak di-push) |
+| `src/statickd/` | **Kode final**: data, set uji, *teacher*, StaticKD, *baseline*, evaluasi, *benchmark*, ekspor angka |
+| `src/notebook_build/` | Generator notebook final (`part1.py` … `part5.py`) |
+| `src/paper/` | Sumber modular awal paper. Sudah ketinggalan, hanya untuk `build_paper.py` |
+| `scripts/` | Titik masuk langkah berat (training, evaluasi, benchmark, pelabelan *teacher*) dan pemeriksa paper (`check_paper.py`, `check_style.py`) |
 | `notebooks/StaticKD_IPTC_final.ipynb` | Notebook penelitian final, langkah demi langkah |
-| `jurnal_latex/` | Naskah IEEE (`main.tex`, `sections/`); `generated/` ditulis oleh notebook |
-| `docs/RANCANGAN_PENELITIAN.md` | Topik, latar belakang, RQ, batasan, *novelty*, kontribusi, protokol |
-| `docs/CHECKLIST_JURNAL.md` | Checklist kelengkapan informasi jurnal ↔ notebook |
-| `results/final/` | Prediksi semua model (`predictions/*.npz`), angka paper, *benchmark* CPU, versi pustaka |
-| `models/students/` | 72 run StaticKD (ablasi dan *seed*) |
-| `models/final/` | Model rilis: `statickd/` (*ensemble* 3 *seed*) dan `statickd_compact/` |
-| `models/baselines/` | fastText, TF-IDF + SVM, MiniLM-L6 + KD, DistilmBERT + KD |
-| `dist/github/`, `dist/huggingface/` | Paket rilis (dibuat oleh `scripts/build_dist.py`) |
-| `data/raw/`, `data/processed/` | Dataset mentah dan olahan, termasuk set uji gabungan (`data/processed/testset_jsonld/unified_test.jsonl`) |
-| `code/`, `LAPORAN_RISET.md`, `jurnal.md`, `notebooks/IPTC_StaticKD_Colab*.ipynb` | **Arsip tahap eksplorasi** (versi v1/v2 sebelum riset difinalkan). Tidak dipakai oleh notebook final |
+| `data/raw/`, `data/processed/` | Dataset mentah dan olahan, termasuk set uji gabungan (`data/processed/testset_jsonld/unified_test.jsonl`). Tidak di-push |
+| `models/final/`, `models/students/`, `models/baselines/`, `models/lid/` | Model final, 72 run StaticKD, *baseline*, LID fastText. Bobot tidak di-push |
+| `results/final/` | Semua yang dilaporkan paper; `predictions/` tidak di-push |
+| `docs/` | Rancangan penelitian dan checklist jurnal |
+| `presentation/` | Video presentasi (tidak di-push) |
+| `materi_kuliah/`, `reference/`, `sample/` | Bahan kuliah, paper referensi, contoh tugas (dua terakhir tidak di-push) |
+| `dist/` | Paket rilis hasil `scripts/build_dist.py` (bisa dibangun ulang) |
+| `_archive/` | Tahap eksplorasi: `code_v1/` (kode lama), `jurnal_latex_v1/` (naskah lama), `notebooks_v1/` (notebook Colab lama), `proposal_materials/`, `root_docs_v1/` (laporan dan draf lama), `gdrive_upload_v1/` (zip Drive lama, tidak di-push) |
+| `models/_archive_v1/`, `results/_archive_v1/` | Model dan hasil tahap eksplorasi |
 | `env/` | Virtual environment (tidak di-push) |
+
+Data, model, dan prediksi untuk menjalankan ulang proyek dibagikan terpisah sebagai bundle zip
+(lihat `README_BUNDLE.md` di dalam bundle).
 
 ## Setup
 
@@ -59,7 +84,7 @@ Kebutuhan yang dipasang terpisah:
 | *Benchmark* CPU (mesin idle) | notebook Bagian 10.1 dengan `RUN_BENCHMARK = True` |
 | Konstruksi set uji | `python -m statickd.testset.ccnews_warc`, `…jsonld`, `…silver`, `…external`, `…unified` (dengan `PYTHONPATH=src`) |
 | Paket rilis | `python scripts/build_dist.py` |
-| Kompilasi jurnal | `cd jurnal_latex && pdflatex main && bibtex main && pdflatex main && pdflatex main` |
+| Kompilasi jurnal | `cd paper_final && pdflatex main && bibtex main && pdflatex main && pdflatex main` |
 
 ## Memakai model
 

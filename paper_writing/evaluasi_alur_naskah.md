@@ -1,6 +1,6 @@
 # Evaluasi Alur dan Keterbacaan Naskah StaticKD
 
-Evaluasi [jurnal_final/main.tex](../jurnal_final/main.tex) dari sudut pandang pembaca manusia yang baru pertama kali membaca paper ini. Fokusnya pada kesinambungan antarkalimat, hal yang tersirat atau tidak dijelaskan, dan istilah yang dipakai sebelum didefinisikan. Fakta, angka, dan klaim tidak diubah.
+Evaluasi [paper_final/main.tex](../paper_final/main.tex) dari sudut pandang pembaca manusia yang baru pertama kali membaca paper ini. Fokusnya pada kesinambungan antarkalimat, hal yang tersirat atau tidak dijelaskan, dan istilah yang dipakai sebelum didefinisikan. Fakta, angka, dan klaim tidak diubah.
 
 - **Tanggal:** 18 Oktober 2026
 - **Rujukan blok:** ID blok (PEN-01, MET-01, dst.) sama dengan [paper_rewrite.md](paper_rewrite.md), dan nomor baris mengacu ke `main.tex` saat ini.

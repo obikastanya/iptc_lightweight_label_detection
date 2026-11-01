@@ -1,8 +1,8 @@
-"""Audit the single-file paper jurnal_final/main.tex against the notebook output.
+"""Audit the single-file paper paper_final/main.tex against the notebook output.
 
 Checks:
   * main.tex is self-contained: no \\input / \\include of local files, no \\val / \\rows left;
-  * every figure it includes exists in jurnal_final/figures/, and that folder holds nothing else;
+  * every figure it includes exists in paper_final/figures/, and that folder holds nothing else;
   * the compiled log has no errors, undefined references or citations;
   * numbers: every key recorded by scripts/build_paper.py (results/final/paper_number_map.json) still has the
     value that the notebook now writes (results/final/paper_generated/numbers.tex), and that literal still
@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from build_paper import load_numbers  # noqa: E402
 
-TEX = ROOT / "jurnal_final"
+TEX = ROOT / "paper_final"
 MAP = ROOT / "results" / "final" / "paper_number_map.json"
 BS = chr(92)
 

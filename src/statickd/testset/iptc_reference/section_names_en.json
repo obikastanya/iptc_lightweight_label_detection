@@ -1,5 +1,5 @@
 {
- "_note": "English glosses of publisher section names, used ONLY as a reading aid in research_final/mapping_review.xlsx (scripts/export_mapping_review.py). Written by Claude (Anthropic) on 2026-10-17; not an independent translator (Google Translate was rate-limited and a local opus-mt-mul-en model gave unusable word-level output). Names that are already English are not listed; the review sheet shows them unchanged. Not used by the labelling code.",
+ "_note": "English glosses of publisher section names, used ONLY as a reading aid in paper_writing/mapping_review.xlsx (scripts/export_mapping_review.py). Written by Claude (Anthropic) on 2026-10-17; not an independent translator (Google Translate was rate-limited and a local opus-mt-mul-en model gave unusable word-level output). Names that are already English are not listed; the review sheet shows them unchanged. Not used by the labelling code.",
  "politica": "politics", "politik": "politics", "политика": "politics", "economia": "economy", "cultura": "culture",
  "política": "politics", "спорт": "sport", "meteo": "weather", "бизнес": "business", "cuisine": "cuisine / cooking",
  "футбол": "football", "війна": "war", "asayiş": "public order (police / incident news)", "pháp luật": "law",

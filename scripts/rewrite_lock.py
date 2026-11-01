@@ -1,4 +1,4 @@
-"""Split jurnal_final/main.tex into paragraph blocks and extract the facts that a rewrite must keep.
+"""Split paper_final/main.tex into paragraph blocks and extract the facts that a rewrite must keep.
 
 For every block (abstract, paragraph, list item, figure, table, acknowledgment, ...) it records the
 section, the line in main.tex, a short anchor (first words), and the locked facts:
@@ -7,17 +7,17 @@ section, the line in main.tex, a short anchor (first words), and the locked fact
   * cross-references resolved from main.aux (Table IV, Fig. 3, Section V-A, (2)),
   * inline math, model or dataset identifiers in \\texttt, and emphasized terms.
 
-Usage (from the project root, after compiling jurnal_final/main.tex):
+Usage (from the project root, after compiling paper_final/main.tex):
     python scripts/rewrite_lock.py            # writes results/final/rewrite_blocks.json
-The JSON is the input for research_final/paper_rewrite_kunci.md (Indonesian meaning + locked facts).
+The JSON is the input for paper_writing/paper_rewrite_kunci.md (Indonesian meaning + locked facts).
 """
 import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-TEX = ROOT / "jurnal_final" / "main.tex"
-AUX = ROOT / "jurnal_final" / "main.aux"
+TEX = ROOT / "paper_final" / "main.tex"
+AUX = ROOT / "paper_final" / "main.aux"
 OUT = ROOT / "results" / "final" / "rewrite_blocks.json"
 BS = chr(92)
 

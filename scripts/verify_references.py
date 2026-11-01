@@ -26,12 +26,12 @@ import bibtexparser
 import requests
 
 ROOT = Path(__file__).resolve().parents[1]
-BIB = ROOT / "jurnal_final" / "references.bib"
-AUX = ROOT / "jurnal_final" / "main.aux"
+BIB = ROOT / "paper_final" / "references.bib"
+AUX = ROOT / "paper_final" / "main.aux"
 REF_DIR = ROOT / "reference"
 HEADERS = {"User-Agent": "statickd-reference-check/1.0 (academic use)"}
 
-# references the final paper will add (research_final/paper_quality_check_filled.md, L-02 and L-04)
+# references the final paper will add (paper_writing/paper_quality_check_filled.md, L-02 and L-04)
 PLANNED = ["mcnemar1947", "holm1979", "guo2017calibration", "sanh2019distilbert", "barbaresi2021trafilatura",
            "broder1997resemblance", "emmediatopic2025", "cloversearch_ccnews", "commoncrawl2026ccnews", "guha2016schema",
            "indonews2021", "swahilinews2020", "amharicnews2024", "dror2018hitchhiker", "iyyer2015dan",

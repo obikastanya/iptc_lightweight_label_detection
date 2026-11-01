@@ -1,4 +1,4 @@
-"""Build research_final/paper_rewrite.md: a plain-text worksheet for rewriting jurnal_final/main.tex paragraph by paragraph.
+"""Build paper_writing/paper_rewrite.md: a plain-text worksheet for rewriting paper_final/main.tex paragraph by paragraph.
 
 Each block shows
   Current     - the paragraph as readable plain text (citations as [n], references as "Table IV", math as τ = 1)
@@ -24,8 +24,8 @@ from rewrite_lock import labels_from_aux, ref_name  # noqa: E402
 
 BLOCKS = ROOT / "results" / "final" / "rewrite_blocks.json"
 TRANS = ROOT / "results" / "final" / "rewrite_translations_id.json"
-BIB = ROOT / "jurnal_final" / "references.bib"
-OUT = ROOT / "research_final" / "paper_rewrite.md"
+BIB = ROOT / "paper_final" / "references.bib"
+OUT = ROOT / "paper_writing" / "paper_rewrite.md"
 BS = chr(92)
 EMPTY = "(tulis di sini)"
 

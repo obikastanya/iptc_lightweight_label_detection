@@ -4,7 +4,7 @@
 
 Checklist kualitas naskah paper StaticKD (IPTC news topic classification) sebelum submit ke jurnal Q1/Q2 berformat IEEE (target: IEEE Access).
 
-- **Naskah yang dicek:** [jurnal_latex/main.tex](../jurnal_latex/main.tex) dan [jurnal_latex/sections/](../jurnal_latex/sections/)
+- **Naskah yang dicek:** [_archive/jurnal_latex_v1/main.tex](../_archive/jurnal_latex_v1/main.tex) dan [_archive/jurnal_latex_v1/sections/](../_archive/jurnal_latex_v1/sections/)
 - **Fokus saat ini:** isi naskah paper (Bagian 1–7). Bagian 8 (pemilihan jurnal & submission) dicek nanti.
 - **Asal kriteria:** setiap poin punya rujukan. **[MK]** = materi kuliah Metpen ([summary_all_presentation.txt](../materi_kuliah/summary_all_presentation.txt)), **[R]** = sumber resmi/primer, **[S]** = sumber sekunder.
 
@@ -13,7 +13,7 @@ Checklist kualitas naskah paper StaticKD (IPTC news topic classification) sebelu
 ## Info audit
 
 - **Tanggal audit:** 2026-10-17
-- **Versi naskah yang diaudit:** [jurnal_latex/main.tex](../jurnal_latex/main.tex) (28-09-2026, PDF 15 halaman) beserta `sections/*.tex` dan `generated/*.tex`. Ini draf terbaru, yang semua angkanya diambil dari notebook. [main_draft_v1.tex](../jurnal_latex/main_draft_v1.tex) (27-09-2026) adalah versi lama yang belum memakai `\val{}`, jadi tidak dipakai sebagai acuan.
+- **Versi naskah yang diaudit:** [_archive/jurnal_latex_v1/main.tex](../_archive/jurnal_latex_v1/main.tex) (28-09-2026, PDF 15 halaman) beserta `sections/*.tex` dan `generated/*.tex`. Ini draf terbaru, yang semua angkanya diambil dari notebook. [main_draft_v1.tex](../_archive/jurnal_latex_v1/main_draft_v1.tex) (27-09-2026) adalah versi lama yang belum memakai `\val{}`, jadi tidak dipakai sebagai acuan.
 - **Pemeriksaan otomatis:** `python scripts/check_paper.py` → 207 kunci angka dipakai, 0 hilang; 9 tabel generated ada; 9 gambar ada; 0 error LaTeX; 0 referensi/sitasi tak terdefinisi.
 - **📝 Catatan** = hal yang **sudah dilakukan dalam penelitian** (ada di kode, `results/`, `dist/`, atau `generated/`) tetapi **belum tertulis di paper**.
 - **Evaluasi ulang (2026-10-17, putaran 2):**
@@ -36,7 +36,7 @@ Setiap poin punya isian berikut:
 | **Sumber** | Rujukan asal kriteria (sudah terisi). |
 | **Value** | Variabel `ID.nama` = isi final yang akan dipakai di paper: kalimat, angka, daftar, URL, atau keputusan. Contoh: `W-01.title = "..."`, `M-09.efficiency_metrics = 34 MB, 473 docs/s/core, ...`. Untuk value yang panjang, isi dengan sub-list di bawahnya. |
 | **Status** | ⏳ belum diisi/dicek · ✅ Value lengkap & memenuhi kriteria · ⚠️ sebagian · ❌ belum ada / tidak memenuhi · ➖ tidak berlaku |
-| **Evidence** | Bukti bahwa Value benar: asal angka (`jurnal_latex/generated/…`, `results/…`, notebook) atau lokasi di draft (`file.tex:baris`). Tanpa evidence, status tidak boleh ✅. |
+| **Evidence** | Bukti bahwa Value benar: asal angka (`_archive/jurnal_latex_v1/generated/…`, `results/…`, notebook) atau lokasi di draft (`file.tex:baris`). Tanpa evidence, status tidak boleh ✅. |
 | **Tindakan** | Pekerjaan yang masih perlu dilakukan kalau statusnya ⚠️ atau ❌ (eksperimen tambahan, tulis ulang, cari referensi, dll.). |
 
 Aturan penulisan Value:
@@ -46,7 +46,7 @@ Aturan penulisan Value:
 
 ## Ringkasan status
 
-Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurnal_final/` (2026-10-17). Setiap poin punya baris "Naskah final" di bagian Evidence.
+Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `paper_final/` (2026-10-17). Setiap poin punya baris "Naskah final" di bagian Evidence.
 
 | Bagian | Jumlah poin | ✅ | ⚠️ | ❌ | ⏳ | ➖ |
 |---|---|---|---|---|---|---|
@@ -64,7 +64,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 
 ## Ringkasan temuan
 
-> **Riwayat:** ringkasan di bawah ini berasal dari audit draf lama (`jurnal_latex/main.tex`). Sebagian besar sudah diperbaiki di naskah final `jurnal_final/`; status terkini ada di tabel Ringkasan status di atas.
+> **Riwayat:** ringkasan di bawah ini berasal dari audit draf lama (`_archive/jurnal_latex_v1/main.tex`). Sebagian besar sudah diperbaiki di naskah final `paper_final/`; status terkini ada di tabel Ringkasan status di atas.
 
 **Sudah kuat (inti ilmiah):** gap, RQ, kontribusi, desain eksperimen, ablasi 5 seed, uji statistik (paired cluster bootstrap, McNemar, Holm, Welch), CI site-cluster bootstrap, efisiensi multi-indikator, limitations, dan keterlacakan angka. Isi ilmiah paper sudah setara standar jurnal; kekurangannya ada di format, referensi, dan kelengkapan administratif.
 
@@ -75,7 +75,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 4. **E-02** — Cek similarity (Turnitin/iThenticate) belum dilakukan.
 
 **⚠️ Prioritas tinggi:**
-- **L-02** — Ada **kesalahan fakta**: [main.tex:111](../jurnal_latex/main.tex#L111) menulis "MasakhaNEWS mencakup 16 bahasa Afrika serta en/fr", padahal 16 bahasa itu **sudah termasuk** en dan fr (data kita sendiri: 16 kode bahasa, termasuk en dan fr).
+- **L-02** — Ada **kesalahan fakta**: [main.tex:111](../_archive/jurnal_latex_v1/main.tex#L111) menulis "MasakhaNEWS mencakup 16 bahasa Afrika serta en/fr", padahal 16 bahasa itu **sudah termasuk** en dan fr (data kita sendiri: 16 kode bahasa, termasuk en dan fr).
 - **L-02 / L-04** — Hanya 29 referensi yang disitasi, dan baru 6 (21%) di antaranya artikel jurnal (aturan MK: minimal 30%). Beberapa metode dipakai tanpa sitasi: McNemar, Holm, ECE, DistilBERT, Trafilatura, MinHash, deep averaging network, dataset EMMediaTopic/CC-News. Entri bib-nya sebenarnya **sudah ada** di `references.bib`, hanya belum disitasi.
 - **N-05 / K-02** — Ada dua klaim yang lebih kuat dari buktinya:
   - "DistilmBERT di bawah StaticKD", padahal p = 0,800 (tidak signifikan).
@@ -98,9 +98,9 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - fastText tidak punya transfer lintas bahasa.
   - `N-01.gap_evidence_numbers` = teacher 559,9 jt parameter; latensi p50 1 core: PyTorch 2.971 ms, ONNX int8 1.239 ms per artikel; 1 juta artikel/hari butuh 15,1 core (ONNX int8) sampai 34,8 core (PyTorch).
 - **Status:** ✅
-- **Evidence:** [main.tex:64](../jurnal_latex/main.tex#L64) (angka latensi teacher + "Biaya inferensi ini tidak dilaporkan"); [main.tex:66-71](../jurnal_latex/main.tex#L66-L71) (alternatif yang gagal); [results.tex:112](../jurnal_latex/sections/results.tex#L112) (core per 1 juta artikel). Angka dari `generated/numbers.tex` (`eff.teacher.*`, `eff.teacher_onnx_int8.*`).
-  - **Naskah final (2026-10-17):** [introduction.tex](../jurnal_final/main.tex) paragraf 2: latensi teacher dan biaya inferensi yang tidak dilaporkan; klaim "jutaan artikel" tanpa sumber sudah dihapus.
-- **Tindakan:** Opsional: klaim "jutaan artikel setiap hari" di [main.tex:62](../jurnal_latex/main.tex#L62) belum disitasi. Tambahkan sumber (misalnya statistik volume CC-NEWS), atau lunakkan kalimatnya.
+- **Evidence:** [main.tex:64](../_archive/jurnal_latex_v1/main.tex#L64) (angka latensi teacher + "Biaya inferensi ini tidak dilaporkan"); [main.tex:66-71](../_archive/jurnal_latex_v1/main.tex#L66-L71) (alternatif yang gagal); [results.tex:112](../_archive/jurnal_latex_v1/sections/results.tex#L112) (core per 1 juta artikel). Angka dari `generated/numbers.tex` (`eff.teacher.*`, `eff.teacher_onnx_int8.*`).
+  - **Naskah final (2026-10-17):** [introduction.tex](../paper_final/main.tex) paragraf 2: latensi teacher dan biaya inferensi yang tidak dilaporkan; klaim "jutaan artikel" tanpa sumber sudah dihapus.
+- **Tindakan:** Opsional: klaim "jutaan artikel setiap hari" di [main.tex:62](../_archive/jurnal_latex_v1/main.tex#L62) belum disitasi. Tambahkan sumber (misalnya statistik volume CC-NEWS), atau lunakkan kalimatnya.
 
 ### N-02 — Problem statement lengkap
 - **Kriteria:** Problem statement memuat konteks + urgensi + tujuan.
@@ -110,8 +110,8 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
   - `N-02.problem_urgency` = Pengklasifikasi IPTC multibahasa yang ada membutuhkan 1,2–3,0 detik per artikel per core CPU, sedangkan inferensi mendominasi biaya dan energi model yang sudah di-deploy [luccioni2024power].
   - `N-02.research_objective` = Pengklasifikasi topik IPTC untuk banyak bahasa yang bekerja dalam hitungan milidetik per artikel di CPU biasa, dengan ukuran dan dependensi minimal, dan akurasinya terhadap label independen sedekat mungkin dengan teacher.
 - **Status:** ✅
-- **Evidence:** konteks [main.tex:62](../jurnal_latex/main.tex#L62); urgensi [main.tex:64](../jurnal_latex/main.tex#L64); tujuan [main.tex:66](../jurnal_latex/main.tex#L66) dan formulasi formal [main.tex:181](../jurnal_latex/main.tex#L181).
-  - **Naskah final (2026-10-17):** [introduction.tex](../jurnal_final/main.tex) paragraf 1–3: konteks, urgensi, dan target.
+- **Evidence:** konteks [main.tex:62](../_archive/jurnal_latex_v1/main.tex#L62); urgensi [main.tex:64](../_archive/jurnal_latex_v1/main.tex#L64); tujuan [main.tex:66](../_archive/jurnal_latex_v1/main.tex#L66) dan formulasi formal [main.tex:181](../_archive/jurnal_latex_v1/main.tex#L181).
+  - **Naskah final (2026-10-17):** [introduction.tex](../paper_final/main.tex) paragraf 1–3: konteks, urgensi, dan target.
 - **Tindakan:** —
 
 ### N-03 — Novelty dinyatakan eksplisit terhadap prior work
@@ -128,8 +128,8 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     3. Analisis empiris: ablasi 5 seed per varian, frontier akurasi–biaya untuk 9 konfigurasi dari 6 keluarga model (CPU saja, dengan pinning), serta analisis per bahasa, per label, dan per asal label.
     4. Rilis kode, notebook, model, dan manifest set uji.
 - **Status:** ✅
-- **Evidence:** [main.tex:73-79](../jurnal_latex/main.tex#L73-L79) (usulan + dasar pemikiran); [main.tex:91-102](../jurnal_latex/main.tex#L91-L102) (kontribusi); [main.tex:114-119](../jurnal_latex/main.tex#L114-L119) (tiga perbedaan dengan Sparse Distillation); Tabel I [tab_related.tex](../jurnal_latex/sections/tab_related.tex) (posisi terhadap 6 pendekatan).
-  - **Naskah final (2026-10-17):** [introduction.tex](../jurnal_final/main.tex): usulan, daftar kontribusi; [related.tex](../jurnal_final/main.tex): tiga perbedaan dengan Sparse Distillation; Tabel I dirujuk.
+- **Evidence:** [main.tex:73-79](../_archive/jurnal_latex_v1/main.tex#L73-L79) (usulan + dasar pemikiran); [main.tex:91-102](../_archive/jurnal_latex_v1/main.tex#L91-L102) (kontribusi); [main.tex:114-119](../_archive/jurnal_latex_v1/main.tex#L114-L119) (tiga perbedaan dengan Sparse Distillation); Tabel I [tab_related.tex](../_archive/jurnal_latex_v1/sections/tab_related.tex) (posisi terhadap 6 pendekatan).
+  - **Naskah final (2026-10-17):** [introduction.tex](../paper_final/main.tex): usulan, daftar kontribusi; [related.tex](../paper_final/main.tex): tiga perbedaan dengan Sparse Distillation; Tabel I dirujuk.
   - **Pembaruan (2026-10-17, D21):** trainer classifier Model2Vec (`StaticModelForClassification`, model2vec 0.9.0) disebut di Related Work, dan baris Model2Vec di Tabel I menjadi "static embeddings, optional MLP classifier". 📝 Risiko sisa: novelty StaticKD sebagai *metode* tipis (pelipatan kepala adalah aljabar linear). Novelty utama ada pada set uji dan temuan analitis, sesuai urutan kontribusi.
 - **Tindakan:** —
 
@@ -144,7 +144,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - temuan empiris tentang soft label dan τ pada capacity gap ekstrem;
     - temuan representation drift pada fine-tuning sebagian kosakata.
 - **Status:** ✅
-- **Evidence:** [main.tex:114-123](../jurnal_latex/main.tex#L114-L123); Tabel I [tab_related.tex:12-18](../jurnal_latex/sections/tab_related.tex#L12-L18); ablasi 72 run (`generated/tab_ablation.tex`, `runs.total = 72`).
+- **Evidence:** [main.tex:114-123](../_archive/jurnal_latex_v1/main.tex#L114-L123); Tabel I [tab_related.tex:12-18](../_archive/jurnal_latex_v1/sections/tab_related.tex#L12-L18); ablasi 72 run (`generated/tab_ablation.tex`, `runs.total = 72`).
   - **Naskah final (2026-10-17):** Sama seperti sebelumnya; risiko novelty untuk jurnal setingkat Transactions tetap dicatat (lihat Tindakan).
 - **Tindakan:** Risiko untuk jurnal Q1 yang lebih ketat (IEEE Transactions): metodenya bisa dinilai **inkremental**, karena menggabungkan komponen yang sudah ada (KD + Model2Vec + pelipatan kepala linear). Bila menargetkan Transactions, tonjolkan kontribusi set uji dan temuan analitis (soft label tidak berguna pada capacity gap ekstrem; transfer dibawa oleh baris embedding yang tidak pernah dilatih) sebagai kontribusi utama, bukan hanya "model cepat".
 
@@ -156,12 +156,12 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     1. 473 artikel/detik/core, 616× lebih cepat dari teacher ONNX int8, 34 MB → `tab_eff` → ✅
     2. Mempertahankan 91,1% macro-F1 teacher (0,545 vs 0,598) → `tab_main` → ✅
     3. Lebih akurat daripada fastText + KD dan TF-IDF + SVM → Δ +0,110 [+0,042; +0,151] p < 0,001; Δ +0,059 [+0,009; +0,093] p = 0,030 → ✅
-    4. "DistilmBERT justru berada di bawah StaticKD" ([results.tex:17](../jurnal_latex/sections/results.tex#L17)) → Δ +0,010 [−0,026; +0,041], **p = 0,800** → ⚠️ tidak signifikan; seharusnya ditulis "setara"
-    5. "label keras setara, dan τ ≥ 2 merugikan" ([main.tex:95](../jurnal_latex/main.tex#L95)) dan "τ = 2 menurunkan kesepakatan held-out dan macro-F1 uji" ([discussion.tex:14](../jurnal_latex/sections/discussion.tex#L14)) → label keras p = 0,433 ✅. Untuk τ = 2: held-out −0,007 (p < 0,001) tetapi uji −0,005 (**p = 0,059**) dan dev p = 0,705 → ⚠️. Lebih tepat: "τ = 2 menurunkan kesepakatan held-out; τ = 4 menurunkan semua metrik"
+    4. "DistilmBERT justru berada di bawah StaticKD" ([results.tex:17](../_archive/jurnal_latex_v1/sections/results.tex#L17)) → Δ +0,010 [−0,026; +0,041], **p = 0,800** → ⚠️ tidak signifikan; seharusnya ditulis "setara"
+    5. "label keras setara, dan τ ≥ 2 merugikan" ([main.tex:95](../_archive/jurnal_latex_v1/main.tex#L95)) dan "τ = 2 menurunkan kesepakatan held-out dan macro-F1 uji" ([discussion.tex:14](../_archive/jurnal_latex_v1/sections/discussion.tex#L14)) → label keras p = 0,433 ✅. Untuk τ = 2: held-out −0,007 (p < 0,001) tetapi uji −0,005 (**p = 0,059**) dan dev p = 0,705 → ⚠️. Lebih tepat: "τ = 2 menurunkan kesepakatan held-out; τ = 4 menurunkan semua metrik"
     6. Ensemble dilipat tanpa biaya inferensi → benar secara matematis (Persamaan 3), tetapi kenaikannya kecil (uji 0,542 → 0,544 untuk K = 3) dan tidak diuji signifikansinya → ✅, asal tidak dijual sebagai peningkatan akurasi
     7. Cascade θ = 0,8 menyamai teacher → akurasi 0,703 vs 0,699 → ✅
     8. Fakta yang belum diakui di teks: fastText + KD terkuantisasi lebih cepat (532 vs 473 artikel/detik), lebih kecil (18 vs 34 MB), dan RAM-nya lebih rendah (300 vs 501 MB) daripada StaticKD → ⚠️ perlu disebut eksplisit; keunggulan StaticKD ada di akurasi (+0,110)
-    9. "frontier akurasi–biaya dari tujuh keluarga model" ([main.tex:100](../jurnal_latex/main.tex#L100)) → Tabel eff dan Gbr. tradeoff berisi 9 konfigurasi dari 6 keluarga (teacher, DistilmBERT, MiniLM, StaticKD, fastText, TF-IDF + SVM). Angka "tujuh" hanya benar jika teacher PyTorch dan ONNX int8 dihitung terpisah → ⚠️ ambigu; sebutkan jumlah konfigurasi secara eksplisit
+    9. "frontier akurasi–biaya dari tujuh keluarga model" ([main.tex:100](../_archive/jurnal_latex_v1/main.tex#L100)) → Tabel eff dan Gbr. tradeoff berisi 9 konfigurasi dari 6 keluarga (teacher, DistilmBERT, MiniLM, StaticKD, fastText, TF-IDF + SVM). Angka "tujuh" hanya benar jika teacher PyTorch dan ONNX int8 dihitung terpisah → ⚠️ ambigu; sebutkan jumlah konfigurasi secara eksplisit
     10. ~~Keunggulan atas TF-IDF + SVM tidak konsisten per bahasa: lebih baik di 24/47 bahasa, Wilcoxon p = 0,127 … klaim di abstrak harus dibatasi.~~ **Dikoreksi (audit 2026-10-17):** diagnosa ini salah karena hanya memakai **akurasi** per bahasa, padahal metrik utama paper adalah macro-F1. Per bahasa dengan macro-F1, StaticKD lebih baik di 31/47 bahasa (Wilcoxon p 0.003). Dengan akurasi: 24 lebih baik, 1 seri, 22 lebih buruk (p 0.127). Pada set gabungan +0.059 [+0.009, +0.093], p 0.030; akurasi +0.074, McNemar p < 0.001. → ✅ Klaim "lebih akurat daripada fastText dan TF-IDF + SVM" didukung; kedua metrik per bahasa dilaporkan.
     11. **Audit 2026-10-17, DistilmBERT:** "on par" benar untuk macro-F1 (gabungan p 0.800, per bahasa p 0.604). Akurasi menguntungkan StaticKD (1,372 vs 1,143, McNemar p < 0.001), tetapi McNemar tidak memperhitungkan klaster situs, dan per bahasa p 0.322. → ✅ keduanya ditulis.
     12. **Audit 2026-10-17, energi:** sumber (Luccioni dkk. 2024) membahas energi dan kebutuhan komputasi (Google: 60% energi ML untuk inferensi; AWS: 80–90% kebutuhan komputasi ML di cloud; Meta: ±sepertiga jejak karbon). Versi sebelumnya ("most of the running cost") menyimpang dari sumber → diganti "a large share of the computing demand and energy use … 60% … Google". Klaim "dominant cost in a news pipeline" (sudah ada sejak draf lama) diganti dengan angka kita sendiri (15.1 vs 0.02 core per sejuta artikel).
@@ -175,11 +175,11 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
         - **Tindakan:** persempit kalimat di empat lokasi itu, menunggu keputusan penulis.
 - **Status:** ⚠️ (diturunkan 2026-10-17 karena butir 13)
 - **Evidence:** `generated/numbers.tex`: `sig.test.distilmbert_kd.p = 0,800`, `abl.tau2.test_macro.p = 0,059`, `abl.tau2.dev_macro.p = 0,705`, `abl.hard.test_macro.p = 0,433`, `ens.k1.test_macro = 0,542`, `ens.k3.test_macro = 0,544`, `eff.ft_kd_subword_q.docs_per_sec_1c = 532`, `eff.ft_kd_subword_q.size = 18`, `eff.ft_kd_subword_q.ram = 300`.
-  - **Naskah final (2026-10-17):** Semua klaim diperbaiki di naskah final: DistilmBERT "on par / not significant" ([results.tex](../jurnal_final/main.tex)); τ = 2 hanya menurunkan held-out, τ = 4 menurunkan semua metrik ([discussion.tex](../jurnal_final/main.tex), kontribusi 1); "nine configurations from six model families"; fastText terkuantisasi lebih cepat dan kecil diakui. **Koreksi audit 2026-10-17:** kalimat "keunggulan atas TF-IDF tidak konsisten per bahasa" dan penghapusan TF-IDF dari abstrak adalah akibat diagnosa keliru (butir 10). Keduanya diperbaiki: abstrak kembali menyebut fastText dan TF-IDF + SVM, dan Results melaporkan Wilcoxon per bahasa untuk macro-F1 dan akurasi.
+  - **Naskah final (2026-10-17):** Semua klaim diperbaiki di naskah final: DistilmBERT "on par / not significant" ([results.tex](../paper_final/main.tex)); τ = 2 hanya menurunkan held-out, τ = 4 menurunkan semua metrik ([discussion.tex](../paper_final/main.tex), kontribusi 1); "nine configurations from six model families"; fastText terkuantisasi lebih cepat dan kecil diakui. **Koreksi audit 2026-10-17:** kalimat "keunggulan atas TF-IDF tidak konsisten per bahasa" dan penghapusan TF-IDF dari abstrak adalah akibat diagnosa keliru (butir 10). Keduanya diperbaiki: abstrak kembali menyebut fastText dan TF-IDF + SVM, dan Results melaporkan Wilcoxon per bahasa untuk macro-F1 dan akurasi.
 - **Tindakan:**
-  - Ubah klaim DistilmBERT di [results.tex:17](../jurnal_latex/sections/results.tex#L17) menjadi "setara (tidak berbeda signifikan)".
-  - Ubah klaim τ di [main.tex:95](../jurnal_latex/main.tex#L95) dan [discussion.tex:14](../jurnal_latex/sections/discussion.tex#L14) sesuai butir 5. Kalimat di [conclusion.tex:5](../jurnal_latex/sections/conclusion.tex#L5) ("soft label dan temperature tinggi tidak memberi manfaat") sudah sesuai bukti, jadi tidak perlu diubah.
-  - Perjelas "tujuh keluarga model" di [main.tex:100](../jurnal_latex/main.tex#L100) (butir 9).
+  - Ubah klaim DistilmBERT di [results.tex:17](../_archive/jurnal_latex_v1/sections/results.tex#L17) menjadi "setara (tidak berbeda signifikan)".
+  - Ubah klaim τ di [main.tex:95](../_archive/jurnal_latex_v1/main.tex#L95) dan [discussion.tex:14](../_archive/jurnal_latex_v1/sections/discussion.tex#L14) sesuai butir 5. Kalimat di [conclusion.tex:5](../_archive/jurnal_latex_v1/sections/conclusion.tex#L5) ("soft label dan temperature tinggi tidak memberi manfaat") sudah sesuai bukti, jadi tidak perlu diubah.
+  - Perjelas "tujuh keluarga model" di [main.tex:100](../_archive/jurnal_latex_v1/main.tex#L100) (butir 9).
   - Tambahkan satu kalimat di Subbagian Efisiensi bahwa fastText terkuantisasi sedikit lebih cepat dan kecil, tetapi macro-F1-nya 0,110 lebih rendah.
 
 ### N-06 — Research question / tujuan terhubung ke hasil
@@ -192,7 +192,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - RQ3 (komponen distilasi) → Subbagian IV-C Ablasi + Pembahasan "Dari mana pengetahuan student berasal"
     - RQ4 (generalisasi bahasa/label/sumber) → Subbagian IV-E + Pembahasan "Batas generalisasi lintas bahasa"
 - **Status:** ✅
-- **Evidence:** RQ di [main.tex:83-89](../jurnal_latex/main.tex#L83-L89); judul subbagian berlabel RQ di [results.tex:1](../jurnal_latex/sections/results.tex#L1), [:69](../jurnal_latex/sections/results.tex#L69), [:107](../jurnal_latex/sections/results.tex#L107), [:138](../jurnal_latex/sections/results.tex#L138); pembahasan berlabel RQ di [discussion.tex:1](../jurnal_latex/sections/discussion.tex#L1), [:8](../jurnal_latex/sections/discussion.tex#L8), [:18](../jurnal_latex/sections/discussion.tex#L18).
+- **Evidence:** RQ di [main.tex:83-89](../_archive/jurnal_latex_v1/main.tex#L83-L89); judul subbagian berlabel RQ di [results.tex:1](../_archive/jurnal_latex_v1/sections/results.tex#L1), [:69](../_archive/jurnal_latex_v1/sections/results.tex#L69), [:107](../_archive/jurnal_latex_v1/sections/results.tex#L107), [:138](../_archive/jurnal_latex_v1/sections/results.tex#L138); pembahasan berlabel RQ di [discussion.tex:1](../_archive/jurnal_latex_v1/sections/discussion.tex#L1), [:8](../_archive/jurnal_latex_v1/sections/discussion.tex#L8), [:18](../_archive/jurnal_latex_v1/sections/discussion.tex#L18).
   - **Naskah final (2026-10-17):** RQ1–RQ4 dijawab di subbagian Results berlabel RQ dan di Discussion.
 - **Tindakan:** —
 
@@ -213,7 +213,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - Ditutup Tabel I (posisi StaticKD terhadap 6 pendekatan, 6 kriteria).
   - `L-01.search_protocol` = TBD — tidak ada protokol pencarian yang terdokumentasi (database, kata kunci, rentang tahun, kriteria inklusi).
 - **Status:** ⚠️
-- **Evidence:** [main.tex:107-131](../jurnal_latex/main.tex#L107-L131); [tab_related.tex](../jurnal_latex/sections/tab_related.tex). Tidak ada dokumen protokol pencarian di `docs/` ([RANCANGAN_PENELITIAN.md](../docs/RANCANGAN_PENELITIAN.md) dan [CHECKLIST_JURNAL.md](../docs/CHECKLIST_JURNAL.md) tidak memuatnya).
+- **Evidence:** [main.tex:107-131](../_archive/jurnal_latex_v1/main.tex#L107-L131); [tab_related.tex](../_archive/jurnal_latex_v1/sections/tab_related.tex). Tidak ada dokumen protokol pencarian di `docs/` ([RANCANGAN_PENELITIAN.md](../docs/RANCANGAN_PENELITIAN.md) dan [CHECKLIST_JURNAL.md](../docs/CHECKLIST_JURNAL.md) tidak memuatnya).
   - **Naskah final (2026-10-17):** Analisis kritis lima kelompok + Tabel I ada. Protokol pencarian literatur tidak ditulis karena tidak pernah dilakukan secara terstruktur (opsional; tidak dikarang).
 - **Tindakan:**
   - Analisis kritis sudah baik. Yang kurang adalah jumlah referensi (lihat L-04) dan protokol pencarian.
@@ -237,20 +237,20 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - schema.org (`guha2016schema`)
     - IndoNews / Swahili / Amharic (`indonews2021`, `swahilinews2020`, `amharicnews2024`; saat ini hanya footnote URL)
     - panduan uji signifikansi NLP (`dror2018hitchhiker`)
-    - deep averaging network di [main.tex:114](../jurnal_latex/main.tex#L114) (`iyyer2015dan`)
+    - deep averaging network di [main.tex:114](../_archive/jurnal_latex_v1/main.tex#L114) (`iyyer2015dan`)
     - fastText lid.176, uji Welch, Kruskal–Wallis, Spearman, ONNX Runtime — belum ada entri bib
   - `L-02.citation_accuracy` = Klaim tentang karya lain yang sudah dicocokkan dengan sumber aslinya (2026-10-17):
     - Sparse Distillation (RoBERTa-large, 6 tugas klasifikasi satu kalimat, speedup hingga 600×) ✅
     - L3Cube-IndicNews (10 bahasa India di versi ICON) ✅
     - MN-DS (IPTC level 1 dan 2, 17 kategori level atas, dianotasi manual) ✅
     - potion-multilingual (101 bahasa, didistilasi dari BGE-M3, dim 256) ✅
-    - **MasakhaNEWS ❌**: [main.tex:111](../jurnal_latex/main.tex#L111) menulis "16 bahasa Afrika serta en/fr", padahal abstrak MasakhaNEWS menyebut "16 languages widely spoken in Africa", yang sudah termasuk en dan fr. Benar: "16 bahasa yang banyak dipakai di Afrika (termasuk en dan fr)".
+    - **MasakhaNEWS ❌**: [main.tex:111](../_archive/jurnal_latex_v1/main.tex#L111) menulis "16 bahasa Afrika serta en/fr", padahal abstrak MasakhaNEWS menyebut "16 languages widely spoken in Africa", yang sudah termasuk en dan fr. Benar: "16 bahasa yang banyak dipakai di Afrika (termasuk en dan fr)".
 - **Status:** ✅
-- **Evidence:** analisis `main.aux` vs `references.bib`: 98 entri bib, 29 disitasi, 69 tidak disitasi. Penggunaan metode tanpa sitasi: McNemar & Holm [main.tex:350-351](../jurnal_latex/main.tex#L350-L351); ECE [main.tex:358](../jurnal_latex/main.tex#L358); DistilmBERT [main.tex:331](../jurnal_latex/main.tex#L331); Trafilatura [main.tex:204](../jurnal_latex/main.tex#L204); EMMediaTopic [main.tex:184](../jurnal_latex/main.tex#L184).
-  - **Naskah final (2026-10-17):** Semua metode/dataset/tool disitasi (McNemar, Holm, ECE, DistilBERT, Trafilatura, MinHash, DAN, schema.org, EMMediaTopic, CC-News, Common Crawl, IndoNews, Amharik, Swahili, Dror dkk.); kalimat MasakhaNEWS diperbaiki ([related.tex](../jurnal_final/main.tex)).
+- **Evidence:** analisis `main.aux` vs `references.bib`: 98 entri bib, 29 disitasi, 69 tidak disitasi. Penggunaan metode tanpa sitasi: McNemar & Holm [main.tex:350-351](../_archive/jurnal_latex_v1/main.tex#L350-L351); ECE [main.tex:358](../_archive/jurnal_latex_v1/main.tex#L358); DistilmBERT [main.tex:331](../_archive/jurnal_latex_v1/main.tex#L331); Trafilatura [main.tex:204](../_archive/jurnal_latex_v1/main.tex#L204); EMMediaTopic [main.tex:184](../_archive/jurnal_latex_v1/main.tex#L184).
+  - **Naskah final (2026-10-17):** Semua metode/dataset/tool disitasi (McNemar, Holm, ECE, DistilBERT, Trafilatura, MinHash, DAN, schema.org, EMMediaTopic, CC-News, Common Crawl, IndoNews, Amharik, Swahili, Dror dkk.); kalimat MasakhaNEWS diperbaiki ([related.tex](../paper_final/main.tex)).
 - **Tindakan:**
   - Tambahkan sitasi untuk setiap metode, dataset, dan tool di atas. Sebagian besar hanya perlu `\cite{}` karena entri bib sudah ada.
-  - Perbaiki kalimat MasakhaNEWS di [main.tex:111](../jurnal_latex/main.tex#L111).
+  - Perbaiki kalimat MasakhaNEWS di [main.tex:111](../_archive/jurnal_latex_v1/main.tex#L111).
   - 📝 Catatan: entri-entri ini sudah dikumpulkan saat penelitian (ada di `references.bib`), tetapi belum dipakai di naskah.
 - **Sumber verifikasi:** [Sparse Distillation (arXiv 2110.08536)](https://arxiv.org/abs/2110.08536), [MasakhaNEWS (arXiv 2304.09972)](https://arxiv.org/abs/2304.09972), [L3Cube-IndicNews](https://arxiv.org/html/2401.02254v2), [MN-DS (Data, MDPI)](https://www2.mdpi.com/2306-5729/8/5/74), [potion-multilingual-128M](https://huggingface.co/minishlab/potion-multilingual-128M).
 
@@ -308,8 +308,8 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - **Value:**
   - `M-01.method_summary` = Tujuh tahap: (1) korpus distilasi, (2) pelabelan teacher, (3) training StaticKD dan baseline pada data yang sama, (4) set uji independen, (5) evaluasi + uji statistik, (6) benchmark CPU, (7) analisis subkelompok. Resep ditetapkan dari set dev **sebelum** set uji dibangun; tidak ada hiperparameter yang dipilih dari set uji.
 - **Status:** ✅
-- **Evidence:** [main.tex:137-148](../jurnal_latex/main.tex#L137-L148) (kerangka + pemisahan dev/uji); seluruh Bagian III [main.tex:134-386](../jurnal_latex/main.tex#L134-L386) (data, set uji, teacher, student, loss, optimasi, baseline, protokol, versi pustaka).
-  - **Naskah final (2026-10-17):** [method.tex](../jurnal_final/main.tex) seluruhnya.
+- **Evidence:** [main.tex:137-148](../_archive/jurnal_latex_v1/main.tex#L137-L148) (kerangka + pemisahan dev/uji); seluruh Bagian III [main.tex:134-386](../_archive/jurnal_latex_v1/main.tex#L134-L386) (data, set uji, teacher, student, loss, optimasi, baseline, protokol, versi pustaka).
+  - **Naskah final (2026-10-17):** [method.tex](../paper_final/main.tex) seluruhnya.
 - **Tindakan:** —
 
 ### M-02 — Data: pemilihan, sumber, preprocessing
@@ -338,8 +338,8 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - Semua 11.989 artikel set uji non-MN-DS berlabel melalui nama-nama di tabel ini.
     - Kalimat untuk paper: "Tabel pemetaan dibuat dengan bantuan AI, divalidasi otomatis terhadap pohon IPTC resmi, dan seluruh 916 aturannya ditinjau oleh penulis."
 - **Status:** ✅
-- **Evidence:** [main.tex:183-245](../jurnal_latex/main.tex#L183-L245); Tabel testset (`generated/tab_testset.tex`); Gbr. heatmap set uji; angka dari `generated/numbers.tex` (`data.*`, `ts.*`, `map.*`).
-  - **Naskah final (2026-10-17):** [method.tex](../jurnal_final/main.tex): data distilasi, set uji, definisi label editorial, dan tinjauan tabel pemetaan oleh penulis.
+- **Evidence:** [main.tex:183-245](../_archive/jurnal_latex_v1/main.tex#L183-L245); Tabel testset (`generated/tab_testset.tex`); Gbr. heatmap set uji; angka dari `generated/numbers.tex` (`data.*`, `ts.*`, `map.*`).
+  - **Naskah final (2026-10-17):** [method.tex](../paper_final/main.tex): data distilasi, set uji, definisi label editorial, dan tinjauan tabel pemetaan oleh penulis.
 - **Tindakan:**
   - ~~Penulis meninjau tabel pemetaan~~: selesai. Bukti: [mapping_review.xlsx](mapping_review.xlsx) (semua baris berstatus "ya") dan [mapping_review_record.json](../src/statickd/testset/iptc_reference/mapping_review_record.json).
   - Yang tersisa: tulis kalimat `M-02.mapping_review` di Subbagian Pemetaan ke IPTC pada paper final (Tahap 5). Kalau kebenaran label ada pada penerbit, langkah translasi inilah satu-satunya titik di mana kesalahan bisa masuk (lihat K-01).
@@ -351,7 +351,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
   - `M-03.pipeline_figure` = Gbr. 1 (TikZ, figure*): CC-News + EMMediaTopic → teacher XLM-R-large → logit teacher → student (tokenizer, embedding potion, rata-rata, linear) → lipat W → tabel |V|×17 (fp16) → evaluasi pada set uji independen.
   - `M-03.model_definition` = Persamaan (1) student: h = rata-rata embedding, z = W·drop(h) + b. Persamaan (2) loss: τ²·KL(p^T ‖ p^S), τ = 1. Persamaan (3) pelipatan: T = E·Wᵀ. Ensemble: T̄ = rata-rata tabel K seed.
 - **Status:** ✅
-- **Evidence:** [main.tex:150-178](../jurnal_latex/main.tex#L150-L178) (Gbr. pipeline); [main.tex:273-306](../jurnal_latex/main.tex#L273-L306) (persamaan 1–3, ensemble, varian compact).
+- **Evidence:** [main.tex:150-178](../_archive/jurnal_latex_v1/main.tex#L150-L178) (Gbr. pipeline); [main.tex:273-306](../_archive/jurnal_latex_v1/main.tex#L273-L306) (persamaan 1–3, ensemble, varian compact).
   - **Naskah final (2026-10-17):** Gbr. 1 (fig_pipeline dari TikZ terpisah), Persamaan (1)–(3), semuanya dirujuk di teks.
 - **Tindakan:** Opsional: Persamaan (1) dan (2) tidak pernah dirujuk di teks (`eq:student`, `eq:kd` = 0 rujukan). Ini tidak wajib, tetapi lebih rapi bila dirujuk.
 
@@ -368,12 +368,12 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - fastText berlabel GPT-4o (setara data yang tersedia bagi Kuzman & Ljubešić)
     - Ablasi "embedding beku" berfungsi sebagai baseline potion off-the-shelf + kepala linear.
 - **Status:** ✅
-- **Evidence:** [main.tex:324-333](../jurnal_latex/main.tex#L324-L333); hasil di `generated/tab_main.tex`.
+- **Evidence:** [main.tex:324-333](../_archive/jurnal_latex_v1/main.tex#L324-L333); hasil di `generated/tab_main.tex`.
   - `M-04.sparse_distillation_mapping` = (keputusan: dipetakan, tidak diimplementasikan) Ide inti Sparse Distillation diwakili oleh dua eksperimen yang sudah ada:
     - **fastText + KD**: bag of n-gram + rata-rata + linear, dilatih dari label teacher pada transfer set yang sama;
     - **ablasi inisialisasi acak**: tabel embedding dilatih dari nol.
     - Perbedaan yang tersisa: DAN dengan hidden layer, target berupa logit soft, tabel n-gram berukuran miliaran parameter, dan cakupan hanya bahasa Inggris.
-  - **Naskah final (2026-10-17):** Pemetaan Sparse Distillation ke fastText + KD dan ablasi inisialisasi acak, serta ablasi embedding beku sebagai baseline Model2Vec ([method.tex](../jurnal_final/main.tex), subbagian Baselines).
+  - **Naskah final (2026-10-17):** Pemetaan Sparse Distillation ke fastText + KD dan ablasi inisialisasi acak, serta ablasi embedding beku sebagai baseline Model2Vec ([method.tex](../paper_final/main.tex), subbagian Baselines).
   - **Pembaruan (2026-10-17, D21):** trainer classifier Model2Vec **tidak dijalankan**. Naskah menjelaskan bahwa konfigurasi default-nya (label keras, hidden layer 512 unit, bobot per token) diuji per komponen lewat ablasi: label keras (dev p 1.000, uji p 0.433) dan kepala MLP 512 (dev p 1.000, uji p 0.281), keduanya tidak berbeda signifikan dari resep final. Kombinasinya dan bobot per token tidak diuji; hal ini ditulis di Limitations. 📝 Risiko sisa: reviewer bisa meminta trainer ini sebagai baseline (±4–6 jam), dan itu dikerjakan saat revisi.
 - **Tindakan:**
   - Tulis pemetaan `M-04.sparse_distillation_mapping` di Subbagian Baseline, sebagai jawaban atas pertanyaan "mengapa karya terdekat tidak direproduksi".
@@ -398,8 +398,8 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - Transformer: 2 nilai τ.
     - fastText dan TF-IDF + SVM: hiperparameter tetap, tanpa pencarian yang dilaporkan.
 - **Status:** ⚠️
-- **Evidence:** Tabel hparams `generated/tab_hparams.tex` ([main.tex:308-322](../jurnal_latex/main.tex#L308-L322)); [main.tex:288-295](../jurnal_latex/main.tex#L288-L295); `runs.total = 72`.
-  - **Naskah final (2026-10-17):** Grid baseline dilewati atas permintaan penulis (poin baseline). Naskah menyatakan jujur bahwa hiperparameter fastText dan TF-IDF ditetapkan tanpa pencarian ([method.tex](../jurnal_final/main.tex), [limitations.tex](../jurnal_final/main.tex)).
+- **Evidence:** Tabel hparams `generated/tab_hparams.tex` ([main.tex:308-322](../_archive/jurnal_latex_v1/main.tex#L308-L322)); [main.tex:288-295](../_archive/jurnal_latex_v1/main.tex#L288-L295); `runs.total = 72`.
+  - **Naskah final (2026-10-17):** Grid baseline dilewati atas permintaan penulis (poin baseline). Naskah menyatakan jujur bahwa hiperparameter fastText dan TF-IDF ditetapkan tanpa pencarian ([method.tex](../paper_final/main.tex), [limitations.tex](../paper_final/main.tex)).
 - **Tindakan (diperbarui 2026-10-17):**
   - **Sudah dikerjakan:** Tabel hparams menandai fastText dan TF-IDF sebagai "fixed". Methodology menyatakan hiperparameternya ditetapkan sekali tanpa pencarian, dan Limitations menyebut budget tuning yang tidak setara (72 run StaticKD).
   - **Keputusan D21:** grid baseline (D3, baru 2 dari 41 konfigurasi) **ditunda ke tahap revisi**. Dua titik grid yang sudah jalan (token kata, lr 0.1) memberi dev macro-F1 0.358 dan 0.639, di bawah konfigurasi yang dipakai (0.743). Ini belum membuktikan konfigurasi sekarang optimal.
@@ -413,7 +413,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
   - `M-06.n_seeds` = 5 seed per varian ablasi; 10 seed untuk resep final. Satu student tanpa ensemble: uji 0,542 ± 0,004, dev 0,755 ± 0,010.
   - `M-06.ci_method` = CI 95% dengan bootstrap percentile 1.000×. Pada set uji, yang di-resample adalah situs (site-cluster bootstrap); pada dev, dokumen. Contoh: StaticKD uji 0,545 [0,490–0,605].
 - **Status:** ✅
-- **Evidence:** [main.tex:345](../jurnal_latex/main.tex#L345), [main.tex:354](../jurnal_latex/main.tex#L354); [results.tex:12](../jurnal_latex/sections/results.tex#L12); CI di setiap baris `generated/tab_main.tex`; SD per varian di `generated/tab_ablation.tex`; Gbr. temperature (titik per seed) dan ensemble (± SD).
+- **Evidence:** [main.tex:345](../_archive/jurnal_latex_v1/main.tex#L345), [main.tex:354](../_archive/jurnal_latex_v1/main.tex#L354); [results.tex:12](../_archive/jurnal_latex_v1/sections/results.tex#L12); CI di setiap baris `generated/tab_main.tex`; SD per varian di `generated/tab_ablation.tex`; Gbr. temperature (titik per seed) dan ensemble (± SD).
   - **Naskah final (2026-10-17):** CI site-cluster bootstrap, 5/10 seed, SD di tabel ablasi.
 - **Tindakan:** —
 
@@ -433,7 +433,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - fastText + KD (q): +0,110, p < 0,001
     - TF-IDF + SVM: +0,059, p = 0,030
 - **Status:** ✅
-- **Evidence:** [main.tex:347-354](../jurnal_latex/main.tex#L347-L354); [results.tex:22-30](../jurnal_latex/sections/results.tex#L22-L30); Tabel sig `generated/tab_sig.tex`.
+- **Evidence:** [main.tex:347-354](../_archive/jurnal_latex_v1/main.tex#L347-L354); [results.tex:22-30](../_archive/jurnal_latex_v1/sections/results.tex#L22-L30); Tabel sig `generated/tab_sig.tex`.
   - **Naskah final (2026-10-17):** Paired cluster bootstrap, McNemar, Holm, Welch, Wilcoxon antarbahasa (baru), Spearman, Kruskal–Wallis; semua disitasi bila perlu.
 - **Tindakan:**
   - ~~Uji Wilcoxon signed-rank antarbahasa~~: sudah ditambahkan ke notebook (2026-10-17; kunci `lang.wilcoxon.*`, `lang.static_better.*`). Hasil (akurasi per bahasa, 47 bahasa):
@@ -462,7 +462,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - **Error analysis:** per bahasa, per label, confusion matrix, cakupan token, varian compact sebagai bukti mekanisme transfer.
     - **Robustness:** uji sensitivitas maksimal 5 artikel per situs (8.139 artikel, peringkat model sama); kalibrasi ECE.
 - **Status:** ✅
-- **Evidence:** [main.tex:373-386](../jurnal_latex/main.tex#L373-L386); [results.tex:69-105](../jurnal_latex/sections/results.tex#L69-L105), [:138-168](../jurnal_latex/sections/results.tex#L138-L168), [:39](../jurnal_latex/sections/results.tex#L39); `generated/tab_ablation.tex`, `tab_ablation_groups.tex`.
+- **Evidence:** [main.tex:373-386](../_archive/jurnal_latex_v1/main.tex#L373-L386); [results.tex:69-105](../_archive/jurnal_latex_v1/sections/results.tex#L69-L105), [:138-168](../_archive/jurnal_latex_v1/sections/results.tex#L138-L168), [:39](../_archive/jurnal_latex_v1/sections/results.tex#L39); `generated/tab_ablation.tex`, `tab_ablation_groups.tex`.
   - **Naskah final (2026-10-17):** Ablasi, analisis per bahasa/label, uji sensitivitas lima artikel per situs.
 - **Tindakan:** —
 
@@ -485,7 +485,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - **Training:** RTX 4050, 5,2 menit per run StaticKD.
     - **Software:** Python 3.12, PyTorch 2.6, tokenizers 0.23, ONNX Runtime 1.30, scikit-learn 1.9, fastText 0.9.2.
 - **Status:** ✅
-- **Evidence:** Tabel eff `generated/tab_eff.tex`; [results.tex:107-136](../jurnal_latex/sections/results.tex#L107-L136); [main.tex:360-371](../jurnal_latex/main.tex#L360-L371), [main.tex:386](../jurnal_latex/main.tex#L386); `results/final/environment.json`.
+- **Evidence:** Tabel eff `generated/tab_eff.tex`; [results.tex:107-136](../_archive/jurnal_latex_v1/sections/results.tex#L107-L136); [main.tex:360-371](../_archive/jurnal_latex_v1/main.tex#L360-L371), [main.tex:386](../_archive/jurnal_latex_v1/main.tex#L386); `results/final/environment.json`.
   - **Naskah final (2026-10-17):** Latensi p50/p95, throughput 1c/4c, RAM, ukuran, profiling; GPU RTX 4050 Laptop 6 GB, waktu pelabelan teacher, versi pustaka (NumPy, transformers) ditambahkan.
 - **Tindakan:**
   - FLOPs tidak dilaporkan. Ini tidak wajib, karena sudah ada 5 indikator lain.
@@ -503,8 +503,8 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - **Kesepakatan dengan teacher** pada set fidelity.
     - **ECE** (15 bin) untuk kalibrasi.
 - **Status:** ✅
-- **Evidence:** [main.tex:337-343](../jurnal_latex/main.tex#L337-L343), [main.tex:358](../jurnal_latex/main.tex#L358).
-  - **Naskah final (2026-10-17):** [method.tex](../jurnal_final/main.tex), subbagian Evaluation Protocol; macro-F1 dibaca sebagai kesesuaian dengan kategorisasi editorial.
+- **Evidence:** [main.tex:337-343](../_archive/jurnal_latex_v1/main.tex#L337-L343), [main.tex:358](../_archive/jurnal_latex_v1/main.tex#L358).
+  - **Naskah final (2026-10-17):** [method.tex](../paper_final/main.tex), subbagian Evaluation Protocol; macro-F1 dibaca sebagai kesesuaian dengan kategorisasi editorial.
 - **Tindakan:** —
 
 ### M-11 — Limitations & threats to validity
@@ -526,10 +526,10 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - **Eksternal:** satu perangkat; publisher terbatas.
     - **Statistik:** site-cluster bootstrap.
 - **Status:** ✅
-- **Evidence:** [limitations.tex:1-10](../jurnal_latex/sections/limitations.tex#L1-L10); [results.tex:50-67](../jurnal_latex/sections/results.tex#L50-L67); [main.tex:148](../jurnal_latex/main.tex#L148).
-  - **Naskah final (2026-10-17):** [limitations.tex](../jurnal_final/main.tex): butir label editorial ditulis ulang; tuning baseline dan benchmark satu sesi ditambahkan.
+- **Evidence:** [limitations.tex:1-10](../_archive/jurnal_latex_v1/sections/limitations.tex#L1-L10); [results.tex:50-67](../_archive/jurnal_latex_v1/sections/results.tex#L50-L67); [main.tex:148](../_archive/jurnal_latex_v1/main.tex#L148).
+  - **Naskah final (2026-10-17):** [limitations.tex](../paper_final/main.tex): butir label editorial ditulis ulang; tuning baseline dan benchmark satu sesi ditambahkan.
 - **Tindakan:**
-  - Tulis ulang butir 1 di [limitations.tex:2](../jurnal_latex/sections/limitations.tex#L2) sesuai Value.
+  - Tulis ulang butir 1 di [limitations.tex:2](../_archive/jurnal_latex_v1/sections/limitations.tex#L2) sesuai Value.
   - Opsional: kelompokkan butir keterbatasan menurut jenis ancaman validitas (konstruk / internal / eksternal) supaya reviewer mudah membacanya.
 
 ---
@@ -544,8 +544,8 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
   - `R-01.model_url` = TBD (Hugging Face: `statickd-iptc-multilingual` dan `statickd-iptc-multilingual-compact`)
   - `R-01.data_url` = TBD. Isinya manifest set uji (URL/ID, label, asal label, SHA-1 teks) + skrip rekonstruksi; EMMediaTopic di CLARIN.SI (hdl 11356/1991).
 - **Status:** ⚠️
-- **Evidence:** Bagian "Ketersediaan Kode, Model, dan Data" sudah ada di [main.tex:409-410](../jurnal_latex/main.tex#L409-L410), tetapi URL masih `\todo`.
-  - **Naskah final (2026-10-17):** Bagian Code, Model, and Data Availability ada ([availability.tex](../jurnal_final/main.tex)); URL GitHub/Zenodo dan Hugging Face masih TODO (menunggu unggahan).
+- **Evidence:** Bagian "Ketersediaan Kode, Model, dan Data" sudah ada di [main.tex:409-410](../_archive/jurnal_latex_v1/main.tex#L409-L410), tetapi URL masih `\todo`.
+  - **Naskah final (2026-10-17):** Bagian Code, Model, and Data Availability ada ([availability.tex](../paper_final/main.tex)); URL GitHub/Zenodo dan Hugging Face masih TODO (menunggu unggahan).
 - **Tindakan:**
   - **Keputusan (2026-10-17): rilis sebelum submit.** Penulis mengunggah memakai akunnya (GitHub, Hugging Face, Zenodo DOI); Claude menyiapkan panduan langkah demi langkah. Setelah itu isi URL-nya.
   - Pertimbangkan Zenodo DOI (rilis GitHub) atau Code Ocean, agar memenuhi syarat badge IEEE Access.
@@ -574,7 +574,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
       - MasakhaNEWS: mirror yang dipakai (`mteb/masakhanews`) = **CC BY-NC 4.0**, sedangkan dataset aslinya (`masakhane/masakhanews`) = **AFL-3.0**. Paper menulis CC BY-NC 4.0.
       - **Potensi bentrok:** manifest set uji direncanakan rilis dengan **CC BY-SA 4.0** dan memuat ID serta label MasakhaNEWS. Kalau lisensi NC yang berlaku, keduanya tidak kompatibel. Perlu keputusan penulis sebelum rilis (bukan nasihat hukum). Opsi: (a) bagian MasakhaNEWS dirilis terpisah dengan CC BY-NC 4.0; (b) untuk MasakhaNEWS hanya ID + skrip rekonstruksi; (c) ikuti lisensi repositori asli setelah dicek.
 - **Status:** ⚠️ (diturunkan 2026-10-17: lisensi semua aset sudah disebut, tetapi lisensi manifest untuk bagian MasakhaNEWS belum diputuskan)
-- **Evidence:** [main.tex:410](../jurnal_latex/main.tex#L410); [dist/github/README.md](../dist/github/README.md) bagian "Licence"; [dist/huggingface/statickd-iptc-multilingual/README.md](../dist/huggingface/statickd-iptc-multilingual/README.md) (`license: cc-by-sa-4.0`).
+- **Evidence:** [main.tex:410](../_archive/jurnal_latex_v1/main.tex#L410); [dist/github/README.md](../dist/github/README.md) bagian "Licence"; [dist/huggingface/statickd-iptc-multilingual/README.md](../dist/huggingface/statickd-iptc-multilingual/README.md) (`license: cc-by-sa-4.0`).
   - **Naskah final (2026-10-17):** Tabel lisensi aset (dipakai dan dirilis) di bagian Availability; lisensi diverifikasi di kartu dataset/model.
 - **Tindakan:** Tambahkan ke bagian Ketersediaan Data, misalnya sebagai tabel kecil, lisensi teacher, potion, setiap dataset sumber, dan lisensi rilis. 📝 Catatan: sebagian sudah ditulis di README `dist/`.
 
@@ -588,7 +588,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - **Value:**
   - `W-01.title` = "StaticKD: Knowledge Distillation Pengklasifikasi Topik Berita IPTC Multibahasa ke Tabel Logit Token Statis untuk Inferensi Ringan di CPU" (18 kata)
 - **Status:** ✅
-- **Evidence:** [main.tex:41](../jurnal_latex/main.tex#L41). Tidak memuat "new"/"novel" atau simbol matematika; spesifik (metode, tugas, bentuk model, target perangkat).
+- **Evidence:** [main.tex:41](../_archive/jurnal_latex_v1/main.tex#L41). Tidak memuat "new"/"novel" atau simbol matematika; spesifik (metode, tugas, bentuk model, target perangkat).
   - **Naskah final (2026-10-17):** Judul bahasa Inggris, 17 kata, tanpa "new/novel".
 - **Tindakan:** Terjemahkan saat naskah dialihkan ke bahasa Inggris (W-07). Usahakan tetap ≤ 15–18 kata, misalnya "StaticKD: Distilling a Multilingual IPTC News Topic Classifier into a Static Token-Logit Table for Lightweight CPU Inference".
 
@@ -596,10 +596,10 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - **Kriteria:** Satu paragraf, maksimal 250 kata, berdiri sendiri, tanpa singkatan, referensi, footnote, atau persamaan.
 - **Sumber:** [R] [IEEE Author Center – Structure your article](https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/create-the-text-of-your-article/structure-your-article/)
 - **Value:**
-  - `W-02.abstract` = (isi saat ini di [abstract.tex](../jurnal_latex/sections/abstract.tex)) Masalah (biaya CPU teacher 1.239–2.971 ms) → usulan StaticKD (tabel 17 logit/token) → data (285.999 artikel, 69 bahasa) → set uji (12.744 artikel, 47 bahasa, label independen) → hasil (macro-F1 0,545 vs 0,598 = 91,1%; 473 artikel/detik/core; 616× ONNX int8; 34 MB) → lebih akurat dari fastText dan TF-IDF + SVM → temuan ablasi → kelemahan.
+  - `W-02.abstract` = (isi saat ini di [abstract.tex](../_archive/jurnal_latex_v1/sections/abstract.tex)) Masalah (biaya CPU teacher 1.239–2.971 ms) → usulan StaticKD (tabel 17 logit/token) → data (285.999 artikel, 69 bahasa) → set uji (12.744 artikel, 47 bahasa, label independen) → hasil (macro-F1 0,545 vs 0,598 = 91,1%; 473 artikel/detik/core; 616× ONNX int8; 34 MB) → lebih akurat dari fastText dan TF-IDF + SVM → temuan ablasi → kelemahan.
   - `W-02.abstract_word_count` = ±212 kata (angka dihitung sebagai satu kata).
 - **Status:** ✅
-- **Evidence:** [abstract.tex:1](../jurnal_latex/sections/abstract.tex#L1): satu paragraf, tanpa referensi atau persamaan, 212 kata ≤ 250.
+- **Evidence:** [abstract.tex:1](../_archive/jurnal_latex_v1/sections/abstract.tex#L1): satu paragraf, tanpa referensi atau persamaan, 212 kata ≤ 250.
   - **Naskah final (2026-10-17):** Satu paragraf, 240 kata (≤ 250), tanpa referensi atau persamaan; singkatan dikurangi.
   - **Evaluasi ulang 2026-10-17:** perbaikan klaim TF-IDF sempat memasukkan lagi singkatan "TF-IDF + SVM" ke abstrak. Frasa itu sudah diganti dengan "a linear support vector machine distilled on the same data" (maknanya sama: baseline TF-IDF + SVM). Abstrak sekarang 244 kata. Singkatan yang tersisa hanya nama diri: IPTC (nama taksonomi), XLM-RoBERTa (nama model), dan macro-F1 (nama metrik). Status tetap ✅.
 - **Tindakan:**
@@ -612,7 +612,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - **Value:**
   - `W-03.keywords` = saat ini 8: klasifikasi topik berita, IPTC Media Topic, knowledge distillation, static embedding, klasifikasi teks multibahasa, bahasa sumber daya rendah, efisiensi inferensi, CPU.
 - **Status:** ⏳ (diubah dari ✅ pada 2026-10-17: jumlah keywords sudah sesuai, tetapi kecocokannya dengan IEEE Thesaurus belum pernah dicek)
-- **Evidence:** [main.tex:56-58](../jurnal_latex/main.tex#L56-L58).
+- **Evidence:** [main.tex:56-58](../_archive/jurnal_latex_v1/main.tex#L56-L58).
   - **Naskah final (2026-10-17):** Lima keywords, alfabetis sesuai template IEEE Access: *Efficient inference, knowledge distillation, multilingual text classification, news topic classification, static embeddings*. Belum dicocokkan dengan IEEE Thesaurus.
 - **Tindakan:** Pangkas ke 5 dan cocokkan dengan IEEE Thesaurus. Usulan: *Knowledge distillation; Text classification; Natural language processing; Multilingual; Inference efficiency* (verifikasi istilah di IEEE Thesaurus).
 
@@ -629,9 +629,9 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     6. Fidelity ≠ akurasi ([stanton2021kd]).
     7. Posisi terhadap Sparse Distillation, LoRA, kuantisasi; implikasi praktis (core per 1 juta artikel, cascade, compact).
 - **Status:** ✅
-- **Evidence:** [discussion.tex:1-39](../jurnal_latex/sections/discussion.tex#L1-L39). Spekulasi diberi penanda ("mungkin berkat subword yang dipakai bersama" di [discussion.tex:18](../jurnal_latex/sections/discussion.tex#L18)).
-  - **Naskah final (2026-10-17):** [discussion.tex](../jurnal_final/main.tex): prosa, interpretasi dibedakan dari dugaan ("we suspect", "suggests").
-- **Tindakan:** Perbaiki klaim τ = 2 di [discussion.tex:14](../jurnal_latex/sections/discussion.tex#L14) (lihat N-05 butir 5). Klaim DistilmBERT di [discussion.tex:6](../jurnal_latex/sections/discussion.tex#L6) ("tidak menutupnya", p = 0,800) sudah akurat.
+- **Evidence:** [discussion.tex:1-39](../_archive/jurnal_latex_v1/sections/discussion.tex#L1-L39). Spekulasi diberi penanda ("mungkin berkat subword yang dipakai bersama" di [discussion.tex:18](../_archive/jurnal_latex_v1/sections/discussion.tex#L18)).
+  - **Naskah final (2026-10-17):** [discussion.tex](../paper_final/main.tex): prosa, interpretasi dibedakan dari dugaan ("we suspect", "suggests").
+- **Tindakan:** Perbaiki klaim τ = 2 di [discussion.tex:14](../_archive/jurnal_latex_v1/sections/discussion.tex#L14) (lihat N-05 butir 5). Klaim DistilmBERT di [discussion.tex:6](../_archive/jurnal_latex_v1/sections/discussion.tex#L6) ("tidak menutupnya", p = 0,800) sudah akurat.
 
 ### W-05 — Kesimpulan
 - **Kriteria:** Kesimpulan menyoroti implikasi dan future work tanpa melebih-lebihkan, dan didukung data.
@@ -653,9 +653,9 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - IPTC level 2 / multi-label
     - validasi anotasi manusia multibahasa
 - **Status:** ✅
-- **Evidence:** [conclusion.tex:1-19](../jurnal_latex/sections/conclusion.tex#L1-L19); semua angka melalui `\val{}`.
-  - **Naskah final (2026-10-17):** [conclusion.tex](../jurnal_final/main.tex).
-- **Tindakan:** — (dicek ulang: butir soft label/τ di [conclusion.tex:5](../jurnal_latex/sections/conclusion.tex#L5) sudah sesuai bukti)
+- **Evidence:** [conclusion.tex:1-19](../_archive/jurnal_latex_v1/sections/conclusion.tex#L1-L19); semua angka melalui `\val{}`.
+  - **Naskah final (2026-10-17):** [conclusion.tex](../paper_final/main.tex).
+- **Tindakan:** — (dicek ulang: butir soft label/τ di [conclusion.tex:5](../_archive/jurnal_latex_v1/sections/conclusion.tex#L5) sudah sesuai bukti)
 
 ### W-06 — Gambar & tabel mendukung teks
 - **Kriteria:** Setiap gambar dan tabel dirujuk di teks dan mendukung argumen. Pembahasan topik komprehensif.
@@ -667,7 +667,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - **Status:** ✅
 - **Evidence:** hitungan `\ref{}` per label di `main.tex` + `sections/*.tex` (`tab:related` = 0 rujukan); `check_paper.py`: semua file gambar dan tabel ada.
   - **Naskah final (2026-10-17):** Semua gambar dan tabel dirujuk, termasuk Tabel I dan tabel lisensi.
-- **Tindakan:** Tambahkan rujukan ke Tabel~\ref{tab:related} di akhir Subbagian II-D atau II-E ([main.tex:131](../jurnal_latex/main.tex#L131)).
+- **Tindakan:** Tambahkan rujukan ke Tabel~\ref{tab:related} di akhir Subbagian II-D atau II-E ([main.tex:131](../_archive/jurnal_latex_v1/main.tex#L131)).
 
 ### W-07 — Bahasa Inggris standar & kejelasan
 - **Kriteria:** Ditulis dalam bahasa Inggris standar dengan grammar benar ("Articles with poor grammar will be immediately rejected"). Matematika dipakai untuk memperjelas, dan istilah teknis dipakai dengan tepat.
@@ -676,7 +676,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
   - `W-07.paper_language` = Bahasa Inggris (D17); angka berformat Inggris (desimal titik).
   - `W-07.proofreading` = TBD (setelah penulisan ulang oleh penulis).
 - **Status:** ⚠️
-- **Evidence:** [main.tex:2](../jurnal_latex/main.tex#L2), [main.tex:23-27](../jurnal_latex/main.tex#L23-L27).
+- **Evidence:** [main.tex:2](../_archive/jurnal_latex_v1/main.tex#L2), [main.tex:23-27](../_archive/jurnal_latex_v1/main.tex#L23-L27).
   - **Naskah final (2026-10-17):** Naskah sudah berbahasa Inggris (keputusan 2026-10-17). Masih perlu proofreading oleh penulis (misalnya Paperpal Preflight) dan, sesuai E-01, penulisan ulang oleh penulis.
 - **Tindakan (diperbarui 2026-10-17):**
   - **Sudah dikerjakan:** naskah berbahasa Inggris, istilah Indonesia dihapus, desimal titik, matematika wajar (3 persamaan inti, semuanya dirujuk).
@@ -692,7 +692,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
   - `W-08.template` = saat ini `IEEEtran` mode journal (D20); template IEEE Access tersimpan di [template_ieeeaccess/](template_ieeeaccess/).
   - `W-08.page_count` = 16 halaman (PDF terkompilasi, 2026-10-17).
 - **Status:** ⚠️
-- **Evidence:** [main.tex:8](../jurnal_latex/main.tex#L8); `main.log`: "Output written on main.pdf (15 pages)"; folder [template_ieee/](../jurnal_latex/template_ieee/) hanya berisi template IEEE Transactions.
+- **Evidence:** [main.tex:8](../_archive/jurnal_latex_v1/main.tex#L8); `main.log`: "Output written on main.pdf (15 pages)"; folder [template_ieee/](../_archive/jurnal_latex_v1/template_ieee/) hanya berisi template IEEE Transactions.
   - **Naskah final (2026-10-17):** Atas keputusan penulis (D20) naskah memakai format lama IEEEtran journal, satu file `main.tex`, 16 halaman (< 20). Template wajib IEEE Access diterapkan saat submit.
 - **Tindakan (diperbarui 2026-10-17):**
   - Saat submit, pindahkan naskah ke template LaTeX IEEE Access ([template_ieeeaccess/](template_ieeeaccess/), sumber: [ACCESS_latex_template_20260513](https://ieeeaccess.ieee.org/wp-content/uploads/2026/05/ACCESS_latex_template_20260513-1-1.zip)).
@@ -711,8 +711,8 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
   - `E-01.ai_disclosure_text` = (keputusan penulis, 2026-10-17; ditempatkan di Acknowledgments) "Penulis menggunakan Claude (Anthropic) untuk membantu penulisan kode eksperimen, pengolahan data (termasuk penyusunan awal tabel pemetaan rubrik ke IPTC, yang seluruhnya ditinjau penulis), serta review dan penyuntingan minor naskah. Naskah ditulis oleh penulis, dan penulis bertanggung jawab atas seluruh isi dan klaim." Sebutkan versi model Claude yang dipakai saat submit.
   - `E-01.condition` = Pernyataan ini hanya akurat bila **teks final ditulis ulang oleh penulis** (keputusan penulis). Draf Tahap 5 dari Claude berfungsi sebagai bahan. Kalau ada paragraf draf yang dipakai tanpa ditulis ulang, pernyataan harus diperluas dengan menyebut "penyusunan draf naskah".
 - **Status:** ⚠️
-- **Evidence:** [main.tex:412-413](../jurnal_latex/main.tex#L412-L413) (bagian terpisah "Pernyataan Penggunaan AI"); Ucapan Terima Kasih masih `\todo` di [main.tex:415-416](../jurnal_latex/main.tex#L415-L416).
-  - **Naskah final (2026-10-17):** Pernyataan AI ada di Acknowledgment ([acknowledgment.tex](../jurnal_final/main.tex)), tetapi kalimat "The manuscript was written by the authors" hanya akurat bila penulis menulis ulang teks bahasa Inggris dari Claude (lihat temuan review).
+- **Evidence:** [main.tex:412-413](../_archive/jurnal_latex_v1/main.tex#L412-L413) (bagian terpisah "Pernyataan Penggunaan AI"); Ucapan Terima Kasih masih `\todo` di [main.tex:415-416](../_archive/jurnal_latex_v1/main.tex#L415-L416).
+  - **Naskah final (2026-10-17):** Pernyataan AI ada di Acknowledgment ([acknowledgment.tex](../paper_final/main.tex)), tetapi kalimat "The manuscript was written by the authors" hanya akurat bila penulis menulis ulang teks bahasa Inggris dari Claude (lihat temuan review).
 - **Tindakan (diperbarui 2026-10-17):**
   - **Sudah dikerjakan:** pernyataan ada di Acknowledgment, menyebut alat (Claude, Anthropic), bagian yang dibantu (kode, pengolahan data termasuk tabel pemetaan yang ditinjau penulis, review dan penyuntingan minor), dan tanggung jawab penulis. Isinya tidak diubah (keputusan penulis, D17/D18).
   - **Yang tersisa (penulis):**
@@ -730,12 +730,12 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - **Tindakan:** Jalankan Turnitin/iThenticate (lewat kampus) **pada versi bahasa Inggris final**. Targetnya < 25% (aturan MK). Semua gambar adalah buatan sendiri (`figures/`, dibuat oleh notebook), jadi tidak perlu izin pihak ketiga.
 
 ### E-03 — Tidak ada fabrikasi/falsifikasi
-- **Kriteria:** Setiap angka di naskah bisa ditelusuri ke hasil eksperimen asli (notebook, `jurnal_latex/generated/`).
+- **Kriteria:** Setiap angka di naskah bisa ditelusuri ke hasil eksperimen asli (notebook, `_archive/jurnal_latex_v1/generated/`).
 - **Sumber:** [MK] [L17](../materi_kuliah/summary_all_presentation.txt#L17)
 - **Value:**
   - `E-03.number_source` = Semua angka hasil memakai `\val{kunci}` dari `generated/numbers.tex` (1.014 kunci terdefinisi, 207 dipakai, 0 hilang). Sembilan tabel memakai `\rows{generated/tab_*.tex}`. Semuanya ditulis oleh `notebooks/StaticKD_IPTC_final.ipynb` (Bagian 11), dengan sumber data `results/final/*.json(l)`.
 - **Status:** ✅
-- **Evidence:** [main.tex:5-6](../jurnal_latex/main.tex#L5-L6), [main.tex:34-35](../jurnal_latex/main.tex#L34-L35); output `python scripts/check_paper.py` (0 missing, 0 error, 0 undefined).
+- **Evidence:** [main.tex:5-6](../_archive/jurnal_latex_v1/main.tex#L5-L6), [main.tex:34-35](../_archive/jurnal_latex_v1/main.tex#L34-L35); output `python scripts/check_paper.py` (0 missing, 0 error, 0 undefined).
   - **Naskah final (2026-10-17):** check_paper.py: 231 kunci dipakai, 0 hilang; 0 "??" di PDF; notebook dijalankan ulang, nilai sama.
 - **Tindakan (diperbarui 2026-10-17):** Naskah final memakai angka literal (D20). `results/final/paper_number_map.json` mencatat 247 kunci angka di `main.tex`, dan `scripts/check_paper.py` melaporkan literal yang hilang atau berubah. Jalankan setelah penulisan ulang dan setelah setiap eksperimen baru.
 
@@ -746,7 +746,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
   - `E-04.authors` = Obi Kastanya (6025252015@student.its.ac.id, **penulis korespondensi**); Ananta Dwi Prayoga Alwy (6025252007@student.its.ac.id). Dosen pembimbing tidak menjadi penulis (keputusan penulis, 2026-10-17).
   - `E-04.affiliations` = Kedua penulis: Department of Informatics Engineering, Sepuluh Nopember Institute of Technology (Institut Teknologi Sepuluh Nopember), Surabaya, Indonesia. Sumber: [IEEE-conference-template-062824.tex](../IEEE-conference-template-062824.tex) baris 38–48.
 - **Status:** ✅
-- **Evidence:** [main.tex:43-44](../jurnal_latex/main.tex#L43-L44) (afiliasi dan e-mail masih `\todo`).
+- **Evidence:** [main.tex:43-44](../_archive/jurnal_latex_v1/main.tex#L43-L44) (afiliasi dan e-mail masih `\todo`).
   - **Naskah final (2026-10-17):** Penulis, afiliasi, e-mail, dan penulis korespondensi ada di halaman judul. Biografi masih TODO.
 - **Tindakan (diperbarui 2026-10-17):** Afiliasi, e-mail, dan keputusan pembimbing sudah selesai (D13). Yang tersisa: pastikan Ananta ikut merevisi dan menyetujui versi final (kriteria authorship IEEE), dan siapkan biografi kedua penulis (W-08).
 
@@ -768,13 +768,13 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
     - macro-F1 pada label ini dibaca sebagai **kesesuaian dengan kategorisasi editorial**;
     - perbedaan dengan teacher bisa berasal dari skema kategori yang berbeda, bukan dari label yang salah (contoh: MasakhaNEWS *politics* → alternatif *conflict* 29%).
 - **Status:** ⚠️
-- **Evidence:** [main.tex:360-371](../jurnal_latex/main.tex#L360-L371); `src/statickd/benchmark.py:65-77` (warm-up, loop latensi dan throughput); `results/final/cpu_benchmark.jsonl` (`n_latency`, `n_throughput` per model); [results.tex:50-67](../jurnal_latex/sections/results.tex#L50-L67).
+- **Evidence:** [main.tex:360-371](../_archive/jurnal_latex_v1/main.tex#L360-L371); `src/statickd/benchmark.py:65-77` (warm-up, loop latensi dan throughput); `results/final/cpu_benchmark.jsonl` (`n_latency`, `n_throughput` per model); [results.tex:50-67](../_archive/jurnal_latex_v1/sections/results.tex#L50-L67).
   - **Naskah final (2026-10-17):** Definisi konstruk label dan ukuran sampel benchmark (30/48 dan 500/3.000) sudah ditulis. Pengulangan benchmark 3× dilewati (poin baseline/benchmark).
 - **Tindakan (diperbarui 2026-10-17):**
   - **Sudah dikerjakan:**
     - ukuran sampel benchmark (30/48 dan 500/3,000) dan "satu sesi" ditulis di Protokol Efisiensi dan Limitations;
     - konstruk label editorial ditulis di Konstruksi Set Uji dan Discussion;
-    - validasi bahasa Prancis dilaporkan ([main.tex:455](../jurnal_final/main.tex#L455): 0.716 pada 208 artikel berlabel rubrik vs 0.500 pada 200 artikel MasakhaNEWS);
+    - validasi bahasa Prancis dilaporkan ([main.tex:455](../paper_final/main.tex#L455): 0.716 pada 208 artikel berlabel rubrik vs 0.500 pada 200 artikel MasakhaNEWS);
     - hasil per sumber (MN-DS terpisah) ditambahkan.
   - **Keputusan D21:** benchmark 3× (D4) **ditunda ke tahap revisi**.
   - 📝 **Risiko sisa:**
@@ -785,7 +785,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - **Kriteria:** Setiap klaim di kesimpulan dan abstrak punya tabel atau gambar pendukung di bagian hasil. Angka di abstrak, teks, dan tabel konsisten.
 - **Sumber:** [R] [IEEE Access Reviewer Guidelines](https://ieeeaccess.ieee.org/reviewers/reviewer-guidelines/) ("conclusions … supported by the data")
 - **Value:**
-  - `K-02.claim_evidence_map` = lihat `N-05.main_claims`. Konsistensi angka terjamin karena abstrak, teks, kesimpulan, dan tabel memakai kunci `\val{}` yang sama. Dua klaim belum sesuai bukti (DistilmBERT di [results.tex:17](../jurnal_latex/sections/results.tex#L17); τ ≥ 2 di [main.tex:95](../jurnal_latex/main.tex#L95) dan [discussion.tex:14](../jurnal_latex/sections/discussion.tex#L14)), satu klaim ambigu ("tujuh keluarga model"), dan satu fakta pembanding belum diakui (fastText terkuantisasi lebih cepat dan kecil).
+  - `K-02.claim_evidence_map` = lihat `N-05.main_claims`. Konsistensi angka terjamin karena abstrak, teks, kesimpulan, dan tabel memakai kunci `\val{}` yang sama. Dua klaim belum sesuai bukti (DistilmBERT di [results.tex:17](../_archive/jurnal_latex_v1/sections/results.tex#L17); τ ≥ 2 di [main.tex:95](../_archive/jurnal_latex_v1/main.tex#L95) dan [discussion.tex:14](../_archive/jurnal_latex_v1/sections/discussion.tex#L14)), satu klaim ambigu ("tujuh keluarga model"), dan satu fakta pembanding belum diakui (fastText terkuantisasi lebih cepat dan kecil).
 - **Status:** ✅
 - **Evidence:** `check_paper.py` (0 kunci hilang); lihat Evidence N-05.
   - **Naskah final (2026-10-17):** Klaim abstrak dan kesimpulan dicocokkan ulang dengan hasil; tidak ada klaim berlebihan yang tersisa.
@@ -896,11 +896,11 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 | D14 | Peran AI (E-01) | Kode, pengolahan data (termasuk tabel pemetaan yang ditinjau penulis), review dan penyuntingan minor. **Teks final ditulis ulang oleh penulis**; draf Tahap 5 hanya bahan. |
 | D15 | Rilis & preprint (R-01, S-01) | Rilis kode/model/manifest sebelum submit (akun penulis, panduan dari Claude). Tidak ada preprint arXiv. |
 | D16 | Ditunda | Quartile (J-01) belum dicek; Turnitin (E-02) nanti; grid baseline (M-05) dan benchmark 3× (K-01) ditunda (ke tahap revisi, lihat D21). |
-| D17 | Bahasa paper | Naskah final `jurnal_final/` ditulis dalam bahasa Inggris; output notebook (angka, tabel, gambar) dalam format bahasa Inggris. Naskah ini **belum final**: versi final ditulis sendiri oleh penulis, sehingga pernyataan AI tetap seperti sekarang. |
+| D17 | Bahasa paper | Naskah final `paper_final/` ditulis dalam bahasa Inggris; output notebook (angka, tabel, gambar) dalam format bahasa Inggris. Naskah ini **belum final**: versi final ditulis sendiri oleh penulis, sehingga pernyataan AI tetap seperti sekarang. |
 | D18 | Review sebagai reviewer (temuan 1–8) | (1) Pernyataan AI tidak diubah. (2) Hasil per sumber ditambahkan (Tabel \ref{tab:sources}, MN-DS terpisah). (3) Embedding beku dibiarkan (model final tetap, dipilih di dev). (4) Set cek LLM16 ditulis di Study Design. (5) Throughput cascade diukur langsung **nanti**. (6) Batas token tiap model dan persentase artikel terpotong ditulis (teacher 60,7%, MiniLM 91,1%, DistilmBERT 93,2%, StaticKD 5,4%). (7) Motivasi energi dilunakkan menjadi biaya. (8) Kontribusi set uji dan temuan analitis ditonjolkan di abstrak dan pendahuluan. |
-| D20 | Struktur & format naskah | `jurnal_final/` berisi **satu file `main.tex`** dengan angka literal, format lama **IEEEtran journal** (bukan template IEEE Access), `references.bib`, `IEEEtran.cls/.bst`, dan `figures/` yang hanya berisi 9 gambar yang dipakai. Sumber modular di `src/paper/`; `python scripts/build_paper.py` membangun `main.tex` (menolak menimpa bila `main.tex` sudah disunting, kecuali `--force`). `scripts/check_paper.py` melaporkan angka yang berubah setelah notebook dijalankan ulang. Template IEEE Access tersimpan di `research_final/template_ieeeaccess/` untuk dipakai saat submit. |
+| D20 | Struktur & format naskah | `paper_final/` berisi **satu file `main.tex`** dengan angka literal, format lama **IEEEtran journal** (bukan template IEEE Access), `references.bib`, `IEEEtran.cls/.bst`, dan `figures/` yang hanya berisi 9 gambar yang dipakai. Sumber modular di `src/paper/`; `python scripts/build_paper.py` membangun `main.tex` (menolak menimpa bila `main.tex` sudah disunting, kecuali `--force`). `scripts/check_paper.py` melaporkan angka yang berubah setelah notebook dijalankan ulang. Template IEEE Access tersimpan di `paper_writing/template_ieeeaccess/` untuk dipakai saat submit. |
 | D19 | Baseline 256 token | MiniLM-L6 dan DistilmBERT dilatih dengan 256 token; latih ulang dengan 512 token ditunda bersama grid baseline. Dinyatakan di Methodology dan Limitations. |
-| D12 | File paper final | Ditulis di file/folder baru (`jurnal_final/`). `jurnal_latex/main.tex` tetap utuh sebagai arsip. |
+| D12 | File paper final | Ditulis di file/folder baru (`paper_final/`). `_archive/jurnal_latex_v1/main.tex` tetap utuh sebagai arsip. |
 | D21 | Eksperimen sebelum submit | **Tidak ada eksperimen baru** karena keterbatasan waktu (estimasi ±27–33 jam mesin di laptop penulis). Grid baseline (M-05), transformer 512 token (D19), baseline trainer Model2Vec (M-04), benchmark 3× (K-01), dan pengukuran cascade langsung dikerjakan **saat revisi** bila diminta reviewer. Trainer Model2Vec ditangani lewat teks (Related Work, Tabel I, Baselines, Limitations). Rincian di [change_log.md](change_log.md). |
 
 ### Rancangan grid baseline (D3, ditetapkan sebelum dijalankan)
@@ -918,7 +918,7 @@ Status di bawah ini adalah hasil audit **naskah final bahasa Inggris** di `jurna
 - tinjauan tabel pemetaan (M-02, D2);
 - verifikasi 46 referensi dan isi `reference/` (L-02, L-04, L-05);
 - data penulis (E-04, D13);
-- naskah bahasa Inggris satu file di `jurnal_final/` (D17, D20);
+- naskah bahasa Inggris satu file di `paper_final/` (D17, D20);
 - audit gaya dan audit 46 poin;
 - penanganan Model2Vec lewat teks (D21).
 

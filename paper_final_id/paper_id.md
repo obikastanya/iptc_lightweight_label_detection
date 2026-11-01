@@ -132,7 +132,7 @@ Test set final berisi 12,744 artikel dalam 47 bahasa, dengan 17 label dan 1,227 
 
 > **Tabel II** — Komposisi unified test set per sumber. *(isi tabel: lihat PDF bahasa Inggris)*
 
-![Gambar 2. Jumlah artikel di unified test set per bahasa dan label (paling banyak 50 per sel). Asal label di dalam kurung adalah asal label dominan untuk bahasa tersebut.](../jurnal_final/figures/fig_testset_heatmap.pdf){width=90%}
+![Gambar 2. Jumlah artikel di unified test set per bahasa dan label (paling banyak 50 per sel). Asal label di dalam kurung adalah asal label dominan untuk bahasa tersebut.](../paper_final/figures/fig_testset_heatmap.pdf){width=90%}
 
 ## Teacher dan label distilasi
 
@@ -208,7 +208,7 @@ Tabel VII memecah test set menurut sumber. Di MN-DS, satu-satunya sumber yang di
 
 > **Tabel VII** — Macro-F1 uji per sumber unified test set. MN-DS satu-satunya sumber yang dianotasi langsung dengan topik IPTC; MasakhaNEWS dianotasi manusia dengan skemanya sendiri. Kolom terakhir: StaticKD sebagai persentase teacher. *(isi tabel: lihat PDF bahasa Inggris)*
 
-![Gambar 3. Macro-F1 uji menurut asal label (kiri) dan menurut jumlah data distilasi di bahasa artikel (kanan).](../jurnal_final/figures/fig_groups.pdf){width=90%}
+![Gambar 3. Macro-F1 uji menurut asal label (kiri) dan menurut jumlah data distilasi di bahasa artikel (kanan).](../paper_final/figures/fig_groups.pdf){width=90%}
 
 ## Validitas label editorial
 
@@ -236,9 +236,9 @@ Gambar 4 menunjukkan efek temperature. Dibanding tau=1, pilihan umum tau=2 [9] m
 
 Memperbesar ensemble dari satu ke tiga seed menggeser macro-F1 uji dari 0.542 ke 0.544 dan held-out agreement dari 0.808 ke 0.810 (Gambar 5); sepuluh seed memberi 0.546. Kenaikannya kecil, tetapi tanpa biaya saat inference karena berapa pun ukuran ensemble-nya tetap satu tabel.
 
-![Gambar 4. Efek temperature distilasi. Tiap titik adalah satu seed; garis menghubungkan rata-ratanya.](../jurnal_final/figures/fig_temperature.pdf){width=90%}
+![Gambar 4. Efek temperature distilasi. Tiap titik adalah satu seed; garis menghubungkan rata-ratanya.](../paper_final/figures/fig_temperature.pdf){width=90%}
 
-![Gambar 5. Efek ukuran ensemble tabel (rata-rata ± standar deviasi antar-kombinasi seed).](../jurnal_final/figures/fig_ensemble_size.pdf){width=90%}
+![Gambar 5. Efek ukuran ensemble tabel (rata-rata ± standar deviasi antar-kombinasi seed).](../paper_final/figures/fig_ensemble_size.pdf){width=90%}
 
 > **Tabel X** — Efisiensi CPU (P-core di-pin; sampel dari unified test set; 1c/4c = 1/4 core). *(isi tabel: lihat PDF bahasa Inggris)*
 
@@ -250,9 +250,9 @@ StaticKD butuh 2.03 ms per artikel dan memproses 473 artikel per detik per core:
 
 StaticKD bukan model tercepat di tabel. fastText + KD terkuantisasi sedikit lebih cepat (532 artikel per detik), lebih kecil (18 MB), dan memakai RAM lebih sedikit (300 MB), tetapi macro-F1 ujinya 0.435 dibanding 0.545 untuk StaticKD. Di antara model dengan latency sebanding (StaticKD, varian compact-nya, fastText, dan TF-IDF + SVM), StaticKD paling akurat (Gambar 6).
 
-![Gambar 6. Macro-F1 uji di unified test set terhadap throughput CPU satu core (skala log).](../jurnal_final/figures/fig_tradeoff.pdf){width=90%}
+![Gambar 6. Macro-F1 uji di unified test set terhadap throughput CPU satu core (skala log).](../paper_final/figures/fig_tradeoff.pdf){width=90%}
 
-![Gambar 7. Latency per artikel, RAM model, dan ukuran file (skala log).](../jurnal_final/figures/fig_latency_ram_size.pdf){width=90%}
+![Gambar 7. Latency per artikel, RAM model, dan ukuran file (skala log).](../paper_final/figures/fig_latency_ram_size.pdf){width=90%}
 
 > **Tabel XI** — Faktor-faktor di balik kinerja per bahasa. *(isi tabel: lihat PDF bahasa Inggris)*
 
@@ -262,11 +262,11 @@ Median selisih akurasi per bahasa antara StaticKD dan teacher adalah -0.024 (Gam
 
 Di 4 bahasa (bn, ml, or, pa), kurang dari separuh kemunculan token berasal dari token yang muncul minimal 10 kali di data distilasi (paling banyak 32%). StaticKD tetap mencapai rata-rata akurasi 0.624 di bahasa-bahasa ini (teacher 0.738). Varian compact membuang token-token itu dari tokenizer, dan akurasinya di bahasa ini jatuh ke 0.013. Di bahasa lainnya, varian compact mencapai 0.578 dibanding 0.640 untuk StaticKD penuh. Bagian V membahas mekanisme di balik pola ini.
 
-![Gambar 8. Kiri: akurasi StaticKD terhadap akurasi teacher per bahasa uji (warna = data distilasi bahasa, ukuran = jumlah artikel). Kanan: held-out agreement per bahasa terhadap jumlah data distilasi, untuk StaticKD dan fastText + KD.](../jurnal_final/figures/fig_per_language.pdf){width=90%}
+![Gambar 8. Kiri: akurasi StaticKD terhadap akurasi teacher per bahasa uji (warna = data distilasi bahasa, ukuran = jumlah artikel). Kanan: held-out agreement per bahasa terhadap jumlah data distilasi, untuk StaticKD dan fastText + KD.](../paper_final/figures/fig_per_language.pdf){width=90%}
 
 Per label (Gambar 9), label tersulit bagi StaticKD adalah society (0.16), disaster (0.29), human interest (0.32), dan conflict (0.37); yang termudah sport (0.88), weather (0.84), dan education (0.75). Selisih terbesar terhadap teacher ada pada environment (-0.17), religion (-0.15), dan arts (-0.08), dan kebingungan paling sering adalah society -> human interest (20%), human interest -> arts (20%), dan society -> politics (20%).
 
-![Gambar 9. F1 per label di test set (kiri) dan confusion matrix StaticKD yang dinormalisasi per label referensi (kanan).](../jurnal_final/figures/fig_per_label.pdf){width=90%}
+![Gambar 9. F1 per label di test set (kiri) dan confusion matrix StaticKD yang dinormalisasi per label referensi (kanan).](../paper_final/figures/fig_per_label.pdf){width=90%}
 
 > **Tabel XII** — Cascade StaticKD ke teacher ONNX int8 di test set (throughput efektif satu core). *(isi tabel: lihat PDF bahasa Inggris)*
 
@@ -274,7 +274,7 @@ Per label (Gambar 9), label tersulit bagi StaticKD adalah society (0.16), disast
 
 ECE StaticKD 0.041 di development set dan 0.139 di test set, lebih rendah daripada teacher (0.090 dan 0.245). Kedua model menjadi overconfident di test set, yang berada di luar distribusi training (Gambar 10). Dalam mode cascade, StaticKD memutuskan artikel yang confidence-nya minimal theta dan mengirim sisanya ke teacher (Tabel XII). Dengan theta = 0.8, StaticKD memutuskan 60.3% artikel dengan akurasi 0.813. Cascade mencapai akurasi keseluruhan 0.703 dan macro-F1 0.602, dibanding 0.699 dan 0.600 untuk teacher saja, dengan throughput efektif 1.92 artikel per detik per core dibanding 0.77. Mengirim sekitar dua per lima artikel ke teacher sudah cukup agar cascade menyamai akurasi teacher.
 
-![Gambar 10. Reliability diagram StaticKD di development set dan test set.](../jurnal_final/figures/fig_calibration.pdf){width=90%}
+![Gambar 10. Reliability diagram StaticKD di development set dan test set.](../paper_final/figures/fig_calibration.pdf){width=90%}
 
 # V. Pembahasan
 

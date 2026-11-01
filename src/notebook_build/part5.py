@@ -408,8 +408,8 @@ md(r"""
 Semua angka yang dikumpulkan di `NUM` ditulis ke `results/final/paper_generated/numbers.tex`, dengan salinan
 mentah di `results/final/paper_numbers.json`. Tabel LaTeX ditulis ke `results/final/paper_generated/tab_*.tex`
 dan gambar ke `results/final/figures/`. Sumber naskah di `src/paper/` memanggil angka dengan `\val{kunci}`;
-`python scripts/build_paper.py` menyusun satu file `jurnal_final/main.tex` dengan angka literal dan hanya
-menyalin gambar yang dipakai ke `jurnal_final/figures/`.
+`python scripts/build_paper.py` menyusun satu file `paper_final/main.tex` dengan angka literal dan hanya
+menyalin gambar yang dipakai ke `paper_final/figures/`.
 """),
 code(r"""
 path = NUM.write()

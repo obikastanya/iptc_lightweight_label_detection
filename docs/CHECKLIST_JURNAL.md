@@ -1,6 +1,6 @@
 # Checklist Kelengkapan Jurnal (dipakai saat audit akhir)
 
-Setiap butir dicek pada `jurnal_latex/main.tex` beserta `sections/*.tex`. Kolom "Bukti di notebook"
+Setiap butir dicek pada `_archive/jurnal_latex_v1/main.tex` beserta `sections/*.tex`. Kolom "Bukti di notebook"
 menunjuk ke bagian `notebooks/StaticKD_IPTC_final.ipynb` tempat angka atau artefak tersebut dihasilkan.
 
 | # | Informasi penting | Lokasi di jurnal | Bukti di notebook |

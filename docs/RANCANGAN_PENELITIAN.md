@@ -1,7 +1,7 @@
 # Rancangan Penelitian (versi final)
 
 Dokumen ini menetapkan kerangka penelitian sebelum hasil akhir dihitung. Notebook
-(`notebooks/StaticKD_IPTC_final.ipynb`) dan jurnal (`jurnal_latex/main.tex`) mengikuti struktur ini.
+(`notebooks/StaticKD_IPTC_final.ipynb`) dan jurnal (`_archive/jurnal_latex_v1/main.tex`) mengikuti struktur ini.
 Istilah teknis berbahasa Inggris sengaja tidak diterjemahkan.
 
 ## 1. Judul

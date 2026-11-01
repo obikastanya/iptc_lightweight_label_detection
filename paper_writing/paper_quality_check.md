@@ -2,7 +2,7 @@
 
 Checklist kualitas naskah paper StaticKD (IPTC news topic classification) sebelum submit ke jurnal Q1/Q2 berformat IEEE (target: IEEE Access).
 
-- **Naskah yang dicek:** [jurnal_latex/main.tex](../jurnal_latex/main.tex) dan [jurnal_latex/sections/](../jurnal_latex/sections/)
+- **Naskah yang dicek:** [_archive/jurnal_latex_v1/main.tex](../_archive/jurnal_latex_v1/main.tex) dan [_archive/jurnal_latex_v1/sections/](../_archive/jurnal_latex_v1/sections/)
 - **Fokus saat ini:** isi naskah paper (Bagian 1–7). Bagian 8 (pemilihan jurnal & submission) dicek nanti.
 - **Asal kriteria:** setiap poin punya rujukan. **[MK]** = materi kuliah Metpen ([summary_all_presentation.txt](../materi_kuliah/summary_all_presentation.txt)), **[R]** = sumber resmi/primer, **[S]** = sumber sekunder.
 
@@ -19,7 +19,7 @@ Setiap poin punya isian berikut:
 | **Sumber** | Rujukan asal kriteria (sudah terisi). |
 | **Value** | Variabel `ID.nama` = isi final yang akan dipakai di paper: kalimat, angka, daftar, URL, atau keputusan. Contoh: `W-01.title = "..."`, `M-09.efficiency_metrics = 34 MB, 473 docs/s/core, ...`. Untuk value yang panjang, isi dengan sub-list di bawahnya. |
 | **Status** | ⏳ belum diisi/dicek · ✅ Value lengkap & memenuhi kriteria · ⚠️ sebagian · ❌ belum ada / tidak memenuhi · ➖ tidak berlaku |
-| **Evidence** | Bukti bahwa Value benar: asal angka (`jurnal_latex/generated/…`, `results/…`, notebook) atau lokasi di draft (`file.tex:baris`). Tanpa evidence, status tidak boleh ✅. |
+| **Evidence** | Bukti bahwa Value benar: asal angka (`_archive/jurnal_latex_v1/generated/…`, `results/…`, notebook) atau lokasi di draft (`file.tex:baris`). Tanpa evidence, status tidak boleh ✅. |
 | **Tindakan** | Pekerjaan yang masih perlu dilakukan kalau statusnya ⚠️ atau ❌ (eksperimen tambahan, tulis ulang, cari referensi, dll.). |
 
 Aturan penulisan Value:
@@ -392,7 +392,7 @@ Aturan penulisan Value:
 - **Tindakan:**
 
 ### E-03 — Tidak ada fabrikasi/falsifikasi
-- **Kriteria:** Setiap angka di naskah bisa ditelusuri ke hasil eksperimen asli (notebook, `jurnal_latex/generated/`).
+- **Kriteria:** Setiap angka di naskah bisa ditelusuri ke hasil eksperimen asli (notebook, `_archive/jurnal_latex_v1/generated/`).
 - **Sumber:** [MK] [L17](../materi_kuliah/summary_all_presentation.txt#L17)
 - **Value:**
   - `E-03.number_source` =

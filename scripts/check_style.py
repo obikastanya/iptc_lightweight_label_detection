@@ -1,4 +1,4 @@
-"""Scan the final paper for the patterns listed in research_final/ai_text_criteria_to_be_avoided.txt.
+"""Scan the final paper for the patterns listed in paper_writing/ai_text_criteria_to_be_avoided.txt.
 
 The scan is a first pass: every hit still needs a human (or agent) judgement, because one occurrence of a
 pattern is not wrong by itself; a pile-up is. Checks:
@@ -12,7 +12,7 @@ pattern is not wrong by itself; a pile-up is. Checks:
   8. sentence length spread per section (uniform length is a warning sign).
 
 Usage (from the project root):
-    python scripts/check_style.py [--file jurnal_final/main.tex]
+    python scripts/check_style.py [--file paper_final/main.tex]
 """
 import argparse
 import re
@@ -75,7 +75,7 @@ def split_paper(tex: str) -> list[Part]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--file", default="jurnal_final/main.tex")
+    parser.add_argument("--file", default="paper_final/main.tex")
     args = parser.parse_args()
     files = split_paper(Path(args.file).read_text(encoding="utf8"))
     total = 0

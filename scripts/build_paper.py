@@ -1,13 +1,13 @@
-"""Build the single-file paper jurnal_final/main.tex from the modular sources in src/paper/.
+"""Build the single-file paper paper_final/main.tex from the modular sources in src/paper/.
 
   * \\input{sections/...} and the table macros (\\TabMain, ...) are inlined;
   * \\rows{generated/tab_*} is replaced by the table rows written by the notebook (results/final/paper_generated/);
   * every \\val{key} is replaced by its literal value from results/final/paper_generated/numbers.tex;
-  * only the figures that main.tex includes are copied from results/final/figures/ to jurnal_final/figures/;
+  * only the figures that main.tex includes are copied from results/final/figures/ to paper_final/figures/;
   * results/final/paper_number_map.json records every key, its value, and how often it occurs, so that
     scripts/check_paper.py can report which literal numbers changed after the notebook is re-run.
 
-jurnal_final/main.tex is meant to be edited by hand afterwards (the authors rewrite the text). To avoid
+paper_final/main.tex is meant to be edited by hand afterwards (the authors rewrite the text). To avoid
 overwriting such edits, the build refuses to run when main.tex differs from the last build, unless --force.
 
 Usage (from the project root):
@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src" / "paper"
 GEN = ROOT / "results" / "final" / "paper_generated"
 FIG_SRC = ROOT / "results" / "final" / "figures"
-OUT = ROOT / "jurnal_final"
+OUT = ROOT / "paper_final"
 MAP = ROOT / "results" / "final" / "paper_number_map.json"
 STATE = ROOT / "results" / "final" / "paper_build.json"
 BS = chr(92)

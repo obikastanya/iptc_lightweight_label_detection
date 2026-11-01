@@ -2,7 +2,7 @@
 
 Panduan untuk menulis ulang draf paper StaticKD (dibuat dengan bantuan AI) menjadi tulisan sendiri, dengan usaha sekecil mungkin dan tanpa mengubah fakta.
 
-- **Naskah:** [jurnal_latex/main.tex](../jurnal_latex/main.tex) dan [jurnal_latex/sections/](../jurnal_latex/sections/)
+- **Naskah:** [_archive/jurnal_latex_v1/main.tex](../_archive/jurnal_latex_v1/main.tex) dan [_archive/jurnal_latex_v1/sections/](../_archive/jurnal_latex_v1/sections/)
 - **Fakta yang dikunci** (angka, tabel, sitasi, persamaan): dokumen [Fakta Terkunci Paper StaticKD](https://claude.ai/code/artifact/5154d6e0-5827-4e95-9e8a-db4294caab9c)
 - **Gaya yang dihindari:** [ai_text_criteria_to_be_avoided.txt](ai_text_criteria_to_be_avoided.txt)
 - **Isi yang harus ada:** [paper_quality_check.md](paper_quality_check.md)
@@ -17,7 +17,7 @@ Panduan untuk menulis ulang draf paper StaticKD (dibuat dengan bantuan AI) menja
 
 ### 1. Kunci fakta
 
-Semua angka di naskah berasal dari `\val{...}` ([generated/numbers.tex](../jurnal_latex/generated/numbers.tex)), dan isi tabel berasal dari `generated/tab_*.tex`. Keduanya dihasilkan notebook, jadi menulis ulang prosa tidak akan merusak angka.
+Semua angka di naskah berasal dari `\val{...}` ([generated/numbers.tex](../_archive/jurnal_latex_v1/generated/numbers.tex)), dan isi tabel berasal dari `generated/tab_*.tex`. Keduanya dihasilkan notebook, jadi menulis ulang prosa tidak akan merusak angka.
 
 Yang **tidak** diubah saat menulis ulang:
 - `\val{...}`, `\rows{...}`, `\input{generated/...}`
@@ -58,12 +58,12 @@ Jumlah kata dihitung dengan `wc -w` per file; angka `main.tex` termasuk preamble
 | Urutan | Bagian | Kata | Perlakuan | Alasan |
 |---|---|---|---|---|
 | 1 | Pendahuluan, Related Work (`main.tex`) | bagian dari 3.742 | Tulis ulang penuh | Bagian yang paling terasa "AI" dan paling menentukan kesan pertama reviewer |
-| 2 | [discussion.tex](../jurnal_latex/sections/discussion.tex) | 953 | Tulis ulang penuh | Tempat interpretasi dan pendapatmu paling dibutuhkan |
-| 3 | [limitations.tex](../jurnal_latex/sections/limitations.tex), [conclusion.tex](../jurnal_latex/sections/conclusion.tex) | 333 + 299 | Tulis ulang penuh | Pendek; limitasi harus spesifik untuk studi ini |
+| 2 | [discussion.tex](../_archive/jurnal_latex_v1/sections/discussion.tex) | 953 | Tulis ulang penuh | Tempat interpretasi dan pendapatmu paling dibutuhkan |
+| 3 | [limitations.tex](../_archive/jurnal_latex_v1/sections/limitations.tex), [conclusion.tex](../_archive/jurnal_latex_v1/sections/conclusion.tex) | 333 + 299 | Tulis ulang penuh | Pendek; limitasi harus spesifik untuk studi ini |
 | 4 | Metode (`main.tex`) | bagian dari 3.742 | Edit sedang | Isinya prosedur; cukup buang pola AI dan pastikan angka langsung tetap sama |
-| 5 | [results.tex](../jurnal_latex/sections/results.tex) | 1.499 | Edit ringan | Isinya deskripsi angka; buang kata dan pola dari daftar kriteria |
-| 6 | Caption tabel dan gambar ([tables.tex](../jurnal_latex/sections/tables.tex), `main.tex`, `results.tex`) | – | Edit ringan | Caption ditulis tangan walaupun isi tabel otomatis |
-| 7 | [abstract.tex](../jurnal_latex/sections/abstract.tex) | 210 | Tulis ulang penuh, **terakhir** | Abstrak merangkum versi final, jadi ditulis setelah bagian lain selesai |
+| 5 | [results.tex](../_archive/jurnal_latex_v1/sections/results.tex) | 1.499 | Edit ringan | Isinya deskripsi angka; buang kata dan pola dari daftar kriteria |
+| 6 | Caption tabel dan gambar ([tables.tex](../_archive/jurnal_latex_v1/sections/tables.tex), `main.tex`, `results.tex`) | – | Edit ringan | Caption ditulis tangan walaupun isi tabel otomatis |
+| 7 | [abstract.tex](../_archive/jurnal_latex_v1/sections/abstract.tex) | 210 | Tulis ulang penuh, **terakhir** | Abstrak merangkum versi final, jadi ditulis setelah bagian lain selesai |
 
 ## Pengungkapan penggunaan AI
 
