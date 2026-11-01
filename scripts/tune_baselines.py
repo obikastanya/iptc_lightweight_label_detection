@@ -54,10 +54,20 @@ def done_rows() -> list[dict]:
     return [json.loads(line) for line in GRID_FILE.read_text(encoding="utf8").splitlines() if line.strip()]
 
 
+def save_best(name: str, value: dict) -> dict:
+    """Merge one baseline's choice into BEST_FILE (re-read first: several grid processes may run in parallel)."""
+    best = json.loads(BEST_FILE.read_text()) if BEST_FILE.exists() else {}
+    best[name] = value
+    BEST_FILE.write_text(json.dumps(best, indent=1))
+    return best
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--only", nargs="*", default=["fasttext", "tfidf"])
     parser.add_argument("--threads", type=int, default=8)
+    parser.add_argument("--tokens", nargs="*", default=["word", "subword"],
+                        help="fastText token types; run word and subword as two processes to use more cores")
     args = parser.parse_args()
     FINAL_DIR.mkdir(parents=True, exist_ok=True)
     pool = load_distillation_pool()
@@ -68,11 +78,12 @@ def main() -> None:
     finished = done_rows()
 
     if "fasttext" in args.only:
-        for tokens in ("word", "subword"):
+        for tokens in args.tokens:
             train_path = fasttext_train_file(tokenize(pool["text"].tolist(), tokens), y_train)
             dev_docs = tokenize(dev["text"].tolist(), tokens)
             rows = [r for r in finished if r["baseline"] == f"ft_kd_{tokens}"]
             for lr, dim, epoch in itertools.product(FT_GRID["lr"], FT_GRID["dim"], FT_GRID["epoch"]):
+                rows = [r for r in done_rows() if r["baseline"] == f"ft_kd_{tokens}"]   # re-read: parallel processes
                 if any((r["lr"], r["dim"], r["epoch"]) == (lr, dim, epoch) for r in rows):
                     continue   # resumed run: already trained
                 t0 = time.perf_counter()
@@ -85,9 +96,9 @@ def main() -> None:
                 rows.append(row)
                 del model
             os.unlink(train_path)
+            rows = [r for r in done_rows() if r["baseline"] == f"ft_kd_{tokens}"]
             top = max(rows, key=lambda r: r["dev_macro_f1"])
-            best[f"ft_kd_{tokens}"] = {k: top[k] for k in ("lr", "dim", "epoch", "dev_macro_f1")}
-            BEST_FILE.write_text(json.dumps(best, indent=1))
+            best = save_best(f"ft_kd_{tokens}", {k: top[k] for k in ("lr", "dim", "epoch", "dev_macro_f1")})
 
     if "tfidf" in args.only:
         from sklearn.svm import LinearSVC
@@ -107,8 +118,7 @@ def main() -> None:
             log(row)
             rows.append(row)
         top = max(rows, key=lambda r: r["dev_macro_f1"])
-        best["tfidf_svm_kd"] = {"c": top["c"], "dev_macro_f1": top["dev_macro_f1"]}
-        BEST_FILE.write_text(json.dumps(best, indent=1))
+        best = save_best("tfidf_svm_kd", {"c": top["c"], "dev_macro_f1": top["dev_macro_f1"]})
     print("best:", json.dumps(best), flush=True)
 
 
