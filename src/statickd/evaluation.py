@@ -208,6 +208,45 @@ def paired_bootstrap(y, p_a, p_b, metric=macro_f1, clusters=None, n_boot: int = 
     return {"delta": float(delta), "ci_low": float(lo), "ci_high": float(hi), "p": float(min(1.0, p))}
 
 
+def paired_bootstrap_seeds(y, preds_a, preds_b, metric=macro_f1, clusters=None, n_boot: int = 2000,
+                           seed: int = 0) -> dict:
+    """Paired bootstrap of mean(metric over the seeds of a) - mean(metric over the seeds of b).
+
+    Every seed of both variants is scored on the same resample, so the interval covers the sampling of
+    documents (or sites, with `clusters`) for the seed-averaged difference reported in the ablation table.
+    Seed-to-seed variance is not part of it (the Welch test covers that). The returned `diffs` feed tost()."""
+    y = np.asarray(y)
+    preds_a, preds_b = [np.asarray(p) for p in preds_a], [np.asarray(p) for p in preds_b]
+
+    def diff(idx):
+        return (np.mean([metric(y[idx], p[idx]) for p in preds_a])
+                - np.mean([metric(y[idx], p[idx]) for p in preds_b]))
+
+    delta = diff(np.arange(len(y)))
+    diffs = np.array([diff(i) for i in bootstrap_samples(len(y), clusters, n_boot, seed)])
+    p = 2 * min((diffs <= 0).mean(), (diffs >= 0).mean())
+    lo, hi = np.percentile(diffs, [2.5, 97.5])
+    return {"delta": float(delta), "ci_low": float(lo), "ci_high": float(hi), "p": float(min(1.0, p)), "diffs": diffs}
+
+
+def tost(diffs, margin: float) -> dict:
+    """Bootstrap two one-sided tests for equivalence within +-margin (alpha = 0.05).
+
+    Equivalence holds when the 90% percentile interval lies inside (-margin, margin); the p-value is the
+    larger of the two one-sided bootstrap tail shares."""
+    diffs = np.asarray(diffs)
+    lo, hi = np.percentile(diffs, [5, 95])
+    p = max((diffs <= -margin).mean(), (diffs >= margin).mean())
+    return {"ci90_low": float(lo), "ci90_high": float(hi), "p": float(p), "equivalent": bool(-margin < lo and hi < margin)}
+
+
+def effective_clusters(clusters) -> float:
+    """Effective number of clusters 1 / sum_c q_c^2, where q_c is the share of documents in cluster c."""
+    _, counts = np.unique(np.asarray(clusters), return_counts=True)
+    q = counts / counts.sum()
+    return float(1.0 / np.sum(q ** 2))
+
+
 def mcnemar(y, p_a, p_b) -> dict:
     """Exact McNemar test on the documents where exactly one of the two models is correct."""
     a, b = np.asarray(p_a) == np.asarray(y), np.asarray(p_b) == np.asarray(y)

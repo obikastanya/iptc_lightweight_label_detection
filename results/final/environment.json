@@ -1,6 +1,6 @@
 {
  "python": "3.12.4",
- "os": "Windows-11-10.0.26200-SP0",
+ "os": "Windows-11-10.0.26300-SP0",
  "cpu": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel",
  "logical_cpus": 22,
  "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",

@@ -26,7 +26,7 @@ Protokol ini dirancang untuk mensimulasikan server kecil tanpa GPU (`statickd.be
 """),
 code(r"""
 BENCH = [m for m in ["teacher", "teacher_onnx_int8", "distilmbert_kd", "minilm_kd", "statickd", "statickd_compact",
-                     "ft_kd_subword_q", "ft_kd_subword", "tfidf_svm_kd"] if key(m)]
+                     "ft_kd_subword_q", "ft_kd_subword", "tfidf_svm_kd", "model2vec_clf"] if key(m)]
 BENCH_FILE = FINAL_DIR / "cpu_benchmark.jsonl"
 
 if RUN_BENCHMARK:   # three repetitions; one fresh process per (model, threads) in every repetition
@@ -78,7 +78,7 @@ NUM.add("eff.size_ratio_onnx", eff.loc["teacher_onnx_int8", "size_mb"] / eff.loc
 NUM.add("eff.size_ratio_pt", eff.loc["teacher", "size_mb"] / eff.loc["statickd", "size_mb"], 0)
 DEPS = {"teacher": "torch, transformers", "teacher_onnx_int8": "onnxruntime, transformers", "distilmbert_kd": "onnxruntime, transformers",
         "minilm_kd": "onnxruntime, transformers", "statickd": "numpy, tokenizers", "statickd_compact": "numpy, tokenizers",
-        "ft_kd_subword_q": "fasttext, tokenizers", "ft_kd_subword": "fasttext, tokenizers", "tfidf_svm_kd": "scikit-learn, tokenizers"}
+        "ft_kd_subword_q": "fasttext, tokenizers", "ft_kd_subword": "fasttext, tokenizers", "tfidf_svm_kd": "scikit-learn, tokenizers", "model2vec_clf": "model2vec, scikit-learn"}
 lines = []
 for m, r in eff.iterrows():
     name = an.MODELS[m][0].replace(" (proposed)", "")
@@ -103,7 +103,7 @@ show(prof[["mean_tokens", "tokenize_docs_per_sec", "pool_docs_per_sec", "tokeniz
 acc_col = main_table["test_macro"]
 from matplotlib.ticker import NullFormatter, ScalarFormatter
 MARKERS = {"teacher": "s", "teacher_onnx_int8": "D", "distilmbert_kd": "^", "minilm_kd": "v", "statickd": "*",
-           "statickd_compact": "P", "ft_kd_subword_q": "o", "ft_kd_subword": "X", "tfidf_svm_kd": "h"}
+           "statickd_compact": "P", "ft_kd_subword_q": "o", "ft_kd_subword": "X", "tfidf_svm_kd": "h", "model2vec_clf": "D"}
 fig, ax = plt.subplots(figsize=(6.8, 4.0))
 for m, r in eff.iterrows():   # a legend instead of point labels: several models overlap on the log axis
     if m not in acc_col:
@@ -157,7 +157,7 @@ show(per_lang.sort_values("statickd_acc")[["n", "labels", "region", "distil_docs
 NUM.add("lang.static_better_ft", int((per_lang.statickd_acc > per_lang.ft_kd_subword_q_acc).sum()), 0)
 # paired test over languages (Demsar, 2006): is the per-language difference systematic?
 # Reported for accuracy and for macro-F1, the main metric.
-for m in ("ft_kd_subword_q", "tfidf_svm_kd", "distilmbert_kd", "teacher"):
+for m in ("ft_kd_subword_q", "tfidf_svm_kd", "model2vec_clf", "distilmbert_kd", "teacher"):
     if f"{m}_acc" in per_lang:
         w = sstats.wilcoxon(per_lang.statickd_acc, per_lang[f"{m}_acc"])
         NUM.add(f"lang.wilcoxon.{m}.p", fmt_p(w.pvalue)); NUM.add(f"lang.wilcoxon.{m}.W", w.statistic, 0)
@@ -245,14 +245,21 @@ NUM.add("fac.static_better_ft", int((fac.agree > fac.agree_ft).sum()), 0)
 NUM.add("fac.static_better_ft.pct", (fac.agree > fac.agree_ft).mean(), 0, percent=True)
 display(corr.round(3)); print(f"Kruskal–Wallis antarsistem tulisan: H={kw.statistic:.2f}, p={kw.pvalue:.3f}")
 display(fac.groupby("script").agree.agg(["mean", "count"]).round(3))
-lines = [f"Spearman: agreement vs log(distillation data) & $\\rho={fmt(corr.loc['log(data distilasi)', 'rho'], 2)}$ & {fmt_p(corr.loc['log(data distilasi)', 'p'])} \\\\",
-         f"Spearman: agreement vs number of training sites & $\\rho={fmt(corr.loc['jumlah situs latih', 'rho'], 2)}$ & {fmt_p(corr.loc['jumlah situs latih', 'p'])} \\\\",
-         f"Spearman: agreement vs \\eng{{teacher}} confidence & $\\rho={fmt(corr.loc['keyakinan teacher', 'rho'], 2)}$ & {fmt_p(corr.loc['keyakinan teacher', 'p'])} \\\\",
-         f"Kruskal--Wallis: across scripts & $H={fmt(kw.statistic, 2)}$ & {fmt_p(kw.pvalue)} \\\\",
-         f"Spearman (test): accuracy gap vs log(data) & $\\rho={fmt(rho_gap.statistic, 2)}$ & {fmt_p(rho_gap.pvalue)} \\\\",
-         f"Spearman (test): StaticKD accuracy vs token coverage & $\\rho={fmt(rho_cov.statistic, 2)}$ & {fmt_p(rho_cov.pvalue)} \\\\",
-         f"Spearman (test): accuracy gap vs token coverage & $\\rho={fmt(rho_cov_gap.statistic, 2)}$ & {fmt_p(rho_cov_gap.pvalue)} \\\\"]
+# Holm correction over the seven per-language tests of the factors table (one family)
+fac_tests = [("Spearman: agreement vs log(distillation data)", "fac.data", f"$\\rho={fmt(corr.loc['log(data distilasi)', 'rho'], 2)}$", corr.loc['log(data distilasi)', 'p']),
+             ("Spearman: agreement vs number of training sites", "fac.sites", f"$\\rho={fmt(corr.loc['jumlah situs latih', 'rho'], 2)}$", corr.loc['jumlah situs latih', 'p']),
+             ("Spearman: agreement vs \\eng{teacher} confidence", "fac.conf", f"$\\rho={fmt(corr.loc['keyakinan teacher', 'rho'], 2)}$", corr.loc['keyakinan teacher', 'p']),
+             ("Kruskal--Wallis: across scripts", "fac.kw", f"$H={fmt(kw.statistic, 2)}$", kw.pvalue),
+             ("Spearman (test): accuracy gap vs log(data)", "lang.gap_vs_data", f"$\\rho={fmt(rho_gap.statistic, 2)}$", rho_gap.pvalue),
+             ("Spearman (test): StaticKD accuracy vs token coverage", "lang.cov_vs_acc", f"$\\rho={fmt(rho_cov.statistic, 2)}$", rho_cov.pvalue),
+             ("Spearman (test): accuracy gap vs token coverage", "lang.cov_vs_gap", f"$\\rho={fmt(rho_cov_gap.statistic, 2)}$", rho_cov_gap.pvalue)]
+fac_holm = ev.holm([t[3] for t in fac_tests])
+for (name, k, stat, p), ph in zip(fac_tests, fac_holm):
+    NUM.add(k + ".p_holm", fmt_p(ph))
+NUM.add("fac.holm.n_sig", int((fac_holm < 0.05).sum()), 0)
+lines = [f"{name} & {stat} & {fmt_p(p)} & {fmt_p(ph)} \\\\" for (name, k, stat, p), ph in zip(fac_tests, fac_holm)]
 write_table("factors", lines)
+display(pd.DataFrame({"uji": [t[0] for t in fac_tests], "p": [t[3] for t in fac_tests], "p Holm": fac_holm}).round(4))
 """),
 code(r"""
 fig, axes = plt.subplots(1, 2, figsize=(11, 4))
@@ -307,6 +314,70 @@ off = cm.copy(); np.fill_diagonal(off, 0)
 top_conf = sorted(((off[i, j], SHORT_LABELS[i], SHORT_LABELS[j]) for i in range(NUM_LABELS) for j in range(NUM_LABELS)), reverse=True)[:5]
 print("kebingungan terbesar (referensi -> prediksi):", [(a, b, round(v, 2)) for v, a, b in top_conf])
 NUM.add("label.top_confusions", "; ".join(f"\\eng{{{a}}} $\\rightarrow$ \\eng{{{b}}} ({fmt(v, 0, percent=True)})" for v, a, b in top_conf[:3]))
+"""),
+md(r"""
+**Sinyal topik per token.** Model ini hanya merata-ratakan baris tabel token, jadi pertanyaannya: apakah
+keputusan topik dibawa oleh sebagian kecil token yang spesifik-topik, atau tersebar merata di semua token?
+Spesifisitas sebuah token diukur dari tabel final saja, tanpa melihat label artikel: selisih terbesar antara
+skor satu label dan rata-rata skor 16 label lainnya pada baris token itu. Untuk setiap artikel uji, prediksi
+diulang dengan (a) hanya 10% token paling spesifik, (b) 10% token acak, dan (c) semua token kecuali 10% paling
+spesifik. Selain itu dihitung porsi selisih skor label pemenang terhadap label kedua yang berasal dari 10%
+token paling spesifik. Analisis ini hanya inferensi pada model final, tanpa *training*.
+"""),
+code(r"""
+# token-level topic signal of the final StaticKD table (inference only, no training)
+T_fin, b_fin = final_model.table.astype(np.float32), final_model.bias.astype(np.float32)
+spec = (T_fin - (T_fin.sum(1, keepdims=True) - T_fin) / (NUM_LABELS - 1)).max(1)   # label-agnostic specificity
+test_ids = st.encode(final_model.tokenizer, test.text.tolist(), final_model.max_tokens)
+rng_sig = np.random.default_rng(0)
+
+def predict_rows(sel):
+    return np.array([(T_fin[i].mean(0) + b_fin).argmax() for i in sel])
+
+def split_by_spec(q):
+    top, rnd, rest = [], [], []
+    for i in test_ids:
+        m = max(1, int(round(q * len(i))))
+        order = np.argsort(-spec[i], kind="stable")
+        top.append(i[order[:m]]); rest.append(i[order[m:]] if len(i) > m else i[order[-1:]])
+        rnd.append(rng_sig.choice(i, size=m, replace=False))
+    return top, rnd, rest
+
+full_pred = predict_rows(test_ids)
+assert (full_pred == ev.load_pred(key("statickd"), "test")).mean() > 0.999   # same predictions as the evaluated model
+sig_rows = {}
+for q in (0.05, 0.10, 0.20):
+    for name, sel in zip(("most specific", "random", "without most specific"), split_by_spec(q)):
+        p = predict_rows(sel)
+        sig_rows[(f"{q:.0%}", name)] = {"macro_f1": ev.macro_f1(y_test, p), "accuracy": float((p == y_test).mean()),
+                                         "agreement_full": float((p == full_pred).mean())}
+sig_table = pd.DataFrame(sig_rows).T
+top10, rnd10, rest10 = split_by_spec(0.10)
+p_top10 = predict_rows(top10)
+shares = []
+for i, k in zip(test_ids, full_pred):
+    z = T_fin[i].mean(0) + b_fin
+    contrib = (T_fin[i, k] - T_fin[i, np.argsort(-z)[1]]) / len(i)
+    if contrib.sum() > 0:
+        m = max(1, int(round(0.10 * len(i))))
+        shares.append(contrib[np.argsort(-spec[i], kind="stable")[:m]].sum() / contrib.sum())
+d_label = ev.per_label_f1(y_test, p_top10) - ev.per_label_f1(y_test, full_pred)
+NUM.add("tok.full.macro", ev.macro_f1(y_test, full_pred))
+NUM.add("tok.top10.macro", sig_table.loc[("10%", "most specific"), "macro_f1"])
+NUM.add("tok.top10.acc", sig_table.loc[("10%", "most specific"), "accuracy"])
+NUM.add("tok.rand10.macro", sig_table.loc[("10%", "random"), "macro_f1"])
+NUM.add("tok.drop10.macro", sig_table.loc[("10%", "without most specific"), "macro_f1"])
+NUM.add("tok.top5.macro", sig_table.loc[("5%", "most specific"), "macro_f1"])
+NUM.add("tok.top10.n_tokens", np.mean([len(i) for i in top10]), 0)
+NUM.add("tok.all.n_tokens", np.mean([len(i) for i in test_ids]), 0)
+NUM.add("tok.top10.margin_share", np.median(shares), 2)
+NUM.add("tok.top10.label_delta_min", d_label.min(), 2, sign=True)
+NUM.add("tok.top10.label_delta_max", d_label.max(), 2, sign=True)
+print(f"rata-rata token per artikel {np.mean([len(i) for i in test_ids]):.0f}, 10% = {np.mean([len(i) for i in top10]):.0f} token; "
+      f"median porsi selisih skor dari 10% token paling spesifik = {np.median(shares):.2f}; "
+      f"perubahan F1 per label dengan 10% token: {d_label.min():+.2f} s.d. {d_label.max():+.2f}")
+show(sig_table, "Prediksi StaticKD dengan sebagian token (set uji)")
+
 """),
 md(r"""
 ### 10.4 Kalibrasi dan mode *cascade*

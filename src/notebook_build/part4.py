@@ -16,7 +16,7 @@ Interval kepercayaan 95% ditulis dalam kurung siku.
 """),
 code(r"""
 MAIN = ["teacher", "teacher_onnx_int8", "distilmbert_kd", "minilm_kd", "statickd", "statickd_compact",
-        "ft_kd_subword_q", "ft_kd_subword", "ft_kd_word", "tfidf_svm_kd", "ft_gpt_subword", "ft_gpt_word"]
+        "ft_kd_subword_q", "ft_kd_subword", "ft_kd_word", "tfidf_svm_kd", "model2vec_clf", "ft_gpt_subword", "ft_gpt_word"]
 MAIN = [m for m in MAIN if key(m) and ev.has_predictions(key(m), "dev")]
 rows = []
 for m in MAIN:
@@ -69,7 +69,8 @@ for m, r in main_table.iterrows():
             fmt(r["test_lang_macro"]) if pd.notna(r.get("test_lang_macro")) else "--",
             fmt(r["test_vs_teacher"], 1, percent=True) if pd.notna(r.get("test_vs_teacher")) else "--"]
     lines.append(" & ".join(vals) + " \\\\")
-    if m in ("teacher_onnx_int8", "minilm_kd", "statickd_compact", "tfidf_svm_kd"):
+    if m in ("teacher_onnx_int8", "minilm_kd", "statickd_compact",
+             "model2vec_clf" if "model2vec_clf" in main_table.index else "tfidf_svm_kd"):
         lines.append("\\midrule")
 write_table("main", lines[:-1] if lines[-1] == "\\midrule" else lines)
 """),
@@ -114,6 +115,48 @@ write_table("sig", lines)
 show(sig.drop(columns=["f1_p", "p_mcnemar"]), "StaticKD vs model lain (Δ = StaticKD − model)")
 """),
 md(r"""
+**Ketergantungan klaster dan uji *leave-one-source-out*.** *Site-cluster bootstrap* hanya seakurat jumlah
+klaster independennya. Jumlah klaster efektif $1/\sum_c q_c^2$ ($q_c$ = porsi artikel klaster $c$)
+menunjukkan berapa klaster berukuran sama yang setara dengan komposisi set uji. Uji *leave-one-source-out*
+menghitung ulang macro-F1 setiap model enam kali, masing-masing tanpa satu sumber set uji, untuk melihat
+apakah peringkat model bergantung pada satu sumber.
+"""),
+code(r"""
+import re
+tv = ev.eval_view("test")
+cl = tv.cluster.to_numpy()
+csize = pd.Series(cl).value_counts()
+NUM.add("ts.clusters.n", len(csize), 0)
+NUM.add("ts.clusters.eff", ev.effective_clusters(cl), 1)
+NUM.add("ts.clusters.top2.share", csize.iloc[:2].sum() / len(cl), 1, percent=True)
+NUM.add("ts.clusters.top1.n", int(csize.iloc[0]), 0); NUM.add("ts.clusters.top2.n", int(csize.iloc[1]), 0)
+print("klaster terbesar:", csize.head(5).to_dict())
+LOSO_MODELS = [m for m in ["teacher", "minilm_kd", "distilmbert_kd", "statickd", "model2vec_clf", "tfidf_svm_kd", "ft_kd_subword_q", "ft_kd_subword", "ft_kd_word"]
+               if key(m) and ev.has_predictions(key(m), "test")]
+y_t = tv.y.to_numpy()
+loso = {}
+for src in ["(none)"] + sorted(tv.source.unique()):
+    keep = np.ones(len(tv), bool) if src == "(none)" else (tv.source != src).to_numpy()
+    loso[src] = {m: ev.macro_f1(y_t[keep], ev.pred_view(key(m), "test")[keep]) for m in LOSO_MODELS}
+loso = pd.DataFrame(loso).T
+loso_rank = loso.rank(axis=1, ascending=False)
+full_order = list(loso.loc["(none)"].sort_values(ascending=False).index)
+same_order = [s for s in loso.index if list(loso.loc[s].sort_values(ascending=False).index) == full_order]
+NUM.add("loso.same_order.n", len(same_order) - 1, 0); NUM.add("loso.sources.n", len(loso) - 1, 0)
+cheap = [m for m in ["tfidf_svm_kd", "ft_kd_subword_q", "ft_kd_subword", "ft_kd_word"] if m in loso]
+for src, r in loso.iterrows():
+    k = "loso." + re.sub("[^A-Za-z0-9]", "", src)
+    NUM.add(k + ".statickd", r["statickd"]); NUM.add(k + ".statickd.rank", int(loso_rank.loc[src, "statickd"]), 0)
+    NUM.add(k + ".min_gap_cheap", min(r["statickd"] - r[m] for m in cheap), 3, sign=True)
+NUM.add("loso.min_gap_cheap", min(loso.loc[s, "statickd"] - loso.loc[s, m] for s in loso.index for m in cheap), 3, sign=True)
+NUM.add("loso.min_gap_tfidf", min(loso.loc[s, "statickd"] - loso.loc[s, "tfidf_svm_kd"] for s in loso.index), 3, sign=True)
+SRC_EN = {"(none)": "none (full test set)", "ccnews_jsonld": "CC-NEWS 2024--2026", "masakhanews": "MasakhaNEWS",
+          "l3cube_indic": "L3Cube-IndicNews", "mnds": "MN-DS", "bangla_plos": "Bangla news", "indonews": "IndoNews"}
+lines = [" & ".join([SRC_EN.get(s, s)] + [fmt(r[m]) for m in LOSO_MODELS]) + " \\\\" for s, r in loso.iterrows()]
+write_table("loso", lines)
+show(loso, "Macro-F1 uji tanpa satu sumber (baris = sumber yang dikeluarkan)")
+"""),
+md(r"""
 ### 8.3 Menurut asal label, wilayah, keragaman situs, dan data distilasi
 
 Set uji menggabungkan tiga asal label. Jika StaticKD hanya bagus pada salah satunya, misalnya rubrik
@@ -124,7 +167,7 @@ code(r"""
 import re
 test = ev.eval_set("test")
 test = test.join(lang_info[["region", "script", "distil_tier", "diversity_tier", "distil_docs", "xlmr"]], on="lang")
-GROUP_MODELS = [m for m in ["teacher", "distilmbert_kd", "minilm_kd", "statickd", "ft_kd_subword_q", "tfidf_svm_kd", "ft_gpt_subword"]
+GROUP_MODELS = [m for m in ["teacher", "distilmbert_kd", "minilm_kd", "statickd", "model2vec_clf", "ft_kd_subword_q", "tfidf_svm_kd", "ft_gpt_subword"]
                 if key(m) and ev.has_predictions(key(m), "test")]
 group_tables = {}
 for col in ["label_origin", "region", "distil_tier", "diversity_tier", "script", "xlmr"]:
@@ -155,7 +198,7 @@ for col, names in order:
                  .replace("pra-latih XLM-R", r"pra-latih XLM-R"))
         lines.append(" & ".join([f"\\quad {label}", fmt(int(r['n']), 0)] + [fmt(r[m]) for m in GROUP_MODELS] + [fmt(r['StaticKD % teacher'], 0, percent=True)]) + " \\\\")
 GROUP_HEAD = {"teacher": r"\eng{Teacher}", "distilmbert_kd": "DistilmBERT", "minilm_kd": "MiniLM", "statickd": r"\textbf{StaticKD}",
-              "ft_kd_subword_q": "fastText (q)", "tfidf_svm_kd": "TF-IDF+SVM", "ft_gpt_subword": "fastText GPT"}
+              "ft_kd_subword_q": "fastText (q)", "tfidf_svm_kd": "TF-IDF+SVM", "ft_gpt_subword": "fastText GPT", "model2vec_clf": "Model2Vec"}
 # the whole tabular is generated, so that the header always matches the model columns
 head = [r"\begin{tabular}{@{}lr" + "c" * (len(GROUP_MODELS) + 1) + "@{}}", r"\toprule",
         " & ".join(["Subgroup", "$n$"] + [GROUP_HEAD[m] for m in GROUP_MODELS] + [r"\% \eng{teacher}"]) + r" \\", r"\midrule"]
@@ -179,7 +222,7 @@ IPTC. MasakhaNEWS juga berlabel manusia, tetapi dengan skemanya sendiri yang dip
 melaporkan setiap sumber terpisah.
 """),
 code(r"""
-SRC_MODELS = [m for m in ["teacher", "distilmbert_kd", "minilm_kd", "statickd", "ft_kd_subword_q", "tfidf_svm_kd"] if m in GROUP_MODELS]
+SRC_MODELS = [m for m in ["teacher", "distilmbert_kd", "minilm_kd", "statickd", "model2vec_clf", "ft_kd_subword_q", "tfidf_svm_kd"] if m in GROUP_MODELS]
 g = an.subgroup_scores([key(m) for m in SRC_MODELS], "source", test)
 g["model"] = g["model"].map({key(m): m for m in SRC_MODELS})
 by_src = g.pivot(index="source", columns="model", values="macro_f1")[SRC_MODELS]
@@ -193,7 +236,7 @@ for s, r in by_src.iterrows():
         NUM.add(f"src.{s}.{m}", r[m])
     NUM.add(f"src.{s}.pct", r["pct"], 1, percent=True); NUM.add(f"src.{s}.n", int(r["n"]), 0); NUM.add(f"src.{s}.langs", int(r["langs"]), 0)
 SRC_HEAD = {"teacher": "Teacher", "distilmbert_kd": "DistilmBERT", "minilm_kd": "MiniLM", "statickd": r"\textbf{StaticKD}",
-            "ft_kd_subword_q": "fastText (q)", "tfidf_svm_kd": "TF-IDF+SVM"}
+            "ft_kd_subword_q": "fastText (q)", "tfidf_svm_kd": "TF-IDF+SVM", "model2vec_clf": "Model2Vec"}
 head = [r"\begin{tabular}{@{}llrr" + "c" * (len(SRC_MODELS) + 1) + "@{}}", r"\toprule",
         " & ".join(["Source", "Label origin", "$n$", "Lang."] + [SRC_HEAD[m] for m in SRC_MODELS] + [r"\% teacher"]) + r" \\", r"\midrule"]
 lines = [" & ".join([SOURCE_TEX[s], an.en(origin_of[s]), fmt(int(r["n"]), 0), fmt(int(r["langs"]), 0)] + [fmt(r[m]) for m in SRC_MODELS]
@@ -371,6 +414,65 @@ for title, codes in groups:
                                  pm(r, 'heldout_acc') + star(r, 'heldout_acc'), pm(r, 'test_macro') + star(r, 'test_macro'),
                                  fmt(r['test_acc_mean'])]) + " \\\\")
 write_table("ablation", lines)
+"""),
+md(r"""
+**Uji berpasangan *cluster bootstrap* untuk ablasi.** Uji Welch di atas hanya memakai variasi antar-*seed*,
+sehingga selisih kecil yang stabil antar-*seed* langsung signifikan. Uji utama (Bagian 8.2) memakai
+*paired site-cluster bootstrap*. Supaya ablasi diuji dengan cara yang sama, setiap *resample* menilai
+semua *seed* varian dan semua *seed* resep final pada artikel yang sama. Yang di-*bootstrap* adalah
+selisih rata-rata skor antar-*seed*, persis Δ di tabel ablasi. Set uji dan *held-out* di-*resample* per
+situs, dev per dokumen. Nilai $p$ dikoreksi Holm atas 14 varian, sama dengan keluarga uji Welch.
+
+**Uji ekuivalensi (TOST).** Selisih yang tidak signifikan belum berarti setara. Dua varian dianggap setara
+bila interval bootstrap 90% selisih macro-F1 uji berada di dalam ±0,01. Margin ini kurang dari separuh
+selisih StaticKD dengan MiniLM-L6 (0,021) dan sekitar 2,5 kali simpangan baku antar-*seed* resep final.
+"""),
+code(r"""
+TOST_MARGIN = 0.01
+NUM.add("abltost.margin", TOST_MARGIN, 2)
+ABL_BOOT_SETS = {"test_macro": ("test", ev.macro_f1), "test_acc": ("test", lambda y, p: float((y == p).mean())),
+                 "heldout_acc": ("heldout", lambda y, p: float((y == p).mean())), "dev_macro": ("dev", ev.macro_f1)}
+abl_boot_rows = []
+for c in [c for c in ex.ABLATIONS if c != "full"]:
+    row = {"code": c}
+    for metric, (sn, fn) in ABL_BOOT_SETS.items():
+        view = ev.eval_view(sn)
+        y = view.y.to_numpy(); clusters = None if sn == "dev" else view.cluster.to_numpy()
+        pa = [ev.pred_view(ex.run_name(c, s), sn) for s in ex.ABLATIONS[c][2]]
+        pb = [ev.pred_view(ex.run_name("full", s), sn) for s in ex.MAIN_SEEDS]
+        r = ev.paired_bootstrap_seeds(y, pa, pb, metric=fn, clusters=clusters, n_boot=2 * N_BOOT)
+        row.update({f"{metric}_delta": r["delta"], f"{metric}_lo": r["ci_low"], f"{metric}_hi": r["ci_high"], f"{metric}_p": r["p"]})
+        if metric == "test_macro":
+            t = ev.tost(r["diffs"], TOST_MARGIN)
+            row.update({"tost_lo": t["ci90_low"], "tost_hi": t["ci90_high"], "tost_p": t["p"], "tost_eq": t["equivalent"]})
+    abl_boot_rows.append(row)
+abl_boot = pd.DataFrame(abl_boot_rows).set_index("code")
+for metric in ABL_BOOT_SETS:
+    abl_boot[f"{metric}_p_holm"] = ev.holm(abl_boot[f"{metric}_p"])
+for c, r in abl_boot.iterrows():
+    for metric in ABL_BOOT_SETS:
+        k = f"ablboot.{c}.{metric}"
+        NUM.add(k + ".delta", r[f"{metric}_delta"], 3, sign=True)
+        NUM.add(k + ".ci", f"{fmt(r[f'{metric}_lo'], 3, sign=True)}, {fmt(r[f'{metric}_hi'], 3, sign=True)}")
+        NUM.add(k + ".p", fmt_p(r[f"{metric}_p_holm"]))
+    NUM.add(f"abltost.{c}.ci90", f"{fmt(r.tost_lo, 3, sign=True)}, {fmt(r.tost_hi, 3, sign=True)}")
+    NUM.add(f"abltost.{c}.p", fmt_p(r.tost_p)); NUM.add(f"abltost.{c}.equivalent", "yes" if r.tost_eq else "no")
+NUM.add("ablboot.test_macro.n_sig", int((abl_boot.test_macro_p_holm < 0.05).sum()), 0)
+NUM.add("ablboot.welch_agree.n", int(((abl_boot.test_macro_p_holm < 0.05) == (ablation.loc[abl_boot.index, "p_test_macro_holm"] < 0.05)).sum()), 0)
+NUM.add("abltost.n_equivalent", int(abl_boot.tost_eq.sum()), 0)
+lines = []
+for title, codes in groups[1:]:
+    lines.append(f"\\multicolumn{{5}}{{@{{}}l}}{{\\textit{{{title}}}}} \\\\")
+    for c in [c for c in codes if c in abl_boot.index]:
+        r = abl_boot.loc[c]
+        lines.append(" & ".join([f"\\quad {ABL_TEX[c]}",
+                                 f"{fmt(r.test_macro_delta, 3, sign=True)} [{fmt(r.test_macro_lo, 3, sign=True)}, {fmt(r.test_macro_hi, 3, sign=True)}]",
+                                 fmt_p(r.test_macro_p_holm),
+                                 f"[{fmt(r.tost_lo, 3, sign=True)}, {fmt(r.tost_hi, 3, sign=True)}]",
+                                 fmt_p(r.tost_p)]) + " \\\\")
+write_table("ablation_boot", lines)
+show(abl_boot.drop(columns=[c for c in abl_boot.columns if c.endswith("_p")]),
+     "Ablasi: paired cluster bootstrap (Δ varian − resep final, Holm) dan TOST ±0,01 pada macro-F1 uji")
 """),
 md(r"""
 **Ablasi per subkelompok bahasa.** Agregat set uji dapat menyembunyikan efek yang berlawanan arah di
