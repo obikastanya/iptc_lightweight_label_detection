@@ -7,6 +7,7 @@ Usage (from the project root):
     python scripts/run_benchmarks.py --run 1 [--minilm minilm_kd_t1] [--threads 1 4]
 """
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -14,6 +15,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 B = ROOT / "models" / "baselines"
 F = ROOT / "models" / "final"
+
+
+def thread_env(threads: int) -> dict:
+    """Thread limits must be in the environment before the child starts: `python -m statickd.benchmark`
+    imports the statickd package (and NumPy/OpenBLAS) before benchmark.py can set them, and an OpenBLAS
+    pool sized for all logical CPUs on one pinned core makes batched matrix products ~1000x slower."""
+    env = {**os.environ, "PYTHONPATH": str(ROOT / "src"), "TOKENIZERS_PARALLELISM": "true" if threads > 1 else "false"}
+    for var in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS", "NUMEXPR_NUM_THREADS", "RAYON_NUM_THREADS"):
+        env[var] = str(threads)
+    return env
 
 
 def main() -> None:
@@ -35,18 +46,19 @@ def main() -> None:
         "tfidf_svm_kd": f"tfidf:{B / 'tfidf_svm_kd.joblib'}",
         "model2vec_clf": f"model2vec:{B / 'model2vec_clf'}",
     }
-    env = {**__import__("os").environ, "PYTHONPATH": str(ROOT / "src")}
     for name, spec in models.items():
         if args.only and name not in args.only:
             continue
         for threads in args.threads:
             print(f"== {name} ({threads} thread)", flush=True)
             subprocess.run([sys.executable, "-m", "statickd.benchmark", "--model", spec, "--name", name,
-                            "--threads", str(threads), "--run", str(args.run)], cwd=ROOT, env=env, check=True)
+                            "--threads", str(threads), "--run", str(args.run)], cwd=ROOT, env=thread_env(threads),
+                           check=True)
     for name in ("statickd", "statickd_compact"):   # where does the StaticKD time go?
         if not args.only or name in args.only:
             subprocess.run([sys.executable, "-m", "statickd.benchmark", "--model", models[name], "--name", name,
-                            "--threads", "1", "--profile", "--run", str(args.run)], cwd=ROOT, env=env, check=True)
+                            "--threads", "1", "--profile", "--run", str(args.run)], cwd=ROOT, env=thread_env(1),
+                           check=True)
 
 
 if __name__ == "__main__":
