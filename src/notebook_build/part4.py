@@ -115,6 +115,47 @@ write_table("sig", lines)
 show(sig.drop(columns=["f1_p", "p_mcnemar"]), "StaticKD vs model lain (Δ = StaticKD − model)")
 """),
 md(r"""
+**Sensitivitas panjang masukan transformer.** MiniLM dan DistilmBERT di tabel utama membaca 256 token. Keduanya
+dilatih ulang dengan resep yang sama tetapi 512 token (`train_transformers.py --max-length 512`), lalu
+dibandingkan dengan StaticKD memakai uji yang sama dengan tabel signifikansi (Holm atas dua perbandingan).
+"""),
+code(r"""
+LEN512 = {"minilm_kd": "minilm_kd_t1_len512", "distilmbert_kd": "distilmbert_kd_len512"}
+LEN512 = {m: p for m, p in LEN512.items() if ev.has_predictions(p, "test")}
+tv512 = ev.eval_view("test"); y512 = tv512.y.to_numpy(); cl512 = tv512.cluster.to_numpy()
+rows512 = []
+for m, p in LEN512.items():
+    r = {"model": m}
+    for s in ("dev", "heldout", "test"):
+        sr = an.score_row(p, s, n_boot=N_BOOT)
+        r.update({f"{s}_macro": sr["macro_f1"], f"{s}_acc": sr["accuracy"]})
+    pb = ev.paired_bootstrap_seeds(y512, [ev.pred_view("statickd", "test")], [ev.pred_view(p, "test")], clusters=cl512, n_boot=2 * N_BOOT)
+    tt = ev.tost(pb["diffs"], 0.01)
+    r.update({"delta": pb["delta"], "ci_low": pb["ci_low"], "ci_high": pb["ci_high"], "p": pb["p"],
+              "tost_p": tt["p"], "tost_eq": tt["equivalent"], "gain_vs_256": r["test_macro"] - main_table.loc[m, "test_macro"]})
+    rows512.append(r)
+len512 = pd.DataFrame(rows512).set_index("model")
+if len(len512):
+    len512["p_holm"] = ev.holm(len512["p"].tolist())
+for m, r in len512.iterrows():
+    for s in ("dev", "heldout", "test"):
+        NUM.add(f"len512.{m}.{s}.macro", r[f"{s}_macro"]); NUM.add(f"len512.{m}.{s}.acc", r[f"{s}_acc"])
+    NUM.add(f"len512.{m}.gain", r.gain_vs_256, 3, sign=True)
+    NUM.add(f"len512.{m}.delta", r.delta, 3, sign=True)
+    NUM.add(f"len512.{m}.ci", f"{fmt(r.ci_low, 3, sign=True)}, {fmt(r.ci_high, 3, sign=True)}")
+    NUM.add(f"len512.{m}.p", fmt_p(r.p_holm))
+    NUM.add(f"len512.{m}.tost_p", fmt_p(r.tost_p)); NUM.add(f"len512.{m}.equivalent", "yes" if r.tost_eq else "no")
+show(len512, "Transformer 512 token (Δ = StaticKD − model, uji gabungan)")
+
+# equivalence (TOST, margin ±0.01 as in the ablations) for the models that do not differ significantly from StaticKD
+for m in [m for m in ("model2vec_clf", "distilmbert_kd") if m in main_table.index]:
+    pb = ev.paired_bootstrap_seeds(y512, [ev.pred_view("statickd", "test")], [ev.pred_view(key(m), "test")], clusters=cl512, n_boot=2 * N_BOOT)
+    tt = ev.tost(pb["diffs"], 0.01)
+    NUM.add(f"eqv.{m}.ci90", f"{fmt(tt['ci90_low'], 3, sign=True)}, {fmt(tt['ci90_high'], 3, sign=True)}")
+    NUM.add(f"eqv.{m}.p", fmt_p(tt["p"])); NUM.add(f"eqv.{m}.equivalent", "yes" if tt["equivalent"] else "no")
+    print(m, "TOST ±0.01:", tt)
+"""),
+md(r"""
 **Ketergantungan klaster dan uji *leave-one-source-out*.** *Site-cluster bootstrap* hanya seakurat jumlah
 klaster independennya. Jumlah klaster efektif $1/\sum_c q_c^2$ ($q_c$ = porsi artikel klaster $c$)
 menunjukkan berapa klaster berukuran sama yang setara dengan komposisi set uji. Uji *leave-one-source-out*
@@ -150,6 +191,8 @@ for src, r in loso.iterrows():
     NUM.add(k + ".min_gap_cheap", min(r["statickd"] - r[m] for m in cheap), 3, sign=True)
 NUM.add("loso.min_gap_cheap", min(loso.loc[s, "statickd"] - loso.loc[s, m] for s in loso.index for m in cheap), 3, sign=True)
 NUM.add("loso.min_gap_tfidf", min(loso.loc[s, "statickd"] - loso.loc[s, "tfidf_svm_kd"] for s in loso.index), 3, sign=True)
+NUM.add("loso.statickd.rank_min", int(loso_rank["statickd"].min()), 0); NUM.add("loso.statickd.rank_max", int(loso_rank["statickd"].max()), 0)
+print("peringkat StaticKD per sumber yang dikeluarkan:", loso_rank["statickd"].to_dict())
 SRC_EN = {"(none)": "none (full test set)", "ccnews_jsonld": "CC-NEWS 2024--2026", "masakhanews": "MasakhaNEWS",
           "l3cube_indic": "L3Cube-IndicNews", "mnds": "MN-DS", "bangla_plos": "Bangla news", "indonews": "IndoNews"}
 lines = [" & ".join([SRC_EN.get(s, s)] + [fmt(r[m]) for m in LOSO_MODELS]) + " \\\\" for s, r in loso.iterrows()]
@@ -263,6 +306,12 @@ sens["rank_full"] = sens.full_macro.rank(ascending=False).astype(int); sens["ran
 NUM.add("sens.n", len(cap_idx), 0)
 NUM.add("sens.rank_same", "unchanged" if (sens.rank_full == sens.rank_cap5).all() else "changed")
 NUM.add("sens.statickd", sens.loc["statickd", "cap5_macro"]); NUM.add("sens.teacher", sens.loc["teacher", "cap5_macro"])
+swaps = [f"{a}/{b}" for i, a in enumerate(sens.index) for b in sens.index[i + 1:]
+         if np.sign(sens.full_macro[a] - sens.full_macro[b]) != np.sign(sens.cap5_macro[a] - sens.cap5_macro[b])]
+NUM.add("sens.swaps", ", ".join(swaps) if swaps else "none")
+for m in sens.index:
+    NUM.add(f"sens.{m}.cap5", sens.loc[m, "cap5_macro"])
+print("pasangan yang bertukar urutan:", swaps)
 show(sens, f"Sensitivitas: set uji penuh vs subset maks. 5 artikel/situs/sel ({len(cap_idx)} artikel)")
 """),
 md(r"""
@@ -471,6 +520,26 @@ for title, codes in groups[1:]:
                                  f"[{fmt(r.tost_lo, 3, sign=True)}, {fmt(r.tost_hi, 3, sign=True)}]",
                                  fmt_p(r.tost_p)]) + " \\\\")
 write_table("ablation_boot", lines)
+
+# paper ablation table: mean ± SD over seeds; * = Holm-corrected paired bootstrap p < 0.05 (the same test as the main
+# comparisons), Δ test macro-F1 [95% CI] against the final recipe, † = equivalent within ±0.01 (TOST)
+def bstar(c, metric):
+    return "$^{*}$" if c in abl_boot.index and abl_boot.loc[c, f"{metric}_p_holm"] < 0.05 else ""
+lines = []
+for title, codes in groups[:3]:
+    lines.append(f"\\multicolumn{{6}}{{@{{}}l}}{{\\textit{{{title}}}}} \\\\")
+    for c in [c for c in codes if c in ablation.index]:
+        r = ablation.loc[c]
+        if c == "full":
+            delta = "--"
+        else:
+            b = abl_boot.loc[c]
+            delta = (f"{fmt(b.test_macro_delta, 3, sign=True)} [{fmt(b.test_macro_lo, 3, sign=True)}, {fmt(b.test_macro_hi, 3, sign=True)}]"
+                     + ("$^{\\dagger}$" if b.tost_eq else ""))
+        lines.append(" & ".join([f"\\quad {ABL_TEX[c]}", str(int(r['n'])), pm(r, 'dev_macro') + bstar(c, 'dev_macro'),
+                                 pm(r, 'heldout_acc') + bstar(c, 'heldout_acc'), pm(r, 'test_macro') + bstar(c, 'test_macro'),
+                                 delta]) + " \\\\")
+write_table("ablation", lines)
 show(abl_boot.drop(columns=[c for c in abl_boot.columns if c.endswith("_p")]),
      "Ablasi: paired cluster bootstrap (Δ varian − resep final, Holm) dan TOST ±0,01 pada macro-F1 uji")
 """),

@@ -8,8 +8,9 @@
 \quad \eng{batch}, \eng{epoch}, validation & 64, 6, 3\% of data (selects the \eng{epoch}) \\
 \quad \eng{ensemble} & mean of 3 \eng{seed} tables \\
 \multicolumn{2}{@{}l}{\textit{fastText}} \\
-\quad word tokens (fixed) & dim 100, lr 0.5, 15 \eng{epoch} \\
-\quad subword tokens (fixed) & dim 100, lr 0.5, 15 \eng{epoch} \\
+\quad word tokens (chosen on dev) & dim 300, lr 1.0, 15 \eng{epoch} \\
+\quad subword tokens (chosen on dev) & dim 100, lr 1.0, 15 \eng{epoch} \\
+\quad grid (dev macro-F1) & lr $\{0.1, 0.5, 1.0\}$ $\times$ dim $\{100, 300\}$ $\times$ \eng{epoch} $\{5, 15, 25\}$ \\
 \quad GPT-4o labels & dim 100, lr 0.5, 25 \eng{epoch} \\
 \quad word n-grams, \eng{loss} & 2, \eng{softmax}, 2M \eng{buckets} \\
 \quad tokens & words (+ character 2--5-grams) or XLM-R subwords \\
@@ -17,7 +18,11 @@
 \multicolumn{2}{@{}l}{\textit{TF-IDF + SVM}} \\
 \quad features & XLM-R subword uni+bigrams, min.\ df 3, max.\ 1,000,000, \eng{sublinear tf} \\
 \quad classifier (chosen on dev) & LinearSVC, $C=0.50$ \\
+\quad grid (dev macro-F1) & $C\in\{0.1, 0.25, 0.5, 1, 2\}$ \\
+\multicolumn{2}{@{}l}{\textit{Model2Vec classifier + KD}} \\
+\quad settings & library defaults: one 512-unit hidden layer, learned token weights, \\
+ & fine-tuned potion embeddings, lr $10^{-3}$, early stopping, 512 tokens \\
 \multicolumn{2}{@{}l}{\textit{MiniLM-L6 / DistilmBERT + KD}} \\
 \quad optimizer & AdamW $5\cdot 10^{-5}$, wd 0.01, \eng{warmup} 6\%, linear, fp16 \\
-\quad \eng{batch}, \eng{epoch}, max. tokens & 32, 2, 256 \\
-\quad $\tau$ & $\{1, 2\}$, chosen on dev \\
+\quad \eng{batch}, \eng{epoch}, max. tokens & 32, 2, 256 (512 in the sensitivity check) \\
+\quad $\tau$ & MiniLM-L6 $\{1, 2\}$ chosen on dev ($\tau=1$); DistilmBERT $\tau=1$ \\
