@@ -1,53 +1,57 @@
 % =====================================================================
-% StaticKD -- single-file manuscript (IEEEtran journal layout)
-% Built by scripts/build_paper.py from src/paper/ and the notebook outputs; numbers are literal.
-% results/final/paper_number_map.json lists every number; scripts/check_paper.py reports changes.
+% StaticKD -- IEEE Access manuscript (ieeeaccess class)
+% Restructured on 2026-11-01 from commit b4bf5e6 by paper_writing/restructure/assemble_restructure.py.
+% Numbers are literal; results/final/paper_number_map.json lists every number.
+% Fig. 1 is compiled separately: cd figures && pdflatex fig_pipeline (TikZ clashes with ieeeaccess.cls).
 % Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
 % =====================================================================
-\documentclass[journal]{IEEEtran}
-
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\documentclass{ieeeaccess}
 \usepackage[nocompress]{cite}
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
+\usepackage{textcomp}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{array}
-\usepackage{xcolor}
 \usepackage[hyphens]{url}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{tikz}
-\usetikzlibrary{positioning,arrows.meta,fit,calc}
 
 \DeclareRobustCommand{\todo}[1]{{\color{red}[TODO: #1]}}
 
 \emergencystretch=1.5em
 
 \begin{document}
+\history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
+\doi{10.1109/ACCESS.2024.0429000}
 
 \title{StaticKD: Distilling a Multilingual IPTC News Topic Classifier into a Static Token-Logit Table for Lightweight CPU Inference}
 
-\author{Obi~Kastanya and Ananta~Dwi~Prayoga~Alwy%
-\thanks{O. Kastanya and A. D. P. Alwy are with the Department of Informatics Engineering, Sepuluh Nopember Institute of Technology, Surabaya, Indonesia (e-mail: 6025252015@student.its.ac.id; 6025252007@student.its.ac.id). Corresponding author: O. Kastanya. This work received no specific funding.}}
+\author{\uppercase{Obi Kastanya}\authorrefmark{1} AND \uppercase{Ananta Dwi Prayoga Alwy}\authorrefmark{1}}
+\address[1]{Department of Informatics Engineering, Sepuluh Nopember Institute of Technology, Surabaya, Indonesia (e-mail: 6025252015@student.its.ac.id; 6025252007@student.its.ac.id)}
+\tfootnote{This work received no specific funding.}
 
-\markboth{IEEE Access (draft)}%
+\markboth
+{Kastanya and Alwy: StaticKD, Multilingual IPTC News Topic Classification on CPU}
 {Kastanya and Alwy: StaticKD, Multilingual IPTC News Topic Classification on CPU}
 
-\maketitle
+\corresp{Corresponding author: Obi Kastanya (e-mail: 6025252015@student.its.ac.id).}
 
 \begin{abstract}
 Filtering news by the International Press Telecommunications Council (IPTC) Media Topic taxonomy requires a classifier cheap enough for a multilingual article stream. The available open multilingual IPTC classifier is based on XLM-RoBERTa-large and needs 1,239 to 2,971 milliseconds per article on one processor core. With this classifier as teacher, StaticKD gives every vocabulary token 17 scores that correspond to the 17 top-level IPTC topics. Classifying an article then only requires tokenizing it and averaging its token scores. The student is initialized from multilingual static embeddings (one fixed vector per token) and learns from teacher outputs on 285,999 articles in 69 languages. The evaluation uses a new test set of 12,744 articles in 47 languages. Their topics are assigned by human annotators or newsroom editors and mapped onto IPTC, so no test label comes from a model that reads the article. On this test set, StaticKD reaches a macro-F1 of 0.545 and thus keeps 91.1\% of the teacher score (0.598). The 34-megabyte model classifies 473 articles per second per core and runs about 616 times faster than the 8-bit quantized teacher. It is also more accurate than fastText and a linear support vector machine trained on the same teacher labels. Ablations with five seeds show that accuracy comes mainly from multilingual training data and pre-trained cross-lingual embeddings and that the top teacher label works as well as the full distribution. Fine-tuning the embeddings hurts languages with little or no training data. StaticKD is weakest on languages absent from both its training data and the teacher's pre-training data.
 \end{abstract}
 
-\begin{IEEEkeywords}
+\begin{keywords}
 Efficient inference, knowledge distillation, multilingual text classification, news topic classification, static embeddings.
-\end{IEEEkeywords}
+\end{keywords}
+
+\titlepgskip=-21pt
+
+\maketitle
 
 \section{Introduction}
 \label{sec:introduction}
-\IEEEPARstart{N}{ews} analytics pipelines need topic filtering to prevent irrelevant news from being processed in later stages and adding to the cost. News articles have to be classified into standardized topic categories before they can be filtered. Such categories include those of the Media Topic taxonomy of the International Press Telecommunications Council (IPTC). The IPTC taxonomy divides news topics into 17 top-level categories, which contain many subcategories~\cite{iptc2024mediatopics,kuzman2025llm}.
+\PARstart{N}{ews} analytics pipelines need topic filtering to prevent irrelevant news from being processed in later stages and adding to the cost. News articles have to be classified into standardized topic categories before they can be filtered. Such categories include those of the Media Topic taxonomy of the International Press Telecommunications Council (IPTC). The IPTC taxonomy divides news topics into 17 top-level categories, which contain many subcategories~\cite{iptc2024mediatopics,kuzman2025llm}.
 
 The first open multilingual IPTC classifier was released by Kuzman and Ljube\v{s}i\'c~\cite{kuzman2025llm}. GPT-4o was used to label articles in four languages, and the labels then served as data for fine-tuning XLM-RoBERTa-large~\cite{conneau2020xlmr}. On a human-annotated test set, the resulting model performs on par with GPT-4o. A follow-up study by the same group concluded that fine-tuned encoders are more practical than large language models (LLMs) for large-scale annotation~\cite{kuzman2025southslavic}. Without a graphics processing unit (GPU), an encoder with 559.9~million parameters remains expensive. The present study targets servers without a GPU, where the classifier shares central processing unit (CPU) cores with the rest of the pipeline. The model needs 2,971~ms per article on one CPU core. Its fastest CPU configuration is an Open Neural Network Exchange (ONNX) export quantized to 8-bit integers (int8), and this configuration still needs 1,239~ms. At such latencies, topic classification alone would occupy 15.1 (ONNX int8) to 34.8 (PyTorch) CPU cores for a stream of one million articles per day (Section~\ref{sec:res-eff}). Neither of the two earlier studies reports this inference cost, although inference accounts for a large share of the computing demand and energy use of machine learning in production. Google, for example, reported that 60\% of its machine learning energy use came from inference~\cite{luccioni2024power}.
 
@@ -57,9 +61,7 @@ The StaticKD method proposed in this paper distills~\cite{hinton2015distilling} 
 
 A multilingual claim also requires a multilingual evaluation with labels that do not come from the teacher. The human-annotated test set of Kuzman and Ljube\v{s}i\'c is not public and covers four languages. SIB-200~\cite{adelani2024sib200} covers 205 languages, but its items are short sentences and its taxonomy is not IPTC. The present study fills this gap by building a unified test set of 12,744 articles in 47 languages. Some of its articles are news pages from 2024 to 2026 whose publishers record the newsroom section of the article in the page metadata (schema.org~\cite{guha2016schema}). The pages are combined with public datasets labeled by human annotators or with publisher categories~\cite{adelani2023masakhanews,petukhova2023mnds,mirashi2023indicnews,hossain2025banglanews}. Each label is an editorial decision of a publisher or an annotator and is then mapped onto the official IPTC taxonomy. The process involves no model that reads the article text.
 
-The study answers four research questions (RQs). RQ1 asks how much of the teacher accuracy StaticKD retains on labels that do not come from the teacher. The comparison uses fastText and a support vector machine (SVM) with term frequency--inverse document frequency (TF-IDF) features as two baselines of similar cost. The other models in the comparison are the more expensive small transformers MiniLM-L6 and DistilmBERT. RQ2 examines which parts of the training recipe matter for this very small student. The tested parts are soft labels, multilingual data, embedding initialization, embedding fine-tuning, token dropout, temperature, and ensembling. For RQ3, the study measures the inference cost of the teacher on CPU and how far StaticKD reduces that cost. RQ4 looks for the languages, labels, and label sources on which StaticKD is weak and for the factors behind these weaknesses.
-
-The answers to RQ2 and RQ4 show that the accuracy of StaticKD depends on how many languages and sites the teacher-labeled data cover and on whether the embeddings start from a space shared by all languages. Training the student on the top teacher label alone gives results as good as training it on the full teacher distribution. Fine-tuning the embeddings helps on the development set but hurts languages with little or no distillation data. A development set in the training languages cannot reveal this trade-off.
+The study answers four research questions (RQs). RQ1 asks how much of the teacher accuracy StaticKD retains on labels that do not come from the teacher. The comparison uses fastText and a support vector machine (SVM) with term frequency--inverse document frequency (TF-IDF) features as two baselines of similar cost. The other models in the comparison are the more expensive small transformers MiniLM-L6 and DistilmBERT. For RQ2, the study measures the inference cost of the teacher on CPU and how far StaticKD reduces that cost. RQ3 examines which parts of the training recipe matter for this very small student. The tested parts are soft labels, multilingual data, embedding initialization, embedding fine-tuning, token dropout, temperature, and ensembling. RQ4 looks for the languages, labels, and label sources on which StaticKD is weak and for the factors behind these weaknesses.
 
 The contributions of this paper are as follows.
 \begin{enumerate}
@@ -69,7 +71,7 @@ The contributions of this paper are as follows.
   \item A release of the code, a notebook that reproduces every number in this paper, the models, and the test-set manifest.
 \end{enumerate}
 
-Section~\ref{sec:related} reviews related work. The data, test set, method, and evaluation protocol are described in Section~\ref{sec:method}. The results are presented in Section~\ref{sec:results} and discussed in Section~\ref{sec:discussion}. Section~\ref{sec:limitations} states the limitations of the study, and Section~\ref{sec:conclusion} concludes the paper.
+Section~\ref{sec:related} reviews related work. Section~\ref{sec:method} describes StaticKD, and Section~\ref{sec:data} describes the data and the test set. The baselines and the evaluation protocol are given in Section~\ref{sec:setup}. The results are presented in Section~\ref{sec:results} and discussed together with the limitations of the study in Section~\ref{sec:discussion}. Section~\ref{sec:conclusion} concludes the paper.
 
 \section{Related Work}
 \label{sec:related}
@@ -78,7 +80,7 @@ Datasets for news topic classification usually define their own taxonomy and cov
 
 \subsection{Distilling Transformer Classifiers into Compact Students}
 Knowledge distillation (KD) trains a cheap student model to imitate the output distribution of an expensive teacher model~\cite{hinton2015distilling,yang2025kdsurvey}. The logit vectors of the teacher and the student are both divided by a temperature $\tau$ before the softmax. A higher $\tau$ flattens the distribution and thus also shows the student how much probability the teacher assigns to the wrong classes. The full distribution is called a soft label, whereas its top class alone is called a hard label. In text classification, the student is almost always a transformer such as DistilBERT~\cite{sanh2019distilbert} or MiniLMv2~\cite{wang2021minilmv2}. The same holds for cross-lingual distillation that transfers teacher knowledge to languages with little data~\cite{piperno2025crosslingual}. The prior work closest to StaticKD is Sparse Distillation~\cite{ye2022sparse}. It distills RoBERTa-large into a deep averaging network~\cite{iyyer2015dan} with a very large n-gram table. On English single-sentence classification tasks, the resulting model runs hundreds of times faster. StaticKD differs from Sparse Distillation in three ways. Its table is not trained from scratch but starts from multilingual static embeddings that are already aligned across languages. Each token stores only 17 numbers because the linear head is folded. StaticKD targets news documents in 69 languages, and its evaluation also covers languages that are missing from the distillation data.
-\subsection{Temperature and the Capacity Gap}
+
 The success of distillation depends on the capacity gap between teacher and student. The gap widens as the teacher becomes larger and more expressive than the student. For language models, the optimal teacher size even follows an empirical law with respect to the student size~\cite{zhang2025law}. Temperature is treated as an important hyperparameter that can be learned~\cite{li2023ctkd}. The Kullback--Leibler (KL) divergence can be split into a target-class part and a non-target part (dark knowledge)~\cite{zhao2022dkd}. A recent analysis~\cite{wang2026rckd} shows that KL distorts the ranking of classes when the capacities of the teacher and the student do not match. Another finding is that generalization does not always improve when the agreement between student and teacher (fidelity) is high~\cite{stanton2021kd}. Nearly all of these findings come from deep students. No study has yet characterized how temperature and soft labels behave at a gap as extreme as the one from 559.9~million parameters to one linear layer over averaged embeddings.
 
 \subsection{Static Embeddings and Efficient CPU Inference}
@@ -108,15 +110,62 @@ StaticKD (proposed) & table of 17 logits per token & yes & yes & yes & yes & yes
 \end{tabular}}
 \end{table*}
 
-\section{Methodology}
+\section{The StaticKD Method}
 \label{sec:method}
-\subsection{Study Design}
+\subsection{Study Overview}
+\label{sec:overview}
 The study consists of three main stages: building the StaticKD student by distillation, measuring and comparing accuracy on labeled articles that neither the teacher nor the student has seen, and measuring the inference cost on CPU.
 
 Fig.~\ref{fig:pipeline} shows the StaticKD pipeline that this study builds. The teacher classifies 285,999 unlabeled articles in 69 languages and produces logits for the 17 top-level IPTC topics (Sections~\ref{sec:distdata} and~\ref{sec:teacher}). Logits are the raw scores that a model outputs for each class before they are converted into probabilities. The StaticKD model is trained to imitate the teacher distribution over the 17 IPTC topics (Section~\ref{sec:student}). The transformer-based baselines (MiniLM-L6 and DistilmBERT) are trained by gradient descent like StaticKD and use the same loss on the full distribution. fastText and TF-IDF + SVM learn only from the top teacher label, because their standard training procedures accept only one class per document. One further fastText model is trained with the GPT-4o labels of the EMMediaTopic dataset~\cite{emmediatopic2025}, which was released together with the teacher. This model tests how a cheap classifier performs without teacher labels on multilingual news (Section~\ref{sec:baselines}).
 
 This study does not use the labels predicted by the teacher as ground truth. A close match between the scores of the student and the teacher indicates only how closely the student imitates the teacher. Prediction accuracy is evaluated on a separate test set (Section~\ref{sec:testset}). The test set groups news articles by their original editorial labels, which are taken from information such as the section and breadcrumb fields in the schema.org JSON-LD metadata of each page. An LLM was used to map the editorial labels onto the 17 IPTC topics, and articles with ambiguous categories were excluded. The first author then reviewed this mapping. The third stage runs every model on CPU only, using the same sample of test articles. Section~\ref{sec:effprotocol} describes this benchmark.
 
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_pipeline.pdf}
+\caption{StaticKD pipeline. The teacher labels an unlabeled news corpus once, offline. The student learns to imitate the teacher distribution. Its linear head is then folded into a token table, so inference only looks up and averages table rows. The final evaluation uses a test set whose labels do not come from the teacher.}
+\label{fig:pipeline}
+\end{figure*}
+
+\subsection{Problem Formulation}
+For a news article $d$ in any language (title and body, truncated to the first 512 words as in~\cite{kuzman2025llm}), a model predicts one label $y\in\mathcal{Y}$ among the 17 top-level IPTC topics. The teacher $f_T$ outputs logits $\mathbf{z}^T(d)\in\mathbb{R}^{17}$. The goal is a student $f_S$ whose inference costs $O(n)$ additions for $n$ tokens and needs neither matrix multiplication nor a deep learning library. Its accuracy against independent labels should be as close as possible to that of $f_T$.
+
+\subsection{Teacher and Distillation Labels}
+\label{sec:teacher}
+The teacher is the IPTC classifier of~\cite{kuzman2025llm}, published as \url{classla/multilingual-IPTC-news-topic-classifier}. It is an XLM-RoBERTa-large model with 24 layers, 559.9 million parameters, and an input limit of 512 XLM-R tokens. For 60.7\% of the test articles, the 512-word input exceeds this limit. On those articles the teacher reads about 287 of 438 words (medians). For every distillation document, the teacher produces a logit vector $\mathbf{z}^{T}(d)\in\mathbb{R}^{17}$, which is stored in full. Labeling was run once in fp16 on an NVIDIA RTX~4050 Laptop GPU (6~GB), with batches sorted by text length. On a fixed sample of 5,000 documents, the teacher labels 50.1 documents per second. Labeling all distillation data thus takes about 1.58 GPU hours. The teacher label distribution on CC-News 2019--2021 is plausible (\emph{politics} 16.5\%, \emph{economy} 12.7\%, \emph{sport} 11.6\%, \emph{weather} 1.3\%). The mean confidence per language ranges from 0.90 to 1.00.
+
+\subsection{The StaticKD Student}
+\label{sec:student}
+The student in this study is built on the multilingual static embedding model potion-multilingual-128M of Model2Vec~\cite{tulkens2024model2vec}, hereafter called potion. A document $d$ is tokenized into $t_1,\dots,t_n$ with the Unigram tokenizer of potion so that every token has a pre-trained embedding. This tokenizer contains 500,353 tokens. Special tokens are not used, and unknown tokens are dropped. The document length is capped at 1,024 tokens. This cap only serves to bound the cost because averaging does not depend on position. Only 5.4\% of the test articles exceed it. Each token has an embedding $\mathbf{e}_t\in\mathbb{R}^{256}$, and
+\begin{equation}
+\mathbf{h}(d)=\frac{1}{n}\sum_{i=1}^{n}\mathbf{e}_{t_i},\qquad
+\mathbf{z}^{S}(d)=W\,\mathrm{drop}(\mathbf{h}(d))+\mathbf{b},
+\label{eq:student}
+\end{equation}
+with $W\in\mathbb{R}^{17\times 256}$ and dropout 0.1 during training. The embedding matrix $E$ is initialized from potion. The potion model itself obtains its embeddings for 101 languages through distillation from BGE-M3~\cite{chen2024bgem3}. With this initialization, the tokens of these 101 languages already lie in one shared space before training starts. The comparison with a random initialization is given in Section~\ref{sec:res-abl}.
+
+The student learns from the stored teacher logits with the loss
+\begin{equation}
+\mathcal{L}_{\mathrm{KD}}=\tau^{2}\,\mathrm{KL}\!\left(p^{T}\,\middle\|\,p^{S}\right),\qquad \tau=1 ,
+\label{eq:kd}
+\end{equation}
+where $p^{T}=\mathrm{softmax}(\mathbf{z}^{T}/\tau)$ and $p^{S}=\mathrm{softmax}(\mathbf{z}^{S}/\tau)$ are the teacher and student distributions, respectively. The value $\tau=1$ was chosen during development. The results for $\tau\in\{0.5,2,4\}$ are reported in Section~\ref{sec:res-abl}. The parameters $E$, $W$, and $\mathbf{b}$ are trained together. The embedding matrix $E$ uses SparseAdam ($\eta=10^{-3}$), which updates only the rows of tokens that occur in the current batch. Tokens that never occur in the training documents therefore keep their potion embeddings. Section~\ref{sec:discussion} returns to this property. AdamW ($\eta=3\cdot 10^{-3}$, weight decay $10^{-4}$) is used for $W$ and $\mathbf{b}$. Training runs for 6 epochs with a batch size of 64. A cheap augmentation in the form of token dropout is also applied. At every step, each token of a training document is dropped with probability 0.2 so that the model does not rely on a few keywords. Internal validation uses 3\% of the distillation data (8,579 documents) to keep the epoch with the highest agreement with the teacher.
+
+\subsection{Folding, Table Ensemble, and Compact Variant}
+\label{sec:fold}
+The classification head is linear, so \eqref{eq:student} can be rewritten as
+\begin{equation}
+W\Big(\frac{1}{n}\sum_{i}\mathbf{e}_{t_i}\Big)+\mathbf{b}=\frac{1}{n}\sum_{i}T_{t_i}+\mathbf{b},
+\label{eq:fold}
+\end{equation}
+with the table $T=EW^{\top}\in\mathbb{R}^{|V|\times 17}$. The folding step computes $T$ once after training. Row $T_t$ holds the 17 topic scores that token $t$ contributes to every article that contains it. For production, the model consists only of $T$ (fp16), $\mathbf{b}$, and the tokenizer. Algorithm~S1 in the supplementary material lists the whole inference procedure. The same argument also holds for an ensemble. Equation~\eqref{eq:fold} is linear in $T$, so averaging the logits of $K$ students trained with different seeds gives the same result as one student with table $\bar{T}=\frac{1}{K}\sum_k T^{(k)}$ and bias $\bar{\mathbf{b}}$. During development, the student was trained with three seeds (0, 1, and 2). The final StaticKD model averages the tables of these three seeds ($K=3$). It has 8.5 million parameters and a size of 34~MB.
+
+The table itself takes 16~MB, but the internal structure of the Unigram tokenizer needs much more random-access memory (RAM). A compact variant shrinks this structure by removing token pieces that occur fewer than 10 times in the distillation data. Single characters are kept. This variant has a vocabulary of 335,441 tokens and a model size of 23~MB. The hyperparameters of all models are listed in Table~S1 of the supplementary material.
+
+\section{Data and Test Set}
+\label{sec:data}
+\subsection{Data Sets and Their Roles}
+\label{sec:roles}
 Table~\ref{tab:datasets} lists the data sets used in this study. The development set is the development split of EMMediaTopic (1,000 articles in four languages with GPT-4o labels). All parameter settings and recipe choices for StaticKD were made on this set. The recipe was fixed \emph{before} the test set was built. Another set also informed two of these choices: the temperature $\tau=1$ and the three-seed ensemble (Section~\ref{sec:student}). This set contains 320 articles in 16 languages labeled by an LLM (Claude) with the prompt of~\cite{kuzman2025llm}. The teacher was trained on labels that an LLM (GPT-4o) produced with the same prompt, so these labels are not independent of the teacher. No reported result uses this set.
 
 \begin{table}[!t]
@@ -140,39 +189,6 @@ English section sample & 754 & 1 & JSON-LD & label validity only \\
 \bottomrule
 \end{tabular}}
 \end{table}
-
-\begin{figure*}[!t]
-\centering
-\begin{tikzpicture}[
-  box/.style={draw, rounded corners=2pt, align=center, font=\scriptsize, inner sep=3pt, minimum height=8mm},
-  data/.style={box, fill=gray!10},
-  model/.style={box, fill=blue!8},
-  prod/.style={box, fill=green!10},
-  test/.style={box, fill=orange!12},
-  arr/.style={-{Latex[length=1.8mm]}, thick},
-  lab/.style={font=\scriptsize}]
-  \node[data, text width=27mm] (cc)  at (1.4, 0.85)  {CC-News 2019--2021\\69 languages, 2,960 sites};
-  \node[data, text width=27mm] (emm) at (1.4,-0.85)  {EMMediaTopic train\\4 languages, 20,000 docs};
-  \node[model, text width=23mm] (t)  at (4.9, 0)     {Teacher\\XLM-R-large\\559.9M parameters};
-  \node[data, text width=19mm] (soft) at (7.9, 0)    {Teacher logits\\$\mathbf{z}^{T}\in\mathbb{R}^{17}$\\285,999 docs};
-  \node[model, text width=27mm] (s)  at (11.2, 0)    {Student: tokenizer,\\static embeddings (potion),\\mean, linear};
-  \node[prod, text width=34mm] (tab) at (15.4, 0)    {Table $|V|\times 17$ (fp16)\\$\hat{y}=\arg\max\big(\frac{1}{n}\sum_i T_{t_i}+\mathbf{b}\big)$};
-  \node[test, text width=34mm] (ts) at (15.4, -1.75)  {Unified test set\\12,744 docs, 47 languages, editorial labels};
-  \draw[arr] (cc.east)  -- (t.160);
-  \draw[arr] (emm.east) -- (t.200);
-  \draw[arr] (t) -- (soft);
-  \draw[arr] (soft) -- node[lab, above]{KL, $\tau$} (s);
-  \draw[arr] (s) -- node[lab, above]{fold $W$} (tab);
-  \draw[arr] (ts.north) -- (tab.south);
-  \node[lab, text=gray] at (8.0, 1.3) {offline, once (a GPU only speeds it up)};
-  \node[lab, text=gray] at (15.4, 1.3) {production: NumPy, CPU};
-\end{tikzpicture}
-\caption{StaticKD pipeline. The teacher labels an unlabeled news corpus once, offline. The student learns to imitate the teacher distribution. Its linear head is then folded into a token table, so inference only looks up and averages table rows. The final evaluation uses a test set whose labels do not come from the teacher.}
-\label{fig:pipeline}
-\end{figure*}
-
-\subsection{Problem Formulation}
-For a news article $d$ in any language (title and body, truncated to the first 512 words as in~\cite{kuzman2025llm}), a model predicts one label $y\in\mathcal{Y}$ among the 17 top-level IPTC topics. The teacher $f_T$ outputs logits $\mathbf{z}^T(d)\in\mathbb{R}^{17}$. The goal is a student $f_S$ whose inference costs $O(n)$ additions for $n$ tokens and needs neither matrix multiplication nor a deep learning library. Its accuracy against independent labels should be as close as possible to that of $f_T$.
 
 \subsection{Distillation Data and Development Set}
 \label{sec:distdata}
@@ -208,7 +224,7 @@ Quality and leakage filters are applied in order.
 
 Sampling takes at most 50 articles for each pair of language and label. Human-labeled sources have priority, followed by publisher categories and then JSON-LD sections. The number of articles per site is not capped. Languages with fewer than 30 articles are dropped. Whole sites are resampled when confidence intervals are computed (Section~\ref{sec:protocol}) because articles from the same site tend to be similar. Section~\ref{sec:res-acc} also repeats the comparison with at most five articles per site.
 
-The final test set contains 12,744 articles in 47 languages from 1,227 sites or sources. All 17 labels occur in it. The median article length is 313 words. Human annotators labeled 4,094 of these articles (32.1\%). Publisher categories cover 2,600 (20.4\%) and JSON-LD sections 6,050 (47.5\%). The label type of an article (human annotation, publisher category, or JSON-LD section) is called its \emph{label origin}. No distillation data exist for 13 languages (e.g., ha, yo, ig, bn, and pa). Another 9 languages have fewer than 500 distillation documents, and 25 have at least 500. Site diversity is measured by the effective number of sites, $1/\sum_s q_s^{2}$, where $q_s$ is the share of the articles of a language that come from site $s$. A source dataset without URLs counts as one site. By this measure, 13 languages have at least 10 effective sites, while 27 languages practically come from only one publisher. Table~\ref{tab:testset} summarizes the composition of the article sources and Fig.~\ref{fig:testset} shows the number of articles of each language per label.
+The final test set contains 12,744 articles in 47 languages from 1,227 sites or sources. All 17 labels occur in it. The median article length is 313 words. Human annotators labeled 4,094 of these articles (32.1\%). Publisher categories cover 2,600 (20.4\%) and JSON-LD sections 6,050 (47.5\%). The label type of an article (human annotation, publisher category, or JSON-LD section) is called its \emph{label origin}. No distillation data exist for 13 languages (e.g., ha, yo, ig, bn, and pa). Another 9 languages have fewer than 500 distillation documents, and 25 have at least 500. Site diversity is measured by the effective number of sites, $1/\sum_s q_s^{2}$, where $q_s$ is the share of the articles of a language that come from site $s$. A source dataset without URLs counts as one site. By this measure, 13 languages have at least 10 effective sites, while 27 languages practically come from only one publisher. Table~\ref{tab:testset} summarizes the composition of the article sources and Fig.~S1 in the supplementary material shows the number of articles of each language per label.
 
 \begin{table}[!t]
 \caption{Composition of the Unified Test Set by Source}
@@ -233,94 +249,21 @@ Total & & 12,744 & 47 & 1,227 \\
 \end{tabular}}
 \end{table}
 
-\begin{figure}[!t]
-\centering
-\includegraphics[width=\columnwidth]{figures/fig_testset_heatmap.pdf}
-\caption{Articles in the unified test set per language and label (at most 50 per language--label pair). The label origin in brackets is the dominant one for that language.}
-\label{fig:testset}
-\end{figure}
+\subsection{Validity of the Editorial Labels}
+\label{sec:res-validity}
+Two thirds of the test labels are section and category labels, which record newsroom decisions rather than annotation that follows a labeling guideline. This subsection checks whether such labels behave like human labels in the same language. The check compares how well one and the same teacher agrees with each label type. The teacher stays the same in this check and serves only as a fixed reference. Much noisier section labels would show up as clearly lower agreement of the teacher with section labels than with human labels in the same language.
 
-\subsection{Teacher and Distillation Labels}
-\label{sec:teacher}
-The teacher is the IPTC classifier of~\cite{kuzman2025llm}, published as \url{classla/multilingual-IPTC-news-topic-classifier}. It is an XLM-RoBERTa-large model with 24 layers, 559.9 million parameters, and an input limit of 512 XLM-R tokens. For 60.7\% of the test articles, the 512-word input exceeds this limit. On those articles the teacher reads about 287 of 438 words (medians). For every distillation document, the teacher produces a logit vector $\mathbf{z}^{T}(d)\in\mathbb{R}^{17}$, which is stored in full. Labeling was run once in fp16 on an NVIDIA RTX~4050 Laptop GPU (6~GB), with batches sorted by text length. On a fixed sample of 5,000 documents, the teacher labels 50.1 documents per second. Labeling all distillation data thus takes about 1.58 GPU hours. The teacher label distribution on CC-News 2019--2021 is plausible (\emph{politics} 16.5\%, \emph{economy} 12.7\%, \emph{sport} 11.6\%, \emph{weather} 1.3\%). The mean confidence per language ranges from 0.90 to 1.00.
+The English part of the test set contains only human labels because the sampling prefers human-labeled sources (Section~\ref{sec:testset}). For a comparison within English, a separate sample was therefore drawn from 306 sites outside the test set. The sample contains 754 English CC-NEWS articles with JSON-LD section labels and at most 50 articles per label. The accuracy of the teacher is 0.646 on the section labels (macro-F1 0.617) and 0.559 on the human labels of MN-DS and MasakhaNEWS (macro-F1 0.565). For 12 of the 17 labels, the accuracy of the teacher is higher on the section labels (Wilcoxon $p=0.033$). The ranking of label difficulty also correlates between the two label types ($\rho=0.63$, $p=0.007$). Both label types have the same hard labels: \emph{society}, \emph{human interest}, and \emph{religion}. By this measure, English section labels are not noisier than human labels.
 
-\subsection{The StaticKD Student}
-\label{sec:student}
-The student in this study is built on the multilingual static embedding model potion-multilingual-128M of Model2Vec~\cite{tulkens2024model2vec}, hereafter called potion. A document $d$ is tokenized into $t_1,\dots,t_n$ with the Unigram tokenizer of potion so that every token has a pre-trained embedding. This tokenizer contains 500,353 tokens. Special tokens are not used, and unknown tokens are dropped. The document length is capped at 1,024 tokens. This cap only serves to bound the cost because averaging does not depend on position. Only 5.4\% of the test articles exceed it. Each token has an embedding $\mathbf{e}_t\in\mathbb{R}^{256}$, and
-\begin{equation}
-\mathbf{h}(d)=\frac{1}{n}\sum_{i=1}^{n}\mathbf{e}_{t_i},\qquad
-\mathbf{z}^{S}(d)=W\,\mathrm{drop}(\mathbf{h}(d))+\mathbf{b},
-\label{eq:student}
-\end{equation}
-with $W\in\mathbb{R}^{17\times 256}$ and dropout 0.1 during training. The embedding matrix $E$ is initialized from potion. The potion model itself obtains its embeddings for 101 languages through distillation from BGE-M3~\cite{chen2024bgem3}. With this initialization, the tokens of these 101 languages already lie in one shared space before training starts. The comparison with a random initialization is given in Section~\ref{sec:res-abl}.
+The test set itself allows a second comparison in French. The teacher reaches an accuracy of 0.716 on 208 French articles with section labels and 0.500 on 200 human-labeled MasakhaNEWS articles. The direction is the same as in English.
 
-The student learns from the stored teacher logits with the loss
-\begin{equation}
-\mathcal{L}_{\mathrm{KD}}=\tau^{2}\,\mathrm{KL}\!\left(p^{T}\,\middle\|\,p^{S}\right),\qquad \tau=1 ,
-\label{eq:kd}
-\end{equation}
-where $p^{T}=\mathrm{softmax}(\mathbf{z}^{T}/\tau)$ and $p^{S}=\mathrm{softmax}(\mathbf{z}^{S}/\tau)$ are the teacher and student distributions, respectively. The value $\tau=1$ was chosen during development. The results for $\tau\in\{0.5,2,4\}$ are reported in Section~\ref{sec:res-abl}. The parameters $E$, $W$, and $\mathbf{b}$ are trained together. The embedding matrix $E$ uses SparseAdam ($\eta=10^{-3}$), which updates only the rows of tokens that occur in the current batch. Tokens that never occur in the training documents therefore keep their potion embeddings. Section~\ref{sec:discussion} returns to this property. AdamW ($\eta=3\cdot 10^{-3}$, weight decay $10^{-4}$) is used for $W$ and $\mathbf{b}$. Training runs for 6 epochs with a batch size of 64. A cheap augmentation in the form of token dropout is also applied. At every step, each token of a training document is dropped with probability 0.2 so that the model does not rely on a few keywords. Internal validation uses 3\% of the distillation data (8,579 documents) to keep the epoch with the highest agreement with the teacher.
+The last check looks for the cause of the lower agreement on the human-labeled sources. The analysis is done per source category and is restricted to languages covered by XLM-R pre-training. The median agreement per category between the teacher and the mapped label is 0.46 for MasakhaNEWS and 0.50 for MN-DS. It is higher for L3Cube (0.81) and CC-NEWS sections (0.87). The lowest agreement occurs for source categories that are broader than their IPTC target. One example is the \emph{politics} category of MasakhaNEWS, where only 45\% of the articles are predicted as \emph{politics}. The main alternative is \emph{conflict} (29\%). Agreement is also low for labels whose boundaries are unclear even to human annotators, such as \emph{society} in MN-DS. This finding is in line with the low inter-annotator agreement reported for that label~\cite{kuzman2025llm}. Such mismatches reflect differences between the category scheme of a source and IPTC. Comparisons between models are unaffected because every model is scored against the same labels. Absolute scores are read as agreement with the editorial categorization.
 
-The classification head is linear, so \eqref{eq:student} can be rewritten as
-\begin{equation}
-W\Big(\frac{1}{n}\sum_{i}\mathbf{e}_{t_i}\Big)+\mathbf{b}=\frac{1}{n}\sum_{i}T_{t_i}+\mathbf{b},
-\label{eq:fold}
-\end{equation}
-with the table $T=EW^{\top}\in\mathbb{R}^{|V|\times 17}$. The folding step computes $T$ once after training. Row $T_t$ holds the 17 topic scores that token $t$ contributes to every article that contains it. For production, the model consists only of $T$ (fp16), $\mathbf{b}$, and the tokenizer. Algorithm~\ref{alg:infer} lists the whole inference procedure. The same argument also holds for an ensemble. Equation~\eqref{eq:fold} is linear in $T$, so averaging the logits of $K$ students trained with different seeds gives the same result as one student with table $\bar{T}=\frac{1}{K}\sum_k T^{(k)}$ and bias $\bar{\mathbf{b}}$. During development, the student was trained with three seeds (0, 1, and 2). The final StaticKD model averages the tables of these three seeds ($K=3$). It has 8.5 million parameters and a size of 34~MB.
-
-\begin{algorithm}[!t]
-\caption{StaticKD Inference for One Article}
-\label{alg:infer}
-\begin{algorithmic}[1]
-\Require article text $d$; tokenizer; table $\bar{T}\in\mathbb{R}^{|V|\times 17}$; bias $\bar{\mathbf{b}}\in\mathbb{R}^{17}$
-\State $(t_1,\dots,t_n)\gets$ first 1,024 tokens of tokenize$(d)$, without unknown tokens
-\State $\mathbf{z}\gets\frac{1}{n}\sum_{i=1}^{n}\bar{T}_{t_i}+\bar{\mathbf{b}}$ \Comment{look up and average table rows}
-\State \Return $\arg\max_{y}\,z_y$ \Comment{one of the 17 IPTC topics}
-\end{algorithmic}
-\end{algorithm}
-
-The table itself takes 16~MB, but the internal structure of the Unigram tokenizer needs much more random-access memory (RAM). A compact variant shrinks this structure by removing token pieces that occur fewer than 10 times in the distillation data. Single characters are kept. This variant has a vocabulary of 335,441 tokens and a model size of 23~MB. The hyperparameters of all models are listed in Table~\ref{tab:hparams}.
-
-\begin{table}[!t]
-\caption{Hyperparameters of All Models}
-\label{tab:hparams}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}ll@{}}
-\toprule
-Component & Value \\
-\midrule
-\multicolumn{2}{@{}l}{\textit{StaticKD}} \\
-\quad initial embedding & potion-multilingual-128M (500,353 $\times$ 256) \\
-\quad max. tokens / vector dropout & 1,024 / 0.1 \\
-\quad loss, $\tau$ & KL, $\tau=1$ \\
-\quad token dropout & 0.2 \\
-\quad optimizer embedding / head & SparseAdam $10^{-3}$ / AdamW $3\cdot 10^{-3}$, wd $10^{-4}$ \\
-\quad batch, epoch, validation & 64, 6, 3\% of data (selects the epoch) \\
-\quad ensemble & mean of 3 seed tables \\
-\multicolumn{2}{@{}l}{\textit{fastText}} \\
-\quad word tokens (fixed) & dim 100, lr 0.5, 15 epoch \\
-\quad subword tokens (fixed) & dim 100, lr 0.5, 15 epoch \\
-\quad GPT-4o labels & dim 100, lr 0.5, 25 epoch \\
-\quad word n-grams, loss & 2, softmax, 2M buckets \\
-\quad tokens & words (+ character 2--5-grams) or XLM-R subwords \\
-\quad quantization & \texttt{quantize}, cutoff 300k, retrain \\
-\multicolumn{2}{@{}l}{\textit{TF-IDF + SVM}} \\
-\quad features & XLM-R subword uni+bigrams, min.\ df 3, max.\ 1,000,000, sublinear tf \\
-\quad classifier (fixed) & LinearSVC, $C=0.50$ \\
-\multicolumn{2}{@{}l}{\textit{MiniLM-L6 / DistilmBERT + KD}} \\
-\quad optimizer & AdamW $5\cdot 10^{-5}$, wd 0.01, warmup 6\%, linear, fp16 \\
-\quad batch, epoch, max. tokens & 32, 2, 256 \\
-\quad $\tau$ & $\{1, 2\}$, chosen on dev \\
-\bottomrule
-\end{tabular}}
-\end{table}
-
+\section{Experimental Setup}
+\label{sec:setup}
 \subsection{Baselines}
 \label{sec:baselines}
-All baselines marked + KD use the same distillation data (285,999 documents) and targets from the same teacher. fastText + KD~\cite{joulin2017bag} is trained on the top teacher label, with word tokens (plus character n-grams) or with XLM-R subwords. Its quantized variant (\texttt{.ftz}) is included as well. A fastText model is also trained only on the GPT-4o labels of the EMMediaTopic training split and serves as a reference with labeled data equivalent to that available to~\cite{kuzman2025llm}. The non-neural baseline TF-IDF + SVM + KD comes from Kuzman and Ljube\v{s}i\'c. This model uses TF-IDF features with a support vector classifier and is trained on the top teacher label over XLM-R subwords. For the non-transformer baselines, the hyperparameters were set once without a search. Their values are listed in Table~\ref{tab:hparams}. MiniLM-L6 + KD uses mMiniLMv2-L6-H384, which is distilled from XLM-R-large~\cite{wang2021minilmv2}. The temperature $\tau\in\{1,2\}$ for this model was chosen on the development set. The same recipe is applied to DistilmBERT + KD with \texttt{distilbert-base-multilingual-cased}~\cite{sanh2019distilbert}. Both transformers read at most 256 tokens. This limit truncates 91.1\% of the test articles to about 142 words for MiniLM-L6, while for DistilmBERT 93.2\% of the articles are truncated to about 116 words. Both are exported to ONNX fp32 for the CPU benchmark. The ONNX int8 teacher is an export of the teacher with dynamic int8 quantization and is the fastest teacher configuration on CPU.
+All baselines marked + KD use the same distillation data (285,999 documents) and targets from the same teacher. fastText + KD~\cite{joulin2017bag} is trained on the top teacher label, with word tokens (plus character n-grams) or with XLM-R subwords. Its quantized variant (\texttt{.ftz}) is included as well. A fastText model is also trained only on the GPT-4o labels of the EMMediaTopic training split and serves as a reference with labeled data equivalent to that available to~\cite{kuzman2025llm}. The non-neural baseline TF-IDF + SVM + KD comes from Kuzman and Ljube\v{s}i\'c. This model uses TF-IDF features with a support vector classifier and is trained on the top teacher label over XLM-R subwords. For the non-transformer baselines, the hyperparameters were set once without a search. Their values are listed in Table~S1 of the supplementary material. MiniLM-L6 + KD uses mMiniLMv2-L6-H384, which is distilled from XLM-R-large~\cite{wang2021minilmv2}. The temperature $\tau\in\{1,2\}$ for this model was chosen on the development set. The same recipe is applied to DistilmBERT + KD with \texttt{distilbert-base-multilingual-cased}~\cite{sanh2019distilbert}. Both transformers read at most 256 tokens. This limit truncates 91.1\% of the test articles to about 142 words for MiniLM-L6, while for DistilmBERT 93.2\% of the articles are truncated to about 116 words. Both are exported to ONNX fp32 for the CPU benchmark. The ONNX int8 teacher is an export of the teacher with dynamic int8 quantization and is the fastest teacher configuration on CPU.
 
 Among prior studies, Sparse Distillation~\cite{ye2022sparse} is the closest to StaticKD. This method and the classifier trainer of Model2Vec were not run as separate baselines. The decision is discussed further in Section~\ref{sec:limitations}. Parts of both are still covered. fastText + KD trains a bag-of-n-grams model with averaging and a linear head on the same teacher labels. In the random-initialization ablation (Section~\ref{sec:design}), the embedding table is trained from scratch, as in Sparse Distillation. The frozen-embedding ablation trains only a linear head on top of potion, so this ablation acts as an off-the-shelf Model2Vec baseline with a distilled head.
 
@@ -336,9 +279,13 @@ The benchmark runs only on CPU, and the GPU is hidden. Each model runs in a fres
 
 The machine is a laptop with an Intel Core Ultra~7 155H, 31~GB of RAM, and Windows~11. Its CPU is hybrid and has 6 performance cores (P-cores), 8 slower efficiency cores (E-cores), and 2 low-power E-cores. The operating system moves unpinned threads to the slow cores. Each process is therefore pinned to physical P-cores: logical CPU 0 for one core and logical CPUs 0, 10, 12, and 14 for four cores. This setup approximates a small server with uniform cores.
 
-\subsection{Experimental Design and Implementation Details}
+\subsection{Ablation Design}
 \label{sec:design}
-The final recipe and its ablations comprise 60 runs, all of which are listed in Table~\ref{tab:ablation}. Each ablation variant changes one factor of the final recipe. One variant replaces the soft labels with hard labels. Two variants reduce the training data, either to EMMediaTopic only (4 languages, 10 epochs) or to 130 thousand documents without the extra CC-News 2019--2021 data. Other variants initialize the embeddings randomly with the same standard deviation as potion or keep them frozen. The remaining variants train without token dropout, use a 512-unit multilayer perceptron (MLP) head, or set $\tau\in\{0.5,\,2,\,4\}$. During development, twelve further runs tested four additions to the recipe, each with three seeds. The four additions are bigram features, idf-weighted pooling, documents weighted by teacher confidence, and an extra loss on the GPT-4o labels. None of the additions differs significantly from the final recipe on the development set, and none of them changes the test macro-F1 by more than 0.004. These additions are therefore left out of both the recipe and Table~\ref{tab:ablation}. On average, one StaticKD run takes 5.2 minutes on the same GPU. The implementation uses Python~3.12, NumPy~2.5, PyTorch~2.6, transformers~5.17, \texttt{tokenizers}~0.23, ONNX Runtime~1.30, scikit-learn~1.9, and fastText~0.9.2. The seed, library versions, and training history of every run are stored with the model.
+The final recipe and its ablations comprise 60 runs, all of which are listed in Table~\ref{tab:ablation}. Each ablation variant changes one factor of the final recipe. One variant replaces the soft labels with hard labels. Two variants reduce the training data, either to EMMediaTopic only (4 languages, 10 epochs) or to 130 thousand documents without the extra CC-News 2019--2021 data. Other variants initialize the embeddings randomly with the same standard deviation as potion or keep them frozen. The remaining variants train without token dropout, use a 512-unit multilayer perceptron (MLP) head, or set $\tau\in\{0.5,\,2,\,4\}$. During development, twelve further runs tested four additions to the recipe, each with three seeds. The four additions are bigram features, idf-weighted pooling, documents weighted by teacher confidence, and an extra loss on the GPT-4o labels. None of the additions differs significantly from the final recipe on the development set, and none of them changes the test macro-F1 by more than 0.004. These additions are therefore left out of both the recipe and Table~\ref{tab:ablation}.
+
+\subsection{Implementation Details}
+\label{sec:impl}
+On average, one StaticKD run takes 5.2 minutes on the same GPU. The implementation uses Python~3.12, NumPy~2.5, PyTorch~2.6, transformers~5.17, \texttt{tokenizers}~0.23, ONNX Runtime~1.30, scikit-learn~1.9, and fastText~0.9.2. The seed, library versions, and training history of every run are stored with the model.
 
 \section{Results}
 \label{sec:results}
@@ -348,7 +295,7 @@ The final recipe and its ablations comprise 60 runs, all of which are listed in 
 \caption{Main Results. Macro-F1 [95\% CI] and Accuracy on the Development Set (EMMediaTopic Dev, GPT-4o Labels), Agreement with the Teacher on CC-News Held-Out, and Results on the Unified Test Set (47 Languages, Independent Labels). Test CIs from the Site-Cluster Bootstrap}
 \label{tab:main}
 \centering
-\footnotesize
+\scriptsize
 \setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{@{}lccccccc@{}}
 \toprule
@@ -383,7 +330,7 @@ MiniLM-L6 starts from a distillation of XLM-R-large. Its score (0.566) lies betw
 \caption{Paired Tests of StaticKD Against Other Models on the Unified Test Set. $\Delta$ = StaticKD $-$ Comparison Model. $p$ Is Holm-Corrected Over the Comparisons. $b/c$ = Documents Correct Only for StaticKD / Only for the Comparison Model}
 \label{tab:sig}
 \centering
-\footnotesize
+\scriptsize
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 StaticKD vs & $\Delta$macro-F1 [95\% CI] & $p$ bootstrap & $\Delta$accuracy & McNemar $b/c$ & $p$ McNemar \\
@@ -406,88 +353,52 @@ The paired tests in Table~\ref{tab:sig} confirm this ranking. The $\Delta$macro-
 
 The macro-F1 of StaticKD is higher than that of fastText + KD in 43 of 47 languages (Wilcoxon $p<0.001$). The advantage over this baseline thus holds in almost every language. The advantage over TF-IDF + SVM is narrower. In macro-F1, StaticKD is ahead in 31 of 47 languages (Wilcoxon $p=0.003$). Per-language accuracy gives a different picture. StaticKD is higher in 24 languages and lower in 22 (Wilcoxon $p=0.127$), so the accuracy of the two models is close. Neither metric differs consistently across languages when StaticKD is compared with DistilmBERT (Wilcoxon $p=0.604$ for macro-F1 and 0.322 for accuracy). StaticKD beats the teacher in only 7 of 47 languages.
 
-Table~\ref{tab:groups} and Fig.~\ref{fig:groups} show that the share of the teacher score that StaticKD keeps varies far more with the amount of distillation data in the language of the article than with the type of label. By label origin, the share ranges from 89.5\% for publisher categories to 95.8\% for JSON-LD sections. By the amount of distillation data in the language, the share falls from 97.5\% in languages with at least 500 documents to 72.3\% in languages without distillation data. A test set limited to at most five articles per site and language--label pair gives the same model ranking. On this subset of 8,139 articles, StaticKD obtains 0.587 and the teacher 0.627.
+A test set limited to at most five articles per site and language--label pair gives the same model ranking. On this subset of 8,139 articles, StaticKD obtains 0.587 and the teacher 0.627.
 
+\subsection{CPU Efficiency (RQ2)}
+\label{sec:res-eff}
 \begin{table*}[!t]
-\caption{Test Macro-F1 by Subgroup. Last Column: StaticKD Macro-F1 as a Percentage of the Teacher Macro-F1 in the Same Subgroup}
-\label{tab:groups}
+\caption{CPU Efficiency on Pinned P-Cores (Sample From the Unified Test Set, 1c/4c = 1/4 Cores)}
+\label{tab:eff}
 \centering
-\footnotesize
-\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{@{}lrcccccccc@{}}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccl@{}}
 \toprule
-Subgroup & $n$ & Teacher & DistilmBERT & MiniLM & \textbf{StaticKD} & fastText (q) & TF-IDF+SVM & fastText GPT & \% teacher \\
+Model & Latency p50 / p95, 1c (ms) & Throughput 1c (doc/s) & Throughput 4c (doc/s) & Model RAM (MB) & File (MB) & Dependencies \\
 \midrule
-\multicolumn{10}{@{}l}{\textit{Label origin}} \\
-\quad human annotation & 4,094 & 0.463 & 0.436 & 0.436 & 0.414 & 0.336 & 0.393 & 0.027 & 90\% \\
-\quad publisher category & 2,600 & 0.702 & 0.498 & 0.674 & 0.629 & 0.319 & 0.330 & 0.063 & 90\% \\
-\quad JSON-LD section & 6,050 & 0.651 & 0.629 & 0.634 & 0.624 & 0.579 & 0.609 & 0.136 & 96\% \\
-\multicolumn{10}{@{}l}{\textit{Distillation data of the language}} \\
-\quad sufficient ($\ge$500) & 7,644 & 0.633 & 0.617 & 0.616 & 0.618 & 0.572 & 0.593 & 0.116 & 98\% \\
-\quad few ($<$500) & 2,243 & 0.537 & 0.344 & 0.496 & 0.478 & 0.202 & 0.227 & 0.037 & 89\% \\
-\quad none (0) & 2,857 & 0.557 & 0.452 & 0.502 & 0.402 & 0.174 & 0.230 & 0.048 & 72\% \\
-\multicolumn{10}{@{}l}{\textit{Region}} \\
-\quad Africa & 3,044 & 0.697 & 0.532 & 0.576 & 0.542 & 0.312 & 0.408 & 0.085 & 78\% \\
-\quad South Asia & 2,681 & 0.575 & 0.410 & 0.544 & 0.509 & 0.246 & 0.276 & 0.046 & 88\% \\
-\quad East/Southeast Asia \& Middle East & 1,574 & 0.636 & 0.620 & 0.621 & 0.622 & 0.560 & 0.629 & 0.085 & 98\% \\
-\quad Europe & 5,445 & 0.653 & 0.637 & 0.638 & 0.638 & 0.595 & 0.610 & 0.136 & 98\% \\
-\multicolumn{10}{@{}l}{\textit{Teacher pre-training coverage}} \\
-\quad outside XLM-R pre-training & 1,750 & 0.719 & 0.586 & 0.620 & 0.501 & 0.317 & 0.457 & 0.086 & 70\% \\
-\quad in XLM-R pre-training & 10,994 & 0.609 & 0.549 & 0.585 & 0.576 & 0.468 & 0.503 & 0.096 & 95\% \\
-\multicolumn{10}{@{}l}{\textit{Site diversity}} \\
-\quad diverse ($\ge$10) & 5,225 & 0.657 & 0.642 & 0.643 & 0.642 & 0.598 & 0.616 & 0.134 & 98\% \\
-\quad single publisher ($<$3) & 6,204 & 0.517 & 0.387 & 0.475 & 0.433 & 0.221 & 0.287 & 0.045 & 84\% \\
-\quad medium (3--10) & 1,315 & 0.559 & 0.556 & 0.539 & 0.543 & 0.503 & 0.533 & 0.089 & 97\% \\
-\bottomrule
-\end{tabular}
-\end{table*}
-
-Table~\ref{tab:sources} splits the test set by source. MN-DS is the only source that is annotated directly with IPTC topics. On MN-DS, StaticKD keeps 97.4\% of the teacher score (0.535 against 0.549). The macro-F1 of the teacher itself is lower on this source than on any other source. StaticKD keeps the smallest share on MasakhaNEWS (80.0\%). The human labels of MasakhaNEWS follow a non-IPTC scheme, and 10 of its 16 languages are absent from the distillation data. Bangla is also absent from the distillation data. Bangla news shows most clearly what the pre-trained embeddings contribute. fastText + KD and TF-IDF + SVM collapse to 0.150 and 0.010 on Bangla news, while StaticKD reaches 0.748.
-
-\begin{table*}[!t]
-\caption{Test Macro-F1 by Source of the Unified Test Set. MN-DS Is the Only Source Annotated Directly With IPTC Topics. MasakhaNEWS Is Human-Annotated Under Its Own Scheme. Last Column: StaticKD as a Percentage of the Teacher}
-\label{tab:sources}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3.5pt}
-\resizebox{\textwidth}{!}{\begin{tabular}{@{}llrrccccccc@{}}
-\toprule
-Source & Label origin & $n$ & Lang. & Teacher & DistilmBERT & MiniLM & \textbf{StaticKD} & fastText (q) & TF-IDF+SVM & \% teacher \\
-\midrule
-CC-NEWS 2024--2026 & JSON-LD section & 6,050 & 29 & 0.651 & 0.629 & 0.634 & 0.624 & 0.579 & 0.609 & 96\% \\
-MasakhaNEWS~\cite{adelani2023masakhanews} & human annotation & 3,339 & 16 & 0.695 & 0.545 & 0.582 & 0.556 & 0.341 & 0.434 & 80\% \\
-L3Cube-IndicNews~\cite{mirashi2023indicnews} & publisher category & 2,361 & 10 & 0.709 & 0.501 & 0.680 & 0.639 & 0.328 & 0.342 & 90\% \\
-MN-DS~\cite{petukhova2023mnds} & human annotation & 755 & 1 & 0.549 & 0.546 & 0.535 & 0.535 & 0.493 & 0.461 & 97\% \\
-Bangla news~\cite{hossain2025banglanews} & publisher category & 139 & 1 & 0.835 & 0.730 & 0.817 & 0.748 & 0.150 & 0.010 & 90\% \\
-IndoNews & publisher category & 100 & 1 & 0.885 & 0.846 & 0.856 & 0.862 & 0.852 & 0.873 & 97\% \\
+Teacher XLM-R-large & 2,971 / 3,210 & 0.33 & 0.76 & 2,957 & 2,136 & torch, transformers \\
+Teacher XLM-R-large, ONNX int8 & 1,239 / 1,279 & 0.77 & 2.62 & 1,383 & 537 & onnxruntime, transformers \\
+DistilmBERT + KD & 198 / 215 & 4.88 & 14.6 & 1,068 & 516 & onnxruntime, transformers \\
+MiniLM-L6 + KD & 57.8 / 68.5 & 16.4 & 36.5 & 1,242 & 408 & onnxruntime, transformers \\
+\textbf{StaticKD} & \textbf{2.03 / 3.46} & \textbf{473} & \textbf{893} & 501 & \textbf{34} & numpy, tokenizers \\
+StaticKD-compact & 1.87 / 3.32 & 549 & 1,851 & 277 & 23 & numpy, tokenizers \\
+fastText + KD, subword, quantized & 2.08 / 3.95 & 532 & 892 & 300 & 18 & fasttext, tokenizers \\
+fastText + KD, subword & 2.26 / 4.30 & 455 & 592 & 1,121 & 839 & fasttext, tokenizers \\
+TF-IDF + SVM + KD & 2.93 / 4.48 & 421 & 595 & 826 & 166 & scikit-learn, tokenizers \\
 \bottomrule
 \end{tabular}}
 \end{table*}
+On CPU, the teacher is too slow for a large stream of articles. StaticKD removes this cost almost entirely (Table~\ref{tab:eff}, Fig.~\ref{fig:tradeoff}, and Fig.~S2 in the supplementary material). In PyTorch fp32, the teacher needs 2,971~ms per article on one core and reaches a throughput of 0.33 articles per second. The best CPU configuration for the teacher is ONNX int8 (1,239~ms per article and 0.77 articles per second). Classifying one million articles per day would take 15.1 cores (ONNX int8) to 34.8 cores (PyTorch) for this step alone.
 
-\begin{figure*}[!t]
+StaticKD needs 2.03~ms per article and can process 473 articles per second per core. Its speed is about 616 times that of the ONNX int8 teacher and 1,420 times that of the PyTorch teacher. Compared with MiniLM-L6, StaticKD is about 29 times faster. Its file is 16 times smaller than that of the ONNX int8 teacher. A load of one million articles per day needs 0.02 cores. The model uses 501~MB of RAM (mostly for the tokenizer structure), while the compact variant uses 277~MB. Tokenization takes 98\% of the single-thread prediction time and produces 579 tokens per article on average. Averaging the table rows alone runs at 28,755 articles per second. The speed of StaticKD is thus limited by the tokenizer, not by the model.
+
+StaticKD is not the fastest model in the table. The quantized fastText + KD is slightly faster and processes 532 articles per second. It is also smaller (18~MB) and uses less RAM (300~MB). Its test macro-F1 of 0.435 is still lower than the 0.545 reached by StaticKD. Four models have comparable latency: StaticKD, its compact variant, fastText, and TF-IDF + SVM. Among them, StaticKD is the most accurate (Fig.~\ref{fig:tradeoff}).
+
+\begin{figure}[!t]
 \centering
-\includegraphics[width=0.78\textwidth]{figures/fig_groups.pdf}
-\caption{Test macro-F1 by label origin (left) and by the amount of distillation data in the language of the article (right).}
-\label{fig:groups}
-\end{figure*}
+\includegraphics[width=\columnwidth]{figures/fig_tradeoff.pdf}
+\caption{Test macro-F1 on the unified test set against single-core CPU throughput (log scale).}
+\label{fig:tradeoff}
+\end{figure}
 
-\subsection{Validity of the Editorial Labels}
-\label{sec:res-validity}
-Two thirds of the test labels are section and category labels, which record newsroom decisions rather than annotation that follows a labeling guideline. This subsection checks whether such labels behave like human labels in the same language. The check compares how well one and the same teacher agrees with each label type. The teacher stays the same in this check and serves only as a fixed reference. Much noisier section labels would show up as clearly lower agreement of the teacher with section labels than with human labels in the same language.
-
-The English part of the test set contains only human labels because the sampling prefers human-labeled sources (Section~\ref{sec:testset}). For a comparison within English, a separate sample was therefore drawn from 306 sites outside the test set. The sample contains 754 English CC-NEWS articles with JSON-LD section labels and at most 50 articles per label. The accuracy of the teacher is 0.646 on the section labels (macro-F1 0.617) and 0.559 on the human labels of MN-DS and MasakhaNEWS (macro-F1 0.565). For 12 of the 17 labels, the accuracy of the teacher is higher on the section labels (Wilcoxon $p=0.033$). The ranking of label difficulty also correlates between the two label types ($\rho=0.63$, $p=0.007$). Both label types have the same hard labels: \emph{society}, \emph{human interest}, and \emph{religion}. By this measure, English section labels are not noisier than human labels.
-
-The test set itself allows a second comparison in French. The teacher reaches an accuracy of 0.716 on 208 French articles with section labels and 0.500 on 200 human-labeled MasakhaNEWS articles. The direction is the same as in English.
-
-The last check looks for the cause of the lower agreement on the human-labeled sources. The analysis is done per source category and is restricted to languages covered by XLM-R pre-training. The median agreement per category between the teacher and the mapped label is 0.46 for MasakhaNEWS and 0.50 for MN-DS. It is higher for L3Cube (0.81) and CC-NEWS sections (0.87). The lowest agreement occurs for source categories that are broader than their IPTC target. One example is the \emph{politics} category of MasakhaNEWS, where only 45\% of the articles are predicted as \emph{politics}. The main alternative is \emph{conflict} (29\%). Agreement is also low for labels whose boundaries are unclear even to human annotators, such as \emph{society} in MN-DS. This finding is in line with the low inter-annotator agreement reported for that label~\cite{kuzman2025llm}. Such mismatches reflect differences between the category scheme of a source and IPTC. Comparisons between models are unaffected because every model is scored against the same labels. Absolute scores are read as agreement with the editorial categorization.
-
-\subsection{Ablation, Temperature, and Ensembling (RQ2)}
+\subsection{Ablation, Temperature, and Ensembling (RQ3)}
 \label{sec:res-abl}
 \begin{table*}[!t]
 \caption{Ablations and Temperature (One Student, No Ensemble). Mean $\pm$ Standard Deviation Over Seeds. $^{*}$ = Different From the Final Recipe (Welch, Holm, $p<0.05$)}
 \label{tab:ablation}
 \centering
-\footnotesize
+\scriptsize
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 Variant & Seeds & Dev macro-F1 & Held-out agreement & Test macro-F1 & Test accuracy \\
@@ -536,112 +447,64 @@ Frozen embeddings restrict training to the linear head on top of potion. The res
 
 None of the other changes shifts the test macro-F1 significantly. Hard labels from the teacher change the test macro-F1 by +0.005 ($p=0.433$) and the development score by $-$0.006 ($p=1.000$). Hard labels therefore work as well as soft labels. Reducing the data to 130 thousand documents lowers the test score by 0.002 ($p=1.000$). Removing token dropout gives +0.001 ($p=1.000$) and an MLP head that cannot be folded +0.009 ($p=0.281$).
 
-Raising the temperature does not help (Fig.~\ref{fig:temperature}). The common choice of $\tau=2$~\cite{hinton2015distilling} lowers the held-out agreement by 0.007 ($p<0.001$) compared with $\tau=1$. The test macro-F1 ($-$0.005, $p=0.059$) and the development score ($-$0.006, $p=0.705$) do not change significantly. At $\tau=4$ all three metrics drop. The test score falls by 0.014 ($p<0.001$).
+Raising the temperature does not help (Fig.~S3 in the supplementary material). The common choice of $\tau=2$~\cite{hinton2015distilling} lowers the held-out agreement by 0.007 ($p<0.001$) compared with $\tau=1$. The test macro-F1 ($-$0.005, $p=0.059$) and the development score ($-$0.006, $p=0.705$) do not change significantly. At $\tau=4$ all three metrics drop. The test score falls by 0.014 ($p<0.001$).
 
-The ensemble results are averaged over seed combinations. Three seeds instead of one raise the test macro-F1 from 0.542 to 0.544 and the held-out agreement from 0.808 to 0.810 (Fig.~\ref{fig:ensemble}). Ten seeds give 0.546. The gain is small but free at inference time, because an ensemble of any size still results in one table.
+The ensemble results are averaged over seed combinations. Three seeds instead of one raise the test macro-F1 from 0.542 to 0.544 and the held-out agreement from 0.808 to 0.810 (Fig.~S4 in the supplementary material). Ten seeds give 0.546. The gain is small but free at inference time, because an ensemble of any size still results in one table.
 
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/fig_temperature.pdf}
-\caption{Effect of the distillation temperature. Each dot is one seed. The line connects the means.}
-\label{fig:temperature}
-\end{figure*}
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=0.85\columnwidth]{figures/fig_ensemble_size.pdf}
-\caption{Effect of the table ensemble size (mean $\pm$ standard deviation over seed combinations).}
-\label{fig:ensemble}
-\end{figure}
-
-\subsection{CPU Efficiency (RQ3)}
-\label{sec:res-eff}
-\begin{table*}[!t]
-\caption{CPU Efficiency on Pinned P-Cores (Sample From the Unified Test Set, 1c/4c = 1/4 Cores)}
-\label{tab:eff}
-\centering
-\footnotesize
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}lcccccl@{}}
-\toprule
-Model & Latency p50 / p95, 1c (ms) & Throughput 1c (doc/s) & Throughput 4c (doc/s) & Model RAM (MB) & File (MB) & Dependencies \\
-\midrule
-Teacher XLM-R-large & 2,971 / 3,210 & 0.33 & 0.76 & 2,957 & 2,136 & torch, transformers \\
-Teacher XLM-R-large, ONNX int8 & 1,239 / 1,279 & 0.77 & 2.62 & 1,383 & 537 & onnxruntime, transformers \\
-DistilmBERT + KD & 198 / 215 & 4.88 & 14.6 & 1,068 & 516 & onnxruntime, transformers \\
-MiniLM-L6 + KD & 57.8 / 68.5 & 16.4 & 36.5 & 1,242 & 408 & onnxruntime, transformers \\
-\textbf{StaticKD} & \textbf{2.03 / 3.46} & \textbf{473} & \textbf{893} & 501 & \textbf{34} & numpy, tokenizers \\
-StaticKD-compact & 1.87 / 3.32 & 549 & 1,851 & 277 & 23 & numpy, tokenizers \\
-fastText + KD, subword, quantized & 2.08 / 3.95 & 532 & 892 & 300 & 18 & fasttext, tokenizers \\
-fastText + KD, subword & 2.26 / 4.30 & 455 & 592 & 1,121 & 839 & fasttext, tokenizers \\
-TF-IDF + SVM + KD & 2.93 / 4.48 & 421 & 595 & 826 & 166 & scikit-learn, tokenizers \\
-\bottomrule
-\end{tabular}}
-\end{table*}
-On CPU, the teacher is too slow for a large stream of articles. StaticKD removes this cost almost entirely (Table~\ref{tab:eff}, Figs.~\ref{fig:tradeoff} and~\ref{fig:latency}). In PyTorch fp32, the teacher needs 2,971~ms per article on one core and reaches a throughput of 0.33 articles per second. The best CPU configuration for the teacher is ONNX int8 (1,239~ms per article and 0.77 articles per second). Classifying one million articles per day would take 15.1 cores (ONNX int8) to 34.8 cores (PyTorch) for this step alone.
-
-StaticKD needs 2.03~ms per article and can process 473 articles per second per core. Its speed is about 616 times that of the ONNX int8 teacher and 1,420 times that of the PyTorch teacher. Compared with MiniLM-L6, StaticKD is about 29 times faster. Its file is 16 times smaller than that of the ONNX int8 teacher. A load of one million articles per day needs 0.02 cores. The model uses 501~MB of RAM (mostly for the tokenizer structure), while the compact variant uses 277~MB. Tokenization takes 98\% of the single-thread prediction time and produces 579 tokens per article on average. Averaging the table rows alone runs at 28,755 articles per second. The speed of StaticKD is thus limited by the tokenizer, not by the model.
-
-StaticKD is not the fastest model in the table. The quantized fastText + KD is slightly faster and processes 532 articles per second. It is also smaller (18~MB) and uses less RAM (300~MB). Its test macro-F1 of 0.435 is still lower than the 0.545 reached by StaticKD. Four models have comparable latency: StaticKD, its compact variant, fastText, and TF-IDF + SVM. Among them, StaticKD is the most accurate (Fig.~\ref{fig:tradeoff}).
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=\columnwidth]{figures/fig_tradeoff.pdf}
-\caption{Test macro-F1 on the unified test set against single-core CPU throughput (log scale).}
-\label{fig:tradeoff}
-\end{figure}
-
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/fig_latency_ram_size.pdf}
-\caption{Latency per article, model RAM, and file size (log scale).}
-\label{fig:latency}
-\end{figure*}
-
-\subsection{Analysis by Language and Label (RQ4)}
+\subsection{Analysis by Language, Label, and Source (RQ4)}
 \label{sec:res-lang}
-\begin{table}[!t]
-\caption{Factors Behind Per-Language Performance}
-\label{tab:factors}
+Table~\ref{tab:groups} and Fig.~S5 in the supplementary material show that the share of the teacher score that StaticKD keeps varies far more with the amount of distillation data in the language of the article than with the type of label. By label origin, the share ranges from 89.5\% for publisher categories to 95.8\% for JSON-LD sections. By the amount of distillation data in the language, the share falls from 97.5\% in languages with at least 500 documents to 72.3\% in languages without distillation data.
+
+\begin{table*}[!t]
+\caption{Test Macro-F1 by Subgroup. Last Column: StaticKD Macro-F1 as a Percentage of the Teacher Macro-F1 in the Same Subgroup}
+\label{tab:groups}
 \centering
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}lcc@{}}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{@{}lrcccccccc@{}}
 \toprule
-Test & Statistic & $p$ \\
+Subgroup & $n$ & Teacher & DistilmBERT & MiniLM & \textbf{StaticKD} & fastText (q) & TF-IDF+SVM & fastText GPT & \% teacher \\
 \midrule
-Spearman: agreement vs log(distillation data) & $\rho=0.31$ & 0.022 \\
-Spearman: agreement vs number of training sites & $\rho=0.29$ & 0.033 \\
-Spearman: agreement vs teacher confidence & $\rho=0.71$ & $<$0.001 \\
-Kruskal--Wallis: across scripts & $H=10.37$ & 0.065 \\
-Spearman (test): accuracy gap vs log(data) & $\rho=0.52$ & $<$0.001 \\
-Spearman (test): StaticKD accuracy vs token coverage & $\rho=0.50$ & $<$0.001 \\
-Spearman (test): accuracy gap vs token coverage & $\rho=0.49$ & $<$0.001 \\
+\multicolumn{10}{@{}l}{\textit{Label origin}} \\
+\quad human annotation & 4,094 & 0.463 & 0.436 & 0.436 & 0.414 & 0.336 & 0.393 & 0.027 & 90\% \\
+\quad publisher category & 2,600 & 0.702 & 0.498 & 0.674 & 0.629 & 0.319 & 0.330 & 0.063 & 90\% \\
+\quad JSON-LD section & 6,050 & 0.651 & 0.629 & 0.634 & 0.624 & 0.579 & 0.609 & 0.136 & 96\% \\
+\multicolumn{10}{@{}l}{\textit{Distillation data of the language}} \\
+\quad sufficient ($\ge$500) & 7,644 & 0.633 & 0.617 & 0.616 & 0.618 & 0.572 & 0.593 & 0.116 & 98\% \\
+\quad few ($<$500) & 2,243 & 0.537 & 0.344 & 0.496 & 0.478 & 0.202 & 0.227 & 0.037 & 89\% \\
+\quad none (0) & 2,857 & 0.557 & 0.452 & 0.502 & 0.402 & 0.174 & 0.230 & 0.048 & 72\% \\
+\multicolumn{10}{@{}l}{\textit{Region}} \\
+\quad Africa & 3,044 & 0.697 & 0.532 & 0.576 & 0.542 & 0.312 & 0.408 & 0.085 & 78\% \\
+\quad South Asia & 2,681 & 0.575 & 0.410 & 0.544 & 0.509 & 0.246 & 0.276 & 0.046 & 88\% \\
+\quad East/Southeast Asia \& Middle East & 1,574 & 0.636 & 0.620 & 0.621 & 0.622 & 0.560 & 0.629 & 0.085 & 98\% \\
+\quad Europe & 5,445 & 0.653 & 0.637 & 0.638 & 0.638 & 0.595 & 0.610 & 0.136 & 98\% \\
+\multicolumn{10}{@{}l}{\textit{Teacher pre-training coverage}} \\
+\quad outside XLM-R pre-training & 1,750 & 0.719 & 0.586 & 0.620 & 0.501 & 0.317 & 0.457 & 0.086 & 70\% \\
+\quad in XLM-R pre-training & 10,994 & 0.609 & 0.549 & 0.585 & 0.576 & 0.468 & 0.503 & 0.096 & 95\% \\
+\multicolumn{10}{@{}l}{\textit{Site diversity}} \\
+\quad diverse ($\ge$10) & 5,225 & 0.657 & 0.642 & 0.643 & 0.642 & 0.598 & 0.616 & 0.134 & 98\% \\
+\quad single publisher ($<$3) & 6,204 & 0.517 & 0.387 & 0.475 & 0.433 & 0.221 & 0.287 & 0.045 & 84\% \\
+\quad medium (3--10) & 1,315 & 0.559 & 0.556 & 0.539 & 0.543 & 0.503 & 0.533 & 0.089 & 97\% \\
 \bottomrule
-\end{tabular}}
-\end{table}
-In a typical language, the accuracy of StaticKD is close to that of the teacher. The median per-language accuracy gap is $-$0.024 (Fig.~\ref{fig:lang}). Table~\ref{tab:factors} relates this gap to properties of the language. The analysis on the held-out set uses 53 languages with at least 20 documents each. The agreement of StaticKD with the teacher rises with the log amount of distillation data ($\rho=0.31$, $p=0.022$) and with teacher confidence ($\rho=0.71$, $p<0.001$). The difference in agreement across scripts is not significant (Kruskal--Wallis $H=10.37$, $p=0.065$). The weak spot of StaticKD is a group of African languages. StaticKD reaches a mean accuracy of only 0.407 on languages that lie outside XLM-R pre-training and are also absent from the distillation data (ig, lg, ln, pcm, rn, sn, ti, yo). The teacher reaches 0.643 on the same languages.
+\end{tabular}
+\end{table*}
+
+Table~S2 in the supplementary material splits the test set by source. MN-DS is the only source that is annotated directly with IPTC topics. On MN-DS, StaticKD keeps 97.4\% of the teacher score (0.535 against 0.549). The macro-F1 of the teacher itself is lower on this source than on any other source. StaticKD keeps the smallest share on MasakhaNEWS (80.0\%). The human labels of MasakhaNEWS follow a non-IPTC scheme, and 10 of its 16 languages are absent from the distillation data. Bangla is also absent from the distillation data. Bangla news shows most clearly what the pre-trained embeddings contribute. fastText + KD and TF-IDF + SVM collapse to 0.150 and 0.010 on Bangla news, while StaticKD reaches 0.748.
+
+In a typical language, the accuracy of StaticKD is close to that of the teacher. The median per-language accuracy gap is $-$0.024 (Fig.~\ref{fig:lang}). Table~S3 in the supplementary material relates this gap to properties of the language. The analysis on the held-out set uses 53 languages with at least 20 documents each. The agreement of StaticKD with the teacher rises with the log amount of distillation data ($\rho=0.31$, $p=0.022$) and with teacher confidence ($\rho=0.71$, $p<0.001$). The difference in agreement across scripts is not significant (Kruskal--Wallis $H=10.37$, $p=0.065$). The weak spot of StaticKD is a group of African languages. StaticKD reaches a mean accuracy of only 0.407 on languages that lie outside XLM-R pre-training and are also absent from the distillation data (ig, lg, ln, pcm, rn, sn, ti, yo). The teacher reaches 0.643 on the same languages.
 
 Four Indian languages (bn, ml, or, pa) show how StaticKD behaves on text whose tokens hardly ever appeared in training. In these languages, at least 68\% of the token occurrences come from tokens that appear fewer than 10 times in the distillation data. StaticKD still reaches a mean accuracy of 0.624 there compared with 0.738 for the teacher. The compact variant removes these rare tokens from the tokenizer, and its accuracy on these four languages falls to 0.013. In the other languages, the compact variant reaches an accuracy of 0.578 and the full StaticKD 0.640.
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/fig_per_language.pdf}
+\includegraphics[width=0.8\textwidth]{figures/fig_per_language.pdf}
 \caption{Left: StaticKD accuracy against teacher accuracy per test language (color shows the distillation data of the language, size the number of articles). Right: held-out agreement per language against the amount of distillation data for StaticKD and fastText + KD.}
 \label{fig:lang}
 \end{figure*}
 
-Fig.~\ref{fig:label} shows the results per label. For StaticKD, the hardest labels are \emph{society} (0.16), \emph{disaster} (0.29), \emph{human interest} (0.32), and \emph{conflict} (0.37). The easiest labels are \emph{sport} (0.88), \emph{weather} (0.84), and \emph{education} (0.75). Against the teacher, the largest gaps occur for \emph{environment} ($-$0.17), \emph{religion} ($-$0.15), and \emph{arts} ($-$0.08). The most frequent confusions are \emph{society} $\rightarrow$ \emph{human interest}, \emph{human interest} $\rightarrow$ \emph{arts}, and \emph{society} $\rightarrow$ \emph{politics}, with 20\% each.
+Fig.~S6 in the supplementary material shows the results per label. For StaticKD, the hardest labels are \emph{society} (0.16), \emph{disaster} (0.29), \emph{human interest} (0.32), and \emph{conflict} (0.37). The easiest labels are \emph{sport} (0.88), \emph{weather} (0.84), and \emph{education} (0.75). Against the teacher, the largest gaps occur for \emph{environment} ($-$0.17), \emph{religion} ($-$0.15), and \emph{arts} ($-$0.08). The most frequent confusions are \emph{society} $\rightarrow$ \emph{human interest}, \emph{human interest} $\rightarrow$ \emph{arts}, and \emph{society} $\rightarrow$ \emph{politics}, with 20\% each.
 
 The table also shows which tokens carry the topic signal of an article. The specificity of a token is defined as the largest difference between one entry of its table row and the mean of the other 16 entries. Keeping only the 10\% most specific tokens of each article (about 58 tokens per article) leaves the test macro-F1 almost unchanged (0.543 against 0.545). A random 10\% of the tokens gives only 0.435.
-
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/fig_per_label.pdf}
-\caption{F1 per label on the test set (left) and the StaticKD confusion matrix normalized per reference label (right).}
-\label{fig:label}
-\end{figure*}
 
 \subsection{Calibration and Cascade Mode}
 \begin{table}[!t]
@@ -665,38 +528,35 @@ Teacher only & 0.0\% & -- & 0.600 & 0.699 & 0.77 \\
 \bottomrule
 \end{tabular}}
 \end{table}
-The ECE of StaticKD is lower than that of the teacher. It is 0.041 on the development set and 0.139 on the test set. The teacher has 0.090 and 0.245 on the same two sets. The test set lies outside the training distribution, and both models become overconfident there (Fig.~\ref{fig:calib}). In the cascade mode reported in Table~\ref{tab:cascade}, StaticKD itself decides the articles on which its confidence is at least $\theta$ and passes the rest to the teacher. At $\theta=0.8$, StaticKD decides 60.3\% of the articles and classifies them with an accuracy of 0.813. The cascade reaches an overall accuracy of 0.703 and a macro-F1 of 0.602, compared with 0.699 and 0.600 for the teacher alone. Its effective throughput is 1.92 articles per second per core, against 0.77 for the teacher.
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=0.8\columnwidth]{figures/fig_calibration.pdf}
-\caption{Reliability diagram of StaticKD on the development and test sets.}
-\label{fig:calib}
-\end{figure}
+The ECE of StaticKD is lower than that of the teacher. It is 0.041 on the development set and 0.139 on the test set. The teacher has 0.090 and 0.245 on the same two sets. The test set lies outside the training distribution, and both models become overconfident there (Fig.~S7 in the supplementary material). In the cascade mode reported in Table~\ref{tab:cascade}, StaticKD itself decides the articles on which its confidence is at least $\theta$ and passes the rest to the teacher. At $\theta=0.8$, StaticKD decides 60.3\% of the articles and classifies them with an accuracy of 0.813. The cascade reaches an overall accuracy of 0.703 and a macro-F1 of 0.602, compared with 0.699 and 0.600 for the teacher alone. Its effective throughput is 1.92 articles per second per core, against 0.77 for the teacher.
 
 \section{Discussion}
 \label{sec:discussion}
-The results in Sections~\ref{sec:res-acc} and~\ref{sec:res-eff} show that a table lookup keeps about nine tenths of the teacher macro-F1, while its inference cost is two to three orders of magnitude lower. This finding agrees with~\cite{galke2022bow}, which showed that order-free representations are already competitive for topic classification. The token analysis in Section~\ref{sec:res-lang} explains why a table suffices. Almost all of the topic signal in an article is carried by a small share of topic-specific tokens. The remaining gap to the teacher lies in a few labels and in languages that are underrepresented in the distillation data (Table~\ref{tab:groups}). StaticKD falls furthest behind the teacher on \emph{environment}, \emph{religion}, and \emph{arts} (Fig.~\ref{fig:label}). The lowest StaticKD scores are a separate matter. They occur on \emph{society}, \emph{disaster}, \emph{human interest}, and \emph{conflict}. The teacher also finds these labels among the hardest. Even for human annotators, \emph{society} and \emph{human interest} are known to be difficult~\cite{kuzman2025llm}. The low scores on these labels are therefore not specific to the student.
+\subsection{What a Token Table Retains}
+The results in Sections~\ref{sec:res-acc} and~\ref{sec:res-eff} show that a table lookup keeps about nine tenths of the teacher macro-F1, while its inference cost is two to three orders of magnitude lower. This finding agrees with~\cite{galke2022bow}, which showed that order-free representations are already competitive for topic classification. The token analysis in Section~\ref{sec:res-lang} explains why a table suffices. Almost all of the topic signal in an article is carried by a small share of topic-specific tokens. The remaining gap to the teacher lies in a few labels and in languages that are underrepresented in the distillation data (Table~\ref{tab:groups}). StaticKD falls furthest behind the teacher on \emph{environment}, \emph{religion}, and \emph{arts} (Fig.~S6 in the supplementary material). The lowest StaticKD scores are a separate matter. They occur on \emph{society}, \emph{disaster}, \emph{human interest}, and \emph{conflict}. The teacher also finds these labels among the hardest. Even for human annotators, \emph{society} and \emph{human interest} are known to be difficult~\cite{kuzman2025llm}. The low scores on these labels are therefore not specific to the student.
 
 With the same distillation data, MiniLM-L6 closes part of the gap to the teacher, whereas DistilmBERT does not (Table~\ref{tab:sig}). Both models cost one to two orders of magnitude more than StaticKD. The two models have different origins. MiniLM comes from a distillation of XLM-R-large, while DistilmBERT comes from mBERT. This difference suggests that the quality of the initial multilingual representation matters more than the number of layers.
 
-For RQ2, the ablations show where the knowledge of the student comes from. The largest contribution comes from the pre-trained multilingual initialization. Without this initialization, the test macro-F1 drops by 0.120, whereas removing the multilingual data lowers it by 0.051. The multilingual distillation data labeled by the teacher make the second largest contribution. This is consistent with Sparse Distillation~\cite{ye2022sparse}, which also relies on a large amount of teacher-labeled text. The most direct evidence for the role of the initialization comes from the compact variant. Some Indian languages hardly occur in the distillation data. Examples are bn, pa, and or (Odia). Most token occurrences in these languages come from tokens seen fewer than 10 times in the distillation data. The embeddings of these tokens are rarely or never updated, so they stay close to their potion values. The mean accuracy of StaticKD in these languages is still 0.624, but it falls to 0.013 once the compact tokenizer removes these tokens. Transfer to languages without data therefore relies on embeddings that training hardly changes. They lie in the same space as the trained embeddings, so the linear head learned from data-rich languages still applies to them.
+\subsection{Where the Accuracy Comes From}
+For RQ3, the ablations show where the knowledge of the student comes from. The largest contribution comes from the pre-trained multilingual initialization. Without this initialization, the test macro-F1 drops by 0.120, whereas removing the multilingual data lowers it by 0.051. The multilingual distillation data labeled by the teacher make the second largest contribution. This is consistent with Sparse Distillation~\cite{ye2022sparse}, which also relies on a large amount of teacher-labeled text. The most direct evidence for the role of the initialization comes from the compact variant. Some Indian languages hardly occur in the distillation data. Examples are bn, pa, and or (Odia). Most token occurrences in these languages come from tokens seen fewer than 10 times in the distillation data. The embeddings of these tokens are rarely or never updated, so they stay close to their potion values. The mean accuracy of StaticKD in these languages is still 0.624, but it falls to 0.013 once the compact tokenizer removes these tokens. Transfer to languages without data therefore relies on embeddings that training hardly changes. They lie in the same space as the trained embeddings, so the linear head learned from data-rich languages still applies to them.
 
 Freezing the embeddings helps languages with little or no distillation data (Table~\ref{tab:ablation-groups}). During fine-tuning, the embeddings of tokens from the training languages move, and the model fits these languages better. Frozen embeddings give a lower development score for this reason. Tokens from other languages stay at the positions that potion gave them. The head of the model has adapted to the moved embeddings, so these tokens fit it less well. The final recipe still uses fine-tuning because it was selected on a development set in the training languages. Such a development set cannot reveal this effect. Frozen embeddings are the safer choice for a deployment that targets languages without distillation data.
 
 Soft labels, by contrast, add little or nothing. At $\tau=1$, hard teacher labels do not differ significantly from soft labels, and no higher temperature improves on $\tau=1$ (Section~\ref{sec:res-abl}). This pattern fits the literature on the capacity gap~\cite{zhang2025law,wang2026rckd}. A possible explanation is that one linear layer over averaged embeddings cannot represent the inter-class structure in the tail of the teacher distribution (dark knowledge)~\cite{zhao2022dkd}. With a high $\tau$, the student is asked to imitate a distribution shape beyond its capacity.
 
+\subsection{Weak Languages and Model Selection}
 Per-language performance rises with how well a language is represented in the distillation data and the pre-training data. Held-out agreement does not differ significantly across scripts (Kruskal--Wallis $p=0.065$). The weakest results appear in African languages outside XLM-R pre-training that are also absent from the distillation data: ig, lg, ln, pcm, rn, sn, ti, and yo. The teacher still reaches an accuracy of 0.643 on these languages, perhaps thanks to subwords shared with other languages and to sentence context. StaticKD reaches only 0.407. The cheapest fix requires no change of architecture. News in these languages can be added to the distillation data and then labeled by the teacher. This step is supported by the data ablation and by the correlation between agreement and the amount of data ($\rho=0.31$).
 
 Agreement with the teacher cannot always be used to predict accuracy on editorial labels. The frozen-embedding variant scores 0.020 lower in held-out agreement but 0.014 higher in test macro-F1. Cutting the data to 130 thousand documents lowers the agreement ($-$0.009) without a significant change on the test set ($-$0.002). Student selection should not rely on agreement with the teacher alone. It should use labels that do not come from the teacher and a development set outside the training distribution, in line with~\cite{stanton2021kd}.
 
 Test scores should be read with the nature of the labels in mind. An article about a criminal case that involves an athlete can rightly sit in a sports section, while a model labels it \emph{crime}. IPTC allows several topics per article, so both answers are plausible. Comparisons between models remain fair because all models are scored against the same labels. The model ranking also does not change on the subset in which the number of articles per site is capped.
 
-Sparse Distillation~\cite{ye2022sparse} uses an n-gram table trained from scratch. StaticKD replaces it with pre-trained multilingual embeddings folded into 17 logits per token. With this replacement, the model becomes far smaller and can transfer to languages that are missing from the distillation data. In a news pipeline, inference is a recurring cost because every incoming article has to be classified. For one million articles per day, the ONNX int8 teacher needs 15.1 cores, whereas StaticKD needs only 0.02 cores (Section~\ref{sec:res-eff}).
+\subsection{Practical Implications}
+Sparse Distillation~\cite{ye2022sparse} uses an n-gram table trained from scratch. StaticKD replaces it with pre-trained multilingual embeddings folded into 17 logits per token. With this replacement, the model becomes far smaller and can transfer to languages that are missing from the distillation data. In a news pipeline, inference is a recurring cost because every incoming article has to be classified.
 
-In a real-time pipeline on servers without a GPU, StaticKD needs a 34~MB file, and its only dependencies are \texttt{numpy} and \texttt{tokenizers}. Its output probabilities are better calibrated than those of the teacher, with a test ECE of 0.139 against 0.245. The better calibration makes a cascade mode possible. At $\theta=0.8$, the cascade accuracy of 0.703 is on par with that of the teacher alone (0.699). The cascade throughput is 1.92 articles per second per core compared with 0.77 for the teacher alone. This mode suits batch jobs that need teacher-level accuracy. The compact variant lowers RAM, but it is only advisable when all target languages are already covered by the distillation data.
+In a real-time pipeline on servers without a GPU, StaticKD needs a 34~MB file, and its only dependencies are \texttt{numpy} and \texttt{tokenizers}. Its output probabilities are better calibrated than those of the teacher, with a test ECE of 0.139 against 0.245. The better calibration makes a cascade mode possible. This mode suits batch jobs that need teacher-level accuracy. The compact variant lowers RAM, but it is only advisable when all target languages are already covered by the distillation data.
 
-\section{Limitations}
+\subsection{Limitations}
 \label{sec:limitations}
 Of the test articles, 47.5\% carry section labels from JSON-LD, and 20.4\% carry publisher categories. Section conventions differ from one publisher to another. A section also reflects one editorial view of an article that may cover several topics at once. The mapping table was built conservatively, validated against the IPTC tree, and reviewed by the first author. The articles themselves were not re-annotated by humans. Absolute scores on these labels therefore measure agreement with the way publishers categorize articles. This holds especially for labels with unclear boundaries, such as \emph{society}, \emph{human interest}, and \emph{lifestyle}.
 
@@ -723,38 +583,22 @@ The accuracy of this very small student comes mainly from multilingual distillat
 The distillation data should be extended to the weak languages, especially the African languages outside XLM-R pre-training. Fine-tuning could also use a regularizer that keeps the embeddings close to the pre-trained space. Such a regularizer might give in-distribution accuracy and cross-lingual transfer at the same time. On the speed side, tokenization takes 98\% of the inference time. The next source of speed is therefore a faster tokenizer such as a direct word-to-table lookup. Vocabulary pruning has to keep the rare tokens that languages with little or no distillation data depend on. Several problems remain open: cheap non-linear heads with quantized embeddings, hierarchical classification down to IPTC level 2, multi-label classification, and human IPTC annotation of a multilingual sample of the test set.
 
 \section*{Code, Model, and Data Availability}
-The code for this study is available at \todo{GitHub URL and Zenodo DOI}. It covers data collection, test-set construction, teacher labeling, training, evaluation, and benchmarking. The same location provides a notebook that reproduces every number, table, and figure in this paper. The section-to-IPTC mapping table is also released with the code. The StaticKD models are available at \todo{Hugging Face URL}. The test set is released as a manifest of article URLs or IDs, labels, label origins, and text hashes, together with a reconstruction script. The article texts themselves are not redistributed because of publisher copyright and the licenses of the source datasets. EMMediaTopic is available from the CLARIN.SI repository~\cite{emmediatopic2025}. Table~\ref{tab:license} lists the licenses of the assets used and released in this study.
-
-\begin{table}[!t]
-\caption{Licenses of the Assets Used and Released}
-\label{tab:license}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}ll@{}}
-\toprule
-Asset & License \\
-\midrule
-Teacher \texttt{classla/multilingual-IPTC-news-topic-classifier} & CC BY-SA 4.0 \\
-Embeddings \texttt{minishlab/potion-multilingual-128M} & MIT \\
-MasakhaNEWS & CC BY-NC 4.0 \\
-MN-DS, L3Cube-IndicNews, IndoNews & CC BY 4.0 \\
-Bangla news~\cite{hossain2025banglanews} & not stated on the dataset card \\
-EMMediaTopic 1.0 & CC BY-SA 4.0 \\
-CC-News 2019--2021, CC-NEWS 2024--2026 & Common Crawl terms of use \\
-\midrule
-StaticKD code (release) & MIT \\
-StaticKD models (release) & CC BY-SA 4.0 (inherited from the teacher) \\
-Test-set manifest (release) & CC BY-SA 4.0 \\
-\bottomrule
-\end{tabular}}
-\end{table}
+The code for this study is available at \todo{GitHub URL and Zenodo DOI}. It covers data collection, test-set construction, teacher labeling, training, evaluation, and benchmarking. The same location provides a notebook that reproduces every number, table, and figure in this paper. The section-to-IPTC mapping table is also released with the code. The StaticKD models are available at \todo{Hugging Face URL}. The test set is released as a manifest of article URLs or IDs, labels, label origins, and text hashes, together with a reconstruction script. The article texts themselves are not redistributed because of publisher copyright and the licenses of the source datasets. EMMediaTopic is available from the CLARIN.SI repository~\cite{emmediatopic2025}. Table~S4 in the supplementary material lists the licenses of the assets used and released in this study.
 
 \section*{Acknowledgment}
 The authors thank the Department of Informatics Engineering, Sepuluh Nopember Institute of Technology, for supporting this research. The authors used Claude Opus 5.5 (Anthropic) to assist with writing the experiment code, with data processing (including the first draft of the section-to-IPTC mapping table, all of which the authors reviewed), and with reviewing and minor editing of the manuscript. The manuscript was written by the authors, who take full responsibility for its content and claims.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
+
+\begin{IEEEbiographynophoto}{Obi Kastanya}
+\todo{author biography}
+\end{IEEEbiographynophoto}
+
+\begin{IEEEbiographynophoto}{Ananta Dwi Prayoga Alwy}
+\todo{author biography}
+\end{IEEEbiographynophoto}
+
+\EOD
 
 \end{document}

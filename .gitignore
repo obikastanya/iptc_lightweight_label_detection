@@ -91,8 +91,18 @@ paper_final/*.bbl
 paper_final/*.blg
 paper_final/*.out
 paper_final/*.synctex.gz
+paper_final/figures/*.aux
+paper_writing/restructure/*.aux
+paper_writing/restructure/*.out
 # IEEE Access template (contains licensed fonts; download again from ieeeaccess.ieee.org)
 paper_writing/template_ieeeaccess/
+# Copies of that template placed next to main.tex for compiling (paper_writing/restructure/build.sh copies them)
+paper_final/ieeeaccess.cls
+paper_final/spotcolor.sty
+paper_final/t1*
+paper_final/logo.png
+paper_final/notaglinelogo.png
+paper_final/bullet.png
 
 # Video presentasi (besar, disimpan lokal / Drive)
 /presentation/*.mp4

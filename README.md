@@ -34,8 +34,9 @@ revisi di `paper_final/main.tex` akan tertimpa.
 
 | Path | Isi |
 |---|---|
-| `paper_final/` | **Naskah final IEEE Access**: `main.tex`, `main.pdf`, `references.bib`, `figures/` |
-| `paper_final_id/` | Terjemahan bahasa Indonesia dan ringkasan presentasi (bukan naskah resmi) |
+| `paper_final/` | **Naskah final IEEE Access** (kelas `ieeeaccess`, struktur ulang 1 November 2026): `main.tex`, `main.pdf`, `supplementary.tex`/`.pdf`, `references.bib`, `figures/` |
+| `paper_final_id/` | Terjemahan bahasa Indonesia dan ringkasan presentasi (bukan naskah resmi). Masih mengikuti struktur lama sebelum 1 November 2026 |
+| `paper_writing/restructure/` | Rancangan struktur, log restrukturisasi, rencana perubahan berdasarkan review, dan skrip build |
 | `paper_writing/` | Lembar kerja parafrase, panduan gaya (`ai_text_revision_guide*.md`), `change_log.md`, `mapping_review.xlsx`, template IEEE Access (tidak di-push) |
 | `src/statickd/` | **Kode final**: data, set uji, *teacher*, StaticKD, *baseline*, evaluasi, *benchmark*, ekspor angka |
 | `src/notebook_build/` | Generator notebook final (`part1.py` … `part5.py`) |
@@ -84,7 +85,7 @@ Kebutuhan yang dipasang terpisah:
 | *Benchmark* CPU (mesin idle) | notebook Bagian 10.1 dengan `RUN_BENCHMARK = True` |
 | Konstruksi set uji | `python -m statickd.testset.ccnews_warc`, `…jsonld`, `…silver`, `…external`, `…unified` (dengan `PYTHONPATH=src`) |
 | Paket rilis | `python scripts/build_dist.py` |
-| Kompilasi jurnal | `cd paper_final && pdflatex main && bibtex main && pdflatex main && pdflatex main` |
+| Kompilasi jurnal | `bash paper_writing/restructure/build.sh` (menyalin kelas `ieeeaccess` dan fontnya dari `paper_writing/template_ieeeaccess/`, yang tidak di-push, lalu mengompilasi `main` dan `supplementary`) |
 
 ## Memakai model
 
