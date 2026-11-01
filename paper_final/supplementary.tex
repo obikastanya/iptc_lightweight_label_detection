@@ -22,7 +22,7 @@
 \author{Obi~Kastanya and Ananta~Dwi~Prayoga~Alwy}
 \maketitle
 
-This document contains the algorithm, tables, and figures that the main text refers to as Algorithm~S1, Table~S1--S4, and Fig.~S1--S7.
+This document contains the algorithm, tables, and figures that the main text refers to as Algorithm~S1, Table~S1--S5, and Fig.~S1--S7.
 
 \begin{algorithm}[!htbp]
 \caption{StaticKD Inference for One Article}
@@ -55,19 +55,46 @@ Component & Value \\
 \quad batch, epoch, validation & 64, 6, 3\% of data (selects the epoch) \\
 \quad ensemble & mean of 3 seed tables \\
 \multicolumn{2}{@{}l}{\textit{fastText}} \\
-\quad word tokens (fixed) & dim 100, lr 0.5, 15 epoch \\
-\quad subword tokens (fixed) & dim 100, lr 0.5, 15 epoch \\
+\quad word tokens (chosen on dev) & dim 300, lr 1.0, 15 epoch \\
+\quad subword tokens (chosen on dev) & dim 100, lr 1.0, 15 epoch \\
+\quad grid (dev macro-F1) & lr $\{0.1, 0.5, 1.0\}$ $\times$ dim $\{100, 300\}$ $\times$ epoch $\{5, 15, 25\}$ \\
 \quad GPT-4o labels & dim 100, lr 0.5, 25 epoch \\
 \quad word n-grams, loss & 2, softmax, 2M buckets \\
 \quad tokens & words (+ character 2--5-grams) or XLM-R subwords \\
 \quad quantization & \texttt{quantize}, cutoff 300k, retrain \\
 \multicolumn{2}{@{}l}{\textit{TF-IDF + SVM}} \\
 \quad features & XLM-R subword uni+bigrams, min.\ df 3, max.\ 1,000,000, sublinear tf \\
-\quad classifier (fixed) & LinearSVC, $C=0.50$ \\
+\quad classifier (chosen on dev) & LinearSVC, $C=0.50$ \\
+\quad grid (dev macro-F1) & $C\in\{0.1, 0.25, 0.5, 1, 2\}$ \\
+\multicolumn{2}{@{}l}{\textit{Model2Vec classifier + KD}} \\
+\quad settings & library defaults: one 512-unit hidden layer, learned token weights, \\
+ & fine-tuned potion embeddings, lr $10^{-3}$, early stopping, 512 tokens \\
 \multicolumn{2}{@{}l}{\textit{MiniLM-L6 / DistilmBERT + KD}} \\
 \quad optimizer & AdamW $5\cdot 10^{-5}$, wd 0.01, warmup 6\%, linear, fp16 \\
-\quad batch, epoch, max. tokens & 32, 2, 256 \\
-\quad $\tau$ & $\{1, 2\}$, chosen on dev \\
+\quad batch, epoch, max. tokens & 32, 2, 256 (512 in the sensitivity check) \\
+\quad $\tau$ & MiniLM-L6 $\{1, 2\}$ chosen on dev ($\tau=1$); DistilmBERT $\tau=1$ \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Test Macro-F1 When One Source Is Left Out of the Unified Test Set (Row = Source Left Out)}
+\label{tab:loso}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lccccccccc@{}}
+\toprule
+Source left out & Teacher & MiniLM & DistilmBERT & \textbf{StaticKD} & Model2Vec & TF-IDF+SVM & fastText (q) & fastText subword & fastText word \\
+\midrule
+none (full test set) & 0.598 & 0.566 & 0.534 & 0.545 & 0.547 & 0.486 & 0.439 & 0.447 & 0.445 \\
+Bangla news & 0.599 & 0.566 & 0.536 & 0.547 & 0.549 & 0.490 & 0.443 & 0.451 & 0.452 \\
+CC-NEWS 2024--2026 & 0.515 & 0.480 & 0.426 & 0.451 & 0.453 & 0.364 & 0.297 & 0.310 & 0.305 \\
+IndoNews & 0.598 & 0.566 & 0.535 & 0.545 & 0.547 & 0.486 & 0.439 & 0.447 & 0.445 \\
+L3Cube-IndicNews & 0.595 & 0.565 & 0.560 & 0.547 & 0.551 & 0.519 & 0.477 & 0.484 & 0.483 \\
+MasakhaNEWS & 0.642 & 0.621 & 0.582 & 0.609 & 0.603 & 0.538 & 0.507 & 0.513 & 0.512 \\
+MN-DS & 0.586 & 0.552 & 0.516 & 0.526 & 0.529 & 0.471 & 0.418 & 0.426 & 0.424 \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -78,38 +105,38 @@ Component & Value \\
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\resizebox{\textwidth}{!}{\begin{tabular}{@{}llrrccccccc@{}}
+\resizebox{\textwidth}{!}{\begin{tabular}{@{}llrrcccccccc@{}}
 \toprule
-Source & Label origin & $n$ & Lang. & Teacher & DistilmBERT & MiniLM & \textbf{StaticKD} & fastText (q) & TF-IDF+SVM & \% teacher \\
+Source & Label origin & $n$ & Lang. & Teacher & DistilmBERT & MiniLM & \textbf{StaticKD} & Model2Vec & fastText (q) & TF-IDF+SVM & \% teacher \\
 \midrule
-CC-NEWS 2024--2026 & JSON-LD section & 6,050 & 29 & 0.651 & 0.629 & 0.634 & 0.624 & 0.579 & 0.609 & 96\% \\
-MasakhaNEWS~\cite{adelani2023masakhanews} & human annotation & 3,339 & 16 & 0.695 & 0.545 & 0.582 & 0.556 & 0.341 & 0.434 & 80\% \\
-L3Cube-IndicNews~\cite{mirashi2023indicnews} & publisher category & 2,361 & 10 & 0.709 & 0.501 & 0.680 & 0.639 & 0.328 & 0.342 & 90\% \\
-MN-DS~\cite{petukhova2023mnds} & human annotation & 755 & 1 & 0.549 & 0.546 & 0.535 & 0.535 & 0.493 & 0.461 & 97\% \\
-Bangla news~\cite{hossain2025banglanews} & publisher category & 139 & 1 & 0.835 & 0.730 & 0.817 & 0.748 & 0.150 & 0.010 & 90\% \\
-IndoNews & publisher category & 100 & 1 & 0.885 & 0.846 & 0.856 & 0.862 & 0.852 & 0.873 & 97\% \\
+CC-NEWS 2024--2026 & JSON-LD section & 6,050 & 29 & 0.651 & 0.629 & 0.634 & 0.624 & 0.618 & 0.582 & 0.609 & 96\% \\
+MasakhaNEWS~\cite{adelani2023masakhanews} & human annotation & 3,339 & 16 & 0.695 & 0.545 & 0.582 & 0.556 & 0.562 & 0.355 & 0.434 & 80\% \\
+L3Cube-IndicNews~\cite{mirashi2023indicnews} & publisher category & 2,361 & 10 & 0.709 & 0.501 & 0.680 & 0.639 & 0.644 & 0.306 & 0.342 & 90\% \\
+MN-DS~\cite{petukhova2023mnds} & human annotation & 755 & 1 & 0.549 & 0.546 & 0.535 & 0.535 & 0.536 & 0.491 & 0.461 & 97\% \\
+Bangla news~\cite{hossain2025banglanews} & publisher category & 139 & 1 & 0.835 & 0.730 & 0.817 & 0.748 & 0.716 & 0.191 & 0.010 & 90\% \\
+IndoNews & publisher category & 100 & 1 & 0.885 & 0.846 & 0.856 & 0.862 & 0.849 & 0.839 & 0.873 & 97\% \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \begin{table}[!htbp]
-\caption{Factors Behind Per-Language Performance}
+\caption{Factors Behind Per-Language Performance. Holm Correction Covers All Seven Tests}
 \label{tab:factors}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \resizebox{0.7\textwidth}{!}{%
-\begin{tabular}{@{}lcc@{}}
+\begin{tabular}{@{}lccc@{}}
 \toprule
-Test & Statistic & $p$ \\
+Test & Statistic & $p$ & $p$ (Holm) \\
 \midrule
-Spearman: agreement vs log(distillation data) & $\rho=0.31$ & 0.022 \\
-Spearman: agreement vs number of training sites & $\rho=0.29$ & 0.033 \\
-Spearman: agreement vs teacher confidence & $\rho=0.71$ & $<$0.001 \\
-Kruskal--Wallis: across scripts & $H=10.37$ & 0.065 \\
-Spearman (test): accuracy gap vs log(data) & $\rho=0.52$ & $<$0.001 \\
-Spearman (test): StaticKD accuracy vs token coverage & $\rho=0.50$ & $<$0.001 \\
-Spearman (test): accuracy gap vs token coverage & $\rho=0.49$ & $<$0.001 \\
+Spearman: agreement vs log(distillation data) & $\rho=0.31$ & 0.022 & 0.067 \\
+Spearman: agreement vs number of training sites & $\rho=0.29$ & 0.033 & 0.067 \\
+Spearman: agreement vs teacher confidence & $\rho=0.71$ & $<$0.001 & $<$0.001 \\
+Kruskal--Wallis: across scripts & $H=10.37$ & 0.065 & 0.067 \\
+Spearman (test): accuracy gap vs log(data) & $\rho=0.52$ & $<$0.001 & $<$0.001 \\
+Spearman (test): StaticKD accuracy vs token coverage & $\rho=0.50$ & $<$0.001 & 0.002 \\
+Spearman (test): accuracy gap vs token coverage & $\rho=0.49$ & $<$0.001 & 0.002 \\
 \bottomrule
 \end{tabular}}
 \end{table}

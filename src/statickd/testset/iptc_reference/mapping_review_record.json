@@ -1,6 +1,6 @@
 {
  "date": "2026-10-17",
- "reviewer": "Obi Kastanya (author)",
+ "reviewer": "Obi Kastanya and Ananta Dwi Prayoga Alwy (joint session)",
  "file": "paper_writing/mapping_review.xlsx",
  "mapping_source": "src/statickd/testset/iptc_map.py",
  "result": "all rules accepted, no changes",
