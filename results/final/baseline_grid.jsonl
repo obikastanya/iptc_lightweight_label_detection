@@ -31,3 +31,11 @@
 {"baseline": "ft_kd_word", "tokens": "word", "lr": 0.5, "dim": 100, "epoch": 15, "dev_macro_f1": 0.7446, "dev_accuracy": 0.789, "train_seconds": 1836.3}
 {"baseline": "ft_kd_word", "tokens": "word", "lr": 0.5, "dim": 100, "epoch": 25, "dev_macro_f1": 0.73811, "dev_accuracy": 0.78, "train_seconds": 2907.4}
 {"baseline": "ft_kd_word", "tokens": "word", "lr": 0.5, "dim": 300, "epoch": 5, "dev_macro_f1": 0.70308, "dev_accuracy": 0.761, "train_seconds": 1203.9}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 0.5, "dim": 300, "epoch": 15, "dev_macro_f1": 0.73339, "dev_accuracy": 0.782, "train_seconds": 2692.9}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 0.5, "dim": 300, "epoch": 25, "dev_macro_f1": 0.73464, "dev_accuracy": 0.782, "train_seconds": 4254.3}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 1.0, "dim": 100, "epoch": 5, "dev_macro_f1": 0.72759, "dev_accuracy": 0.779, "train_seconds": 393.2}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 1.0, "dim": 100, "epoch": 15, "dev_macro_f1": 0.74539, "dev_accuracy": 0.79, "train_seconds": 1134.4}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 1.0, "dim": 100, "epoch": 25, "dev_macro_f1": 0.73402, "dev_accuracy": 0.78, "train_seconds": 1938.2}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 1.0, "dim": 300, "epoch": 5, "dev_macro_f1": 0.73442, "dev_accuracy": 0.785, "train_seconds": 879.1}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 1.0, "dim": 300, "epoch": 15, "dev_macro_f1": 0.74689, "dev_accuracy": 0.792, "train_seconds": 2552.7}
+{"baseline": "ft_kd_word", "tokens": "word", "lr": 1.0, "dim": 300, "epoch": 25, "dev_macro_f1": 0.73801, "dev_accuracy": 0.779, "train_seconds": 4290.1}

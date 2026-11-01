@@ -1,1 +1,1 @@
-{"tokens": "word", "quantized": false}
+{"tokens": "word", "quantized": false, "dim": 300, "epoch": 15, "lr": 1.0, "word_ngrams": 2}
