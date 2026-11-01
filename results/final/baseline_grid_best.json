@@ -2,5 +2,11 @@
  "tfidf_svm_kd": {
   "c": 0.5,
   "dev_macro_f1": 0.75539
+ },
+ "ft_kd_subword": {
+  "lr": 1.0,
+  "dim": 100,
+  "epoch": 15,
+  "dev_macro_f1": 0.74342
  }
 }

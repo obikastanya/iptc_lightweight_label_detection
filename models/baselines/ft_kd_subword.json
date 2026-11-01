@@ -1,1 +1,1 @@
-{"tokens": "subword", "quantized": false}
+{"tokens": "subword", "quantized": false, "dim": 100, "epoch": 15, "lr": 1.0, "word_ngrams": 2}
