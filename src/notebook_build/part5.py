@@ -82,9 +82,9 @@ DEPS = {"teacher": "torch, transformers", "teacher_onnx_int8": "onnxruntime, tra
 lines = []
 for m, r in eff.iterrows():
     name = an.MODELS[m][0].replace(" (proposed)", "")
-    b = (lambda s: f"\\textbf{{{s}}}") if m == "statickd" else (lambda s: s)
-    lines.append(" & ".join([b(name), b(f"{n(r.latency_ms_p50_1c)} / {n(r.latency_ms_p95_1c)}"), b(n(r.docs_per_sec_1c)), b(n(r.docs_per_sec_4c)),
-                             fmt(r.rss_model_mb, 0), b(fmt(r.size_mb, 0)), DEPS[m]]) + " \\\\")
+    name = f"\\textbf{{{name}}}" if m == "statickd" else name
+    lines.append(" & ".join([name, f"{n(r.latency_ms_p50_1c)} / {n(r.latency_ms_p95_1c)}", n(r.docs_per_sec_1c), n(r.docs_per_sec_4c),
+                             fmt(r.rss_model_mb, 0), fmt(r.size_mb, 0), DEPS[m]]) + " \\\\")
 write_table("eff", lines)
 """),
 code(r"""
