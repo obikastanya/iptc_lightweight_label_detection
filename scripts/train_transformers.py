@@ -7,6 +7,7 @@ which is checked on the dev set); CPU speed is measured separately with the ONNX
 
 Usage (from the project root):
     python scripts/train_transformers.py [--only minilm_kd_t1 minilm_kd_t2 distilmbert_kd]
+    python scripts/train_transformers.py --max-length 512 --only minilm_kd_t1_len512 distilmbert_kd_len512 [--grad-accum 2]
 """
 import argparse
 import json
@@ -45,7 +46,7 @@ def run(name: str, cfg: TransformerKDConfig) -> None:
         else:
             train(cfg, out)
     if not all(has_predictions(name, s) for s in ("dev", "heldout", "test")):
-        summary = evaluate_model(name, GpuClassifier(out, cfg.max_length), batch_size=128)
+        summary = evaluate_model(name, GpuClassifier(out, cfg.max_length), batch_size=128 if cfg.max_length <= 256 else 32)
         print(name, json.dumps(summary), flush=True)
     # ONNX fp32 must give the same predictions as PyTorch (checked on 200 dev documents)
     texts = eval_set("dev")["text"].tolist()[:200]
@@ -60,7 +61,18 @@ def run(name: str, cfg: TransformerKDConfig) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--only", nargs="*", default=["minilm_kd_t1", "minilm_kd_t2", "distilmbert_kd"])
+    parser.add_argument("--max-length", type=int, default=256,
+                        help="input token limit; 512 trains *_len512 students with tau = 1, the value chosen on dev at 256")
+    parser.add_argument("--grad-accum", type=int, default=1, help="micro-batches per batch of 32 (GPU memory)")
     args = parser.parse_args()
+    if args.max_length != 256:
+        sfx = f"_len{args.max_length}"
+        for base in ("minilm", "distilmbert"):
+            name = ("minilm_kd_t1" if base == "minilm" else "distilmbert_kd") + sfx
+            if name in args.only:
+                run(name, TransformerKDConfig(name=name, base=BASES[base], temperature=1.0,
+                                              max_length=args.max_length, grad_accum=args.grad_accum))
+        return
     for tau in (1.0, 2.0):
         name = f"minilm_kd_t{int(tau)}"
         if name in args.only:

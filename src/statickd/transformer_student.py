@@ -36,6 +36,7 @@ class TransformerKDConfig:
     temperature: float = 2.0
     val_fraction: float = 0.03
     seed: int = 0
+    grad_accum: int = 1   # split each batch into this many micro-batches (same effective batch, less GPU memory)
 
 
 def train(cfg: TransformerKDConfig, out: Path | None = None) -> Path:
@@ -75,17 +76,47 @@ def train(cfg: TransformerKDConfig, out: Path | None = None) -> Path:
 
     out = Path(out or MODELS_DIR / "baselines" / cfg.name)
     best, history, t0 = -1.0, [], time.perf_counter()
+    oom_retried = oom_skipped = 0   # only the long-input runs on the 6 GB laptop GPU ever hit these
+
+    def backward_batch(idx):
+        opt.zero_grad()
+        for micro in np.array_split(idx, cfg.grad_accum):
+            with torch.autocast("cuda", dtype=torch.float16):
+                logits = model(**encode(micro)).logits.float()
+            target = torch.from_numpy(probs[micro]).cuda()
+            # batchmean over the micro-batch, weighted by its share of the batch = batchmean over the batch
+            loss = F.kl_div(F.log_softmax(logits / cfg.temperature, -1), target,
+                            reduction="batchmean") * cfg.temperature ** 2 * (len(micro) / len(idx))
+            scaler.scale(loss).backward()
+        return loss
+
     for epoch in range(cfg.epochs):
         rng.shuffle(train_idx)
         for step in range(len(train_idx) // cfg.batch_size):
             idx = train_idx[step * cfg.batch_size:(step + 1) * cfg.batch_size]
-            with torch.autocast("cuda", dtype=torch.float16):
-                logits = model(**encode(idx)).logits.float()
-            target = torch.from_numpy(probs[idx]).cuda()
-            loss = F.kl_div(F.log_softmax(logits / cfg.temperature, -1), target,
-                            reduction="batchmean") * cfg.temperature ** 2
-            opt.zero_grad()
-            scaler.scale(loss).backward()
+            if cfg.max_length <= 256:
+                loss = backward_batch(idx)
+            else:
+                if step % 500 == 0:
+                    torch.cuda.empty_cache()   # long variable-length batches fragment the caching allocator
+                try:
+                    loss = backward_batch(idx)
+                except (torch.cuda.OutOfMemoryError, RuntimeError) as e:
+                    if "out of memory" not in str(e):
+                        raise
+                    opt.zero_grad(set_to_none=True)
+                    torch.cuda.empty_cache()
+                    try:
+                        loss = backward_batch(idx)
+                        oom_retried += 1
+                    except (torch.cuda.OutOfMemoryError, RuntimeError) as e2:
+                        if "out of memory" not in str(e2):
+                            raise
+                        opt.zero_grad(set_to_none=True)
+                        torch.cuda.empty_cache()
+                        oom_skipped += 1
+                        print(f"[{cfg.name}] step {step}: out of memory twice, batch skipped", flush=True)
+                        continue
             scaler.unscale_(opt)
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             scaler.step(opt)
@@ -103,6 +134,8 @@ def train(cfg: TransformerKDConfig, out: Path | None = None) -> Path:
             tokenizer.save_pretrained(out)
     meta = {**asdict(cfg), "history": history, "best_val_agreement": best,
             "train_seconds": time.perf_counter() - t0}
+    if cfg.max_length > 256:
+        meta.update({"oom_retried_steps": oom_retried, "oom_skipped_steps": oom_skipped})
     (out / "train_meta.json").write_text(json.dumps(meta, indent=1))
     export_onnx(out)
     return out

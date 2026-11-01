@@ -1,0 +1,34 @@
+{
+ "name": "minilm_kd_t1_len512",
+ "base": "nreimers/mMiniLMv2-L6-H384-distilled-from-XLMR-Large",
+ "sources": [
+  "emmediatopic",
+  "ccnews",
+  "ccnews_extra"
+ ],
+ "epochs": 2,
+ "batch_size": 32,
+ "lr": 5e-05,
+ "max_length": 512,
+ "temperature": 1.0,
+ "val_fraction": 0.03,
+ "seed": 0,
+ "grad_accum": 4,
+ "history": [
+  {
+   "epoch": 1,
+   "val_agreement": 0.8525469168900804,
+   "seconds": 4125.189882600011
+  },
+  {
+   "epoch": 2,
+   "val_agreement": 0.8667676885417881,
+   "seconds": 8558.344494899997
+  }
+ ],
+ "best_val_agreement": 0.8667676885417881,
+ "train_seconds": 8560.251380900008,
+ "oom_retried_steps": 0,
+ "oom_skipped_steps": 0,
+ "onnx_vs_pytorch_agreement_dev200": 1.0
+}
