@@ -353,7 +353,13 @@ fastText, GPT-4o labels, word & +0.439 [+0.393, +0.475] & $<$0.001 & +0.460 & 62
 \bottomrule
 \end{tabular}
 \end{table*}
-The paired tests in Table~\ref{tab:sig} confirm this ranking. The $\Delta$macro-F1 of StaticKD against the teacher is $-$0.053 [$-$0.065, $-$0.033]. MiniLM-L6 keeps a significant lead ($-$0.021 [$-$0.038, $-$0.008], $p=0.005$). StaticKD and DistilmBERT do not differ significantly (+0.010, $p=1.000$). The 90\% interval [$-$0.023, +0.036] is too wide to show equivalence (TOST $p=0.428$). The McNemar test favors StaticKD over DistilmBERT in accuracy ($p<0.001$) but treats articles from the same site as independent. StaticKD is ahead of the quantized fastText + KD by +0.106 [+0.037, +0.145]. Its advantage over TF-IDF + SVM is +0.059 [+0.009, +0.093] ($p=0.040$). The Model2Vec classifier is the only light model that matches StaticKD. The $\Delta$macro-F1 between the two models is $-$0.002 [$-$0.009, +0.010] with a 90\% interval of [$-$0.008, +0.008] inside the $\pm$0.01 equivalence margin (TOST $p=0.025$).
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_sig_forest.pdf}
+\caption{Paired difference in test macro-F1 between StaticKD and each other model (StaticKD minus model). Thin lines show 95\% site-cluster bootstrap intervals. Thick bars show 90\% intervals. Filled markers differ significantly after Holm correction. The shaded band is the $\pm$0.01 equivalence margin. The two fastText models trained on GPT-4o labels lie above +0.4 and are not shown.}
+\label{fig:sig-forest}
+\end{figure}
+The paired tests in Table~\ref{tab:sig} and Fig.~\ref{fig:sig-forest} confirm this ranking. The $\Delta$macro-F1 of StaticKD against the teacher is $-$0.053 [$-$0.065, $-$0.033]. MiniLM-L6 keeps a significant lead ($-$0.021 [$-$0.038, $-$0.008], $p=0.005$). StaticKD and DistilmBERT do not differ significantly (+0.010, $p=1.000$). The 90\% interval [$-$0.023, +0.036] is too wide to show equivalence (TOST $p=0.428$). The McNemar test favors StaticKD over DistilmBERT in accuracy ($p<0.001$) but treats articles from the same site as independent. StaticKD is ahead of the quantized fastText + KD by +0.106 [+0.037, +0.145]. Its advantage over TF-IDF + SVM is +0.059 [+0.009, +0.093] ($p=0.040$). The Model2Vec classifier is the only light model that matches StaticKD. The $\Delta$macro-F1 between the two models is $-$0.002 [$-$0.009, +0.010] with a 90\% interval of [$-$0.008, +0.008] inside the $\pm$0.01 equivalence margin (TOST $p=0.025$).
 
 The macro-F1 of StaticKD is higher than that of fastText + KD in 40 of 47 languages (Wilcoxon $p<0.001$). The advantage over TF-IDF + SVM is narrower. StaticKD has the higher macro-F1 in 31 of 47 languages (Wilcoxon $p=0.003$). Per-language accuracy gives a different picture. StaticKD is higher in 24 languages and lower in 22 (Wilcoxon $p=0.127$). The accuracy of the two models is close. Per-language tests find no consistent difference in either metric between StaticKD and DistilmBERT (Wilcoxon $p=0.604$ for macro-F1 and 0.322 for accuracy) or the Model2Vec classifier ($p=0.358$ and 0.534). StaticKD beats the teacher in only 7 of 47 languages.
 
@@ -446,7 +452,13 @@ $\tau=2$ & 0.748 & 0.612 & 0.476 & 0.363 \\
 \bottomrule
 \end{tabular}}
 \end{table}
-Table~\ref{tab:ablation} reports the ablation results with five seeds per variant. Most of the accuracy comes from two components: multilingual distillation data and the pre-trained embeddings. A student distilled on EMMediaTopic alone (4 languages) loses 0.051 in test macro-F1 and 0.077 in held-out agreement. Random initialization in place of potion lowers the test macro-F1 more than any other variant (0.120, $p<0.001$). Only these two variants differ significantly from the final recipe in test macro-F1.
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_ablation_forest.pdf}
+\caption{Difference in test macro-F1 between each ablation variant and the final recipe (variant minus final recipe). The encoding follows Fig.~\ref{fig:sig-forest}. Separators divide the component ablations from the temperatures and from the four additions tested during development.}
+\label{fig:abl-forest}
+\end{figure}
+Table~\ref{tab:ablation} and Fig.~\ref{fig:abl-forest} report the ablation results with five seeds per variant. Most of the accuracy comes from two components: multilingual distillation data and the pre-trained embeddings. A student distilled on EMMediaTopic alone (4 languages) loses 0.051 in test macro-F1 and 0.077 in held-out agreement. Random initialization in place of potion lowers the test macro-F1 more than any other variant (0.120, $p<0.001$). Only these two variants differ significantly from the final recipe in test macro-F1.
 
 Freezing the embeddings restricts training to the linear head on top of potion and gives mixed results. The development score drops by 0.035 ($p=0.040$) and the held-out agreement by 0.020 ($p<0.001$). The test macro-F1 rises by 0.014 with an interval that includes zero ([$-$0.004, +0.024], $p=1.000$). Table~\ref{tab:ablation-groups} traces the gain to languages with little distillation data (+0.059) and to languages without distillation data (+0.037). The frozen embeddings are slightly weaker in languages with at least 500 documents ($-$0.007). The final recipe had already been fixed on the development set before this effect was observed. Section~\ref{sec:discussion} explains why that set cannot reveal the effect.
 

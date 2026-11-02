@@ -156,6 +156,26 @@ for m in [m for m in ("model2vec_clf", "distilmbert_kd") if m in main_table.inde
     print(m, "TOST ±0.01:", tt)
 """),
 md(r"""
+**Gambar *forest plot* perbandingan model.** Selisih macro-F1 uji StaticKD dikurangi model lain dengan
+interval 95% (garis tipis, sama dengan tabel signifikansi) dan interval 90% (batang tebal, dasar TOST).
+Penanda terisi berarti berbeda signifikan setelah koreksi Holm. Kedua fastText berlabel GPT-4o tidak
+digambar karena selisihnya di atas +0,4 dan akan memampatkan sumbu.
+"""),
+code(r"""
+FOREST_MODELS = [m for m in MAIN if m != "statickd" and not m.startswith("ft_gpt")]
+tvf = ev.eval_view("test"); yf = tvf.y.to_numpy(); clf = tvf.cluster.to_numpy()
+st_test = sig[sig.set == "test"].set_index("vs")
+f_rows = []
+for m in FOREST_MODELS:
+    pb = ev.paired_bootstrap_seeds(yf, [ev.pred_view("statickd", "test")], [ev.pred_view(key(m), "test")], clusters=clf, n_boot=2 * N_BOOT)
+    tt = ev.tost(pb["diffs"], 0.01)
+    r = st_test.loc[m]
+    f_rows.append((an.MODELS[m][0], r.f1_delta, (r.f1_ci_low, r.f1_ci_high), (tt["ci90_low"], tt["ci90_high"]), r.p_boot_holm < 0.05))
+fig, ax = plt.subplots(figsize=(3.5, 2.9))
+viz.forest(ax, *zip(*f_rows), margin=0.01, xlabel="$\\Delta$ test macro-F1 (StaticKD $-$ model)", breaks=(2, 4, 5))
+viz.show_and_save(fig, "fig_sig_forest")
+"""),
+md(r"""
 **Ketergantungan klaster dan uji *leave-one-source-out*.** *Site-cluster bootstrap* hanya seakurat jumlah
 klaster independennya. Jumlah klaster efektif $1/\sum_c q_c^2$ ($q_c$ = porsi artikel klaster $c$)
 menunjukkan berapa klaster berukuran sama yang setara dengan komposisi set uji. Uji *leave-one-source-out*
@@ -542,6 +562,26 @@ for title, codes in groups[:3]:
 write_table("ablation", lines)
 show(abl_boot.drop(columns=[c for c in abl_boot.columns if c.endswith("_p")]),
      "Ablasi: paired cluster bootstrap (Δ varian − resep final, Holm) dan TOST ±0,01 pada macro-F1 uji")
+"""),
+md(r"""
+**Gambar *forest plot* ablasi.** Pengodean sama dengan gambar perbandingan model, tetapi selisihnya
+varian dikurangi resep final. Garis pemisah memisahkan ablasi komponen, temperatur, dan empat tambahan
+dari eksplorasi.
+"""),
+code(r"""
+import re
+a_rows, a_breaks = [], []
+for title, codes in groups[1:]:
+    codes = [c for c in codes if c in abl_boot.index]
+    if a_rows:
+        a_breaks.append(len(a_rows))
+    for c in codes:
+        r = abl_boot.loc[c]
+        a_rows.append((re.sub(r"\\eng\{([^}]*)\}", r"\1", ABL_TEX[c]), r.test_macro_delta, (r.test_macro_lo, r.test_macro_hi),
+                       (r.tost_lo, r.tost_hi), r.test_macro_p_holm < 0.05))
+fig, ax = plt.subplots(figsize=(3.5, 3.4))
+viz.forest(ax, *zip(*a_rows), margin=TOST_MARGIN, xlabel="$\\Delta$ test macro-F1 (variant $-$ final recipe)", breaks=a_breaks, xmin=-0.07)
+viz.show_and_save(fig, "fig_ablation_forest")
 """),
 md(r"""
 **Ablasi per subkelompok bahasa.** Agregat set uji dapat menyembunyikan efek yang berlawanan arah di
