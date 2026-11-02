@@ -1,6 +1,5 @@
 % =====================================================================
 % StaticKD -- supplementary material for the IEEE Access manuscript (main.tex)
-% Floats moved out of the main text on 2026-11-01; content unchanged.
 % Compile: pdflatex supplementary && bibtex supplementary && pdflatex supplementary && pdflatex supplementary
 % =====================================================================
 \documentclass[journal,onecolumn]{IEEEtran}
@@ -22,7 +21,7 @@
 \author{Obi~Kastanya and Ananta~Dwi~Prayoga~Alwy}
 \maketitle
 
-This document contains the algorithm, tables, and figures that the main text refers to as Algorithm~S1, Table~S1--S5, and Fig.~S1--S7.
+The supplementary material contains Algorithm~S1, Tables~S1--S6, Figs.~S1--S7, and additional experimental details cited in the main text.
 
 \begin{algorithm}[!htbp]
 \caption{StaticKD Inference for One Article}
@@ -166,6 +165,44 @@ Test-set manifest (release) & CC BY-SA 4.0 \\
 \bottomrule
 \end{tabular}}
 \end{table}
+
+\begin{table}[!htbp]
+\caption{Additions Tested During Development. $\Delta$ Test Macro-F1 Against the Final Recipe [95\% CI], Holm-Corrected $p$, 90\% Interval, and TOST $p$ for the $\pm$0.01 Margin}
+\label{tab:additions}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Variant & $\Delta$ test macro-F1 [95\% CI] & $p$ (Holm) & 90\% interval & TOST $p$ \\
+\midrule
+\quad + bigram hashing $2^{21}$ & +0.002 [$-$0.001, +0.003] & 1.000 & [$-$0.000, +0.003] & $<$0.001 \\
+\quad + idf$^{0.5}$-weighted pooling & $-$0.001 [$-$0.004, +0.002] & 1.000 & [$-$0.003, +0.001] & $<$0.001 \\
+\quad + document weight = teacher confidence & +0.000 [$-$0.001, +0.002] & 1.000 & [$-$0.001, +0.001] & $<$0.001 \\
+\quad + cross-entropy on GPT-4o labels & $-$0.004 [$-$0.008, +0.003] & 1.000 & [$-$0.007, +0.002] & $<$0.001 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Additional Experimental Details}
+\textit{Teacher labeling.} The teacher labeled the distillation data once in fp16 on an NVIDIA RTX~4050 Laptop GPU (6~GB) with batches sorted by text length. The throughput was 50.1 documents per second on a fixed sample of 5,000 documents.
+
+\textit{Final ensemble.} The three students of the final ensemble were trained with seeds 0, 1, and 2.
+
+\textit{LLM check set.} A set of 320 articles in 16 languages was labeled by an LLM (Claude) with the prompt of~\cite{kuzman2025llm}. The set informed only two recipe choices: the temperature $\tau=1$ and the three-seed ensemble. The teacher was trained on labels that GPT-4o produced with the same prompt. The labels of the set are therefore not independent of the teacher. No result in the main text uses the set.
+
+\textit{Held-out split.} A few multilingual sites such as bbc.com were set aside in one language but also appear in the distillation data in another language. Articles from such sites were removed from the held-out split.
+
+\textit{Test-set pool.} The site filter left 399,468 CC-NEWS articles from sites that occur neither in the distillation data nor in an evaluation set.
+
+\textit{Mapping table.} The section-to-IPTC mapping table holds 916 rules with 814 rules for valid mapped names and 102 rules for ambiguous, language-specific, or rejected names. The manual review covered every rule except 48 names that are identical to the target IPTC node name or its English plural and were accepted automatically.
+
+\textit{Baseline tuning.} The grid search covered 5 configurations for TF-IDF + SVM and 18 for each fastText model. The quantized fastText model took the configuration of the subword model.
+
+\textit{CPU benchmark.} The thread count was pinned in OMP, MKL, OpenBLAS, ONNX Runtime, and \texttt{tokenizers}. Runs on one core used logical CPU 0 and runs on four cores used logical CPUs 0, 10, 12, and 14.
+
+\textit{Additions tested during development.} Twelve runs tested four additions to the recipe with three seeds each (Table~\ref{tab:additions}). The additions are bigram features, idf-weighted pooling, documents weighted by teacher confidence, and an extra loss on the GPT-4o labels. None of the additions differs significantly from the final recipe on the development set. No addition changes the test macro-F1 by more than 0.004. The final recipe therefore excludes the four additions. The Holm correction of the main text covers these four additions together with the 10 variants of the ablation table in the main text.
+
 
 \begin{figure}[!htbp]
 \centering

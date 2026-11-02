@@ -565,13 +565,13 @@ show(abl_boot.drop(columns=[c for c in abl_boot.columns if c.endswith("_p")]),
 """),
 md(r"""
 **Gambar *forest plot* ablasi.** Pengodean sama dengan gambar perbandingan model, tetapi selisihnya
-varian dikurangi resep final. Garis pemisah memisahkan ablasi komponen, temperatur, dan empat tambahan
-dari eksplorasi.
+varian dikurangi resep final. Garis pemisah memisahkan ablasi komponen dari temperatur. Empat tambahan
+dari eksplorasi tidak digambar karena dilaporkan di Tabel S6 suplemen.
 """),
 code(r"""
 import re
 a_rows, a_breaks = [], []
-for title, codes in groups[1:]:
+for title, codes in groups[1:3]:   # the four development additions are reported in Table S6 of the supplement
     codes = [c for c in codes if c in abl_boot.index]
     if a_rows:
         a_breaks.append(len(a_rows))
