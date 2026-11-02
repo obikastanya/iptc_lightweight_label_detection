@@ -1,0 +1,256 @@
+CATATAN REVISI PAPER StaticKD
+Periode perubahan: 1-2 November 2026
+Naskah: paper_final/main.tex dan paper_final/supplementary.tex (target IEEE Access)
+
+Catatan ini dibagi dua. Bagian A berisi saran dosen dan tindak lanjutnya.
+Bagian B berisi temuan dari review kritis dan audit berbantuan AI (Claude).
+Setiap butir memuat temuan, perbaikan pada penelitian, dan perbaikan pada paper.
+Butir yang hanya mengubah teks ditulis "tidak ada" pada perbaikan penelitian.
+
+
+======================================================================
+A. SARAN DOSEN
+======================================================================
+
+A1. Pilih publisher tujuan yang cocok (feedback 1 November 2026)
+  Temuan    : Penelitian ini berupa studi empiris model ringan dengan
+              eksperimen dan test set baru, sehingga cocok dengan jurnal
+              open access berbasis teknik.
+  Penelitian: tidak ada.
+  Paper     : Target dipilih IEEE Access. Naskah dipindah ke template
+              IEEE Access dan disusun ulang menjadi Introduction, Related
+              Work, Method, Data and Test Set, Experimental Setup, Results,
+              dan Discussion (Limitations sebagai subbagian). Satu
+              algoritma, beberapa tabel, dan beberapa gambar pendukung
+              dipindah ke supplementary. Abstrak dibatasi 250 kata.
+
+A2. Evaluasi kritis seperti reviewer skeptis (feedback 1 November 2026)
+  Temuan    : Review kritis dijalankan dan hasilnya dicatat di
+              paper_writing/restructure/rencana_perubahan.tex. Temuannya
+              diuraikan di Bagian B.
+  Penelitian: lihat Bagian B.
+  Paper     : lihat Bagian B.
+
+A3. Apakah studi ablasi dibutuhkan, atau uji signifikansi lebih penting?
+    (feedback 1 November 2026)
+  Temuan    : Ablasi dan uji signifikansi tidak saling menggantikan.
+              Ablasi menentukan apa yang dibandingkan. Uji signifikansi
+              menentukan apakah selisihnya nyata. Kelemahan sebelumnya
+              ada pada ujinya: ablasi hanya diuji Welch antar-seed, yang
+              mengukur variasi training dan bukan generalisasi ke artikel
+              dan situs lain.
+  Penelitian: Setiap varian ablasi diuji ulang dengan paired site-cluster
+              bootstrap (2.000 resample) terhadap resep final, dengan
+              koreksi Holm atas 14 varian. Klaim "setara" diuji dengan TOST
+              (margin +-0,01 macro-F1). Hasilnya, hanya dua varian yang
+              berbeda signifikan di test: data EMMediaTopic saja (-0,051)
+              dan embedding acak (-0,120). Embedding beku (+0,014) dan
+              tau=4 (-0,014) tidak lagi signifikan. Hard label setara
+              dengan soft label. Tidak ada training ulang; semua uji
+              memakai prediksi yang sudah tersimpan.
+  Paper     : Tabel ablasi mendapat kolom Delta [95% CI] serta tanda
+              signifikan dan setara. Forest plot ablasi ditambahkan
+              (Fig. 4). Klaim ablasi yang tidak lagi signifikan
+              dilunakkan. Ablasi tidak lagi disebut di abstrak.
+
+A4. Research position harus ada (feedback 19 Oktober 2026)
+  Temuan    : Positioning sudah ada, tetapi tersebar.
+  Penelitian: tidak ada.
+  Paper     : Pendahuluan menyebut tiga celah penelitian (komputasi dan
+              skala, non-linearitas arsitektur, evaluasi). Related Work
+              memuat subbagian "The StaticKD Architectural Synthesis" dan
+              Tabel I "Position of StaticKD Relative to Related
+              Approaches".
+
+A5. Abstrak memuat uji statistik, ablasi tidak perlu masuk
+    (feedback 19 Oktober 2026)
+  Temuan    : Abstrak memuat dua kalimat ablasi dan tidak memuat nilai p
+              maupun CI.
+  Penelitian: tidak ada.
+  Paper     : Dua kalimat ablasi dihapus. Abstrak sekarang menyebut uji
+              yang dipakai (paired site-cluster bootstrap, koreksi Holm),
+              CI 95% StaticKD (0,490-0,605), selisih dengan fastText
+              (+0,106, p<0,001) dan SVM (+0,059, p=0,040), serta uji
+              ekuivalensi Model2Vec (TOST, p=0,025). Panjang 246 kata.
+
+A6. Pendahuluan tanpa research question (feedback 19 Oktober 2026)
+  Temuan    : Pendahuluan masih memuat RQ1-RQ4.
+  Penelitian: tidak ada.
+  Paper     : Paragraf RQ dihapus. Pendahuluan langsung bergerak dari
+              masalah ke celah penelitian, pendekatan, dan kontribusi.
+
+A7. Uji statistik dengan p dan CI (feedback 19 Oktober 2026)
+  Temuan    : Uji perbandingan model sudah ada. Ablasi dan analisis per
+              bahasa belum diuji dengan cara yang sama kuat.
+  Penelitian: CI 95% memakai site-cluster bootstrap. Perbandingan model
+              memakai paired bootstrap dan McNemar. Klaim setara memakai
+              TOST. Konsistensi antar bahasa memakai Wilcoxon. Faktor per
+              bahasa memakai Spearman dan Kruskal-Wallis. Semua p
+              dikoreksi Holm per kelompok uji.
+  Paper     : Metode dijelaskan di Section V-B (halaman 7). Hasil ada di
+              Tabel IV (CI 95%), Tabel V (uji berpasangan), Tabel VII
+              (ablasi), Tabel S4 dan S6, serta forest plot Fig. 2 dan
+              Fig. 4.
+
+
+======================================================================
+B. TEMUAN AI (review kritis dan audit, 1-2 November 2026)
+======================================================================
+
+--- Penelitian: statistik dan eksperimen ---
+
+B1. Klaim "tidak berbeda" tanpa uji ekuivalensi
+  Temuan    : Kesimpulan "setara" diambil dari p yang tidak signifikan.
+  Penelitian: Uji TOST dengan margin +-0,01 macro-F1 (interval 90%).
+              StaticKD dan classifier Model2Vec setara (p=0,025).
+              StaticKD dan DistilmBERT tidak signifikan berbeda, tetapi
+              juga tidak terbukti setara (p=0,428).
+  Paper     : Kata "setara" hanya dipakai bila TOST mendukungnya.
+
+B2. Ketergantungan klaster di test set
+  Temuan    : Jumlah klaster efektif hanya 13,8. Dua klaster terbesar
+              (L3Cube dan bbc.com) mencakup 37,3% test set.
+  Penelitian: Dua uji ketahanan ditambahkan. (1) Leave-one-source-out:
+              peringkat 9 model dihitung ulang tanpa tiap sumber.
+              StaticKD tetap di peringkat 3-5, dan semua model fastText
+              dan TF-IDF tetap minimal 0,028 di bawahnya. (2) Subset
+              maksimal 5 artikel per situs (8.139 artikel): hanya urutan
+              StaticKD dan Model2Vec yang bertukar.
+  Paper     : Angka klaster efektif dan kedua uji dilaporkan di Setup,
+              Results, dan Tabel S2.
+
+B3. Uji per bahasa tanpa koreksi perbandingan ganda
+  Penelitian: Koreksi Holm diterapkan pada tujuh uji faktor bahasa.
+              Hubungan kesepakatan dengan jumlah data distilasi menjadi
+              tidak signifikan (p=0,067).
+  Paper     : Tabel S4 memuat p mentah dan p Holm. Teks disesuaikan.
+
+B4. Kesetaraan baseline
+  Temuan    : Classifier Model2Vec belum dijalankan. Hyperparameter
+              fastText dan SVM belum dipilih di dev. Transformer hanya
+              membaca 256 token.
+  Penelitian: Classifier Model2Vec dilatih dengan label teacher yang
+              sama: macro-F1 0,547 (StaticKD 0,545), setara menurut TOST,
+              tetapi file 15 kali lebih besar dan memori 2 kali lipat.
+              Grid dev dijalankan untuk fastText (18 konfigurasi per
+              varian, dilatih ulang dengan konfigurasi terbaik) dan SVM
+              (C=0,5 terkonfirmasi). MiniLM dan DistilmBERT dilatih ulang
+              dengan 512 token: 0,580 dan 0,547. MiniLM tetap unggul,
+              DistilmBERT tetap tidak berbeda signifikan dari StaticKD.
+  Paper     : Model2Vec masuk Tabel IV, V, dan VI. Hasil 512 token
+              dilaporkan sebagai uji sensitivitas. Grid dilaporkan di
+              Tabel S1.
+
+B5. Benchmark CPU
+  Temuan    : Benchmark hanya sekali jalan. Ditemukan bug: pustaka
+              OpenBLAS memakai thread untuk semua CPU walaupun proses
+              dikunci ke satu core, sehingga Model2Vec turun dari sekitar
+              530 menjadi 66 artikel/detik.
+  Penelitian: Batas thread dipasang sebelum proses benchmark dimulai.
+              Benchmark diulang dalam tiga sesi dan median dilaporkan
+              (deviasi antar sesi maksimal 7%). Throughput cascade diukur
+              langsung, tidak dihitung dengan rumus. Hasil: StaticKD 539
+              artikel/detik per core, sekitar 682 kali lebih cepat dari
+              teacher ONNX int8.
+  Paper     : Tabel efisiensi dan semua angka kecepatan diperbarui.
+              Hanya nama StaticKD yang dicetak tebal karena kecepatannya
+              bukan lagi yang tertinggi.
+
+--- Paper: fakta dan integritas ---
+
+B6. Audit seluruh angka (2 November 2026)
+  Temuan    : Semua tabel sama persis dengan output notebook. Sekitar
+              500 klaim angka diperiksa dan delapan salah atau kurang
+              tepat: 10 menjadi 11 bahasa MasakhaNEWS tanpa data
+              distilasi; artikel yang dibuang filter kontaminasi 50
+              menjadi 63; batas "at least 68%" menjadi 67%; bahasa Afrika
+              mencakup 3-5 topik (bukan 4-5); "27 bahasa dari satu
+              penerbit" diperjelas menjadi 27 bahasa dengan kurang dari 3
+              situs efektif, 22 di antaranya minimal 90% dari satu situs;
+              sampel validasi bebas artikel test tetapi 18 situsnya juga
+              ada di test; batas 2.000 karakter untuk ja, zh, th, my;
+              "weakest" berlaku untuk rata-rata kelompok, bukan tiap
+              bahasa. RAM laptop dikoreksi menjadi 32 GB.
+  Penelitian: tidak ada (angka dihitung ulang dari data yang ada).
+  Paper     : Kedelapan kalimat diperbaiki.
+
+B7. Deskripsi pemeriksaan pemetaan dan pengungkapan AI
+  Temuan    : Proses review tabel pemetaan rubrik ke IPTC dan peran AI
+              belum ditulis sesuai kenyataan.
+  Penelitian: tidak ada.
+  Paper     : Ditulis bahwa draf pemetaan dari LLM ditinjau manual oleh
+              dua peneliti dalam satu sesi bersama. Acknowledgment
+              memuat peran Claude secara lengkap dan tanggung jawab
+              penulis.
+
+B8. Detail metode yang kurang tepat
+  Temuan    : Asal resep, pemilihan tau untuk DistilmBERT, dan cakupan
+              koreksi Holm ablasi belum jelas.
+  Penelitian: tidak ada.
+  Paper     : Dijelaskan bahwa resep ditetapkan sebelum test set dibuat.
+              Hanya MiniLM yang tau-nya dipilih di dev. Holm mencakup 10
+              varian ablasi dan 4 tambahan masa pengembangan (Tabel S6).
+
+B9. Revisi Pendahuluan dan Related Work dari Anan
+  Temuan    : Versi Anan ditulis dari naskah lama dan memuat beberapa
+              kesalahan: tau=2 (seharusnya 1), 70 bahasa (seharusnya
+              69), rentang latensi lama, atribusi Model2Vec, klaim bahwa
+              semua classifier statis non-linear (fastText linear), serta
+              empat sitasi yang tidak ada atau tidak mendukung klaim.
+  Penelitian: tidak ada.
+  Paper     : Pendahuluan dan Related Work versi Anan dipakai setelah
+              dikoreksi. Abstrak tetap versi sebelumnya.
+
+--- Paper: struktur dan gaya ---
+
+B10. Isi tidak sesuai fungsi bagian
+  Temuan    : Pendahuluan memuat hasil. Definisi metode baru muncul di
+              Results. Hasil validitas label ada di bab Data. Beberapa
+              angka muncul pertama kali di Discussion.
+  Penelitian: tidak ada.
+  Paper     : Hasil dikeluarkan dari Pendahuluan. Definisi dipindah ke
+              Setup. Hasil validitas label menjadi subbagian pertama
+              Results. Semua angka dilaporkan di Results sebelum dibahas.
+
+B11. Dokumentasi berlebih dan catatan eksperimen
+  Temuan    : Teks utama memuat catatan eksperimen yang tidak relevan
+              dengan pertanyaan penelitian.
+  Penelitian: tidak ada.
+  Paper     : Catatan dipindah ke bagian "Additional Experimental
+              Details" di supplementary, termasuk Tabel S6 (empat
+              tambahan masa pengembangan). Pengulangan dihapus.
+
+B12. Kontribusi terlalu banyak dan sebagian kecil
+  Temuan    : Kontribusi mengklaim hal-hal kecil.
+  Penelitian: tidak ada.
+  Paper     : Kontribusi diringkas menjadi dua: classifier IPTC
+              multibahasa ringan berupa satu tabel token-logit di CPU,
+              dan test set IPTC multibahasa berlabel editorial.
+
+B13. Gaya kalimat
+  Temuan    : Banyak koma yang memotong kalimat, kata penghubung yang
+              dipaksakan, dan pola tulisan AI.
+  Penelitian: tidak ada.
+  Paper     : Dua belas aturan kalimat ditetapkan
+              (paper_writing/aturan_kalimat_paper.md) dan setiap paragraf
+              direvisi sesuai aturan tersebut. Sebanyak 91 kalimat dengan
+              koma pemotong ditulis ulang tanpa menambah penghubung.
+
+B14. Visualisasi pendukung
+  Temuan    : Hasil uji signifikansi hanya ada dalam tabel.
+  Penelitian: tidak ada.
+  Paper     : Dua forest plot ditambahkan: perbandingan model (Fig. 2)
+              dan ablasi (Fig. 4), dengan interval 95% dan 90% serta
+              margin ekuivalensi.
+
+
+======================================================================
+C. HAL YANG MASIH TERBUKA
+======================================================================
+- URL rilis kode dan data, serta biografi penulis, masih placeholder.
+- Supplementary menyebut GPU 6 GB dan LLM pelabel set cek 320 artikel
+  (Claude). Keduanya tidak tercatat di file hasil dan perlu dipastikan.
+- Paper menulis teacher dilatih pada training split Kuzman dan
+  Ljubesic. Model card Hugging Face menyebut 15.000 berita, jadi
+  kalimat ini perlu dicek ke paper aslinya.
+- Naskah utama 17 halaman, supplementary 8 halaman.
