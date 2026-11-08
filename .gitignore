@@ -103,6 +103,14 @@ paper_final/t1*
 paper_final/logo.png
 paper_final/notaglinelogo.png
 paper_final/bullet.png
+paper_final_id/ieeeaccess.cls
+paper_final_id/spotcolor.sty
+paper_final_id/t1*
+paper_final_id/logo.png
+paper_final_id/notaglinelogo.png
+paper_final_id/bullet.png
+# intermediate files of paper_final_id/tex_to_docx.py
+paper_final_id/docx_build/
 
 # Video presentasi (besar, disimpan lokal / Drive)
 /presentation/*.mp4

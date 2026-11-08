@@ -137,6 +137,11 @@ Satu kemunculan belum tentu salah; yang terdeteksi adalah **penumpukan** pola. P
 - Istilah dipakai sebelum didefinisikan.
 - Angka disajikan tanpa kesimpulan.
 - Alasan sebuah pilihan tidak disebut. Daftar kasus nyatanya ada di [evaluasi_alur_naskah.md](evaluasi_alur_naskah.md).
+- **Ditandai 8 November 2026** (review naskah Indonesia oleh Argon, [review_main_id.md](../reviewer_feedback/review_main_id.md); aturan lengkap di skill paper-unslop `A7` sampai `A9` dan `F14`):
+  - Deret fakta tanpa penghubung makna. Kata hubung sebab, kontras, dan tujuan ikut terhapus ketika menghindari pembuka transisi, sehingga pembaca harus menebak tujuan kalimat. Hubungannya ditulis di dalam kalimat ("sehingga", "karena", "tetapi"), bukan di awal kalimat dengan koma. Contoh: "...menempati memori berukuran gigabyte. Setiap lapisannya menjalankan perkalian matriks padat pada sedikit *core* CPU..." tanpa akibat.
+  - Penggabungan paksa dengan "dan" untuk fakta beda kategori atau efek berlawanan arah ("menurunkan skor *development set* dan memberikan skor lebih tinggi pada...").
+  - Definisi tempelan "X disebut Y dalam makalah ini" di akhir paragraf, sering sesudah istilahnya dipakai.
+  - Catatan dapur penelitian: kronologi "selama pengembangan", pembukuan *run*, "GPU disembunyikan", kode bahasa ISO berderet di prosa, catatan rekonsiliasi angka di judul tabel.
 
 ## 6. Ciri khusus paper yang wajib dihindari
 
