@@ -63,7 +63,7 @@ News topic classification suits static representations because bag-of-words mode
 The prior work leaves two gaps that block inexpensive multilingual IPTC classification on CPU.
 \begin{enumerate}
   \item \emph{No low-cost multilingual IPTC classifier has yet been evaluated on real news.} The open multilingual IPTC classifier of Kuzman and Ljube\v{s}i\'c~\cite{kuzman2025llm} is an XLM-RoBERTa-large (XLM-R) model~\cite{conneau2020xlmr} with 24 transformer layers and 559.9~million parameters. Sparse Distillation~\cite{ye2022sparse} produces a student that is up to 600 times faster but was evaluated only on English and stores about one billion parameters in its n-gram table.
-  \item \emph{No multilingual static classifier yet has a head that can be folded into one token table.} Sparse Distillation~\cite{ye2022sparse} and the default classifier of Model2Vec~\cite{tulkens2024model2vec} place a non-linear multilayer perceptron (MLP) head on top of the averaged embeddings. The non-linear layers prevent folding and force the full 256-dimensional embedding matrix to be stored together with the head.
+  \item \emph{No multilingual static classifier with cross-lingually aligned embeddings has its head folded into one token table.} Sparse Distillation~\cite{ye2022sparse} and the default classifier of Model2Vec~\cite{tulkens2024model2vec} place a non-linear multilayer perceptron (MLP) head on top of the averaged embeddings. The non-linear layers prevent folding and force the full 256-dimensional embedding matrix to be stored together with the head.
 \end{enumerate}
 
 The present study addresses both gaps with StaticKD and tests it on a new multilingual IPTC test set. StaticKD uses the open IPTC classifier as teacher and trains a linear head over the multilingual static embeddings of Model2Vec on teacher-labeled news in many languages. The contributions of this study are as follows.
@@ -137,14 +137,17 @@ The strictly linear head allows exact folding of the trained weights into one ha
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}llccccc@{}}
 \toprule
-Approach & Model at inference time & Multilingual & Cross-lingual transfer & No deep learning library & CPU cost reported & IPTC labels \\
+Approach & Model at inference time & \begin{tabular}[c]{@{}c@{}}No transformer\\at inference\end{tabular} & \begin{tabular}[c]{@{}c@{}}Multilingual with\\aligned embeddings\end{tabular} & \begin{tabular}[c]{@{}c@{}}Student learns from teacher\\predictions on the same task\end{tabular} & \begin{tabular}[c]{@{}c@{}}Head folded into\\a token table\end{tabular} & IPTC labels \\
 \midrule
-Kuzman \& Ljube\v{s}i\'c~\cite{kuzman2025llm} & XLM-R-large (559.9M parameters) & yes & yes & no & no & yes \\
-DistilBERT, MiniLMv2~\cite{sanh2019distilbert,wang2021minilmv2} & 6-layer transformer & partly & yes & no & partly & no \\
-Sparse Distillation~\cite{ye2022sparse} & deep averaging network + n-gram table & no (en) & no & yes & yes & no \\
-Model2Vec~\cite{tulkens2024model2vec}, Wada et al.~\cite{wada2025static} & static embeddings, optional MLP classifier & yes & yes & yes & partly & no \\
-fastText~\cite{joulin2017bag} & bag of n-grams & per language & no & yes & yes & no \\
-StaticKD (proposed) & table of 17 logits per token & yes & yes & yes & yes & yes \\
+Kuzman \& Ljube\v{s}i\'c~\cite{kuzman2025llm} & XLM-R-large (559.9M parameters) & no & yes & yes (GPT-4o hard labels) & no & yes \\
+DistilBERT~\cite{sanh2019distilbert} & 6-layer transformer & no & no (en) & partly (SQuAD only) & no & no \\
+MiniLMv2~\cite{wang2021minilmv2} & 6- or 12-layer transformer & no & partly (variants from XLM-R) & no & no & no \\
+Sparse Distillation~\cite{ye2022sparse} & deep averaging network + n-gram table & yes & no (en) & yes (distribution, KL) & no (MLP) & no \\
+Model2Vec~\cite{tulkens2024model2vec} & static embeddings + MLP head & yes & yes & no & no (default MLP) & no \\
+Wada et al.~\cite{wada2025static} & static word embeddings & yes & partly (en--de/zh/ja) & no & -- & no \\
+Aug-Linear~\cite{singh2023auglinear} & n-gram coefficient dictionary & yes & no (en) & no & yes & no \\
+fastText~\cite{joulin2017bag} & bag of n-grams, linear head & yes & no & no & no & no \\
+StaticKD (proposed) & table of 17 logits per token & yes & yes & yes (distribution, KL) & yes & yes \\
 \bottomrule
 \end{tabular}}
 \end{table*}

@@ -64,7 +64,7 @@ Klasifikasi topik berita cocok untuk representasi statis karena model \en{bag-of
 Penelitian terdahulu menyisakan dua celah yang menghalangi klasifikasi IPTC multibahasa yang murah pada CPU.
 \begin{enumerate}
   \item \emph{Belum ada pengklasifikasi IPTC multibahasa berbiaya rendah yang dievaluasi pada berita nyata.} Pengklasifikasi IPTC multibahasa terbuka dari Kuzman dan Ljube\v{s}i\'c~\cite{kuzman2025llm} adalah model XLM-RoBERTa-large (XLM-R)~\cite{conneau2020xlmr} dengan 24 lapisan \en{transformer} dan 559.9~juta parameter. Sparse Distillation~\cite{ye2022sparse} menghasilkan \en{student} yang hingga 600 kali lebih cepat tetapi hanya dievaluasi pada bahasa Inggris dan menyimpan sekitar satu miliar parameter dalam tabel n-gram-nya.
-  \item \emph{Belum ada pengklasifikasi statis multibahasa yang \en{head}-nya dapat dilipat menjadi satu tabel token.} Sparse Distillation~\cite{ye2022sparse} dan pengklasifikasi bawaan Model2Vec~\cite{tulkens2024model2vec} menempatkan \en{head} \en{multilayer perceptron} (MLP) nonlinear di atas \en{embedding} yang dirata-ratakan. Lapisan nonlinear ini mencegah \en{folding} sehingga matriks \en{embedding} 256 dimensi harus tetap disimpan utuh bersama \en{head}-nya.
+  \item \emph{Belum ada pengklasifikasi statis multibahasa dengan \en{embedding} selaras lintas bahasa yang \en{head}-nya dilipat menjadi satu tabel token.} Sparse Distillation~\cite{ye2022sparse} dan pengklasifikasi bawaan Model2Vec~\cite{tulkens2024model2vec} menempatkan \en{head} \en{multilayer perceptron} (MLP) nonlinear di atas \en{embedding} yang dirata-ratakan. Lapisan nonlinear ini mencegah \en{folding} sehingga matriks \en{embedding} 256 dimensi harus tetap disimpan utuh bersama \en{head}-nya.
 \end{enumerate}
 
 Studi ini mengisi kedua celah dengan StaticKD dan mengujinya pada \en{test set} IPTC multibahasa baru. StaticKD memakai pengklasifikasi IPTC terbuka sebagai \en{teacher} dan melatih \en{head} linear di atas \en{embedding} statis multibahasa Model2Vec pada berita berlabel \en{teacher} dalam banyak bahasa. Kontribusi studi ini adalah sebagai berikut.
@@ -138,14 +138,17 @@ StaticKD menggabungkan unsur dari empat alur penelitian.
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}llccccc@{}}
 \toprule
-Pendekatan & Model saat inferensi & Multibahasa & Transfer lintas bahasa & Tanpa pustaka deep learning & Biaya CPU dilaporkan & Label IPTC \\
+Pendekatan & Model saat inferensi & \begin{tabular}[c]{@{}c@{}}Tanpa transformer\\saat inferensi\end{tabular} & \begin{tabular}[c]{@{}c@{}}Multibahasa dengan\\embedding selaras\end{tabular} & \begin{tabular}[c]{@{}c@{}}Student belajar dari prediksi\\teacher pada tugas yang sama\end{tabular} & \begin{tabular}[c]{@{}c@{}}Head dilipat ke\\tabel token\end{tabular} & Label IPTC \\
 \midrule
-Kuzman \& Ljube\v{s}i\'c~\cite{kuzman2025llm} & XLM-R-large (559.9M parameter) & ya & ya & tidak & tidak & ya \\
-DistilBERT, MiniLMv2~\cite{sanh2019distilbert,wang2021minilmv2} & transformer 6 lapisan & sebagian & ya & tidak & sebagian & tidak \\
-Sparse Distillation~\cite{ye2022sparse} & deep averaging network + tabel n-gram & tidak (en) & tidak & ya & ya & tidak \\
-Model2Vec~\cite{tulkens2024model2vec}, Wada dkk.~\cite{wada2025static} & embedding statis, pengklasifikasi MLP opsional & ya & ya & ya & sebagian & tidak \\
-fastText~\cite{joulin2017bag} & bag of n-grams & per bahasa & tidak & ya & ya & tidak \\
-StaticKD (usulan) & tabel 17 logit per token & ya & ya & ya & ya & ya \\
+Kuzman \& Ljube\v{s}i\'c~\cite{kuzman2025llm} & XLM-R-large (559.9M parameter) & tidak & ya & ya (label keras GPT-4o) & tidak & ya \\
+DistilBERT~\cite{sanh2019distilbert} & transformer 6 lapisan & tidak & tidak (en) & sebagian (hanya SQuAD) & tidak & tidak \\
+MiniLMv2~\cite{wang2021minilmv2} & transformer 6 atau 12 lapisan & tidak & sebagian (varian dari XLM-R) & tidak & tidak & tidak \\
+Sparse Distillation~\cite{ye2022sparse} & deep averaging network + tabel n-gram & ya & tidak (en) & ya (distribusi, KL) & tidak (MLP) & tidak \\
+Model2Vec~\cite{tulkens2024model2vec} & embedding statis + head MLP & ya & ya & tidak & tidak (MLP bawaan) & tidak \\
+Wada dkk.~\cite{wada2025static} & embedding kata statis & ya & sebagian (en--de/zh/ja) & tidak & -- & tidak \\
+Aug-Linear~\cite{singh2023auglinear} & kamus koefisien n-gram & ya & tidak (en) & tidak & ya & tidak \\
+fastText~\cite{joulin2017bag} & bag of n-grams, head linear & ya & tidak & tidak & tidak & tidak \\
+StaticKD (usulan) & tabel 17 logit per token & ya & ya & ya (distribusi, KL) & ya & ya \\
 \bottomrule
 \end{tabular}}
 \end{table*}
