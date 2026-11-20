@@ -1,0 +1,48 @@
+{
+ "rule": "smallest theta in {0.5, 0.6, 0.7, 0.8, 0.9} whose dev cascade macro-F1 >= dev macro-F1 of the teacher alone; if none qualifies, the theta with the highest dev cascade macro-F1",
+ "teacher_used": "teacher_onnx_int8",
+ "set": "dev",
+ "n_docs": 1000,
+ "teacher_dev_macro_f1": 0.8227628737399039,
+ "teacher_dev_accuracy": 0.858,
+ "statickd_dev_macro_f1": 0.760986010941418,
+ "grid": [
+  {
+   "theta": 0.5,
+   "statickd_share": 0.898,
+   "macro_f1": 0.8020544822809148,
+   "accuracy": 0.83,
+   "meets_teacher": false
+  },
+  {
+   "theta": 0.6,
+   "statickd_share": 0.824,
+   "macro_f1": 0.8050532603792067,
+   "accuracy": 0.841,
+   "meets_teacher": false
+  },
+  {
+   "theta": 0.7,
+   "statickd_share": 0.751,
+   "macro_f1": 0.809174352460109,
+   "accuracy": 0.846,
+   "meets_teacher": false
+  },
+  {
+   "theta": 0.8,
+   "statickd_share": 0.679,
+   "macro_f1": 0.8214927345993506,
+   "accuracy": 0.854,
+   "meets_teacher": false
+  },
+  {
+   "theta": 0.9,
+   "statickd_share": 0.569,
+   "macro_f1": 0.8188804043509791,
+   "accuracy": 0.857,
+   "meets_teacher": false
+  }
+ ],
+ "rule_branch": "fallback: highest dev cascade macro-F1",
+ "chosen_theta": 0.8
+}

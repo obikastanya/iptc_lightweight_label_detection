@@ -1,0 +1,25 @@
+{
+ "model_dir": "models\\final\\statickd",
+ "arrays_in_model_npz": {
+  "token_table": [
+   "float16",
+   [
+    500353,
+    17
+   ]
+  ],
+  "bias": [
+   "float32",
+   [
+    17
+   ]
+  ]
+ },
+ "stored_predictions": "results\\final\\predictions\\statickd__test.npz",
+ "n_docs": 12744,
+ "argmax_differences": 0,
+ "max_abs_logit_diff": 0.0,
+ "mean_abs_logit_diff": 0.0,
+ "macro_f1_stored": 0.5447471580596348,
+ "macro_f1_fresh": 0.5447471580596348
+}

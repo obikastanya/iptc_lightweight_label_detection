@@ -44,6 +44,18 @@ for c, (mu, sd) in single.items():
 pd.DataFrame(single, index=["mean", "sd"])
 """),
 code(r"""
+# 95% bootstrap interval of the share of the teacher macro-F1 that StaticKD keeps (ratio inside each resample)
+for s in ("dev", "test"):
+    view = ev.eval_view(s)
+    y = view.y.to_numpy(); clusters = view.cluster.to_numpy() if s == "test" else None
+    p_s, p_t = ev.pred_view(key("statickd"), s), ev.pred_view(key("teacher"), s)
+    ratios = np.array([ev.macro_f1(y[i], p_s[i]) / ev.macro_f1(y[i], p_t[i])
+                       for i in ev.bootstrap_samples(len(y), clusters, N_BOOT, 0)])
+    lo, hi = np.percentile(ratios, [2.5, 97.5])
+    NUM.add(f"statickd.{s}.pct_teacher.ci", f"{fmt(lo, 1, percent=True)}--{fmt(hi, 1, percent=True)}")
+    print(f"{s}: retention {ev.macro_f1(y, p_s) / ev.macro_f1(y, p_t):.1%} [{lo:.1%}, {hi:.1%}]")
+"""),
+code(r"""
 for m, r in main_table.iterrows():
     for s in ("dev", "heldout", "test"):
         if f"{s}_macro" in r and pd.notna(r.get(f"{s}_macro")):

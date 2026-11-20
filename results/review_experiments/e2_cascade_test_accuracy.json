@@ -1,0 +1,63 @@
+{
+ "theta": 0.8,
+ "teacher": "teacher_onnx_int8",
+ "n_docs": 12744,
+ "bootstrap": "paired site-cluster",
+ "n_boot": 2000,
+ "seed": 0,
+ "statickd_share": 0.6025580665411174,
+ "routed_share": 0.39744193345888257,
+ "cascade": {
+  "macro_f1": 0.6016802115955893,
+  "accuracy": 0.7033898305084746
+ },
+ "teacher_alone": {
+  "macro_f1": 0.5996728629392337,
+  "accuracy": 0.6992310106716887
+ },
+ "delta_macro_f1": {
+  "delta": 0.0020073486563555454,
+  "ci_low": -0.0025965639143315177,
+  "ci_high": 0.006716392715284484,
+  "p": 0.422
+ },
+ "tost_margin": 0.01,
+ "tost": {
+  "ci90_low": -0.0019435065662341156,
+  "ci90_high": 0.006056996285818459,
+  "p": 0.0,
+  "equivalent": true
+ },
+ "grid_sanity_check": [
+  {
+   "theta": 0.5,
+   "statickd_share": 0.8083804143126178,
+   "macro_f1": 0.5861186370376883,
+   "accuracy": 0.6903640929064658
+  },
+  {
+   "theta": 0.6,
+   "statickd_share": 0.7400345260514752,
+   "macro_f1": 0.5931835231850741,
+   "accuracy": 0.6973477715003139
+  },
+  {
+   "theta": 0.7,
+   "statickd_share": 0.6738072818581293,
+   "macro_f1": 0.5996080956690861,
+   "accuracy": 0.7022128060263654
+  },
+  {
+   "theta": 0.8,
+   "statickd_share": 0.6025580665411174,
+   "macro_f1": 0.6016802115955893,
+   "accuracy": 0.7033898305084746
+  },
+  {
+   "theta": 0.9,
+   "statickd_share": 0.5165568110483365,
+   "macro_f1": 0.6017502173300744,
+   "accuracy": 0.7025266792215945
+  }
+ ]
+}

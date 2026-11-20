@@ -1,0 +1,69 @@
+item_id,option_1,option_2,option_1_origin,option_2_origin
+A004,religion,society,section,llm_A
+A008,human interest,health,section,llm_A
+A012,"crime, law and justice","disaster, accident and emergency incident",section,llm_A
+A017,"crime, law and justice",politics,section,llm_A
+A021,"arts, culture, entertainment and media",health,section,llm_A
+A027,lifestyle and leisure,"economy, business and finance",llm_A,section
+A028,sport,"disaster, accident and emergency incident",section,llm_A
+A032,human interest,"arts, culture, entertainment and media",section,llm_A
+A034,health,religion,llm_A,section
+A036,environment,lifestyle and leisure,section,llm_A
+A037,education,"arts, culture, entertainment and media",section,llm_A
+A046,lifestyle and leisure,environment,llm_A,section
+A050,"arts, culture, entertainment and media",human interest,llm_A,section
+A052,environment,"economy, business and finance",llm_A,section
+A055,"crime, law and justice",politics,llm_A,section
+A061,politics,"conflict, war and peace",llm_A,section
+A071,education,politics,section,llm_A
+A073,human interest,"arts, culture, entertainment and media",section,llm_A
+A074,environment,weather,llm_A,section
+A081,health,lifestyle and leisure,llm_A,section
+A087,"arts, culture, entertainment and media",human interest,llm_A,section
+A092,sport,health,section,llm_A
+A098,"economy, business and finance",labour,section,llm_A
+A100,education,"conflict, war and peace",section,llm_A
+A101,"crime, law and justice",human interest,llm_A,section
+A104,education,,both,
+A119,labour,"economy, business and finance",llm_A,section
+A121,"arts, culture, entertainment and media",lifestyle and leisure,section,llm_A
+A124,sport,politics,llm_A,section
+A125,society,"crime, law and justice",llm_A,section
+A126,health,"economy, business and finance",section,llm_A
+A127,"crime, law and justice","economy, business and finance",llm_A,section
+A129,labour,"economy, business and finance",llm_A,section
+A134,sport,"crime, law and justice",section,llm_A
+A135,"arts, culture, entertainment and media",human interest,llm_A,section
+A137,education,"conflict, war and peace",section,llm_A
+A139,"crime, law and justice",politics,llm_A,section
+A142,"economy, business and finance",science and technology,llm_A,section
+A145,lifestyle and leisure,"arts, culture, entertainment and media",llm_A,section
+A149,"economy, business and finance","crime, law and justice",section,llm_A
+A160,labour,politics,llm_A,section
+A162,health,"economy, business and finance",section,llm_A
+A166,"crime, law and justice","conflict, war and peace",llm_A,section
+A176,politics,"economy, business and finance",llm_A,section
+A177,religion,health,section,llm_A
+A181,"arts, culture, entertainment and media",lifestyle and leisure,section,llm_A
+A185,environment,science and technology,llm_A,section
+A187,"arts, culture, entertainment and media",,both,
+A189,human interest,"arts, culture, entertainment and media",section,llm_A
+A191,labour,"economy, business and finance",llm_A,section
+A196,labour,education,llm_A,section
+A198,politics,"arts, culture, entertainment and media",section,llm_A
+A203,environment,weather,section,llm_A
+A205,"crime, law and justice","disaster, accident and emergency incident",section,llm_A
+A214,politics,"crime, law and justice",llm_A,section
+A219,politics,labour,section,llm_A
+A220,"arts, culture, entertainment and media",politics,section,llm_A
+A222,"arts, culture, entertainment and media",politics,llm_A,section
+A231,politics,"economy, business and finance",section,llm_A
+A237,"crime, law and justice",society,section,llm_A
+A249,health,science and technology,llm_A,section
+A260,"arts, culture, entertainment and media","crime, law and justice",section,llm_A
+A264,politics,education,section,llm_A
+A265,politics,"conflict, war and peace",section,llm_A
+A269,"arts, culture, entertainment and media",human interest,llm_A,section
+A283,"economy, business and finance",politics,llm_A,section
+A288,lifestyle and leisure,society,section,llm_A
+A291,education,environment,section,llm_A

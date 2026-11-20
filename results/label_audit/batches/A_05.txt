@@ -1,0 +1,695 @@
+===== ITEM A165 | lang: pt =====
+HEADLINE: Voto em branco e voto nulo: entenda a diferença e a função de cada um
+TEXT:
+Voto em branco e voto nulo: entenda a diferença e a função de cada um TSE: Justiça Eleitoral explica como cada opção funciona na urna e qual o impacto no
+resultado final (./Divulgação) Colaboradora Publicado em 16 de maio de 2026 às 09h00. Voto em branco ou voto nulo? Essas duas modalidades continuam gerando
+dúvidas entre os eleitores a cada eleição. Embora nenhum deles seja contabilizado como voto válido, os dois tipos têm diferenças no funcionamento dentro da urna
+eletrônica. Nas eleições brasileiras, apenas os votos válidos, dados diretamente a candidatos ou partidos, entram no cálculo do resultado final. Isso significa
+que votos em branco e nulos não favorecem nenhum concorrente e também não são direcionados ao candidato que estiver na frente. Após o encerramento do pleito,
+votos brancos e nulos são contabilizados separadamente no boletim da urna e divulgados nos resultados oficiais da eleição. A seguir, confira a definição e a
+função dessas possibilidades de voto segundo o Tribunal Superior Eleitoral (TSE). O voto em branco acontece quando o eleitor escolhe a tecla “Branco” na urna
+eletrônica e confirma a opção. Nesse caso, a pessoa sinaliza que não deseja votar em nenhum dos candidatos disponíveis para aquele cargo. Segundo o TSE, o voto
+em branco é registrado separadamente no sistema eleitoral, mas não interfere na contagem dos votos válidos usados para definir os eleitos. O voto nulo ocorre
+quando o eleitor digita um número inexistente na urna e confirma a escolha. Nessa situação, o sistema identifica que aquele número não corresponde a nenhum
+candidato ou partido registrado. Assim como o voto em branco, o voto nulo não é considerado válido para efeito de apuração do resultado eleitoral. Não. De
+acordo com a Justiça Eleitoral, a ideia de que mais de 50% de votos nulos podem anular automaticamente uma eleição é falsa. O resultado é definido com base
+apenas nos votos válidos. O TSE explica que uma eleição só pode ser anulada em situações específicas previstas na legislação, como decisões judiciais
+relacionadas a fraudes ou irregularidades no processo eleitoral.
+
+===== ITEM A166 | lang: uk =====
+HEADLINE: З військових можуть зняти кримінальну відповідальність за перше дезертирство
+TEXT:
+З військових можуть зняти кримінальну відповідальність за перше дезертирство Верховна Рада України прийняла за основу законопроєкт, що звільняє військових від
+кримінальної відповідальності за перший самовільний відхід з військової частини або дезертирство, якщо вони добровільно повернуться на службу та отримають
+письмову згоду від командира, повідомляє Дзеркало тижня. Як зазначив депутат Ярослав Железняк, законопроєкт №11322 у першому читанні підтримали 273 депутати.
+Згідно із запропонованими змінами законодавства, винуватець має повернутись в частину або до місця служби до закінчення провадження, а командир має надати згоду
+на продовження проходження військової служби такою особою. Така згода має бути оформлена у письмовому вигляді та передана прокурору. ( function(self) {
+googletag.cmd.push( function() { var gptAdSlot = googletag.defineSlot('/4152678/KD-Content1-Others-22', [],
+'div-gpt-ad-1508498991261-8').defineSizeMapping(window.gpt.mappingContent1).addService(googletag.pubads()); googletag.display('div-gpt-ad-1508498991261-8');
+googletag.pubads().addEventListener('slotRenderEnded', function(event) { if( event.slot == gptAdSlot && event.isEmpty ) { document.getElementById(
+event.slot.getSlotElementId() ).style.display = ''; document.getElementById( event.slot.getSlotElementId() ).innerHTML = ''; var gptAdSlotSecond =
+googletag.defineSlot('/4152678/KD-Content1-second-22', []).defineSizeMapping(window.gpt.mappingContent4).addService(googletag.pubads());
+document.getElementById( event.slot.getSlotElementId() ).appendChild( ( function() { var div = document.createElement('div'); div.id =
+gptAdSlotSecond.getSlotElementId(); return div; } )() ); googletag.display(gptAdSlotSecond); googletag.pubads().refresh([gptAdSlotSecond]);
+googletag.pubads().addEventListener('slotRenderEnded', function(event) { if( event.slot == gptAdSlotSecond && event.isEmpty ) { document.getElementById(
+event.slot.getSlotElementId() ).style.display = ''; document.getElementById( event.slot.getSlotElementId() ).innerHTML = '\r\n\r\n'; (adsbygoogle =
+window.adsbygoogle || []).push({}); } } ); } } ); } ); } )(this); ( function(self) { googletag.cmd.push( function() { var gptAdSlot =
+googletag.defineSlot('/4152678/KD-Mobile-2-22', [], 'div-gpt-ad-1508498991261-19').defineSizeMapping(window.gpt.mappingMobile2).addService(googletag.pubads());
+googletag.display('div-gpt-ad-1508498991261-19'); googletag.pubads().addEventListener('slotRenderEnded', function(event) { if( event.slot == gptAdSlot &&
+event.isEmpty ) { document.getElementById( event.slot.getSlotElementId() ).style.display = ''; document.getElementById( event.slot.getSlotElementId()
+).innerHTML = ''; var gptAdSlotSecond = googletag.defineSlot('/4152678/KD-Mobile-2-second-22',
+[]).defineSizeMapping(window.gpt.mappingMobile2).addService(googletag.pubads()); document.getElementById( event.slot.getSlotElementId() ).appendChild( (
+function() { var div = document.createElement('div'); div.id = gptAdSlotSecond.getSlotElementId(); return div; } )() ); googletag.display(gptAdSlotSecond);
+googletag.pubads().refresh([gptAdSlotSecond]); googletag.pubads().addEventListener('slotRenderEnded', function(event) { if( event.slot == gptAdSlotSecond &&
+event.isEmpty ) { document.getElementById( event.slot.getSlotElementId() ).style.display = ''; document.getElementById( event.slot.getSlotElementId()
+).innerHTML = '\r\n\r\n'; (adsbygoogle = window.adsbygoogle || []).push({}); } } ); } } ); } ); } )(this); Після поновлення на службі винуватцю мають поновити
+дію контракту, виплату грошового забезпечення та продовольчого, речового, інших видів забезпечення, пільги та соціальні гарантії. Водночас за час прогулу вони
+не виплачуватимуться. Водночас як вказала народна депутатка Ірина Геращенко, проєкт закону надає командирам військових частин дискреційні повноваження
+вирішувати, чи звільняти від відповідальності, тому законопроєкт потребує ретельного доопрацювання. Як розповів голова Верховного Суду Станіслав Кравченко, лише
+у 2023 році за самовільне залишення військової частини засудили 1577 військовослужбовців. Це є найпоширенішим злочином серед українських військових.
+
+===== ITEM A167 | lang: de =====
+HEADLINE: Kulturelle Vielfalt mitgestalten: Das E-Werk sucht Bürger:innen-Jury für das Festival Cordiale und Musiker:innen für das Jazzfestival Freiburg
+TEXT:
+Kulturelle Vielfalt mitgestalten: Das E-Werk sucht Bürger:innen-Jury für das Festival Cordiale und Musiker:innen für das Jazzfestival Freiburg Das E-Werk
+Freiburg lädt mit zwei aktuellen Open Calls zur aktiven Mitgestaltung des Kulturprogramms in Freiburg ein. Gesucht werden Mitwirkende für eine
+Bürger:innen-Jury, die das transkulturelle Festival Cordiale kuratiert sowie Musiker:innen und Bands für das Jazzfestival Freiburg. Seit 2018 ist die Cordiale
+ein Ort für kulturellen Austausch und künstlerische Vielfalt. Das Festival wird von Menschen mit Migrationserfahrung oder Mehrfachzugehörigkeit kuratiert und
+versteht sich als Plattform für unterschiedlichste kulturelle Ausdrucksformen. Nun wird eine Bürger:innen-Jury gesucht, die das Festival über ein Jahr hinweg
+mitentwickelt. Gesucht werden Menschen mit Interesse an Kunst, Kultur und gemeinschaftlicher Gestaltung, unabhängig von Alter, Herkunft oder Erfahrung. Die Jury
+trifft sich regelmäßig zwischen Juni 2025 und Juli 2026 und erhält eine Aufwandsentschädigung sowie freien Eintritt zu allen Veranstaltungen des E-Werks im
+genannten Zeitraum. Die Bewerbung erfolgt über drei kurze Fragen und ist bis zum 18. Mai per E-Mail an Sofie Anton (sofie.anton@ewerk-freiburg.de) möglich.
+Parallel dazu sucht das E-Werk Musiker:innen für zwei zentrale Termine des Jazzfestivals Freiburg 2025. Am 20. September findet der sogenannte „Minigipfel“
+statt, ein Abend mit Livemusik in verschiedenen Kneipen im Stadtteil Stühlinger sowie der Innenstadt. Gesucht werden Solokünstler:innen und kleine Bands
+(maximal vier Mitglieder), die Jazz, Blues, Soul, Funk, Singer/Songwriter, Folk oder experimentelle Musikstile vertreten. Am 28. September folgt dann „Jazz im
+Garten“ im Stadtgarten Freiburg, ein vorwiegend akustisches Format ohne große technische Anforderungen. Interessierte Musiker:innen können sich bis zum 18. Mai
+mit einem Demo und einer Kurzbeschreibung beim E-Werk (sofie.anton@ewerk-freiburg.de) bewerben. Weitere Infos: ewerk-freiburg.de Bildquellen - Foto: Konzert
+beim Minigipfel: Copyright: CSK Foto
+
+===== ITEM A168 | lang: ko =====
+HEADLINE: 구자욱 이어 이재현 발목 부상, 삼성 위기?…박진만 감독 “다시 괜찮다고 하더라”
+TEXT:
+구자욱 이어 이재현 발목 부상, 삼성 위기?…박진만 감독 “다시 괜찮다고 하더라” 서진솔 기자 수정 2024-10-17 17:34 입력 2024-10-17 17:34 주장 구자욱의 무릎 부상으로 골머리를 앓는 프로야구 삼성 라이온즈가 주전 유격수 이재현까지 훈련 중 발목을 다치는 아찔한
+상황을 맞았다. 그런데 이재현이 경기 시작 1시간 전에 다시 출전이 가능하다고 번복하면서 가슴을 쓸어내렸다. 박진만 삼성 감독은 17일 서울 잠실야구장에서 열린 2024 KBO리그 포스트시즌 플레이오프(5전3승제) 3차전 LG 트윈스와의 원정 경기를 앞두고 “이재현이 훈련 중 발목을
+다쳐서 경기에 뛸 수 없다”고 말했다. 그러나 다시 팀 트레이너가 뛸 수 있다는 신호를 보냈고 “6번 타자 강민호, 7번 김영웅, 8번 이재현, 9번 류지혁의 하위 타선을 계획대로 유지한다”며 웃었다. 구자욱의 좌익수 자리는 김헌곤이 대체한다. 김헌곤은 15일 2차전에서 5회 말 프로
+데뷔 13년 만에 포스트시즌 첫 홈런을 신고했고 7회엔 두 번째 아치까지 쏘아 올렸다. 이날 김헌곤의 성적은 4타수 3안타 2득점 4타점이었다. 박 감독은 LG의 좌완 선발 손주영을 저격해 김헌곤을 내보냈었는데 이날 우완 임찬규를 상대로도 선발 출전시켰다. 박 감독은 “구자욱은 어제보단
+통증이 가라앉았다. 목발 없이 다니지만 아직 아프다고 한다”면서 “잠실은 대구보다 운동장이 커서 도루, 희생 번트, 치고 달리기 등 상황에 따른 작전을 펼칠 예정이다. 앞서고 있을 상황과 쫓아갈 때 다른 결정을 내릴 수 있다”고 설명했다. 긴 휴식기에도 1, 2차전에서 각각 10점씩
+몰아친 공격력의 비결은 분위기라고 했다. 박 감독은 “처음 포스트시즌을 경험하는 선수가 많아서 위축되지 않을까 걱정했는데 젊은 타자들이 자신 있게 방망이를 돌리면서 좋은 결과가 나오고 있다”고 강조했다. 이어 “황동재가 최소 4회까지 던져주길 기대한다. 상황에 따라 공을 안 던진 불펜
+투수들을 적극 활용할 계획”이라면서 “시리즈를 빨리 끝내야 체력을 안배하고 한국시리즈에 진출할 수 있다. 다음 라운드에 오르면 미국에서 치료 중인 코너 시볼드의 몸 상태도 확인할 것”이라고 덧붙였다. 서진솔 기자
+
+===== ITEM A169 | lang: vi =====
+HEADLINE: Phổi bị tổn thương hoại tử do nhiễm giun lươn
+TEXT:
+Phổi bị tổn thương hoại tử do nhiễm giun lươn Người phụ nữ 64 tuổi (Tiền Giang) có tiền sử đau xương khớp, tăng huyết áp, suy thượng thận. Khoảng một tháng gần
+đây, bà bị sụt cân, ho, khó thở kéo dài, điều trị tại địa phương không cải thiện nên đến Bệnh viện Nhân dân 115 (TP.HCM). Xét nghiệm cho thấy bệnh nhân thiếu
+máu mức độ trung bình, tăng bạch cầu ái toan - dấu hiệu điển hình của nhiễm ký sinh trùng, cùng với viêm phổi dạng nốt lan tỏa hai phổi. Nội soi phế quản và dạ
+dày tá tràng phát hiện nhiều dị vật màu trắng xám, kiểm tra dưới kính hiển vi xác định là ấu trùng giun lươn. Bệnh nhân được chẩn đoán nhiễm giun lươn nặng ở
+phổi và ruột trên cơ địa suy giảm miễn dịch. Sau điều trị bằng thuốc đặc hiệu, bà đã ổn định và được xuất viện. Trường hợp thứ hai là người đàn ông 69 tuổi
+(Tiền Giang), có tiền sử ung thư thanh quản, nhập viện tại Bệnh viện Nhân dân 115 do ăn kém, nôn ói, đau bụng, ho và khó thở kéo dài 10 ngày. Tại khoa Hô hấp -
+Hồi sức tim mạch, kết quả chụp cắt lớp vi tính ngực và ổ bụng cho thấy hẹp môn vị nghi do ký sinh trùng và tổn thương phổi hoại tử hai bên. Xét nghiệm dịch rửa
+phế quản phát hiện ký sinh trùng, bệnh nhân được chẩn đoán nhiễm giun lươn nặng ở phổi và điều trị đặc hiệu theo phác đồ. Theo ThS.BS Đặng Nam Hải, khoa Hô hấp
+- Hồi sức tim mạch, nhiễm giun lươn là bệnh ký sinh trùng phổ biến ở khu vực nhiệt đới và cận nhiệt đới, trong đó có Việt Nam. Trên thế giới, khoảng 100-370
+triệu người mắc bệnh và tại Việt Nam, tỷ lệ nhiễm có thể lên đến 20%. Người bệnh có thể nhiễm giun lươn khi tiếp xúc với ấu trùng trong đất hoặc khi trứng giun
+nở trong ruột và tự sinh sôi. Không chỉ gây tổn thương đường tiêu hóa, ấu trùng còn có thể xâm nhập phổi và các cơ quan khác, dẫn đến biến chứng nguy hiểm, thậm
+chí đe dọa tính mạng. Để giảm nguy cơ nhiễm giun lươn, giữ gìn vệ sinh cá nhân đóng vai trò quan trọng. ThS.BS Đặng Nam Hải khuyến cáo người dân rửa tay thường
+xuyên bằng xà phòng, đặc biệt trước khi ăn và sau khi tiếp xúc với đất cát. Ngoài ra, thực phẩm cần được nấu chín kỹ, hạn chế ăn đồ sống hoặc tái để tránh nguy
+cơ nhiễm ký sinh trùng. Khi làm việc hoặc đi chân trần ở khu vực có đất cát ẩm, nên mang giày dép để tránh tiếp xúc trực tiếp với ấu trùng giun lươn. Ngoài ra,
+nếu xuất hiện các triệu chứng nghi ngờ dưới đây, người bệnh cần đi khám sàng lọc sớm để phát hiện và điều
+
+===== ITEM A170 | lang: pt =====
+HEADLINE: VÍDEO: Ministro da Previdência bate boca com Moro sobre fraude no INSS
+TEXT:
+VÍDEO: Ministro da Previdência bate boca com Moro sobre fraude no INSS Durante audiência realizada nesta quinta-feira (15) na Comissão de Transparência,
+Governança, Fiscalização e Controle e Defesa do Consumidor do Senado Federal, o ministro da Previdência Social, Wolney Queiroz, e o senador Sergio Moro
+(União-PR) protagonizaram um momento de tensão e discutiram durante a oitiva. O bate-boca começou quando o parlamentar perguntou ao ministro se, enquanto ele
+era secretário-executivo do Ministério da Previdência Social, sabia dos descontos associativos que ocorriam no Instituto Nacional de Seguridade Social (INSS),
+que, segundo a Polícia Federal (PF) e a Controladoria-Geral da União (CGU), sindicatos e entidades associativas teriam cobrado indevidamente de aposentados e
+pensionistas. No total, teria sido cobrado um valor de cerca de R$ 6 bilhões, entre os anos de 2019 e 2024. Wolney negou, afirmando que as denúncias foram
+feitas em 2020, quando o senador era ministro da Justiça de Jair Bolsonaro (PL). “Um servidor em 2020 denuncia à PF que havia descontos indevidos, que havia
+fraude. Essas denúncias foram feitas em 2020, senador. Parece que vossa excelência era o ministro da Justiça nessa época. Vossa Excelência fez alguma coisa para
+coibir essas fraudes?”, respondeu o ministro. Moro rebateu, dizendo que Queiroz se omitiu durante uma reunião sobre a denúncia das fraudes realizadas em 2023.
+“Esses fatos nunca foram informados a mim como foram informadas a vossa excelência expressamente na reunião lá em 2023. Quem se omitiu aqui foi Vossa
+Excelência”, disse o senador. “Vossa Excelência, como ministro, também não acompanhou? Não tinha conhecimento?”, perguntou Wolney. “Não, não chegou ao meu
+conhecimento mas ao de Vossa Excelência chegou”, respondeu Moro. O ministro reiterou que não tinha conhecimento sobre as informações de fraude, e foi,
+novamente, rebatido pelo parlamentar. “O senhor ouviu na reunião, ministro. Na reunião foi informado sobre as fraudes e Vossa Excelência não fez nada. Vossa
+Excelência era de confiança de Carlos Lupi e continua no ministério”, declarou Sergio Moro. Momentos depois, o parlamentar voltou ao assunto e respondeu sobre
+acusações de omissão de Wolney quando era ministro, em 2020. “Esse depoimento [do servidor] foi em setembro de 2020, eu sequer estava no governo mais. Se eu
+tivesse recebido, como Vossa Excelência recebeu, em junho de 2023 a notícia que haviam essa fraudes eu teria tomado providencias imediatas. Refuto Vossa
+Excelência que quis me acusar de omissão. Quem se omitiu como secretário-executivo da previdência durante os anos em que a fraude escalou para mais de 2,8
+bilhões de reais foi Vossa Excelência”, disse Moro. Wolney no Senado O ministro foi convidado pela Comissão de Transparência, Governança, Fiscalização e
+Controle e Defesa do Consumidor para prestar informações sobre as fraudes relacionadas a descontos não autorizados nas contas de aposentados e pensionistas no
+INSS. Em um dos requerimentos apresentados, os senadores afirmaram que Wolney, quando era secretário-executivo do Ministério da Previdência Social, se reuniu
+com membros da Confederação Nacional dos Trabalhadores na Agricultura (Contag), uma das entidades investigadas por fraudes. Os parlamentares apontam ainda que
+Wolney e Carlos Lupi, ex-ministro da Previdência, foram alertados pela conselheira Tonia Galleti, do Conselho Nacional do INSS,
+
+===== ITEM A171 | lang: es =====
+HEADLINE: Villarruel negó una ruptura con Javier Milei: &quot;No estoy participando de ningún armado político&quot;
+TEXT:
+Villarruel negó una ruptura con Javier Milei: &quot;No estoy participando de ningún armado político&quot; Victoria Villarruel salió al cruce de las versiones de
+una ruptura con Javier Milei y ratificó que "es parte del espacio" que gobierna al país. En este sentido, después de las versiones que hablaban que estaba
+alejada del mandatario y tras haberse quedado afuera de la última cadena nacional en la cual Milei festejó su primer año de gestión, la vicepresidenta negó una
+ruptura y añadió: "No estoy participando de ningún armado político y cuando lo haga, lo haré donde el Presidente Milei me lo pida". En este sentido, aseguró:
+"Me acuerdo como si fuera ayer cuando éramos sólo dos diputados con el presidente Milei contra el kirchnerismo, que es el mismo que está ahora porque no
+cambiaron ni un nombre. Nos hacían la vida imposible, nos destrataban e intentaban denigrarnos en cada oportunidad que tenían; pero a pesar de eso nos
+acompañamos sabiendo que el destino de la Argentina era brillante". Al respecto también agregó: "Ante comunicados recientes de algunos partidos políticos que se
+arrogan la representación de mi persona y mis ideas, quiero expresar que hoy no hay lugar para la 'moderación'. No estoy participando de ningún armado político
+y cuando lo haga, lo haré donde el Presidente Milei me lo pida. Soy parte del espacio que gobierna nuestro país, desde su misma fundación y aquí me quedaré
+defendiendo las convicciones que nos llevaron a encontrar un camino común al presidente Milei y a mi". MÁS INFO Noticia en desarrollo
+
+===== ITEM A172 | lang: bn =====
+HEADLINE: 
+TEXT:
+ইলেকট্রনিক ভোটিং মেশিন ইভিএম নিঃশব্দেনির্বিঘ্নে ভোট চুরির প্রকল্প অভিহিত বিএনপির স্থায়ী কমি আমীর খসরু মাহমুদ চৌধুরী ভোটগ্রহণে ইভিএম ব্যবহার বিরুদ্ধে সর হওয়
+ভোটারদের আহ্বান জানিয়েছেনশুক্রবার দুপুরে জাতীয় প্রেসক্লাবে জাতীয়তাবাদী সংগ্রামী দল কেন্দ্রীয় কমি উদ্যোগে অতীত ভবিষৎ করণীয় শীর্ষক আলোচনাসভায় এসব কথা বলেনইভিএমের
+সমালোচনা আমীর খসরু সাল নির্বাচনে ব্যালট পেপার ভোট ডাকাতি কথা মানুষ ব্যালট বাক্সে চুরি ঝামেলা ভোটারের ভোট যায় ভোট ডাকাতি সরক ইভিএমকে বেছ নিয় ভোট বায়োমেট্রিক দেব
+মার্কায় টিপ দাব ঝামেলা না হইচই না নীরবে নিঃশব্দে ভোট চুরির কাজ হবেইভিএমে চ্যালেঞ্জ সুযোগ ভার ইভিএমে ভোট রশিদ দেয়া বাংলাদেশ সেটি ব্যবস্থা কাক চ্যালেঞ্জ জনগণ
+ইভিএম বিরুদ্ধে কথা হবেমো জাহাঙ্গীর হোস হানিফ সভাপতিত্বে অনুষ্ঠানে উপস্থিত বিএনপি স্থানীয় কমি ইকবাল হাসান মাহমুদ টুকু দল ভাইস চেয়ারম্যান জাতীয়তাবাদী আইনজীবী
+ফোরাম আহ্বায়ক অ্যাডভোকেট খন্দক মাহবুব হোস বিএনপির সংসদ শিরিন সুলতানা সংগঠ নির্বাহী কমি শাহ মো আবু জাফর হুমায়ুন কবীর খান প্রমুখ
+
+===== ITEM A173 | lang: bn =====
+HEADLINE: 
+TEXT:
+চট্টগ্রাম আসন উপনির্বাচনে জাতীয় পার্ প্রার্থী পার্ প্রেসিডিয়াম জিয়াউদ্দিন আহমেদ বাবলু বুধব দুপুরে বনানী জাতীয় পার্ চেয়ারম্যান রাজনৈতিক কার্যালয় বাবলুর
+প্রার্থিতা জাতীয় পার্ চেয়ারম্যান জিএম কাদেরজিএম কাদের চট্টগ্রাম আসনে উপনির্বাচনে জাতীয় পার্ প্রার্থী হিসেব লড় জিয়াউদ্দিন বাবলু দল নেতাকর্মী ঐক্যবদ্ধ আহ্বান
+জানানজাস সংসদ মঈন উদ্দিন খান বাদল মৃত্যু চট্টগ্রাম আসন জানুয়ারি আসন উপনির্বাচন নির্বাচন কমিশন আসনে বিএনপি আওয়ামী লীগ এর প্রার্থী হয়েছেজিয়াউদ্দিন আহমেদ বাবলু
+সাল নির্বাচনে মহাজোট প্রার্থী হিসেব নিজ আসন চট্টগ্রাম নির্বাচিত সাল নির্বাচনে চট্টগ্রাম আসনে মহাজোট এমপি নির্বাচিত সাল নির্বাচনে চট্টগ্রাম নির্বাচন করেননি বাবলু
+আসনে মহাজোট মনোনয়ন দেয়া বাদলকেসংবাদ সম্মেলনে উপস্থিত জাতীয় পার্ মহাসচিব মসিউর রহমান রাঙ্গা প্রেসিডিয়াম জিয়াউদ্দিন আহমেদ বাবলু আজম খান প্রতিমন্ত্রী অ্যাডভোকেট
+সালমা ইস এমপি এসএম ফয়সল চিশতী মাসুদ উদ্দিন চৌধুরী অ্যাডভোকেট রেজাউল ইস ভূঁইয়া তাজ রহমান স্বেচ্ছাসেবক পার্ সভাপতি লিয়াকত হোস খোকা প্রমুখ
+
+===== ITEM A174 | lang: vi =====
+HEADLINE: Arne Slot bị trừng phạt
+TEXT:
+Arne Slot bị trừng phạt "Huấn luyện viên của Liverpool bị cáo buộc hành động không đúng mực hoặc sử dụng những lời lẽ, hành vi xúc phạm hoặc lăng mạ đối với
+trọng tài chính và trợ lý trọng tài sau khi trận đấu kết thúc," FA cho biết trong một tuyên bố. HLV Slot đang chờ đợi quyết định cuối cùng từ FA. Nhiều khả năng
+ông sẽ phải nhận án phạt, có thể là cấm chỉ đạo từ 1-2 trận. Đây là một tổn thất không nhỏ cho Liverpool, đặc biệt là khi họ đang trong giai đoạn quan trọng của
+mùa giải. Trước tình hình này, HLV Slot lên tiếng giải thích. Ông cho biết: "Một cuộc điều tra đang diễn ra. Tôi nghĩ bản thân phải tôn trọng điều đó nên không
+thể đi vào chi tiết. Vấn đề nằm ở việc trọng tài cho năm phút bù giờ nhưng Everton ghi bàn ở phút 90+8. Điều này xảy ra thường xuyên. Cảm xúc lấn át tôi". Về án
+treo giò của Jones, Slot nói thêm: "Điều tốt là Jones đã chơi nhiều trận. Do đó là thẻ vàng thứ 2 nên cậu ấy chỉ phải nghỉ một trận. Tôi thích cách cậu ấy vào
+sân, chiến đấu vì CLB và đứng ra bảo vệ người hâm mộ. Bóng đá là trò chơi cảm xúc nên đôi khi chúng ta không thể kiểm soát bản thân. Tôi sẽ nói chuyện với
+Jones". Trận derby Merseyside giữa Everton và Liverpool tại Goodison Park kết thúc trong một cảnh tượng hỗn loạn sau bàn gỡ hòa của James Tarkowski ở phút 90+8.
+Không chỉ các cầu thủ mà cả ban huấn luyện của Liverpool cũng tham gia vào cuộc ẩu đả, dẫn đến những án phạt từ Liên đoàn bóng đá Anh (FA). Cụ thể, HLV Arne
+Slot, 2 cầu thủ Curtis Jones, Abdoulaye Doucoure và trợ lý của Slot, Sipke Hulshoff, đều nhận thẻ đỏ sau khi trận đấu kết thúc. Cả hai câu lạc bộ cũng bị buộc
+tội không kiểm soát được hành vi của các cầu thủ. Về phía HLV Slot, ông nổi giận với trọng tài Michael Oliver, dẫn đến việc bị đuổi khỏi sân dù trận đấu đã kết
+thúc. Tuy nhiên, mọi chuyện không dừng lại ở đó. FA còn cáo buộc Slot có những bình luận không đúng mực, mang tính xúc phạm và lăng mạ đối với cả trọng tài
+chính và trợ lý trọng tài sau khi bị đuổi khỏi sân. Những cuốn sách đáng đọc về Ngoại hạng Anh Mục Thể thao xin giới thiệu tủ sách về Ngoại hạng Anh, cung cấp
+cho độc giả thông tin về những biểu tượng của giải đấu, các chức vô địch, và những khoảnh khắc đáng nhớ của giải đấu hấp dẫn nhất thế giới.
+
+===== ITEM A175 | lang: vi =====
+HEADLINE: Nền kinh tế số 2 thế giới khởi đầu tốt hơn dự báo
+TEXT:
+Nền kinh tế số 2 thế giới khởi đầu tốt hơn dự báo Các chỉ số kinh tế chủ chốt của Trung Quốc khởi đầu năm 2026 đang tích cực hơn dự báo, cho thấy đà phục hồi
+của nền kinh tế lớn thứ 2 thế giới trước khi căng thẳng địa chính trị ở Trung Đông làm dấy lên lo ngại về triển vọng tăng trưởng toàn cầu. Tín hiệu tích cực
+Theo dữ liệu do Cục Thống kê Quốc gia Trung Quốc (NBS) công bố ngày 16/3, sản lượng công nghiệp của Trung Quốc đã tăng 6,3% trong tháng 1-2 so với cùng kỳ năm
+trước. Đây là mức tăng nhanh nhất kể từ tháng 9/2025 và cao hơn đáng kể so với mức 5,2% của tháng 12 năm ngoái. Đầu tư tài sản cố định cũng bất ngờ tăng 1,8%
+trong 2 tháng đầu năm, sau khi chỉ số này ghi nhận lần suy giảm đầu tiên trong lịch sử vào năm 2025. Trong khi đó, doanh số bán lẻ tăng 2,8%, vượt dự báo trung
+vị 2,5% của các nhà kinh tế được Bloomberg khảo sát và cải thiện rõ rệt so với mức 0,9% của tháng 12/2025. “Các chỉ số kinh tế chủ chốt trong tháng 1 và 2 cho
+thấy sự phục hồi rõ rệt, nền kinh tế khởi đầu năm khá tích cực", cơ quan thống kê Trung Quốc cho biết trong thông cáo đi kèm dữ liệu. Tuy nhiên, cơ quan này
+cũng cảnh báo môi trường bên ngoài đang trở nên phức tạp hơn khi rủi ro địa chính trị gia tăng. Trung Quốc thường công bố dữ liệu gộp của tháng 1 và tháng 2 để
+giảm sai lệch do kỳ nghỉ Tết Nguyên đán diễn ra vào thời điểm khác nhau mỗi năm. Bất động sản vẫn là điểm yếu Dù các chỉ số kinh tế cải thiện, lĩnh vực bất động
+sản - vốn là điểm nghẽn lớn của nền kinh tế Trung Quốc vẫn tiếp tục suy giảm. Đầu tư bất động sản giảm 11,1% trong 2 tháng đầu năm so với cùng kỳ năm trước, dù
+mức giảm này vẫn thấp hơn dự báo giảm 19,3% của các nhà kinh tế. Trong khi đó, tỷ lệ thất nghiệp tại khu vực thành thị tăng lên 5,3%, cao hơn tất cả dự báo
+trong khảo sát của Bloomberg. Nền kinh tế Trung Quốc bước vào năm 2026 với nền tảng tương đối vững sau khi tăng trưởng chậm lại trong năm trước. Trong quý
+IV/2025, GDP nước này chỉ tăng 4,5% so với cùng kỳ, mức thấp nhất kể từ khi nền kinh tế mở cửa trở lại sau các đợt phong tỏa Covid-19 vào cuối năm 2022. Tiêu
+dùng trong nước và đầu tư suy yếu là hai yếu tố chính khiến đà tăng trưởng chậm lại trong giai đoạn cuối năm ngoái. Chiến sự Trung Đông phủ bóng triển vọng
+Triển vọng kinh tế Trung Quốc trong thời gian tới được cho là phụ thuộc lớn vào
+
+===== ITEM A176 | lang: de =====
+HEADLINE: Irans Außenminister bei ungewöhnlichem Besuch in Ägypten
+TEXT:
+Irans Außenminister bei ungewöhnlichem Besuch in Ägypten KAIRO (dpa-AFX) - Irans Außenminister führt angesichts des Kriegs in Nahost Gespräche in der
+ägyptischen Hauptstadt Kairo. Laut Staatsmedien kam Abbas Araghtschi am Morgen bereits mit seinem Kollegen Badr Abdel-Atti zusammen, um über die Eskalation in
+der Region zu sprechen. Es ist das erste Mal seit mehr als zehn Jahren, dass ein iranischer Außenminister nach Ägypten reist. Eigentlich sind die Beziehungen
+beider Länder angespannt.Differenzen gibt es unter anderem in ihrer Haltung zu Israel. Ägypten schloss 1979 einen Friedensvertrag mit Israel, während Teheran
+den jüdischen Staat als Erzfeind betrachtet und bewaffnete Gruppen im Kampf gegen Israel unterstützt. Irans Regierung sieht in der kritischen Haltung Ägyptens
+gegen die israelische Kriegsführung im Gazastreifen und Libanon eine Chance, gemeinsame Interessen zu verfolgen. Bereits vor Ausbruch des Gaza-Kriegs wollten
+Ägypten und der Iran ihre Beziehungen normalisieren.Zuvor war Araghtschi bereits für Gespräche in Jordanien, ein Land, das wie Ägypten auch gute Beziehungen zum
+Westen pflegt./arb/DP/men
+
+===== ITEM A177 | lang: es =====
+HEADLINE: ''Mitigar el sufrimiento humano'', así trabaja el Centro san Camilo de pacientes terminales
+TEXT:
+''Mitigar el sufrimiento humano'', así trabaja el Centro san Camilo de pacientes terminales En España 120.000 españoles requieren cuidados paliativos, pero sólo
+los reciben 48.000 (el 40%). Y 85.000 personas mueren al año sin haberlos recibido. Al contrario, en el caso del aborto, es mucho más fácil y rápido conseguir
+la intervención. La falta de paliativos y las vigentes leyes de eutanasia y el aborto suponen la cultura de la vida.El Centro Asistencial y de Humanización de
+la Salud san Camilo de Tres Cantos (Madrid) se dedica a trabajar con personas en la última fase de su vida. Ofrecen cuidados paliativos, que no sólo consiste en
+dar medicamentos, sino en acomapañar. Dar calidad de vida.José Carlos Bermejo es el director general del ''Este premio es un desafío para seguir conjugando la
+palabra humanizar al final de la vida y en el duelo''.El Centro San Camilo, premiado por Cruz Roja EspañolaEl 13 de mayo recibieron de manos de la reina Letizia
+la medalla de oro de Cruz Roja Española junto a otras entendido. En sus palabras, la monarca aseguró que la Cruz Roja tiene como objetivo ''mitigar el
+sufrimiento humano, en todas sus formas”. En cuanto a los premiados, esta medalla de oro “significa que vuestro trabajo es útil y tiene trasfondo social”. Dos
+cualidades que comparte con el centro tricantino. Bermejo asegura que la reina Letizia, en el discurso oficial y en el coloquio posterior, les reconoció como
+''una institución de la Iglesia, abierta a las necesidades en el final de la vida, dar dignidad hasta el final''.''La situación paliativa en España es diferente
+según las comunidades autónomas desgraciadamente''. Anima a confiar en las unidades de cuidados paliativos concertadas y de la Iglesia, ''donde las personas
+viven hasta el final sacando el jugo a cada minuto, sea celebrando, perdonando, despidiéndose y vivir la dignidad''.La Ley de Cuidados Paliativos, un objetivo
+soñado''Hay mucha diferencia en los modos de vivir. Cuando se controlan los síntomas físicos, surge la capacidad de cuidar las relaciones con nuestros seres
+queridos'', asegura el director del Centro san Camilo.Se está presionando para crear una ley de cuidados paliativos, sobretodo cuando hay una ley de eutanasia.
+''Hay que cambiar las cabezas de los ciudadanos. En las escuelas, familias y parroquias hay que hablar del morir y del paliar. ''La cultura la hacemos los
+ciudadanos''. Asegura que si lo construimos entre todos, ''las leyes cristalizarán el sentir de la sociedad''.
+
+===== ITEM A178 | lang: id =====
+HEADLINE: SOKSI Dukung Airlangga Jadi Ketum Golkar, Misbakhun: Maju Terus Pantang Mundur
+TEXT:
+SOKSI Dukung Airlangga Jadi Ketum Golkar, Misbakhun: Maju Terus Pantang Mundur jpnn.com, JAKARTA - Dewan Pimpinan Nasional Sentral Organisasi Karyawan Swadiri
+Indonesia (Depinas Soksi) di Setiabudi, Jakarta Selatan, Selasa (16/7) melaksanakan deklarasi dukungan kepada Airlangga Hartarto menjadi Ketua Umum Golkar
+periode 2024-2029. Airlangga dan Sekjen Partai Golkar Lodewijk Freidrich Paulus tampak hadir dalam deklarasi yang digelar di JS Luwansa Hotel Jakarta itu.
+Selain itu, para senior di SOKSI juga tampak hadir, antara lain, Ahmadi Noor Supit (ketua umum nonaktif), Freddy Latumahina (pelaksana harian ketua umum),
+Oetojo Oesman, dan tokoh pendidikan Prof. Thomas Suyatno. Ketua DPP Partai Golkar sekaligus Sekjen SOKSI Mukhamad Misbakhun menjadi figur yang membacakan surat
+deklarasi pihaknya bernomor QST 42/24/Depinas/SOKSI/2024. “Maju terus pantang mundur,” ujar dia mengawali membacakan surat deklarasi, Selasa. Misbakhun
+melanjutkan Depinas SOKSI memerintahkan seluruh jajarannya di tingkat provinsi dan kabupaten atau kota melaksanakan keputusan surat deklarasi. “Laksanakan
+konsolidasi total demi mendukung Bapak Airlangga sebagai ketua umum Partai Golkar 2024-2029. Keputusan ini berlaku sejak ditetapkan di Jakarta pada 16 Juli
+2024,” ujar legislator Komisi IX DPR RI. Diketahui, isi surat deklarasi ialah menetapkan dukungan dari SOKSI sebagai Ketum Golkar periode 2024-2029.
+
+===== ITEM A179 | lang: mr =====
+HEADLINE: 
+TEXT:
+अकोला : यशवंतराव चव्हाण महाराष्टÑ मुक्त विद्यापीठाच्या विविध शिक्षणक्रमांच्या अंतिम वर्षाच्या परीक्षाऑनलाइन पद्धतीने संपूर्ण महाराष्टÑभर कालपासून सुरळीत सुरू
+झाल्या, अशी माहिती कुलसचिव डॉ.दिनेश भोंडे यांनी दिली.विद्यापीठाने विद्यार्थ्यांसाठी अतिशय प्रभावी आणि सुटसुटीत ऑनलाइनपरीक्षा प्रणाली तयार केल्यामुळे दोन दिवसांत
+राज्यभरातून या परीक्षेला सरासरी ८५ टक्क्यांहून अधिक विद्यार्थी सामोरे गेले.ऑनलाइन परीक्षा विद्यार्थ्यांना त्यांच्या सोयीच्या वेळेत देता यावी, अशी लवचिकता
+ठेवण्यात आली आहे.विविध शिक्षणक्रमांकरिता ठरवून दिलेल्या दिवसाच्या प्रहरातील निर्धारित पाच तासांपैकी कोणत्याही सलग दोन तासात विद्यार्थी ही परीक्षा देऊ
+शकतात.ऑनलाइन परीक्षेला ८३ टक्क्यांहून अधिक प्रतिसादएकूण १ लाख ९० हजार ३३९ परीक्षार्थी असून, ५ आॅक्टोबरपासून तीन दिवसात एक लाख विद्यार्थ्यांनी यशस्वीरीत्या
+आॅनलाइन परीक्षा दिली.परीक्षार्थीसाठी अभ्यासक्रमनिहाय सकाळी ८ ते दुपारी १ व ३ ते रात्री ८ असे दोन सत्र दिले असून, त्यांनी या पाच तासांपैकी कोणत्याही एका तासात
+पेपर द्यायचा आहे.एकूण ६० गुणांच्या पेपरसाठी ५० प्रश्न दिले जात असून, त्यापैकी कोणतेही ३० सोडवायचे आहेत.मोबाइल, लॅपटाप, संगणक, यापैकी कोणतेही उपकरण याऑनलाइन
+परीक्षेकरिता वापरता येऊ शकते, विविध विभागीय केंद्रांना विद्यार्थी सहायता कक्ष सुरू करण्यात आला असून, हेल्पलाइननंबरही परिक्षार्थींना देण्यात आले
+आहेत.विद्यार्थीकडून परीक्षा पद्धती अतिशय सोपी व सुटसुटीत असल्याच्या प्रतिक्रिया विद्यापीठास येत आहेत,अशी माहिती परीक्षा नियंत्रक शशिकांत ठाकरे यांनी दिली.-
+डॉ.दिनेश भोंडे, कुलसचिव.
+
+===== ITEM A180 | lang: id =====
+HEADLINE: Pakar Sebut Perlunya Edukasi Diabetes agar Penanganan Lebih Mudah
+TEXT:
+Pakar Sebut Perlunya Edukasi Diabetes agar Penanganan Lebih Mudah TEMPO.CO, Jakarta - Data Federasi Diabetes Internasional (IDF) mencatat jumlah penderita
+diabetes di dunia pada 2021 mencapai 537 juta. Angka ini diprediksi akan terus meningkat mencapai 643 juta di 2030 dan 783 juta pada tahun 2045. Menurut IDF,
+Indonesia menduduki peringkat kelima negara dengan jumlah diabetes terbanyak dengan 19,5 juta penderita di 2021 dan diprediksi akan menjadi 28,6 juta pada 2045.
+Persoalan ini menjadi perhatian Kementerian Kesehatan mengingat diabetes melitus merupakan ibu dari segala penyakit. Diabetes dapat meemicu berbagai penyakit
+lain.Spesialis penyakit dalam dari Divisi Endokrin, Metabolik, dan Diabetes, Departemen Klinik Ilmu Penyakit Dalam FKUI Rumah Sakit Cipto Mangunkusumo (RSCM),
+Tri Juli Edi Tarigan, mengatakan pentingnya edukasi terkait diabetes sehingga mudah dalam penanganan."Edukasi dulu untuk pemahaman masyarakat, jadi tidak melulu
+obat sebenarnya. Masyarakat perlu paham dulu apa itu diabetes," kata Tri Juli dalam webinar "Ngobrol Pintar tentang Diabetes", Sabtu, 15 Juni 2024.Pahami soal
+diabetesDokter yang akrab disapa Tije itu menjelaskan masyarakat luas perlu memahami apa itu penyakit kencing manis atau yang biasa disebut diabetes melitus, di
+mana kadar gula darah atau glukosa melebihi kadar normal sehingga menyebabkan penyakit kronis. Selain itu, masyarakat perlu mengerti cara-cara mengendalikan
+kadar gula darah, termasuk pengaturan asupan makanan, juga mengerti perjalanan diabetes yang diderita serta kebutuhan obat-obatan.Menurutnya, tidak hanya
+penderita diabetes yang perlu mengatur pola makan tetapi juga masyarakat umum. Kemudian juga penting memenuhi kebutuhan nutrisi seimbang sesuai takaran, tidak
+kurang dan tidak lebih untuk menghindari risiko yang lebih berat. Selanjutnya, prioritaskan olahraga rutin minimal 30 menit setiap hari. Untuk melengkapi
+pengendalian asupan makanan dan pola hidup sehat tersebut, ia mengimbau masyarakat berkonsultasi dengan dokter agar memperoleh informasi serta penanganan yang
+tepat terkait kondisi kesehatan yang berhubungan dengan diabetes."Kalau sudah paham itu masyarakat kooperatif. Kalau sudah mengerti, jadi mau ikut instruksi dan
+penanganan oleh dokter," tuturnya.Tije menambahkan, pencegahan pertama penyakit kencing manis ialah mengendalikan konsumsi gula berlebih pada makanan atau
+minuman serta konsistensi beraktivitas fisik setiap hari. "Jadi, pola pikirnya harus tetap banyak gerak kapan pun, di mana pun wajib dikerjakan. Kalau gula
+darah terkontrol dengan cara ini maka tidak perlu obat," tandasnya.Pilihan Editor: Pusing saat Berdiri, Bisa Jadi Kerusakan Saraf karena Diabetes
+
+===== ITEM A181 | lang: mr =====
+HEADLINE: 
+TEXT:
+सध्याच्या मुलींचा लूक हाय हिल्सशिवाय पूर्ण होत नाही.पण हाय हिल्स घातल्याने अनेकदा पायांच्या दुखण्याला सामोरं जावं लागतं.तसेच खूप वेळ हाय हिल्स घातल्याने किंवा
+खूपवेळ हाय हिल्स घालून चालल्याने शू-बाइटचा त्रास होतो.हिल्स घालायला आवडत असतील पण त्यामुळे होणाऱ्या त्रासापासून सुटका करून घ्यायची असेल तर काही टिप्सचा वापर
+तुम्ही करू शकता.अशातच अनेकवेळा योग्य साइज निवडणं अशक्य होतं.त्यामुळे हिल्स घेण्याआधी पायांचं माप घ्या आणि त्यानंतरच फुटवेअर ट्राय करा.काहींचे पाय फ्लॅट असतात.तर
+काहींचे कर्व्ड असतात.अशातच सर्वात आधी आपल्या पायाचा प्रकार ओळखून हिल्स खरेदी करणं फायदेशीर ठरतं.परंतु, कम्फर्टचा विचार कराल तर मोठ्या हिल्स जास्त कंर्म्फटेबल
+असतात.कारण या हिल्स घातल्याने पायांना जास्त सपोर्ट मिळतो.यामुळे पायांवर प्रेशर पर कमी येतं.परंतु, पायांच्या दुखण्यामुळे हिल्स घालण्यापासून ब्रेक घेणं गरजेचं
+असतं.हिल्स घालून सतत चालणं किंवा उभं राहणं दुखण्याचं कारण ठरू शकतं.त्यामुळे थोडा वेळ त्या पायातून काढा आणि पायांना आराम द्या.
+
+===== ITEM A182 | lang: hi =====
+HEADLINE: 
+TEXT:
+TVS Motors Discount Offer में कंपनी टीवीएस स्पोर्ट को खरीदने पर भारी बचत के साथ आकर्षक फाइनेंस प्लान भी ऑफर कर रही है। TVS Sport PriceTVS Sport Engine and
+TransmissionTVS Sport MileageTVS Sport Braking SystemTVS Motors ने इस फेस्टिव सीजन में अपनी पॉपुलर माइलेज बाइक TVS Sport पर आकर्षक डिस्काउंट और डाउन पेमेंट
+प्लान ऑफर किया है। जिसमें इस बाइक को खरीदने पर ग्राहकों को 8 हजार रुपये तक का डिस्काउंट दिया जा रहा है जिसके साथ 5,555 रुपये की आसान डाउन पेमेंट का विकल्प भी
+दिया जा रहा है।TVS Sport Discount Offer के बारे में जानना चाहते हैं या इस बाइक को खरीदना चाहते हैं तो यहां बस 2 मिनट में पढ़ें इस ऑफर के साथ बाइक की कंप्लीट
+डिटेल।टीवीएस स्पोर्ट पर मिलने वाले डिस्काउंट ऑफर में कंपनी 8 हजार रुपये का डिस्काउंट दे रही है जिसमें 21,00 रुपये का निश्चित डिस्काउंट मिलेगा और बाकी डिस्काउंट
+एक्सचेंज बोनस, फ्री एक्सेसरीज और दूसरे लाभों में दिया जाएगा।टीवीएस मोटर्स के डाउन पेमेंट ऑफर की बात करें तो इस बाइक को खरीदने के लिए कंपनी ग्राहको को न्यूनतम
+5,555 रुपये की डाउन पेमेंट के जरिए इस बाइक को खरीदने का ऑफर दे रही है। इस डिस्काउंट ऑफर को पढ़ने के बाद आप जान लीजिए टीवीएस स्पोर्ट के इंजन, माइलेज और
+स्पेसिफिकेशन की डिटेल।टीवीएस स्पोर्ट के बेस मॉडल (किक स्टार्ट) की शुरुआती कीमत 64,050 रुपये (एक्स शोरूम,दिल्ली) है। इसके टॉप वेरिएंट (सेल्फ स्टार्ट) की शुरुआती
+कीमत 67,543 रुपये (एक्स शोरूम, दिल्ली) है।टीवीएस स्पोर्ट में सिंगल सिलेंडर वाला 99.7 सीसी का 4 स्ट्रोक इंजन दिया गया है जो एयर कूल्ड तकनीक पर आधारित है। इस इंजन
+के साथ 4 स्पीड गियरबॉक्स मिलता है और यह इंजन 8.1 बीएचपी की पावर और 8.7 एनएम का पीक टॉर्क जनरेट करता है।टीवीएस स्पोर्ट की माइलेज को लेकर कंपनी का दावा है कि ये
+बाइक 74 किलोमीटर प्रति लीटर का माइलेज देती है। बाइक की इस माइलेज को ARAI द्वारा प्रमाणित किया गया है।टीवीएस स्पोर्ट के ब्रेकिंग सिस्टम में कंपनी ने फ्रंट व्हील
+में 130 एमएम का ड्रम ब्रेक और रियर व्हील में 110 एमएम का ड्रम ब्रेक लगाया है। इसके साथ इस बाइक में कॉम्बी ब्रेकिंग सिस्टम को जोड़ा है।आवश्यक सूचना: टीवीएस
+स्पोर्ट पर मिलने वाले इस डिस्काउंट ऑफर के जरिए ये बाइक खरीदने से पहले कंपनी की आधिकारिक वेबसाइट या अपने नजदीकी डीलरशिप पर जाकर इस ऑफर की जानकारी हासिल करें
+क्योंकि कंपनी का ये ऑफर देश के अलग अलग राज्यों में अलग अलग हो सकता है।
+
+===== ITEM A183 | lang: zh =====
+HEADLINE: 再生不良性貧血缺乏紅血球、白血球、血小板 有3大症狀
+TEXT:
+再生不良性貧血缺乏紅血球、白血球、血小板 有3大症狀
+再生不良性貧血屬於一種罕見的骨髓衰竭疾病，會出現貧血、易疲勞、易感染、不易止血等症狀，由於造血系統出問題，其臨床表徵不僅為貧血，還包括多種血球數量的下降。
+台灣罕見血液病促進協會理事長、台中榮總罕見疾病暨血友病中心主任王建得提醒，特定患者如再生不良性貧血，在補充含鈣食品時須謹慎，以免與治療藥物發生不良交互作用，進而影響治療效果。
+★治本方法 還是骨髓移植
+再生不良性貧血有三種症狀：1.缺乏紅血球：貧血、臉色蒼白、心跳過快、倦怠、容易疲累。2.缺乏白血球：容易感染。3.缺乏血小板：出血點、容易瘀青及不易止血。
+王建得表示，再生不良性貧血主要依病人年齡決定治療方式，對於年輕患者或病情嚴重者，建議盡早考慮骨髓移植。然而，由於相合的骨髓捐贈者不易尋找，免疫抑制療法成為另一可行的選擇；對於缺乏血紅素的患者，輸血雖然能緩解症狀，但治本的方法還是骨髓移植。
+對於年長患者，找到相合的骨髓捐贈者難度增加，因此國外治療準則推薦使用免疫抑制療法當作第一線治療。雖然免疫抑制劑有助於治療，但仍存在一定的副作用。在第一線治療中，若傳統免疫抑制劑效果不彰，TPO-RA(血小板生成劑)成為重要的治療選擇。
+TPO-RA (thrombopoietin receptor agonist)是一種血小板生成素受體促動劑，可促進血小板的產生。根據國外治療準則，若一線用藥三個月後療效不彰，建議追加或轉換TPO-RA藥物。此藥物有口服和皮下注射兩種劑型，可根據患者情況進行選擇，且兩者的作用機轉和副作用不盡相同，臨床上互轉仍然有效，例
+如：若口服治療效果不理想，或是有頭痛副作用時，可轉換成使用皮下針劑。
+口服特色：吞服方便，但須空腹服藥並注意飲食與生活型態，與「金字邊」保健食品或含鈣食物錯開服用，以免陽離子影響藥效，同時需要持續追蹤肝功能。
+針劑優勢：每周只需注射一次，治療方式相對簡便，也不須注意空腹服藥與肝功能限制。為長期控制病情，建議可由醫生和病人共同決定最適合的治療方案。
+★飲食用藥 當心交互作用
+「為何治療卻成效不彰？」王建得表示，患者生病已經很辛苦了，如須配合服藥空腹限制，無法想吃消夜就吃，造成生活時間安排與心理上的負擔。尤其是年長者，由於共病情況複雜，因保健需求可能補充牛奶及許多保健食品如：鈣、鋅、鎂、鐵等陽離子產品，皆會影響口服藥療效。需要更加注意這些食物與藥物間的交互作用，故提醒患者在選擇治療藥物時應留
+意這些因素，才能將治療效果最大化。
+★TPO-RA治療 病患終於止血
+一名再生不良性貧血患者，因為容易出血，一檢查竟發現血小板數量低下，出血症狀相當嚴重。每周都要輸血才能減輕出血，生活與治療相當辛苦。然而，骨髓移植配對困難以及第一線藥物治療反應不佳，故尋求TPO-RA治療，在三個月積極治療後成功止血，血球數量逐漸回升。患者終於能夠重拾正常生活，這也讓醫師深感欣慰。
+最後，王建得呼籲再生不良性貧血病人要保持規律的生活，注重健康飲食，減少感染風險，避免劇烈運動和避免進入擁擠的公共場所。總之，無論是否能找到相合的骨髓移植，病人都有機會透過藥物治療和日常保養找回健康。
+（本文由「健康醫療網」提供，http://healthnews.com.tw/）
+
+===== ITEM A184 | lang: mr =====
+HEADLINE: 
+TEXT:
+बॉलिवूड कलाकारांची लाइफस्टाइल हा नेहमीच चर्चेचा विषय असतो.आपले आवडते कलाकार, कसे राहतात, कोणत्या ब्रॅन्डते कपडे परिधान करतात, किती किंमतीच्या कार, घड्याळ
+वापरतात याची उत्सुकता लागलेली असते.आज आम्ही तुम्हाला तुमच्या आवडत्या कलाकारांच्या घडाळ्याच्या किमती सांगणार आहोत.अनेक महागड्या ब्रॅन्डच्या घड्याळी त्याच्याकडे
+आहेत.त्याचा फेव्हरेट ब्रॅन्ड AudemarsPiguet हा आहे.सध्या तो घालत असलेली घड्याळ ही २.१ कोटी रुपये किंमतीची आहे.या घडाळ्याचे केवळ ३२ मॉडल तयार करण्यात आले
+होते.भारतात ही घड्याळ केवळ इमरानकडे आहे.त्याला या कंपनीच्या घड्याळी फार आवडतात.तो Tag HeurCarrerra Caliber ची काळ्या पट्ट्यांची घड्याळ वापरतो.याची किंमत ३.१ लाख
+रुपये आहे.पण शाहरुखने.या घड्याळीची किंमत १२ लाख रुपये आहे.या घड्याळाची किंमत ३ लाख रुपये आहे.पण अमिताभ बच्चन जे मॉडल घालतात त्याची किंमत ५ लाख रुपये आहे.नेहमी
+पार्टीजमध्ये तो Seamaster 300 omega master ही घड्याळ वापरतो.या घड्याळाची किंमत ८ लाख रुपये आहे.सैफला घड्याळ्यांची फार आवड आहे.इतकी की, तो दर तीन दिवसांनी घड्याळ
+बदलतो.सैफला Jaeger Le-CoultreReverso वापरणे अधिक पसंत आहे.याची किंमत ७.१ लाख रुपये आहे.घड्याळांच्या बाबतीतही मागे नाहीये.हृतिक हा इंटरनॅशनल लक्झरी ब्रॅन्ड
+'Rado' चा ब्रॅन्ड अॅम्बेसेडर आहे.याची किंमत ३.२ लाख रुपये आहे.जॉनच्या कलेक्शनमध्ये रोलेक्स आणि राडोसहीत अनेक महागड्या घड्याळं आहेत.जॉन सूटसोबत Swiss Strap
+"Swiss Qualite" Brown ही घड्याळ वापरतो.याची किंमत पाच लाख रुपये आहे.या घड्याळाची किंमत ४.२ लाख रुपये आहे.तिच्याकडे या ब्रॅन्डची क्लासिक प्रिन्स डायमंड रोज गोल्ड
+वॉच आहे.याची किंमत ८ लाख रुपये आहे.रणवीर सिंगरणवीर सिंग यालाही महागड्या घड्याळांची आवड आहे.त्याच्याकडे अनेक महागडी घड्याळं आहेत.त्यात आता रोहित शेट्टीने
+दिलेल्या Franck Muller Vanguard घड्याळाचा समावेश झाला.ही घड्याळ ६ लाख रुपयांची आहे.
+
+===== ITEM A185 | lang: it =====
+HEADLINE: In Italia è stato avvistato uno squalo mako non distante dalla costa
+TEXT:
+In Italia è stato avvistato uno squalo mako non distante dalla costa È uno dei predatori più veloci degli oceani ed è stato avvistato a poca distanza dalla
+costa italiana. Uno squalo mako è stato protagonista di un incontro particolare nel Salento, per l’esattezza a Porto Cesareo. Si tratta di un evento che
+evidenzia la ricchezza e la fragilità della biodiversità dei nostri mari, che dovrebbe spingerci a una maggiore conoscenza di queste creature e delle sfide per
+la loro sopravvivenza. Uno squalo mako al largo di Porto Cesareo L’incontro è avvenuto la sera di domenica 10 agosto, a cinque miglia dalla costa di Porto
+Cesareo, nel Salento. Durante una battuta di pesca di tonni, Francesco Baldieri e il padre Paolo si sono imbattuti in un giovane esemplare di squalo mako, lungo
+circa un metro. “Uno squalo bellissimo, un essere stupendo – spiega Francesco Baldieri, istruttore e guida ambientale, a Repubblica – che si è spinto fin sotto
+il gommone, come se volesse giocare. Un bel segnale per il nostro mare perché significa che è molto pulito e ideale per la riproduzione (…). È stato un incontro
+veramente emozionante e lo squaletto non era per nulla spaventato”. I due uomini hanno immortalato l’evento in un video che, in breve, ha fatto il giro dei
+social e non solo. Anche gli esperti hanno puntato l’attenzione sull’avvistamento. Una di questi è la dottoressa Diana D’Agata, veterinaria ed esperta di fauna
+marina, che ha confermato con il 99% di certezza che si trattava proprio di uno squalo mako, definendolo un “avvistamento raro e ben visibile” che ricorda la
+ricchezza della biodiversità marina. D’Agata ha anche precisato che, sebbene si tratti di una specie aggressiva, lo squalo mako “tendenzialmente non è
+interessato all’uomo come preda, ma può comunque essere pericoloso per i pescatori”. Il presidente dello Sportello dei Diritti, Giovanni D’Agata, ha aggiunto
+che la presenza di questi pesci pelagici indica la buona salute dell’ecosistema marino ionico, attribuendola alla pulizia delle acque e a una catena alimentare
+abbondante che attira grandi predatori. Perché si tratta di un evento così particolare Lo squalo mako (Isurus oxyrinchus) è una specie prevalentemente pelagica
+che vive in acque aperte, lontano dalle coste. Perciò la sua comparsa a sole cinque miglia da Porto Cesareo è insolita. Si tratta di un grande predatore della
+famiglia dei Lamnidi, la stessa dello squalo bianco. Ha un corpo affusolato e idrodinamico, pinne pettorali corte e una pinna caudale a mezzaluna,
+caratteristiche che lo rendono incredibilmente veloce. Non a caso è considerato lo squalo più veloce al mondo: è in grado di raggiungere 90-100 chilometri orari
+e di cacciare pesci veloci come il pesce azzurro e i calamari, ma anche marlin e pesci spada. Nel Mediterraneo ma anche a livello globale, la popolazione di
+squali mako è in forte declino, inserito nella Lista Rossa della Unione Internazionale per la Conservazione della Natura (IUCN), con una diminuzione di quasi il
+99% negli ultimi due secoli nel solo bacino mediterraneo. Non si tratta di un evento unico e, anzi, avvistamenti occasionali vicino alla costa si sono già
+verificati.
+
+===== ITEM A186 | lang: it =====
+HEADLINE: Firmato un decreto da 35 milioni per potenziare i laboratori dei Licei musicali e coreutici
+TEXT:
+Firmato un decreto da 35 milioni per potenziare i laboratori dei Licei musicali e coreutici ROMA (ITALPRESS) – “Ho firmato oggi un importante decreto da 35
+milioni per potenziare i laboratori di tutti i Licei musicali e coreutici”, dichiara il Ministro dell’Istruzione e del Merito, Giuseppe Valditara. “La musica
+rappresenta un patrimonio di emozioni capace di stimolare le sensibilità individuali e di valorizzare i talenti degli studenti, favorisce l’inclusione,
+contribuisce a contrastare la dispersione scolastica”. Questo decreto si pone in continuità con le tante iniziative avviate in questi mesi: la previsione dello
+studio della storia della musica sin dalla Scuola primaria nelle Nuove Indicazioni nazionali, l’istituzione dell’Orchestra nazionale dei Licei musicali, che ha
+debuttato il 30 ottobre 2025 durante il Giubileo del mondo educativo nell’Aula Paolo VI in Vaticano, il Protocollo d’intesa firmato pochi giorni fa con il Coro
+dell’Antoniano e la previsione di un’edizione di Scuola Futura a Sanremo dedicata alla musica nelle scuole. “Un impegno che continua nella convinzione che la
+musica possa contribuire in modo importante alla crescita dei nostri giovani”, conclude il Ministro Valditara -Foto IPA Agency- (ITALPRESS).
+
+===== ITEM A187 | lang: tr =====
+HEADLINE: Televizyon Dünyasıyla İlgili Yaptıkları Paylaşımlarla Hepimizi Kahkahaya Boğan Kullanıcılar
+TEXT:
+Televizyon Dünyasıyla İlgili Yaptıkları Paylaşımlarla Hepimizi Kahkahaya Boğan Kullanıcılar Bu hafta televizyon dünyasıyla ilgili yaptıkları eğlenceli ve komik
+paylaşımlarla hepimizi güldüren kullanıcıları derledik. Kahkahanız bol olsun! İçeriğin Devamı Aşağıda Reklam İçeriğin Devamı Aşağıda Reklam 'Geniş' güvenlik
+önemleri 😂 Biraz geç kalmış olabilir ama denemekten zarar gelmez! Hürrem duymasın! Herkesin böyle bir kankası da vardır. İçeriğin Devamı Aşağıda Reklam Başarılı
+bir deneme 🤣 İçeriğin Devamı Aşağıda Reklam 😂😂😂 O hissi bilenler bilir. 'Tam da böyledir' diyenler burada mı? Aynen öyle... Keşfet ile ziyaret ettiğin tüm
+kategorileri tek akışta gör! Yorumlar ve Emojiler Aşağıda Reklam 2020 yılında TOBB Ekonomi ve Teknoloji Üniversitesi Güzel Sanatlar, Tasarım ve Mimarlık
+Fakültesi Görsel İletişim Tasarımı bölümü mezunuyum. Dijital dünya, fotoğraf, tasarım ve renklerin ahengine kendimi kaptırmaktan keyif aldığım dönemlerde
+magazinin uçsuz bucaksız dünyasının da inanılmaz eğlenceli olduğunu keşfettim. Yaklaşık üç yıldır Onedio’da editörlük yapıyorum. Buradaki maceram süresince en
+içten ve biz bize konuşuyor tadındaki içeriklerimi sizlere sunmak istiyorum. Tüm içerikleri
+
+===== ITEM A188 | lang: th =====
+HEADLINE: รวบแล้ว! แก๊งแอบอ้างเป็น ตม. ตระเวนเรี่ยไรชาวจีนระยอง  แนะปชช.ขอดูบัตร เช็กชื่อผ่าน “POLICE CARE” ก่อนเชื่อ
+TEXT:
+รวบแล้ว! แก๊งแอบอ้างเป็น ตม. ตระเวนเรี่ยไรชาวจีนระยอง  แนะปชช.ขอดูบัตร เช็กชื่อผ่าน “POLICE CARE” ก่อนเชื่อ
+
+โฆษก ตม.3 เผยรวบแล้ว 3 ราย แก๊งแอบอ้างเจ้าหน้าที่ตม. ตระเวนเรี่ยไรชาวจีน จ.ระยอง เตือนประชาชน–คนต่างชาติ ขอดูบัตร เช็กชื่อผ่าน “POLICE CARE”
+หากสงสัยโทรยืนยันต้นสังกัดก่อน
+จากกรณีปรากฏข่าวกลุ่มบุคคลแต่งกายคล้ายเจ้าหน้าที่ แอบอ้างเป็นเจ้าหน้าที่ตำรวจ ตรวจคนเข้าเมือง และทหาร เข้าไปในพื้นที่บ้านพักและสถานประกอบการของชาวจีนใน
+อ.บ้านค่าย จ.ระยอง นั้น
+ล่าสุดวันนี้ (14 ส.ค.) เวลาประมาณ 21.00 น. ที่ บก.ตม.3 พ.ต.อ.ปริญญา กลิ่นเกษร รอง ผบก.ตม.3 ในฐานะโฆษก บก.ตม.3 เปิดเผยว่า เจ้าหน้าที่ตำรวจ สภ.หนองกรับ
+ร่วมกับฝ่ายสืบสวน ตม.จว.ระยอง สามารถติดตามจับกุมผู้ต้องหาตามหมายจับได้แล้วจำนวน 3 ราย หลังสืบทราบว่ามีการตระเวนก่อเหตุลักษณะเดียวกันในพื้นที่ จ.ชลบุรี
+โดยสามารถจับกุมได้ที่บ้านพักแห่งหนึ่งในพื้นที่ ต.บ่อวิน อ.ศรีราชา จ.ชลบุรี พร้อมตรวจยึดรถกระบะโตโยต้า รีโว่ สีดำ 4 ประตู
+ซึ่งตรงกับรถที่ปรากฏในภาพกล้องวงจรปิดขณะก่อเหตุ นอกจากนี้ยังพบทะเบียนรถยนต์ที่ถูกทำลายอีก 2 ป้าย รวมถึงเอกสารเกี่ยวกับการเรี่ยไรเงินและพยานหลักฐานที่เกี่ยวข้อง
+โดยผู้ต้องหาทั้งหมดถูกแจ้งข้อหา “ร่วมกันฉ้อโกง โดยแสดงตนเป็นคนอื่น, ร่วมกันปลอมแปลงเอกสารและใช้เอกสารปลอม และโดยทุจริตหรือโดยหลอกลวง, นำเข้าสู่ระบบคอมพิวเตอร์
+ซึ่งข้อมูลคอมพิวเตอร์ที่บิดเบือนหรือปลอม ไม่ว่าทั้งหมดหรือบางส่วนหรือข้อมูลคอมพิวเตอร์อันเป็นเท็จ โดยประการที่น่าจะเกิดความเสียหายแก่ผู้อื่นหรือประชาชน”
+ขณะนี้อยู่ระหว่างการสอบสวนและขยายผลหาผู้เสียหายเพิ่มเติม
+พ.ต.อ.ปริญญา กล่าวว่า กรณีดังกล่าวถือเป็นอุทาหรณ์ จึงขอประชาสัมพันธ์ไปยังประชาชนและชาวต่างชาติว่า
+หากมีบุคคลมาแสดงตัวเป็นเจ้าหน้าที่ตำรวจหรือเจ้าหน้าที่ตรวจคนเข้าเมือง ประชาชนสามารถ ขอทราบยศ ชื่อ–นามสกุล ตำแหน่ง และหน่วยงานต้นสังกัด
+พร้อมขอดูบัตรประจำตัวข้าราชการตำรวจ รวมถึงสามารถถ่ายภาพหรือคลิปวิดีโอขณะปฏิบัติหน้าที่ ตลอดจนสังเกตและจดจำรายละเอียดของบุคคล รถยนต์
+หรือข้อมูลอื่นที่สามารถนำมาใช้ตรวจสอบได้ พร้อมยืนยันว่า หน่วยงานตรวจคนเข้าเมืองไม่มีนโยบายให้เจ้าหน้าที่ออกไปขอรับบริจาค
+หรือขายบัตรการกุศลในลักษณะดังกล่าวแต่อย่างใด
+“หากไม่มั่นใจว่าเป็นเจ้าหน้าที่จริงหรือไม่ อย่าเพิ่งหลงเชื่อห
+
+===== ITEM A189 | lang: el =====
+HEADLINE: “Ο κόσμος ψιθύριζε και με έδειχνε με το δάχτυλο”: Ο Τζόνι Ντεπ θυμήθηκε την εποχή που ένιωθε τρομοκρατημένος α
+TEXT:
+“Ο κόσμος ψιθύριζε και με έδειχνε με το δάχτυλο”: Ο Τζόνι Ντεπ θυμήθηκε την εποχή που ένιωθε τρομοκρατημένος α Στο δεύτερο επεισόδιο για τη ζωή και το έργο του
+Τιμ Μπάρτον, μίλησε ο Τζόνι Ντεπ, υπό τις σκηνοθετικές οδηγίες της Τάρα Γουντ. Στο ντοκιμαντέρ των τεσσάρων τμημάτων, συμμετέχουν επίσης οι Γουινόνα Ράιντερ,
+Ελένα Μπόναμ Κάρτερ και Μάικλ Κίτον.Ο διάσημος ηθοποιός του Χόλιγουντ, που μας έχει χαρίσει εξαιρετικές ερμηνείες με τους ρόλους του, θυμήθηκε την εποχή που η
+φήμη του εκτοξεύτηκε, μετά την ταινία “Edward Scissorhands”, του Τιμ Μπάρτον, το 1990. Παραδέχτηκε, επίσης, πως ένιωθε άβολα, όταν του έδειξαν υλικό από αρχείο,
+στο οποίο ο σκηνοθέτης τον περιέγραφε ως κάτι περισσότερο από sex symbol, όπως δηλαδή τον παρουσίαζαν εκείνη την εποχή τα μέσα μαζικής ενημέρωσης.«Ήμουν
+τρομοκρατημένος με την ξαφνική φήμη», λέει χαρακτηριστικά ο Τζόνι Ντεπ στο ντοκιμαντέρ και προσθέτει: «Οι παπαράτσι με τραβούσαν φωτογραφίες. Ο κόσμος ψιθύριζε
+και με έδειχνε με το δάχτυλο. Ένιωθα εντελώς εκτεθειμένος».Johnny Depp Was 'Completely Freaked Out' by Heartthrob Status as a Young Actor: 'People Would
+Whisper' https://t.co/WQUFjboa3S— People (@people) March 14, 2025Ο ηθοποιός αναφέρθηκε και στην πρώτη συνάντηση με τον Τιμ Μπάρτον, με τον οποίο αμέσως ένιωσε
+μια σύνδεση. «Αυτό που παρατήρησα την πρώτη φορά που συναντηθήκαμε ήταν ότι δεν μιλούσε πολύ. Ξεκινούσε μία πρόταση και εγώ έλεγα ‘ω, ναι’, και μετά μιλούσαμε
+για τον Μπόρις Καρλόφ ή κάτι τέτοιο. Είχαμε πολλά κοινά σημεία» και πρόσθεσε: «Μετά από περίπου 3,5 ώρες μιας πολύ ωραίας κουβέντας μαζί του, σκεφτόμουν πως
+“δεν έχεις καμία τύχη, φίλε. Καμία τύχη”», αναφερόμενος για τον ρόλο του στο “Edward Scissorhands”.Η ταινία αποδείχτηκε, τελικά, επιτυχία για τον Τιμ Μπάρτον
+και τον Τζόνι Ντεπ και οι δύο τους συνεργάστηκαν και σε επόμενες ταινίες όπως το «Ed Wood» το 1994, το «Charlie and the Chocolate Factory» το 2005, το «Sweeney
+Todd: The Demon Barber of Fleet Street» το 2007.Καθώς μιλούσε για την ερμηνεία του στο «Edward Scissorhands», ο ήθοποιός είπε πως συνειδητοποίησε από ένα σημείο
+και μετά ότι ο χαρακτήρας βασιζόταν στην προσωπικότητα του Μπάρτον και ανησύχησε μήπως δεν ήταν καλός. «Είχα ρόλο στην ταινία, αλλά έμπαινα σε μια οικογένεια
+στην οποία δεν είχα ακόμα πλήρως ενταχθεί», είπε ο Ντεπ. «Ήμουν απόλυτα πεπεισμένος ότι τα κατέστρεφα όλα. Ο Τιμ είχε προετοιμάσει όλους τους άλλους ηθοποιούς.
+Όλους. Εμένα όχι. Δεν με προετοίμασε. Με απέκλειε από την ομάδα και το συνεργείο, με απομόνωνε».Αν και ο Τζόνι Ντεπ συνειδητοποίησε ότι ο Μπάρτον τον είχε
+απομονώσει σκόπιμα από το υπόλοιπο καστ, κατά τη διάρκεια των γυρισμάτων, προκειμένου να τον βοηθήσει να κατανοήσει την απομόνωση που βιώνει ο χαρακτήρας του,
+θυμάται την αρχική του αντίδραση ως μια τρομακτική εμπειρία. «Ήταν τρομακτικό. Ήμουν υπερβολικά παρανοϊκός. Γιατί ο Μπάρτον δεν με προετοιμάζει; Ίσως με
+εμπιστεύεται. Όχι, δεν με εμπιστεύεται. Δεν με εμπιστεύεται, τι λες, είναι τρελός; Θα πάρει κάποιον άλλον, φίλε».
+
+===== ITEM A190 | lang: bn =====
+HEADLINE: 
+TEXT:
+তেলেঙ্গানায় সরকারি চাকরি ও শিক্ষায় মুসলিমদের জন্য ৪ শতাংশ সংরক্ষণ দাবি করুন মুখ্যমন্ত্রী কে চন্দ্রশেখর রাও। অন্ধ্রপ্রদেশেও একই দাবি তুলুন মুখ্যমন্ত্রী জগনমোহন
+রেড্ডি। দুই মুখ্যমন্ত্রী মিলে দাবি কার্যকর করার জন্য প্রধানমন্ত্রী নরেন্দ্র মোদীর হস্তক্ষেপ চান। এবার এমনই দাবি জানাল তেলেঙ্গানা এবং অন্ধ্রপ্রদেশ কংগ্রেসের
+নেতারা। তবে, কংগ্রেসের এই দাবির ব্যাপারে মুখে কুলুপ এঁটেছেন জগনমোহন ও চন্দ্রশেখর রাও। কারণ, এমনিতেই বিষয়টি বিচারাধীন। ১৩ সেপ্টেম্বর সুপ্রিম কোর্টের বিশেষ
+সাংবিধানিক বেঞ্চে এই মামলার শুনানি। আর, তার চাইতেও বড় কারণ, বিজেপির চাপ। চন্দ্রশেখর এই দাবি জানালে, ধর্মীয় মেরুকরণে বিশ্বাসী বিজেপিরই হিন্দুদের ভোট পেতে সুবিধা
+হবে। বিশেষ করে, সেই মেরুকরণ নিশ্চিত করতে ইতিমধ্যে ১৭ সেপ্টেম্বর তেলেঙ্গানা মুক্তি দিবস পালনের সিদ্ধান্ত নিয়েছেন বিজেপি নেতৃত্ব। একই হাল জগনমোহনেরও। তাই তিনিও
+মুসলিমদের জন্য চাকরি-শিক্ষায় সংরক্ষণের দাবি তুলতে পারছেন না। অন্ধ্রপ্রদেশের মধ্যেই যখন তেলেঙ্গানা ছিল, সেই সময় কংগ্রেসের সরকার। ক্ষমতায় জগনমোহনের বাবা ওয়াই এস
+রাজশেখর রেড্ডি। তিনিই মুসলিমদের জন্য সরকারি চাকরি ও শিক্ষায় ৪ শতাংশ সংরক্ষণের ঘোষণা করেছিলেন। আরও পড়ুন- আপকে থামাতে গুজরাটে পাটকর জুজু দেখাচ্ছে বিজেপি,
+প্যাটেল-শাহরা একলাইনে দাগছেন তোপ তবে, রাজশেখরের সেই সিদ্ধান্তকে চ্যালেঞ্জ জানিয়ে দফায় দফায় মামলা হয়েছিল সুপ্রিম কোর্টে। জগনমোহন কংগ্রেস ভেঙে ওয়াইএসআর কংগ্রেস
+তৈরি করেছেন। তাঁর দলই অন্ধ্রপ্রদেশে ক্ষমতায় কিন্তু, তিনিও তাঁরা বাবার নেতৃত্বাধীন সরকারের সিদ্ধান্তের প্রতি অটল থাকতে চাইছেন না। তার একটা কারণ, তহবিল।
+অন্ধ্রপ্রদেশের উন্নতির জন্য বিপুল অর্থ দরকার। সেই অর্থ চেয়ে কেন্দ্রীয় সরকারের কাছে দরবার করেছেন জগনমোহন। কিন্তু, এখনও পর্যন্ত মোদী সরকার সেভাবে অর্থ দেয়নি, বরং
+ঝোলাচ্ছে। তার মধ্যে আবার তিনি মুসলিমদের জন্য শিক্ষা ও চাকরিতে সংরক্ষণের দাবি তুললে বিজেপির কেন্দ্রীয় নেতৃত্ব বিরক্ত হতে পারেন। এটাই ভাবাচ্ছে জগনকে। গত ২০১০
+সালের ২৫ মার্চ, সুপ্রিম কোর্ট বিষয়টির শুনানির সময়, ৪ শতাংশ মুসলিম সংরক্ষণের বাস্তবায়নে স্থগিতাদেশ দিয়েছিল। একইসঙ্গে জানিয়েছিল, পরবর্তী আদেশ না-দেওয়া
+পর্যন্ত BC-E গ্রুপের অধীনে তালিকাভুক্ত ১৪টি শ্রেণির জন্য সংরক্ষণ অব্যাহত থাকবে। তারপর বর্তমানেও বিষয়টি সাংবিধানিক বেঞ্চে বিচারাধীন। Read full story in English
+Stay updated with the latest news headlines and all the latest Politics news download Indian Express Bengali App. Web Title: Congress turns up heat on bjp wary
+kcr jagan ahead of sc hearing
+
+===== ITEM A191 | lang: id =====
+HEADLINE: 
+TEXT:
+Liputan6.com, Jakarta - Badan Usaha Milik Negara (BUMN) yang bergerak di bidang jasa kepelabuhan, yakni PT Pelabuhan Indonesia II (Persero) atau IPC kembali
+membuka lowongan kerja terbaru. Kali ini, IPC membuka lowongan kerja melalui Rekrutmen Alih Daya 2019. Pendaftaran lowongan kerja dibuka 11 Maret 2019.
+Nantinya, kandidat yang terpilih akan ditempatkan untuk posisi Administrator pada kantor pusat dan tujuh kantor cabang. Mengutip laman IPC, Rabu (27/2/2019),
+berikut kriteria bagi para pelamar dan tata cara pendaftaran lowongan kerja tersebut: Rekrutmen Alih Daya 2019 Rekrutmen Alih Daya untuk posisi Administrator
+pada: - Kantor Pusat - Cabang Pelabuhan Banten - Cabang Pelabuhan Bengkulu - Cabang Pelabuhan Palembang - Cabang Pelabuhan Panjang - Cabang Pelabuhan Pontianak
+- Cabang Pelabuhan Teluk Bayur - Cabang Pelabuhan Tanjung Priok
+
+===== ITEM A192 | lang: uk =====
+HEADLINE: "Кинули кістку": у Держдумі Росії сміються з Європи, яка пустила на гонку російського чемпіона
+TEXT:
+"Кинули кістку": у Держдумі Росії сміються з Європи, яка пустила на гонку російського чемпіона Депутат Держдуми РФ, олімпійська чемпіонка з ковзанярського
+спорту Світлана Журова висміяла європейців, які прийняли в Італії російського лижника Олександра Большунова. Напередодні росіянин виграв престижну лижну гонку
+Sudtirol Moonlight Classic в Італії. Відповідний коментар Журовоъ наводить vseprosport.ru. Світлана цинічно заявила, що європейцям "кинули кістку, щоб вони
+трохи напружилися". "Одним оком спостерігають за нашими. Норвежці стежили і продовжують стежити за Олександром і на внутрішньоросійських змаганнях. Висловлювали
+думку, що йому всі піддаються, хоча фахівці всі розуміють, як проходить траса, яка може бути з різним ландшафтом, спортивна форма. Багато хто засуджував, навіщо
+він поїхав до Європи й так далі. Кістку їм кинути, щоб вони трошки напружилися, росіяни повертаються. Чи станеться це повернення – ось питання. Поки що не видно
+найближчих перспектив. Але хто знає, може, наступного року озвучать. Деякі федерації вже готові до того, щоб росіяни виступали в нейтральному статусі, інші,
+мабуть, чекають [моменту], щоб не було скандалів та розбірок і росіяни повернулися одразу з прапором та гімном після мирних переговорів”, – заявила Журова.
+Нагадаємо, росіяни з березня 2022 року усунуті від турнірів під егідою Міжнародної федерації лижного спорту (FIS). Перегони в Італії проходили не під егідою
+FIS. Раніше організатори Sudtirol Moonlight Classic зіткнулися з критикою через включення Большунова до списку учасників перегонів. Вони пояснили допуск
+росіянина "принципом спорту, справедливості та милосердя". Пізніше вони прибрали російський прапор зі стартового протоколу росіянина.
+
+===== ITEM A193 | lang: pt =====
+HEADLINE: Fátima Bernardes surge com look estiloso para o Rock in Rio
+TEXT:
+Fátima Bernardes surge com look estiloso para o Rock in Rio A apresentadora Fátima Bernardes chamou a atenção ao apostar em um look estiloso para acompanhar o
+terceiro dia do Rock in Rio Fátima Bernardes caprichou na produção para curtir o terceiro dia do festival Rock in Rio neste domingo, 15. A apresentadora surgiu
+no evento usando um vestido laranja com lantejoulas, uma meia arrastão e botas. Ela complementou o visual com dois colares de metal e um maxibracelete, além de
+deixar os fios ondulados. No mês passado, Fátima passou por uma transformação em seu visual. A jornalista, que agora tem um canal no YouTube, revelou que
+pintou, mudou o corte e hidratou. "Cortei, pintei, hidratei. Quem mais chega de viagem doida pra arrumar o cabelo?", falou sobre ter realizado a mudança que
+tanto almejava após dias longe de casa fazendo a cobertura dos Jogos Olímpicos de Paris, na França. Confira: Leia também: Fátima Bernardes curte caminhada com o
+namorado Túlio Gadêlha O retorno de Fátima Bernardes para a Globo pode realmente acontecer e a apresentadora teria negociado seu novo salário na emissora
+carioca. Segundo o colunista Alessandro Lo-Bianco, do A Tarde É Sua, de Sonia Abrão, a famosa teria recusado a primeira quantia oferecida pela empresa. A
+negociação não teria sido muito fácil, conforme informações do jornalista, a ex-esposa de William Bonner não aceitou a quantia abaixo de um milhão. Após semanas
+de conversa, ela teria ajustado o valor de um milhão e oitocentos para a primeira temporada de seu novo programa. De acordo com a coluna Play, do Jornal O
+Globo, Fátima Bernardes gravará um piloto do seu novo programa ainda em setembro de 2024. A previsão é que a gravação aconteça para que a direção possa avaliar
+os possíveis ajustes. A nova atração deverá receber o título de Programa da Fátima e será exibido nas noites da Globo. Saiba mais!
+
+===== ITEM A194 | lang: or =====
+HEADLINE: 
+TEXT:
+ଚାକିରି ଖୋଜୁଥିବା ଯୁବକ, ଯୁବତୀଙ୍କ ପାଇଁ ଏକ ଖୁସି ଖବର । ସେଣ୍ଟ୍ରାଲ ବ୍ୟାଙ୍କ ଅଫ୍ ଇଣ୍ଡିଆ (ସିବିଆଇ)ରେ ବାହାରିଛି ଅନେକ ପଦବୀ । ପ୍ରାର୍ଥୀମାନେ ଇକୋନୋମିଷ୍ଟ, ଆଇଟି, ଡାଟା ସାଇଣ୍ଟିଷ୍ଟ ଓ
+ଅନ୍ୟ ପଦବୀମାନଙ୍କରେ ନିଯୁକ୍ତି ପାଇବେ । ଏଥିରେ ଚାକିରି କରିବାକୁ ଇଚ୍ଛୁକ ପ୍ରାର୍ଥୀମାନେ ତଳେ ଦିଆଯାଇଥିବା ନୋଟିଫିକେସନ ଲିଙ୍କକୁ ଯାଇ ନିଯୁକ୍ତି ସମ୍ପର୍କିତ ସମସ୍ତ ତଥ୍ୟ ପାଇପାରିବେ ।ଏହି
+ପଦବୀ ପାଇଁ ଆପଣଙ୍କୁ ଅନଲାଇନରେ ଆବେଦନ କରିବାକୁ ପଡ଼ିବ । ଏସ / ଏସଟି ପ୍ରାର୍ଥୀମାନେ ୧୭୫ ଟଙ୍କା ସହିତ ଜିଏସଟି ଆବେଦନ ଫିସ୍ ଦେବାକୁ ପଡ଼ିବ । ସେହିପରି ଅନ୍ୟ ବର୍ଗର ପ୍ରାର୍ଥୀମାନେ ୮୫୦ ଟଙ୍କା
+ସହିତ ଜିଏସଟି ଦାଖଲ କରିବେ । ସମସ୍ତ ପଦବୀଗୁଡ଼ିକ ପାଇଁ ଶିକ୍ଷାଗତ ଯୋଗ୍ୟତା ଓ ବୟସ ଅଲଗା ଅଲଗା ରହିଛି ।ଅନଲାଇନ ଆପ୍ଲାଏ ଲିଙ୍କ: https://ibpsonline.ibps.in/cbiosep22/ ଯଦି ଆପଣଙ୍କୁ
+ମିଳି ନାହିଁ Emergency ଆଲର୍ଟ… ରାମ ମନ୍ଦିର ପ୍ରତିଷ୍ଠା ଦିବସ: ବିଶ୍ୱର ୮୦ଟି… ନୋଟିଫିକେସନ ଲିଙ୍କ:
+https://img.freejobalert.com/uploads/2022/09/Notification-Central-Bank-of-India-Officers-Posts.pdf
+
+===== ITEM A195 | lang: mr =====
+HEADLINE: 
+TEXT:
+'पायी फिरण्याचा' अनुभव घेण्यासाठी कॅलिफोर्निया, हे अमेरिकेतील पादचारी अनुकूल राज्यांपैकी एक आहे.कॅलिफोर्नियाचे हवामान आपसूकच माणसाला घराच्या बाहेर निघून पायी
+भटकंती करण्यासाठी प्रवृत्त करत असते.वाइनमेकर्स, खवय्ये, कलाकार आणि विद्यार्थ्यांना आवडणाऱ्या या शहरांमध्ये इथल्या गोल्डन स्टेट संस्कृतीचे सुखद मिश्रण पहायला
+मिळते.पायी चालणं हे सकाळचा व्यायाम म्हणून उत्तम पर्याय आहे.लहान, सपाट भागांमध्ये हळूहळू पायी चालता येऊ शकते.लाइट रेल किंवा केबल असो, जमिनीवरची किंवा भूयारी
+रेल्वे असो, सॅन फ्रांसिस्को हे अमेरिकेतील सर्वोत्तम सार्वजनिक वाहतूक प्रणाली असलेले शहर आहे.जर तुम्ही आरामात पाहणार असाल तर, हे शहर पायी फिरण्यासाठी खूप उत्तम
+डेस्टिनेशन आहे.वॉक स्कोर, या सिअॅटलच्या कंपनीने अमेरिकेतील 2,500 शहरांच्या चालण्याच्या क्षमतेचे परिक्षण केलं असून या यादीत सॅन फ्रांसिस्को दुसऱ्या क्रमांकावर
+आहे.बरेच गट आपल्या सहभागींसाठी शटल सेवा पुरवतात, पण जर तुम्ही स्वतःच फिरणार असाल, तर या शहराच्या प्रसिद्ध भागांत फिरण्यासाठी आम्ही काही सूचना सांगणार
+आहोत.पर्यटकांनी सॅन फ्रांसिस्कोच्या 49 चौरस मैलांच्या छोट्या आकाराच्या भ्रमात पडू नये.नकाशावर पायी चालण्याचे सपाट दिसणारे मार्ग, उंच-सखल आणि खडबडीत ही असण्याची
+शक्यता आहे.सॅन फ्रांसिस्कोचे काही सर्वात कठीण चढ शहराच्या मध्यभागी आहेत, त्यात नोब हिलची कठीण चढाई आहे.त्यामुळे तुम्ही येथे फिरण्यासाठी जाणार असाल तर
+चालण्याच्या शूजची एक आरामदायक जोडी सोबत घ्या आणि त्यांना बस किंवा रस्त्यावरच्या कार मध्ये बसण्याची इच्छा असल्यास मनी फेअर ($2) हे नेहमी सोबत ठेवा.बाहेर
+निघण्यापूर्वी, पर्यटकांनी दिशानिर्देशांसाठी हॉटेल एजंटशी सल्लामसलत करावी, जीपीएस तपासावा किंवा अधिकृत सॅन फ्रांसिस्को व्हिजिटर इन्फॉर्मेशन सेंटर (900 मार्केट
+स्ट्रीट, हॉलिडी प्लाझाच्या खालच्या बाजूला, जेथे शहराच्या प्रसिद्ध पॉवेल स्ट्रीट केबल कार असतात) येथे संपर्क साधावा.पर्यटकांसाठी नकाशे ही उपलब्ध आहेत आणि ते
+साहसिक अनुभवांसाठी आणि सर्वोत्तम मार्गांवरुन पायी फिरण्यासाठी ग्राहकांना मदत करतात.एटीएंडटी पार्कपासून सुरु करुन फिशरमॅन व्हर्फ आणि पियर 39 पर्यंत अनेक मार्ग
+पसरलेले आहेत.पर्यटक विविध सार्वजनिक कलांचा आनंद घेतात, मोठ्या बे ब्रिजच्या पाश्चात्य अँकरच्या खालून चालतात, पियर 14 आणि 7 मधील स्कायलाइनचा आनंद घेतात,
+एम्बरकेडरो सेंटर किंवा द पीयर्स च्या मधून फिरतात जे पियर 1½ ते 5 पर्यंत पसरलेले आहे आणि तिथे पुनर्जीवित केलेल्या फेरी बिल्डिंगसह अनेक नवीन रेस्टॉरंट्स आहेत,
+त्यांचा आस्वाद घेतात.पियर 39, सॅन फ्रांसिस्कोमधील सर्वात जास्त फिरण्यात येणारे स्थान आहे.इथे जेवण, मनोरंजन, खरेदी आणि विविध आकर्षणे यांचे दोन स्तर आहेत .हे
+ठिकाण शहर आणि खाडीच्या सुंदर दृश्यांनी भरलेले आहे.गोल्डन ब्रिज येथील आश्चर्यगोल्डन गेट ब्रिजला भेट दिल्याशिवाय सॅन फ्रांसिस्कोची सफर पूर्ण होणार नाही.पर्यटकांनी
+पायी चालणे किंवा सायकलवर जाणे पसंत केले असले तरी, खाडीच्या दृश्यांचा आनंद घेण्यासाठी हे सुंदर ठिकाण सगळ्यांना खूप भावते.यात अल्काट्रॅझ, ट्रेजर आयलँड आणि
+स्काईलाइनही समाविष्ट आहे.पुलाच्या टिकेटेड टूर देखील उपलब्ध आहेत.कॅमेरा (आकर्षक दृश्ये टिपण्यासाठी) आणि उबदार जॅकेट हे दोन्ही आणण्याचं पर्यटकांनी लक्षात
+ठेवावं.कारण उन्हाळ्यातही पुलावर थंडी लागू शकते.आणखी एक सुंदर ठिकाण, लिंकन पार्कमधील लीजन ऑफ ऑनर, हे ही या पुलापासून दूर नाही.सँटा मोनिकादरवर्षी 7 दशलक्षांहून
+अधिक पर्यटक सँटा मोनिका येथे येतात कारण ते एक प्रसिद्ध समुद्रकाठी वसलेलं शहर आहे (नॅशनल जिओग्राफिकच्या पहिल्या दहापैकी एक) आणि लॉस एंजेलेसच्या इतर आकर्षणांपासून
+जवळ ही आहे.सँटा मोनिका बीच दर वर्षी 300 दिवसांपेक्षा जास्त सूर्यप्रकाशात असतो आणि इथे वेस्ट कोस्टवरील काही सुरेख आणि सर्वोत्तम सूर्यास्त पहायला मिळतात .सँटा
+मोनिका देखील एक चालण्यायोग्य आणि बाइक-अनुकूल शहर म्हणून ओळखले जाते, म्हणून सँटा मोनिका पिअर आणि थर्ड स्ट्रीट प्रमोनेडसारखी आकर्षणे आणि दुकाने, रेस्टॉरंट्स आणि
+इतर बऱ्याच गोष्टींचा प्रवास करणे सोपे आहे.सँटा मोनिका केवळ 8.3 चौरस मैल एवढा आहे आणि अनेक ठिकाणी अगदी थोड्याच वेळात सहज पोहोचता येते.अनेक रस्त्यांवर मोठी,
+पादचारी-अनुकूल मार्ग आहेत.रस्त्यावरुन
+
+===== ITEM A196 | lang: hi =====
+HEADLINE: 
+TEXT:
+UKSSSC Forest constable admit card: यूकेएसएससी फॉरेस्ट कॉन्स्टेबल फिजिकल एफिशिएंसी टेस्ट-2021 27 जुलाई से आयोजित किया जाएगा। उम्मीदवारों को प्रवेश पत्र के साथ
+वन कांस्टेबल पद के लिए घोषणा पत्र डाउनलोड करना आवश्यक है।उत्तराखंड अधीनस्थ सेवा आयोग UKSSSC ने पोस्टकोड 102 फॉरेस्ट कॉन्स्टेबल फिजिकल एफिशिएंसी टेस्ट- 2021 के
+लिए एडमिट कार्ड जारी कर दिया है। उम्मीदवार उत्तराखंड अधीनस्थ सेवा आयोग की आधिकारिक वेबसाइट https://sssc.uk.gov.in/ से एडमिट कार्ड डाउनलोड कर सकते हैं।
+यूकेएसएससी फॉरेस्ट कॉन्स्टेबल फिजिकल एफिशिएंसी टेस्ट-2021 27 जुलाई से आयोजित किया जाएगा। उम्मीदवारों को प्रवेश पत्र के साथ वन कांस्टेबल पद के लिए घोषणा पत्र
+डाउनलोड करना आवश्यक है।How to download the UKSSSC Forest constable admit card<br />एडमिट कार्ड डाउनलोड करने के लिए सबसे पहले आधिकारिक वेबसाइट
+https://sssc.uk.gov.in/ पर जाएं।एडमिट कार्ड डाउनलोड करने के लिए होम पेज पर ‘Click to download Provisional Admit Card for Post Code-102 Designation-Forest
+Constable Physical Efficiency Test-2021’ लिंक दिखाई देगा। उसपर क्लिक करें।अब नया पेज खुल जाएगा। नए पेज पर आपको एडमिट कार्ड डाउनलोड करने का लिंक दिया गया होगा।
+उसपर क्लिक करें।अब यहां आपको अपना नाम और पिता का नाम डालकर सबमिट करना होगा। सबमिट करते ही एडमिट कार्ड आपके सामने आ जाएगा।उम्मीदवार के नाम और पिता के नाम की
+कुंजी और सबमिट पर क्लिक करें। अब आपका एडमिट कार्ड आपके सामने होगा।उत्तराखंड अधीनस्थ चयन आयोग (UKSSSC) ने ग्रुप सी के तहत जेल गार्ड के पद पर भर्ती के लिए
+नोटिफिकेशन जारी किया है। यूकेएसएसएससी जेल गार्ड आवेदन करने के लिए ऑनलाइन लिंक 01 जुलाई 2021 को आधिकारिक वेबसाइट पर एक्टिव चुका है। उम्मीदवार यूकेएसएसएससी भर्ती
+के लिए 14 अगस्त 2021 तक आवेदन कर सकते हैं। ऑनलाइन आवेदन करने के लिए यूकेएसएसएससी की आधिकारिक वेबसाइट sssc.uk.gov.in पर जाना होगा। अधिक जानकारी के लिए नोटिफिकेशन
+को ध्यान से पढ़ें।
+
+===== ITEM A197 | lang: tr =====
+HEADLINE: Devlet Bahçeli'den İmamoğlu çağrısı: Mahkeme süreci hızlandırılmalı
+TEXT:
+Devlet Bahçeli'den İmamoğlu çağrısı: Mahkeme süreci hızlandırılmalı MHP lideri Devlet Bahçeli, Ekrem İmamoğlu hakkında süren yargı sürecinin ivedilikle
+tamamlanması gerektiğini vurguladı. Bahçeli: “İmamoğlu'yla ilgili süreç hızla sonuçlanmalı” Milliyetçi Hareket Partisi (MHP) Genel Başkanı Devlet Bahçeli,
+İstanbul Büyükşehir Belediye Başkanlığı görevinden uzaklaştırılan Ekrem İmamoğlu ile ilgili yargı sürecine dair önemli bir açıklamada bulundu. Bahçeli, “Ekrem
+İmamoğlu’yla ilgili mahkeme süreçlerinin ivedilikle görüşülüp karara bağlanması gerekmektedir” ifadelerini kullandı. Bahçeli iki ay sonra kameralar karşısında
+Sağlık sorunları nedeniyle yaklaşık iki aydır kamuoyundan uzak kalan Devlet Bahçeli, geçen hafta MHP Kurucu Genel Başkanı Alparslan Türkeş’in anıt mezarını
+ziyaret ederek ilk kez görüntü verdi. Bahçeli’nin, bu süreçte siyasi faaliyetlerini yazılı açıklamalar ve telefon görüşmeleri ile sürdürdüğü öğrenildi. Yazılı
+açıklamayla mesaj verdi Bahçeli’nin son yazılı açıklamasında, Türkiye gündeminde yer alan hukuki süreçlere ilişkin değerlendirmelere yer verildi. Özellikle
+İmamoğlu davasının hızla sonuçlanması gerektiğini ifade etmesi dikkat çekti. Bahçeli, “Hukukun işlemesi açısından bu tür davaların uzatılmadan netleştirilmesi
+büyük önem taşımaktadır” şeklinde görüş belirtti. Bahçeli'nin yazılı açıklamasında şu ifadeler yer aldı: 'CHP Türkiye'yi karanlığa sürüklemektedir' Siyasetin
+dost-düşman kategorisine tasnif ve teşmili yapılarak icrası, milli ve manevi değer yargılarının aleyhine ikmali, anayasa ve yasaların bağlayıcılığını ihlal
+ederek ilerleyişi hukuk ve demokraside devasa çatlaklara, hatta vahim çarpıklıklara sebep olacaktır. Cumhuriyet Halk Partisi Türkiye’mizi bu neviden bir
+karanlığa sürüklemek maksadıyla patent hakkına sahip olduğu kriz, kaos ve kargaşa siyasetine azgınlaşmış ihtirasların refakatiyle hız vermiştir. Dünyada
+olağanüstü gelişmelerin yaşandığı, kartların yeniden karılıp güç merkezleri arasındaki siyasi, ticari ve ekonomik temelli bilek güreşlerinin yoğunlaştığı bir
+dönemde CHP yönetiminin eline hançer alıp saplayacak yer arayışına geçmesi tam bir ilkesizlik, tamamıyla izansızlıktır. 'CHP Genel Başkanı kontrolü kaybetti' Bu
+partinin öne çıkan lekeli isimlerinin içi boş hamaset ve çıtası yükselen hakaret üslubu taşınamayacak ölçüde ağır bir yüke dönüşmüş, öyle ki hıyanet sınırına
+kadar dayanmıştır. CHP Genel Başkanı’nın otokontrolünü kaybettiği, siyasi onurunu hiçe saydığı, cüretkarlığını cehalet ve küstahlığından devşirdiği ortadadır.
+Ülkesini ve milletini seven, hukukun üstünlüğüne boyun eğen hiçbir siyaset insanının heves ve tevessül etmeyeceği söz, fiil ve eylemlere başvurmak ayıplı bir
+siyasetin tezahürü olduğu kadar ahlaki ve politik kırılmanın deşifresidir. CHP’nin genel merkez binasının gayri resmi, gıyabi ve kaçak gecekondu şeklinde
+Silivri’ye taşındığını söylemek abartılı, arızi ve afaki bir değerlendirme sayılmamalıdır. 'Bindirilmiş kalabalıklar' Cumhurbaşkanlığı Hükümet Sistemi’nin
+haksızca, hayasızca ve hamakata dayalı olarak tek adam rejimi propagandasıyla karalamaya çalışan CHP Genel Başkanı’yla siyasi ve ideolojik yandaşlarının resmen
+ve aleni biçimde tekleşen birisinin peşine takılması trajikomik bir orta oyun numunesidir. Bindirilmiş ve sipariş edilmiş zoraki kalabalıklardan mülhem
+meydanlarda CHP Genel Başkanı’nın malum ve mühim bir yargısal süreci ve yargı mensuplarını hedef alması ziyadesiyle yanlış olmanın yanı sıra basit ve bayağı bir
+siyaset cambazlığıdır. Anlaşılan odur ki, CHP’nin nihai gayesi sokak ve boykot çağrılarının üzerine bina edilmek istenen iç isyan, siyasi ve toplumsal anarşinin
+patlak vermesidir. Fakat ne CHP ne bu partiyi kumanda eden dış işgal cephesi asla ve kat’a kirli emellerine muvaffak olamayacaklardır. 'Mahkemenin ivedilik ile
+karara bağlanması gerekmektedir' İstanbul Büyükşehir Belediyesi’ni saran hırsızlık, rüşvet ve yolsuzluk iddialarından dolayı Silivri Cezaevi’nde bulunan zanlı
+Ekrem İmamoğlu’yla ilgili mahkeme süreçlerinin ivedilikle görüşülüp karara bağlanması gerekmektedir. Tanık ifadeleri, sarih ve sahici delillerle birlikte diğer
+sair bilgi, belge ve bulguların dava dosyasına eksiksiz ilavesinin yapılması suretiyle
+
+===== ITEM A198 | lang: pl =====
+HEADLINE: Polityczne wątki na Oscarach. Jimmy Kimmel bezlitośnie zadrwił z Donalda i Melanii Trump
+TEXT:
+Polityczne wątki na Oscarach. Jimmy Kimmel bezlitośnie zadrwił z Donalda i Melanii Trump Za nami 98. uroczystość rozdania najważniejszych filmowych nagród na
+świecie. Zgodnie z wieloletnią tradycją, gala wręczenia Oscarów nie obyła się bez licznych odniesień do bieżącej sytuacji politycznej na globie. Tym razem
+amerykańskie elity artystyczne wzięły na tapet urzędującego prezydenta Stanów Zjednoczonych. Znany satyryk i gospodarz programów telewizyjnych, Jimmy Kimmel,
+wykorzystał moment prezentacji statuetek dla najlepszych filmów dokumentalnych, aby otwarcie wbić szpilę Donaldowi Trumpowi. - Na takich galach często mówi się
+o odwadze, ale prawdziwą odwagą jest opowiedzieć historię, za którą można zapłacić życiem. Jak wiecie, są kraje, których przywódcy nie wspierają wolności słowa.
+Nie mogę jednak powiedzieć, o które chodzi. Powiedzmy tylko: Korea Północna i CBS. Oscary: Jimmy Kimmel kpi z pierwszej damy Melanii Trump Amerykański prezenter
+na tym nie poprzestał i w swoim monologu bezpośrednio zaatakował również żonę przywódcy USA. Jimmy Kimmel nawiązał do niedawnej premiery filmu dokumentalnego
+"Melania", który skupia się wokół codziennego życia samej Melanii Trump. Komik postanowił celnie podsumować tę telewizyjną produkcję, ironicznie zestawiając ją
+z odważnymi reportażami z linii frontu, które starają się obnażać globalne niesprawiedliwości. - Na szczęście istnieje międzynarodowa społeczność filmowców,
+którzy poświęcają się opowiadaniu prawdy, często ryzykując wiele, by tworzyć filmy uczące nas czegoś, demaskujące niesprawiedliwość i inspirujące do działania.
+Są też jednak dokumenty, w których po prostu spaceruje się po Białym Domu, przymierzając buty - mówił. Po tym dowcipie błyskawicznie dodał kolejną polityczną
+uszczypliwość pod adresem prezydenckiej pary. - O, człowieku, on będzie wściekły, że jego żona nie została nominowana za to. Poruszające słowa o Ukrainie i
+stanowczy apel Javiera Bardema o Palestynę Podczas hollywoodzkiej nocy bardzo wyraźnie wybrzmiał również temat konfliktu zbrojnego na wschodzie Europy.
+Najwyższe uznanie Akademii i statuetkę za najlepszy pełnometrażowy dokument otrzymała produkcja "Pan Nikt kontra Putin". Odbierając prestiżową nagrodę, reżyser
+David Borenstein wygłosił niezwykle emocjonalne przemówienie, w którym stanowczo zwrócił uwagę na trwający od kilku lat dramat na terytorium Ukrainy. Co
+ciekawe, na oscarowej scenie zabrakło Seana Penna. Ceniony aktor został nagrodzony złotą statuetką w kategorii dla najlepszego aktora drugoplanowego za kreację
+w dziele "Jedna bitwa po drugiej", jednak całkowicie zrezygnował z udziału w uroczystej gali. Jak informował dziennik "New York Times", nieobecność laureata na
+ceremonii była podyktowana jego rzekomo planowaną wizytą na ogarniętej wojną Ukrainie. Z kolei hiszpański gwiazdor Javier Bardem, zanim oficjalnie otworzył
+kopertę i odczytał tytuł zwycięzcy w kategorii dla najlepszego filmu międzynarodowego, zdecydował się wykorzystać czas antenowy na głośne wyrażenie swojego
+sprzeciwu wobec działań zbrojnych na Bliskim Wschodzie. - Nie wojnie i wolna Palestyna!
+
+===== ITEM A199 | lang: vi =====
+HEADLINE: 'Vững chãi' hay 'vững trãi' mới đúng chính tả?
+TEXT:
+'Vững chãi' hay 'vững trãi' mới đúng chính tả? Vững chãi - vững trãi là hai từ rất dễ bị nhầm lẫn. Nguyên nhân chủ yếu xuất phát từ việc phát âm của từng vùng
+miền, do ảnh hưởng từ quá trình nghe và nói trong giao tiếp dẫn đến việc sai chính tả trong văn viết. Trong Tiếng Việt, đây là tính từ, thể hiện khả năng chịu
+đựng tốt trước những tác động mạnh từ bên ngoài mà không bị lung lay, đổ ngã. Vậy theo bạn đâu mới là từ đúng? Hãy để lại câu trả lời vào box bình luận bên
+dưới.
+
+===== ITEM A200 | lang: th =====
+HEADLINE: รฟท.เตรียมเปิดจองทริป “รถไฟลอยน้ำ รับลมหนาว” เที่ยวเขื่อนป่าสักฯ
+TEXT:
+รฟท.เตรียมเปิดจองทริป “รถไฟลอยน้ำ รับลมหนาว” เที่ยวเขื่อนป่าสักฯ
+
+การรถไฟฯ เปิดตาราง “รถไฟลอยน้ำ รับลมหนาว ชมวิวกลางเขื่อน” ขบวนรถพิเศษนำเที่ยว กรุงเทพ – เขื่อนป่าสักชลสิทธิ์ เริ่มจำหน่ายบัตรทั่วประเทศ 17 ต.ค. นี้ เวลา 10.00
+น.
+การรถไฟแห่งประเทศไทย ขอเชิญชวนประชาชนและนักท่องเที่ยวร่วมสัมผัสประสบการณ์สุดพิเศษ “นั่งรถไฟลอยน้ำ รับลมหนาว ชมวิวกลางเขื่อน” กับขบวนรถพิเศษนำเที่ยว เส้นทาง
+กรุงเทพ (หัวลำโพง) – เขื่อนป่าสักชลสิทธิ์ – กรุงเทพ (หัวลำโพง) เส้นทางสุด Unseen ของเมืองไทย ที่จะพาผู้โดยสารนั่งรถไฟ “ลอย” เหนืออ่างเก็บน้ำ
+ชมทิวทัศน์สวยงามของธรรมชาติแบบ 360 องศา พร้อมเปิดจำหน่ายบัตรโดยสารพร้อมกันทั่วประเทศตั้งแต่วันที่ 17 ตุลาคม 2568 เวลา 10.00 น. เป็นต้นไป
+สำหรับขบวนรถพิเศษนำเที่ยวเส้นทางนี้เป็นที่นิยมของนักท่องเที่ยวมาอย่างต่อเนื่อง เพราะเป็นเส้นทางที่รถไฟวิ่งบนสันเขื่อน ลัดเลาะอ่างเก็บน้ำ ทำให้ดูราวกับ
+“รถไฟวิ่งอยู่บนผิวน้ำ” จนได้รับฉายาว่า “รถไฟลอยน้ำ” ซึ่งถือเป็นจุดหมายท่องเที่ยวสำคัญในฤดูหนาวของจังหวัดลพบุรี โดยขบวนรถจะให้บริการแบบเช้าไป–เย็นกลับ
+ทุกวันเสาร์และอาทิตย์ ตลอดช่วง เดือนพฤศจิกายน 2568 – กุมภาพันธ์ 2569 รวม 24 วัน มีตารางให้บริการดังนี้
+- พฤศจิกายน 2568 เปิดให้บริการวันที่ 1,2,8,9,15,16,22,23,29,30 รวม 10 วัน
+- ธันวาคม 2568 เปิดให้บริการวันที่ 6,7,13,14,20,21 รวม 6 วัน
+- มกราคม - กุมภาพันธ์ 2569 เปิดให้บริการวันที่ 10,11,17,18,24,25,31 ม.ค. และ 1 ก.พ. รวม 8 วัน
+ขบวนรถพิเศษนำเที่ยว “รถไฟลอยน้ำ” ในครั้งนี้ มีให้บริการทั้งขบวนรถนั่งธรรมดา ชั้น 3 รถนั่งปรับอากาศ (OTOP TRAIN) และรถนั่ง/นอนปรับอากาศ (JR-WEST)
+โดยคิดอัตราค่าโดยสารผู้ใหญ่และเด็กราคาเดียวกัน ดังนี้
+1. รถธรรมดา ชั้น 3 (พัดลม)
+- กรุงเทพ - เขื่อนป่าสักชลสิทธิ์ - กรุงเทพ เที่ยวไป-กลับ ราคา 350 บาท
+- สระบุรี/แก่งคอย - โคกสลุง เที่ยวไป-กลับ ราคา 350 บาท
+- เขื่อนป่าสักชลสิทธิ์ - กรุงเทพ เฉพาะเที่ยวกลับ ราคา 150 บาท
+2. รถนั่งปรับอากาศ (OTOP TRAIN) และรถนั่ง/นอนปรับอากาศ (JR-WEST)
+- กรุงเทพ - เขื่อนป่าสักชลสิทธิ์ - กรุงเทพ เที่ยวไป-กลับ ราคา 620 บาท
+- สระบุรี/แก่งคอย - โคกสลุง เที่ยวไป-กลับ ราคา 620 บาท
+- เขื่อนป่าสักชลสิทธิ์ - กรุงเทพ เฉพาะเที่ยวกลับ 250 บาท
+3. รถธรรมดา ชั้น 3 (รถโถง) จำหน่ายตั๋วในวันเด
+
+===== ITEM A201 | lang: tr =====
+HEADLINE: Google'dan yunuslarla konuşmak için yeni yapay zeka modeli
+TEXT:
+Google'dan yunuslarla konuşmak için yeni yapay zeka modeli Zeka düzeyi yüksek canlılar olan yunuslar, grup halinde çalışabiliyor, birbirlerine yeni beceriler
+öğretebiliyor ve kendilerine has seslerle iletişim kuruyor. Bilim insanları bu hayvanların çıkardığı ıslık ve tıklama gibi seslerle birbirlerine ne
+anlattıklarını uzun zamandır çözmeye çalışıyor.Wild Dolphin Project (WDP) adlı kâr amacı gütmeyen kuruluş Bahamalardaki Atlantik benekli yunusları 40 yıl
+boyunca takip ederek geniş bir ses ve video kaydı arşivi oluşturdu. Araştırmacıların bunlar üzerinde yaptığı analizler, yunusların birbirlerini çağırırken isim
+görevi gören ıslıklar kullandığını, kur yaparken veya kavga ederken çıkardıkları sesleri gözler önüne serdi.YAPAY ZEKA MODELLERİ İLETİŞİM KURMAYI
+SAĞLIYORIndependent Türkçede yer aldığı gibi bilim insanları bu memelilerle iletişim kurmanın teoride mümkün olduğunu düşünse de bugüne kadar yeterli teknolojik
+gelişme sağlanmamıştı. Ancak OpenAIın ChatGPTsi ve Googleın Geminiı gibi geniş dil modellerinin geliştirilmesi işleri değiştirdi. Bu dil modellerinin
+arkasındaki mekanizmanın, yunusların konuşmalarını anlamak için kullanılıp kullanılmayacağını merak eden WDP, Google ve Georgia Teknoloji Enstitüsüyle işbirliği
+yaparak ellerindeki geniş arşivi onlara sundu. Nihayetinde ortaya Geminiın sistemiyle çalışan DolphinGemma adlı yapay zeka modeli çıktı.Gemini ve ChatGPT gibi
+modeller eğitim sırasında bir cümlede, bir sözcükten sonra hangi sözcüğün geleceğini tahmin etmeye çalışıyor. Büyük bir veri setiyle eğitilen bu araçlar doğru
+tahmini yapana kadar süreç devam ediyor. En iyi eğitim süreçlerinden geçen modeller bu sayede insanlar gibi cümleler üretebiliyor.DolphinGemma da bunun aynısını
+yunus sesleriyle yapıyor. Model, önce ses girdilerini alıp yorumluyor ve peşinden gelecek muhtemel sesleri tahmin ediyor. Bu tahminleri yürütmesi için 400
+milyon parametre içeren DolphinGemma, nispeten küçük bir geniş dil modeli. Örneğin ChatGPT 4, 1,76 trilyon ve GPT 3 de 175 milyar parametre içeriyor.Google,
+DolphinGemmanın WDPnin araştırmalarında kullandığı Pixel telefonlarda çalışabildiğini ifade ediyor. Bu yaz başlaması planlanan çalışmalarda araştırmacılar
+modeli kullanarak ses kalıplarını belirlemeyi, yunusların iletişimindeki gizli yapıları ve belki de anlamları ortaya çıkarmayı umuyor. Nihayetinde bu verilere
+dayanarak bir sözlük oluşturulması amaçlanıyor.Bilim insanları ayrıca karşılıklı iletişim kurabilmek için CHAT adlı bir sistem de geliştirdi. Bu su altı
+bilgisayarının amacı, yunuslarla ortak bir kelime dağarcığı oluşturmak. Ekip, CHATin yarattığı yapay ıslıkları, yunusların hoşlandığı belirli nesnelerle
+ilişkilendirilmeyi hedefliyor. Bilim insanları yunusların zaman içinde bu nesneleri isterken, CHATin ürettiği ve normalde kullanmadıkları sesleri çıkarmaya
+başlayacağını umuyor. Nihai hedef, eğer gerçekten böyle bir şey varsa, yunusların dilini konuşmak. Bunun gerçekleşmesi için bilim insanlarının önünde uzun bir
+yol var ancak geniş dil modelleri süreci epey hızlandırabilir.
+
+===== ITEM A202 | lang: de =====
+HEADLINE: Zwei Männer müssen wegen Brandserie im Bezirk Affoltern vor Gericht
+TEXT:
+Zwei Männer müssen wegen Brandserie im Bezirk Affoltern vor Gericht Die Zürcher Staatsanwaltschaft hat zwei Männer wegen einer Brandserie im Bezirk Affoltern
+angeklagt. Die jungen Beschuldigten sollen 2024 in Bonstetten und Wettswil Brände gelegt haben, die zu hohen Sachschäden führten. Die Ermittlungen führten zu
+drei Männern im Alter von 17 bis 19 Jahren, wie die Oberstaatsanwaltschaft am Montag mitteilte. Die beiden Erwachsenen werden nun angeklagt. Zwischen Ende März
+und Ende Mai 2024 sollen die drei Männer in verschiedener Zusammensetzung Feuer gelegt haben. Dabei brannten Scheunen, Schrebergartenhäuschen und Fahrzeuge, In
+einem Fall betrug die Schadenssumme 1,4 Millionen Franken. Die Staatsanwaltschaft beantragt unbedingte Freiheitsstrafen und Geldstrafen für die beiden
+Beschuldigten. Wann der Prozess stattfindet, ist noch offen. (dab/sda)
+
+===== ITEM A203 | lang: tr =====
+HEADLINE: Ardahan’da Sibirya soğukları: Göle eksi 19
+TEXT:
+Ardahan’da Sibirya soğukları: Göle eksi 19 Ardahan ve ilçeleri Sibirya soğuklarına teslim oldu. Göle sıfırın altında 19 derece ile Ardahan’ın en soğuk ilçesi
+oldu. Ardahan’da Sibirya soğukları etkili oluyor. Gece en düşük hava sıcaklığının sıfırın altında 10 derece ölçüldüğü kent merkezinde ağaçları kırağı kapladı.
+Dondurucu soğukla birlikte Göle ilçesinde hava sıcaklığı sıfırın altında 19 derece ölçüldü. İlçe genelinde sis de etkili oldu. Hayati Demir, ’’Ardahan şu anda
+en soğuk günlerini yaşıyor. Ne yazık ki her sabah araçlar çalışmıyor. Ağaçlar dahi donuyor’’ dedi. Ardahan ve ilçelerinde gece en düşük hava sıcaklıkları şöyle
+oldu: "Ardahan merkez eksi 10, Göle eksi 19, Hanak eksi 12, Çıldır eksi 12, Damal eksi 9, Posof eksi 5."
+
+===== ITEM A204 | lang: ta =====
+HEADLINE: 
+TEXT:
+கரூர்: சிறுமியை பாலியல் வன்கொடுமை செய்த கூலித் தொழிலாளிக்கு ஆயுள் தண்டனை விதித்த கரூர் மகளிர் விரைவு நீதிமன்றம், பாதிக்கப்பட்ட சிறுமிக்கு ரூ.5 லட்சம் இழப்பீடு
+வழங்க தமிழக அரசுக்கு உத்தரவிட்டுள்ளது.கரூர் மாவட்டம் அரவக்குறிச்சி அருகேயுள்ள மலைக்கோவிலூர் சேர்ந்தவர் சிவசுப்ரமணியன் (40). கூலித் தொழிலாளி. திருமணமாகி
+குழந்தைகள் உள்ளனர். இவர் மலைக்கோவிலூர் அருகேயுள்ள குடகனாறு ஆற்றுப்பாலத்தின் கீழ் கடந்த 2021-ம் ஆண்டு நவம்பர் 1-ம் தேதி ஆடு மேய்த்துக் கொண்டிருந்த 10-ம் வகுப்பு
+படிக்கும் 15 வயது சிறுமி வாயை பொத்தி, கையை கட்டி, தூக்கி சென்று பாலியல் வன்கொடுமை செய்தார்.இது குறித்து தகவலறிந்த அரவக்குறிச்சி போலீஸார் வழக்கு பதிவு செய்து
+சிவசுப்ரமணியனை கைது செய்தனர். கரூர் மகளிர் விரைவு நீதிமன்றத்தில் நடந்த இவ்வழக்கில் நீதிபதி ஏ.நசீமா பானு இன்று (மார்ச் 7ம் தேதி) அளித்த தீர்ப்பில், சிறுமியை
+தடுத்ததற்காக ஒராண்டு சிறைத் தண்டனையும், கடத்தி சென்றதற்காக 10 ஆண்டுகள் சிறைத்தண்டனையும், ரூ.1,000 அபராதமும், அபராதத்தை செலுத்த தவறினால் மேலும் ஓராண்டு சிறைத்
+தண்டனையும், போக்சோவின் கீழ் ஆயுள் கால சிறைத் தண்டனையும், மேலும் ரூ.1,000 அபராதமும், அபராதத்தை செலுத்தத் தவறினால் மேலும் ஓராண்டு சிறைத்தண்டனையும் வழங்கி
+அனைத்தையும் ஏக காலத்தில் அனுபவிக்க உத்தரவிட்டார். இவ்வழக்கில் பாதிக்கப்பட்ட சிறுமிக்கு இழப்பீடாக ரூ.5 லட்சம் வழங்க தமிழக அரசுக்கு நீதிமன்றம் உத்தரவிட்டுள்ளது.
+

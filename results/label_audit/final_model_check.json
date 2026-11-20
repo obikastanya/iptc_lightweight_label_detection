@@ -1,0 +1,65 @@
+{
+ "teacher": {
+  "acc_vs_section": 0.78,
+  "n_section": 300,
+  "acc_vs_verified": 0.9066666666666666,
+  "n_verified": 300,
+  "acc_vs_provisional": 0.9066666666666666,
+  "n_provisional": 300,
+  "acc_vs_section_same_items_as_verified": 0.78
+ },
+ "StaticKD (final)": {
+  "acc_vs_section": 0.7233333333333334,
+  "n_section": 300,
+  "acc_vs_verified": 0.8166666666666667,
+  "n_verified": 300,
+  "acc_vs_provisional": 0.8166666666666667,
+  "n_provisional": 300,
+  "acc_vs_section_same_items_as_verified": 0.7233333333333334
+ },
+ "Model2Vec classifier + KD": {
+  "acc_vs_section": 0.74,
+  "n_section": 300,
+  "acc_vs_verified": 0.8233333333333334,
+  "n_verified": 300,
+  "acc_vs_provisional": 0.8233333333333334,
+  "n_provisional": 300,
+  "acc_vs_section_same_items_as_verified": 0.74
+ },
+ "MiniLM-L6 + KD": {
+  "acc_vs_section": 0.74,
+  "n_section": 300,
+  "acc_vs_verified": 0.86,
+  "n_verified": 300,
+  "acc_vs_provisional": 0.86,
+  "n_provisional": 300,
+  "acc_vs_section_same_items_as_verified": 0.74
+ },
+ "DistilmBERT + KD": {
+  "acc_vs_section": 0.6933333333333334,
+  "n_section": 300,
+  "acc_vs_verified": 0.7466666666666667,
+  "n_verified": 300,
+  "acc_vs_provisional": 0.7466666666666667,
+  "n_provisional": 300,
+  "acc_vs_section_same_items_as_verified": 0.6933333333333334
+ },
+ "TF-IDF + SVM + KD": {
+  "acc_vs_section": 0.6066666666666667,
+  "n_section": 300,
+  "acc_vs_verified": 0.6666666666666666,
+  "n_verified": 300,
+  "acc_vs_provisional": 0.6666666666666666,
+  "n_provisional": 300,
+  "acc_vs_section_same_items_as_verified": 0.6066666666666667
+ },
+ "fastText + KD": {
+  "acc_vs_section": 0.6133333333333333,
+  "n_section": 300,
+  "acc_vs_verified": 0.6733333333333333,
+  "n_verified": 300,
+  "acc_vs_provisional": 0.6733333333333333,
+  "n_provisional": 300,
+  "acc_vs_section_same_items_as_verified": 0.6133333333333333
+ }
+}

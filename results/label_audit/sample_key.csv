@@ -1,0 +1,301 @@
+item_id,doc_id,source,lang,label,source_label,url
+A001,u00278,ccnews_jsonld,es,"crime, law and justice","[""ACTUALIDAD"", ""POLICIALES"", ""Entradas"", ""Un golpe al cuatrerismo en San Martín frustró el asado de un 15 años""]",https://spnoticias.com.ar/2025/02/15/un-golpe-al-cuatrerismo-en-san-martin-frustro-el-asado-de-un-15-anos/
+A002,u07964,ccnews_jsonld,es,"arts, culture, entertainment and media","[""Cultura"", ""Cultura""]",https://www.laprovincia.es/cultura/2025/02/15/veinte-anos-dionisio-ridruejo-114324857.html
+A003,u05698,ccnews_jsonld,fr,"arts, culture, entertainment and media","[""Culture""]",https://www.lamarseillaise.fr/culture/zeus-le-cheval-des-jo-atterrit-sur-le-toit-du-mucem-BJ17962131
+A004,u06282,l3cube_indic,pa,religion,Religious,
+A005,u04426,ccnews_jsonld,th,"economy, business and finance","[""เศรษฐกิจ"", ""เศรษฐกิจ"", ""แดงเถือก! กองทุนน้ำมันฯ ติดลบทะลุ 1.2 หมื่นล้านบาท เซ่นพิษพยุงราคา""]",https://thethaiger.com/th/news/1544457/
+A006,u06980,ccnews_jsonld,nl,sport,"[""Tennis,Carlos Alcaraz verrassend onderuit tegen Engelsman, titelverdediger loopt finaleplaats op Indian Wells mis"", ""Tennis"", ""Carlos Alcaraz verrassend onderuit tegen Engelsman, titelverdediger loopt finaleplaats op Indian Wells mis""]",https://sportnieuws.nl/tennis/nieuws/carlos-alcaraz-verrassend-onderuit-tegen-engelsman-titelverdediger-loopt-finaleplaats-op-indian-wells-mis-2025031604563382195/
+A007,u07669,ccnews_jsonld,fa,sport,"[""ورزشی"", ""ورزش جهان""]",https://www.ilna.ir/%D8%A8%D8%AE%D8%B4-%D9%88%D8%B1%D8%B2%D8%B4-%D8%AC%D9%87%D8%A7%D9%86-67/1543805-%D8%B3%D9%84%D8%A7%D8%AE%DB%8C-%D8%B4%DB%8C%D8%A7%D8%B7%DB%8C%D9%86-%D8%B3%D8%B1%D8%AE-%D8%AA%D9%88%D8%B3%D8%B7-%DA%A9%D9%88%D9%84%D9%88-%D9%85%D9%88%D8%A2%D9%86%DB%8C
+A008,u03970,ccnews_jsonld,pt,human interest,"[""Cultura e lazer"", ""/famosos"", ""/famosos/150192/viih-tube-e-internada-em-uti-tres-dias-apos-parto-de-seu-segundo-filho""]",https://www.osaogoncalo.com.br/famosos/150192/viih-tube-e-internada-em-uti-tres-dias-apos-parto-de-seu-segundo-filho
+A009,u12264,ccnews_jsonld,ru,"economy, business and finance","[""Энергетика"", ""Экономика"", ""Энергетика"", ""Индия становится всё более зависимой от российской нефти: её доля достигла рекорда""]",https://www.unian.net/economics/energetics/indiya-rezko-uvelichila-zakupki-rossiyskoy-nefti-13470306.html
+A010,u09256,ccnews_jsonld,bg,"economy, business and finance","[""Бизнес"", ""Бизнес""]",https://www.standartnews.com/biznes/ekspert-otseche-idva-li-skapotiya-v-evro-na-moreto-590109.html
+A011,u06509,ccnews_jsonld,ro,sport,"[""Sport"", ""Sport"", ""Mondialul din fața televizorului  - Interviu cu fostul arbitru sătmărean Florin Buțurcă, stabilit în Canada""]",https://www.gazetanord-vest.ro/2026/06/mondialul-din-fata-televizorului-interviu-cu-fostul-arbitru-satmarean-florin-buturca-stabilit-in-canada/
+A012,u05864,l3cube_indic,kn,"crime, law and justice",Crime,
+A013,u02855,l3cube_indic,gu,"crime, law and justice",Crime,
+A014,u03936,l3cube_indic,hi,"crime, law and justice",crime-news-hindi,
+A015,u12449,ccnews_jsonld,vi,"economy, business and finance","[""Kinh doanh""]",https://znews.vn/gan-300-doanh-nghiep-quoc-te-tim-duong-dau-tu-vao-viet-nam-post1585235.html
+A016,u06338,ccnews_jsonld,vi,"crime, law and justice","[""Pháp luật""]",https://lifestyle.znews.vn/tai-xe-xe-om-cong-nghe-bi-dam-cuop-tai-san-o-binh-duong-post1531557.html
+A017,u08960,ccnews_jsonld,pt,"crime, law and justice","[""Justiça""]",https://www.jd1noticias.com/justica/justica-eleitoral-aprova-contas-de-campanha-de-adriane-lopes/146874/
+A018,u11155,l3cube_indic,pa,"crime, law and justice",Crime,
+A019,u09744,ccnews_jsonld,bg,"economy, business and finance","[""Бизнес"", ""Бизнес""]",https://www.standartnews.com/biznes/pazarat-se-obrashta-nov-nachin-za-pokupka-na-nedvizhimi-imoti-589793.html
+A020,u00890,ccnews_jsonld,zh,politics,"[""政治"", ""政治"", ""李貞秀雙重國籍爭議  柯文哲批陸委會「刁難」""]",https://news.ltn.com.tw/news/politics/breakingnews/5343333
+A021,u04153,l3cube_indic,pa,"arts, culture, entertainment and media",Literature,
+A022,u10648,indonews,id,"economy, business and finance",bisnis,
+A023,u03523,ccnews_jsonld,pt,sport,"[""Desporto""]",https://24.sapo.pt/desporto/artigos/jannik-sinner-e-taylor-fritz-qualificam-se-para-as-meias-finais-das-atp-finals
+A024,u11470,ccnews_jsonld,ko,sport,"[""스포츠"", ""일반기사"", ""스포츠"", ""뉴스영상""]",https://news.sbs.co.kr/news/endPage.do?news_id=N1007500959
+A025,u11308,ccnews_jsonld,uk,"conflict, war and peace","[""Війна"", ""Війна"", ""Україна повернула 528 тіл загиблих українських військових - що відомо""]",https://glavred.net/war/ukraina-vernula-528-tel-pogibshih-ukrainskih-voennyh-chto-izvestno-10765226.html
+A026,u01694,ccnews_jsonld,ru,weather,"[""Погода"", ""Погода"", ""Погода в Украине на вторник 16 декабря — прогноз от Наталки Диденко""]",https://weather.novyny.live/ru/serym-dniam-konets-natalka-didenko-poradovala-prognozom-pogody-300209.html
+A027,u09557,ccnews_jsonld,ar,"economy, business and finance","[""الاقتصاد""]",https://news.gulf365.net/business/12878674/%D8%A7%D8%B9%D8%B1%D9%81-%D8%A5%D9%8A%D9%87-%D9%87%D9%8A%D9%88%D9%81%D8%B1%D9%84%D9%83-%D9%81%D9%89-%D9%81%D8%A7%D8%AA%D9%88%D8%B1%D8%A9-%D8%A7%D9%84%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A1-%D9%85%D8%B9-%D8%A7%D9%86%D8%AE%D9%81%D8%A7%D8%B6-%D8%AF%D8%B1%D8%AC%D8%A7%D8%AA-%D8%A7%D9%84%D8%AD%D8%B1%D8%A7%D8%B1%D8%A9.html
+A028,u07156,ccnews_jsonld,vi,sport,"[""Thể thao""]",https://znews.vn/canh-tuong-kinh-hoang-trong-ngay-barcelona-vo-dich-la-liga-post1553474.html
+A029,u09559,ccnews_jsonld,uk,sport,"[""Футбол"", ""Футбол"", ""Колишня зірка Шахтаря та збірної Бразилії Фред залишив Фенербахче й уже знайшов новий клуб""]",https://sport.nv.ua/ukr/football/fred-pereyshov-do-atletiko-mineyro-kontrakt-do-2029-roku-ta-detali-perehodu-50632752.html
+A030,u03401,l3cube_indic,mr,lifestyle and leisure,Travel,
+A031,u07918,ccnews_jsonld,zh,"economy, business and finance","[""財經"", ""遠東生技上半年合併營收1.88億元 EPS 0.87元""]",https://tw.news.yahoo.com/%E9%81%A0%E6%9D%B1%E7%94%9F%E6%8A%80%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%90%88%E4%BD%B5%E7%87%9F%E6%94%B61-88%E5%84%84%E5%85%83-eps-0-87%E5%85%83-112807378.html
+A032,u07043,ccnews_jsonld,tr,human interest,"[""MAGAZİN"", ""MAGAZİN"", ""Sema Aydemir, Pınar Saka'nın kocasıyla birbirine girdi! Olay sözler""]",https://www.gundemkibris.com/sema-aydemir-pinar-sakanin-kocasiyla-birbirine-girdi-olay-sozler
+A033,u00675,ccnews_jsonld,de,"arts, culture, entertainment and media","[""Panorama"", ""TV""]",https://www.augsburger-allgemeine.de/panorama/tv/temptation-island-vip-kandidaten-2024-die-paare-in-staffel-5-17-10-24-103073484
+A034,u09535,l3cube_indic,pa,religion,Religious,
+A035,u06306,ccnews_jsonld,th,sport,"[""กีฬา"", ""ฟุตบอลรายการอื่น ๆ"", ""ปาร์ตี้ลูกหนัง! แฟนบอลร่วมงาน “Final Call on Stage” ครั้งแรกสุดคึกคัก""]",https://mgronline.com/sport/detail/9690000025480
+A036,u01532,ccnews_jsonld,fr,environment,"[""Environnement""]",https://www.lamarseillaise.fr/environnement/acces-limite-aux-calanques-de-la-vesse-et-niolon-a-partir-du-mois-de-juin-EN15909278
+A037,u06026,l3cube_indic,pa,education,Education,
+A038,u07548,ccnews_jsonld,vi,"crime, law and justice","[""Pháp luật""]",https://vietnamnet.vn/khoi-to-6-doi-tuong-danh-hoi-dong-nu-sinh-lop-11-gay-dot-song-co-2352759.html
+A039,u08683,ccnews_jsonld,pt,"economy, business and finance","[""Economia""]",https://www.correiobraziliense.com.br/economia/2025/09/7249457-comeca-a-primeira-etapa-da-reuniao-do-copom-de-analise-de-conjuntura.html
+A040,u12101,l3cube_indic,mr,health,Health,
+A041,u02202,indonews,id,sport,bola,
+A042,u00435,ccnews_jsonld,pt,health,"[""Saúde""]",https://cnnportugal.iol.pt/ebola/surto/surto-de-ebola-no-leste-da-republica-democratica-do-congo-ja-causou-80-mortos/20260516/6a0844bdd34e28842c841a2b
+A043,u07863,ccnews_jsonld,es,sport,"[""Fútbol"", ""Deportes"", ""Fútbol"", ""Karla Torres anota el primer gol de Colombia contra Países Bajos en el Mundial Sub 20""]",https://www.bluradio.com/deportes/futbol/karla-torres-anota-el-primer-gol-de-colombia-contra-paises-bajos-en-el-mundial-sub-20-rs15
+A044,u00905,ccnews_jsonld,th,politics,"[""การเมือง"", ""ข่าวการเมือง"", ""“ขิง” แตกหัก “พีระพันธุ์” ทิ้ง รทสช. พา “ลูกหมี-ชุมพล”  ยกก๊วนชุมพร-สุราษฎร์ฯ ซบภูมิใจไทย""]",https://mgronline.com/politics/detail/9680000088764
+A045,u06263,ccnews_jsonld,zh,lifestyle and leisure,"[""最新文章"", ""美食"", ""Popeyes光復店10/23開幕優惠搶先看！加入Popeyes LINE好友免費獲得比司吉、肯瓊裹漿薯條、檸檬鮮飲。""]",https://www.walkerland.com.tw/subject/view/399567
+A046,u06302,ccnews_jsonld,fr,environment,"[""Bourg-de-Péage"", ""Culture et sorties"", ""Environnement"", ""Bourg-de-Péage – Une balade au frais au Bois des Naix""]",https://limpartial.fr/bourg-de-peage-une-balade-au-frais-au-bois-des-naix/
+A047,u10364,ccnews_jsonld,uk,"conflict, war and peace","[""ВІЙНА"", ""ВСІ НОВИНИ"", ""ВІЙНА"", ""Обстріл Харкова: зафіксовано удар безпілотника по території зоопарку"", ""ГОЛОВНА"", ""ВСІ НОВИНИ"", ""ВІЙНА""]",https://irtafax.com/obstril-kharkova-zafiksovano-udar-bezpilotnyka-po-terytorii-zooparku/
+A048,u09539,l3cube_indic,gu,"economy, business and finance",Business,
+A049,u07871,ccnews_jsonld,vi,politics,"[""Chính trị""]",https://vnexpress.net/lanh-dao-dang-nha-nuoc-vieng-chu-tich-ho-chi-minh-dang-huong-anh-hung-liet-si-4927867.html
+A050,u11843,ccnews_jsonld,id,human interest,"[""Selebritas"", ""Selebritas""]",https://seleb.tempo.co/read/1856975/sakura-le-sserafim-tanggapi-kritik-penampilan-di-coachella-tidak-ada-yang-sempurna
+A051,u03498,l3cube_indic,kn,"economy, business and finance",Business,
+A052,u03430,l3cube_indic,ta,"economy, business and finance",Business,
+A053,u00971,bangla_plos,bn,"economy, business and finance",economy,
+A054,u09730,ccnews_jsonld,uk,"conflict, war and peace","[""Війна""]",https://kurs.com.ua/novost/1241960-sili-oboroni-unichtozhili-bolee-tisjachi-okkupantov-i-desjatki-edinic-tehniki-vraga
+A055,u06334,ccnews_jsonld,tr,politics,"[""Politika"", ""Politika"", ""Havadan Trafik Denetiminde 33 Bin 770 İşlem - Son Dakika""]",https://www.sondakika.com/politika/haber-havadan-trafik-denetiminde-33-bin-770-islem-18453686/
+A056,u00988,l3cube_indic,or,labour,career,
+A057,u04263,ccnews_jsonld,ko,sport,"[""스포츠"", ""비디오머그"", ""스포츠"", ""별별스포츠 시즌2""]",https://news.sbs.co.kr/news/endPage.do?news_id=N1007832438
+A058,u03537,bangla_plos,bn,politics,politics,
+A059,u01362,indonews,id,"economy, business and finance",bisnis,
+A060,u10866,l3cube_indic,hi,health,health-news-hindi,
+A061,u05170,ccnews_jsonld,es,"conflict, war and peace","[""Guerra"", ""Cómo el hombre del petróleo original de Trump fortaleció los lazos entre EE.UU. e Israel y minimizó los riesgos de la guerra con Irán."", ""Home"", ""Guerra"", ""Cómo el hombre del petróleo original de Trump fortaleció los lazos entre...""]",https://www.formosadeportiva.com.ar/war/23554/
+A062,u04461,ccnews_jsonld,pt,"arts, culture, entertainment and media","[""Entretenimento"", ""Música"", ""O Ministério da Cultura e CNH apresentam a peça “Tem Palhaço Que Desperdiça Água” em escolas de Tocantins""]",https://atitudeto.com.br/entretenimento/o-ministerio-da-cultura-e-cnh-apresentam-a-peca-tem-palhaco-que-desperdica-agua-em-escolas-de-tocantins/
+A063,u05264,ccnews_jsonld,fa,"economy, business and finance","[""اقتصادی"", ""اقتصادی"", ""راه و مسکن""]",https://www.ilna.ir/%D8%A8%D8%AE%D8%B4-%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%DB%8C-4/1728082-%DA%A9%D8%A7%D9%87%D8%B4-%D8%AF%D8%B1%D8%B5%D8%AF%DB%8C-%D8%AF%D8%B1%D8%A2%D9%85%D8%AF-%D9%BE%D8%B1%D9%88%D8%A7%D8%B2%D9%87%D8%A7%DB%8C-%D8%B9%D8%A8%D9%88%D8%B1%DB%8C-%D8%A8%D9%87-%D8%AF%D9%84%DB%8C%D9%84-%D8%AC%D9%86%DA%AF-%D8%B1%D9%88%D8%B2%D9%87-%DA%AF%D9%85%D8%B1%DA%A9-%D8%A8%D8%B1%D8%A7%DB%8C-%D8%AE%D8%A7%D9%86%D9%87-%D9%87%D8%A7%DB%8C-%D9%81%D8%B1%D9%88%D8%AF%DA%AF%D8%A7%D9%87-%D9%85%D9%87%D8%B1%D8%A2%D8%A8%D8%A7%D8%AF-%D8%B3%D9%86%D8%AF-%D9%86%D8%AF%D8%A7%D8%B1%D8%AF
+A064,u03955,ccnews_jsonld,ar,health,"[""الرئيسية"", ""صحة""]",https://twasul.info/Section-200/%D8%B5%D8%AD%D8%A9/%D8%B1%D9%88%D8%AA%D9%8A%D9%86-%D8%A7%D9%84%D9%86%D9%88%D9%85-%D9%8A%D8%AC%D8%B9%D9%84-%D8%A7%D9%84%D8%A3%D8%B7%D9%81%D8%A7%D9%84-%D8%A3%D9%83%D8%AB%D8%B1-%D8%B0%D9%83%D8%A7%D8%A1-%D9%88%D8%B3%D8%B9%D8%A7%D8%AF%D8%A9-2571795
+A065,u04048,ccnews_jsonld,uk,sport,"[""В Україні"", ""Спорт"", ""Українська кіберспортивна команда NAVI виграла престижний турнір ESL Pro League Season 23""]",https://sud.ua/uk/news/ukraine/355869-ukrainskaya-kibersportivnaya-komanda-navi-vyigrala-prestizhnyy-turnir-esl-pro-league-season-23
+A066,u09973,l3cube_indic,pa,sport,Sports,
+A067,u02430,l3cube_indic,pa,sport,Sports,
+A068,u11705,l3cube_indic,kn,lifestyle and leisure,Cuisine,
+A069,u10504,l3cube_indic,ta,health,Covid,
+A070,u01771,ccnews_jsonld,it,weather,"[""FENOMENI ESTREMI"", ""IL METEO NEL MONDO"", ""METEO"", ""NEWS"", ""METEO"", ""METEO"", ""IL METEO NEL MONDO"", ""Maltempo, neve tra Marocco e Algeria: fiocchi fuori stagione sui monti dell’Atlante, piogge e brusco calo termico per l’affondo di aria polare sul nord Africa | FOTO""]",https://www.meteoweb.eu/2026/05/maltempo-neve-tra-marocco-e-algeria-fiocchi-fuori-stagione-sui-monti-dellatlante-piogge-e-brusco-calo-termico-per-laffondo-di-aria-polare-sul-nord-africa-foto/1001934192/
+A071,u01272,ccnews_jsonld,vi,education,"[""Giáo dục"", ""Chân dung""]",https://vietnamnet.vn/cong-bo-quyet-dinh-bo-nhiem-nu-thu-truong-bo-gd-dt-2249548.html
+A072,u03236,ccnews_jsonld,zh,health,"[""健康"", ""健康"", ""醫師觀點""]",https://www.worldjournal.com/wj/story/122009/8033799
+A073,u04062,ccnews_jsonld,es,human interest,"[""Espectáculos"", ""Famosos"", ""VIDEO: Rocío Sánchez Azuara recibe reclamo en vivo por ser una “pinche vieja” creída""]",https://www.sdpnoticias.com/espectaculos/famosos/video-rocio-sanchez-azuara-recibe-reclamo-en-vivo-por-ser-una-pinche-vieja-creida/
+A074,u12341,ccnews_jsonld,pl,weather,"[""Pogoda"", ""Smog Kraków: 16.03.2024. Jakie jest stężenie PM2.5 i PM10?""]",https://krakow.naszemiasto.pl/smog-krakow-16-03-2024-jakie-jest-stezenie-pm2-5-i-pm10/ar/c15p1-19969649
+A075,u03684,ccnews_jsonld,es,environment,"[""Región de Murcia"", ""Región de Murcia"", ""Medio Ambiente""]",https://www.eldiario.es/murcia/medio_ambiente/convivir-residuos-cartagena-ciudad-ahogada-industria-veneno-invisible_1_11282709.html
+A076,u07397,l3cube_indic,hi,education,education,
+A077,u01058,ccnews_jsonld,es,society,"[""Familia"", ""Mamas & Papas"", ""Familia"", ""Pros y contras de dar consejos de crianza a otros padres""]",https://elpais.com/mamas-papas/familia/2026-04-17/pros-y-contras-de-dar-consejos-de-crianza-a-otros-padres.html
+A078,u12632,indonews,id,"economy, business and finance",bisnis,
+A079,u06753,l3cube_indic,kn,"economy, business and finance",Business,
+A080,u02727,l3cube_indic,mr,health,Health,
+A081,u04853,ccnews_jsonld,hi,lifestyle and leisure,"[""Fitness"", ""Fitness"", ""1 सप्ताह के अंदर चाहते हैं पतली कमर तो पिएं ये 3 तरह के जूस घर पर इस तरह से करें तैयार""]",https://www.thehealthsite.com/hindi/fitness/drink-these-3-vegetable-juices-for-reduce-belly-fat-1-week-in-hindi-1063155/
+A082,u07777,ccnews_jsonld,it,politics,"[""Politica"", ""FdI: «Opportunità storica per Civitavecchia»""]",https://www.civonline.it/politica/fdi-opportunita-storica-per-civitavecchia-o3w0veer
+A083,u04747,ccnews_jsonld,bg,"economy, business and finance","[""Бизнес"", ""Бизнес""]",https://www.standartnews.com/biznes/pette-invecticii-koito-prevrashtat-milionerite-v-miliarderi-589558.html
+A084,u10265,l3cube_indic,te,"economy, business and finance",business,
+A085,u02546,ccnews_jsonld,tr,"crime, law and justice","[""Asayiş"", ""Asayiş"", ""Aracında ve üzerinde uyuşturucu ele geçirilen şüpheli tutuklandı""]",https://www.sha.com.tr/aracinda-ve-uzerinde-uyusturucu-ele-gecirilen-supheli-tutuklandi/287636/
+A086,u03065,l3cube_indic,mr,"crime, law and justice",Crime,
+A087,u05771,ccnews_jsonld,zh,human interest,"[""明星""]",https://www.koreastardaily.com/sc/news/161677
+A088,u00603,ccnews_jsonld,tr,"crime, law and justice","[""Asayiş"", ""Asayiş"", ""Sanatçı Züleyha Ortak evinin önünde yaşanan cinayeti anlattı""]",https://www.mersintime.com/sanatci-zuleyha-ortak-evinin-onunde-yasanan-cinayeti-anlatti
+A089,u06057,ccnews_jsonld,de,education,"[""Karriere"", ""Bildung"", ""Neue JKU Business School vereint Betriebswirte unter einem Dach""]","https://www.nachrichten.at/wirtschaft/karriere/bildung/neue-jku-business-school-vereint-betriebswirte-unter-einem-dach;art215275,4016836"
+A090,u09522,ccnews_jsonld,fr,"arts, culture, entertainment and media","[""Culture"", ""Culture""]",https://www.tendanceouest.com/actualite-431346-bayeux-la-ville-recherche-des-graffeurs-pour-une-competition-au-skatepark
+A091,u07580,ccnews_jsonld,nl,politics,"[""beleid"", ""politiek"", ""Politiek"", ""Beleid"", ""Keijzer kraakt plan gratis pendelbus azc Ter Apel: 'Ze moeten buskaartje kopen'""]",https://www.hartvannederland.nl/politiek/beleid/artikelen/keijzer-plan-gratis-bus-station-emmen-azc
+A092,u11673,l3cube_indic,or,sport,sports,
+A093,u03850,ccnews_jsonld,ro,sport,"[""SPORT"", ""ACSM Politehnica joacă duminică un meci cu pistoalele pe masă. Start în etapa care decide numele echipelor retrogradate și a celor care vor juca la baraj""]",https://www.ziaruldeiasi.ro/stiri/acsm-politehnica-joaca-duminica-un-meci-cu-pistoalele-pe-masa-start-in-etapa-care-decide-numele-echipelor-retrogradate-si-a-celor-care-vor-juca-la-baraj--1754826.html
+A094,u08629,ccnews_jsonld,vi,lifestyle and leisure,"[""Du lịch""]",https://vietnamnet.vn/muon-van-hinh-thuc-du-lich-xuan-o-trung-quoc-2248304.html
+A095,u06734,ccnews_jsonld,ar,health,"[""صحة""]",https://news.dotalkhalij.com/health/29924825/%D8%B9%D8%B4%D8%A8%D8%A9-%D9%86%D8%B2%D9%84%D8%AA-%D9%85%D9%86-%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%A1%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D9%85%D9%88%D9%87%D8%A7-%D8%A8%D9%87%D8%B0%D9%87-%D8%A7%D9%84%D8%B7%D8%B1%D9%8A%D9%82%D8%A9-%D9%84%D9%85%D8%AF%D8%A9-3-%D8%A3%D9%8A%D8%A7%D9%85-%D9%81%D9%82%D8%B7-%D9%88%D9%82%D9%88%D9%84%D9%88%D8%A7-%D9%88%D8%AF%D8%A7%D8%B9%D9%8B%D8%A7-%D9%84%D9%84%D9%83%D8%B1%D8%B4-%D9%88%D8%AF%D9%87%D9%88%D9%86-%D8%A7%D9%84%D8%A8%D8%B7%D9%86%D9%85%D8%AA%D9%88%D9%81%D8%B1%D8%A9.html
+A096,u06343,ccnews_jsonld,ru,"crime, law and justice","[""Криминал"", ""Криминал"", ""Живодер застрелил собаку ради ужина в Приморье""]",https://360.ru/news/crime/zhivoder-zastrelil-sobaku-radi-uzhina-v-primore/
+A097,u06531,ccnews_jsonld,it,health,"[""Nazionale"", ""Salute"", ""Dermatite atopica: dupilumab sicuro fino a 5 anni per gli adulti""]",https://www.corrierenazionale.it/2024/01/16/dermatite-atopica-dupilumab-sicuro-fino-a-5-anni-per-gli-adulti/
+A098,u07679,indonews,id,"economy, business and finance",bisnis,
+A099,u11314,ccnews_jsonld,el,sport,"[""ΠΟΔΟΣΦΑΙΡΟ"", ""Φατίχ Τερίμ: Αναλαμβάνει την εθνική Τσεχίας - Τι μισθό θα παίρνει""]",https://www.gazzetta.gr/football/2482360/fatih-terim-analambanei-tin-ethniki-tsehias-ti-mistho-tha-pairnei
+A100,u10074,bangla_plos,bn,education,education,
+A101,u11117,ccnews_jsonld,es,human interest,"[""Fama"", ""Celebs""]",https://elcomercio.pe/mag/fama/celebs/se-nego-a-pagar-la-cuenta-y-termino-arrestado-asi-fue-el-escandalo-de-william-levy-en-restaurante-de-florida-nnda-nnni-noticia/
+A102,u06672,ccnews_jsonld,el,sport,"[""Sports""]",https://www.protothema.gr/sports/article/1626890/o-liam-fan-nistelroi-akolouthei-ta-hnaria-tou-patera-tou-proto-epaggelmatiko-sumvolaio-me-tin-aidhofen/
+A103,u05610,l3cube_indic,gu,"crime, law and justice",Crime,
+A104,u03393,bangla_plos,bn,education,education,
+A105,u11119,l3cube_indic,or,politics,politics,
+A106,u05901,ccnews_jsonld,tr,health,"[""Sağlık"", ""Sağlık"", ""Kırkkilit otu ne işe yarar? Kırkkilit otunun bilinmeyen faydaları nedir, nasıl kullanılır?""]",https://www.yeniasir.com.tr/saglik/2024/12/14/kirkkilit-otu-ne-ise-yarar-kirkkilit-otunun-bilinmeyen-faydalari-nedir-nasil-kullanilir
+A107,u03879,ccnews_jsonld,el,health,"[""ΥΓΕΙΑ"", ""ΥΓΕΙΑ""]",https://www.cna.gr/health/eylogia-ton-pithikon-ta-symptomata-kai-pos-metadidetai/
+A108,u07664,ccnews_jsonld,it,sport,"[""Serie A""]",https://www.tuttomercatoweb.com/serie-a/torino-grana-lista-asllani-puo-arrivare-ma-solo-dopo-qualche-cessione-2-indiziati-2135611
+A109,u01831,ccnews_jsonld,ko,sport,"[""sport"", ""sport""]",https://www.seoul.co.kr/news/sport/2025/04/15/20250415500274
+A110,u07585,ccnews_jsonld,pt,"arts, culture, entertainment and media","[""Cultura"", ""Blog"", ""“Memórias da Cidade” emociona em estreia no Quilombo do Jaó e reforça laços entre identidade, memória e pertencimento"", ""Jornal Ita News"", ""Blog"", ""Cultura"", ""“Memórias da Cidade” emociona em estreia no Quilombo do Jaó e reforça laços entre identidade, memória e pertencimento""]",https://www.jornalitanews.com.br/memorias-jao/
+A111,u09994,ccnews_jsonld,ar,education,"[""أخبار التعليم""]",https://news.elbadil.com/303319/%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3-%D8%A7%D9%84%D8%A7%D8%A8%D8%AA%D8%AF%D8%A7%D8%A6%D9%8A-2024/
+A112,u02958,ccnews_jsonld,ko,"arts, culture, entertainment and media","[""영화""]",https://www.segye.com/newsView/20260316514566
+A113,u01287,ccnews_jsonld,zh,"economy, business and finance","[""財經"", ""關稅降至15%對齊日韓！工總肯定談判成果 示警匯率調查與結構失衡""]",https://tw.news.yahoo.com/%E9%97%9C%E7%A8%85%E9%99%8D%E8%87%B315-%E5%B0%8D%E9%BD%8A%E6%97%A5%E9%9F%93-%E5%B7%A5%E7%B8%BD%E8%82%AF%E5%AE%9A%E8%AB%87%E5%88%A4%E6%88%90%E6%9E%9C-%E7%A4%BA%E8%AD%A6%E5%8C%AF%E7%8E%87%E8%AA%BF%E6%9F%A5%E8%88%87%E7%B5%90%E6%A7%8B%E5%A4%B1%E8%A1%A1-023634662.html
+A114,u06828,ccnews_jsonld,it,religion,"[""Vaticano"", ""Vaticano"", ""Papa Francesco: “Sto affrontando una prova ma la fragilità non impedisce di amare”""]",https://www.lapresse.it/vaticano/2025/03/16/papa-angelus-sto-affrontando-prova/
+A115,u05135,indonews,id,sport,bola,
+A116,u10052,l3cube_indic,pa,"crime, law and justice",Crime,
+A117,u06512,l3cube_indic,kn,politics,Politics,
+A118,u06585,ccnews_jsonld,ro,politics,"[""Europa"", ""Politica"", ""Marcel Ciolacu a fost primit de Papa Francisc"", ""Acasă"", ""Politica"", ""Europa"", ""Marcel Ciolacu a fost primit de Papa Francisc""]",https://www.gds.ro/politica/europa/2024-02-15/marcel-ciolacu-a-fost-primit-de-papa-francisc/
+A119,u05091,indonews,id,"economy, business and finance",bisnis,
+A120,u00773,ccnews_jsonld,ko,politics,"[""politics"", ""politics""]",https://www.seoul.co.kr/news/politics/2025/04/15/20250415500280
+A121,u10328,l3cube_indic,mr,"arts, culture, entertainment and media",Fashion,
+A122,u12365,ccnews_jsonld,de,"economy, business and finance","[""Aktien"", ""FUCHS-Aktie"", ""Nachrichten zu FUCHS"", ""ROUNDUP: Fuchs will bis 2031 Ergebnis um mindestens gut ein Viertel steigern""]",https://www.finanzen.at/nachrichten/aktien/roundup-fuchs-will-bis-2031-ergebnis-um-mindestens-gut-ein-viertel-steigern-1036028449
+A123,u00203,ccnews_jsonld,it,science and technology,"[""scienza"", ""SCIENZA""]",https://www.libero.it/tecnologia/cosa-attira-zanzare-104679
+A124,u03840,l3cube_indic,ta,politics,Politics,
+A125,u02960,l3cube_indic,kn,"crime, law and justice",Crime,
+A126,u01969,ccnews_jsonld,el,health,"[""ΥΓΕΙΑ"", ""ΕΝΟΤΗΤΕΣ"", ""ΥΓΕΙΑ"", ""Όμιλος ΠΡΟΣΥΦΑΠΕ: Επιστρέφει στην κοινωνία τμήμα της υπεραξίας που παράγει""]",https://www.real.gr/ygeia/arthro/omilos-prosyfape-epistrefei-stin-koinonia-tmima-tis-yperaxias-pou-paragei-728674/
+A127,u02291,ccnews_jsonld,uk,"economy, business and finance","[""Економіка"", ""Економіка"", ""Спадщина для неповнолітніх дітей — як прийняти та коли краще відмовитись від майна""]",https://novyny.live/ekonomi/spadshchina-v-ukrayini-iaku-chastku-garantovano-otrimuiut-diti-274740.html
+A128,u11786,ccnews_jsonld,fa,politics,"[""سیاسی"", ""سیاست خارجی""]",https://www.ilna.ir/%D8%A8%D8%AE%D8%B4-%D8%B3%DB%8C%D8%A7%D8%B3%DB%8C-3/1543819-%D8%B1%D9%88%D8%A7%DB%8C%D8%AA-%D8%B3%D8%AE%D9%86%DA%AF%D9%88%DB%8C-%D9%88%D8%B2%D8%A7%D8%B1%D8%AA-%D8%AE%D8%A7%D8%B1%D8%AC%D9%87-%D8%A7%D8%B2-%D8%AF%DB%8C%D8%AF%D8%A7%D8%B1-%D8%B9%D8%B1%D8%A7%D9%82%DA%86%DB%8C-%D8%A8%D8%A7-%D9%BE%D8%A7%D8%AF%D8%B4%D8%A7%D9%87-%D8%A7%D8%B1%D8%AF%D9%86
+A129,u07186,l3cube_indic,or,"economy, business and finance",business,
+A130,u07117,ccnews_jsonld,pt,"economy, business and finance","[""Economia""]",https://www.correiobraziliense.com.br/economia/2026/03/7376112-anuncios-revelam-pressao-por-lucratividade-sobre-empresas-de-ia.html
+A131,u06863,ccnews_jsonld,tr,human interest,"[""Magazin"", ""Magazin"", ""İlber Ortaylı Son Yolculuğuna Uğurlanıyor: Galatasaray Üniversitesi'nde Tören""]",https://www.tgrthaber.com/magazin/ilber-ortayli-son-yolculuguna-ugurlaniyor-galatasaray-universitesinde-toren-3288384
+A132,u05442,ccnews_jsonld,el,"arts, culture, entertainment and media","[""Πολιτισμός""]",https://www.tanea.gr/2026/03/16/lifearts/oskar-2026-to-karfi-tou-conan-o-brien-gia-to-skandalo-epstain/
+A133,u06187,indonews,id,sport,bola,
+A134,u09567,l3cube_indic,bn,sport,sports,
+A135,u04703,ccnews_jsonld,ru,human interest,"[""Звезды"", ""Lite"", ""Звезды"", ""Путинист Добронравов ушел со сцены и кино""]",https://www.unian.net/lite/stars/putinist-dobronravov-ushel-so-sceny-i-kino-12574962.html
+A136,u05234,ccnews_jsonld,tr,lifestyle and leisure,"[""Seyahat"", ""Seyahat"", ""Keşfetmeden dönmek imkansız: Dünyanın en eğlenceli 10 ülkesi""]",https://www.ensonhaber.com/seyahat/kesfetmeden-donmek-imkansiz-dunyanin-en-eglenceli-10-ulkesi
+A137,u07592,bangla_plos,bn,education,education,
+A138,u02729,ccnews_jsonld,el,"arts, culture, entertainment and media","[""Media"", ""Media"", ""The Voice: Πάνος Μουζουράκης και Μαρίνα Σπανού καθήλωσαν κοινό και coaches – «Είσαι ο καλλιτεχνικός μου έρωτας»""]",https://www.enikos.gr/media/the-voice-panos-mouzourakis-kai-marina-spanou-kathilosan-koino-kai-coaches-eisai-o-kallitechnikos-mou-erotas/2281272/
+A139,u10799,ccnews_jsonld,es,politics,"[""Política""]",https://grupolaprovincia.com/contenido/583294/la-jubilada-de-87-anos-golpeada-por-la-policia-denuncio-a-bullrich
+A140,u11182,ccnews_jsonld,nl,politics,"[""Politiek""]",https://nos.nl/nieuwsuur/artikel/2524756-omtzigt-over-uitspraken-pvv-er-faber-verwacht-ik-niet-van-ministers-in-functie
+A141,u12281,ccnews_jsonld,es,health,"[""Salud""]",https://diariocorreo.pe/salud/dia-mundial-de-la-diabetes-advierten-que-1-de-cada-8-adultos-podria-padecerla-al-2050-noticia/
+A142,u04912,ccnews_jsonld,ru,science and technology,"[""Новости"", ""Наука и технологии"", ""Криптобиржа Binance в конце января полностью уйдёт из России и заблокирует рубль""]",https://www.ferra.ru/news/techlife/kriptobirzha-binance-v-konce-yanvarya-polnostyu-uidyot-iz-rossii-i-zablokiruet-rubl-16-01-2024.htm
+A143,u05461,ccnews_jsonld,pt,lifestyle and leisure,"[""hz"", ""gastronomia"", ""Dia do Pão de Queijo: confira receita crocante à base de tapioca""]",https://www.agazeta.com.br/hz/gastronomia/dia-do-pao-de-queijo-confira-receita-crocante-a-base-de-tapioca-0825
+A144,u00566,l3cube_indic,te,sport,sports,
+A145,u06043,ccnews_jsonld,uk,"arts, culture, entertainment and media","[""Fashion"", ""Fashion"", ""Яке взуття у стилі преппі обрати на осінь — для стильних образів""]",https://novyny.live/fashion/vzuttia-u-stili-preppi-stilni-varianti-na-osin-2025-274397.html
+A146,u04948,ccnews_jsonld,pt,"arts, culture, entertainment and media","[""Música"", ""Guns N' Roses é só o começo? Governo projeta mais shows internacionais na Bahia""]",https://atarde.com.br/musica/guns-n-roses-e-so-o-comeco-governo-projeta-mais-shows-internacionais-na-bahia-1385931
+A147,u09076,indonews,id,"economy, business and finance",bisnis,
+A148,u01147,ccnews_jsonld,es,sport,"[""deportes""]",https://www.alairelibre.cl/noticias/deportes/tenis/rafael-nadal/rafael-nadal-es-puro-optimismo-de-cara-a-paris-2024-y-su-futuro/2024-06-15/163722.html
+A149,u00917,bangla_plos,bn,"economy, business and finance",economy,
+A150,u08554,ccnews_jsonld,de,human interest,"[""royals"", ""Royals"", ""Britisches Königshaus"", ""Queen Elizabeth II."", ""Unheimlich: Die Queen soll mal einen Geist vertrieben haben""]",https://www.promiflash.de/news/2025/08/17/unheimlich-die-queen-soll-mal-einen-geist-vertrieben-haben.html
+A151,u03099,indonews,id,sport,bola,
+A152,u11976,ccnews_jsonld,ar,education,"[""تعليم"", ""أخبار سوريا"", ""تعليم"", ""وزير التعليم العالي يؤكد دعم مبادرات الطفولة خلال لقائه سفير الطفولة علي المحمد""]",https://sana.sy/education/2529260/
+A153,u00443,ccnews_jsonld,tr,health,"[""Sağlık"", ""Sağlık"", ""Medipol'den güvenli gıda tüketimi değerlendirmesi""]",https://www.yenicagri.com/medipolden-guvenli-gida-tuketimi-degerlendirmesi
+A154,u00035,ccnews_jsonld,de,"crime, law and justice","[""Polizei"", ""Polizei-NL"", ""Hamburg"", ""Polizei"", ""Trickdiebstähle in Hamburg: Polizei warnt vor neuer Masche""]",https://www.mopo.de/hamburg/polizei/trickdiebstahl-in-hamburg-polizei-warnt-vor-neuer-masche/
+A155,u11015,indonews,id,sport,bola,
+A156,u03871,ccnews_jsonld,es,education,"[""Educación"", ""Por «amenazas en reto de tik-tok» éste viernes no habrá clases en algunas escuelas""]",https://playradios.com.ar/por-amenazas-en-reto-de-tik-tok-este-viernes-no-habra-clases-en-algunas-escuelas/?utm_source=rss&utm_medium=rss&utm_campaign=por-amenazas-en-reto-de-tik-tok-este-viernes-no-habra-clases-en-algunas-escuelas
+A157,u11646,bangla_plos,bn,"economy, business and finance",economy,
+A158,u03878,ccnews_jsonld,uk,sport,"[""Спорт"", ""Спорт"", ""Україна вийшла у фінал Золотої Євроліги з волейболу""]",https://espreso.tv/sport-ukraina-viyshla-u-final-zolotoi-evroligi-z-voleybolu
+A159,u04057,l3cube_indic,kn,lifestyle and leisure,Cuisine,
+A160,u03596,ccnews_jsonld,el,politics,"[""πολιτική"", ""πολιτική"", ""Κυρανάκης: Δεν παραβιάζονται τα ωράρια εργασίας των οδηγών στα δημόσια λεωφορεία""]",https://www.enikos.gr/politics/kyranakis-den-paraviazontai-ta-oraria-ergasias-ton-odigon-sta-dimosia-leoforeia/2404563/
+A161,u05994,ccnews_jsonld,kn,society,"[""Life"", ""Relationship"", ""ಡಾಕ್ಟ್ರೇ, ಹಾಗೆ ಮಾಡುವ ಮೂಲಕ ಸಂಗಾತಿಗೆ ಮೋಸ ಮಾಡಿದೆನಾ?""]",https://kannada.asianetnews.com/relationship/getting-happiness-over-online-intimacy-chats-and-guilty-feeling-bni/articleshow-dnxk8ez
+A162,u03350,ccnews_jsonld,id,health,"[""Kesehatan"", ""Kesehatan""]",https://gaya.tempo.co/read/1845706/apa-itu-minyak-makan-merah-yang-diklaim-jokowi-lebih-murah-dan-bergizi
+A163,u00767,ccnews_jsonld,pl,sport,"[""Premier League"", ""Premier League"", ""Derby Liverpoolu okraszone skandalem. Wyciekło nagranie""]",https://www.goal.pl/premier-league/derby-liverpoolu-okraszone-skandalem-wycieklo-nagranie/
+A164,u07039,ccnews_jsonld,vi,"crime, law and justice","[""Pháp luật""]",https://lifestyle.znews.vn/vi-sao-vo-chong-chu-tich-hdqt-cong-ty-hoang-long-bi-khoi-to-post1553288.html
+A165,u08552,ccnews_jsonld,pt,politics,"[""Eleições"", ""Eleições"", ""Guia do Eleitor"", ""Voto em branco e voto nulo: entenda a diferença e a função de cada um""]",https://exame.com/eleicoes/guia-do-eleitor/voto-em-branco-e-voto-nulo-entenda-a-diferenca-e-a-funcao-de-cada-um/
+A166,u11839,ccnews_jsonld,uk,"conflict, war and peace","[""Війна""]",https://kurs.com.ua/novost/1228602-s-voennih-mogut-snjat-ugolovnuju-otvetstvennost-za-pervoe-dezertirstvo
+A167,u00763,ccnews_jsonld,de,"arts, culture, entertainment and media","[""Musik"", ""Stadtleben"", ""Kulturelle Vielfalt mitgestalten: Das E-Werk sucht Bürger:innen-Jury für das Festival Cordiale und Musiker:innen für das Jazzfestival Freiburg""]",https://www.kulturjoker.de/kulturelle-vielfalt-mitgestalten-das-e-werk-sucht-buergerinnen-jury-fuer-das-festival-cordiale-und-musikerinnen-fuer-das-jazzfestival-freiburg/
+A168,u06494,ccnews_jsonld,ko,sport,"[""sport"", ""sport"", ""구자욱 이어 이재현 발목 부상, 삼성 위기?…박진만 감독 “다시 괜찮다고 하더라”""]",https://m.seoul.co.kr/news/sport/baseball/2024/10/17/20241017500208
+A169,u05215,ccnews_jsonld,vi,health,"[""Sức khỏe""]",https://lifestyle.znews.vn/phoi-bi-ton-thuong-hoai-tu-do-nhiem-giun-luon-post1531263.html
+A170,u01982,ccnews_jsonld,pt,politics,"[""Política"", ""VÍDEO: Ministro da Previdência bate boca com Moro sobre fraude no INSS""]",https://emtempo.com.br/400464/politica/video-ministro-da-previdencia-bate-boca-com-moro-sobre-fraude-no-inss/
+A171,u10954,ccnews_jsonld,es,politics,"[""Política"", ""Javier Milei""]",https://www.eldestapeweb.com/politica/javier-milei/villarruel-nego-una-ruptura-con-javier-milei-no-estoy-participando-de-ningun-armado-politico--20241215201658
+A172,u05390,bangla_plos,bn,politics,politics,
+A173,u07000,bangla_plos,bn,politics,politics,
+A174,u10933,ccnews_jsonld,vi,sport,"[""Thể thao""]",https://znews.vn/arne-slot-bi-trung-phat-post1531664.html
+A175,u11321,ccnews_jsonld,vi,"economy, business and finance","[""Kinh doanh""]",https://znews.vn/nen-kinh-te-so-2-the-gioi-khoi-dau-tot-hon-du-bao-post1635392.html
+A176,u09877,ccnews_jsonld,de,"economy, business and finance","[""Finance"", ""Aktien"", ""Irans Außenminister bei ungewöhnlichem Besuch in Ägypten""]",https://www.finanzen.net/nachricht/aktien/irans-aussenminister-bei-ungewoehnlichem-besuch-in-aegypten-13924500
+A177,u04809,ccnews_jsonld,es,religion,"[""Iglesia Española"", ""Religión"", ""Hoy en día"", ""Iglesia Española""]",https://www.cope.es/religion/hoy-en-dia/iglesia-espanola/noticias/120000-personas-necesitan-cuidados-paliativos-espana-centro-san-camilo-trabaja-con-ellos-20240516_3301244
+A178,u11460,ccnews_jsonld,id,politics,"[""politik"", ""SOKSI Dukung Airlangga Jadi Ketum Golkar, Misbakhun: Maju Terus Pantang Mundur""]",https://m.jpnn.com/news/soksi-dukung-airlangga-jadi-ketum-golkar-misbakhun-maju-terus-pantang-mundur
+A179,u11908,l3cube_indic,mr,education,Education,
+A180,u09049,ccnews_jsonld,id,health,"[""Kesehatan"", ""Kesehatan""]",https://gaya.tempo.co/read/1880357/pakar-sebut-perlunya-edukasi-diabetes-agar-penanganan-lebih-mudah
+A181,u11313,l3cube_indic,mr,"arts, culture, entertainment and media",Fashion,
+A182,u11489,l3cube_indic,hi,"economy, business and finance",business,
+A183,u07973,ccnews_jsonld,zh,health,"[""健康"", ""健康"", ""養生保健""]",https://www.worldjournal.com/wj/story/121240/7705745
+A184,u10516,l3cube_indic,mr,"arts, culture, entertainment and media",Fashion,
+A185,u05402,ccnews_jsonld,it,science and technology,"[""scienza"", ""SCIENZA""]",https://www.libero.it/tecnologia/avvistato-squalo-mako-italia-104676
+A186,u01107,ccnews_jsonld,it,education,"[""Scuola"", ""Firmato un decreto da 35 milioni per potenziare i laboratori dei Licei musicali e coreutici"", ""Home"", ""Scuola"", ""Firmato un decreto da 35 milioni per potenziare i laboratori dei Licei...""]",https://www.italpress.com/firmato-un-decreto-da-35-milioni-per-potenziare-laboratori-licei-musicali-coreutici/
+A187,u09289,ccnews_jsonld,tr,"arts, culture, entertainment and media","[""TV"", ""TV"", ""Televizyon Dünyasıyla İlgili Yaptıkları Paylaşımlarla Hepimizi Kahkahaya Boğan Kullanıcılar""]",https://onedio.com/haber/televizyon-dunyasiyla-ilgili-yaptiklari-paylasimlarla-hepimizi-kahkahaya-bogan-kullanicilar-1280394
+A188,u08589,ccnews_jsonld,th,"crime, law and justice","[""อาชญากรรม"", ""ข่าวอาชญากรรม"", ""รวบแล้ว! แก๊งแอบอ้างเป็น ตม. ตระเวนเรี่ยไรชาวจีนระยอง  แนะปชช.ขอดูบัตร เช็กชื่อผ่าน “POLICE CARE” ก่อนเชื่อ""]",https://mgronline.com/crime/detail/9690000080131
+A189,u08211,ccnews_jsonld,el,human interest,"[""Celebrities"", ""“Ο Κόσμος Ψιθύριζε Και Με Έδειχνε Με Το Δάχτυλο”: Ο Τζόνι Ντεπ Θυμήθηκε Την Εποχή Που Ένιωθε Τρομοκρατημένος Από Την Ξαφνική Του Φήμη""]",https://jenny.gr/celebrities/440754/o-kosmos-psithyrize-kai-me-edeihne-me-dahtylo-o-tzoni-ntep-thymithike-tin-epohi
+A190,u04272,l3cube_indic,bn,politics,politics,
+A191,u04480,indonews,id,"economy, business and finance",bisnis,
+A192,u03363,ccnews_jsonld,uk,sport,"[""Спорт"", ""\""Кинули кістку\"": у Держдумі Росії сміються з Європи, яка пустила на гонку російського чемпіона""]",https://news.telegraf.com.ua/ukr/sport-cat/2025-02-15/5898232-brosili-kost-v-gosdume-rossii-smeyutsya-s-evropy-kotoraya-pustila-na-gonku-rossiyskogo-chempiona
+A193,u08709,ccnews_jsonld,pt,"arts, culture, entertainment and media","[""Fashion"", ""Fashion"", ""Fátima Bernardes surge com look estiloso para o Rock in Rio""]",https://caras.com.br/fashion/fatima-bernardes-surge-com-look-estiloso-para-o-rock-rio.phtml
+A194,u05444,l3cube_indic,or,labour,career,
+A195,u07525,l3cube_indic,mr,lifestyle and leisure,Travel,
+A196,u01697,l3cube_indic,hi,education,education,
+A197,u05835,ccnews_jsonld,tr,politics,"[""POLİTİKA"", ""POLİTİKA"", ""Devlet Bahçeli'den İmamoğlu çağrısı: Mahkeme süreci hızlandırılmalı""]",https://www.haberekspres.com.tr/devlet-bahceliden-imamoglu-cagrisi-mahkeme-sureci-hizlandirilmali
+A198,u03254,ccnews_jsonld,pl,politics,"[""News"", ""Polityka"", ""Polityczne wątki na Oscarach. Jimmy Kimmel bezlitośnie zadrwił z Donalda i Melanii Trump""]",https://www.eska.pl/news/polityka/polityczne-watki-na-oscarach-jimmy-kimmel-bezlitosnie-zadrwil-z-donalda-i-melanii-trump-aa-ojmZ-6DUq-A5Rj.html
+A199,u05868,ccnews_jsonld,vi,education,"[""Hỏi - Đáp"", ""Giáo dục""]",https://vtcnews.vn/vung-chai-hay-vung-trai-moi-dung-chinh-ta-ar889735.html
+A200,u00671,ccnews_jsonld,th,lifestyle and leisure,"[""ท่องเที่ยว"", ""News"", ""รฟท.เตรียมเปิดจองทริป “รถไฟลอยน้ำ รับลมหนาว” เที่ยวเขื่อนป่าสักฯ""]",https://mgronline.com/travel/detail/9680000098874
+A201,u02815,ccnews_jsonld,tr,science and technology,"[""Bilim Teknoloji"", ""Bilim Teknoloji Haberleri"", ""Google'dan yunuslarla konuşmak için yeni yapay zeka modeli""]",https://www.cumhuriyet.com.tr/bilim-teknoloji/googledan-yunuslarla-konusmak-icin-yeni-yapay-zeka-modeli-2319155
+A202,u04416,ccnews_jsonld,de,"crime, law and justice","[""Schweiz"", ""Zürich"", ""Justiz"", ""Zürich"", ""Zwei Männer müssen wegen Brandserie im Bezirk Affoltern vor Gericht""]",https://www.watson.ch/schweiz/zuerich/987214610-zwei-maenner-muessen-wegen-brandserie-im-bezirk-affoltern-vor-gericht
+A203,u05283,ccnews_jsonld,tr,environment,"[""Çevre"", ""Çevre"", ""Ardahan’da Sibirya soğukları: Göle eksi 19""]",https://www.mersintime.com/ardahanda-sibirya-soguklari-gole-eksi-19
+A204,u01203,l3cube_indic,ta,"crime, law and justice",Crime,
+A205,u06250,l3cube_indic,kn,"crime, law and justice",Crime,
+A206,u03658,ccnews_jsonld,it,education,"[""Scuola"", ""Scuola"", ""Percorsi abilitanti 60 cfu: Atenei convinti di poter concludere entro ottobre, ma non ci sono certezze e c’è il problema delle 180 ore di tirocinio""]",https://www.miuristruzione.com/2025/03/16/percorsi-abilitanti-60-cfu-atenei-convinti-di-poter-concludere-entro-ottobre-ma-non-ci-sono-certezze-e-ce-il-problema-delle-180-ore-di-tirocinio/
+A207,u01850,l3cube_indic,mr,education,Education,
+A208,u04077,ccnews_jsonld,ko,"economy, business and finance","[""economy"", ""economy"", ""‘수도권 1극 탈피’ 속도낸다…김정관, 5극3특·산단 AX 동시 추진""]",https://www.seoul.co.kr/news/economy/2026/04/17/20260417800004
+A209,u10934,ccnews_jsonld,es,"arts, culture, entertainment and media","[""Cultura"", ""Cultura"", ""Dulzaro, un artista total pisa El Albéitar""]",https://www.diariodeleon.es/cultura/260116/2072502/duzaro-artista-total-pisa-albeitar.html
+A210,u07772,l3cube_indic,kn,sport,Sports,
+A211,u01386,ccnews_jsonld,tr,"arts, culture, entertainment and media","[""Kültür - Sanat"", ""Kültür - Sanat"", ""Eskişehir’de kültür ve lezzet şöleni başladı""]",https://www.odatv.com/kultur-sanat/eskisehirde-kultur-ve-lezzet-soleni-basladi-120147332
+A212,u01513,ccnews_jsonld,id,politics,"[""politik"", ""Resmikan Kantor Bawaslu Tangsel, Rahmat Bagja: Jadikan Semangat Baru Awasi Pilkada 2024""]",https://m.jpnn.com/news/resmikan-kantor-bawaslu-tangsel-rahmat-bagja-jadikan-semangat-baru-awasi-pilkada-2024
+A213,u11853,bangla_plos,bn,"economy, business and finance",economy,
+A214,u05753,ccnews_jsonld,id,"crime, law and justice","[""Hukum"", ""Layanan SIM Keliling di Bali Senin (16/12), Cek Jadwal dan Lokasinya!""]",https://bali.jpnn.com/hukum/31830/layanan-sim-keliling-di-bali-senin-1612-cek-jadwal-dan-lokasinya
+A215,u12272,ccnews_jsonld,zh,politics,"[""政治"", ""政治"", ""賴總統接見古屋圭司：台日深化關鍵產業合作 打造安全供應鏈""]",https://news.ltn.com.tw/news/politics/breakingnews/5371999
+A216,u12331,ccnews_jsonld,es,human interest,"[""Show"", ""Show"", ""Famosos""]",https://tn.com.ar/show/famosos/2026/02/13/graciela-alfano-fue-a-una-playa-nudista-a-los-73-anos-y-genero-furor-en-las-redes-las-fotos/
+A217,u09648,ccnews_jsonld,uk,"conflict, war and peace","[""Війна"", ""Війна"", ""ЗСУ вже зайняли 74 населені пункти Курської області - як починалася операція""]",https://vijna.novyny.live/nastup-v-kurskii-oblasti-zsu-pokazali-kadri-pershikh-godin-operatsiyi-193231.html
+A218,u03110,ccnews_jsonld,pl,sport,"[""sport.dziennik.pl"", ""tenis""]","https://sport.dziennik.pl/tenis/artykuly/9635394,iga-swiatek-ma-nowego-trenera-znane-nazwisko.html"
+A219,u01902,ccnews_jsonld,ru,politics,"[""Политика""]",https://news.mail.ru/politics/70570195/
+A220,u10466,l3cube_indic,ta,"arts, culture, entertainment and media",Cinema,
+A221,u12234,ccnews_jsonld,vi,health,"[""Khỏe đẹp"", ""Sức khỏe"", ""Khỏe đẹp""]",https://vtcnews.vn/ba-bo-phan-tren-co-the-thay-doi-ro-ret-neu-di-bo-30-phut-moi-ngay-ar1007535.html
+A222,u07893,ccnews_jsonld,uk,politics,"[""Політика""]",https://news.liga.net/ua/politics/news/desiatky-zhurnalistiv-masovo-zalyshyly-pentahon-cherez-novi-pravyla-hehseta
+A223,u04690,ccnews_jsonld,ru,health,"[""Здоровье""]",https://360.ru/news/zdorove/liferu-pravilnoe-pitanie-i-meditatsii-pomogut-spravitsja-s-osennej-apatiej/
+A224,u12289,bangla_plos,bn,"economy, business and finance",economy,
+A225,u07977,l3cube_indic,hi,"economy, business and finance",business,
+A226,u02511,l3cube_indic,or,"economy, business and finance",business,
+A227,u01671,ccnews_jsonld,pl,health,"[""Zdrowie"", ""Kolejki w Sopocie do urologa na NFZ. Terminy na 16.03.2024""]",https://sopot.naszemiasto.pl/kolejki-w-sopocie-do-urologa-na-nfz-terminy-na-16-03-2024/ar/c14p1-20524353
+A228,u10141,ccnews_jsonld,ru,"crime, law and justice","[""Происшествия"", ""Криминал""]",https://www.tula.kp.ru/online/news/7074746/
+A229,u00286,l3cube_indic,pa,health,Health,
+A230,u06715,ccnews_jsonld,ko,politics,"[""정치"", ""일반기사"", ""정치""]",https://news.sbs.co.kr/news/endPage.do?news_id=N1008444420
+A231,u08298,ccnews_jsonld,tr,politics,"[""Politika"", ""Politika"", ""TBMM Balıkçılık ve Su Ürünleri Araştırma Komisyonu Çalışmalarını Tamamladı - Son Dakika""]",https://www.sondakika.com/politika/haber-tbmm-balikcilik-ve-su-urunleri-arastirma-komisyonu-16856935/
+A232,u00664,ccnews_jsonld,es,"crime, law and justice","[""Policiales"", ""Cocaína"", ""Cocaína, avionetas y empresas para lavado: acusaron al narco que estuvo prófugo casi dos años""]",https://www.lacapital.com.ar/policiales/cocaina-avionetas-y-empresas-lavado-acusaron-al-narco-que-estuvo-profugo-casi-dos-anos-n10207381.html
+A233,u07048,l3cube_indic,te,education,education,
+A234,u08900,ccnews_jsonld,pt,sport,"[""Desporto""]",https://24.sapo.pt/desporto/artigos/gretchen-walsh-despede-se-de-budapeste-com-11-recordes-do-mundo-em-piscina-curta
+A235,u00381,ccnews_jsonld,tr,"economy, business and finance","[""Ekonomi"", ""Ekonomi"", ""İş-Yaşam"", ""Coca-Cola İçecek, Özbekistan’daki 4. fabrikasını açtı - İş-Yaşam Haberleri""]",https://www.haberturk.com/coca-cola-icecek-ozbekistandaki-4-fabrikasini-acti-3687134-ekonomi
+A236,u02377,l3cube_indic,pa,"crime, law and justice",Crime,
+A237,u12433,l3cube_indic,gu,"crime, law and justice",Crime,
+A238,u08475,ccnews_jsonld,th,politics,"[""การเมือง"", ""ข่าวการเมือง"", ""\""ชาดา\"" สวน \""ชัยธวัช\"" เปิดหลักฐานแน่เบื้องหลัง \""ทะลุวัง\"" แจงภาพคู่กลุ่มอาชีวะตั้งแต่งานในหลวงร.9""]",https://mgronline.com/politics/detail/9670000014149
+A239,u10987,indonews,id,sport,bola,
+A240,u04985,ccnews_jsonld,it,science and technology,"[""scienza"", ""SCIENZA""]",https://www.libero.it/tecnologia/planet-y-sistema-solare-nuovo-pianeta-106937
+A241,u02481,l3cube_indic,te,education,education,
+A242,u12443,l3cube_indic,hi,sport,khel,
+A243,u08306,indonews,id,sport,bola,
+A244,u08756,ccnews_jsonld,ru,lifestyle and leisure,"[""Путешествия"", ""Mixed""]",https://www.uaportal.com/section-mixed/news-kak-sekonomit-na-aviabiletah-v-evrope-gibkaya-planirovka-servisyi-monitoringa-i-izbeganie-dopolnitelnyih-rashodov-16-07-2025.html
+A245,u02381,l3cube_indic,mr,health,Health,
+A246,u11186,ccnews_jsonld,pt,sport,"[""Esportes""]",https://www.correiobraziliense.com.br/esportes/2024/09/6942781-mano-menezes-analisa-derrota-do-fluminense-8216time-se-descontrolou-8217.html
+A247,u11436,l3cube_indic,kn,sport,Sports,
+A248,u01772,ccnews_jsonld,pl,sport,"[""La Liga"", ""La Liga"", ""Barcelona przedstawiła konkretne stanowisko. Taka przyszłość czeka Yamala""]",https://www.goal.pl/la-liga/barcelona-lamine-yamal-nie-na-sprzedaz/
+A249,u06932,ccnews_jsonld,es,science and technology,"[""Ciencia"", ""Ciencia""]",https://www.infobae.com/salud/ciencia/2026/08/14/7-beneficios-del-mango-para-la-salud-y-por-que-gana-lugar-en-la-alimentacion/
+A250,u06319,ccnews_jsonld,fa,"economy, business and finance","[""اقتصادی""]",https://www.iribnews.ir/fa/news/4308648/%D9%86%D9%82%D8%B4-%D9%BE%DB%8C%D8%B4%D8%B1%D8%A7%D9%86-%D9%88-%DA%A9%D9%84%DB%8C%D8%AF%DB%8C-%D8%A8%D9%86%D8%AF%D8%B1-%D9%86%DA%AF%DB%8C%D9%86-%D8%AF%D8%B1-%D9%81%D8%B9%D8%A7%D9%84%DB%8C%D8%AA%E2%80%8C%D9%87%D8%A7%DB%8C-%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF%DB%8C-%D9%88-%D8%AC%D8%B0%D8%A8-%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87
+A251,u00954,ccnews_jsonld,ru,"crime, law and justice","[""Криминал"", ""Криминал"", ""Полиция Ленобласти закрыла подпольный рыбный цех в деревне Ваганово""]",https://360.ru/news/crime/politsija-lenoblasti-zakryla-podpolnyj-rybnyj-tseh-v-derevne-vaganovo/
+A252,u12350,l3cube_indic,pa,health,Health,
+A253,u08556,ccnews_jsonld,uk,"economy, business and finance","[""Економіка""]",https://www.liga.net/ua/economics/opinion/ne-za-vsi-hroshi-iak-pidpryiemtsiu-obraty-pryyniatnyy-kredyt
+A254,u05860,ccnews_jsonld,pt,lifestyle and leisure,"[""Receitas""]",https://www.iol.pt/mousse-de-limao/sobremesas/o-truque-para-a-melhor-mousse-de-limao-e-so-um-e-dizemos-lhe-qual/20250716/6877bf24d34ef72ee4486452
+A255,u07520,l3cube_indic,ta,health,Covid,
+A256,u12730,l3cube_indic,ta,sport,Sports,
+A257,u12693,ccnews_jsonld,de,sport,"[""ADMIRAL 2. Liga"", ""First Vienna FC"", ""Fußball"", ""Vienna trennt sich trotz Heimsieg von Cheftrainer""]",https://www.skysportaustria.at/vienna-trennt-sich-trotz-heimsieg-von-cheftrainer/
+A258,u11289,ccnews_jsonld,ar,health,"[""صحة""]",https://www.alwakeelnews.com/Section_38/%D8%B5%D8%AD%D8%A9/%D9%83%D8%B1%D9%8A%D8%B3%D8%AA%D8%A7%D9%84-%D8%A7%D9%84%D9%86%D8%B9%D9%86%D8%A7%D8%B9-%D9%81%D9%88%D8%A7%D8%A6%D8%AF%D9%87-%D9%88%D8%A3%D8%B6%D8%B1%D8%A7%D8%B1-%D8%A7%D9%84%D8%A5%D9%81%D8%B1%D8%A7%D8%B7-%D9%81%D9%8A%D9%87_677679
+A259,u04861,l3cube_indic,pa,education,Education,
+A260,u10051,l3cube_indic,ta,"arts, culture, entertainment and media",Cinema,
+A261,u05540,indonews,id,"economy, business and finance",bisnis,
+A262,u03710,ccnews_jsonld,pl,weather,"[""Pogoda"", ""Opady deszczu w Lubsku. Ile go spadnie dzisiaj (16.04.2024) i w kolejnych 10 dniach?""]",https://lubsko.naszemiasto.pl/opady-deszczu-w-lubsku-ile-go-spadnie-dzisiaj-16-04-2024-i-w-kolejnych-10-dniach/ar/c1p1-20090794
+A263,u04713,ccnews_jsonld,tr,education,"[""EĞİTİM"", ""EĞİTİM"", ""Milli Eğitim Bakanlığı açıkladı! Sınırlama getirildi...""]",https://www.wanhaber.com/milli-egitim-bakanligi-acikladi-sinirlama-getirildi
+A264,u12042,ccnews_jsonld,th,politics,"[""การเมือง"", ""ข่าวการเมือง"", ""\""นฤมล\"" มอบรางวัลแก่ “ครูเจ้าฟ้ามหาจักรี“ รุ่นที่ 6 ชมครูไทยสร้างการเปลี่ยนแปลงเด็กพื้นที่ห่างไกล""]",https://mgronline.com/politics/detail/9680000098875
+A265,u06721,ccnews_jsonld,ar,politics,"[""إيران"", ""السياسة"", ""الصاعقة 10، الجيش الإيراني يستهدف القواعد والمراكز الأمريكية في الكويت والبحرين""]",https://ar.mehrnews.com/news/1972338/%D8%A7%D9%84%D8%B5%D8%A7%D8%B9%D9%82%D8%A9-10-%D8%A7%D9%84%D8%AC%D9%8A%D8%B4-%D8%A7%D9%84%D8%A5%D9%8A%D8%B1%D8%A7%D9%86%D9%8A-%D9%8A%D8%B3%D8%AA%D9%87%D8%AF%D9%81-%D8%A7%D9%84%D9%82%D9%88%D8%A7%D8%B9%D8%AF-%D9%88%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D9%83%D8%B2-%D8%A7%D9%84%D8%A3%D9%85%D8%B1%D9%8A%D9%83%D9%8A%D8%A9
+A266,u10800,ccnews_jsonld,id,"arts, culture, entertainment and media","[""Teroka"", ""Film""]",https://www.tempo.co/teroka/10-film-hollywood-yang-tayang-pada-2025-1207425
+A267,u01597,ccnews_jsonld,ar,"economy, business and finance","[""BUSINESS""]",https://www.skynewsarabia.com/business/1685576-%D8%AA%D8%B4%D9%85%D9%84-%D8%AA%D9%85%D9%88%D9%8A%D9%84%D8%A7-%D8%A7%D9%95%D8%B6%D8%A7%D9%81%D9%8A%D8%A7-%D8%A7%D9%95%D8%B3%D8%B1%D8%A7%D9%8A%D9%94%D9%8A%D9%84-%D8%AA%D9%88%D8%A7%D9%81%D9%82-%D8%AA%D8%B9%D8%AF%D9%8A%D9%84-%D9%85%D9%88%D8%A7%D8%B2%D9%86%D8%A9-2024
+A268,u00097,bangla_plos,bn,"economy, business and finance",economy,
+A269,u07492,ccnews_jsonld,zh,human interest,"[""明星""]",https://www.koreastardaily.com/sc/news/155445
+A270,u10697,ccnews_jsonld,pl,science and technology,"[""Kosmos"", ""Nauka"", ""Kosmos""]",https://spidersweb.pl/2025/12/kometa-3i-atlas-ma-dziwny-warkocz.html
+A271,u12157,ccnews_jsonld,es,"crime, law and justice","[""Policiales""]",https://radiomitre.cienradios.com/policiales/encontraron-muerto-en-la-carcel-a-javier-saavedra-el-principal-acusado-por-el-brutal-femicidio-de-jimena-salas-asesinada-de-57-punaladas/
+A272,u01425,l3cube_indic,pa,health,Health,
+A273,u03080,l3cube_indic,mr,politics,Politics,
+A274,u09573,l3cube_indic,gu,"economy, business and finance",Business,
+A275,u02768,l3cube_indic,mr,"crime, law and justice",Crime,
+A276,u03203,ccnews_jsonld,vi,"crime, law and justice","[""Pháp luật"", ""Bản tin 113""]",https://amp.vtcnews.vn/bat-tai-xe-o-to-van-chuyen-trai-phep-345kg-phao-no-ar993149.html
+A277,u05164,ccnews_jsonld,th,"crime, law and justice","[""อาชญากรรม"", ""ข่าวอาชญากรรม"", ""ศาลอาญาอนุญาต ฝากขัง \""อาร์ท-ภูเมธ\"" อุ้มฆ่าผู้จัดการขายเคริ่องมือแพทย์""]",https://mgronline.com/crime/detail/9690000025471
+A278,u09305,ccnews_jsonld,ko,sport,"[""sport"", ""sport""]",https://www.seoul.co.kr/news/sport/2024/10/17/20241017500223
+A279,u03373,ccnews_jsonld,tr,sport,"[""Spor"", ""Spor""]",https://www.yenicaggazetesi.com.tr/ali-koctan-galatasaraya-cagri-kendine-guvenen-hemen-basvursun-887424h.htm
+A280,u12637,l3cube_indic,ta,"crime, law and justice",Crime,
+A281,u00238,ccnews_jsonld,ml,lifestyle and leisure,"[""Destinations"", ""Travel"", ""Destinations"", ""ശൈ​ത്യ​കാ​ല വി​നോ​ദ​സ​ഞ്ചാ​രി​ക​ളെ വ​ര​വേ​ൽ​ക്കാ​ൻ മു​സ​ന്ദം""]",https://www.madhyamam.com/travel/destinations/musandam-to-attract-winter-tourists-1457698
+A282,u07812,ccnews_jsonld,ko,"economy, business and finance","[""economy"", ""economy""]",https://www.seoul.co.kr/news/economy/industry/2025/04/15/20250415500255
+A283,u04606,l3cube_indic,ta,politics,Politics,
+A284,u08164,ccnews_jsonld,id,education,"[""pendidikan"", ""WOOK Kucurkan Beasiswa Batch Kedua untuk Ratusan Mahasiswa Berprestasi USU""]",https://m.jpnn.com/news/wook-kucurkan-beasiswa-batch-kedua-untuk-ratusan-mahasiswa-berprestasi-usu
+A285,u10143,ccnews_jsonld,id,politics,"[""Politik"", ""Politik""]",https://nasional.tempo.co/read/1821908/koordinator-staf-khusus-sebut-presiden-jokowi-tidak-terganggu-wacana-pemakzulan
+A286,u08241,bangla_plos,bn,politics,politics,
+A287,u09654,ccnews_jsonld,pt,politics,"[""Política"", ""Política"", ""Lula e Alcolumbre se encontram no Palácio da Alvorada nesta sexta-feira""]",https://www.diariodepernambuco.com.br/politica/2026/08/11721216-lula-e-alcolumbre-se-encontram-no-palacio-da-alvorada-nesta-sexta-feira.html
+A288,u04905,ccnews_jsonld,uk,lifestyle and leisure,"[""Відпочинок за кордоном"", ""TRAVEL"", ""Відпочинок за кордоном"", ""Графіті і протести. Європейська столиця приєдналася до хвилі антитуризму""]",https://www.rbc.ua/rus/travel/grafiti-i-protesti-evropeyska-stolitsya-priednalasya-1715872676.html
+A289,u09962,ccnews_jsonld,ar,health,"[""صحة""]",https://news.dotalkhalij.com/health/29924817/%D8%B9%D8%B4%D8%A8%D8%A9-%D9%85%D9%86-%D8%A7%D9%84%D9%84%D9%87-%D9%84%D8%B9%D8%A8%D8%A7%D8%AF%D8%A9-%D9%83%D9%86%D8%B2-%D8%B1%D8%A8%D8%A7%D9%86%D9%8A-%D8%AD%D9%82%D9%8A%D9%82%D9%8A-%D9%84%D8%AA%D9%81%D8%AA%D9%8A%D8%AA-%D8%AD%D8%B5%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D9%83%D9%84%D9%89-%D8%A8%D8%AF%D9%88%D9%86-%D8%A7%D9%84%D9%85-%D9%88%D9%85%D9%86%D8%B9-%D8%AA%D9%83%D9%88%D9%8A%D9%86%D9%87%D8%A7-%D9%85%D8%B1%D8%A9-%D8%A7%D8%AE%D8%B1%D9%89-%D9%88%D8%A7%D9%84%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D8%AE%D9%84%D8%A7%D9%84-%D8%A7%D9%8A%D8%A7%D9%85.html
+A290,u09195,ccnews_jsonld,ru,"arts, culture, entertainment and media","[""Культура"", ""В российских кинотеатрах выйдет мультфильм «Пушкин и... Михайловское. Начало»"", ""Культура""]",https://radio1.ru/news/kultura/v-rossiiskih-kinoteatrah-viidet-multfilm-pushkin-i-mihailovskoe-nachalo/
+A291,u09865,bangla_plos,bn,education,education,
+A292,u04389,ccnews_jsonld,pt,health,"[""Saúde"", ""Exercícios físicos em casa | Veja 4 dicas para ter resultados rápidos""]",https://fanoticias.com.br/exercicios-fisicos-em-casa-veja-4-dicas-para-ter-resultados-rapidos/
+A293,u02788,ccnews_jsonld,el,"arts, culture, entertainment and media","[""Cinema"", ""Screen News"", ""News"", ""Η Rachel Weisz και ο Joe Alwyn στο νέο θρίλερ Seance on a Wet Afternoon""]",https://www.mad.gr/cinema/screen-news/i-rachel-weisz-kai-o-joe-alwyn-sto-neo-thriler-seance-on-a-wet-afternoon/
+A294,u03223,ccnews_jsonld,vi,politics,"[""Chính trị"", ""Đối ngoại""]",https://vietnamnet.vn/tong-bi-thu-va-chu-tich-nuoc-tiep-tro-ly-tong-thong-nga-2443219.html
+A295,u12387,ccnews_jsonld,zh,lifestyle and leisure,"[""美食"", ""美食"", ""星巴克京都圓山公園菊之溪店新開幕，京都名勝首店，提供綠意環繞的咖啡體驗。""]",https://www.walkerland.com.tw/subject/view/422772
+A296,u09229,ccnews_jsonld,vi,sport,"[""Thể thao""]",https://znews.vn/ly-do-sesko-tit-ngoi-post1585758.html
+A297,u02922,ccnews_jsonld,pl,health,"[""Zdrowie"", ""Badania i leczenie"", ""Terminy NFZ w Brzegu na fizjoterapię domową. Dane aktualne na 16.04.2024""]",https://brzeg.naszemiasto.pl/terminy-nfz-w-brzegu-na-fizjoterapie-domowa-dane-aktualne-na-16-04-2024/ar/c14p1-24578833
+A298,u05484,bangla_plos,bn,sport,sports,
+A299,u06731,ccnews_jsonld,pl,sport,"[""News"", ""Sport"", ""Jose Mourinho blisko Realu Madryt. Czy to powrót \""The Special One\"" na Santiago Bernabeu?""]",https://www.eska.pl/news/sport/jose-mourinho-blisko-realu-madryt-czy-to-powrot-the-special-one-na-santiago-bernabeu-aa-FQNf-YewQ-Nc7n.html
+A300,u06924,ccnews_jsonld,zh,lifestyle and leisure,"[""最新文章"", ""美食"", ""《統一布丁》攜手《蛋仔派對》超萌合作，超值虛寶限時輕鬆領取。""]",https://www.walkerland.com.tw/subject/view/399570

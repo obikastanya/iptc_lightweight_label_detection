@@ -1,0 +1,104 @@
+{
+ "status": {
+  "spot_error": 0.0,
+  "strata": {
+   "ccnews_jsonld": {
+    "p_agree": 0.795,
+    "p_section_correct_given_disagree_strict": 0.12195121951219512,
+    "p_section_correct_given_disagree_lenient": 0.21951219512195122,
+    "n_resolved_disagree": 41,
+    "pooled_fallback": false,
+    "acc_strict": 0.8200000000000001,
+    "acc_lenient": 0.8400000000000001
+   },
+   "l3cube_indic": {
+    "p_agree": 0.7285714285714285,
+    "p_section_correct_given_disagree_strict": 0.0,
+    "p_section_correct_given_disagree_lenient": 0.15789473684210525,
+    "n_resolved_disagree": 19,
+    "pooled_fallback": false,
+    "acc_strict": 0.7285714285714285,
+    "acc_lenient": 0.7714285714285714
+   },
+   "bangla_plos": {
+    "p_agree": 0.6666666666666666,
+    "p_section_correct_given_disagree_strict": 0.2,
+    "p_section_correct_given_disagree_lenient": 0.2,
+    "n_resolved_disagree": 5,
+    "pooled_fallback": false,
+    "acc_strict": 0.7333333333333333,
+    "acc_lenient": 0.7333333333333333
+   },
+   "indonews": {
+    "p_agree": 0.8,
+    "p_section_correct_given_disagree_strict": 0.0,
+    "p_section_correct_given_disagree_lenient": 0.0,
+    "n_resolved_disagree": 3,
+    "pooled_fallback": false,
+    "acc_strict": 0.8,
+    "acc_lenient": 0.8
+   }
+  },
+  "acc_strict": 0.793420864299477,
+  "acc_lenient": 0.8191070740434903,
+  "acc_strict_ci": [
+   0.7443938962290119,
+   0.8387254885769336
+  ],
+  "acc_lenient_ci": [
+   0.7711810280759702,
+   0.862534055876686
+  ]
+ },
+ "final": {
+  "spot_error": 0.0,
+  "strata": {
+   "ccnews_jsonld": {
+    "p_agree": 0.795,
+    "p_section_correct_given_disagree_strict": 0.17073170731707318,
+    "p_section_correct_given_disagree_lenient": 0.5121951219512195,
+    "n_resolved_disagree": 41,
+    "pooled_fallback": false,
+    "acc_strict": 0.8300000000000001,
+    "acc_lenient": 0.9
+   },
+   "l3cube_indic": {
+    "p_agree": 0.7285714285714285,
+    "p_section_correct_given_disagree_strict": 0.05263157894736842,
+    "p_section_correct_given_disagree_lenient": 0.21052631578947367,
+    "n_resolved_disagree": 19,
+    "pooled_fallback": false,
+    "acc_strict": 0.7428571428571428,
+    "acc_lenient": 0.7857142857142857
+   },
+   "bangla_plos": {
+    "p_agree": 0.6666666666666666,
+    "p_section_correct_given_disagree_strict": 0.2,
+    "p_section_correct_given_disagree_lenient": 0.2,
+    "n_resolved_disagree": 5,
+    "pooled_fallback": false,
+    "acc_strict": 0.7333333333333333,
+    "acc_lenient": 0.7333333333333333
+   },
+   "indonews": {
+    "p_agree": 0.8,
+    "p_section_correct_given_disagree_strict": 0.0,
+    "p_section_correct_given_disagree_lenient": 0.0,
+    "n_resolved_disagree": 3,
+    "pooled_fallback": false,
+    "acc_strict": 0.8,
+    "acc_lenient": 0.8
+   }
+  },
+  "acc_strict": 0.8043143407652078,
+  "acc_lenient": 0.864971648775117,
+  "acc_strict_ci": [
+   0.7570274635287643,
+   0.8481803124139828
+  ],
+  "acc_lenient_ci": [
+   0.825998348472337,
+   0.903628034682081
+  ]
+ }
+}

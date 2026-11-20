@@ -433,6 +433,36 @@ write_table("cascade", lines)
 show(casc, f"Cascade StaticKD -> {teacher_cpu} di set uji")
 """),
 md(r"""
+**Pemeriksaan *cascade* setelah review.** Ambang dipilih pada *development set* sebelum set uji dipakai,
+lalu *cascade* dibandingkan dengan *teacher* secara berpasangan pada set uji. Hasil pengukuran CPU *end-to-end*
+dari `scripts/review_experiments/e2c_cascade_benchmark.py` dibaca dari `results/final/`.
+"""),
+code(r"""
+# Cascade after review: threshold chosen on the development set, paired test against the teacher on the
+# test set, and the end-to-end CPU run (scripts/review_experiments/e2c_cascade_benchmark.py)
+p_dev = data.softmax(ev.load_logits("statickd", "dev")); y_dev = ev.eval_view("dev").y.to_numpy()
+pred_t_dev = ev.load_pred(teacher_cpu, "dev"); f1_t_dev = ev.macro_f1(y_dev, pred_t_dev)
+dev_grid = {th: ev.macro_f1(y_dev, np.where(p_dev.max(1) >= th, p_dev.argmax(1), pred_t_dev)) for th in (0.5, 0.6, 0.7, 0.8, 0.9)}
+reach = [th for th, f in dev_grid.items() if f >= f1_t_dev]   # rule: smallest theta that reaches the teacher on dev,
+theta_dev = reach[0] if reach else max(dev_grid, key=lambda th: (dev_grid[th], -th))   # else the best dev cascade
+pred_c = np.where(conf >= theta_dev, pred_s, pred_t)
+pb = ev.paired_bootstrap_seeds(y_test, [pred_c], [pred_t], clusters=ev.eval_view("test").cluster.to_numpy(), n_boot=2 * N_BOOT, seed=0)
+tt = ev.tost(pb["diffs"], 0.01)
+NUM.add("casc.dev.theta", theta_dev, 1); NUM.add("casc.dev.macro_f1", dev_grid[theta_dev], 3)
+NUM.add("casc.eq.delta", pb["delta"], 3, sign=True)
+NUM.add("casc.eq.ci", f"{fmt(pb['ci_low'], 3, sign=True)}, {fmt(pb['ci_high'], 3, sign=True)}")
+NUM.add("casc.eq.p", fmt_p(pb["p"])); NUM.add("casc.eq.tost_p", fmt_p(tt["p"]))
+cb = pd.read_json(FINAL_DIR / "cascade_benchmark.jsonl", lines=True).drop_duplicates("session", keep="last")
+cc = pd.read_json(FINAL_DIR / "cascade_components.jsonl", lines=True).drop_duplicates(["model", "run"], keep="last")
+routed = cb.routed_share.iloc[0]
+rs_m, rt_m = cc[cc.model == "statickd"].docs_per_sec.median(), cc[cc.model == "teacher_onnx_int8"].docs_per_sec.median()
+e2e, est = cb.docs_per_sec.median(), 1 / (1 / rs_m + routed / rt_m)
+NUM.add("casc.e2e.n", int(cb.n_docs.iloc[0]), 0); NUM.add("casc.e2e.routed", routed, 1, percent=True)
+NUM.add("casc.e2e.docs_per_sec", e2e, 2); NUM.add("casc.e2e.formula", est, 2)
+print({"theta_dev": theta_dev, "reach": reach, "delta": pb["delta"], "ci": (pb["ci_low"], pb["ci_high"]),
+       "p": pb["p"], "tost_p": tt["p"], "e2e": e2e, "formula": est, "routed": routed})
+"""),
+md(r"""
 ### 10.5 Contoh kualitatif
 
 Contoh buatan dalam beberapa bahasa, termasuk bahasa Jawa dan Sunda yang tidak ada di data distilasi,

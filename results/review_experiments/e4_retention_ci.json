@@ -1,0 +1,28 @@
+{
+ "test": {
+  "set": "test",
+  "bootstrap": "site-cluster",
+  "n_boot": 1000,
+  "seed": 0,
+  "n_docs": 12744,
+  "macro_f1_student": 0.5447471580596348,
+  "macro_f1_teacher": 0.5980080901745636,
+  "retention": 0.9109361010494332,
+  "ci_low": 0.8874345278449651,
+  "ci_high": 0.9482338973909711,
+  "boot_median": 0.9129338933296572
+ },
+ "dev": {
+  "set": "dev",
+  "bootstrap": "document",
+  "n_boot": 1000,
+  "seed": 0,
+  "n_docs": 1000,
+  "macro_f1_student": 0.760986010941418,
+  "macro_f1_teacher": 0.8217977913977127,
+  "retention": 0.9260015284868726,
+  "ci_low": 0.8841268339037593,
+  "ci_high": 0.963443569718934,
+  "boot_median": 0.9253082053668085
+ }
+}

@@ -40,7 +40,7 @@
 \corresp{Penulis korespondensi: Obi Kastanya (e-mail: 6025252015@student.its.ac.id).}
 
 \begin{abstract}
-Penyaringan berita berdasarkan taksonomi Media Topic dari International Press Telecommunications Council (IPTC) memerlukan pengklasifikasi yang cukup murah untuk aliran \en{pipeline} artikel multibahasa \en{real-time}. Pengklasifikasi IPTC multibahasa terbuka berbasis XLM-RoBERTa-large yang sudah ada memerlukan 1,190 hingga 2,816 milidetik per artikel pada satu \en{core} prosesor. StaticKD memakai pengklasifikasi ini sebagai \en{teacher} dan memberi setiap token kosakata satu skor untuk masing-masing dari 17 topik IPTC tingkat atas. Klasifikasi hanya memerlukan tokenisasi artikel dan perataan skor tokennya. \en{Student} diinisialisasi dari \en{embedding} statis multibahasa (satu vektor tetap per token) dan belajar dari keluaran \en{teacher} pada 285,999 artikel dalam 69 bahasa. Evaluasi memakai \en{test set} baru berisi 12,744 artikel dalam 47 bahasa. Labelnya berasal dari anotator manusia atau editor redaksi dan bukan dari model yang membaca artikel. Perbedaan antarmodel diuji dengan \en{site-cluster bootstrap} berpasangan dan koreksi Holm. StaticKD mencapai macro-F1 sebesar 0.545 (interval kepercayaan 95\% 0.490--0.605) dan mempertahankan 91.1\% skor \en{teacher} (0.598). Model berukuran 34 megabyte ini mengklasifikasikan 539 artikel per detik per \en{core} dan berjalan sekitar 682 kali lebih cepat daripada \en{teacher} yang dikuantisasi 8-bit. Model ini lebih akurat daripada fastText (+0.098 macro-F1, $p<0.001$) dan \en{support vector machine} linear (+0.059, $p=0.040$) yang dilatih pada label yang sama. Pengklasifikasi Model2Vec yang dilatih pada label ini sama akuratnya dalam batas 0.01 macro-F1 (\en{two one-sided tests}, $p=0.025$). Pengklasifikasi tersebut memerlukan berkas 15 kali lebih besar dan memori dua kali lipat. StaticKD lemah pada bahasa yang tidak terdapat baik dalam data pelatihannya maupun dalam data prapelatihan \en{teacher}.
+Penyaringan berita berdasarkan taksonomi Media Topic dari International Press Telecommunications Council (IPTC) memerlukan pengklasifikasi yang cukup murah untuk aliran \en{pipeline} artikel multibahasa \en{real-time}. Pengklasifikasi IPTC multibahasa terbuka berbasis XLM-RoBERTa-large yang sudah ada memerlukan 1,190 hingga 2,816 milidetik per artikel pada satu \en{core} prosesor. StaticKD memakai pengklasifikasi ini sebagai \en{teacher} dan memberi setiap token kosakata satu skor untuk masing-masing dari 17 topik IPTC tingkat atas. Klasifikasi hanya memerlukan tokenisasi artikel dan perataan skor tokennya. \en{Student} diinisialisasi dari \en{embedding} statis multibahasa (satu vektor tetap per token) dan belajar dari keluaran \en{teacher} pada 285,999 artikel dalam 69 bahasa. Evaluasi memakai \en{test set} baru berisi 12,744 artikel dalam 47 bahasa. Labelnya berasal dari anotator manusia atau editor redaksi dan bukan dari model yang membaca artikel. Perbedaan antarmodel diuji dengan \en{site-cluster bootstrap} berpasangan dan koreksi Holm. StaticKD mencapai macro-F1 sebesar 0.545 (interval kepercayaan 95\% 0.490--0.605) dan mempertahankan 91.1\% skor \en{teacher} (0.598). Model berukuran 34 megabyte ini mengklasifikasikan 539 artikel per detik per \en{core} dan memiliki \en{throughput} sekitar 682 kali \en{throughput} \en{teacher} yang dikuantisasi 8-bit. Model ini lebih akurat daripada fastText (+0.098 macro-F1, $p<0.001$) dan \en{support vector machine} linear (+0.059, $p=0.040$) yang dilatih pada label yang sama. Pengklasifikasi Model2Vec yang dilatih pada label ini sama akuratnya dalam batas 0.01 macro-F1 (\en{two one-sided tests}, $p=0.025$). Pengklasifikasi tersebut memerlukan berkas 15 kali lebih besar dan memori dua kali lipat. StaticKD lemah pada bahasa yang tidak terdapat baik dalam data pelatihannya maupun dalam data prapelatihan \en{teacher}.
 \end{abstract}
 
 \begin{keywords}
@@ -67,7 +67,7 @@ Penelitian terdahulu menyisakan dua celah yang menghalangi klasifikasi IPTC mult
   \item \emph{Belum ada pengklasifikasi statis multibahasa dengan \en{embedding} selaras lintas bahasa yang \en{head}-nya dilipat menjadi satu tabel token.} Sparse Distillation~\cite{ye2022sparse} dan pengklasifikasi bawaan Model2Vec~\cite{tulkens2024model2vec} menempatkan \en{head} \en{multilayer perceptron} (MLP) nonlinear di atas \en{embedding} yang dirata-ratakan. Lapisan nonlinear ini mencegah \en{folding} sehingga matriks \en{embedding} 256 dimensi harus tetap disimpan utuh bersama \en{head}-nya.
 \end{enumerate}
 
-Studi ini mengisi kedua celah dengan StaticKD dan mengujinya pada \en{test set} IPTC multibahasa baru. StaticKD memakai pengklasifikasi IPTC terbuka sebagai \en{teacher} dan melatih \en{head} linear di atas \en{embedding} statis multibahasa Model2Vec pada berita berlabel \en{teacher} dalam banyak bahasa. Kontribusi studi ini adalah sebagai berikut.
+Studi ini mengisi kedua celah dengan StaticKD dan mengujinya pada \en{test set} IPTC multibahasa baru. Kebaruan StaticKD terletak pada distilasi pengklasifikasi IPTC XLM-R ke \en{embedding} statis yang selaras lintas bahasa dengan \en{head} linear dan \en{folding} keduanya menjadi satu tabel berisi 17 skor topik per token. Kontribusi studi ini adalah sebagai berikut:
 \begin{itemize}
   \item \emph{Model ringan hasil folding.} \en{Embedding} Model2Vec dan \en{head} linear yang dilatih bersama melalui distilasi dilipat menjadi satu tabel token-logit berisi 17 skor topik per token sehingga klasifikasi pada CPU cukup merata-ratakan baris tabel tanpa pustaka \en{deep learning}.
   \item \emph{Test set IPTC multibahasa dengan label manusia dan editorial.} \en{Test set} ini mencakup 47 bahasa dan disusun dari halaman berita CC-NEWS 2024--2026 yang penerbitnya mencatat rubrik redaksi dalam metadata schema.org~\cite{guha2016schema} serta dari \en{dataset} publik berlabel manusia atau kategori penerbit~\cite{adelani2023masakhanews,petukhova2023mnds,mirashi2023indicnews,hossain2025banglanews,indonews2021}. Set ini dirilis sebagai manifes beserta skrip rekonstruksi dan tabel pemetaan rubrik ke IPTC.
@@ -162,7 +162,7 @@ Studi ini terdiri atas tiga tahap: membangun \en{student} StaticKD melalui disti
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_pipeline.pdf}
-\caption{\en{Pipeline} StaticKD. \en{Teacher} melabeli korpus berita tak berlabel satu kali dalam langkah \en{offline}. \en{Student} belajar meniru distribusi \en{teacher}. \en{Head} linear \en{student} kemudian dilipat ke dalam tabel token. Inferensi tereduksi menjadi \en{lookup} dan rata-rata baris tabel. Evaluasi akhir memakai \en{test set} yang labelnya tidak berasal dari \en{teacher}.}
+\caption{\en{Pipeline} StaticKD dari pelabelan satu kali oleh \en{teacher} hingga inferensi dengan tabel token hasil \en{folding}.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -197,12 +197,12 @@ dengan $p^{T}=\mathrm{softmax}(\mathbf{z}^{T}/\tau)$ dan $p^{S}=\mathrm{softmax}
 W\Big(\frac{1}{n}\sum_{i}\mathbf{e}_{t_i}\Big)+\mathbf{b}=\frac{1}{n}\sum_{i}T_{t_i}+\mathbf{b},
 \label{eq:fold}
 \end{equation}
-dengan tabel $T=EW^{\top}\in\mathbb{R}^{|V|\times 17}$ yang dihitung satu kali setelah pelatihan dalam langkah \en{folding}. Baris $T_t$ pada tabel $T$ memuat 17 skor topik yang disumbangkan token $t$ ke setiap artikel yang mengandungnya. Gambar~\ref{fig:folding} memperlihatkan bahwa matriks $E$ berdimensi 256 hanya diperlukan selama pelatihan sehingga model hasil \en{folding} untuk penerapan hanya terdiri atas $T$ dalam \en{half-precision} (fp16), $\mathbf{b}$, dan \en{tokenizer}. Argumen \en{folding} yang sama berlaku untuk \en{ensemble} karena Persamaan~\eqref{eq:fold} linear terhadap $T$. Perataan logit dari $K$ \en{student} yang dilatih dengan \en{seed} berbeda memberikan hasil yang sama dengan satu \en{student} bertabel $\bar{T}=\frac{1}{K}\sum_k T^{(k)}$ dan berbias $\bar{\mathbf{b}}$.
+dengan tabel $T=EW^{\top}\in\mathbb{R}^{|V|\times 17}$ yang dihitung satu kali setelah pelatihan dalam langkah \en{folding}. Baris $T_t$ pada tabel $T$ memuat 17 skor topik yang disumbangkan token $t$ ke setiap artikel yang mengandungnya. Gambar~\ref{fig:folding} memperlihatkan bahwa matriks $E$ berdimensi 256 hanya diperlukan selama pelatihan sehingga model hasil \en{folding} untuk penerapan hanya terdiri atas $T$ dalam \en{half-precision} (fp16), $\mathbf{b}$, dan \en{tokenizer}. Argumen \en{folding} yang sama berlaku untuk \en{ensemble} karena Persamaan~\eqref{eq:fold} linear terhadap $T$. Perataan logit dari $K$ \en{student} yang dilatih dengan \en{seed} berbeda memberikan hasil yang sama dengan satu \en{student} bertabel $\bar{T}=\frac{1}{K}\sum_k T^{(k)}$ dan berbias $\bar{\mathbf{b}}$. Semua skor StaticKD dalam paper ini dihitung dengan tabel rata-rata $\bar{T}$ yang disimpan dalam fp16.
 
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_folding.pdf}
-\caption{Mekanisme \en{folding}. (a) \en{Embedding} $E$ dan \en{head} linear $W$ dilipat satu kali setelah pelatihan menjadi tabel $T$. (b) Inferensi hanya memerlukan tokenisasi, \en{lookup} baris $T$, dan perataan. (c) \en{Head} nonlinear mencegah \en{folding} sehingga $E$ harus tetap disimpan.}
+\caption{\en{Folding} \en{embedding} $E$ dan \en{head} linear $W$ menjadi tabel token $T$.}
 \label{fig:folding}
 \end{figure*}
 
@@ -274,7 +274,7 @@ Artikel yang lolos semua filter disampel dengan paling banyak 50 artikel untuk s
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_testset_composition.pdf}
-\caption{Jumlah artikel \en{test set} terpadu per bahasa menurut asal label. Bahasa dikelompokkan menurut jumlah dokumen distilasinya.}
+\caption{Jumlah artikel \en{test set} terpadu per bahasa menurut asal label dan jumlah data distilasi.}
 \label{fig:testset}
 \end{figure*}
 
@@ -347,11 +347,11 @@ fastText, label GPT-4o (kata, subword) & seperti fastText + KD & label GPT-4o EM
 \label{sec:protocol}
 Tabel~\ref{tab:protocol} menempatkan macro-F1 sebagai metrik utama karena distribusi label tidak seimbang. Metrik ini adalah rata-rata F1 tak tertimbang atas label yang ada dalam referensi sesuai protokol evaluasi~\cite{kuzman2025llm}. Macro-F1 per bahasa dirata-ratakan atas bahasa agar bahasa besar tidak mendominasi. Kalibrasi diukur dengan \en{expected calibration error} (ECE)~\cite{guo2017calibration} karena mode \en{cascade} pada Bagian~\ref{sec:effprotocol} mengarahkan artikel menurut tingkat keyakinan StaticKD.
 
-Interval kepercayaan dan uji berpasangan memakai \en{bootstrap} dengan unit \en{resampling} yang berbeda pada kedua set evaluasi. \en{Development set} di-\en{resample} per dokumen sedangkan \en{test set} memakai \en{site-cluster bootstrap}~\cite{field2007bootstrapping} yang menarik situs secara utuh sebagai unit \en{resampling} agar artikel yang berkaitan dari satu situs tidak membuat interval kepercayaan terlalu sempit. Artikel tanpa URL dikelompokkan menurut \en{dataset} sumber.
+Interval kepercayaan dan uji berpasangan memakai \en{bootstrap} dengan unit \en{resampling} yang berbeda pada kedua set evaluasi. \en{Development set} di-\en{resample} per dokumen sedangkan \en{test set} memakai \en{site-cluster bootstrap}~\cite{field2007bootstrapping} yang menarik situs secara utuh sebagai unit \en{resampling} agar artikel yang berkaitan dari satu situs tidak membuat interval kepercayaan terlalu sempit. Artikel tanpa URL dikelompokkan menurut \en{dataset} sumber. Macro-F1 pada setiap \en{resample} dihitung atas label yang muncul pada \en{resample} itu. Nilai $p$ \en{bootstrap} dua sisi adalah dua kali proporsi \en{resample} yang selisihnya berlawanan tanda dengan selisih yang teramati.
 
 Klaster pada \en{test set} tidak seimbang sehingga dua pemeriksaan tambahan menguji ketahanan perbandingan model. Dua klaster terbesar dari 1,227 klaster (bbc.com dan L3Cube-IndicNews) memuat 37.3\% artikel dan jumlah efektif klaster $1/\sum_c q_c^{2}$ dengan $q_c$ sebagai proporsi klaster $c$ hanya 13.8. Pemeriksaan \en{leave-one-source-out} menghitung ulang macro-F1 \en{teacher} dan StaticKD beserta ketujuh \en{baseline} + KD dengan membuang tiap sumber dari enam sumber \en{test set} satu per satu. Pemeriksaan lain mengulang perbandingan model pada \en{subset} dengan paling banyak lima artikel per situs dan pasangan bahasa--label.
 
-Perbedaan yang tidak signifikan pada uji berpasangan tidak menunjukkan bahwa dua model setara sehingga klaim kesetaraan bertumpu pada \en{two one-sided tests} (TOST) atas distribusi \en{bootstrap} yang sama. Margin 0.01 macro-F1 diperlakukan sebagai perbedaan yang dapat diabaikan untuk penyaringan topik. Koreksi Holm diterapkan terpisah pada \en{development set} dan \en{test set} atas semua perbandingan StaticKD dengan model lain pada Tabel~\ref{tab:sig}.
+Perbedaan yang tidak signifikan pada uji berpasangan tidak menunjukkan bahwa dua model setara sehingga klaim kesetaraan bertumpu pada \en{two one-sided tests} (TOST) atas distribusi \en{bootstrap} yang sama. Margin 0.01 macro-F1 diperlakukan sebagai perbedaan yang dapat diabaikan untuk penyaringan topik. Koreksi Holm diterapkan terpisah pada \en{development set} dan \en{test set} atas semua perbandingan StaticKD dengan model lain pada Tabel~\ref{tab:sig}. Nilai $p$ TOST tidak dikoreksi untuk perbandingan berganda.
 
 Perbandingan tiap varian ablasi dengan resep akhir memakai \en{bootstrap} berpasangan yang sama. Setiap \en{resample} menilai semua \en{seed} varian dan resep akhir pada artikel yang sama dan menghasilkan selisih antara kedua rata-rata \en{seed} sebagai besaran yang diuji. Skor \en{ensemble} berisi $K$ \en{student} adalah rata-rata skor atas semua kombinasi $K$ dari sepuluh \en{seed} resep akhir. Koreksi Holm untuk perbandingan ini mencakup 10 varian pada Bagian~\ref{sec:design} dan keempat komponen tambahan dari Bagian~\ref{sec:roles} yang masing-masing dijalankan dengan tiga \en{seed}.
 
@@ -416,7 +416,7 @@ Pengulangan & tiga sesi pada mesin yang menganggur, median dilaporkan \\
 
 Perbandingan kecepatan tidak menguntungkan StaticKD karena StaticKD membaca input yang lebih panjang. StaticKD membaca hingga 1,024 token per artikel sedangkan \en{teacher} berhenti pada 512 token XLM-R. Batas \en{teacher} ini terlampaui pada 60.7\% artikel \en{test set} dan pada artikel tersebut \en{teacher} membaca sekitar 287 dari 438 kata (median).
 
-Mode \en{cascade} menggabungkan StaticKD dan \en{teacher} untuk pekerjaan yang memerlukan akurasi setingkat \en{teacher}. Mode ini membiarkan StaticKD memutuskan artikel yang probabilitas teratasnya paling sedikit sebesar ambang $\theta$. Artikel sisanya diteruskan ke \en{teacher} ONNX int8. Misalkan $s$ adalah proporsi artikel yang diputuskan oleh StaticKD serta $r_S$ dan $r_T$ adalah \en{throughput} satu \en{core} StaticKD dan \en{teacher}. \en{Throughput} efektif \en{cascade} adalah $1/(1/r_S+(1-s)/r_T)$.
+Mode \en{cascade} menggabungkan StaticKD dan \en{teacher} untuk pekerjaan yang memerlukan akurasi setingkat \en{teacher}. Mode ini membiarkan StaticKD memutuskan artikel yang probabilitas teratasnya paling sedikit sebesar ambang $\theta$. Artikel sisanya diteruskan ke \en{teacher} ONNX int8. Misalkan $s$ adalah proporsi artikel yang diputuskan oleh StaticKD serta $r_S$ dan $r_T$ adalah \en{throughput} satu \en{core} StaticKD dan \en{teacher}. \en{Throughput} efektif \en{cascade} adalah $1/(1/r_S+(1-s)/r_T)$. Ambang $\theta=0.8$ memberikan macro-F1 \en{cascade} tertinggi pada \en{development set} (0.822 berbanding 0.823 untuk \en{teacher} saja) dan dipakai untuk perbandingan dengan \en{teacher}.
 
 \subsection{Rancangan Ablasi}
 \label{sec:design}
@@ -437,7 +437,7 @@ Kecocokan per kategori antara \en{teacher} dan label hasil pemetaan terendah pad
 \subsection{Akurasi Semua Model}
 \label{sec:res-acc}
 \begin{table*}[!t]
-\caption{Hasil Utama. Macro-F1 [95\% CI] dan Akurasi pada \en{Development Set} (EMMediaTopic Dev, Label GPT-4o), \en{Agreement} dengan \en{Teacher} pada CC-News \en{Held-Out}, dan Hasil pada \en{Test Set} Terpadu (47 Bahasa, Label Independen). CI \en{Test} dari \en{Site-Cluster Bootstrap}}
+\caption{Hasil Utama pada \en{Development Set}, \en{Held-Out Set}, dan \en{Test Set} Terpadu}
 \label{tab:main}
 \centering
 \scriptsize
@@ -468,12 +468,12 @@ fastText, label GPT-4o, kata & 0.651 [0.601--0.693] & 0.738 & 0.307 & 0.106 [0.0
 \bottomrule
 \end{tabular}
 \end{table*}
-Tabel~\ref{tab:main} menunjukkan bahwa StaticKD mempertahankan 91.1\% macro-F1 \en{teacher} pada \en{test set} terpadu dan 92.6\% pada \en{development set}. Macro-F1 \en{test} StaticKD adalah 0.545 [0.490--0.605] dan macro-F1 \en{test} \en{teacher} 0.598 [0.546--0.643]. Skor \en{test} kedua model lebih rendah daripada skor \en{development set} (0.761 dan 0.822) karena sebagian besar \en{test set} berada di luar bahasa, sumber, dan periode data pelatihan \en{teacher}. Prediksi StaticKD sama dengan prediksi \en{teacher} pada 81.1\% dokumen \en{held-out} dalam 63 bahasa.
+Tabel~\ref{tab:main} menunjukkan bahwa StaticKD mempertahankan 91.1\% [88.7--94.8\%] macro-F1 \en{teacher} pada \en{test set} terpadu dan 92.6\% [88.4--96.3\%] pada \en{development set}. Macro-F1 \en{test} StaticKD adalah 0.545 [0.490--0.605] dan macro-F1 \en{test} \en{teacher} 0.598 [0.546--0.643]. Skor \en{test} kedua model lebih rendah daripada skor \en{development set} (0.761 dan 0.822) karena sebagian besar \en{test set} berada di luar bahasa, sumber, dan periode data pelatihan \en{teacher}. Prediksi StaticKD sama dengan prediksi \en{teacher} pada 81.1\% dokumen \en{held-out} dalam 63 bahasa.
 
 Macro-F1 \en{test} StaticKD berada di antara skor kedua \en{transformer} hasil distilasi dan di atas skor fastText + KD serta TF-IDF + SVM + KD. Skor MiniLM-L6 (0.566) lebih tinggi daripada StaticKD sedangkan skor DistilmBERT (0.534) sedikit lebih rendah. Pengklasifikasi Model2Vec mencapai 0.547 atau hampir sama dengan StaticKD. Model fastText yang dilatih hanya pada label GPT-4o dari empat bahasa memperlihatkan akibat ketiadaan label \en{teacher} untuk bahasa lain (dua baris terakhir pada Tabel~\ref{tab:main}). Skor model ini mencapai 0.665 pada \en{development set} tetapi hanya 0.086 pada \en{test set}.
 
 \begin{table*}[!t]
-\caption{Uji Berpasangan StaticKD terhadap Model Lain pada \en{Test Set} Terpadu. $\Delta$ = StaticKD $-$ Model Pembanding. $p$ Dikoreksi Holm pada Perbandingan Ini. $b/c$ = Dokumen yang Benar Hanya untuk StaticKD / Hanya untuk Model Pembanding}
+\caption{Uji Berpasangan StaticKD terhadap Model Lain pada \en{Test Set} Terpadu}
 \label{tab:sig}
 \centering
 \scriptsize
@@ -495,11 +495,12 @@ fastText, label GPT-4o, subword & +0.458 [+0.415, +0.496] & $<$0.001 & +0.491 & 
 fastText, label GPT-4o, kata & +0.439 [+0.393, +0.475] & $<$0.001 & +0.460 & 6252/391 & $<$0.001 \\
 \bottomrule
 \end{tabular}
+\par\vspace{2pt}{\footnotesize $\Delta$ = StaticKD $-$ model pembanding; $b/c$ = dokumen yang benar hanya untuk StaticKD / hanya untuk model pembanding.\par}
 \end{table*}
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_sig_forest.pdf}
-\caption{Selisih berpasangan macro-F1 \en{test} antara StaticKD dan tiap model lain (StaticKD dikurangi model). Garis tipis menunjukkan interval \en{site-cluster bootstrap} 95\%. Batang tebal menunjukkan interval 90\%. Penanda terisi berbeda signifikan setelah koreksi Holm. Pita berarsir adalah margin kesetaraan $\pm$0.01. Dua model fastText yang dilatih pada label GPT-4o berada di atas +0.4 dan tidak ditampilkan.}
+\caption{Selisih berpasangan macro-F1 \en{test} antara StaticKD dan tiap model kecuali dua model fastText yang dilatih pada label GPT-4o.}
 \label{fig:sig-forest}
 \end{figure}
 Uji berpasangan pada Tabel~\ref{tab:sig} mengonfirmasi peringkat ini. Gambar~\ref{fig:sig-forest} memperlihatkan bahwa interval 95\% selisih StaticKD terhadap semua model ringan kecuali pengklasifikasi Model2Vec berada di atas nol sedangkan interval terhadap \en{teacher} dan MiniLM-L6 berada di bawah nol. $\Delta$macro-F1 StaticKD terhadap \en{teacher} adalah $-$0.053 [$-$0.065, $-$0.033] dan StaticKD mengungguli \en{teacher} hanya pada 7 dari 47 bahasa. MiniLM-L6 juga mempertahankan keunggulan yang signifikan atas StaticKD ($-$0.021 [$-$0.038, $-$0.008], $p=0.005$). StaticKD dan DistilmBERT tidak berbeda signifikan (+0.010, $p=1.000$) dan interval 90\% [$-$0.023, +0.036] dari selisih ini terlalu lebar untuk menunjukkan kesetaraan (TOST $p=0.428$). Uji Wilcoxon per bahasa juga tidak menemukan perbedaan yang konsisten antara kedua model ($p=0.604$ untuk macro-F1 dan 0.322 untuk akurasi). Uji McNemar mengunggulkan StaticKD atas DistilmBERT dalam akurasi ($p<0.001$) tetapi memperlakukan artikel dari situs yang sama sebagai independen.
@@ -515,7 +516,7 @@ Hasil uji berpasangan juga tidak berubah ketika kedua \en{transformer} membaca i
 \subsection{Efisiensi CPU}
 \label{sec:res-eff}
 \begin{table*}[!t]
-\caption{Efisiensi CPU pada P-Core yang Dipatok (Sampel dari \en{Test Set} Terpadu, 1c/4c = 1/4 \en{Core})}
+\caption{Efisiensi CPU pada Satu (1c) dan Empat (4c) P-Core yang Dipatok}
 \label{tab:eff}
 \centering
 \scriptsize
@@ -540,19 +541,19 @@ Pengklasifikasi Model2Vec + KD & 1.99 / 3.22 & 568 & 1,822 & 1,091 & 507 & model
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/fig_tradeoff_memory.pdf}
-\caption{Macro-F1 \en{test} pada \en{test set} terpadu terhadap (a) \en{throughput} CPU satu \en{core} dan (b) RAM model (skala log).}
+\caption{Macro-F1 \en{test} terhadap \en{throughput} CPU dan RAM.}
 \label{fig:tradeoff}
 \end{figure*}
 Tabel~\ref{tab:eff} menunjukkan bahwa \en{teacher} terlalu lambat di CPU untuk aliran artikel yang besar dan StaticKD menghilangkan biaya ini hampir seluruhnya. \en{Teacher} PyTorch fp32 memerlukan 2,816~ms per artikel pada satu \en{core} dan mencapai \en{throughput} 0.34 artikel per detik. Konfigurasi CPU terbaik untuk \en{teacher} adalah ONNX int8 (1,190~ms per artikel dan 0.79 artikel per detik). Kecepatan kedua konfigurasi ini berarti klasifikasi satu juta artikel per hari akan memerlukan 14.7 \en{core} (ONNX int8) hingga 33.7 \en{core} (PyTorch) untuk langkah ini saja. Beban yang sama memerlukan 0.02 \en{core} pada StaticKD.
 
-Kecepatan StaticKD pada satu \en{core} melampaui semua model berbasis \en{transformer} dan mirip dengan model ringan lain. StaticKD memerlukan 2.01~ms per artikel dan dapat memproses 539 artikel per detik per \en{core} atau sekitar 682 kali kecepatan \en{teacher} ONNX int8 dan 1,572 kali kecepatan \en{teacher} PyTorch. MiniLM-L6 dan DistilmBERT hasil distilasi masih sekitar 32 dan 107 kali lebih lambat daripada StaticKD. Kecepatan satu \en{core} model ringan lain berkisar dari 433 artikel per detik untuk TF-IDF + SVM hingga 601 untuk varian ringkas. Tokenisasi membatasi kecepatan StaticKD karena memakan 98\% waktu prediksi satu \en{thread} dengan rata-rata 579 token per artikel sedangkan langkah merata-ratakan baris tabel yang menyusul tokenisasi mencapai 26,843 artikel per detik bila diukur sendiri.
+Kecepatan StaticKD pada satu \en{core} melampaui semua model berbasis \en{transformer} dan mirip dengan model ringan lain. StaticKD memerlukan 2.01~ms per artikel dan dapat memproses 539 artikel per detik per \en{core} atau sekitar 682 kali \en{throughput} \en{teacher} ONNX int8 dan 1,572 kali \en{throughput} \en{teacher} PyTorch. MiniLM-L6 dan DistilmBERT hasil distilasi masih sekitar 32 dan 107 kali lebih lambat daripada StaticKD. Kecepatan satu \en{core} model ringan lain berkisar dari 433 artikel per detik untuk TF-IDF + SVM hingga 601 untuk varian ringkas. Tokenisasi membatasi kecepatan StaticKD karena memakan 98\% waktu prediksi satu \en{thread} dengan rata-rata 579 token per artikel sedangkan langkah merata-ratakan baris tabel yang menyusul tokenisasi mencapai 26,843 artikel per detik bila diukur sendiri.
 
-StaticKD juga memerlukan berkas yang lebih kecil daripada \en{teacher} serta berkas dan RAM yang lebih kecil daripada pengklasifikasi Model2Vec. Berkas StaticKD 16 kali lebih kecil daripada berkas \en{teacher} ONNX int8. Pengklasifikasi Model2Vec yang menyamai akurasi StaticKD memerlukan 507~MB di \en{disk} dan 1,091~MB RAM dibandingkan dengan 501~MB RAM pada StaticKD. Gambar~\ref{fig:tradeoff} memperlihatkan bahwa StaticKD dan pengklasifikasi Model2Vec hampir berimpit pada panel (a) tetapi terpisah pada sumbu RAM di panel (b). RAM StaticKD tersebut sebagian besar diisi struktur \en{tokenizer} dan turun menjadi 277~MB pada varian ringkas. Model fastText + KD terkuantisasi lebih kecil (18~MB) dan memakai lebih sedikit RAM (300~MB) daripada StaticKD tetapi hanya mencapai macro-F1 \en{test} 0.439.
+StaticKD juga memerlukan berkas yang lebih kecil daripada \en{teacher} serta berkas dan RAM yang lebih kecil daripada pengklasifikasi Model2Vec. Berkas StaticKD 16 kali lebih kecil daripada berkas \en{teacher} ONNX int8. Pengklasifikasi Model2Vec yang menyamai akurasi StaticKD memerlukan 507~MB di \en{disk} dan 1,091~MB RAM dibandingkan dengan 501~MB RAM pada StaticKD. Gambar~\ref{fig:tradeoff} memetakan macro-F1 \en{test} terhadap \en{throughput} satu \en{core} pada panel (a) dan RAM pada panel (b) dalam skala log dengan \en{Pareto frontier} sebagai garis putus-putus. StaticKD dan pengklasifikasi Model2Vec seri pada panel (a) karena macro-F1 keduanya setara dan \en{throughput} keduanya pada tiga sesi pengukuran saling tumpang tindih (530--553 dan 547--569 artikel per detik). RAM StaticKD tersebut sebagian besar diisi struktur \en{tokenizer} dan turun menjadi 277~MB pada varian ringkas. Model fastText + KD terkuantisasi lebih kecil (18~MB) dan memakai lebih sedikit RAM (300~MB) daripada StaticKD tetapi hanya mencapai macro-F1 \en{test} 0.439.
 
 \subsection{Ablasi, \en{Temperature}, dan \en{Ensemble}}
 \label{sec:res-abl}
 \begin{table*}[!t]
-\caption{Ablasi dan \en{Temperature} (Satu \en{Student}, Tanpa \en{Ensemble}). Rata-Rata $\pm$ Simpangan Baku atas \en{Seed}. $^{*}$ = Berbeda dari Resep Akhir (\en{Bootstrap} Berpasangan, Holm, $p<0.05$). $\Delta$ = Macro-F1 \en{Test} Dikurangi Macro-F1 \en{Test} Resep Akhir [95\% CI]. $^{\dagger}$ = Setara dalam $\pm$0.01 (TOST)}
+\caption{Ablasi dan \en{Temperature} untuk Satu \en{Student} tanpa \en{Ensemble}}
 \label{tab:ablation}
 \centering
 \scriptsize
@@ -576,9 +577,10 @@ Varian & Seed & Macro-F1 dev & Agreement held-out & Macro-F1 test & $\Delta$ mac
 \quad $\tau=4$ & 5 & 0.723$\pm$0.004$^{*}$ & 0.791$\pm$0.001$^{*}$ & 0.529$\pm$0.002 & $-$0.014 [$-$0.020, +0.001] \\
 \bottomrule
 \end{tabular}
+\par\vspace{2pt}{\footnotesize Rata-rata $\pm$ simpangan baku atas \en{seed}; $^{*}$ = berbeda dari resep akhir (\en{bootstrap} berpasangan, Holm, $p<0.05$); $\Delta$ = macro-F1 \en{test} dikurangi macro-F1 \en{test} resep akhir [95\% CI]; $^{\dagger}$ = setara dalam $\pm$0.01 (TOST).\par}
 \end{table*}
 \begin{table}[!t]
-\caption{Macro-F1 Varian Terpilih menurut Jumlah Data Distilasi dalam Bahasa Artikel (\en{Test Set}, Rata-Rata atas \en{Seed})}
+\caption{Macro-F1 Varian Terpilih menurut Data Distilasi Bahasa Artikel}
 \label{tab:ablation-groups}
 \centering
 \footnotesize
@@ -601,7 +603,7 @@ $\tau=2$ & 0.748 & 0.612 & 0.476 & 0.363 \\
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_ablation_forest.pdf}
-\caption{Selisih macro-F1 \en{test} antara setiap varian ablasi dan resep akhir (varian dikurangi resep akhir). Pengodean mengikuti Gambar~\ref{fig:sig-forest}. Sebuah garis memisahkan ablasi komponen dari nilai \en{temperature}.}
+\caption{Selisih macro-F1 \en{test} antara setiap varian ablasi dan resep akhir.}
 \label{fig:abl-forest}
 \end{figure}
 Tabel~\ref{tab:ablation} menunjukkan bahwa sebagian besar akurasi berasal dari dua komponen: data distilasi multibahasa dan \en{embedding} hasil prapelatihan. \en{Student} yang didistilasi pada EMMediaTopic saja (4 bahasa) sebagai pengganti data distilasi multibahasa kehilangan 0.051 pada macro-F1 \en{test} dan 0.077 pada \en{agreement} \en{held-out}. Penggantian \en{embedding} potion hasil prapelatihan dengan inisialisasi acak menurunkan macro-F1 \en{test} lebih banyak daripada varian lain mana pun (0.120, $p<0.001$). Gambar~\ref{fig:abl-forest} memperlihatkan bahwa hanya kedua varian ini yang berbeda signifikan dari resep akhir pada macro-F1 \en{test}.
@@ -619,7 +621,7 @@ Memperbesar \en{ensemble} memberi kenaikan kecil. Tiga \en{seed} sebagai ganti s
 Tabel~\ref{tab:groups} menunjukkan bahwa porsi skor \en{teacher} yang dipertahankan StaticKD lebih bervariasi menurut jumlah data distilasi dalam bahasa artikel daripada menurut asal label. Porsi per asal label berada antara 89.5\% untuk kategori penerbit dan 95.8\% untuk rubrik JSON-LD. Pengelompokan menurut data distilasi menunjukkan porsi yang turun dari 97.5\% pada bahasa dengan paling sedikit 500 dokumen distilasi menjadi 72.3\% pada bahasa tanpa data distilasi. Subkelompok tanpa data distilasi ini juga satu-satunya subkelompok di Tabel~\ref{tab:groups} tempat pengklasifikasi Model2Vec unggul atas StaticKD dengan selisih lebih dari 0.011 (0.429 berbanding 0.402).
 
 \begin{table*}[!t]
-\caption{Macro-F1 \en{Test} per Subkelompok. Kolom Terakhir: Macro-F1 StaticKD sebagai Persentase Macro-F1 \en{Teacher} pada Subkelompok yang Sama}
+\caption{Macro-F1 \en{Test} per Subkelompok}
 \label{tab:groups}
 \centering
 \scriptsize
@@ -663,7 +665,7 @@ Empat bahasa India (Bangla, Malayalam, Odia, dan Punjabi) menunjukkan perilaku S
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/fig_per_language.pdf}
-\caption{Kiri: akurasi StaticKD terhadap akurasi \en{teacher} per bahasa \en{test} (warna menunjukkan data distilasi bahasa, ukuran menunjukkan jumlah artikel). Kanan: \en{agreement} \en{held-out} per bahasa terhadap jumlah data distilasi untuk StaticKD dan fastText + KD terkuantisasi.}
+\caption{Akurasi \en{test} StaticKD terhadap \en{teacher} per bahasa (kiri) dan \en{agreement} \en{held-out} terhadap data distilasi (kanan).}
 \label{fig:lang}
 \end{figure*}
 
@@ -673,7 +675,7 @@ Tabel token StaticKD juga menunjukkan token mana yang membawa sinyal topik artik
 
 \subsection{Kalibrasi dan Mode \en{Cascade}}
 \begin{table}[!t]
-\caption{\en{Cascade} StaticKD $\rightarrow$ \en{Teacher} ONNX Int8 pada \en{Test Set} (\en{Throughput} Efektif Satu \en{Core})}
+\caption{\en{Cascade} StaticKD dan \en{Teacher} ONNX Int8 pada \en{Test Set}}
 \label{tab:cascade}
 \centering
 \footnotesize
@@ -693,7 +695,7 @@ Teacher saja & 0.0\% & -- & 0.600 & 0.699 & 0.79 \\
 \bottomrule
 \end{tabular}}
 \end{table}
-Tingkat keyakinan StaticKD lebih terkalibrasi daripada tingkat keyakinan \en{teacher}. ECE StaticKD adalah 0.041 pada \en{development set} dan 0.139 pada \en{test set} berbanding 0.090 dan 0.245 untuk \en{teacher}. Kedua model menjadi terlalu yakin pada \en{test set} di luar distribusi. Mode \en{cascade} memakai tingkat keyakinan ini untuk menentukan artikel yang diputuskan StaticKD. Tabel~\ref{tab:cascade} menunjukkan bahwa ambang $\theta$ yang lebih tinggi menyerahkan lebih banyak artikel kepada \en{teacher}. Akurasi pada porsi StaticKD karena itu naik dari 0.732 menjadi 0.839 tetapi \en{throughput} efektif turun dari 4.09 menjadi 1.63 artikel per detik. Mode \en{cascade} pada $\theta=0.8$ mencapai akurasi keseluruhan 0.703 dan macro-F1 0.602 berbanding 0.699 dan 0.600 untuk \en{teacher} saja. StaticKD sendiri memutuskan 60.3\% artikel dalam \en{cascade} ini dengan akurasi 0.813. \en{Throughput} efektif \en{cascade} ini adalah 1.98 artikel per detik per \en{core} atau 2.5 kali \en{throughput} \en{teacher} (0.79).
+Tingkat keyakinan StaticKD lebih terkalibrasi daripada tingkat keyakinan \en{teacher}. ECE StaticKD adalah 0.041 pada \en{development set} dan 0.139 pada \en{test set} berbanding 0.090 dan 0.245 untuk \en{teacher}. Kedua model menjadi terlalu yakin pada \en{test set} di luar distribusi. Mode \en{cascade} memakai tingkat keyakinan ini untuk menentukan artikel yang diputuskan StaticKD. Tabel~\ref{tab:cascade} menunjukkan bahwa ambang $\theta$ yang lebih tinggi menyerahkan lebih banyak artikel kepada \en{teacher}. Akurasi pada porsi StaticKD karena itu naik dari 0.732 menjadi 0.839 tetapi \en{throughput} efektif turun dari 4.09 menjadi 1.63 artikel per detik. Mode \en{cascade} pada $\theta=0.8$ setara dengan \en{teacher} saja pada macro-F1 dengan margin $\pm$0.01 (0.602 berbanding 0.600 dengan TOST $p<0.001$) dan mencapai akurasi 0.703 berbanding 0.699. StaticKD sendiri memutuskan 60.3\% artikel dalam \en{cascade} ini dengan akurasi 0.813. \en{Throughput} efektif \en{cascade} ini adalah 1.98 artikel per detik per \en{core} atau 2.5 kali \en{throughput} \en{teacher} (0.79). Pengukuran \en{end-to-end} \en{cascade} pada 448 artikel \en{test set} meneruskan 35.0\% artikel ke \en{teacher} dan mencapai 2.18 artikel per detik berbanding 2.20 dari rumus pada Bagian~\ref{sec:effprotocol}.
 
 \section{Pembahasan}
 \label{sec:discussion}
@@ -731,7 +733,7 @@ Sebagian besar label \en{test set} tidak dianotasi langsung dengan topik IPTC se
 
 Cakupan label tidak merata antarbahasa. Median jumlah label yang muncul dalam setiap bahasa adalah 7 dan bahasa-bahasa Afrika hanya mencakup tiga sampai lima topik umum. Skor per bahasa tidak dapat dibandingkan secara langsung antara bahasa dengan cakupan label yang berbeda karena macro-F1 dihitung atas label yang ada.
 
-Keragaman situs juga terbatas. Dua puluh tujuh bahasa memiliki kurang dari 3 situs efektif. Artikel dalam bahasa tersebut sebagian besar berasal dari MasakhaNEWS, L3Cube-IndicNews, \en{dataset} berita Bangla, atau satu atau dua situs CC-NEWS. Klaim tentang bahasa-bahasa ini hanya berlaku untuk sumber-sumber tersebut. \en{Site-cluster bootstrap} melebarkan interval kepercayaan bahasa-bahasa ini secara sepadan. Semua interval \en{test set} bertumpu pada sejumlah kecil sumber independen karena seluruh \en{test set} hanya memiliki jumlah efektif 13.8 klaster.
+Keragaman situs juga terbatas. Dua puluh tujuh bahasa memiliki kurang dari 3 situs efektif. Artikel dalam bahasa tersebut sebagian besar berasal dari MasakhaNEWS, L3Cube-IndicNews, \en{dataset} berita Bangla, atau satu atau dua situs CC-NEWS. Klaim tentang bahasa-bahasa ini hanya berlaku untuk sumber-sumber tersebut. \en{Site-cluster bootstrap} melebarkan interval kepercayaan bahasa-bahasa ini secara sepadan. Semua interval \en{test set} terbatas pada situs dan bahasa di dalamnya dan bertumpu pada sejumlah kecil sumber independen karena seluruh \en{test set} hanya memiliki jumlah efektif 13.8 klaster. Uji Wilcoxon per bahasa memperlakukan bahasa sebagai unit independen walaupun 10 bahasa L3Cube-IndicNews berasal dari satu sumber.
 
 Pilihan pembanding, anggaran penyetelan, dan panjang input \en{transformer} membatasi perbandingan StaticKD dengan model lain. Sparse Distillation~\cite{ye2022sparse} tidak dijalankan sebagai \en{baseline}. Metode ini berbeda dari fastText + KD dan dari ablasi inisialisasi acak dalam lapisan tersembunyi \en{deep averaging network}-nya, target \en{soft-logit}-nya, dan tabel n-gram berskala miliar parameter yang dirancang untuk bahasa Inggris. Anggaran penyetelan tidak sama untuk semua model. Resep StaticKD ditetapkan pada \en{development set} sebelum \en{test set} dibangun dan \en{baseline} fastText serta TF-IDF disetel pada set yang sama dengan \en{grid} kecil. Pengklasifikasi Model2Vec memakai pengaturan bawaan pustaka dan model \en{transformer} mengikuti resep \en{fine-tuning} standar yang hanya mencari $\tau$ untuk MiniLM-L6. MiniLM-L6 dan DistilmBERT juga membaca paling banyak 256 token dalam perbandingan utama sehingga kedua model hanya mendapat kurang dari separuh teks sebagian besar artikel \en{test}. Pelatihan ulang kedua model dengan 512 token menaikkan macro-F1 \en{test} sebesar 0.014 dan 0.012 tanpa mengubah hasil perbandingan dengan StaticKD (Bagian~\ref{sec:res-acc}).
 
@@ -739,13 +741,13 @@ Pengukuran efisiensi bergantung pada satu mesin. Seluruh \en{benchmark} dijalank
 
 Kelemahan StaticKD pada bahasa Afrika yang tidak ada dalam data distilasi maupun data prapelatihan (Bagian~\ref{sec:res-lang}) berarti filter topik yang berbasis model ini dapat lebih sering salah mengklasifikasikan atau membuang berita dalam bahasa-bahasa ini. Akurasi seharusnya dipantau per bahasa selama penerapan. Artikel dengan tingkat keyakinan rendah seharusnya diarahkan ke \en{teacher} melalui mode \en{cascade}.
 
-\en{Teacher} membatasi kinerja \en{student} dari atas dan mewariskan kesalahan serta biasnya kepada \en{student}. Kesalahan warisan ini tidak terlihat pada \en{held-out set} karena set ini mengukur \en{agreement} dengan \en{teacher} dan bukan kebenaran.
+\en{Teacher} mewariskan kesalahan serta biasnya kepada \en{student}. Kesalahan warisan ini tidak terlihat pada \en{held-out set} karena set ini mengukur \en{agreement} dengan \en{teacher} dan bukan kebenaran.
 
 \section{Kesimpulan}
 \label{sec:conclusion}
 Pengklasifikasi IPTC multibahasa terbuka memerlukan 1.2 hingga 2.8 detik per artikel pada satu \en{core} CPU. StaticKD mendistilasi pengklasifikasi ini menjadi tabel berisi 17 logit per token. \en{Student} yang menghasilkan tabel ini diinisialisasi dari \en{embedding} statis multibahasa dan kemudian dilatih pada 285,999 artikel berlabel \en{teacher} dalam 69 bahasa. Evaluasi memakai 12,744 artikel \en{test} dalam 47 bahasa yang labelnya tidak berasal dari \en{teacher}. \en{Test set} ini dapat dipakai ulang untuk mengevaluasi pengklasifikasi IPTC lain.
 
-StaticKD mencapai macro-F1 0.545 pada \en{test set} tersebut (91.1\% dari skor \en{teacher}) dan memproses 539 artikel per detik per \en{core} CPU. Kecepatan ini sekitar 682 kali kecepatan \en{teacher} ONNX int8. Model berukuran 34~MB ini juga tidak memerlukan pustaka \en{deep learning}. Pengklasifikasi Model2Vec yang dilatih pada label \en{teacher} yang sama setara dengan StaticKD pada macro-F1 \en{test} tetapi memiliki berkas 15 kali lebih besar dan memerlukan memori dua kali lipat.
+StaticKD mencapai macro-F1 0.545 pada \en{test set} tersebut (91.1\% dari skor \en{teacher}) dan memproses 539 artikel per detik per \en{core} CPU. \en{Throughput} ini sekitar 682 kali \en{throughput} \en{teacher} ONNX int8. Model berukuran 34~MB ini juga tidak memerlukan pustaka \en{deep learning}. Pengklasifikasi Model2Vec yang dilatih pada label \en{teacher} yang sama setara dengan StaticKD pada macro-F1 \en{test} tetapi memiliki berkas 15 kali lebih besar dan memerlukan memori dua kali lipat.
 
 Ablasi menunjukkan bahwa akurasi \en{student} kecil ini terutama berasal dari data distilasi multibahasa dan \en{embedding} multibahasa hasil prapelatihan sedangkan \en{soft label} tidak lebih baik daripada \en{hard label}. \en{Embedding} beku menurunkan skor \en{development set} tetapi memberikan rata-rata skor yang lebih tinggi pada bahasa dengan data distilasi yang sedikit atau tidak ada meskipun kenaikan pada seluruh \en{test set} tidak signifikan.
 

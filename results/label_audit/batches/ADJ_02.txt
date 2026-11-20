@@ -1,0 +1,498 @@
+===== ITEM A166 | lang: uk =====
+HEADLINE: З військових можуть зняти кримінальну відповідальність за перше дезертирство
+TEXT:
+З військових можуть зняти кримінальну відповідальність за перше дезертирство Верховна Рада України прийняла за основу законопроєкт, що звільняє військових від
+кримінальної відповідальності за перший самовільний відхід з військової частини або дезертирство, якщо вони добровільно повернуться на службу та отримають
+письмову згоду від командира, повідомляє Дзеркало тижня. Як зазначив депутат Ярослав Железняк, законопроєкт №11322 у першому читанні підтримали 273 депутати.
+Згідно із запропонованими змінами законодавства, винуватець має повернутись в частину або до місця служби до закінчення провадження, а командир має надати згоду
+на продовження проходження військової служби такою особою. Така згода має бути оформлена у письмовому вигляді та передана прокурору. ( function(self) {
+googletag.cmd.push( function() { var gptAdSlot = googletag.defineSlot('/4152678/KD-Content1-Others-22', [],
+'div-gpt-ad-1508498991261-8').defineSizeMapping(window.gpt.mappingContent1).addService(googletag.pubads()); googletag.display('div-gpt-ad-1508498991261-8');
+googletag.pubads().addEventListener('slotRenderEnded', function(event) { if( event.slot == gptAdSlot && event.isEmpty ) { document.getElementById(
+event.slot.getSlotElementId() ).style.display = ''; document.getElementById( event.slot.getSlotElementId() ).innerHTML = ''; var gptAdSlotSecond =
+googletag.defineSlot('/4152678/KD-Content1-second-22', []).defineSizeMapping(window.gpt.mappingContent4).addService(googletag.pubads());
+document.getElementById( event.slot.getSlotElementId() ).appendChild( ( function() { var div = document.createElement('div'); div.id =
+gptAdSlotSecond.getSlotElementId(); return div; } )() ); googletag.display(gptAdSlotSecond); googletag.pubads().refresh([gptAdSlotSecond]);
+googletag.pubads().addEventListener('slotRenderEnded', function(event) { if( event.slot == gptAdSlotSecond && event.isEmpty ) { document.getElementById(
+event.slot.getSlotElementId() ).style.display = ''; document.getElementById( event.slot.getSlotElementId() ).innerHTML = '\r\n\r\n'; (adsbygoogle =
+window.adsbygoogle || []).push({}); } } ); } } ); } ); } )(this); ( function(self) { googletag.cmd.push( function() { var gptAdSlot =
+googletag.defineSlot('/4152678/KD-Mobile-2-22', [], 'div-gpt-ad-1508498991261-19').defineSizeMapping(window.gpt.mappingMobile2).addService(googletag.pubads());
+googletag.display('div-gpt-ad-1508498991261-19'); googletag.pubads().addEventListener('slotRenderEnded', function(event) { if( event.slot == gptAdSlot &&
+event.isEmpty ) { document.getElementById( event.slot.getSlotElementId() ).style.display = ''; document.getElementById( event.slot.getSlotElementId()
+).innerHTML = ''; var gptAdSlotSecond = googletag.defineSlot('/4152678/KD-Mobile-2-second-22',
+[]).defineSizeMapping(window.gpt.mappingMobile2).addService(googletag.pubads()); document.getElementById( event.slot.getSlotElementId() ).appendChild( (
+function() { var div = document.createElement('div'); div.id = gptAdSlotSecond.getSlotElementId(); return div; } )() ); googletag.display(gptAdSlotSecond);
+googletag.pubads().refresh([gptAdSlotSecond]); googletag.pubads().addEventListener('slotRenderEnded', function(event) { if( event.slot == gptAdSlotSecond &&
+event.isEmpty ) { document.getElementById( event.slot.getSlotElementId() ).style.display = ''; document.getElementById( event.slot.getSlotElementId()
+).innerHTML = '\r\n\r\n'; (adsbygoogle = window.adsbygoogle || []).push({}); } } ); } } ); } ); } )(this); Після поновлення на службі винуватцю мають поновити
+дію контракту, виплату грошового забезпечення та продовольчого, речового, інших видів забезпечення, пільги та соціальні гарантії. Водночас за час прогулу вони
+не виплачуватимуться. Водночас як вказала народна депутатка Ірина Геращенко, проєкт закону надає командирам військових частин дискреційні повноваження
+вирішувати, чи звільняти від відповідальності, тому законопроєкт потребує ретельного доопрацювання. Як розповів голова Верховного Суду Станіслав Кравченко, лише
+у 2023 році за самовільне залишення військової частини засудили 1577 військовослужбовців. Це є найпоширенішим злочином серед українських військових.
+OPTION_1: crime, law and justice
+OPTION_2: conflict, war and peace
+
+===== ITEM A176 | lang: de =====
+HEADLINE: Irans Außenminister bei ungewöhnlichem Besuch in Ägypten
+TEXT:
+Irans Außenminister bei ungewöhnlichem Besuch in Ägypten KAIRO (dpa-AFX) - Irans Außenminister führt angesichts des Kriegs in Nahost Gespräche in der
+ägyptischen Hauptstadt Kairo. Laut Staatsmedien kam Abbas Araghtschi am Morgen bereits mit seinem Kollegen Badr Abdel-Atti zusammen, um über die Eskalation in
+der Region zu sprechen. Es ist das erste Mal seit mehr als zehn Jahren, dass ein iranischer Außenminister nach Ägypten reist. Eigentlich sind die Beziehungen
+beider Länder angespannt.Differenzen gibt es unter anderem in ihrer Haltung zu Israel. Ägypten schloss 1979 einen Friedensvertrag mit Israel, während Teheran
+den jüdischen Staat als Erzfeind betrachtet und bewaffnete Gruppen im Kampf gegen Israel unterstützt. Irans Regierung sieht in der kritischen Haltung Ägyptens
+gegen die israelische Kriegsführung im Gazastreifen und Libanon eine Chance, gemeinsame Interessen zu verfolgen. Bereits vor Ausbruch des Gaza-Kriegs wollten
+Ägypten und der Iran ihre Beziehungen normalisieren.Zuvor war Araghtschi bereits für Gespräche in Jordanien, ein Land, das wie Ägypten auch gute Beziehungen zum
+Westen pflegt./arb/DP/men
+OPTION_1: politics
+OPTION_2: economy, business and finance
+
+===== ITEM A177 | lang: es =====
+HEADLINE: ''Mitigar el sufrimiento humano'', así trabaja el Centro san Camilo de pacientes terminales
+TEXT:
+''Mitigar el sufrimiento humano'', así trabaja el Centro san Camilo de pacientes terminales En España 120.000 españoles requieren cuidados paliativos, pero sólo
+los reciben 48.000 (el 40%). Y 85.000 personas mueren al año sin haberlos recibido. Al contrario, en el caso del aborto, es mucho más fácil y rápido conseguir
+la intervención. La falta de paliativos y las vigentes leyes de eutanasia y el aborto suponen la cultura de la vida.El Centro Asistencial y de Humanización de
+la Salud san Camilo de Tres Cantos (Madrid) se dedica a trabajar con personas en la última fase de su vida. Ofrecen cuidados paliativos, que no sólo consiste en
+dar medicamentos, sino en acomapañar. Dar calidad de vida.José Carlos Bermejo es el director general del ''Este premio es un desafío para seguir conjugando la
+palabra humanizar al final de la vida y en el duelo''.El Centro San Camilo, premiado por Cruz Roja EspañolaEl 13 de mayo recibieron de manos de la reina Letizia
+la medalla de oro de Cruz Roja Española junto a otras entendido. En sus palabras, la monarca aseguró que la Cruz Roja tiene como objetivo ''mitigar el
+sufrimiento humano, en todas sus formas”. En cuanto a los premiados, esta medalla de oro “significa que vuestro trabajo es útil y tiene trasfondo social”. Dos
+cualidades que comparte con el centro tricantino. Bermejo asegura que la reina Letizia, en el discurso oficial y en el coloquio posterior, les reconoció como
+''una institución de la Iglesia, abierta a las necesidades en el final de la vida, dar dignidad hasta el final''.''La situación paliativa en España es diferente
+según las comunidades autónomas desgraciadamente''. Anima a confiar en las unidades de cuidados paliativos concertadas y de la Iglesia, ''donde las personas
+viven hasta el final sacando el jugo a cada minuto, sea celebrando, perdonando, despidiéndose y vivir la dignidad''.La Ley de Cuidados Paliativos, un objetivo
+soñado''Hay mucha diferencia en los modos de vivir. Cuando se controlan los síntomas físicos, surge la capacidad de cuidar las relaciones con nuestros seres
+queridos'', asegura el director del Centro san Camilo.Se está presionando para crear una ley de cuidados paliativos, sobretodo cuando hay una ley de eutanasia.
+''Hay que cambiar las cabezas de los ciudadanos. En las escuelas, familias y parroquias hay que hablar del morir y del paliar. ''La cultura la hacemos los
+ciudadanos''. Asegura que si lo construimos entre todos, ''las leyes cristalizarán el sentir de la sociedad''.
+OPTION_1: religion
+OPTION_2: health
+
+===== ITEM A181 | lang: mr =====
+HEADLINE: 
+TEXT:
+सध्याच्या मुलींचा लूक हाय हिल्सशिवाय पूर्ण होत नाही.पण हाय हिल्स घातल्याने अनेकदा पायांच्या दुखण्याला सामोरं जावं लागतं.तसेच खूप वेळ हाय हिल्स घातल्याने किंवा
+खूपवेळ हाय हिल्स घालून चालल्याने शू-बाइटचा त्रास होतो.हिल्स घालायला आवडत असतील पण त्यामुळे होणाऱ्या त्रासापासून सुटका करून घ्यायची असेल तर काही टिप्सचा वापर
+तुम्ही करू शकता.अशातच अनेकवेळा योग्य साइज निवडणं अशक्य होतं.त्यामुळे हिल्स घेण्याआधी पायांचं माप घ्या आणि त्यानंतरच फुटवेअर ट्राय करा.काहींचे पाय फ्लॅट असतात.तर
+काहींचे कर्व्ड असतात.अशातच सर्वात आधी आपल्या पायाचा प्रकार ओळखून हिल्स खरेदी करणं फायदेशीर ठरतं.परंतु, कम्फर्टचा विचार कराल तर मोठ्या हिल्स जास्त कंर्म्फटेबल
+असतात.कारण या हिल्स घातल्याने पायांना जास्त सपोर्ट मिळतो.यामुळे पायांवर प्रेशर पर कमी येतं.परंतु, पायांच्या दुखण्यामुळे हिल्स घालण्यापासून ब्रेक घेणं गरजेचं
+असतं.हिल्स घालून सतत चालणं किंवा उभं राहणं दुखण्याचं कारण ठरू शकतं.त्यामुळे थोडा वेळ त्या पायातून काढा आणि पायांना आराम द्या.
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: lifestyle and leisure
+
+===== ITEM A185 | lang: it =====
+HEADLINE: In Italia è stato avvistato uno squalo mako non distante dalla costa
+TEXT:
+In Italia è stato avvistato uno squalo mako non distante dalla costa È uno dei predatori più veloci degli oceani ed è stato avvistato a poca distanza dalla
+costa italiana. Uno squalo mako è stato protagonista di un incontro particolare nel Salento, per l’esattezza a Porto Cesareo. Si tratta di un evento che
+evidenzia la ricchezza e la fragilità della biodiversità dei nostri mari, che dovrebbe spingerci a una maggiore conoscenza di queste creature e delle sfide per
+la loro sopravvivenza. Uno squalo mako al largo di Porto Cesareo L’incontro è avvenuto la sera di domenica 10 agosto, a cinque miglia dalla costa di Porto
+Cesareo, nel Salento. Durante una battuta di pesca di tonni, Francesco Baldieri e il padre Paolo si sono imbattuti in un giovane esemplare di squalo mako, lungo
+circa un metro. “Uno squalo bellissimo, un essere stupendo – spiega Francesco Baldieri, istruttore e guida ambientale, a Repubblica – che si è spinto fin sotto
+il gommone, come se volesse giocare. Un bel segnale per il nostro mare perché significa che è molto pulito e ideale per la riproduzione (…). È stato un incontro
+veramente emozionante e lo squaletto non era per nulla spaventato”. I due uomini hanno immortalato l’evento in un video che, in breve, ha fatto il giro dei
+social e non solo. Anche gli esperti hanno puntato l’attenzione sull’avvistamento. Una di questi è la dottoressa Diana D’Agata, veterinaria ed esperta di fauna
+marina, che ha confermato con il 99% di certezza che si trattava proprio di uno squalo mako, definendolo un “avvistamento raro e ben visibile” che ricorda la
+ricchezza della biodiversità marina. D’Agata ha anche precisato che, sebbene si tratti di una specie aggressiva, lo squalo mako “tendenzialmente non è
+interessato all’uomo come preda, ma può comunque essere pericoloso per i pescatori”. Il presidente dello Sportello dei Diritti, Giovanni D’Agata, ha aggiunto
+che la presenza di questi pesci pelagici indica la buona salute dell’ecosistema marino ionico, attribuendola alla pulizia delle acque e a una catena alimentare
+abbondante che attira grandi predatori. Perché si tratta di un evento così particolare Lo squalo mako (Isurus oxyrinchus) è una specie prevalentemente pelagica
+che vive in acque aperte, lontano dalle coste. Perciò la sua comparsa a sole cinque miglia da Porto Cesareo è insolita. Si tratta di un grande predatore della
+famiglia dei Lamnidi, la stessa dello squalo bianco. Ha un corpo affusolato e idrodinamico, pinne pettorali corte e una pinna caudale a mezzaluna,
+caratteristiche che lo rendono incredibilmente veloce. Non a caso è considerato lo squalo più veloce al mondo: è in grado di raggiungere 90-100 chilometri orari
+e di cacciare pesci veloci come il pesce azzurro e i calamari, ma anche marlin e pesci spada. Nel Mediterraneo ma anche a livello globale, la popolazione di
+squali mako è in forte declino, inserito nella Lista Rossa della Unione Internazionale per la Conservazione della Natura (IUCN), con una diminuzione di quasi il
+99% negli ultimi due secoli nel solo bacino mediterraneo. Non si tratta di un evento unico e, anzi, avvistamenti occasionali vicino alla costa si sono già
+verificati.
+OPTION_1: environment
+OPTION_2: science and technology
+
+===== ITEM A187 | lang: tr =====
+HEADLINE: Televizyon Dünyasıyla İlgili Yaptıkları Paylaşımlarla Hepimizi Kahkahaya Boğan Kullanıcılar
+TEXT:
+Televizyon Dünyasıyla İlgili Yaptıkları Paylaşımlarla Hepimizi Kahkahaya Boğan Kullanıcılar Bu hafta televizyon dünyasıyla ilgili yaptıkları eğlenceli ve komik
+paylaşımlarla hepimizi güldüren kullanıcıları derledik. Kahkahanız bol olsun! İçeriğin Devamı Aşağıda Reklam İçeriğin Devamı Aşağıda Reklam 'Geniş' güvenlik
+önemleri 😂 Biraz geç kalmış olabilir ama denemekten zarar gelmez! Hürrem duymasın! Herkesin böyle bir kankası da vardır. İçeriğin Devamı Aşağıda Reklam Başarılı
+bir deneme 🤣 İçeriğin Devamı Aşağıda Reklam 😂😂😂 O hissi bilenler bilir. 'Tam da böyledir' diyenler burada mı? Aynen öyle... Keşfet ile ziyaret ettiğin tüm
+kategorileri tek akışta gör! Yorumlar ve Emojiler Aşağıda Reklam 2020 yılında TOBB Ekonomi ve Teknoloji Üniversitesi Güzel Sanatlar, Tasarım ve Mimarlık
+Fakültesi Görsel İletişim Tasarımı bölümü mezunuyum. Dijital dünya, fotoğraf, tasarım ve renklerin ahengine kendimi kaptırmaktan keyif aldığım dönemlerde
+magazinin uçsuz bucaksız dünyasının da inanılmaz eğlenceli olduğunu keşfettim. Yaklaşık üç yıldır Onedio’da editörlük yapıyorum. Buradaki maceram süresince en
+içten ve biz bize konuşuyor tadındaki içeriklerimi sizlere sunmak istiyorum. Tüm içerikleri
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: (none)
+
+===== ITEM A189 | lang: el =====
+HEADLINE: “Ο κόσμος ψιθύριζε και με έδειχνε με το δάχτυλο”: Ο Τζόνι Ντεπ θυμήθηκε την εποχή που ένιωθε τρομοκρατημένος α
+TEXT:
+“Ο κόσμος ψιθύριζε και με έδειχνε με το δάχτυλο”: Ο Τζόνι Ντεπ θυμήθηκε την εποχή που ένιωθε τρομοκρατημένος α Στο δεύτερο επεισόδιο για τη ζωή και το έργο του
+Τιμ Μπάρτον, μίλησε ο Τζόνι Ντεπ, υπό τις σκηνοθετικές οδηγίες της Τάρα Γουντ. Στο ντοκιμαντέρ των τεσσάρων τμημάτων, συμμετέχουν επίσης οι Γουινόνα Ράιντερ,
+Ελένα Μπόναμ Κάρτερ και Μάικλ Κίτον.Ο διάσημος ηθοποιός του Χόλιγουντ, που μας έχει χαρίσει εξαιρετικές ερμηνείες με τους ρόλους του, θυμήθηκε την εποχή που η
+φήμη του εκτοξεύτηκε, μετά την ταινία “Edward Scissorhands”, του Τιμ Μπάρτον, το 1990. Παραδέχτηκε, επίσης, πως ένιωθε άβολα, όταν του έδειξαν υλικό από αρχείο,
+στο οποίο ο σκηνοθέτης τον περιέγραφε ως κάτι περισσότερο από sex symbol, όπως δηλαδή τον παρουσίαζαν εκείνη την εποχή τα μέσα μαζικής ενημέρωσης.«Ήμουν
+τρομοκρατημένος με την ξαφνική φήμη», λέει χαρακτηριστικά ο Τζόνι Ντεπ στο ντοκιμαντέρ και προσθέτει: «Οι παπαράτσι με τραβούσαν φωτογραφίες. Ο κόσμος ψιθύριζε
+και με έδειχνε με το δάχτυλο. Ένιωθα εντελώς εκτεθειμένος».Johnny Depp Was 'Completely Freaked Out' by Heartthrob Status as a Young Actor: 'People Would
+Whisper' https://t.co/WQUFjboa3S— People (@people) March 14, 2025Ο ηθοποιός αναφέρθηκε και στην πρώτη συνάντηση με τον Τιμ Μπάρτον, με τον οποίο αμέσως ένιωσε
+μια σύνδεση. «Αυτό που παρατήρησα την πρώτη φορά που συναντηθήκαμε ήταν ότι δεν μιλούσε πολύ. Ξεκινούσε μία πρόταση και εγώ έλεγα ‘ω, ναι’, και μετά μιλούσαμε
+για τον Μπόρις Καρλόφ ή κάτι τέτοιο. Είχαμε πολλά κοινά σημεία» και πρόσθεσε: «Μετά από περίπου 3,5 ώρες μιας πολύ ωραίας κουβέντας μαζί του, σκεφτόμουν πως
+“δεν έχεις καμία τύχη, φίλε. Καμία τύχη”», αναφερόμενος για τον ρόλο του στο “Edward Scissorhands”.Η ταινία αποδείχτηκε, τελικά, επιτυχία για τον Τιμ Μπάρτον
+και τον Τζόνι Ντεπ και οι δύο τους συνεργάστηκαν και σε επόμενες ταινίες όπως το «Ed Wood» το 1994, το «Charlie and the Chocolate Factory» το 2005, το «Sweeney
+Todd: The Demon Barber of Fleet Street» το 2007.Καθώς μιλούσε για την ερμηνεία του στο «Edward Scissorhands», ο ήθοποιός είπε πως συνειδητοποίησε από ένα σημείο
+και μετά ότι ο χαρακτήρας βασιζόταν στην προσωπικότητα του Μπάρτον και ανησύχησε μήπως δεν ήταν καλός. «Είχα ρόλο στην ταινία, αλλά έμπαινα σε μια οικογένεια
+στην οποία δεν είχα ακόμα πλήρως ενταχθεί», είπε ο Ντεπ. «Ήμουν απόλυτα πεπεισμένος ότι τα κατέστρεφα όλα. Ο Τιμ είχε προετοιμάσει όλους τους άλλους ηθοποιούς.
+Όλους. Εμένα όχι. Δεν με προετοίμασε. Με απέκλειε από την ομάδα και το συνεργείο, με απομόνωνε».Αν και ο Τζόνι Ντεπ συνειδητοποίησε ότι ο Μπάρτον τον είχε
+απομονώσει σκόπιμα από το υπόλοιπο καστ, κατά τη διάρκεια των γυρισμάτων, προκειμένου να τον βοηθήσει να κατανοήσει την απομόνωση που βιώνει ο χαρακτήρας του,
+θυμάται την αρχική του αντίδραση ως μια τρομακτική εμπειρία. «Ήταν τρομακτικό. Ήμουν υπερβολικά παρανοϊκός. Γιατί ο Μπάρτον δεν με προετοιμάζει; Ίσως με
+εμπιστεύεται. Όχι, δεν με εμπιστεύεται. Δεν με εμπιστεύεται, τι λες, είναι τρελός; Θα πάρει κάποιον άλλον, φίλε».
+OPTION_1: human interest
+OPTION_2: arts, culture, entertainment and media
+
+===== ITEM A191 | lang: id =====
+HEADLINE: 
+TEXT:
+Liputan6.com, Jakarta - Badan Usaha Milik Negara (BUMN) yang bergerak di bidang jasa kepelabuhan, yakni PT Pelabuhan Indonesia II (Persero) atau IPC kembali
+membuka lowongan kerja terbaru. Kali ini, IPC membuka lowongan kerja melalui Rekrutmen Alih Daya 2019. Pendaftaran lowongan kerja dibuka 11 Maret 2019.
+Nantinya, kandidat yang terpilih akan ditempatkan untuk posisi Administrator pada kantor pusat dan tujuh kantor cabang. Mengutip laman IPC, Rabu (27/2/2019),
+berikut kriteria bagi para pelamar dan tata cara pendaftaran lowongan kerja tersebut: Rekrutmen Alih Daya 2019 Rekrutmen Alih Daya untuk posisi Administrator
+pada: - Kantor Pusat - Cabang Pelabuhan Banten - Cabang Pelabuhan Bengkulu - Cabang Pelabuhan Palembang - Cabang Pelabuhan Panjang - Cabang Pelabuhan Pontianak
+- Cabang Pelabuhan Teluk Bayur - Cabang Pelabuhan Tanjung Priok
+OPTION_1: labour
+OPTION_2: economy, business and finance
+
+===== ITEM A196 | lang: hi =====
+HEADLINE: 
+TEXT:
+UKSSSC Forest constable admit card: यूकेएसएससी फॉरेस्ट कॉन्स्टेबल फिजिकल एफिशिएंसी टेस्ट-2021 27 जुलाई से आयोजित किया जाएगा। उम्मीदवारों को प्रवेश पत्र के साथ
+वन कांस्टेबल पद के लिए घोषणा पत्र डाउनलोड करना आवश्यक है।उत्तराखंड अधीनस्थ सेवा आयोग UKSSSC ने पोस्टकोड 102 फॉरेस्ट कॉन्स्टेबल फिजिकल एफिशिएंसी टेस्ट- 2021 के
+लिए एडमिट कार्ड जारी कर दिया है। उम्मीदवार उत्तराखंड अधीनस्थ सेवा आयोग की आधिकारिक वेबसाइट https://sssc.uk.gov.in/ से एडमिट कार्ड डाउनलोड कर सकते हैं।
+यूकेएसएससी फॉरेस्ट कॉन्स्टेबल फिजिकल एफिशिएंसी टेस्ट-2021 27 जुलाई से आयोजित किया जाएगा। उम्मीदवारों को प्रवेश पत्र के साथ वन कांस्टेबल पद के लिए घोषणा पत्र
+डाउनलोड करना आवश्यक है।How to download the UKSSSC Forest constable admit card<br />एडमिट कार्ड डाउनलोड करने के लिए सबसे पहले आधिकारिक वेबसाइट
+https://sssc.uk.gov.in/ पर जाएं।एडमिट कार्ड डाउनलोड करने के लिए होम पेज पर ‘Click to download Provisional Admit Card for Post Code-102 Designation-Forest
+Constable Physical Efficiency Test-2021’ लिंक दिखाई देगा। उसपर क्लिक करें।अब नया पेज खुल जाएगा। नए पेज पर आपको एडमिट कार्ड डाउनलोड करने का लिंक दिया गया होगा।
+उसपर क्लिक करें।अब यहां आपको अपना नाम और पिता का नाम डालकर सबमिट करना होगा। सबमिट करते ही एडमिट कार्ड आपके सामने आ जाएगा।उम्मीदवार के नाम और पिता के नाम की
+कुंजी और सबमिट पर क्लिक करें। अब आपका एडमिट कार्ड आपके सामने होगा।उत्तराखंड अधीनस्थ चयन आयोग (UKSSSC) ने ग्रुप सी के तहत जेल गार्ड के पद पर भर्ती के लिए
+नोटिफिकेशन जारी किया है। यूकेएसएसएससी जेल गार्ड आवेदन करने के लिए ऑनलाइन लिंक 01 जुलाई 2021 को आधिकारिक वेबसाइट पर एक्टिव चुका है। उम्मीदवार यूकेएसएसएससी भर्ती
+के लिए 14 अगस्त 2021 तक आवेदन कर सकते हैं। ऑनलाइन आवेदन करने के लिए यूकेएसएसएससी की आधिकारिक वेबसाइट sssc.uk.gov.in पर जाना होगा। अधिक जानकारी के लिए नोटिफिकेशन
+को ध्यान से पढ़ें।
+OPTION_1: labour
+OPTION_2: education
+
+===== ITEM A198 | lang: pl =====
+HEADLINE: Polityczne wątki na Oscarach. Jimmy Kimmel bezlitośnie zadrwił z Donalda i Melanii Trump
+TEXT:
+Polityczne wątki na Oscarach. Jimmy Kimmel bezlitośnie zadrwił z Donalda i Melanii Trump Za nami 98. uroczystość rozdania najważniejszych filmowych nagród na
+świecie. Zgodnie z wieloletnią tradycją, gala wręczenia Oscarów nie obyła się bez licznych odniesień do bieżącej sytuacji politycznej na globie. Tym razem
+amerykańskie elity artystyczne wzięły na tapet urzędującego prezydenta Stanów Zjednoczonych. Znany satyryk i gospodarz programów telewizyjnych, Jimmy Kimmel,
+wykorzystał moment prezentacji statuetek dla najlepszych filmów dokumentalnych, aby otwarcie wbić szpilę Donaldowi Trumpowi. - Na takich galach często mówi się
+o odwadze, ale prawdziwą odwagą jest opowiedzieć historię, za którą można zapłacić życiem. Jak wiecie, są kraje, których przywódcy nie wspierają wolności słowa.
+Nie mogę jednak powiedzieć, o które chodzi. Powiedzmy tylko: Korea Północna i CBS. Oscary: Jimmy Kimmel kpi z pierwszej damy Melanii Trump Amerykański prezenter
+na tym nie poprzestał i w swoim monologu bezpośrednio zaatakował również żonę przywódcy USA. Jimmy Kimmel nawiązał do niedawnej premiery filmu dokumentalnego
+"Melania", który skupia się wokół codziennego życia samej Melanii Trump. Komik postanowił celnie podsumować tę telewizyjną produkcję, ironicznie zestawiając ją
+z odważnymi reportażami z linii frontu, które starają się obnażać globalne niesprawiedliwości. - Na szczęście istnieje międzynarodowa społeczność filmowców,
+którzy poświęcają się opowiadaniu prawdy, często ryzykując wiele, by tworzyć filmy uczące nas czegoś, demaskujące niesprawiedliwość i inspirujące do działania.
+Są też jednak dokumenty, w których po prostu spaceruje się po Białym Domu, przymierzając buty - mówił. Po tym dowcipie błyskawicznie dodał kolejną polityczną
+uszczypliwość pod adresem prezydenckiej pary. - O, człowieku, on będzie wściekły, że jego żona nie została nominowana za to. Poruszające słowa o Ukrainie i
+stanowczy apel Javiera Bardema o Palestynę Podczas hollywoodzkiej nocy bardzo wyraźnie wybrzmiał również temat konfliktu zbrojnego na wschodzie Europy.
+Najwyższe uznanie Akademii i statuetkę za najlepszy pełnometrażowy dokument otrzymała produkcja "Pan Nikt kontra Putin". Odbierając prestiżową nagrodę, reżyser
+David Borenstein wygłosił niezwykle emocjonalne przemówienie, w którym stanowczo zwrócił uwagę na trwający od kilku lat dramat na terytorium Ukrainy. Co
+ciekawe, na oscarowej scenie zabrakło Seana Penna. Ceniony aktor został nagrodzony złotą statuetką w kategorii dla najlepszego aktora drugoplanowego za kreację
+w dziele "Jedna bitwa po drugiej", jednak całkowicie zrezygnował z udziału w uroczystej gali. Jak informował dziennik "New York Times", nieobecność laureata na
+ceremonii była podyktowana jego rzekomo planowaną wizytą na ogarniętej wojną Ukrainie. Z kolei hiszpański gwiazdor Javier Bardem, zanim oficjalnie otworzył
+kopertę i odczytał tytuł zwycięzcy w kategorii dla najlepszego filmu międzynarodowego, zdecydował się wykorzystać czas antenowy na głośne wyrażenie swojego
+sprzeciwu wobec działań zbrojnych na Bliskim Wschodzie. - Nie wojnie i wolna Palestyna!
+OPTION_1: politics
+OPTION_2: arts, culture, entertainment and media
+
+===== ITEM A203 | lang: tr =====
+HEADLINE: Ardahan’da Sibirya soğukları: Göle eksi 19
+TEXT:
+Ardahan’da Sibirya soğukları: Göle eksi 19 Ardahan ve ilçeleri Sibirya soğuklarına teslim oldu. Göle sıfırın altında 19 derece ile Ardahan’ın en soğuk ilçesi
+oldu. Ardahan’da Sibirya soğukları etkili oluyor. Gece en düşük hava sıcaklığının sıfırın altında 10 derece ölçüldüğü kent merkezinde ağaçları kırağı kapladı.
+Dondurucu soğukla birlikte Göle ilçesinde hava sıcaklığı sıfırın altında 19 derece ölçüldü. İlçe genelinde sis de etkili oldu. Hayati Demir, ’’Ardahan şu anda
+en soğuk günlerini yaşıyor. Ne yazık ki her sabah araçlar çalışmıyor. Ağaçlar dahi donuyor’’ dedi. Ardahan ve ilçelerinde gece en düşük hava sıcaklıkları şöyle
+oldu: "Ardahan merkez eksi 10, Göle eksi 19, Hanak eksi 12, Çıldır eksi 12, Damal eksi 9, Posof eksi 5."
+OPTION_1: environment
+OPTION_2: weather
+
+===== ITEM A205 | lang: kn =====
+HEADLINE: 
+TEXT:
+ಬೆಳಗಾವಿ: ಸವದತ್ತಿ ಯಲ್ಲಮ್ಮನ (Savadatti Yellamma) ದರ್ಶನಕ್ಕೆ ಹೋಗುತ್ತಿದ್ದ ವಾಹನ (Vehicle) ರಾಮದುರ್ಗ ತಾಲೂಕಿನ ಚಿಂಚನೂರು ವಿಠಲ್ ದೇವಸ್ಥಾನದ ಬಳಿ ಭೀಕರ ಅಪಘಾತವಾಗಿ (Accident) ಆರು
+ಜನ ಮೃತಪಟ್ಟ ಘಟನೆ ನಡೆದಿದೆ.ರಾಮದುರ್ಗ ತಾಲೂಕಿನ ಹುಲಕುಂದ ಗ್ರಾಮದ ಹನಮವ್ವ ಮ್ಯಾಗಾಡಿ (25), ದೀಪಾ (31), ಸವಿತಾ (17), ಸುಪ್ರೀತಾ (11), ಮಾರುತಿ (42), ಇಂದ್ರವ್ವ (24) ಮೃತರು. ಮೃತರೆಲ್ಲರೂ
+ಸವದತ್ತಿ ರೇಣುಕಾ ಯಲ್ಲಮ್ಮನ ದೇವಿ ದರ್ಶನಕ್ಕೆ ನಡೆದುಕೊಂಡು ಹೊರಟಿದ್ದರು. ಈ ವೇಳೆ ಮಾರ್ಗ ಮಧ್ಯೆ ಬಂದ ಮಹೇಂದ್ರ ಗೂಡ್ಸ್ ವಾಹನ ಚಾಲಕ ಮೃತರೆಲ್ಲರನ್ನೂ ತನ್ನ ವಾಹನದಲ್ಲಿ ಕರೆದುಕೊಂಡು ಹೋಗುವಾಗ
+ಚಾಲಕನ ನಿಯಂತ್ರಣ ತಪ್ಪಿ ಆಲದ ಮರಕ್ಕೆ ಡಿಕ್ಕಿ ಹೊಡೆಸಿದ್ದಾನೆ. ಇದನ್ನೂ ಓದಿ: 86ನೇ ಕನ್ನಡ ಸಾಹಿತ್ಯ ಸಮ್ಮೇಳನಕ್ಕೆ ಹಾವೇರಿ ನಗರ ಸಜ್ಜು- ಶುಕ್ರವಾರದಿಂದ 3 ದಿನಗಳ ಕಾಲ ಕನ್ನಡ ಹಬ್ಬಡಿಕ್ಕಿ
+ರಭಸಕ್ಕೆ ಸ್ಥಳದಲ್ಲೇ ಐವರು ಭಕ್ತರು ಸಾವನ್ನಪ್ಪಿದ್ದು, ಆಸ್ಪತ್ರೆಯಲ್ಲಿ ಓರ್ವ ಮೃತಪಟ್ಟಿದ್ದಾರೆ. ಇನ್ನೂ ಹಲವರ ಸ್ಥಿತಿ ಗಂಭೀರವಾಗಿದೆ ಎಂದು ಪೊಲೀಸರು ತಿಳಿಸಿದ್ದಾರೆ. ಈಗಾಗಲೇ ಸ್ಥಳದಲ್ಲೇ
+ಬಿಡುಬಿಟ್ಟಿರುವ ಬೆಳಗಾವಿ ಎಸ್ಪಿ ಪರಿಶೀಲನೆ ನಡೆಸಿದ್ದಾರೆ. ಮೃತದೇಹವನ್ನು ಯರಗಟ್ಟಿ ಆಸ್ಪತ್ರೆಯಲ್ಲಿ ಇಡಲಾಗಿದ್ದು, ಮರಣೋತ್ತರ ಪರೀಕ್ಷೆ ನಡೆಸಲು ಸಿದ್ಧತೆ ಮಾಡಿಕೊಳ್ಳಲಾಗಿದೆ. ಇದನ್ನೂ ಓದಿ:
+ಇಂದು ಸಿದ್ದೇಶ್ವರ ಶ್ರೀಗಳ ಚಿತಾಭಸ್ಮ ವಿಸರ್ಜನೆ- ಭಕ್ತರಿಗೆ ಕೊಡಲ್ಲ ಪೂಜ್ಯರ ಚಿತಾಭಸ್ಮ Join our Whatsapp group by clicking the below link
+https://chat.whatsapp.com/E6YVEDajTzH06LOh77r25k
+OPTION_1: crime, law and justice
+OPTION_2: disaster, accident and emergency incident
+
+===== ITEM A214 | lang: id =====
+HEADLINE: Layanan SIM Keliling di Bali Senin (16/12), Cek Jadwal dan Lokasinya!
+TEXT:
+Layanan SIM Keliling di Bali Senin (16/12), Cek Jadwal dan Lokasinya! bali.jpnn.com, DENPASAR - Layanan SIM Keliling kembali hadir di Bali pada bulan Desember
+2024. Semeton Bali bisa mendatangi polres setempat atau sejumlah layanan SIM Keliling yang disediakan untuk memperpanjang surat izin mengemudi. Layanan ini
+untuk mempermudah warga Bali mendapatkan SIM sesuai dengan jenis kendaraan yang dikemudikan. Senin hari ini (16/12), layanan SIM Keliling hadir di sejumlah
+kabupaten di Bali. Ada dua lokasi layanan SIM Keliling di Kabupaten Badung hari ini, yakni di traffic light (TL) Pengubengan Kangin (Malboro Barat) dan Mal
+Pelayanan Publik. Layanan SIM Keliling ini hadir mulai pukul 08.30 WITA sampai dengan selesai. Di Kabupaten Buleleng, layanan SIM Keliling hadir di Patas,
+Gerokgrak, mulai pukul 08.00 WITA sampai dengan 12.00 WITA. Layanan SIM Keliling ini hanya melayani permohonan perpanjangan SIM A dan C yang dapat dilakukan
+sebelum masa berlaku habis. Tersedia tiga gerai layanan SIM Keliling hari ini di Kabupaten Badung dan Buleleng, catat jadwal dan lokasinya semeton. Silakan baca
+konten menarik lainnya dari JPNN.com Bali di Google News
+OPTION_1: politics
+OPTION_2: crime, law and justice
+
+===== ITEM A219 | lang: ru =====
+HEADLINE: Конфликт с работодателем привел к аресту VENUS-1 — дипломаты вмешались
+TEXT:
+Конфликт с работодателем привел к аресту VENUS-1 — дипломаты вмешались Рыболовецкое судно VENUS-1 с 13 гражданами России на борту арестовано в Намибии. Об этом
+сообщает посольство РФ в стране. По данным дипмиссии, причиной стал трудовой спор между экипажем и владельцем судна — частной компанией Hodago fishing. Конфликт
+возник в начале 2026 года из-за задолженности по зарплате за два месяца. Как уточняется, после вмешательства Международной федерации транспортных рабочих судно
+было арестовано и находится у причала в порту Уолфиш-Бей вместе с экипажем. Российские дипломаты взаимодействуют с властями Намибии для урегулирования ситуации.
+Посольство поддерживает контакт с капитаном и моряками, а также организует снабжение судна топливом и продовольствием. В дипмиссии подчеркнули, что угрозы жизни
+и здоровью россиян нет. Намибийская сторона, по данным посольства, не препятствует их возвращению на родину. Решение остаться и добиваться урегулирования
+конфликта экипаж принял самостоятельно. Работа по разрешению ситуации продолжается. Дипломаты заявили о намерении добиваться соблюдения прав российских граждан
+и скорейшего завершения спора. Читайте также: Российские моряки живут на арестованном судне в Африке.
+OPTION_1: politics
+OPTION_2: labour
+
+===== ITEM A220 | lang: ta =====
+HEADLINE: 
+TEXT:
+புதுடெல்லி: ஜனநாயகத்தின் தாயாகவும், உலகின் மிகப் பெரிய ஜனநாயகமாகவும் இந்தியா திகழ்வதாக பிரதமர் மோடி பெருமிதம் தெரிவித்துள்ளார். மேலும், பயங்கரவாதம், அது எங்கு
+நடந்தாலும் அல்லது எந்த காரணத்திற்காக இருந்தாலும், அது மனிதகுலத்திற்கு எதிரானது என்று அவர் குறிப்பிட்டுள்ளார்.ஜி 20 நாடாளுமன்ற சபாநாயகர்களின் 9-வது உச்சிமாநாடு
+புதுடெல்லியில் உள்ள யசோபூமியில் இன்று தொடங்கியது. பி 20 என்று அழைக்கப்படும் இந்த மாநாட்டை பிரதமர் நரேந்திர மோடி தொடங்கிவைத்தார். இந்த மாநாட்டில் ஜி20 நாடுகளைச்
+சேர்ந்த நாடாளுமன்ற சபாநாயகர்கள் மற்றும் சிறப்பு அழைப்பாளர்கள் பங்கேற்றனர். இந்நிகழ்ச்சியில் பேசிய பிரதமர் நரேந்திர மோடி, "பி20 உச்சி மாநாடு உலகம் முழுவதும் உள்ள
+நாடாளுமன்ற நடைமுறைகளின் மகாகும்ப மேளாவைப் போன்று உள்ளது. இந்தியா நிலவில் தரையிறங்கி உள்ளது. அதேபோல், ஜி 20 உச்சிமாநாட்டை வெற்றிகரமாக நடத்தி உள்ளது. அதன்
+தொடர்ச்சியாக இன்று பி20 உச்சிமாநாடு தொடங்கப்பட்டுள்ளது.உலகின் மிகப் பெரிய ஜனநாயகத்தைச் சேர்ந்த மக்களின் சக்திதான் இந்த மாநாட்டிற்கு மிக முக்கிய காரணம். 9வது
+பி20 மாநாடு இந்தியாவில் நடைபெறுவது பெருமைக்குரிய ஒன்று. இந்தியா ஜனநாயகத்தின் தாய். அதோடு, உலகின் மிகப் பெரிய ஜனநாயகம். விவாதிப்பதற்கும், கலந்துரையாடுவதற்கும்
+ஏற்ற இடமாக உலகம் முழுவதும் உள்ள நாடாளுமன்றங்கள் திகழ்கின்றன.இந்தியாவில் கோயில்களில் அனுபவ மண்டபம் என்ற ஒரு ஏற்பாடு 12ம் நூற்றாண்டிலேயே இருந்தது. மக்கள் கூடி
+விவாதிப்பதற்காகவே இந்த மண்டபங்கள் கட்டப்பட்டன. ஜகத்குரு பசவேஸ்வரய்யா கொடுத்த கொடை இது. அத்தகைய பெருமை இந்தியாவுக்கு உள்ளது. இந்தியாவில் நாடாளுமன்ற நடைமுறை
+தொடர்ந்து முன்னேறிக் கொண்டிருக்கிறது. நாடு சுதந்திரம் அடைந்த பிறகு இதுவரை 17 பொதுத் தேர்தல்கள் நடந்துள்ளன. 300க்கும் மேற்பட்ட சட்டமன்றத் தேர்தல்கள் நடந்துள்ளன.
+உலகின் மிகப் பெரிய தேர்தலை இந்தியா நடத்துகிறது. அதுமட்டுமல்ல, ஒவ்வொரு தேர்தலின்போதும் பங்கேற்பாளர்களின் எண்ணிக்கை கூடிக்கொண்டே இருக்கிறது.இந்தியாவில் மின்னணு
+வாக்குப்பதிவு நடைமுறை தொடங்கி 25 ஆண்டுகள் ஆகின்றன. இதன்மூலம் வெளிப்படையானதாகவும், திறன் நிறைந்ததாகவும் தேர்தல்கள் மாறி இருக்கின்றன. வரக்கூடிய 2024 நாடாளுமன்றத்
+தேர்தலின்போது 100 கோடி வாக்காளர்கள் வாக்களிக்க இருக்கிறார்கள். இதைப் பார்க்க நீங்கள் அனைவரும் இந்தியாவுக்கு வர வேண்டும் என்று நான் அழைப்பு விடுக்கிறேன்.
+பயங்கரவாதம், அது எங்கு நடந்தாலும் அல்லது எந்த காரணத்திற்காக இருந்தாலும், அது மனிதகுலத்திற்கு எதிரானது. பயங்கரவாதக் குழுக்கள் மாற்றுப் பாதையில் மனித நேய
+அணுகுமுறையுடன் முன்னேற வேண்டும்" எனத் தெரிவித்தார்.இந்தியாவின் ஜி20 தலைமைத்துவத்தின் பரந்த கட்டமைப்பின் கீழ் இந்த உச்சிமாநாட்டை இந்திய நாடாளுமன்றம் நடத்துகிறது.
+இந்தியாவின் ஜி20 தலைமைத்துவத்தின் கருப்பொருளுக்கு ஏற்ப, 9 வது பி 20 உச்சி மாநாட்டின் கருப்பொருள் "ஒரே பூமி, ஒரே குடும்பம், ஒரே எதிர்காலத்திற்கான
+நாடாளுமன்றங்கள்" என்பதாகும். கடந்த மாதம் 9-10 ஆகிய தேதிகளில் புதுடெல்லியில் நடைபெற்ற ஜி 20 தலைவர்கள் உச்சிமாநாட்டில் ஆப்பிரிக்க ஒன்றியம் ஜி 20-ல் உறுப்பினரான ஆன
+பின் ஆப்பிரிக்க நாடுகளின் நாடாளுமன்றம் முதல் முறையாக பி20 உச்சி மாநாட்டில் பங்கேற்றுள்ளது.இந்த பி20 உச்சிமாநாட்டின் கருப்பொருள் அமர்வுகள், பொது டிஜிட்டல்
+தளங்கள் மூலம் மக்களின் வாழ்க்கையில் மாற்றம்; பெண்கள் தலைமையிலான வளர்ச்சி; நிலையான வளர்ச்சி இலக்குகளை விரைவுபடுத்துதல்; நிலையான எரிசக்தி மாற்றம் ஆகிய நான்கு
+தலைப்புகளில் கவனம் செலுத்தும். நாடாளுமன்ற அமைப்பின் உச்சிமாநாட்டிற்குமுன் இயற்கையுடன் இணங்கிய பசுமையான மற்றும் நிலையான எதிர்காலத்தை நோக்கிய முன்முயற்சிகள்
+குறித்து விவாதிப்பதற்காக அக்டோபர் 12 அன்று லைஃப் (சுற்றுச்சூழலுக்கான வாழ்க்கை முறை) குறித்த உச்சி மாநாடும் நடைபெறும்.
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: politics
+
+===== ITEM A222 | lang: uk =====
+HEADLINE: Десятки журналістів масово залишили Пентагон через нові правила Гегсета
+TEXT:
+Десятки журналістів масово залишили Пентагон через нові правила Гегсета 15 жовтня американські журналісти, які висвітлювали діяльність Міноборони США, залишили
+Пентагон після того, як їх позбавили акредитації за відмову погодитися з посиленими правилами доступу. Про це повідомляють Associated Press і The Washington
+Post.За даними AP, близько 40–50 репортерів одночасно покинули будівлю, здавши перепустки й виносячи особисті речі з робочих місць.Читайте такожЦензура
+по-новому: як Дональд Трамп переписує правила гри для журналістівЗазначається, що щонайменше 20 новинних організацій не погодилися на нові правила Пентагону про
+доступ журналістів. Лише телеканал One America News Network підписав угоду.Колишній журналіст Голосу Америки Остап Яриш напередодні пояснив, що нові правила
+Пентагону забороняють журналістам отримувати будь-яку, навіть незасекречену інформацію від своїх джерел без офіційного погодження міністерства, обмежують
+пересування будівлею лише до кількох коридорів, вимагають постійно носити яскраво-червоні бейджі на додачу до звичайних і "багато іншого".Нову політику
+запровадив міністр оборони Піт Гегсет.Довідка19 вересня 2025 року Пентагон запровадив нові правила для журналістів, які передбачали заборону збирати чи
+публікувати будь-яку несанкціоновану інформацію, навіть якщо вона не є секретною. За порушення цих вимог журналістів могли позбавити акредитації. 6 жовтня
+Міноборони США уточнило й послабило обмеження – тепер журналістам не потрібно отримувати попереднє схвалення Пентагону перед публікацією матеріалів з
+неофіційною інформацією.Водночас Пентагон сам визначає, чи становить журналіст загрозу безпеці.2 жовтня The Washington Post писало, що Пентагон хоче запровадити
+вибіркові перевірки на поліграфі своїх працівників. Його можуть проходити як чотиризіркові генерали, так і адміністративні асистенти.
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: politics
+
+===== ITEM A231 | lang: tr =====
+HEADLINE: TBMM Balıkçılık ve Su Ürünleri Araştırma Komisyonu Çalışmalarını Tamamladı
+TEXT:
+TBMM Balıkçılık ve Su Ürünleri Araştırma Komisyonu Çalışmalarını Tamamladı TBMM Balıkçılık ve Su Ürünleri Araştırma Komisyonu Başkanı İsmail Emrah Karayel,
+komisyonun çalışmalarını tamamladığını belirterek, 'Avcılık ve yetiştiricilik başta olmak üzere sektörün önünün açılması anlamında ne yapılması gerekiyorsa
+komisyon olarak o iradeyi ortaya koyacağız. Temel hususları net bir şekilde ortaya koyup hızlıca çözelim istiyoruz.' dedi.Komisyon, AK Parti İstanbul
+Milletvekili İsmail Emrah Karayel başkanlığında toplandı.Balıkçılık ve su ürünleri sektöründe yaşanan sorunların araştırılması ve alınması gereken tedbirlerin
+belirlenmesi amacıyla kurulan Meclis araştırma komisyonunun, 4 aylık çalışma döneminde yaptığı faaliyetleri anlatan Karayel, ilk önce sektör paydaşları ve
+mesleki örgüt temsilcilerini Meclis'e davet ederek sorun ve taleplerini dinledikleri, ardından saha ziyaretleri yaptıklarını hatırlattı.Ege, Akdeniz, Karadeniz
+ve Marmara Denizi ile iç sulardaki avcılık faaliyetleriyle ilgili incelemeler gerçekleştirdiklerini anlatan Karayel, 'Komisyon olarak bugüne kadar yaklaşık 190
+saatlik çalışma yaptık. Ziyaret ve incelemelerimizde 2 bin sayfa tutanak tutuldu ve 11 bin kilometre yolculuk yaptık. Böylece komisyonumuzun 4 aylık çalışma
+süresini tamamlamış olduk.' diye konuştu.Komisyondan en çok talep edilen konuları aktaran Karayel, su ürünleri mühendislerinin çalışma koşulları, sektördeki
+üreticilere tanınan banka finansmanlarının arttırılması, balık tüketiminin arttırılmasına yönelik bir kampanya yapılması, Türk somonu üretim çiftliklerinin
+artırılması, balıkçı barınakları konusunda imar düzenlemesi, balıkçıların kullandığı akaryakıta ilişkin ÖTV düzenlemesi ile av sezonu tarihleriyle ilgili
+değişiklikler gibi konularda yasal düzenleme yapılmasının istendiğini söyledi.Komisyon raporunun mayıs ya da haziranda bitirilmesini öngördüklerini ifade eden
+Karayel, raporun hazırlanma sürecinde akademisyenlerden de destek alacaklarını dile getirdi. Raporun, en temel sorunlar başta olmak üzere tali sorunları ve
+çözüm önerilerini kapsayacağını ifade eden Karayel, şöyle konuştu: 'Sektördeki temel hususlardan bir tanesi balıkçı barınaklarıyla ilgili düzenleme süreci.
+Burası Çevre, Şehircilik ve İklim Değişikliği, Ulaştırma ve Altyapı ile Tarım ve Orman Bakanlıklarını ilgilendiren bir alan. Bunların dışında bazı bakanlıkların
+alanına giren hususlar da var. Bundan sonra yapılacak barınaklarla önceki barınakların durumlarının birbirlerinden ayrılması konusu önemli. Bazı bölgelerdeki
+barınaklarda derinleştirme yapılması hususu da var. Bunların hepsini önem sırasına göre değerlendirip çözüme ulaştırılması için çaba göstereceğiz. Tespit ve
+değerlendirmelerimizin Meclisimiz için bir araştırma komisyonu raporu olmasının yanında icra ve yürütme açısından da bağlayıcılığı var. Bu değerlendirmeler
+ilgili bakanlıklarla mutlaka görüşülecek.'Karayel, denizlerde veya iç sularda çevre kirliliği olması durumunda sektörün devamlılığının sürdürülmesinin mümkün
+olmadığının altını çizerek, bu konuda da tavsiyelerde bulunacaklarını söyledi.Sektörün büyüklüğüne dikkati çeken Karayel, 'Bu sektör 1,7 milyar dolar ihracat
+yapıyor. Ayrıca Türkiye'de birçok kişiye istihdam sağlayan bir sektör. İşleme tesislerinde ve birçok alanda kadın istihdamının yoğun olduğu bir sektör. Bu
+nedenle avcılık ve yetiştiricilik başta olmak üzere sektörün önünün açılması anlamında ne yapılması gerekiyorsa komisyon olarak o iradeyi ortaya koyacağız.
+Temel hususları net bir şekilde ortaya koyup hızlıca çözelim istiyoruz.' ifadelerini kullandı.
+OPTION_1: politics
+OPTION_2: economy, business and finance
+
+===== ITEM A237 | lang: gu =====
+HEADLINE: 
+TEXT:
+Rajasthan Crime News: 16 વર્ષની સગીર યુવતીના લગ્ન 45 વર્ષના યુવક સાથે થયા હતા. તેને એક બાળકી પણ હતી. તે જેઠાણીના 22 વર્ષના પુત્રના પ્રેમમાં પડી અને તેની સાથે
+ભાગી ગઈ.By: એબીપી અસ્મિતા વેબ ટીમ | Updated at : 27 Mar 2022 03:15 PM (IST) તસવીરનો ઉપયોગ પ્રસ્તુતિકરણ માટે કરવામાં આવ્યો છે.Rajasthan Crime News: રાજસ્થાનના
+ધોલપુરના સદર પોલીસ સ્ટેશન વિસ્તારમાં 16 વર્ષની સગીર યુવતીના લગ્ન 45 વર્ષના યુવક સાથે થયા હતા. તેને એક બાળકી પણ હતી. તે જેઠાણીના 22 વર્ષના પુત્રના પ્રેમમાં પડી
+અને તેની સાથે ભાગી ગઈ. પતિના રિપોર્ટના આધારે તેની ધરપકડ કરવામાં આવી છે. સગીરાનું કહેવું છે કે તે તેના પતિ સાથે રહેવા માંગતી નથી.શું છે મામલોધોલપુર સદર પોલીસ
+સ્ટેશન વિસ્તારમાં રહેતા એક 45 વર્ષીય આધેડના લગ્ન 16 વર્ષની સગીરા સાથે થયા હતા. સગીરા તેના આધેડ પતિને સ્વીકારતી નહોતી. તે તેની જેઠાણીના 22 વર્ષના પુત્રના
+પ્રેમમાં પડી અને તેની સાથે ભાગી ગઈ. આના પર સાસરિયાઓએ સગીરાના અપહરણનો કેસ દાખલ કર્યો હતો. પોલીસે સગીરાની ધરપકડ કરી છે.આ પછી બાળ કલ્યાણ સમિતિના સભ્યો ગિરીશ ગુર્જર
+અને બ્રિજેશ મુખરિયા સમક્ષ રજૂ કરવામાં હતી. તેનું કાઉન્સેલિંગ કર્યા બાદ તેને સખી વન સ્ટોપ સેન્ટરમાં રાખવામાં આવી છે. બાળ કલ્યાણ સમિતિના સભ્યોના જણાવ્યા અનુસાર,
+16 વર્ષીય સગીર મધ્યપ્રદેશની રહેવાસી છે. લગભગ દોઢ વર્ષ પહેલા તેના માતા-પિતાએ તેના લગ્ન તેની મરજી વિરુદ્ધ ધૌલપુરના નિવાસી એક વ્યક્તિ સાથે કરાવ્યા હતા. આ પછી તેમને
+એક પુત્રી થઇ હતી. સગીરાએ જણાવ્યું કે તે પોતાના પતિ સાથે રહેવા માંગતી નથી. તેની સાથે છૂટાછેડા લઇને માતા-પિતા સાથે રહેવા માંગે છે.ગિરીશ ગુર્જરે જણાવ્યું કે હાલ
+સગીરાને સખી વન સ્ટોપમાં અસ્થાયી રુપથી દાખલ કરવામાં આવી છે. તેના માતા-પિતાને પણ બોલાવ્યા છે. માતા-પિતા આવ્યા પછી સગીરા અને તેની 1 વર્ષીય પુત્રીના હિતને જોઈને
+નિયમ પ્રમાણે નિર્ણય લેવામાં આવશે. સગીરાના પતિએ ઓક્ટોબર 2021માં મહિલા પોલીસ સ્ટેશનમાં અપહરણનો કેસ નોંધાવ્યો હતો.25 સીમ કાર્ડ ખરીદ્યા હતાઆ પછી પોલીસે સગીરાને
+શોધવા માટે ઘણો પ્રયત્ન કર્યો હતો જોકે તેની જાણ થઇ ન હતી. કાઉન્સલિંગ દરનિયાન સગીરાએ કહ્યું કે તેણે 20 થી 25 સીમ કાર્ડ ખરીદ્યા હતા, સીમ કાર્ડ બદલી-બદલીને વાત કરતી
+હતી. આ પછી સીમ કાર્ડને તોડી નાખતી હતી. આ કારણે પરિવારજનો અને પોલીસ પકડી શક્યા ન હતા. જોકે આખરે પોલીસ પકડવા સફળ રહી હતી. ગિરીશ ગુર્જરે જણાવ્યું કે સગીરા
+ઓક્ટોબરમાં ધૌલપુરથી ભાગીને હરિયાણા જતી રહી હતી. ત્યાં ભત્રીજા સાથે પ્રાઇવેટ નોકરી કરી અને સારી રીતે જીવન પસાર કરતી હતી. સગીરાનો પતિ ઉંમરમાં મોટો હોવાથી તે તેને
+પસંદ કરતી નથી અને તેની સાથે રહેવા માંગતી નથી.
+OPTION_1: crime, law and justice
+OPTION_2: society
+
+===== ITEM A249 | lang: es =====
+HEADLINE: 7 beneficios del mango para la salud y por qué gana lugar en la alimentación
+TEXT:
+7 beneficios del mango para la salud y por qué gana lugar en la alimentación El mango ocupa un lugar estable entre las frutas tropicales más consumidas y, al
+mismo tiempo, entre las que concentran mayor interés por su perfil nutricional. Su pulpa dulce, su textura suave y su disponibilidad en formatos frescos,
+congelados o deshidratados explican parte de esa popularidad. A eso se suma que se trata de una fruta con varios aportes para la salud. Originario del sur y
+sudeste asiático, pertenece a la misma familia botánica que el anacardo, el pistacho y el zumaque. De acuerdo con la Cleveland Clinic, contiene vitaminas,
+minerales, fibra y compuestos antioxidantes en una proporción relevante para una porción de consumo habitual. Los 7 beneficios del mango en la salud Puede
+contribuir a la salud intestinal Una taza de mango picado aporta cerca de 3 gramos de fibra, según detalló la Cleveland Clinic. Ese nutriente cumple un papel
+central en el tránsito intestinal porque ayuda a ablandar las heces y favorece una evacuación más regular. La dietista Carly Sedlacek, especialista citada por
+la institución sanitaria, señaló que una dieta rica en fibra puede ayudar frente al estreñimiento y la hinchazón. Otra nota de nutrición precisó que incluye
+pectina, un tipo de fibra prebiótica que sirve de alimento para bacterias intestinales beneficiosas. Puede ayudar a sostener la saciedad También aparece
+asociado con una digestión más lenta y con mayor sensación de plenitud después de comer. Según explicó Sedlacek en la nota clínica, eso puede hacer menos
+probable la aparición rápida de hambre tras la comida. La Asociación Americana del Corazón también retomó ese punto al indicar que esta fruta puede colaborar
+con el control del peso porque su fibra ayuda a sentirse satisfecho por más tiempo. Esa relación no implica un efecto automático sobre el descenso de peso, pero
+sí ubica al mango como una alternativa posible dentro de una dieta con alimentos enteros y sin exceso de azúcares añadidos. Aporta compuestos útiles para la
+piel y el cabello La pulpa contiene vitaminas A, C y E, mencionadas por la especialista de Cleveland Clinic como nutrientes vinculados con el mantenimiento de
+la piel y el pelo. La vitamina A participa en procesos de crecimiento celular. La vitamina C interviene en la producción de colágeno, una proteína estructural
+del organismo. La vitamina E actúa como antioxidante. Esa combinación fue presentada como una ventaja de obtener nutrientes a partir de alimentos integrales y
+no de suplementos, ya que el alimento aporta además otros compuestos y evita consumos excesivos sin supervisión. En ese marco, el mango aparece como una fuente
+alimentaria de esas vitaminas. Puede favorecer la salud del corazón El potasio es otro de los nutrientes destacados. Según explicó Sedlacek, ese mineral ayuda a
+contrarrestar la presión arterial alta, uno de los principales factores de riesgo cardiovascular. La American Heart Association indicó además que la combinación
+de fibra, vitaminas y potasio puede contribuir a reducir el riesgo de enfermedad cardíaca. El potasio participa en el equilibrio de líquidos y en funciones
+vinculadas con la contracción muscular y
+OPTION_1: health
+OPTION_2: science and technology
+
+===== ITEM A260 | lang: ta =====
+HEADLINE: 
+TEXT:
+சென்னை: போக்சோ வழக்குகளில் பெற்றோர் மற்றும் உறவினர்களின் நலனை விட பாதிக்கப்பட்ட சிறுமியின் நலனே முக்கியம் என சென்னை உயர் நீதிமன்றம் தெரிவித்துள்ளது.முன்னாள்
+டிஜிபியான திலகவதியின் மகன் டாக்டர் பிரபு திலக் மற்றும் அவரது மனைவி ஷ்ருதி ஆகியோர் கருத்து வேறுபாடு காரணமாக பிரிந்து வாழ்கின்றனர். இவர்களது 2 குழந்தைகளும் தந்தை
+வசம் உள்ளனர். விவாகரத்து வழக்கு நிலுவையில் உள்ளது.கடந்தாண்டு டிச.23 அன்று தாய் ஷ்ருதியின் வீட்டில் இருந்த தனது உடைகள் உள்ளிட்ட பொருட்களை எடுத்து வரச் சென்ற தனது
+மகளை ஷ்ருதி திட்டியதாகவும், ஷ்ருதியின் சகோதரர் விஜய் ஆனந்த், பாலியல் ரீதியாக தவறாக நடந்து கொண்டதாகவும் பிரபு திலக் வடபழனி போலீஸில் புகார் அளித்தார்.இந்த
+வழக்கில் ஷ்ருதிக்கு முன்ஜாமீன் வழங்கிய உயர் நீதிமன்றம், விஜய் ஆனந்துக்கு முன்ஜாமீன் வழங்க மறுத்து விட்டது. இந்நிலையில் தனக்கு முன்ஜாமீன் வழங்கக் கோரி விஜய்
+ஆனந்த் மீண்டும் உயர் நீதிமன்றத்தில் மனு தாக்கல் செய்திருந்தார்.இந்த வழக்கை விசாரித்த நீதிபதி சி.வி.கார்த்திகேயன் பிறப்பித்துள்ள உத்தரவில், ‘‘இந்த வழக்கின்
+விசாரணைக்கு முழுமையாக ஒத்துழைப்பதாக மனுதாரர் தெரிவித்தாலும் போலீஸார் இன்னும் இறுதி அறிக்கை தாக்கல் செய்யவில்லை. போலீஸாரும் மனுதாரருக்கு முன் ஜாமீன் வழங்கக்
+கூடாது என ஆட்சேபம் தெரிவித்துள்ளனர். திரைமறைவில் ஒளிந்து கொண்டு, தான் ஒரு அப்பாவி என மனுதாரர் கூறுவதை ஏற்க முடியாது.இது போன்ற போக்சோ வழக்குகளில் தாய், தந்தை
+மற்றும் உறவினர்களின் நலனை விட பாதிக்கப்பட்ட சிறுமியின் நலனே முக்கியம். போக்சோ வழக்குகளில் பாதிக்கப்படும் சிறுமிகளின் கண்ணீர் துடைக்கப்பட வேண்டும். எனவே
+மனுதாரருக்கு முன்ஜாமீன் வழங்க முடியாது" என மறுப்பு தெரிவித்து மனுவை தள்ளுபடி செய்து உத்தரவிட்டுள்ளார். இதையடுத்து விஜய் ஆனந்த்சேலம் நீதிமன்றத்தில் சரண்
+அடைந்துள்ளார்.
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: crime, law and justice
+
+===== ITEM A264 | lang: th =====
+HEADLINE: "นฤมล" มอบรางวัลแก่ “ครูเจ้าฟ้ามหาจักรี“ รุ่นที่ 6 ชมครูไทยสร้างการเปลี่ยนแปลงเด็กพื้นที่ห่างไกล
+TEXT:
+"นฤมล" มอบรางวัลแก่ “ครูเจ้าฟ้ามหาจักรี“ รุ่นที่ 6 ชมครูไทยสร้างการเปลี่ยนแปลงเด็กพื้นที่ห่างไกล
+
+"รมว.นฤมล" มอบรางวัลแก่ “ครูเจ้าฟ้ามหาจักรี“ รุ่นที่ 6 ปี 2568 ชื่นชมครูไทยช่วยสร้างการเปลี่ยนแปลงเด็กใน พื้นที่ห่างไกล ฝากองค์กรหลัก
+ศธ.ขยายผลครูดีสู่นักเรียนทั่วไทย
+เมื่อวันที่ (16 ตุลาคม 2568) เวลา 9.00 น. ศาสตราจารย์นฤมล ภิญโญสินวัฒน์ รัฐมนตรีว่าการกระทรวงศึกษาธิการ
+เป็นประธานการมอบรางวัลให้แก่ครูเครือข่ายมูลนิธิรางวัลสมเด็จเจ้าฟ้ามหาจักรี (ครูไทย) รุ่นที่ 6 ปี 2568 (Princess Maha Chhakri Award Ceremony) ณ อาคารอิมแพ็ค
+ฟอรั่ม 2 เมืองทองธานี จังหวัดนนทบุรี จัดโดยมูลนิธิรางวัลสมเด็จเจ้าฟ้ามหาจักรี ร่วมกับสำนักงานเลขาธิการคุรุสภา กระทรวงศึกษาธิการ โดยมีนายสุเทพ แก่งสันเทียะ
+ปลัดกระทรวงศึกษาธิการ นายยศพล เวณุโกเศศ เลขาธิการคณะกรรมการการอาชีวศึกษา (สอศ.) นายประวิต เอราวรรณ์ เลขาธิการสภาการศึกษา นายพิเชฐ โพธิ์ภักดี
+เลขาธิการคณะกรรมการการศึกษาขั้นพื้นฐาน (สพฐ.) และครูที่ได้รับรางวัล ประกอบด้วย รางวัลคุณากร รางวัลครูยิ่งคุณ และรางวัลครูขวัญศิษย์ รวมกว่า 200 คน เข้าร่วม
+ศาสตราจารย์นฤมล กล่าวแสดงความยินดีและชื่นชมครูทุกคนที่มาร่วมรับรางวัลด้วยความภาคภูมิใจในครั้งนี้ พร้อมกล่าวว่า เป็นที่ทราบกันดีว่า
+ในปัจจุบันการเปลี่ยนแปลงในเรื่องของการศึกษา เปลี่ยนไปตามเทคโนโลยี เด็กและเยาวชนของเราไม่ได้เรียนรู้กับครูเพียงอย่างเดียว เพราะเมื่ออยากรู้อะไร ก็มักจะไปถามจาก
+AI ทั้ง Google, Chat GPT จนบางครั้งอาจถูกมองว่า อาชีพครูเป็นอีกอาชีพที่ถูก Distruption แต่การที่ครูกว่า 200 คน ได้รับรางวัลในครั้งนี้ เป็นการแสดงให้เห็นว่า
+ความเป็นครูไม่ได้ทำเพียงการสอนวิชาการในสาขาต่าง ๆ เท่านั้น แต่ครูยังมีบทบาทสำคัญในการบ่มเพาะ ขัดเกลาจิตใจของเด็ก และที่สำคัญที่สุดคือ
+ครูเป็นผู้สร้างการเปลี่ยนแปลงให้ชีวิตของเด็ก ๆ ในหลายพื้นที่ทั่วประเทศไทย โดยเฉพาะในพื้นที่ทุรกันดาร ซึ่ง AI คงทำไม่ได้ ถ้าไม่มีครูเป็นผู้ชี้แนะ
+"ขอฝากให้กำลังใจกับครูทุกท่านในการก้าวข้ามการเปลี่ยนแปลงในโลกยุคปัจจุบัน ปัญหาและอุปสรรคต่าง ๆ โดยยังดำรงหลักการ ในการถ่ายทอดความรู้และการดูแลเด็ก ๆ
+ไม่ใช่เฉพาะด้านวิชาการ แต่ดูแลไปถึงจิตใจ ชีวิตความเป็นอยู่ และยังเป็นแรงบันดาลใจให้กับพวกเขาด้วย เชื่อว่าวิชาชีพครูจะไม่มีวันหมดไปจากสังคมไทยแน่นอน พร
+OPTION_1: politics
+OPTION_2: education
+
+===== ITEM A265 | lang: ar =====
+HEADLINE: الصاعقة 10، الجيش الإيراني يستهدف القواعد والمراكز الأمريكية في الكويت والبحرين
+TEXT:
+الصاعقة 10، الجيش الإيراني يستهدف القواعد والمراكز الأمريكية في الكويت والبحرين أفادت وكالة مهر للأ،باء، وذكرت العلاقات العامة أن طائرات "آرش" المسيرة التابعة
+للجيش الإيراني استهدفت، في المرحلة العاشرة من عملية "صاعقة"، أنظمة الرادار، ونظام الدفاع الجوي "باتريوت"، وخزانات الوقود التابعة للجيش الأمريكي الإرهابي، في
+قاعدة "علي السالم" بالكويت. وكان نظام "باتريوت" مكلفاً بمهمة الدفاع عن هذه القاعدة، وعن طائرات النقل، والطائرات المسيرة المتطورة، بما فيها طائرات MQ-9. كما تم،
+في موجة أخرى من الهجمات، استهداف أنظمة الاتصالات والرادار، بما فيها رادارات "سوبر هوك"، ومنشآت وأنظمة "باتريوت" التابعة للجيش الأمريكي الإرهابي، المتمركزة في
+موقع الدفاع الجوي لقاعدة "الشيخ عيسى" في البحرين. وتعرضت هذه القاعدة، التي تُعتبر موقعاً لوحدات دعم الطائرات الأمريكية، لأضرار جسيمة في الهجمات الناجحة
+بالطائرات المسيرة والصواريخ التي شنها كل من الجيش والحرس الثوري الإيراني. وأكد الجيش الإيراني، في معرض تأكيده على أن "جرأة ووقاحة وتهديد واعتداء العدو، تزيد من
+دافعنا وقوتنا للدفاع"، أن "قوة الجيش الإيراني تقوم وتستند إلى الشعب الإيراني الشريف والصامد، والقوة القتالية، والروح المستمدة من بسالة وشجاعة الشهداء رفيعي
+المقام، والقائد، وسيد شهيد إيران، للدفاع عن المصالح الوطنية وحقانية الجمهورية الإسلامية الإيرانية، وأننا، استناداً إلى الأمر الإلهي 'أشداء على الكفار، رحماء
+بينهم'، نقف صامدين وأقوياء في وجه العدو". /انتهى/
+OPTION_1: politics
+OPTION_2: conflict, war and peace
+
+===== ITEM A269 | lang: zh =====
+HEADLINE: Apink确定12月圣诞期间，举办第七场单独演唱会：将全力以赴地准备丰富多彩的舞台送给粉丝们～
+TEXT:
+Apink确定12月圣诞期间，举办第七场单独演唱会：将全力以赴地准备丰富多彩的舞台送给粉丝们～
+
+人气女团 Apink 将通过年末演唱会与粉丝们见面，这么好的圣诞礼物，大家千万别错过。
+官方公告 Apink 将於12月21日和22日两天在位於首尔江西区的KBS Arena举行第七场单独演唱会。她们将透过这次演唱会活跃到年末活动，全力以赴地准备丰富多彩的舞台作为特别的圣诞礼物送给粉丝们。
+以Apink的团名进行单独演唱会对她们和粉丝来说都意义重大，去年4月成功完成了粉丝演唱会「Pink drive」，去年还突然发行了年末歌曲〈PINK CHRISTMAS〉
+，今年又发表了粉丝歌曲〈Wait Me There〉。从团体到个人活动都格外珍惜能相聚的时光。
+这一次 Apink 将以年终演唱会作为圣诞礼物庆祝出道13周年，预计会为歌迷们带来一个难忘的粉色冬季。此外，演唱会的详细资料将透过Apink官方SNS和售票处公开。
+▼我个人先许一个愿望，希望今年几首九千万观看的热门曲可以破亿！！
+〈Mr. Chu〉（目前纪录是9786万次）
+〈I'm so sick〉（一点都没有）（目前纪录是9256万次）
+Mico@KSD / 非得本站书面同意 请勿抄袭、转载、改写或引述本站内容。如有违者，本站将予以追究
+广告
+相关新闻
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: human interest
+
+===== ITEM A283 | lang: ta =====
+HEADLINE: 
+TEXT:
+கிருஷ்ணகிரி: கிருஷ்ணகிரி மாவட்டத்தில் வசிக்கும் மக்கள் பெரும்பாலும் விவசாயத்தை வாழ்வாதாரமாக கொண்டுள்ளனர். குறிப்பாக கிருஷ்ணகிரி, பர்கூர், வேப்பனப்பள்ளி,
+காவேரிப்பட்டணம் பகுதியைச் சேர்ந்த விவசாயிகள், தக்காளி, கத்தரிக்காய், வாழை, முள்ளங்கி, வெண்டைக்காய் உள்ளிட்ட காய்கறிகளை சாகுபடி செய்வதில் அதிக ஆர்வம் காட்டி
+வருகின்றனர்.குறிப்பாக, சுமார் 500 ஏக்கருக்கு மேல் விவசாயிகள் வெண்டைக்காய் சாகுபடி செய்துள்ளனர். கடந்த ஆண்டைவிட நிகழாண்டில் வெண்டைக்காய் சாகுபடி அதிகரித்துள்ளது.
+இதனால் கிலோ ரூ.10-க்கு விற்பனை செய்யப்படுவதால், விவசாயிகள் வேதனை தெரிவித்துள்ளனர்.இதுகுறித்து பர்கூர் பகுதியைச் சேர்ந்த விவசாயி மோகன் கூறும்போது, நிகழாண்டில்
+எங்கள் பகுதியில் பரவலாக பெய்த மழையால், இப்பகுதியில் விவசாயிகள் பலர் நிலக்கடலை மற்றும் வெண்டைக்காய் சாகுபடியை செய்துள்ளனர். வெண்டைக்காய் விதையை விதைத்த 40
+நாட்களில் அறுவடைக்கு தயாராகிறது. இதில் பூச்சி தாக்குதலைத் தடுக்க விதைத்த 20 நாட்களுக்குப் பிறகு ஒரு முறை மட்டும் டிஏபி உரம் தெளிக்க வேண்டும். 3 நாளுக்கு ஒரு
+முறை தண்ணீர் விட வேண்டும். தொடர்ந்து தினமும் 3 மாதங்களுக்கு வெண்டையை அறுவடை செய்யலாம். கடந்த 2 மாதங்களுக்கு முன்பு ஒரு கிலோ வெண்டைக்காய் ரூ.40 முதல் 45 வரை விலை
+போனது. ஆனால் தற்போது விளைச்சல் அதிகரித்து உள்ளதால் தரத்துக்கு ஏற்ப கிலோ ரூ.15 முதல் ரூ.10 வரை விற்பனையாகிறது. இதனால் எங்களுக்கு விதைப்பு முதல் அறுவடை செய்து
+சந்தைகளுக்கு கொண்டு செல்ல ஏற்படும் செலவு தொகை கூட கிடைப்பதில்லை. மகசூல் அதிகரிப்பால் விலை குறைந்துள்ளது. வெண்டைக்காய் சாகுபடி செய்த விவசாயிகளுக்கு வருவாய்
+இழப்பு ஏற்பட்டுள்ளது, என்றார்.
+OPTION_1: economy, business and finance
+OPTION_2: politics
+
+===== ITEM A288 | lang: uk =====
+HEADLINE: Графіті і протести. Європейська столиця приєдналася до хвилі антитуризму
+TEXT:
+Графіті і протести. Європейська столиця приєдналася до хвилі антитуризму Столиця Греції приєдналася до хвилі протестів проти надмірного туризму, яка шириться
+Європою з минулого року. Тепер стіни будинків в Афінах рясніють графіті з написами проти туристів. Мешканці все більше нарікають на житлову кризу, повідомляє
+РБК-Україна з посиланням на greekcitytimes.com. Греція, яка є однією з найпопулярніших серед туристів країн Європи, тепер страждає від надмірного туризму. Афіни
+зустрічають гостей графіті на стінах з погрозливими написами. Минулого місяця жителі історичного міста вийшли на вулиці, щоб висловити своє невдоволення
+напливом туристів. Протестувальники скаржаться не лише на&nbsp;перенаселеність через велику кількість туристів, але й на &quot;витіснення&quot; місцевих жителів
+їхніх домівок. Через житлову кризу, загострену туризмом, містяни змушені переїжджати. На будівлях можна побачити надписи: &quot;Туристи, повертайтеся додому!
+Грецька держава вбиває&quot;, &quot;Туризм вбиває місто&quot;, &quot;Нема туристів &ndash; нема хіпстерів&quot;, &quot;Спалити Airbnb&quot;. Антитуристичні
+акції в Афінах відображають подібні рухи по всій Європі, від&nbsp;Менорки&nbsp;до&nbsp;Канарських островів&nbsp;, де жителі вимагають заходів для зменшення
+негативних наслідків масового туризму. Нагадаємо, ми писали, що популярне європейське місто оголосило війну туристам. Центр Малаги заліплений наклейками з
+висловами проти туризму. Також ми розповідали про&nbsp;найпривітніші міста Європи для відвідування у 2024 році. У рейтингу найгостинніших напрямків у 2024 році
+&ndash; половина європейських регіонів. &nbsp;
+OPTION_1: lifestyle and leisure
+OPTION_2: society
+
+===== ITEM A291 | lang: bn =====
+HEADLINE: 
+TEXT:
+জাহাঙ্গীরনগর বিশ্ববিদ্যালয় জাবি বছর এব অতিথি পাখি আস হেমন্ত শুরুতে ক্যাম্পাসে বই শীত আবহ হালকা কুয়াশা ঠাণ্ডা আবহাওয়া হাতছানি দেয় শীত এর ক্যাম্পাসে আস অতিথি পাখি
+অতিথি পাখি কিচিরমিচিরে মুখরিত উঠ ক্যাম্পাস সপ্তাহ পাখি আস লেক লেক পাখি এস রেজিস্ট্র ভবন সামন লেক ট্রন্সপোর্ট পাশ লেক সুইমিং পুল পাশ লেক ওয়াইল্ড লাইফ রেসকিউ
+সেন্টারের পাশ লেক অন্যতম লেক পাখির অভয়ারণ্য বিশ্ববিদ্যালয় প্রশাসন লেক ফুটে পদ্ম জলকে খুনসু পাখি ওড়াউড়ি অনন্য দৃশ্য ক্যাম্পাস মনোহর দৃশ্য উপভোগ ভিড় দর্শনার্থীরা
+প্রাণিবিদ্যা বিভাগ অধ্যাপক মো মনিরুল হাসান খান যুগান্তর এর সরালী পিচার্ড গার্গেনিসহ প্রজাতির পাখি এস এছাড়া মুরগ্যাধি মানিকজোড় কলা নাকতা জলপিপি ফ্লাইপেচ কোম্বডাক
+পাতারি চিতাটুপি গুড়গুটিসহ এর প্রজাতির অতিথি পাখি ক্যাম্পাসে প্রাণিবিদ্যা বিভাগ সভাপতি অধ্যাপক মনোয় হোস জানান পাখি সংরক্ষণ গণসচেতনতা বৃদ্ধির লক্ষ্যে বছর এব
+প্রাণিবিদ্যা বিভাগ পাখিমেল আয়োজন জানুয়ারি মাস মেল আয়োজন জানান প্রসঙ্গত বিশ্ববিদ্যালয় প্রাণিবিদ্যা বিভাগ গবেষণায় যায় জাবির লেক সর্বপ্রথম অতিথি পাখি সালে
+ক্যাম্পাসে প্রজাতির পাখির মিল বর্তমানে ক্যাম্পাসে প্রজাতির পাখির পাওয়া যায় দেশীয় বিদেশি প্রজাতি
+OPTION_1: education
+OPTION_2: environment
+

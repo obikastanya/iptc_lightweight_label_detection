@@ -1,7 +1,7 @@
 """Extra figures for the Indonesian paper (paper_final_id/main_id.tex). Text inside the figures is English so the
 same files can be reused when the Indonesian version is carried back into the English paper.
 
-  fig_tradeoff_memory.pdf  macro-F1 against single-core throughput (a) and against model RAM (b)
+  fig_tradeoff_memory.pdf  macro-F1 against single-core throughput (a) and against model RAM (b), with Pareto frontier
   fig_testset_composition.pdf  test articles per language by label origin, grouped by distillation data
 
 Inputs are the notebook outputs (results/final/paper_generated/tab_eff.tex, tab_main.tex) and the unified test set.
@@ -67,6 +67,14 @@ def fig_tradeoff_memory() -> None:
             del kw["color"]
         axes[0].scatter(num(c[2]), test_f1[key], **kw)
         axes[1].scatter(num(c[4]), test_f1[key], **kw)
+    # Pareto frontier from the point estimates: higher throughput is better in (a), lower RAM in (b)
+    pts = [(num(c[2]), num(c[4]), test_f1[k]) for k, c in eff.items() if k in test_f1]
+    for ax, col, better_high, where in ((axes[0], 0, True, "pre"), (axes[1], 1, False, "post")):
+        front = [p for p in pts if not any(
+            (q[col] >= p[col] if better_high else q[col] <= p[col]) and q[2] >= p[2]
+            and (q[col] != p[col] or q[2] != p[2]) for q in pts)]
+        front.sort(key=lambda p: p[col])
+        ax.step([p[col] for p in front], [p[2] for p in front], where=where, color="0.55", ls="--", lw=0.9, zorder=2)
     axes[0].set_xlabel("throughput, 1 CPU core (documents/s, log)")
     axes[1].set_xlabel("model RAM (MB, log)")
     axes[0].set_ylabel("macro-F1, unified test set")
@@ -79,6 +87,7 @@ def fig_tradeoff_memory() -> None:
     handles = [Line2D([], [], ls="", marker=MARKERS[k], ms=9 if k == "statickd" else 6, color=viz.color(k),
                       markerfacecolor="none" if k == "model2vec_clf" else viz.color(k),
                       label=next(n for n, kk in NAME_TO_KEY.items() if kk == k)) for k in eff if k in test_f1]
+    handles.append(Line2D([], [], color="0.55", ls="--", lw=0.9, label="Pareto frontier"))
     fig.legend(handles=handles, loc="upper center", ncol=4, fontsize=6.8, frameon=False, bbox_to_anchor=(0.5, -0.03))
     fig.savefig(OUT / "fig_tradeoff_memory.pdf")
     plt.close(fig)

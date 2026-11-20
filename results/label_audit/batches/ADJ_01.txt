@@ -1,0 +1,760 @@
+===== ITEM A004 | lang: pa =====
+HEADLINE: 
+TEXT:
+2021-06-16 15:37:00 ( ਖ਼ਬਰ ਵਾਲੇ ਬਿਊਰੋ )ਚੰਡੀਗੜ੍ਹ, 16 ਜੂਨ:- ਪੰਜਾਬ ਰਾਜ ਅਨੁਸੂਚਿਤ ਜਾਤੀ ਕਮਿਸ਼ਨ ਨੇ ਅੱਜ ਇੱਕ ਮਾਮਲੇ ਵਿੱਚ ਲੁਧਿਆਣਾ ਤੋਂ ਲੋਕ ਸਭਾ ਮੈਂਬਰ ਰਵਨੀਤ ਸਿੰਘ ਬਿੱਟੂ ਨੂੰ 22
+ਜੂਨ 2021 ਨੂੰ ਸਵੇਰੇ 11:30 ਵਜੇ ਕਮਿਸ਼ਨ ਅੱਗੇ ਨਿੱਜੀ ਤੌਰ 'ਤੇ ਪੇਸ਼ ਹੋਣ ਲਈ ਕਿਹਾ ਗਿਆ ਹੈ।ਇਸ ਸਬੰਧੀ ਜਾਣਕਾਰੀ ਦਿੰਦਿਆਂ ਅਨੁਸੂਚਿਤ ਜਾਤੀ ਕਮਿਸ਼ਨ ਦੀ ਚੇਅਰਪਰਸਨ ਸ੍ਰੀਮਤੀ ਤੇਜਿੰਦਰ ਕੌਰ ਨੇ
+ਦੱਸਿਆ ਕਿ ਪਵਨ ਕੁਮਾਰ ਟੀਨੂੰ ਵਲੋਂ ਇੱਕ ਇਤਰਾਜ਼ ਯੋਗ ਵਾਇਰਲ ਵੀਡੀਓ ਅਤੇ ਅਖ਼ਬਾਰਾਂ ਵਿਚ ਪ੍ਰਕਾਸ਼ਿਤ ਖਬਰਾਂ ਸਬੰਧੀ ਸ਼ਿਕਾਇਤ ਪੰਜਾਬ ਰਾਜ ਅਨੁਸੂਚਿਤ ਜਾਤੀਆਂ ਕਮਿਸ਼ਨ ਨੂੰ ਕੀਤੀ ਗਈ ਸੀ ।ਉਹਨਾਂ
+ਦੱਸਿਆ ਕਿ ਕਮਿਸ਼ਨ ਵੱਲੋਂ ਪੰਜਾਬ ਰਾਜ ਅਨੁਸੂਚਿਤ ਜਾਤੀਆਂ ਕਮਿਸ਼ਨ ਐਕਟ -2004 ' ਦੀ ਧਾਰਾ 12 (2) ੲੇ ਤਹਿਤ ਪ੍ਰਦਾਨ ਸ਼ਕਤੀਆਂ ਦੇ ਸਨਮੁੱਖ ਇਸ ਸ਼ਿਕਾਇਤ ਦੀ ਪੜਤਾਲ ਕਰਨ ਦਾ ਫੈਸਲਾ ਕੀਤਾ ਗਿਆ ਹੈ
+ਅਤੇ ਇਸ ਸਬੰਧ ਵਿੱਚ 22-06-2021 ਨੂੰ ਸਵੇਰੇ 11:30 ਵਜੇ ਸੁਣਵਾਈ ਨਿਰਧਾਰਿਤ ਕੀਤੀ ਗਈ ਹੈ ।
+OPTION_1: religion
+OPTION_2: society
+
+===== ITEM A008 | lang: pt =====
+HEADLINE: Viih Tube é internada em UTI, três dias após parto de seu segundo filho - O São Gonçalo
+TEXT:
+Viih Tube é internada em UTI, três dias após parto de seu segundo filho - O São Gonçalo Viih Tube é internada em UTI, três dias após parto de seu segundo filho
+A influenciadora precisou de uma transfusão de sangue, mas já está se recuperando A influencer Viih Tube, foi internada na UTI (Unidade de Terapia Intensiva),
+na manhã desta quinta feira (14), três dias após dar luz a seu segundo filho com o ex-bbb, Eliezer. A jovem de 24 anos, precisou de uma transfusão de sangue,
+mas já está se recuperando. Ela segue em observação. "Viih Tube está na UTI, pois precisou de uma transfusão de sangue, mas se recupera bem. Ela está
+acompanhada pela mãe. O Eliezer está cuidando do filho Ravi, que está muito bem", informou a equipe em nota enviada ao jornalista Leo Dias. Leia também: Jovem é
+esfaqueado por homem em situação de rua no Centro de Niterói Após ser casado por 12 anos, 'Pernalonga' é preso por violência doméstica contra a ex em Macaé A
+influenciadora sofreu uma intercorrência pós-parto e precisou passar pelo procedimento. Ela já havia comentado nas redes sociais, que enfrentou contratempos
+graves, depois de ficar 19 horas em trabalho de parto. "Foram coisas perigosas e era visível que estava dando algo errado, tivemos que sair correndo mesmo,
+quase tivemos que ir para a UTI, tanto eu quanto o Ravi. Graças a Deus, não precisou, mas chegou até a reservarem sala para o Ravi", ela contou. "De verdade,
+amei ter vivido a experiência do parto normal, fiquei muito triste que não deu certo no final, mas foi pela segurança dele e minha. Foi mais de uma
+intercorrência", resumiu Viih Tube.
+OPTION_1: human interest
+OPTION_2: health
+
+===== ITEM A012 | lang: kn =====
+HEADLINE: 
+TEXT:
+ದಾವಣಗೆರೆ: ಹುಟ್ಟುಹಬ್ಬದ (Birthday) ದಿನದಂದೇ ಕೌಂಪೌಂಡ್ (Compound) ಕುಸಿದುಬಿದ್ದು ಬಾಲಕ ಸಾವನ್ನಪ್ಪಿದ ಘಟನೆ ದಾವಣಗೆರೆಯ (Davanagere) ಬಸಾಪುರ (Basapura) ಗ್ರಾಮದಲ್ಲಿ
+ನಡೆದಿದೆ.ನಾಗಾರ್ಜುನ (11) ಮೃತ ಬಾಲಕ. ಈತ ಬಸಪುರ ಗ್ರಾಮದ ಗುರು ಶಾಂತಯ್ಯ ಎಂಬವರ ಪುತ್ರನಾಗಿದ್ದು, ಪಕ್ಕದ ಮನೆಗೆ ಆಟವಾಡಲು ತೆರಳಿದ್ದ ವೇಳೆ ಶಿಥಿಲಾವಸ್ಥೆಯಲ್ಲಿದ್ದ ಮನೆಯ ಕೌಂಪೌಂಡ್ ಗೋಡೆ
+ಕುಸಿದುಬಿದ್ದು ಮೃತಪಟ್ಟಿದ್ದಾನೆ. ನಾಗಾರ್ಜುನ ತನ್ನ 12ನೇ ವರ್ಷದ ಜನ್ಮದಿನ ಆಚರಿಸಿಕೊಳ್ಳುವ ಖುಷಿಯಲ್ಲಿದ್ದ. ಅದಕ್ಕಾಗಿ ಕುಟುಂಬಸ್ಥರು ರಾತ್ರಿಯೇ ಮನೆಗೆ ಕೇಕ್ ತಂದು ರಾತ್ರಿ 12ಕ್ಕೆ ಸರಿಯಾಗಿ
+ಮಗನ ಹುಟ್ಟುಹಬ್ಬ ಆಚರಿಸಲು ಸಿದ್ಧತೆ ನಡೆಸಿದ್ದರು. ಇದನ್ನೂ ಓದಿ: ಶಹಾಪುರದಲ್ಲಿ 20 ಟನ್ ಪಡಿತರ ಅಕ್ಕಿ ಕಳ್ಳತನ ಪ್ರಕರಣ – ಖಾಲಿ ಲಾರಿ ಬಿಟ್ಟು ಖದೀಮರು ಪರಾರಿನಾಗಾರ್ಜುನ್ 9 ಗಂಟೆಯ ಸುಮಾರಿಗೆ
+ಮನೆಯ ಪಕ್ಕದಲ್ಲಿ ಆಟವಾಡುತ್ತಿದ್ದ ಸಂದರ್ಭ ಗೋಡೆ ಕುಸಿದು ದುರ್ಘಟನೆ ಸಂಭವಿಸಿದೆ. ಪೋಷಕರ ಆಕ್ರಂದನ ಮುಗಿಲು ಮುಟ್ಟಿದ್ದು, ಮನೆಯ ಮಾಲೀಕ ಸಿದ್ದಪ್ಪ ಅವರ ವಿರುದ್ಧ ಆರ್‌ಎಂಸಿ ಯಾರ್ಡ್ ಪೊಲೀಸ್
+ಠಾಣೆಯಲ್ಲಿ ಪ್ರಕರಣ ದಾಖಲಾಗಿದೆ. ಏಕಾಏಕಿ ಕೌಂಪೌಂಡ್ ಕುಸಿದು ಬಿದ್ದ ಪರಿಣಾಮ ಕಬ್ಬಿಣದ ಗೇಟ್ (Iron Gate) ಬಾಲಕನ ತಲೆಗೆ ಬಡಿದು ತೀವ್ರ ರಕ್ತಸ್ರಾವವಾಗಿ ಮೃತಪಟ್ಟಿದ್ದಾನೆ ಎಂದು ಪೊಲೀಸರು
+ತಿಳಿಸಿದ್ದಾರೆ. ನಾಗಾರ್ಜುನನ ಪೋಷಕರು ಬಡವರಾಗಿದ್ದು, ಪರಿಹಾರ ನೀಡಬೇಕು ಎಂದು ಸ್ಥಳೀಯರು ಆಗ್ರಹಿಸಿದ್ದಾರೆ. ಇದನ್ನೂ ಓದಿ: ಕಾರ ಹುಣ್ಣಿಮೆ ತಡವಾಗಿ ಹೋಗು ಅಂದ್ರು ಮನೆಯವ್ರು – ಮಾತು ಲೆಕ್ಕಿಸದೇ
+ಹೊರಟ ವ್ಯಕ್ತಿ ಅಪಘಾತದಲ್ಲಿ ಸಾವು
+OPTION_1: crime, law and justice
+OPTION_2: disaster, accident and emergency incident
+
+===== ITEM A017 | lang: pt =====
+HEADLINE: Justiça Eleitoral aprova contas de campanha de Adriane Lopes
+TEXT:
+Justiça Eleitoral aprova contas de campanha de Adriane Lopes A Justiça Eleitoral aprovou as contas de campanha de Adriane Lopes (PP) e sua vice, Camilla
+Nascimento de Oliveira (Avante), referentes à eleição para a prefeitura de Campo Grande em 2024. Adriane Lopes, reeleita com 222.699 votos (51,45% dos votos
+válidos), teve sua prestação de contas analisada e corrigida, após identificação de irregularidades. A campanha arrecadou R$ 6.089.498,50, provenientes do Fundo
+Partidário, Fundo Especial de Financiamento de Campanha e outras fontes. Entre as falhas encontradas estavam atrasos no envio de dados sobre doações,
+divergências em despesas e emissão de notas fiscais sem registro. Após a correção das inconsistências, as contas foram consideradas regulares e aprovadas pelo
+juiz Francisco Vieira de Andrade Neto, da 008ª Zona Eleitoral de Campo Grande. A decisão seguiu parecer favorável do Ministério Público Eleitoral, que também
+recomendou a aprovação das contas conforme a legislação vigente. JD1 No Celular Acompanhe em tempo real todas as notícias do Portal, clique aqui e acesse o
+canal do JD1 Notícias no WhatsApp e fique por dentro dos acontecimentos também pelo nosso grupo, acesse o convite. Tenha em seu celular o aplicativo do JD1 no
+iOS ou Android. Reportar Erro
+OPTION_1: crime, law and justice
+OPTION_2: politics
+
+===== ITEM A021 | lang: pa =====
+HEADLINE: 
+TEXT:
+2020-04-23 12:56:32 ( ਖ਼ਬਰ ਵਾਲੇ ਬਿਊਰੋ )ਲੁਧਿਆਣਾ / ਕਰੋਨਾ ਤੋਂ ਕਿਵੇਂ ਬਚਿਆ ਜਾਵੇ ਜਿਸਦਾ ਸੁਨੇਹਾ ਅਕਾਲ ਅਕੈਡਮੀ ਬੜੂ ਸਾਹਿਬ ਮਾਹਿਲ ਕਲਾਂ ਵਿੱਚ ਪੜ੍ਹਦੇ ਵਿਦਿਆਰਥੀ ਸੁਖਨਿਧਾਨ ਕੌਰ
+ਖ਼ਾਲਸਾ ਅਤੇ ਸੁਬੇਗ ਸਿੰਘ ਖ਼ਾਲਸਾ ਆਪਣੇ ਹੱਥੀਂ ਘਰ ਵਿਚ ਤਿਆਰ ਕੀਤੀਆ ਪੇਂਟਿੰਗਾਂ ਹੱਥਾਂ ਵਿਚ ਫੜਕੇ ਮਨੁੱਖਤਾ ਨੂੰ ਸੁਨੇਹਾ ਦੇ ਰਹੇ ਹਨ ਅਤੇ ਕਰੋਨਾ ਵਾਇਰਸ ਤੋਂ ਬਚਾਅ ਲਈ ਘਰ ਵਿਚ ਰਹੋ ਧਰਤੀ ੳੁਪਰ
+ਮਨੁੱਖੀ ਜੀਵਨ ਤੇ ਕਰੋਨਾ ਵਾਇਰਸ ਦੇ ਕਹਿਰ ਤੋਂ ਕਿਵੇਂ ਬਚਾਅ ਹੋਵੇ ੳੁਸ ਸਬੰਧੀ ਦਰਸਾਉਂਦੀਆਂ ਪੇਂਟਿੰਗਾਂ ਰਾਹੀਂ ਭੈਣ-ਭਰਾ ਨੇ ਦੁਨੀਆਂ ਨੂੰ ਸੁਚੇਤ ਕਰਨ ਦਾ ਇਕ ਛੋਟਾ ਜਿਹਾ ਯਤਨ ਕੀਤਾ
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: health
+
+===== ITEM A027 | lang: ar =====
+HEADLINE: اعرف إيه هيوفرلك فى فاتورة الكهرباء مع انخفاض درجات الحرارة
+TEXT:
+اعرف إيه هيوفرلك فى فاتورة الكهرباء مع انخفاض درجات الحرارة شكرا لقرائتكم خبر عن اعرف إيه هيوفرلك فى فاتورة الكهرباء مع انخفاض درجات الحرارة والان مع تفاصيل
+الخبر القاهرة - سامية سيد - كتبت رحمة رمضانالأحد، 15 ديسمبر 2024 09:07 م أصبح الكثير من المواطنين يبحثون عن أكثر الأجهزة توفيرا فى فاتورة الكهرباء وطرق
+الاستخدام الأمثل لترشيد الاستهلاك، وخلال فصل الشتاء يلجأ الكثير من المواطنين إلى تشغيل الدفاية الكهربائية للحصول على تدفئة والتى تعتبر سبب رئيسى فى ارتفاع
+فاتورة استهلاك الكهرباء والبعض يلجأ لتشغيل التكييف على وضع ساخن بحثا عن الأقل استهلاكا للكهرباء، الخليج 365 لقرائه يوضح بعض المعلومات التى تجعل تكييف الهواء على
+وضع ساخن أقل استهلاك للكهرباء من الدفاية وهى كالآتي: 1- يعتبر التكييف أقل استهلاكا للكهرباء من الدفايات، خاصة وأن أى جهاز يحتوى على سخان من المتعارف أن استهلاكه
+للكهرباء يكون أعلى، وتعتبر الدفاية أعلى جهاز منزلى فى استهلاك الكهرباء، كما أن أغلب أنواع الدفايات ليس لديها قدرة الفصل، وتظل مستمرة فى عمل هواء ساخن وبطيئة،
+ولكن التكييف استهلاكه للكهرباء أقل من الدفاية، كون لديه ميزة الفصل كل فترة، ثم العودة مرة أخرى، وهو ما يجعله أيضا أكثر أمانا من الدفاية. 2- التكييف لا يحتوى على
+سخانات ولكنه يعمل بطريقة عكس دورة الفريون، ويعمل التكييف باردا بالخارج وداخل الغرفة ساخن الأمر الذى يجعله لا يحرق الأوكسجين حيث إنه يسحب الهواء البارد الموجود
+فى الغرفة ويمر به على الكويل فريون فيتم تسخين الهواء ويخرج دافئا، ما يمنع انتقال الأمراض، كما أن هناك ميزة التحكم فى درجة الحرارة وتنقية الجو. 3- الدفاية
+الكهربائية تحتوى داخلها على سخانات تعمل على تسخين هواء الغرفة وهو ما يحرق الأوكسجين الموجود داخل الحجرة ويبدأ الشخص مع مرور وقت كبير بالشعور بضيق تنفس وأحيانا
+استنشاق رائحة شبه الحريق، كما أنها لا تسيطر على درجة الحرارة بالغرفة ولا تحرك الهواء وهو ما يسبب الأمراض بين الموجودين وسهولة نقلها لبعضهم.يمكنكم متابعة أخبار
+مصر و العالم من موقعنا عبر جوجل نيوز
+OPTION_1: lifestyle and leisure
+OPTION_2: economy, business and finance
+
+===== ITEM A028 | lang: vi =====
+HEADLINE: Cảnh tượng kinh hoàng trong ngày Barcelona vô địch La Liga
+TEXT:
+Cảnh tượng kinh hoàng trong ngày Barcelona vô địch La Liga Đoạn video gây sốc ghi lại cảnh tài xế mất kiểm soát, đâm vào những người hâm mộ đang tập trung trước
+sân vận động ở ngoại ô Barcelona. Theo truyền thông Tây Ban Nha, sự cố khiến 15 người bị thương, hiện được điều tra làm rõ. Cảnh sát Catalonia nghi ngờ đây
+không phải là hành động cố ý mà có thể do người lái xe mất lái. Marca tiết lộ tài xế là một phụ nữ và đã bị bắt giữ. May mắn các ca thương tích không nghiêm
+trọng. Có đến 7 xe cứu thương được huy động để cấp cứu những người bị thương, trong đó một số được chuyển đến bệnh viện. Các đoạn video ghi lại cảnh nhiều cổ
+động viên bị mắc kẹt, một số người khóc và khuôn mặt đầy máu. Cảnh quay cũng cho thấy chiếc xe màu trắng dừng giữa với đám đông, khi nhiều người ném đồ uống vào
+xe. Ngay sau đó, xe lao thẳng vào đám đông, tạo nên cảnh hỗn loạn và khiến hàng trăm người có mặt tại hiện trường hoảng loạn, sợ hãi. Lực lượng cảnh sát vũ
+trang nhanh chóng có mặt và tiếp cận chiếc xe sau khi nó tông vào người hâm mộ. Trở lại với trận đấu trên sân RCDE Stadium rạng sáng 16/5, Barcelona đả bại
+Espanyol 2-0 để chính thức vô địch La Liga sớm 2 vòng đấu khi họ hơn Real Madrid 7 điểm. Các chi tiết về cuộc đời của Luis Suarez được kể trong cuốn tiểu sử về
+anh mang tên “Luis Suarez” của nhà báo Frank Worrall, bao gồm những câu chuyện về gia đình êm ấm cùng cô con gái Delfina với tên được đảo từ Anfield, sân nhà
+của Liverpool. Cuốn sách được xuất bản năm 2014.
+OPTION_1: sport
+OPTION_2: disaster, accident and emergency incident
+
+===== ITEM A032 | lang: tr =====
+HEADLINE: Sema Aydemir, Pınar Saka'nın kocasıyla birbirine girdi! Olay sözler
+TEXT:
+Sema Aydemir, Pınar Saka'nın kocasıyla birbirine girdi! Olay sözler Survivor All Star 2024 kadrosuna sonradan dahil olan ve Pınar Saka ile kavgasından sonra
+diskalifiye olan Sema Aydemir’in Survivor All Star macerası yarım kalmıştı. Yarışmanın son bölümde adaya veda eden isim Pınar olunca Sema Aydemir kendini
+tutamadı ve halay çektiği anları takipçileri ile paylaştı. Instagram hesabından paylaşım yapan Pınar'ı kocası Erhan Seçkin, Sema'yı hedef alarak "Bu arada
+dansöz karakterli insanların pavyona dönüştürdüğü adada hala Pınar'ımın arkasından konuşanlara kolay gelsin. Kültürlünün zekası, varoşun çenesini yorar.
+'HALAYINIZA DEVAM...' Siz halayınıza devam gençler. Biz de bulutların üstünde tango yapmaya devam edeceğiz. Herkes hak ettiği hayatı yaşar. Pınar çok çok mutlu,
+oradan elenince dünyası başına yıkılanların da dünyası o kadar işte" dedi. HAYATIMIN VAROŞLUĞUNU...' Sema Aydemir ise Seçkin'in kendisiyle ilgili paylaşımlarını
+kendi Instagram hesabından yayınlayarak "Üzüldüğüm doğrudur... Eşinin beni yıllardır ekmek yediğim yerde, hayatıma birçok güzel şeyi katan yerden paketlendiği
+doğrudur. Böyle şeylerle mutlu olduğumuzu da zaten biliyoruz. Gerçekten sizin dünyanızla benimki farklı. Dediğiniz gibi ben halay siz tango. Beni çekmeyen
+yoktur sizi çeken. Hayatımın varoşluğunu karını döverek yaptım. Çok utandım ve cezamı çektim evet ama pişman mısın dersen aklım hala yapmadıklarımda" cevabını
+verdi.
+OPTION_1: human interest
+OPTION_2: arts, culture, entertainment and media
+
+===== ITEM A034 | lang: pa =====
+HEADLINE: 
+TEXT:
+corona 2021-03-25 21:59:41 ( ਖ਼ਬਰ ਵਾਲੇ ਬਿਊਰੋ )ਚੰਡੀਗੜ੍ਹ, 25 ਮਾਰਚ: ਰਾਜ ਭਰ ਵਿੱਚ ਕੋਵਿਡ-19 ਮਾਮਲਿਆਂ ਵਿੱਚ ਅਚਾਨਕ ਹੋਏ ਵਾਧੇ ਨੂੰ ਧਿਆਨ ਵਿੱਚ ਰੱਖਦਿਆਂ, ਪੰਜਾਬ ਸਰਕਾਰ ਨੇ 10
+ਅਪ੍ਰੈਲ, 2021 ਤੱਕ ਆਮ ਲੋਕਾਂ ਲਈ ਅਜਾਇਬ ਘਰਾਂ ਨੂੰ ਬੰਦ ਕਰਨ ਦਾ ਫੈਸਲਾ ਕੀਤਾ ਹੈ। ਇਸ ਸਬੰਧੀ ਜਾਣਕਾਰੀ ਦਿੰਦਿਆਂ ਅੱਜ ਇਥੇ ਜਾਰੀ ਪ੍ਰੈਸ ਬਿਆਨ ਵਿੱਚ ਪੰਜਾਬ ਸਰਕਾਰ ਦੇ ਬੁਲਾਰੇ ਨੇ ਦੱਸਿਆ ਕਿ
+ਪੰਜਾਬ ਸਰਕਾਰ ਦੀਆਂ ਹਦਾਇਤਾਂ ਦੀ ਪਾਲਣਾ ਕਰਦਿਆਂ ਸ੍ਰੀ ਅਨੰਦਪੁਰ ਸਾਹਿਬ ਵਿਖੇ ਸਥਿਤ ਵਿਰਾਸਤ-ਏ-ਖਾਲਸਾ ਨੂੰ ਵੀ ਪ੍ਰਭਾਵਿਤ ਪ੍ਰਭਾਵ ਨਾਲ ਬੰਦ ਕੀਤਾ ਜਾਵੇਗਾ।ਸਿੱਖ ਵਿਰਾਸਤ ਅਤੇ ਸਭਿਆਚਾਰ ਦੇ ਇਸ
+ਵਿਸ਼ਵ ਪ੍ਰਸਿੱਧ ਅਜਾਇਬ ਘਰ ਵਿੱਚ ਜਨਤਕ ਪ੍ਰਵੇਸ਼ ਕਰਨ ਤੇ ਸਖਤੀ ਨਾਲ ਪਾਬੰਦੀ ਹੋਵੇਗੀ।ਆਮ ਲੋਕਾਂ ਨੂੰ ਇਹ ਵੀ ਅਪੀਲ ਕੀਤੀ ਗਈ ਹੈ ਕਿ ਉਹ ਇਸ ਮਾਰੂ ਵਾਇਰਸ ਦੇ ਹੋਰ ਵਧਣ ਦੀ ਰੋਕਥਾਮ ਲਈ ਪੰਜਾਬ
+ਸਰਕਾਰ ਦੁਆਰਾ ਜਾਰੀ ਕੀਤੀਆਂ ਸਿਹਤ ਸਬੰਧੀ ਸਲਾਹਾਂ/ਹਦਾਇਤਾਂ ਦੀ ਸਖਤੀ ਨਾਲ ਪਾਲਣਾ ਯਕੀਨੀ ਬਣਾਉਣ।ਸ੍ਰੀ ਆਨੰਦਪੁਰ ਸਾਹਿਬ ਵਿਖੇ ਹੋਲਾ ਮੁਹੱਲਾ ਸਮਾਗਮਾਂ ਵਿਚ ਹਿੱਸਾ ਲੈਣ ਲਈ ਆਉਣ ਵਾਲੇ ਸ਼ਰਧਾਲੂਆਂ
+ਨੂੰ ਵੀ ਅਪੀਲ ਕੀਤੀ ਗਈ ਹੈ ਕਿ ਉਹ ਵੱਡੀ ਗਿਣਤੀ ਵਿਚ ਇਕ ਜਗ੍ਹਾ ਇਕੱਤਰ ਨਾ ਹੋਣ।ਉਹ ਨੂੰ ਹਰ ਸਮੇਂ ਮਾਸਕ ਲਗਾ ਕੇ ਰੱਖਣ, ਸਮਾਜਕ ਦੂਰੀ ਬਣਾਈ ਰੱਖਣ ਅਤੇ ਨਿਯਮਤ ਅੰਤਰਾਲਾਂ `ਤੇ ਆਪਣੇ ਹੱਥਾਂ ਨੂੰ
+ਸੈਨੀਟਾਈਜ ਕਰਦੇ ਰਹਿਣ।
+OPTION_1: health
+OPTION_2: religion
+
+===== ITEM A036 | lang: fr =====
+HEADLINE: Accès limité aux calanques de la Vesse et Niolon à partir du mois de juin
+TEXT:
+Accès limité aux calanques de la Vesse et Niolon à partir du mois de juin C’est le moment de se procurer le sésame pour circuler cet été, une réglementation
+étant mise en place les week-ends et les jours fériés pour gérer les affluences exceptionnelles. Afin de limiter l’accès aux calanques de la Vesse et de Niolon
+où l’affluence est exceptionnelle surtout en période estivale, celui-ci sera réglementé tous les week-ends et jours fériés jusqu’à fin août, de 10h à 20h, à
+partir du premier week-end du mois de juin, soit celui des 1er et 2 juin, et ce jusqu’au dernier week-end du mois d’août. Un filtrage assuré par une société
+privée de sécurité à la charge de la municipalité. Ne seront autorisées à circuler en véhicule dans les calanques uniquement les personnes qui ont une résidence
+principale ou secondaire au sein de l’une des calanques, et munies d’un laissez-passer. Une permanence se tiendra au poste de police municipale du 13 au 17 mai
+2024 de 08h30 à 12h00 et de 14h à 17h30. Les modalités et fiches d’inscription sont téléchargeables sur le site lerove.fr ou à retirer au poste de police
+municipale (Boulevard de la Carrairade, face à l’église). Le document peut également être envoyé par mail à l’adresse police@le-rove.fr. Les laissez-passer
+seront à récupérer auprès des agents du filtrage. Rens. au 04.91.09.91.50 ou par mail : police@le-rove.fr.
+OPTION_1: environment
+OPTION_2: lifestyle and leisure
+
+===== ITEM A037 | lang: pa =====
+HEADLINE: 
+TEXT:
+2023-02-03 17:16:39 ( ਖ਼ਬਰ ਵਾਲੇ ਬਿਊਰੋ )ਲੁਧਿਆਣਾ 3 ਫਰਵਰੀ,(ਰਾਜਕੁਮਾਰ ਸ਼ਰਮਾ ਪੰਜਾਬੀ ਫਿਲਮ ਕਲੀ ਜੋਟਾ ਦੀ ਸਟਾਰਕਾਸਟ - ਨੀਰੂ ਬਾਜਵਾ ਅਤੇ ਸਤਿੰਦਰ ਸਰਤਾਜ, ਨਿਰਦੇਸ਼ਕ ਵਿਜੇ ਕੁਮਾਰ
+ਅਰੋੜਾ, ਨਿਰਮਾਤਾ ਸੰਤੋਸ਼ ਸੁਭਾਸ਼ ਆਪਣੀ ਫਿਲਮ ਦੇ ਪ੍ਰਚਾਰ ਲਈ ਸੀਟੀ ਯੂਨੀਵਰਸਿਟੀ ਪਹੁੰਚੇ। ਤਾੜੀਆਂ ਦੇ ਵਿਚਕਾਰ, ਸਿਤਾਰਿਆਂ ਨੇ ਵਿਦਿਆਰਥੀਆਂ ਨਾਲ ਫਿਲਮ ਦੇ ਖਾਸ ਪਹਿਲੂਆਂ , ਜ਼ਿੰਦਗੀ ਬਾਰੇ
+ਗੱਲਬਾਤ ਕੀਤੀ। ਇਹ ਹੀ ਨਹੀਂ ਸਤਿੰਦਰ ਸਰਤਾਜ ਦੀ ਗਾਣਿਆਂ ਦਰਸ਼ਕਾਂ ਦਾ ਦਿਲ ਜਿੱਤ ਲਿਆ। ਸਤਿੰਦਰ ਸਰਤਾਜ ਅਤੇ ਅਦਾਕਾਰਾ ਨੀਰੂ ਬਾਜਵਾ ਦੇ ਭੰਗੜੇ ਨੇ ਸੀਟੀ ਯੂਨੀਵਰਸਿਟੀ ਦੇ ਵਿਦਿਆਰਥੀਆਂ ਅਤੇ ਫੈਕਲਟੀ
+ਦਾ ਮਨ ਮੋਹ ਲਿਆ।ਦੱਸ ਦੇਈਏ ਕਿ ਇਸ ਫਿਲਮ ਦਾ ਨਿਰਦੇਸ਼ਨ ਵਿਜੇ ਕੁਮਾਰ ਅਰੋੜਾ ਨੇ ਕੀਤਾ ਹੈ ਅਤੇ ਇਸ ਵਿੱਚ ਨੀਰੂ ਬਾਜਵਾ, ਸਤਿੰਦਰ ਸਰਤਾਜ ਅਤੇ ਵਾਮਿਕਾ ਗੱਬੀ ਮੁੱਖ ਕਿਰਦਾਰਾਂ ਵਿੱਚ ਹਨ। ਇਹ ਇੱਕ
+ਪਿਆਰ ਕਹਾਣੀ ਹੈ ਜੋ ਇੱਕ ਬਹੁਤ ਹੀ ਨਰਮ ਅਤੇ ਸ਼ੁੱਧ ਦਿਲ ਵਾਲੀ ਕੁੜੀ "ਰਾਬੀਆ" ਨੂੰ ਦਰਸਾਉਂਦੀ ਹੈ ਜਿਸਨੂੰ ਬਾਅਦ ਵਿੱਚ ਮਰਦ ਪ੍ਰਧਾਨ ਸਮਾਜ ਦੁਆਰਾ ਤਸੀਹੇ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ।ਫਿਲਮ ਅਤੇ ਇਸ ਦੇ
+ਵਿਲੱਖਣ ਟਾਈਟਲ ਬਾਰੇ ਗੱਲ ਕਰਦੇ ਹੋਏ ਸਤਿੰਦਰ ਸਰਤਾਜ ਨੇ ਕਿਹਾ ਕਿ ਇਸ ਫਿਲਮ ਦੀ ਕਹਾਣੀ ਤੇ ਇਹ ਨਾਮ ਸਹੀ ਢੁਕਦਾ ਹੈ ਅਤੇ ਉਮੀਦ ਹੈ ਕਿ ਦਰਸ਼ਕਾਂ ਨੂੰ ਇਹ ਫਿਲਮ ਜਰੂਰ ਪਸੰਦ ਆਵੇਗੀ।ਅਦਾਕਾਰਾ ਨੀਰੂ
+ਬਾਜਵਾ, ਜੋ ਕਿ ਫਿਲਮ ਦੀ ਸਹਿ-ਨਿਰਮਾਤਾ ਵੀ ਹਨ , ਉਹਨਾਂ ਨੇ ਕਿਹਾ ਇਸ ਨੂੰ ਸੋਚਣ ਵਿੱਚ ਬਹੁਤ ਸਾਲ ਲੱਗ ਗਏ। ਪਰ ਜਦੋਂ ਇਹ ਖ਼ੂਬਸੂਰਤ ਕਹਾਣੀ ਆਈ ਤਾਂ ਉਹਨਾਂ ਨੂੰ ਪਤਾ ਸੀ ਕਿ ਸਤਿੰਦਰ ਸਰਤਾਜ ਤੋਂ
+ਇਲਾਵਾ ਹੋਰ ਕੋਈ ਨਹੀਂ ਕਰ ਸਕਦਾ। ਸਤਿੰਦਰ ਸਰਤਾਜ ਨਾਲ ਕੰਮ ਕਰਨਾ ਮੇਰਾ ਇੱਕ ਸੁਪਨਾ ਸੀ ਜੋ ਹੁਣ ਸਾਕਾਰ ਹੋ ਚੁੱਕਾ ਹੈ। ”ਇਸ ਮੌਕੇ ਸੀਟੀ ਗਰੁੱਪ ਦੇ ਵਿਦਿਆਰਥੀ ਜਤਿੰਦਰ ਮਾਨ ਨੇ ਵੀ ਆਪਣਾ ਪਹਿਲਾ
+ਗੀਤ ਪੇਸ਼ ਕੀਤਾ। ਸੀਟੀ ਯੂਨੀਵਰਸਿਟੀ ਦੇ ਵਾਈਸ ਚੇਅਰਮੈਨ ਹਰਪ੍ਰੀਤ ਸਿੰਘ, ਵਾਈਸ ਚਾਂਸਲਰ (ਕਾਰਜਕਾਰੀ ) ਡਾ. ਸਤੀਸ਼, ਦਵਿੰਦਰ ਸਿੰਘ, ਵਿਦਿਆਰਥੀ ਭਲਾਈ ਵਿਭਾਗ ਦੇ ਡਿਪਟੀ ਡਾਇਰੈਕਟਰ; ਰਜਿਸਟਰਾਰ
+ਸਰਬਪ੍ਰੀਤ ਸਿੰਘ ਨੇ ਸਟਾਰ ਕਾਸਟ ਨੂੰ ਸਨਮਾਨਿਤ ਕੀਤਾ ਅਤੇ ਉਨ੍ਹਾਂ ਨੂੰ ਸ਼ੁੱਭਕਾਮਨਾਵਾਂ ਦਿੱਤੀਆਂ।
+OPTION_1: education
+OPTION_2: arts, culture, entertainment and media
+
+===== ITEM A046 | lang: fr =====
+HEADLINE: Bourg-de-Péage – Une balade au frais au Bois des Naix
+TEXT:
+Bourg-de-Péage – Une balade au frais au Bois des Naix Quand la canicule règne, le Bois des Naix s’impose comme un refuge idéal. Entre nature, fraîcheur du
+ruisseau et aménagements pour tous, profitez de ce parc de 12 hectares pour une promenade ou un moment de détente. Quand le thermomètre grimpe, le Bois des Naix
+devient l’endroit idéal pour trouver de la fraîcheur. Ce domaine a été entièrement créé de toutes pièces entre le XVIIIe et le XIXe siècle par Dedelay d’Agier,
+un homme politique et propriétaire local qui a passé plus de vingt ans à acheter des parcelles, assécher les marécages et planter des milliers d’arbres pour
+composer cet espace. La Ville de Bourg-de-Péage a souhaité, en 2002, rendre vie à ce lieu en l’aménageant pour partager avec les Péageois et tous les amoureux
+de la nature, le plaisir des promenades familiales ou entre amis. Grâce à sa végétation dense, l’ombre y est garantie et l’air reste respirable, même en pleine
+canicule. Le parc compte 5 kilomètres de chemins de promenade très faciles d’accès. Ces sentiers longent le Charlieu, un petit ruisseau qui apporte beaucoup de
+fraîcheur à l’ensemble du site et mène les marcheurs jusqu’à un belvédère avec une belle vue sur l’Isère. C’est le lieu parfait pour s’installer sur un banc
+avec un livre, marcher à son rythme, courir ou simplement déconnecter du quotidien. Des équipements pour le sport et les enfants Le parc est particulièrement
+bien équipé pour que l’on puisse y passer un après-midi entier. Pour les enfants, la municipalité a installé plusieurs zones de jeux en bois. On y trouve
+notamment une grande structure en toile d’araignée pour les plus grimpeurs, des toboggans, des constructions suspendues et même un parcours d’orientation pour
+jouer aux explorateurs. Les sportifs de tous niveaux peuvent quant à eux profiter d’un parcours de santé complet avec des équipements de fitness en bois et des
+barres de traction. Une table de ping-pong est aussi disponible en libre accès pour des parties conviviales. Un espace confortable Sur place, vous trouverez des
+tables de pique-nique ombragées, des toilettes publiques et une fontaine d’eau potable indispensable pour se rafraîchir et s’hydrater. Jusqu’au 31 juillet le
+parc élargit ses horaires et reste ouvert jusqu’à 22h. Les vélos et autres véhicules, les feux et les animaux de compagnie (même tenus en laisse) sont
+strictement interdits dans l’enceinte du parc.
+OPTION_1: lifestyle and leisure
+OPTION_2: environment
+
+===== ITEM A050 | lang: id =====
+HEADLINE: Sakura LE SSERAFIM Tanggapi Kritik Penampilan di Coachella: Tidak Ada yang Sempurna
+TEXT:
+Sakura LE SSERAFIM Tanggapi Kritik Penampilan di Coachella: Tidak Ada yang Sempurna TEMPO.CO, Jakarta - Anggota girl group LE SSERAFIM, Sakura menanggapi
+banyaknya kritik atas penampilan mereka di panggung Coachella 2024. Menurutnya, penampilan akhir pekan lalu tersebut merupakan usaha terbaik yang telah
+diberikan oleh para anggota."Kami, yang debut kurang dari dua tahun lalu dan hanya melakukan tur satu kali, berdiri dengan bangga di panggung Coachella,
+menikmati diri kami sendiri, dan memberikan segalanya untuk penampilan ini," tulis Sakura di Weverse pada Senin, 15 April 2024.Sakura LE SSERAFIM mengaku
+persiapan untuk tampil di festival musik tahunan di Amerika Serikat itu sudah dipersiapkan dengan begitu serius. Sampai pada hari LE SSERAFIM tampil, Sabtu, 13
+April 2024, penyanyi asal Jepang ini sangat yakin mampu menunjukkan seluruh kemampuannya. Namun, vokal para anggota LE SSERAFIM di Coachella justru mendapat
+beragam kritik dari banyak pihak. Menanggapi hal tersebut, Sakura menjawab dengan mengatakan tidak ada orang yang sempurna. "Bagi sebagian orang, ini mungkin
+tampak belum matang, namun tidak ada seorang pun yang sempurna untuk semua orang, dan merupakan fakta yang tidak dapat disangkal bahwa, di antara semua tahapan
+yang telah kami tunjukkan, ini adalah yang terbaik. Itu sebabnya saya sangat bersemangat untuk menjadi tim yang lebih baik, dan saya sangat ingin bekerja lebih
+keras lagi," tulis Sakura.Kata Sakura Soal LE SSERAFIM Dibandingkan dengan BLACKPINK dan aespaLebih lanjut, Sakura juga menyinggung soal LE SSERAFIM yang
+dibandingkan dengan BLACKPINK dan aespa. Kedua girl group K-pop tersebut sudah lebih dulu tampil di Coachella tahun-tahun sebelumnya dan dinilai lebih memuaskan
+daripada LE SSERAFIM tahun ini."Apa yang Anda peroleh dengan membandingkan diri Anda dengan orang lain, dan apa yang Anda peroleh dengan membandingkan diri Anda
+dengan diri Anda di masa lalu, sangatlah berbeda. Tolong, meskipun hidup normal itu sulit, temukan sesuatu yang benar-benar Anda sukai di dunia yang sulit ini,
+dan fokuslah hanya pada hal-hal baik, hal-hal yang Anda sukai," tulis Sakura. "Berfokus hanya pada hal-hal baik bukanlah hal yang memanjakan, ini adalah hidup
+Anda, dan Anda berhak menjalaninya sesuai keinginan Anda.”Penampilan LE SSERAFIM Dipuji Pengunjung Coachella 2024Berbanding terbalik dengan komentar di media
+sosial, Sakura justru mengaku mendapatkan pujian dari pengunjung Coachella 2024. Hal tersebut membuatnya terharu dan terkesan. "Saat saya berjalan di sekitar
+lapangan Coachella, beberapa orang mendatangi saya dan berkata, ' Penampilan Anda kemarin luar biasa!!!' Hanya itu saja sudah sangat mengharukan bagi saya,"
+tulisnya.Sakura tidak peduli dengan apa yang orang lain pikirkan dan memilih untuk fokus pada apa yang dia yakini. Dia mengaku akan terus percaya pada dirinya
+sendiri. Tidak lupa dia berterima kasih kepada semua staf, penari, anggota band, dan semua orang yang membantu penampilan LE SSERAFIM di Coachella 2024."Kepada
+FEARNOT (nama fans LE SSERAFIM) yang bergegas ke panggung dan mereka yang menonton kami melalui streaming, terima kasih banyak. Karena Anda ada di sana, saya
+bisa tampil dengan bangga," tulis Sakura.ALLKPOP | KOREABOOPilihan Editor: LE SSERAFIM Dikecam Syuting Video Musik Easy dengan Konsep Gereja Katolik yang
+Melenceng
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: human interest
+
+===== ITEM A052 | lang: ta =====
+HEADLINE: 
+TEXT:
+புதுடெல்லி: பிரதமர் நரேந்திர மோடி தலைமையிலான மத்திய அமைச்சரவைக் கூட்டத்தில், CITIIS 2.0 என்னும் நகரங்களைப் புதுமைப்படுத்தவும், ஒருங்கிணைக்கவும், நிலைநிறுத்தவும்
+மேற்கொள்ளப்படும் நகர முதலீடுகள் 2.0 திட்டத்துக்கு ஒப்புதல் அளிக்கப்பட்டுள்ளது.CITIIS 2.0 என்பது பிரெஞ்சு மேம்பாட்டு நிறுவனம் (ஏஎப்டி) , மறுகட்டமைப்புக்கான கடன்
+நிறுவனம் (கேஎப்டபிள்யு), ஐரோப்பிய ஒன்றியம் (இயு), தேசிய நகர்ப்புற விவகார நிறுவனம் (என்ஐயுஏ) ஆகியவற்றுடன் இணைந்து வீட்டுவசதி மற்றும் நகர்ப்புற விவகார
+அமைச்சகத்தால், உருவாக்கப்பட்ட ஒரு திட்டமாகும். இந்தத் திட்டம் நான்கு ஆண்டுகளுக்கு, அதாவது 2023 முதல் 2027ம் ஆண்டு வரை செயல்படுத்தப்படும்.நகர அளவில் ஒருங்கிணைந்த
+கழிவு மேலாண்மை, மாநில அளவில் பருவநிலை சார்ந்த சீர்திருத்த நடவடிக்கைகள், தேசிய அளவில் நிறுவனங்களை வலுப்படுத்துதல் மற்றும் அறிவைப் பரப்புதல் ஆகியவற்றில் கவனம்
+செலுத்துவதன் மூலம் சுழற்சி பொருளாதாரத்தை மேம்படுத்தும் போட்டித் திட்டங்களுக்கு இந்தத் திட்டம் ஆதரவளிக்கும்.CITIIS 2.0- க்கான நிதியில், ரூ.1,760 கோடி கடன் (200
+மில்லியன் யூரோ- ஏஎப்டி, கேஎப்டபிள்யு ஆகியவை தலா 100 மில்லியன் யூரோ), ஐரோப்பிய ஒன்றியம் வழங்கும் ரூ.106 கோடி ( 12 மில்லியன் யூரோ) தொழில்நுட்ப உதவி மானியம் ஆகியவை
+அடங்கும்.CITIIS 1.0-இன் அனுபவம், வெற்றிகளை மேம்படுத்துவதையும் அளவிடுவதையும் CITIIS 2.0 நோக்கமாகக் கொண்டுள்ளது. CITIIS 1.0 வின் மொத்தச் செலவு ரூ. 933 கோடி (106
+மில்லியன் யூரோ) என்பது குறிப்பிடத்தக்கது.
+OPTION_1: environment
+OPTION_2: economy, business and finance
+
+===== ITEM A055 | lang: tr =====
+HEADLINE: Havadan Trafik Denetiminde 33 Bin 770 İşlem
+TEXT:
+Havadan Trafik Denetiminde 33 Bin 770 İşlem Bakan Yerlikaya: '33 bin 770 araca/sürücüye işlem yapıldı'ANKARA - İçişleri Bakanı Ali Yerlikaya, 1 Ocak-14 Mart
+2025 tarihleri arasında trafik ekiplerince helikopter ve drone ile havadan yapılan trafik denetimlerinde 33 bin 770 araca/sürücüye işlem yapıldığını açıkladı.
+Yerlikaya, X hesabından yaptığı paylaşımda, '1 Ocak-14 Mart 2025 tarihleri arasında Trafik Ekiplerimizce; Helikopter ve Drone ile havadan yapılan trafik
+denetimlerimizde: 33 bin 770 araca/sürücüye işlem yapıldı. Şehiriçi ve şehirlerarası karayollarında trafik ihlallerini önlemek amacıyla, trafik yoğunluğunun ve
+kaza riskinin arttığı yol güzergahlarında helikopter ve drone gibi hava taşıtlarını trafik denetimlerimizde etkin bir şekilde kullanıyoruz' ifadelerine yer
+verdi.Yerlikaya'nın paylaşımının devamı şöyle: 'Emniyet ve Jandarma Trafik Ekiplerimizce 6-13 Mart 2025 tarihleri arasında, 3 Milyon 791 bin 624 araç
+denetlendi. Işıklı ya da sesli uyarı işareti bulunan cihazları (çakar) mevzuatta izin verilmeyen araçlara takarak kullanan 44 sürücüye işlem yapıldı. Hız
+ihlalinde bulunan 152 bin 941, Periyodik muayenesi yaptırılmamış 34 bin 213, Emniyet kemeri kullanmayan 31 bin 80, Sürücü belgesiz araç kullanan 19 bin 385 ve
+Zorunlu mali sorumluluk sigortası bulunmayan 10 bin 230 olmak üzere diğer işlemlerle birlikte; oplam 566 bin 903 araca/sürücüye işlem yapıldı'
+OPTION_1: crime, law and justice
+OPTION_2: politics
+
+===== ITEM A061 | lang: es =====
+HEADLINE: Cómo el hombre del petróleo original de Trump fortaleció los lazos entre EE.UU. e Israel y minimizó los riesgos de la guerra con Irán.
+TEXT:
+Cómo el hombre del petróleo original de Trump fortaleció los lazos entre EE.UU. e Israel y minimizó los riesgos de la guerra con Irán. El magnate Harold Hamm es
+uno de los petroleros más exitosos de los Estados Unidos, hijo de aparceros de Oklahoma que se enriqueció como un “explorador salvaje” y pionero en técnicas de
+fracturación hidráulica que impulsaron el auge de esquisto en 2008, revirtiendo la producción de petróleo en declive de Estados Unidos. Donald Trump lo describe
+como un amigo de “larga data” y se dice que lo llamó su “hombre original del petróleo” a puertas cerradas. El fundador de Continental Resources también ha
+enfrentado escrutinio de defensores del clima y algunos legisladores demócratas por su influencia en Trump y su papel para empujarlo a apostarlo todo por los
+combustibles fósiles que calientan el planeta y debilitar las regulaciones climáticas. Mientras que Hamm fue una figura clave detrás de la eliminación de la
+prohibición de exportación de petróleo crudo de Estados Unidos en 2015, un movimiento lucrativo para su empresa, en los últimos años los defensores han seguido
+de cerca la influencia de Hamm en el país. Por ejemplo, el octogenario ayudó a organizar la infame recaudación de fondos privada en Mar-a-Lago en 2024, donde se
+informa que Trump pidió a los ejecutivos petroleros $1 mil millones para ayudarlo a regresar a la Casa Blanca. Hamm ha donado más de $2 millones a las tres
+campañas presidenciales de Trump y una cantidad no revelada para financiar su nuevo proyecto de salón de baile. Pero se ha prestado menos atención a las puntos
+de vista intransigentes de Hamm sobre Israel, Irán y los mercados energéticos de Estados Unidos, que Trump ecoó al justificar la guerra contra Irán que lanzó en
+febrero y para minimizar su impacto en los precios del petróleo y la gasolina en Estados Unidos. Hamm ha estado advirtiendo durante años que Irán representa una
+amenaza para Israel y Estados Unidos, abogando por la importancia de la producción de petróleo de Estados Unidos en el contexto de Oriente Medio, al mismo
+tiempo que ayuda a fortalecer los lazos estadounidenses con Israel. En un ensayo en 2018 que coescribió para National Review, Hamm argumentó que “Irán perpetúa
+la retórica virulenta que ha alimentado” el antisemitismo y que “Irán debe pagar por sus constantes intentos de desestabilizar Oriente Medio”. En el ensayo
+también predijo que Estados Unidos sería “capaz de proporcionar suficiente petróleo para ayudar a estabilizar el mercado global, sin importar lo que suceda en
+países como Irán” y que “ya no es el caso que el flujo de petróleo a Estados Unidos quede bloqueado si se cierra el Estrecho de Ormuz”. Fundamental para el
+impulso de la política exterior de Hamm ha sido el Consejo para una América Segura (CSA), una organización sin fines de lucro de la era Reagan que relanzó en
+2012 y del cual es copresidente. El New York City- …(seguir leyendo en fuente original)
+OPTION_1: politics
+OPTION_2: conflict, war and peace
+
+===== ITEM A071 | lang: vi =====
+HEADLINE: Công bố quyết định bổ nhiệm nữ Thứ trưởng Bộ GD-ĐT
+TEXT:
+Công bố quyết định bổ nhiệm nữ Thứ trưởng Bộ GD-ĐT Trước đó, ngày 1/2, Thủ tướng Phạm Minh Chính ký Quyết định số 137/QĐ-TTG điều động, bổ nhiệm bà Nguyễn Thị
+Kim Chi, Uỷ viên Ban Thường vụ Tỉnh ủy, Bí thư Đảng ủy Khối các cơ quan tỉnh Nghệ An giữ chức Thứ trưởng Bộ GD-ĐT. Thời hạn bổ nhiệm là 5 năm. Phát biểu chúc
+mừng tân Thứ trưởng, Bộ trưởng Nguyễn Kim Sơn bày tỏ cảm ơn tới Bộ Chính trị, Ban Bí thư, Trung ương Đảng, các Ban Đảng, Chính phủ, các Bộ, ngành đã ủng hộ để
+Bộ GD-ĐT sớm bổ sung thêm một nhân sự lãnh đạo, đảm bảo công việc lãnh đạo, chỉ đạo bình thường; đặc biệt trong bối cảnh ngành Giáo dục đang thực hiện nhiều
+nhiệm vụ lớn, nhiều thách thức trong giai đoạn đổi mới căn bản, toàn diện giáo dục và đào tạo. Bộ trưởng tin tưởng, với việc được đào tạo bài bản và những trải
+nghiệm thực tế từ cơ sở, trải nghiệm qua các vị trí công tác, Thứ trưởng Nguyễn Thị Kim Chi có đầy đủ năng lực, phẩm chất, kinh nghiệm, trải nghiệm để hoàn
+thành trọng trách được giao và vượt qua những thách thức đang chờ phía trước. Dự kiến Thứ trưởng Nguyễn Thị Kim Chi sẽ phụ trách các mảng công tác gồm: giáo dục
+mầm non, giáo dục chính trị và công tác học sinh sinh viên, giáo dục thể chất, thi đua khen thưởng, giáo dục dân tộc, trẻ em… Theo Bộ trưởng Nguyễn Kim Sơn, năm
+2024 là năm trọng tâm trọng điểm của ngành Giáo dục, là năm nước rút hoàn thành đổi mới giáo dục phổ thông, bắt tay xây dựng chương trình giáo dục mầm non mới,
+hoàn thành các nhiệm vụ lớn thể chế và nhiều nhiệm vụ khác… Do đó, Bộ trưởng mong muốn Thứ trưởng Nguyễn Thị Kim Chi sẽ phát huy hết năng lực để hoàn thành
+trọng trách. Tân Thứ trưởng Bộ GD-ĐT Nguyễn Thị Kim Chi sinh năm 1971, quê xã Thanh Ngọc, huyện Thanh Chương, tỉnh Nghệ An. Bà tốt nghiệp đại học, chuyên ngành
+Sư phạm Ngữ văn. Trước khi giữ cương vị Thứ trưởng Bộ GD-ĐT, bà Chi từng là giáo viên Trường THPT Chuyên Phan Bội Châu, tỉnh Nghệ An (từ tháng 5/1993 đến tháng
+6/2005), rồi Phó Hiệu trưởng Trường THPT Chuyên Phan Bội Châu (từ tháng 6/2005 đến tháng 6/2009). Từ tháng 6/2009 đến tháng 6/2014, bà làm Phó Giám đốc Sở GD-ĐT
+Nghệ An; từ tháng 6/2014 đến tháng 3/2019 giữ chức vụ Giám đốc Sở GD-ĐT Nghệ An. Bà cũng từng kinh qua vị trí Bí thư Thị ủy Cửa Lò, tỉnh Nghệ An (từ tháng
+3/2019 đến tháng 8/2021) và Bí thư Đảng ủy Khối các cơ quan tỉnh Nghệ An (từ tháng 8/2021 đến tháng 1/2024).
+OPTION_1: education
+OPTION_2: politics
+
+===== ITEM A073 | lang: es =====
+HEADLINE: VIDEO: Rocío Sánchez Azuara recibe reclamo en vivo por ser una “pinche vieja” creída
+TEXT:
+VIDEO: Rocío Sánchez Azuara recibe reclamo en vivo por ser una “pinche vieja” creída Harta de los desplantes que Rocío Sánchez Azuara le hace cada vez que pasa
+por el barrio, mujer enfrenta a la conductora en plena transmisión del programa “Acércate a Rocío”. El incómodo momento ocurrió varios meses atrás; sin embargo,
+gente está recordando el reclamo a Rocío Sánchez Azuara por ser una mujer creía ahora que un panelista se quedó pasmado durante el show. Esto generó
+especulaciones. Cibernautas dan por hecho que el programa está planeado y que en realidad, la persona, olvidó el guion. Video: Rocío Sánchez Azuara recibe
+reclamo en vivo por ser una “pinche vieja” creída Fue en septiembre de 2023 cuando durante el programa titulado: “Por una bruja estoy perdiendo a mi familia”,
+Rocío Sánchez Azuara fue sorprendida por una panelista. En pleno show la mujer enfrentó a Rocío Sánchez Azuara -de 61 años de edad- por ser una “pinche vieja”
+creída. De acuerdo con la fémina, la conductora de televisión se cree mucho cuando se pasea por el barrio y no saluda, la ignora. “Pinche vieja ¿Por qué te
+crees tanto? Caminas muy así…a nadie le hablas y así…Te veo pasar aquí en el barrio, no saludas y te crees mucho” Reclamo a Rocío Sánchez Azuara Rocío Sánchez
+Azuara enfrenta a mujer que la llamó “pinche vieja” creída Sin perder la calma, Rocío Sánchez Azuara enfrentó a la mujer que la llamó “pinche vieja” creída. Y
+tras escuchar el motivo de su insulto, le pidió disculpas. “Te ofrezco una disculpa, lo que pasa es que yo normalmente estoy pensando en otras cosas y no me doy
+cuenta exactamente que te estoy agrediendo con mi actitud ¿Me perdonas?” Rocío Sánchez Azuara La mujer aceptó la disculpa de Rocío Sánchez Azuara por no voltear
+a verla ya que está sumida en sus pensamientos y sin más se abrazaron. Fue así como la conductora y la panelista pusieron fin a sus diferencias mismas que se
+generaron por una suposición. ¿Reclamo a Rocío Sánchez Azuara fue planeado? El video del reclamo a Rocío Sánchez Azuara circula en redes sociales y cibernautas
+lo están despedazando pues aseguran que fue planeado como todos los episodios. “Ese video es más viejo que Enrique Guzmán y más sobreactuado que Nicola
+Porcella”, “Mentiras no dijo la doña”, “Casi no se nota que es actuado”, “Lo bueno es que no se ve actuado”, “Pues aunque es actuado mucha gente dice que Rocío
+es mamonsísima”, “Siempre armando sus teatros que nadie les cree”, “Qué ridiculez. Es más falso como todo lo que hace TV Apesta”, “Pero yo tengo la culpa por
+ver estas pendejadas”, expresan. A continuación te compartimos el capítulo completo:
+OPTION_1: human interest
+OPTION_2: arts, culture, entertainment and media
+
+===== ITEM A074 | lang: pl =====
+HEADLINE: Smog Kraków: 16.03.2024. Jakie jest stężenie PM2.5 i PM10?
+TEXT:
+Smog Kraków: 16.03.2024. Jakie jest stężenie PM2.5 i PM10? Spis treści Zanieczyszczenie powietrza w Krakowie. Mamy smog? Powietrze w Krakowie jest dobre 😃.
+Możesz iść na spacer i bez obaw oddychać pełną piersią. Jakość powietrza w Krakowie ostatnio sprawdzałam 16.03.2024 o godz. 12:24. Zobacz, jakie są uśrednione
+pomiary pyłu zawieszonego w powietrzu dla Krakowie: - skażenie PM2.5: 24% normy (6 µg/m³). Zanieczyszczenie maleje. - skażenie PM10: 25% normy (10 µg/m³).
+Zanieczyszczenie maleje. W ostatnim tygodniu średnie dobowe odczyty zanieczyszczeń wyglądały następująco: - 16.03.2024 - PM2.5: 24 µg/m³ - PM10: 40 µg/m³ -
+15.03.2024 - PM2.5: 24 µg/m³ - PM10: 43 µg/m³ - 14.03.2024 - PM2.5: 34 µg/m³ - PM10: 56 µg/m³ - 13.03.2024 - PM2.5: 25 µg/m³ - PM10: 35 µg/m³ - 12.03.2024 -
+PM2.5: 32 µg/m³ - PM10: 54 µg/m³ - 11.03.2024 - PM2.5: 22 µg/m³ - PM10: 33 µg/m³ - 10.03.2024 - PM2.5: 21 µg/m³ - PM10: 31 µg/m³ - 9.03.2024 - PM2.5: 36 µg/m³ -
+PM10: 65 µg/m³ Polecamy na smog i nie tylko Kiedy jest smog? Jakie są normy jakości powietrza w Polsce? Normy określone zostały w rozporządzeniu Ministra
+Środowiska z dnia 24 sierpnia 2012 r. w sprawie poziomów niektórych substancji w powietrzu. Zgodnie z nimi: - Skażenie PM10: dobowy poziom stężeń pyłu PM10
+wynosi 50µg/m³ i nie może być przekroczony częściej niż 35 dni w roku. Dodatkowo średnia roczna nie może przekraczać 40 µg/m³. - Skażenie PM2.5: dla pyłu PM2.5
+rozporządzenie zawiera tylko normę roczną, która wynosi 25µg/m³. Światowa Organizacja Zdrowia (WHO) przyjęła normę dobową, która wynosi 25µg/m³. Należy
+pamiętać, że każdy poziom stężenia pyłu PM2.5 niekorzystnie wpływa na nasze zdrowie. Co to jest pył PM2.5? PM2.5 to pył, którego cząsteczki są nie większe od
+2,5μm. Światowa Organizacja Zdrowia (WHO) opisała go jako najbardziej szkodliwy dla zdrowia człowieka w grupie zanieczyszczeń atmosferycznych. Jego szkodliwość
+wynika między innymi z tego, że jego cząsteczki są na tyle małe, że mogą przenikać przez pęcherzyki płucne do krwiobiegu. Udowodniono, że ciągłe oddychanie
+zanieczyszczonym pyłem PM2.5 powietrzem skraca średnią długość życia. Nawet krótkotrwała ekspozycja może być szkodliwa, zwiększając ryzyko chorób układu
+oddechowego i krwionośnego. Dodatkowo znane są dokuczliwe objawy występujące bezpośrednio w wyniku kontaktu ze skażonym powietrzem, jak: kaszel, nasilenie
+astmy, uczucie duszności. Oddychanie powietrzem skażonym pyłem PM2.5 zwiększa też ryzyko zawału i arytmii. Co to jest pył PM10? PM10 to pył, złożony z cząstek o
+średnicy mniejszej lub równej 10μm. Jego występowanie jest związane przede wszystkim z procesem spalania paliw stałych i ciekłych. Pył może zawierać substancje
+toksyczne, szkodliwe dla ludzi. Dym, sadza, azbest, cząsteczki metali (arsen, nikiel, kadm, ołów), dioksyny, furany i benzpopiren i inne wielopierścieniowe
+węglowodory aromatyczne - to wszystko nie tylko brzmi strasznie, ale ma też negatywny wpływ na nasze zdrowie. Szukasz oczyszczacza powietrza w okazyjnej cenie?
+Sprawdź kody rabatowe EMPIK oraz promocje i zniżki w innych elektromarketach online! Jak sprawdzamy, czy jest SMOG? Aby zweryfikować bieżącą jakość powietrza,
+korzystamy z otwartych danych dostarczanych przez system Sensor.Community oraz GIOS. Dane pochodzące z czujników znajdujących się w rejonie, dla którego
+przygotowujemy raport, uśredniamy w przedziale ostatnich 15 minut i publikujemy w przystępnej formie. Dla uproszczenia za górną normę PM2.5
+OPTION_1: environment
+OPTION_2: weather
+
+===== ITEM A081 | lang: hi =====
+HEADLINE: kamar patli karne ka tarika | 1 सप्ताह के अंदर चाहते हैं पतली कमर तो पिएं ये 3 तरह के जूस घर पर इस तरह से
+TEXT:
+kamar patli karne ka tarika | 1 सप्ताह के अंदर चाहते हैं पतली कमर तो पिएं ये 3 तरह के जूस घर पर इस तरह से Vegetable juices for Belly Fat : वजन को घटाने के लिए
+हम न जाने कितने प्रयास करते हैं लेकिन इसका सही रिजल्ट नहीं मिल पाता है। इसका कारण आपके द्वारा की गई गलतियां हो सकती हैं। अगर आप सोच रहे हैं कि आप भूख पेट रहकर
+अपना वजन घटा सकते हैं ऐसा बिल्कुल भी नहीं है। वजन को घटाने के लिए भूखे पेट नहीं बल्कि सही तरीके से आहारों का चयन जरूरी होता है। अगर आप वजन को तेजी से कम करना
+चाहते हैं तो पोषक तत्वों से भरपूर आहार का सही मात्रा में सेवन करें। मुख्य रूप से फाइबर युक्त आहार बेहद जरूरी होता है। साबुत फल और सब्जियों के जरिए आपको सारे
+पोषक तत्व प्राप्त हो सकते हैं। लेकिन कई बार शरीर में कार्ब्स फैट और प्रोटीन की कमी हो जाती है ऐसे में जूस को भी कभी-कभी विकल्प के रूप में लिया जा सकता है। अगर
+आप अपनी कमर को पतला करना चाह रहे हैं तो जूस आपके लिए काफी अच्छे विकल्पों में से एक हो सकता है। रोजाना 1 गिलास जूस पीने से आपके शरीर की एनर्जी भी बनी रहती है। आज
+इस लेख में हम आपको कुछ ऐसे जूस के बारे में बताएंगे जिससे आपका वेट कॉफी तेजी से कम हो सकता है। आइए जानते हैं शरीर के बढ़ते वजन को कम करने के लिए कौन सा जूस पीना
+हेल्दी हो सकता है? बेली फैट कम करे गाजर का जूस शरीर के बढ़ते वजन को कम करने के लिए गाजर का जूस पीना काफी ज्यादा हेल्दी हो सकता है। इसमें कम कैलोरी और फाइबर की
+अधिकता होती है। गाजर के जूस से भरा गिलास पीने से आपका वजन तेजी से कम होगा क्योंकि इससे आपका पेट लंबे समय तक भरा रहता है। साथ ही यह पित्त स्त्राव को कम कर सकता
+है। इससे फैट को जलाने में मदद मिल सकती है। अदर आप बेहतर रिजल्ट चाहते हैं तो गाजर के जूस में थोड़ा सा अदरक और संतरे का रस डालकर पिएं। इससे आपका वजन काफी तेजी से
+कम हो सकता है। कमर को पतला करे लौकी का जूस वजन को घटाने के लिए लौकी का जूस आपके लिए जादुई रूप से काम कर सकता है। आयुर्वेद के अनुसार लौकी का जूस पीने से काफी
+तेजी से मोटापा कम किया जा सकता है। लौकी का जूस फैट रहित होने की वजह से इसमें कैलोरी की मात्रा कम होती है जो शरीर को ठंडा रखने के साथ-साथ शरीर को हाइड्रेट कर
+सकता है। इससे आपका वजन भी तेजी से कंट्रोल करने में मदद मिल सकती है। वेट लॉस के लिए पिएं व्हीटग्रास जूस शरीर के बढ़ते वजन को कंट्रोल करने में व्हीटग्रास जूस काफी
+हेल्दी विकल्प हो सकता है। क्योंकि इसमें बड़ी मात्रा में पोटेशियम होता है जो कैलोरी को अधिक प्रभावी ढंग से जलाने में मदद करता है। व्हीटग्रास में उच्च फाइबर की भी
+अधिककता होती है जो भूख को रोकने में असरदार साबित हो सकती है। शरीर के बढ़ते वजन को
+OPTION_1: health
+OPTION_2: lifestyle and leisure
+
+===== ITEM A087 | lang: zh =====
+HEADLINE: 还记得《屋塔房小猫》、《那小子真帅》的郑多彬吗？「男友家浴室断魂」已过19年， 母悲恸办冥婚
+TEXT:
+还记得《屋塔房小猫》、《那小子真帅》的郑多彬吗？「男友家浴室断魂」已过19年， 母悲恸办冥婚
+
+时间过得真快，以甜美笑容深植人心的韩国女星郑多彬，2月10日是她逝世19周年的日子。 2007年2月10日，年仅27岁的她被发现在首尔江南区男友住处的洗手间内离世，现场未留遗书，警方虽经尸检仍未能找到他杀证据，最终以自杀结案。
+她的突然离世震惊全韩。 郑多彬2000年以电影《悲伤恋歌》中崔真实的少女角色出道，随后凭藉MBC情景喜剧《Nonstop》中活泼可爱的形象走红，更以《屋塔房小猫》（阁楼男女）成为浪漫喜剧女王，接著在《嫂嫂十九岁》、《那小子真帅》等作品中展现阳光魅力，被誉为「浪漫喜剧精灵」。
+然而光芒背后却藏著不为人知的痛苦。 她在去世前一天凌晨於个人迷你主页上留下标题为「终究」的文章，内文写道：「感到窒息想死。 无来由地生气、快疯了。 像晕船一样难受。 觉得失去了自我，正在失去某种认同感。」这些文字让粉丝无比心痛。
+由於她去世前已确定出演新剧《Cube》及《Rally》，家属与经纪公司曾质疑死因，认为她并无自杀理由，要求重新调查，但最终未能翻案。 郑多彬的离世留下重重疑云，多年来各种揣测从未停息。
+在她身后，母亲的思念方式也令人唏嘘。 曾有节目播出母亲试图「通灵」的画面，更在2011年、女儿逝世4周年时，依照母亲意愿为她举行了「冥婚仪式」。 这些举动都反映出至亲难以磨灭的伤痛。
+19年过去郑多彬那标志性的灿烂笑容，至今仍留在许多影迷心中。 每当提到英年早逝的韩星，她的名字总会伴随著惋惜与回忆被提起。
+Tracy@KSD / 非得本站书面同意 请勿抄袭、转载、改写或引述本站内容。如有违者，本站将予以追究
+广告
+相关新闻
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: human interest
+
+===== ITEM A092 | lang: or =====
+HEADLINE: 
+TEXT:
+ନୂଆଦିଲ୍ଲୀ: ବର୍ତ୍ତମାନ କତାରରେ ଫିଫା ବିଶ୍ୱକପ-୨୦୨୨ ଖୁବ୍ ଧୁମଧାମରେ ଜାରି ରହିଛି । ତେବେ ଏହା ମଧ୍ୟର ଏକ ନୂଆ ମହାମାରୀକୁ ନେଇ ବିଶ୍ୱରେ ଆତଙ୍କ ଖେଳି ଯାଇଛି । ଏହାକୁ ନେଇ ବିଶ୍ୱ
+ସ୍ୱାସ୍ଥ୍ୟ ସଂଗଠନ (ହୁ) ପକ୍ଷରୁ ଚେତାବନୀ ଜାରି କରାଯାଇଛି । କ୍ୟାମେଲ ଦ୍ୱାରା ୧୨ ଲକ୍ଷ ଲୋକ ପ୍ରଭାବିତ ହୋଇସାରିଲେଣି । ସମ୍ଭାବ୍ୟ ସଂକ୍ରମଣର ଆଶଙ୍କା ଥିବା ୮ଟି ବିପଦ ମଧ୍ୟରୁ ଫ୍ଲୁ ଗୋଟିଏ
+ବୋଲି ନ୍ୟୁ ମାଇକ୍ରୋବସ ଆଣ୍ଡ ନ୍ୟୁ ଇନଫେକସନ ପତ୍ରିକାରେ ପ୍ରକାଶିତ ଏକ ଷ୍ଟଡି ରିପୋର୍ଟରେ କୁହାଯାଇଛି ।ତେବେ ଫିଫା ବିଶ୍ୱକପ ପାଖାପାଖି ମାସେ ପର୍ଯ୍ୟନ୍ତ ଚାଲିବାକୁ ଥିବାବେଳେ ଏହି ସମୟରେ
+ଫ୍ଲୁ ଆଶଙ୍କା ରହିଥିବା କୁହାଯାଇଛି । ଏହାକୁ ମିଡଲ ଇଷ୍ଟ ରିସ୍ପାୟରେଟରୀ ସିଣ୍ଡ୍ରୋମ (ମର୍ସ) ମଧ୍ୟ କୁହାଯାଇଥାଏ । ତେବେ ଏହି ଷ୍ଟଡିରେ କରୋନା ଓ ମଙ୍କିପକ୍ସକୁ ନେଇ ମଧ୍ୟ କିଛି ସୂଚନା
+ଦିଆଯାଇଛି । ମର୍ସର ପ୍ରଥମ ମାମଲା ଗତ ୨୦୧୨ରେ ସାଉଦି ଆରବରୁ ମିଳିଥିଲା । ଏହା ଶ୍ୱାସ ସମ୍ବନ୍ଧୀୟ ଏକ ମାମଲା । ଏହି ଭାଇରସ ମଣିଷ ଓ ପଶୁ ଉଭୟଙ୍କଠାରେ ଦେଖିବାକୁ ମଳିଥାଏ । ଓଟମାନଙ୍କ ଦ୍ୱାରା
+ଏହି ବୀମାରୀ ଅଧିକ ମାତ୍ରାରେ ବ୍ୟାପିଥାଏ ।କ୍ୟାମେଲ ଫ୍ଲୁର ଲକ୍ଷଣ ପ୍ରାୟତଃ କରୋନା ଭାଇରସର ଲକ୍ଷଣ ସହିତ ସମାନ ହୋଇଥାଏ । ଡାଇରିଆ ଏହାର ଏକ ମୁଖ୍ୟ ଲକ୍ଷଣ ବୋଲି ହୁ ପକ୍ଷରୁ କୁହାଯାଇଛି ।
+ଏଥିସହିତ ବୁଖାର, ଖାସ ଓ ଶ୍ୱାସକ୍ରିୟାରେ କଷ୍ଟ ଅନୁଭବ ପରି ଲକ୍ଷଣ ମଧ୍ୟ ଦେଖାଯାଏ । ୬୦ ବର୍ଷରୁ ଅଧିକ ବୟସ୍କ, କମ୍ ଇମ୍ୟୁନିଟିଧାରୀ ଓ ପୂର୍ବରୁ ଗମ୍ଭୀର ବିମାରୀରେ ସଂକ୍ରମିତ ହୋଇଥିବା ଲୋକ
+ଏଥିରେ ବେଶି ସଂକ୍ରମିତ ହେବାର ଆଶଙ୍କା ରହିଥାଏ । କ୍ରନିକ ଲଙ୍ଗ ଡିଜିଜ, ହାଇପରଟେନସନ, କାର୍ଡିଓଭାସ୍କୁଲାର ଡିଜିଜ ଓ ଡାଇବେଟିସ ରୋଗୀଙ୍କ ପାଇଁ ଏହି ଫ୍ଲୁ ଅତ୍ୟନ୍ତ ବିପଜ୍ଜନକ ହୋଇଥାଏ । ଧମକ
+ପରେ ବଢ଼ିଲା ଶାହାରୁଖ ଖାନଙ୍କ ସୁରକ୍ଷା… (Video) ନିଜ ସ୍ତନ କ୍ଷୀରରୁ ମହିଳା ପ୍ରସ୍ତୁତ… କ୍ୟାମେଲ ଫ୍ଲୁ ପଶୁଙ୍କଠାରୁ ମଣିଷଙ୍କୁ ବ୍ୟାପିଥାଏ । ଓଟଠାରୁ ପ୍ରତ୍ୟକ୍ଷ ବା ପରୋକ୍ଷ ଭାବେ ମଣିଷ
+ସଂକ୍ରମିତ ହୋଇପାରେ ବୋଲି ରିସର୍ଚ୍ଚରୁ ଜଣାପଡ଼ିଛି । ଏହା ମଣିଷଠାରୁ ମଣିଷକୁ ଦ୍ରୁତ ଭାବେ ବ୍ୟାପିଥାଏ । ବର୍ତ୍ତମାନ ସୁଦ୍ଧା ଏହାର କୌଣସି ଭ୍ୟାକ୍ସିନ ବାହାରିନାହିଁ । ଓଟର କଞ୍ଚା ବା ଅଧା ସିଝା
+କ୍ଷୀର, ମାଂସ ଆଦି ବିପଦ ବଢ଼ାଇପାରେ । ଓଟର ମାଂସ, କ୍ଷୀରରେ ପୁଷ୍ଟିକର ତତ୍ତ୍ୱ ରହିଥିବା ବେଳେ ଏହାକୁ ସେବନ କରିବା ପୂର୍ବରୁ ଠିକ୍ ଭାବେ ରାନ୍ଧିବା ଜରୁରୀ । କତାର ଯାଉଥିବା ଲୋକମାନେ ଓଟକୁ
+ଛୁଇଁବା ଅନୁଚିତ । ଏଥିସହିତ ଖାଇବା, ପିଇବା ଜିନିଷକୁ ସୁରକ୍ଷିତ ଭାବେ ବ୍ୟବହାର କରିବା ଆବଶ୍ୟକ । ଭ୍ୟାକ୍ସିନେସନ ଓ ଜରୁରୀ ନିୟମ ପାଳନ କରିବାକୁ ହୁ ପକ୍ଷରୁ ପରାମର୍ଶ ଦିଆଯାଇଛି ।
+OPTION_1: sport
+OPTION_2: health
+
+===== ITEM A098 | lang: id =====
+HEADLINE: 
+TEXT:
+Liputan6.com, Jakarta - Portal nasional Sistem Seleksi Calon Aparatur Sipil Negara (SSCASN) khusus jalur Pegawai Pemerintah dengan Perjanjian Kerja (PPPK) resmi
+dibuka pada Jumat ini pukul 16.00 WIB. Namun untuk calon PPPK baru dapat mendaftar pada 10 Febuari 2019. Kepala Biro Humas Badan Kepegawaian Negara (BKN)
+Mohammad Ridwan mengatakan, pendaftaran PPPK akan dilakukan secara terintegrasi melalui portal nasional SSACN via https://sscasn.bkn.go.id pada tanggal 10
+hingga 16 Febuari 2019. “Jadi tes pertama itu tes seleksi administrasi, jadi silahkan siapkan scan dokumen-dokumen yang dibutuhkan,” ungkapnya di Jakarta, Jumat
+(8/2/2019). Ridwan pun menambahkan, bagi calon PPPK untuk lebih teliti dalam mengecek kebutuhan formasi tersebut, apakah untuk S1 atau D3 atau bahkan S2.
+“Karena 2013 kemarin ternyata ada yang belum S1 padahal guru harus S1, kemudian tenaga kesehatan minimal D3,” jelasnya.
+OPTION_1: economy, business and finance
+OPTION_2: labour
+
+===== ITEM A100 | lang: bn =====
+HEADLINE: 
+TEXT:
+সরকারি চাকরি কোটা সংস্কার দাবি চলমান আন্দোলন দেশের পাবলিক বিশ্ববিদ্যালয় ছড়িয়ে পড় সোমব সকাল শিক্ষার্থী ক্লাসপরীক্ষা বর্জন বিক্ষোভ আন্দোলনকারী কোটা সংস্কার
+পাশাপাশি ঢাকায় শিক্ষার্থী ওপর হামল বিচ দাবি জাহাঙ্গীরনগর বিশ্ববিদ্যালয় জাহাঙ্গীরনগর বিশ্ববিদ্যালয় শিক্ষার্থী ক্লাসপরীক্ষা বর্জন ক্যাম্পাসে বিক্ষোভ মিছিল সকাল
+পৌনে বিশ্ববিদ্যালয় সামন প্রধান সড়ক অবরোধ অবস্থান নিয়েছেন শিক্ষার্থী সময় পুলিশ সংঘর্ষে বিশ্ববিদ্যালয় প্রক্টরসহ অর্ধশতাধিক আহত রিপোর্ট লেখা সংঘর্ষ চলছিল রোবব রাতে
+ক্যাম্পাসে দফায় দফায় বিক্ষোভ মিছিল শিক্ষার্থী রাজশাহী বিশ্ববিদ্যালয় রাজশাহী বিশ্ববিদ্যালয় সকাল প্রধান ফটক রাজশাহীঢাকা মহাসড়ক অবরোধ অবস্থান নিয়েছেন আন্দোলনরত
+শিক্ষার্থী খবর পাওয়া বিক্ষোভ আন্দোলনরত শিক্ষার্থী ডাক সর্বাত্মক ধর্মঘট চল নির্ধারিত রুটিন ধরন ক্লাসপরীক্ষা ক্যাম্পাসে শিক্ষার্থী উপস্থিতি বললে সোমব ভোর সাড়ে টা
+বিশ্ববিদ্যালয় ফট অবস্থান নেন আন্দোলনকারী ফট তালা ঝুলা শিক্ষার্থী বহনকারী বিশ্ববিদ্যালয় পরিবহন বাস সকাল শিফটে ক্যাম্পাস ছাড় যায়নি বিশ্ববিদ্যালয় সূত্র কুষ্টিয়া
+ইসলামী বিশ্ববিদ্যালয় কুষ্টিয়া ইসলামী বিশ্ববিদ্যালয় শিক্ষার্থী ক্লাস বর্জন ক্যাম্পাসে বিক্ষোভ সকাল হওয়া বিক্ষোভ মিছিল পুরো ক্যাম্পাস প্রদক্ষিণ বিভাগ ছাত্রছাত্রী
+মিছিলে দেয় বেশিরভাগ বিভাগে ক্লাসপরীক্ষা বিষয় প্রক্টর মাহবুবর রহমান ক্যাম্পাসে পরিস্থিতি শান্ত প্রধান ফটক আছি আশা কর অপ্রীতিকর ঘটনা ক্যাম্পাসে ঘটবে না চট্টগ্রাম
+বিশ্ববিদ্যালয় ঢাকায় আন্দোলনরত শিক্ষার্থী ওপর পুলিশ হামল প্রতিবাদে চট্টগ্রাম বিশ্ববিদ্যালয় ক্লাস বর্জন রাস্তায় নাম এসেছেন শিক্ষার্থী দাবি আদায় না হওয়া
+অন্দোলনকারী অনির্দিষ্টকাল ক্লাস বর্জন কর বিশ্ববিদ্যালয় শাটল ট্র অবরোধ রেখেছেন শিক্ষার্থী শিক্ষার্থী রেললাইন ওপর দাঁড়া কোটা সংস্কার স্লোগান দেয় পাশাপাশি নগরীর
+ষোলশহরে কোটা সংস্কার দাবি বিক্ষোভ শাহজালাল বিজ্ঞান প্রযুক্তি বিশ্ববিদ্যালয় সিলেটের শাহজালাল বিজ্ঞান প্রযুক্তি বিশ্ববিদ্যালয় আন্দোলনকারী কোটা সংস্কার পাশাপাশি
+ঢাকায় শিক্ষার্থী ওপর হামল বিচ দাবি বিক্ষোভ সকাল টা বিশ্ববিদ্যালয় প্রধান ফট অবরোধ যানবাহন চলাচল আন্দোলনকারী শাখা ছাত্রলীগ নেতাকর্মী শিক্ষার্থী প্রধান ফটক উঠা
+অভিযোগ সর্বশেষ উভয়পক্ষ প্রধান ফট অবস্থান করছি ধর্মঘটে অচল পড় বিশ্ববিদ্যালয় স্বাভাবিক কার্যক্রম ছাত্রলীগ অবস্থান বিশ্ববিদ্যালয় বাস চলাচল স্বাভাবিক থাকলে বিভাগে
+ক্লাসপরীক্ষা কোটা সংস্কার দাবি বরিশাল বিশ্ববিদ্যালয় ববি কুমিল্লা বিশ্ববিদ্যালয় শিক্ষার্থী ক্লাস বর্জন বিক্ষোভ উল্লেখ্য রোবব দিবাগত রাত দেড় টা কোটা সংস্কার দাবি
+আন্দোলনকারী শিক্ষার্থী পুলিশ সংঘর্ষ ঢাকা বিশ্ববিদ্যালয় পুরো ক্যাম্পাসে ছড়িয়ে পড়ে
+OPTION_1: education
+OPTION_2: conflict, war and peace
+
+===== ITEM A101 | lang: es =====
+HEADLINE: Se negó a pagar la cuenta y terminó arrestado: así fue el escándalo de William Levy en restaurante de Florida
+TEXT:
+Se negó a pagar la cuenta y terminó arrestado: así fue el escándalo de William Levy en restaurante de Florida Lo que prometía ser una noche tranquila terminó en
+un verdadero escándalo. William Levy, galán de telenovelas y uno de los rostros más queridos de la pantalla, fue arrestado en un restaurante de Florida luego de
+negarse a pagar una cuenta que, según él, era “exorbitante”. Te cuento todos los detalles del inesperado episodio que sacudió a sus fans. De acuerdo con People
+en Español, el arresto del actor ocurrió luego de que se negara a pagar la cuenta en un restaurante. Según la fuente citada, William Levy se encontraba
+compartiendo con los padres de los amigos de su hijo en el restaurante Baires Grill, donde decidió invitar una ronda de tragos. Sin embargo, al recibir la
+cuenta, cuya cifra exacta no se conoce pero fue descrita como “exorbitante”, el actor se negó a pagar, argumentando que ya había cubierto una ronda de bebidas
+para cerca de cien personas. Mientras William Levy discutía con el encargado del restaurante, una tercera persona intentó intervenir y el actor cubano terminó
+empujándola, según la fuente citada. Luego, le solicitaron que abandonara el establecimiento, pero al dejar su celular en la mesa, tuvo que regresar por él. Fue
+en ese momento que llamaron a la policía y, al salir del lugar, fue arrestado. La fuente también aclaró que este incidente “no tuvo ninguna relación con
+Elizabeth Gutiérrez.” Después de pasar la noche detenido, William Levy se presentó este martes ante un juez del condado de Broward, al sur de Florida, quien le
+fijó una fianza para que pudiera quedar en libertad. La fianza fue fijada en $250 por cada uno de los dos cargos que se le imputan a Levy, tras su arresto el
+lunes en Weston, una ciudad del condado de Broward ubicada muy cerca de la residencia del actor. El video de la corta audiencia muestra al actor de telenovelas
+esposado y vestido con el uniforme marrón de recluso. El juez le lee los cargos, mientras que la fiscalía detalla que se ha llegado a un acuerdo sobre el monto
+de la fianza, lo cual es confirmado por el abogado defensor. Luego, el juez aprueba la cifra acordada y le desea a Levy “buena suerte”.
+OPTION_1: crime, law and justice
+OPTION_2: human interest
+
+===== ITEM A104 | lang: bn =====
+HEADLINE: 
+TEXT:
+বহুনির্বাচনি প্রশ্নোত্তরপ্রিয় শিক্ষার্থী তোমা বিজ্ঞান বিষয় গুরুত্বপূর্ণ বহুনির্বাচনি প্রশ্নোত্তরঅধ্যায় শুষ্ক কোষ মাঝে বসানো দণ্ড কিসেরক কার্বন খ পটাসিয়ামগ
+সোডিয়াম ঘ ক্যালসিয়াম চুনে কোন তাপ উত্পন্ন হয়ক অক্সিজ খ পানিগ নাইট্রোজ ঘ কার্বন ডাইঅক্সাইড কোন তড়িত্ বিশ্লেষ্যক গ্লুকোজ খ অকটেনগ পেট্রল ঘ অ্যাসিড মিশ্রিত পানি
+চিনি গ্লুকোজ হচ্ছেক তড়িত্ বিশ্লেষ্য খ তড়িত্ অবিশ্লেষ্যগ অ্যাসিড ঘ ক্ষারনিচ অনুচ্ছেদ পড়ো নম্বর প্রশ্ন দাওঅর্পা ল্যাবরেটরি বিকারে চুন নিল অতঃপর ড্রপ ভিনেগ করল
+কিছুক্ষণ বিকারটি হাত স্পর্শ তাপমাত্র পরিবর্তন করল বিকারে উল্লিখিত যৌগ ধরন বিক্রিয়া ঘটবেতাপ তাপক দহন খ প্রশমনতাপ তাপগ সংযোজন ঘ প্রতিস্থাপন উদ্দীপ উল্লিখিত যৌগ
+বিক্রিয়ায় উত্পন্ন ক্যালসিয়াম অ্যাসিটেট ক্যালসিয়াম কার্বনেট পানিনিচ কোন সঠিকক খ গ ঘ ছাপা আগামীকালসঠিক উত্তরঅধ্যায় ক খ ঘ খ খ খপ্রভাষকরূপনগর মডেল স্কুল কলেজ ঢাকা
+OPTION_1: education
+OPTION_2: (none)
+
+===== ITEM A119 | lang: id =====
+HEADLINE: 
+TEXT:
+Liputan6.com, Jakarta - Lagi cari kerja? Kabar baik bagi Anda karena PT Sucofindo (Persero) Laboratorum Cibitung sedang membuka lowongan kerja terbaru. Kali
+ini, PT Sucofindo Laboratorum Cibitung menerima pegawai baru berstatus Pegawai Tidak Tetap (PTT) untuk tujuh posisi jabatan sekaligus. Pendaftaran lowongan
+kerja dibuka hingga 17 Februari 2019. Untuk informasi, Sucofindo merupakan sebuah BUMN yang memiliki peran dalam bidang pemeriksaan, pengawasan, pengujian, dan
+pengkajian. Selain itu, perusahaan ini merupakan perusahaan inspeksi pertama dan terbesar di Indonesia hingga saat ini. Saat ini, Sucofindo telah memiliki
+cabang dan titik layanan di berbagai kota di Indonesia serta didukung oleh 2.646 Tenaga Profesional yang ahli di bidangnya. Mengutip laman resmi Sucofindo,
+Jumat (15/2/2019), berikut posisi yang disediakan, persyaratan bagi para pelamar kerja, persyaratan berkas lamaran, dan tata cara pendaftaran lowongan kerja
+tersebut: Posisi yang Disediakan Beserta Persyaratan 1. Analyst 2 Kode (ANA 2) Persyaratan: 1. Pendidikan D3 Kimia/S1 Kimia; 2. Usia maksimum 26 tahun (saat
+melamar); 3. IPK minimal 3,0 (skala 4); 4. Jenis kelamin laki-laki/wanita; 5. Mengusai bahasa Inggris (minimum pasif); 6. Terbiasa bekerja di bawah tekanan; 7.
+Lebih diutamakan yang terampil mengoperasikan peralatan laboratorium pengujian kimia.
+OPTION_1: labour
+OPTION_2: economy, business and finance
+
+===== ITEM A121 | lang: mr =====
+HEADLINE: 
+TEXT:
+- सारिका पूरकर=गुजराथीहॉल सजवण्यामध्ये लॅम्पशेडसला इतकं महत्त्वं आलं आहे की शहरात लॅम्पशेडची अनेक दुकानं दिसतात.दुकानातले नाजूक किंवा भव्य लॅम्पशेडस पाहताक्षणी
+मनात भरतात.मात्र घ्यायची इच्छा असेल तर बजेटचाही विचार करावा लागतो.लॅम्पशेडस ही काही स्वस्तात येणारी वस्तू नाही.लॅम्पशेडस घ्यायची इच्छा असेल तर मग खिशालाही झळ
+सोसावीच लागते.आणि जर लॅम्पशेडस हे नाजूक-साजूक असतील तर मग फुटण्याचीही भीती वाटते.पण म्हणून लॅम्पशेडस वापरायचेच नाहीत असं काही नाही.लॅम्पशेडसची आवड असेल पण जास्त
+पैसे खर्च करण्याची इच्छा नसेल तर मग आपण घरीच लॅम्पशेडस बनवू शकतो.
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: lifestyle and leisure
+
+===== ITEM A124 | lang: ta =====
+HEADLINE: 
+TEXT:
+சர்வதேச போட்டியில் அறிமுகம்:ஹர்திக் பாண்டியா செய்த 5 தரமான சம்பவங்கள்: இந்திய கிரிக்கெட் அணியின் நட்சத்திர ஆல்ரவுண்டர் ஹர்திக் பாண்டியா இன்று தனது 30 பிறந்தநாளை
+கொண்டாடுகிறார். ஹர்திக் பாண்டியா 11 அக்டோபர் 1993 அன்று குஜராத்தில் உள்ள சூரத்தில் பிறந்தார். ஹர்திக் பாண்டியா 2015 ஆம் ஆண்டு ஐபிஎல் தொடரில் மும்பை இந்தியன்ஸ்
+அணிக்காக அறிமுகமானார். ஐபிஎல்-ல் அவரது அசாதாரண திறமை மற்றும் அற்புதமான ஆட்டத்திற்குப் பிறகு, அவர் இந்திய அணிக்குத் தேர்ந்தெடுக்கப்பட்டார். ஜனவரி 2016 இல்
+ஆஸ்திரேலியாவுக்கு எதிரான டி20 போட்டியில் தனது 22வது வயதில் சர்வதேச அரங்கில் அறிமுகமானார். அந்த ஆட்டத்தில் ஹர்திக் ஒரு மறக்கமுடியாத ஆட்டத்தை வெளிப்படுத்தி
+அசத்தினார். அன்றைய போட்டியில் அவர் மூன்று ஓவர்கள் வீசி இரண்டு விக்கெட்டுகளை எடுத்தார்.அதே ஆண்டு அக்டோபரில் தர்மசாலாவில் நியூசிலாந்துக்கு எதிரான ஒருநாள்
+போட்டியில் ஹர்திக் அறிமுகமானார். அந்த போட்டியிலும் அபாரமாக விளையாடி 7 ஓவர்களில் 3 ரன்கள் மட்டுமே விட்டுக்கொடுத்து 3 விக்கெட்டுகளை வீழ்த்தினார். ஹர்திக் பாண்டியா
+இதுவரை தனது சர்வதேச ஒருநாள் கிரிக்கெட் வாழ்க்கையில் 83 போட்டிகளில் 1769 ரன்கள் எடுத்துள்ளார். அதேசமயம் டெஸ்ட் கிரிக்கெட்டில் 11 போட்டிகளில் 532 ரன்களும், 92
+டி20 போட்டிகளில் 1348 ரன்களும் எடுத்துள்ளார். அதேபோல், பந்துவீச்சில் ஹர்திக் இதுவரை ஒருநாள் போட்டிகளில் 80 விக்கெட்டுகளை வீழ்த்தியுள்ளார். டெஸ்ட் போட்டிகளில்
+ஹர்திக் 17 விக்கெட்டுகளையும், டி20யில் 73 விக்கெட்டுகளை வீழ்த்தியுள்ளார். ஒட்டுமொத்தமாக, தனது சர்வதேச வாழ்க்கையில், பாண்டியா 18 அரை சதங்கள் மற்றும் ஒரு சதத்தை
+அடித்துள்ளார். இதுபோக, 186 போட்டிகளில் விளையாடி 3649 ரன்கள் குவித்து 170 விக்கெட்டுகளை வீழ்த்தியுள்ளார். 1. சாம்பியன்ஸ் டிராபி இறுதி 2017: பாகிஸ்தானுக்கு எதிராக
+76 ரன்கள் எடுத்து இந்தியாவுக்கு ஒரு தனி வீரராக போராடி கிட்டத்தட்ட வெற்றிப்பாதைக்கு அழைத்து சென்றார். இருப்பினும், அன்றைய போட்டியில் இந்திய அணி தோல்வியை
+சந்தித்தது. 2. ஆல்ரவுண்ட் பெர்ஃபார்மென்ஸ் Vs இங்கிலாந்து 2018: இங்கிலாந்துக்கு எதிரான முக்கியமான டெஸ்ட் போட்டியில், ஹர்திக்கின் ஆல்ரவுண்ட் திறமையால், டிரென்ட்
+பிரிட்ஜ் நோட்டிம்காமில் இந்திய அணி வெற்றியைப் பதிவு செய்தது. அன்றைய போட்டியில் இந்திய அணிக்காக அவர் 5 விக்கெட்டுகளை வீழ்த்தி, அரை சதமும் அடித்திருந்தார்.3. 83
+vs ஆஸ்திரேலியா: 2017 ம் ஆண்டு ஆஸ்திரேலியாவுக்கு எதிரான தொடக்க ஆட்டத்தில், இந்தியா 5 விக்கெட்டுகளை இழந்து 70 ரன்கள் மட்டுமே எடுத்திருந்தது. அப்போது, ஹர்திக்
+பாண்டியா 83 ரன்கள் எடுத்து ஆட்டமிழந்தார். அவருக்கு ஆட்ட நாயகன் விருது வழங்கப்பட்டது.4. கேப்டனாக முதல் பட்டம்: 2022 ம் ஆண்டு ஹர்திக் பாண்டியாவுக்கு சிறந்த ஆண்டாக
+அமைந்தது. ஹர்திக் பாண்டியா ஐபிஎல் தொடரில் குஜராத் டைட்டன்ஸ் அணியை வழிநடத்தி கேப்டனாக முதல் முறையாக பட்டம் வென்றார். அந்த சீசனில் 487 ரன்கள் எடுத்திருந்தார்
+என்பது குறிப்பிடத்தக்கது. 5. முதல் டெஸ்ட் சதம் Vs இலங்கை: 2017 ம் ஆண்டு ஹர்திக் பாண்டியா இலங்கைக்கு எதிரான டெஸ்ட் போட்டியில் அறிமுகமானார். தொடரின் 3வது
+போட்டியில் ஹர்திக் 7 சிக்ஸர்களுடன் 108 ரன்கள் எடுத்தார்.கடந்த 2020 ஜனவரி மாதம், ஹர்திக் பாண்டியா, இந்தியாவைச் சேர்ந்த செர்பிய நடனக் கலைஞரும் நடிகையுமான நடாசா
+ஸ்டான்கோவிச்சுடன் நிச்சயதார்த்தம் செய்து கொண்டார். அவர்களுக்கு ஜூலை 30, 2020 அன்று குழந்தை பிறந்தது. அந்த குழந்தைக்கு அகஸ்தியா என்று பெயர் வைக்கப்பட்டுள்ளது.
+OPTION_1: sport
+OPTION_2: politics
+
+===== ITEM A125 | lang: kn =====
+HEADLINE: 
+TEXT:
+ಚೆನ್ನೈ: ಸದಾ ಮೊಬೈಲ್‍ನಲ್ಲಿ ಗೇಮ್ ಆಡುತ್ತಿದ್ದಕ್ಕೆ ಗದರಿಸಿದ್ದರಿಂದ ಮಗ ನೇಣುಬಿಗಿದುಕೊಂಡು ಆತ್ಮಹತ್ಯೆಗೆ ಶರಣಾಗಿದ್ದನು. ಇದನ್ನು ಕಂಡ ಕೆಲವೇ ನಿಮಿಷಗಳಲ್ಲಿ ಪಶ್ಚಾತ್ತಾಪದಿಂದ ತಂದೆ ಕೂಡ
+ಆತ್ಮಹತ್ಯೆಗೆ ಶರಣಾಗಿರುವ ಘಟನೆ ಕುಂದ್ರತೂರಿನಲ್ಲಿ (Kundrathur) ನಡೆದಿದೆ.ಮೃತ ವ್ಯಕ್ತಿಯನ್ನು ಕುಂದ್ರತ್ತೂರಿನ ತಿರುವಳ್ಳುವರ್ ಪ್ರದೇಶದಲ್ಲಿ (Thiruvalluvar Street) ಬಡಗಿಯಾಗಿದ್ದ
+ಸುಂದರ್(40) ಎಂದು ಗುರುತಿಸಲಾಗಿದೆ. ಹತ್ತನೇ ತರಗತಿಯಲ್ಲಿ ಓದುತ್ತಿದ್ದ ತಮ್ಮ ಕಿರಿಯ ಮಗ ನವೀನ್ ಸದಾ ಮೊಬೈಲ್ ಫೋನ್‍ನಲ್ಲಿ ಗೇಮ್ ಆಡುತ್ತಿದ್ದರಿಂದ ಓದುವತ್ತ ಗಮನ ಹರಿಸುವಂತೆ ಗದರಿಸಿದ್ದರು.
+ಇದನ್ನೂ ಓದಿ: ನಾನ್ ಹೆಲ್ಮೆಟ್ ಹಾಕಿಲ್ಲ ಅಂದ್ರೆ ನಿನ್ಗೇನ್ ಕಷ್ಟ – ಬೈಕ್ ಸವಾರನಿಗೆ ಪೊಲೀಸ್ ಅವಾಜ್ಇದರಿಂದ ಮನನೊಂದ ನವೀನ್ ಮನೆಯಲ್ಲಿ ಒಬ್ಬನೇ ಇದ್ದಾಗ ಸೀರೆಯಲ್ಲಿ ನೇಣು ಬಿಗಿದುಕೊಂಡು
+ಆತ್ಮಹತ್ಯೆ ಮಾಡಿಕೊಂಡಿದ್ದಾನೆ. ನಂತರ ಮನೆಗೆ ಹಿಂತಿರುಗಿದ ಸುಂದರ್‌ಗೆ ನೆರೆಹೊರೆಯವರು ನವೀನ್ ಮೃತಪಟ್ಟಿರುವ ವಿಚಾರ ತಿಳಿಸಿದ್ದಾರೆ. ತಮ್ಮ ಮಗ ಸೀಲಿಂಗ್ ಫ್ಯಾನ್‍ಗೆ ನೇಣು
+ಬಿಗಿದುಕೊಂಡಿರುವುದನ್ನು ಕಂಡು ಸುಂದರ್ ಆಘಾತಕ್ಕೊಳಗಾದರು. ನಂತರ ಅಡುಗೆ ಮನೆಗೆ ಹೋಗಿ ಸುಂದರ್ ಚಾಕುವಿನಿಂದ ಕತ್ತು ಮತ್ತು ಕೈಗಳನ್ನು ಕೊಯ್ದುಕೊಂಡಿದ್ದಾರೆ. ಕೊನೆಗೆ ಕೊಠಡಿಯೊಂದರ ಬಾಗಿಲಿಗೆ ಬೀಗ
+ಹಾಕಿಕೊಂಡು ನೇಣಿಗೆ ಶರಣಾಗಿದ್ದಾರೆ.ಘಟನೆ ಕುರಿತಂತೆ ನೆರೆಹೊರೆಯವರು ಕುಂದ್ರತ್ತೂರು ಪೊಲೀಸರಿಗೆ ಮಾಹಿತಿ ನೀಡಿದ್ದು, ಸ್ಥಳಕ್ಕೆ ಆಗಮಿಸಿದ ಪೊಲೀಸರು ಮೃತದೇಹಗಳನ್ನು ಮರಣೋತ್ತರ ಪರೀಕ್ಷೆಗಾಗಿ
+ಕ್ರೋಮ್‍ಪೇಟೆ ಸರ್ಕಾರಿ ಆಸ್ಪತ್ರೆಗೆ (Chromepet government hospital) ರವಾನಿಸಿದ್ದಾರೆ. ಇದೀಗ ಈ ಸಂಬಂಧ ಪೊಲೀಸರು ಪ್ರಕರಣ ದಾಖಲಿಸಿದ್ದು, ತನಿಖೆ ನಡೆಸುತ್ತಿದ್ದಾರೆ. ಒಟ್ಟಾರೆ ಮೊಬೈಲ್
+ವಿಚಾರಕ್ಕೆ ಮಗ ಆತ್ಮಹತ್ಯೆ ಮಾಡಿಕೊಂಡ ಕೆಲವೇ ನಿಮಿಷಗಳಲ್ಲಿ ತಂದೆ ಕೂಡ ಆತ್ಮಹತ್ಯೆ ಮಾಡಿಕೊಂಡಿದ್ದಾರೆ. ಇದನ್ನೂ ಓದಿ: ಅನಂತ್ ನಾಗ್ ಗೆ ಗೌರವ ಡಾಕ್ಟರೇಟ್ ಪ್ರದಾನ: ಕುಟುಂಬದ ಒತ್ತಾಯಕ್ಕೆ
+ಸ್ವೀಕರಿಸಿದೆ
+OPTION_1: society
+OPTION_2: crime, law and justice
+
+===== ITEM A126 | lang: el =====
+HEADLINE: Όμιλος ΠΡΟΣΥΦΑΠΕ: Επιστρέφει στην κοινωνία τμήμα της υπεραξίας που παράγει - Real.gr
+TEXT:
+Όμιλος ΠΡΟΣΥΦΑΠΕ: Επιστρέφει στην κοινωνία τμήμα της υπεραξίας που παράγει - Real.gr Στο συνέδριο “Υγεία Πάνω απ’ Όλα - Η Στρατηγική της Υγείας στην Ψηφιακή
+Εποχή: AI & Βιοτεχνολογία”, που ολοκληρώθηκε τη Δευτέρα 8 Δεκεμβρίου, φιλοξενήθηκε ο Πρόεδρος του Ομίλου ΠΡΟΣΥΦΑΠΕ, Γιάννης Μαλλιαρός.Στην ενότητα με θέμα “Από
+τα Δεδομένα στην Καινοτομία: Η Νέα Αρχιτεκτονική στο Φάρμακο”, ο κος Μαλλιαρός εξήγησε τι είναι ένας συνεταιρισμός και ποιοι λόγοι οδήγησαν στη σύστασή τους.
+“Δεν είναι σύνηθες ένας συνεταιρισμός να βρίσκεται στις 100 μεγαλύτερες επιχειρήσεις -είναι κάτι μάλλον σπάνιο- και αυτό μας γεμίζει με διπλή περηφάνεια, γιατί
+καταφέραμε να παντρέψουμε την κοινωνική οικονομία της αλληλεγγύης με την εξαιρετική οικονομική υγεία.”, δήλωσε χαρακτηριστικά. Μεταξύ άλλων, ο Πρόεδρος του
+Ομίλου, αναφέρθηκε στο νέο τοπίο της υγείας που δημιουργείται σε φάρμακα, θεραπείες και δομές, υπενθυμίζοντας και τονίζοντας ότι ο φαρμακοποιός είναι ο πιο
+προσβάσιμος επιστήμονας υγείας. Αναγνωρίζοντας τον ρόλο του φαρμακοποιού, ο Όμιλος ΠΡΟΣΥΦΑΠΕ παρέχει μια σειρά υπηρεσιών ισχυροποίησής του, με ναυαρχίδα την
+εκπαίδευση του. Ξεχωριστά αναφέρθηκε στην ποιοτική διακίνηση φαρμάκων, μέσω συστημάτων ελέγχου της θερμοκρασίας τους, αλλά και στις δράσεις Εταιρικής Κοινωνικής
+Ευθύνης του Ομίλου αναδεικνύοντας -και με αυτό τον τρόπο- την επιστροφή της υπεραξίας που παράγει ο ΠΡΟΣΥΦΑΠΕ, στο κοινωνικό σύνολο. Κλείνοντας τον κύκλο των
+ερωτήσεων, δεν θα μπορούσε να παραλείψει το νέο και μεγαλύτερο, στην ιστορία του Ομίλου, επενδυτικό πλάνο, το οποίο θα συμβάλλει στην αύξηση της αποδοτικότητας,
+μειώνοντας τα κόστη, για να ανακατευθυνθούν οι διαθέσιμοι πόροι στο φαρμακοποιό, προκειμένου να είναι όσο το δυνατόν πιο χρήσιμος στην αποστολή του. Ο Όμιλος
+ΠΡΟΣΥΦΑΠΕ, στηρίζοντας πάντα το διάλογο τον τομέα της υγείας, συμμετείχε στο σημαντικό αυτό συνέδριο ως ασημένιος χορηγός. Γιατί, όπως επεσήμανε και ο Πρόεδρος
+του Ομίλου, “Ο ΠΡΟΣΥΦΑΠΕ δεν είναι απλά μια φαρμακαποθήκη, είναι πολλά περισσότερα από αυτό.”. Στο website του Ομίλου μπορείτε να δείτε σχετικό φωτογραφικό
+υλικό, και ξεχωριστά video από τις τοποθετήσεις του Προέδρου και τη συζήτηση ολόκληρου του συγκεκριμένου panel.
+OPTION_1: health
+OPTION_2: economy, business and finance
+
+===== ITEM A127 | lang: uk =====
+HEADLINE: Спадщина в Україні — яку частку гарантовано отримують діти
+TEXT:
+Спадщина в Україні — яку частку гарантовано отримують діти Кожна людина може заздалегідь вирішити долю свого майна після смерті, склавши заповіт. У ньому можна
+вказати будь-яких спадкоємців — як родичів, так і сторонніх осіб, підприємства, організації чи навіть державу. Про те, чи можуть неповнолітні діти отримати
+спадок та що для цього потрібно, пояснили в Міністерстві юстиції України. Чи можуть дітей позбавити спадку Заповідач також має право позбавити спадщини
+будь-кого із законних спадкоємців. Водночас закон гарантує обов’язкову частку у спадщині для певних категорій осіб. Це: малолітні, неповнолітні та повнолітні
+непрацездатні діти померлого; діти, зачаті за життя спадкодавця, але народжені після його смерті. Вони мають право на половину тієї частки, яка належала б їм за
+законом. Як прийняти спадщину Загалом для цього потрібно протягом шести місяців з дня смерті спадкодавця подати заяву нотаріусу. Однак є винятки: якщо
+спадкоємець проживав разом із померлим, він автоматично вважається таким, що прийняв спадщину, якщо не відмовився від неї; діти також вважаються такими, що
+прийняли спадщину, навіть без заяви, якщо вони офіційно не відмовилися від своїх прав. Заяву від імені дітей подають батьки чи опікуни, але з 14 років підлітки
+можуть звернутися до нотаріуса самостійно. Спадщина — це не лише майно, а й борги. Якщо у померлого були кредити, вони переходять спадкоємцям, але тільки в
+межах вартості отриманої власності. Якщо борги перевищують цінність спадщини, варто зважити, чи доцільно її приймати. Неповнолітні у віці 14–18 років можуть
+відмовитися від спадщини лише за згодою батьків чи органів опіки. Для малолітніх або недієздатних дітей відмова можлива тільки за рішенням опікунів та з дозволу
+органів опіки та піклування. Якщо до спадщини входить майно, що підлягає держреєстрації (наприклад, нерухомість чи автомобіль), потрібно отримати свідоцтво про
+право на спадщину. Його видають після закінчення шести місяців від відкриття спадщини. Оформити свідоцтво можна у будь-який час — терміни отримання законом не
+обмежені. Раніше ми писали, що під час спільного життя подружжя зазвичай набуває певне майно. Тому після розлучення часто постає питання, яким чином розподілити
+спільні активи. Також ми розповідали, що в українському законодавстві передбачено, що у випадку смерті особи її спадкоємці отримують не лише належне майно, а й
+зобов’язані прийняти фінансові борги. До таких можуть належати кредити, заборгованість зі сплати аліментів, неоплачені комунальні рахунки чи штрафи.
+OPTION_1: crime, law and justice
+OPTION_2: economy, business and finance
+
+===== ITEM A129 | lang: or =====
+HEADLINE: 
+TEXT:
+ନୂଆଦିଲ୍ଲୀ: ସରକାରୀ କର୍ମଚାରୀଙ୍କ ପାଇଁ ଖୁସି ଖବର । ନୂଆ ପେନସନ ସ୍କିମର ବିରୋଧକୁ ନେଇ କେନ୍ଦ୍ର ସରକାର ବର୍ତ୍ତମାନ ସରକାରୀ କର୍ମଚାରୀମାନଙ୍କୁ ଅବସର ବେଳେ ଫିକ୍ସ ପେନସନ ଦେବାର ଯୋଜନା ଉପରେ
+କାମ ଚଳାଇଛନ୍ତି । ସରକାରୀ ସୁତ୍ର ମୁତାବକ, ମୋଦୀ ସରକାର ନୂଆ ପେନସନ୍ ସ୍କିମରେ ପରିବର୍ତ୍ତନ କରି ସରକାରୀ କର୍ମଚାରୀମାନଙ୍କୁ ରିଟାୟରମେଣ୍ଟ ସମୟରେ ଏକ ଫିକ୍ସ ରାଶି ଦେବାର ଯୋଜନା ପ୍ରସ୍ତୁତ
+କରୁଛନ୍ତି । ଏହି ପରିବର୍ତ୍ତନ ପାଇଁ କାମ ଆରମ୍ଭ ହୋଇଗଲାଣି ବୋଲି ଜଣାପଡିଛି ।ମିଳିଥିବା ସୂଚନା ଅନୁଯାୟୀ, ସରକାରୀ କର୍ମଚାରୀଙ୍କୁ ଲାଷ୍ଟ ଡ୍ରନ ସାଲାରୀର ୪୦ ପ୍ରତିଶତ ରୁ ୪୫ ପ୍ରତିଶତ ପେନସନ
+ଦିଆଯିବାର ଆଶ୍ୱାସନା ଦିଆଯାଇପାରେ । ଏଥିପାଇଁ ସରକାର ଏନପିଏମରେ ପରିବର୍ତ୍ତନ କରିବେ । ଏପ୍ରିଲରେ ସରକାର ଏନପିଏସ ସମୀକ୍ଷା ପାଇଁ ଏକ କମିଟି ଗଠନ କରିଥିଲେ। ଅର୍ଥ ସଚିବଙ୍କ ନେତୃତ୍ୱରେ ଗଠିତ
+କମିଟି ନୂତନ ପେନ୍ସନ୍ ଯୋଜନାର ସମୀକ୍ଷା କରୁଛି। ଅନେକ ଅଣ-ବିଜେପି ଶାସିତ ରାଜ୍ୟ ନୂତନ ପେନସନ୍ ଯୋଜନାକୁ ରଦ୍ଦ କରି ନିଜ କର୍ମଚାରୀମାନଙ୍କୁ ପୁରୁଣା ପେନସନ୍ ଯୋଜନା ଦେବାକୁ ଘୋଷଣା କରିଛନ୍ତି।
+ଏହି କାରଣରୁ ସରକାରଙ୍କ ଉତ୍ତେଜନା ବୃଦ୍ଧି ପାଇଛି।ନିକଟରେ ପେନ୍ସନ୍ ପାଣ୍ଠି ନିୟାମକ ଏବଂ ବିକାଶ ପ୍ରାଧିକରଣ (ପିଏଫଆରଡିଏ) ର ଅଧ୍ୟକ୍ଷ ଦୀପକ ମହାନ୍ତି କହିଛନ୍ତି ଯେ, ସର୍ବନିମ୍ନ ସୁନିଶ୍ଚିତ
+ରିଟର୍ଣ୍ଣ ପେନ୍ସନ୍ ଯୋଜନା ଉପରେ PFRDA କାର୍ଯ୍ୟ କରୁଛି ଏବଂ ଏହା ଖୁବ ଶୀଘ୍ର ଘୋଷଣା କରାଯିବ। ଅବସର ପାଇଁ ଯୋଜନା କରୁଥିବା ଲୋକଙ୍କ ପାଇଁ ଏହା ଏକ ଖୁସି ଖବର। ଏହି ଯୋଜନାର ସର୍ବୋତ୍ତମ
+ବୈଶିଷ୍ଟ୍ୟ ହେଉଛି ଯେଉଁମାନେ ଏଥିରେ ବିନିଯୋଗ କରନ୍ତି ସେମାନେ ସ୍ଥିର ରିଟର୍ଣ୍ଣ ପାଇବେ।
+OPTION_1: labour
+OPTION_2: economy, business and finance
+
+===== ITEM A134 | lang: bn =====
+HEADLINE: 
+TEXT:
+ক্রিকেটারের গাড়ির ধাক্কায় মৃত্যু হল সাইক্লিস্টের। অপরাধের জেরে আড়াই বছর জেল হল সেই ক্রিকেটারের। ঘটনাটি ঘটেছে ইংল্যান্ডে। গত ২৮ এপ্রিলের ঘটনা। ১২ মে সাজা
+শুনিয়েছে ইংল্যান্ডের গিল্ডফোর্ড ক্রাউন কোর্ট। স্টিভেন সেলউড নামে ওই ক্রিকেটার খেলতেন ইংল্যান্ডের ডার্বিশায়ারের হয়ে। পুলিশের দাবি অনুযায়ী, গত ২৮ এপ্রিল
+সত্তরোর্ধ্ব এক মহিলা সাইকেল আরোহীকে নিজের গাড়িতে চাপা দেন তিনি। ধরা পড়ার পর জানা যায়, সেলউড ছিলেন মত্ত। শুধু তাই নয়, নির্ধারিত মানের থেকে চার গুণ বেশি মদ্যপান
+করেছিলেন তিনি। জেলের সাজা ছাড়াও আগামী তিন বছর গাড়ি চালাতে পারবেন না তিনি। সারে পুলিশের বর্ণনা অনুযায়ী, হেসলমেয়ারের রাস্তা দিয়ে গাড়ি নিয়ে যাচ্ছিলেন ৪৩ বছরের
+এই ক্রিকেটার। হঠাৎ করেই তাঁর সামনে এসে পড়েন সাইকেল আরোহী ওই মহিলা। পাশ দিয়ে চলে যাওয়ার সুযোগ ছিল সেলউডের কাছে। তিনি তা করেননি। উল্টে সজোরে ওই মহিলাকে ধাক্কা
+মারেন এবং গাড়ির তলায় তাঁকে পিষে দেন। স্থানীয় কয়েকজন সেলউডের গাড়ি থামানোর চেষ্টা করেন। কিন্তু তিনি থামেননি। গতি বাড়িয়ে অপরাধের জায়গা থেকে পালিয়ে যান। তবে কিছু
+ক্ষণ পরেই তিনি হেঁটে হেঁটে সেখানে আসেন। তখনই তাঁকে গ্রেফতার করে পুলিশ। ওই মহিলা জানিয়েছেন, সাইকেলে করে স্থানীয় গির্জায় প্রার্থনা করতে যাওয়ার সময় ঘটনাটি ঘটেছে।
+আগে কোনও দিন তাঁকে এমন পরিস্থিতির মুখোমুখি হতে হয়নি।
+OPTION_1: sport
+OPTION_2: crime, law and justice
+
+===== ITEM A135 | lang: ru =====
+HEADLINE: Путинист Добронравов ушел со сцены и кино
+TEXT:
+Путинист Добронравов ушел со сцены и кино Российский актер-путинист Федор Добронравов, сыгравший Ивана Будько в сериале "Сваты", уходит со сцены до 2025 года.
+Оказалось, что он имеет большие проблемы со здоровьем и нуждается в реабилитации после операции. Как сообщают росСМИ, Федор, который активно поддерживает
+диктатора РФ и не осуждает войну в Украине, мог стать инвалидом. Подробности сам 62-летний мужчина не раскрывает. Известно лишь, что в феврале он обратился к
+врачам из-за болей в шее, позвоночнике и при глотании. Ему сделали обследование и отправили в нейрохирургическое отделение для экстренной операции. Федору
+удалили дискоостеофитный комплекс на уровне двух позвонков (образование, вызванное остеохондрозом). Сейчас путинисту назначили лечебную физкультуру, таблетки и
+покой. Поэтому он отменил свои выступления на этот год. К слову, в марте 2018 года у актера случился инсульт. Что известно о Федоре Добронравове Федор
+Добронравов - российский актер театра и кино, который получил известность в Украине благодаря сериалу "Сваты". В 2014 году он поддержал оккупацию Крыма Россией,
+а после 24 февраля 2022 года продолжает восхищаться кровавой политикой Кремля. Пока оккупанты убивают людей и уничтожают украинские города, он активно
+пропагандирует действия агрессора и даже выступает на концертах в поддержку российской армии. Напомним, ранее Добронравов высказался о съемках нового сезона
+"Сватов". Вас также могут заинтересовать новости: "Я не считаю это нужным": Лолита Милявская отказалась выступать в оккупированном Донбассе "Люди не глупые":
+Киркорова могут лишить звания народного артиста РФ "Спасает свою задницу": стало известно, почему Ани Лорак хочет сменить гражданство
+OPTION_1: arts, culture, entertainment and media
+OPTION_2: human interest
+
+===== ITEM A137 | lang: bn =====
+HEADLINE: 
+TEXT:
+চট্টগ্রাম বিশ্ববিদ্যালয় শাহজালাল শাহ আমানত তল্লাশি চালা বিপুল সংখ্যক দেশীয় অস্ত্রশস্ত্র পাথর উদ্ধ পুলিশ শুক্রব দুপুরে উভয় তল্লাশি চালায় পুলিশ সময় উভয় গ্রুপ আটক
+পুলিশ বৃহস্পতিব রাত শুক্রব সকালে সংঘর্ষ ক্যাম্পাসে উত্তেজনা বিরাজ বিশ্ববিদ্যালয় ছাত্রলীগ সভাপতি আলমগীর টিপু সম্পাদক ফজলে রাব্বী সুজন গ্রুপ হামলা সংঘর্ঘ ঘটনা ঘটে
+হাটহাজারী থানা ওসি বেলাল মো জাহাঙ্গীর আওয়ামী লীগ গ্রুপ সংঘর্ষ হামল ঘটনায় তল্লাশি চালানো সময় বিপুল সংখ্যক দা রামদা উদ্ধ তাছাড়া আটক আটককৃত জিজ্ঞাসাবাদ চল
+চট্টগ্রাম বিশ্ববিদ্যালয় প্রক্টর আলী আজগর চৌধুরী যুগান্তর বিশ্ববিদ্যালয় শিক্ষ সুষ্ঠু পরিবেশ বজায় রাখ পদক্ষেপ পুলিশ প্রশাসন দেয়া পুলিশ ক্যাম্পাসে বৃহস্পতিব রাত
+সংঘর্ষ সকাল টার টিপু গ্রুপ কর্মী ফাহিম হাসান শাহ আমানত হল নাস্তা ওপর অতর্কিত হামলা চালায় সুজন গ্রুপ নেতাকর্মী ফাহিম উদ্ধ বিশ্ববিদ্যালয় মেডিকেল সেন্টারে পাঠালে
+চিকিৎসক চট্টগ্রাম মেডিকেল কলেজ হাসপাতালে পাঠায় ফাহিম আশংকাজনক ফাহিম ওপর হামল ঘটনায় টিপু গ্রুপ নেতাকর্মী শাহজালাল দেশীয় অস্ত্রশস্ত্র সুজন গ্রুপ নেতাকর্মী শাহ
+আমানত দা রামদা লাঠিসো সময় উভয় গ্রুপ দফা ধাওয়া পাল্ ধাওয় ঘটনা ঘটে সময় পাথর আঘা আহত ধাওয়া পাল্ ধাওয় পর্য পুলিশ ঘটনাস্থলে টিয়ারশেল নিক্ষেপ উভয় গ্রুপ কর্মী অবস্থান
+নেয় বিশ্ববিদ্যালয় ছাত্রলীগ সম্পাদক ফজলে রাব্বী সুজন উসকানি ছাড়া নেতাকর্মী ওপর হামলা তল্লাশির আটক ঘটন সুষ্ঠু তদন্ত দাবি ব্যবস্থা গ্রহণ জোর দাবি জানাচ্ বিষয় ভুল
+বোঝাবুঝি মন্তব্য সভাপতি আলমগীর টিপু
+OPTION_1: education
+OPTION_2: conflict, war and peace
+
+===== ITEM A139 | lang: es =====
+HEADLINE: La jubilada de 87 años golpeada por la policía denunció a Bullrich
+TEXT:
+La jubilada de 87 años golpeada por la policía denunció a Bullrich Beatriz Blanco sufrió una herida en la cabeza y pérdida prolongada de conocimiento. La
+ministra de Seguridad defendió el accionar policial y la calificó de "jubilada patotera y pegapalos". Política15 de marzo de 2025Mariana Portilla Beatriz
+Blanco, la jubilada de 87 años agredida durante la manifestación del miércoles, presentó una denuncia penal contra la ministra de Seguridad, Patricia Bullrich,
+y los responsables del operativo policial por lesiones leves agravadas y abuso de autoridad. "Esto trasciende todos los estándares en materia de derechos
+humanos e, incluso, puede generar responsabilidad internacional en nuestro país", aseguró su abogado Adrián Albor. Durante una protesta que exigía una inmediata
+recomposición de los haberes jubilatorios, Blanco sufrió una agresión que le provocó pérdida prolongada de conocimiento, una herida cortante en la cabeza e
+irritación en los ojos debido al uso de gases lacrimógenos. Inicialmente, fue trasladada al Hospital Médico Policial Churruca Visca y luego al Hospital
+Argerich. Albor cuestionó el traslado al Churruca, calificándolo de "oscuro y turbio", ya que Blanco no tenía motivos para ser llevada a ese centro y no recibió
+atención adecuada allí. Falta de identificación de los efectivos involucrados Hasta el momento, los efectivos policiales involucrados en la agresión no fueron
+identificados. Albor destacó que durante la gestión de Nilda Garré al frente del Ministerio de Seguridad, los policías debían estar identificados con su nombre
+en el uniforme. Sin embargo, con la implementación del protocolo contra la protesta social por parte de Bullrich, se eliminó esta identificación, lo que
+dificulta la individualización de los agentes responsables. La causa fue sorteada y quedó en manos de la jueza María Romilda Servini. No obstante, desde la
+querella consideran que, por la fecha y el lugar de los hechos, la causa debería ser competencia del juez Marcelo Martínez de Giorgi. Tras el incidente,
+Bullrich se refirió a Blanco como "la patotera, la pegapalos", argumentando que la jubilada agredió al policía, quien reaccionó defendiéndose sin saber quién
+era. La ministra cuestionó: "¿De qué lado estamos? ¿Del policía que trata de sacarse a alguien de encima o de una señora que va con un palo impune a pegarle a
+un policía?". Crisis en el sector pesquero: empresarios en alerta y reclamos al gobierno Crisis en la pesca marplatense: empresarios alertan sobre quiebras y el
+senador Abad pide al gobierno nacional que tome medidas urgentes para salvar el sector. Kicillof convocó a las PASO en Buenos Aires, pero busca que la
+Legislatura las suspenda El gobernador bonaerense Axel Kicillof firmó el decreto para las PASO pero insiste en que deben suspenderse. ¿Podrá lograrlo? Los
+detalles de la puja política. La oposición radical refuerza su estrategia tras el fallo judicial en PBA El fallo judicial reavivó la interna de la UCR
+bonaerense. ¿Qué pasará con la presidencia del Comité Provincial? La cumbre de Junín podría definirlo. Universidades al paro: ¿qué está en juego en la lucha por
+el presupuesto? El Frente Sindical ratificó el paro de 48 horas en protesta por la crisis salarial y el desfinanciamiento de las
+OPTION_1: crime, law and justice
+OPTION_2: politics
+
+===== ITEM A142 | lang: ru =====
+HEADLINE: Криптобиржа Binance в конце января полностью уйдёт из России и заблокирует рубль
+TEXT:
+Криптобиржа Binance в конце января полностью уйдёт из России и заблокирует рубль Крупнейшая мировая криптобиржа Binance предупредила российских пользователей об
+уходе из России в конце января и прекращении поддержки рубля. В официальной публикации платформы сказано, что с 31 января 2024 года Binance полностью откажется
+от работы с россиянами, проживающими в России, и перестанет поддерживать рубль как валюту. Компания выходит из российского рынка — продаёт биржу CommEX. Причём
+касаются эти изменения именно резидентов России. Если российский гражданин находится за рубежом и может документально подтвердить своё местонахождение, никакие
+изменения его не касаются. При этом P2P-торговля рублём сохраняется на криптосервисе CommEX. Как отмечается, операции будут проводиться без комиссий.
+OPTION_1: economy, business and finance
+OPTION_2: science and technology
+
+===== ITEM A145 | lang: uk =====
+HEADLINE: Взуття у стилі преппі — стильні варіанти на осінь 2025 року
+TEXT:
+Взуття у стилі преппі — стильні варіанти на осінь 2025 року Вже традиційно восени на піку популярності буде естетика преппі. Такий стиль дещо нагадує про
+повернення до навчання й лекцій. У цьому сезоні ностальгічний шкільний настрій втілюється у взутті. Особливо популярними будуть чотири моделі. Про це пише Vogue
+UA. Наймодніше взуття цієї осені Лофери Будь-які варіації цього взуття в цьому сезоні будуть у тренді. Лофери — це вже класика, без якої важко уявити осінні
+образи. Ультрапопулярними будуть луки зі шкарпетками чи колготами. Такий стиль — справжнє втілення шкільного й університетського духу. Лофери. Фото: Vogue
+Оксфорди Раніше — суто чоловіче, але зараз таке шнуроване взуття підкорило й жіночі серця. В цьому сезоні оксфорди варто поєднувати здебільшого із сукнями та
+спідницями. Це допоможе втримати стилістичний баланс, змішавши ніжність зі строгістю. Особливо популярними будуть чорні мінімалістичні моделі без додаткового
+декору. Оксфорди. Фото: Vogue Монки Таке взуття теж буде трендовим восени 2025 року. Монки мають характерні застібки, які додають їм особливого шарму. Такий
+елемент робить взуття виразнішим й зі своїм характером. Оновлені моделі з різними варіаціями застібок представили Dior та Simone Rocha. Стильні монки. Фото:
+Vogue Туфлі Мері Джейн Це вже класика, яка просто підкорила серця модниць. Вони мають одну впізнавану рису — ремінець на підйомі стопи. До речі, трендовими в
+цьому сезоні будуть як варіанти на пласкій підошві, так й на підборах. Якщо ж хочете чогось нового, придивіться до моделей із загостреним носком. Туфлі Мері
+Джейн. Фото: Vogue Стилізувати таке взуття можна по-різному. Аби створити образ у стилі преппі, оберіть білу блузу, спідницю-шотландку, шкарпетки та сумку. Для
+оригінальнішого лука спробуйте поекспериментувати з джинсами, акцентними лонгами, яскравими кольорами та масивними аксесуарами. Нагадаємо, раніше ми писали про
+те, яке взуття краще не обирати у 2025 році. Також ми розповідали про те, як носити осіннє взуття влітку — новий тренд.
+OPTION_1: lifestyle and leisure
+OPTION_2: arts, culture, entertainment and media
+
+===== ITEM A149 | lang: bn =====
+HEADLINE: 
+TEXT:
+বাংলাদেশের রিজার্ভ চুরির ঘটনায় কোরিয় জড়িত বিষয় প্রমাণ পাওয় দাবি রাশিয় সাইব নিরাপত্তাসংক্রান্ত প্রতিষ্ঠান ক্যাসপারস্কি ঘটন বেশকিছু ডিজিটাল প্রমাণ কোরিয় জড়িত থাকা
+বিষয় সন্দেহ পাকাপোক্ত সোমব রুশভিত্তিক ক্যাসপারস্কির প্রকাশিত প্রতিবেদনে এসব বিষয় ঘটন জড়িত থাকা কথা অস্বীক কোরিয়া মার্কিন সংবাদমাধ্যম সিএনএন হ্যাকিংয় বাংলাদেশসহ
+দেশের টাকা চুরি পরমাণু বোমা কার্যক্রম চাল কোরিয়া ক্যাসপারস্কির গবেষক ভিটা কামলুক রয়টার্স জানান শুরুতে কোরিয়া ল্যাজারাসের হ্যাকিং যোগাযোগ বিষয় প্রমাণ পান সাল
+হ্যাকিং গ্রুপ সক্রিয় প্রমাণাদি পিয়ংইয়ংয় হাত বলছ না সাইব হামল জড়িত কোরিয়া কোরিয় অন্য সালে সনির হলিউড স্টুডিওতে সাইব হ্যাকিং বাংলাদেশের রিজার্ভ চুরির ঘটন
+ল্যাজারাসের জড়িত থাকাসংক্রান্ত ক্যাসপারস্কির পৃষ্ঠ প্রতিবেদন সোমব প্রকাশ প্রতিবেদন বরাত রয়টার্স বল ল্যাজারাসের হ্য কোরিয় আইপি ইন্টারনেট প্রটোকল অ্যাডড্রেস
+ইউরোপে সার্ভার সরাসরি সংযোগ স্থাপন গোষ্ঠীর হ্যাক পদ্ধতি সার্ভার নিয়ন্ত্রিত হত প্রতিবেদনে সুইফট বাংলাদেশ ব্যাংক অর্থ চুরির ঘটনা ল্যাজারাসের গ্রুপ হ্যাকিং গ্রুপ
+টার্গেটে বিশ্ব দেশের ব্যাংক আর্থিক বাণিজ্যিক প্রতিষ্ঠান ক্যাসিনো ডিজিটাল মুদ্ ব্যবসা প্রতিষ্ঠান ক্যাসপারস্কির প্রতিবেদনে অবস্থান লুকা হ্য আইপি নেটওয়ার্ক সংযুক্ত
+কম্পিউটারের স্বতন্ত্র নম্বর ঠিকানা হ্য দল ফ্রান্স দক্ষিণ কোরিয়া তাইওয়ান ঠিকানা হামলা চালায় ছোট্ট এক ভুল ফাল হ্য হ্যাকিংয় সময় কোরিয় আইপি ঠিকানা সূত্র নিরাপত্তা
+বিশ্লেষক জালে পড়ে হ্য দল ব্রিটেনের সাইব নিরাপত্তাসংক্রান্ত প্রতিষ্ঠান বিএইর থ্রেড ইনটেলিজেন্স টিম প্রধান আাদ্রিয়ান নিস রয়টার্স ক্যাসপারস্কির পাওয়া তথ্য
+তাৎপর্যপূর্ণ পিয়ংইয়ংয় ল্যাজারাসের সম্পর্ক যুক্তরাষ্ট্র জাতীয় নিরাপত্তা সংস্থ এনএসএ উপপরিচালক রিক লেজেট মার্চ ওয়াশিংটন আসপ ইন্সটিটিউটে গোলটেবিল বৈঠ দাবি
+বাংলাদেশের ইতিহাস সবচ বড় অর্থ চুরির ঘটনায় পিয়ংইয়ংয় হ্য জড়িত চীন মধ্যস্বত্বভোগী সহায়তায় কোরিয় হ্য বিপুল অঙ্ক অর্থ লোপাট তদন্ জেনেছেন এফবিআ কর্মকর্তা সনি
+হামলাকারী বাংলাদেশ ব্যাং হামলাকারী সম্পর্ক বিষয় সত্যি অর্থ দাঁড়ায় দেশ ব্যাংক ডাকাতি বড় ঘটনা হ্যাকিংয় জড়িত থাকা বিষয় যুক্তরাষ্ট্র দক্ষিণ কোরিয়া সাইব নিরাপত্তা
+কোম্পানির তোলা এসব অভিযোগ অস্বীক কোরিয়া কোরিয়া ঘটন জড়িত না ক্যাসপারস্কির গবেষক ভিটা কামলুক মত এমন হ্য দেখানোর করছিল কোরিয়া ঘটনা ঘটানো কোরিয়ান কোরিয় জড়িত থাকা
+বিষয় ঘটন সর্বোত্তম ব্যাখ্যা বছর ফেব্রুয়ারি ভুয়া সুইফট বার্তা পাঠা যুক্তরাষ্ট্র ফেডারেল রিজার্ভ ব্যাংক অব নিউইয়র্কে বাংলাদেশের রিজার্ভ লাখ ডল ফিলিপিন্স রিজল
+ব্যাং পাঠানো অর্থ জুয় টেবিলে যায় ঘটনা তদন্ বাংলাদেশের নিযুক্ত সিলিকন ভ্যালির সাইব নিরাপত্তা প্রতিষ্ঠান ফায়ারআইও সময় সাইব চুরি কোরিয়া পাকিস্তান হ্য গ্রুপ
+সম্পৃক্তত তথ্য ফরেনসিক পরীক্ষায় পাওয় কথা জানিয়েছিল রিজার্ভ চুরির অর্থে পরমাণু বোমা হ্যাকিংয় বাংলাদেশসহ দেশের টাকা চুরি কোরিয়া পরমাণু বোমা তৈরির কার্যক্রম চাল
+ক্যাসপারস্কি কয়েকজন নিরাপত্তা বিশ্লেষক বরাত তথ্য মার্কিন সংবাদমাধ্যম সিএনএন স্থানীয় সময় সোমব ক্যারিবীয় দ্বীপ সেন্ট মার্টিনে অনুষ্ঠিত সম্মেলনে তথ্য ক্যাসপারস্কি
+ব্যাংক নিরাপত্তা বিশ্লেষক দাবি বাংলাদেশসহ ইকুয়েডর ফিলিপাইন ভিয়েতনাম আর্থিক প্রতিষ্ঠান অর্থ হাতা চালানো ক্যাসপারস্কির দাবি ল্যাজারাস নামে হ্য দল সাইব আক্রমণ শিক
+চারটি দেশ কোস্টারিকা ইথিওপিয়া গেবন ভারত ইন্দোনেশিয়া ইরাক কেনিয়া মালয়েশিয়া নাইজেরিয়া পোল্যান্ড তাইওয়ান থাইল্যান্ড উরুগুয় আর্থিক প্রতিষ্ঠান কোরিয় সাইব হ্যাকিংয়
+শিক
+OPTION_1: economy, business and finance
+OPTION_2: crime, law and justice
+
+===== ITEM A160 | lang: el =====
+HEADLINE: Κυρανάκης: Δεν παραβιάζονται τα ωράρια εργασίας των οδηγών στα δημόσια λεωφορεία
+TEXT:
+Κυρανάκης: Δεν παραβιάζονται τα ωράρια εργασίας των οδηγών στα δημόσια λεωφορεία «Από τα στοιχεία δεν προκύπτει ότι παραβιάζονται τα ωράρια των βαρδιών των
+οδηγών των λεωφορείων που ασκούν δημόσιες συγκοινωνίες», ανέφερε ο αναπληρωτής υπουργός Υποδομών και Μεταφορών, Κωνσταντίνος Κυρανάκης, απαντώντας σε επίκαιρες
+ερωτήσεις των βουλευτών του ΣΥΡΙΖΑ Γιώργου Καραμέρου και της Νέας Αριστεράς Νάσου Ηλιόπουλου, σχετικά με τις καταγγελίες για εργασιακή εξάντληση των οδηγών στις
+αστικές, υπεραστικές συγκοινωνίςς και τα τουριστικά λεωφορεία, με αφορμή την σύγκρουση των δύο λεωφορείων στη Βούλα. Για το συγκεκριμένο τροχαίο, ο αναπληρωτής
+υπουργός διέψευσε τις καταγγελίες που έκαναν λόγο για εξαντλητικό ωράριο εργασίας της υπαίτιας οδηγού σημειώνοντας ότι «σύμφωνα με τα στοιχεία, την προηγούμενη
+του ατυχήματος ήταν σε βάρδια επτά ωρών και είκοσι λεπτά, κάτω από το επιτρεπτό ωράριο. Την ημέρα εκείνη ήταν στο τιμόνι 3,5 ώρες και η βάρδια της, εάν την είχε
+ολοκληρώσει, δεν θα ξεπερνούσε και πάλι το νόμιμο ωράριο. Ο μέσος όρος απασχόλησής της κατά τη διάρκεια της προηγούμενης εβδομάδας ήταν 8 ώρες και 29 λεπτά.
+Συνεπώς, καμία ένδειξη για 16ωρη βάρδια εργασίας, που αναφέρουν οι σχετικές καταγγελίες, δεν επιβεβαιώνεται». Ο κ. Κυρανάκης τόνισε ότι και «η ίδια η οδηγός, σε
+συνομιλία που είχε με τον ΟΑΣΑ, επιβεβαίωσε ότι δεν ισχύουν αυτές οι καταγγελίες περί εργασίας πέραν του νόμιμου ωραρίου εργασίας της». Ο αναπληρωτής υπουργός
+πρόσθεσε πως, σύμφωνα με τα στοιχεία που ζήτησε και έλαβε συνολικά για τις ημέρες ρεπό των οδηγών του ΟΑΣΑ, τον προηγούμενο μήνα διαπιστώθηκε ότι υπήρχαν 12
+ημέρες ρεπό. Παράλληλα, για την κατάσταση του συγκεκριμένου λεωφορείου είπε ότι «ήταν ένα ολοκαίνουριο όχημα, που είχε κυκλοφορήσει για πρώτη φορά τον Οκτώβριο
+του 2024, ο κλιματισμός, τα φρένα του λειτουργούσαν κανονικά, ενώ δεν είχε παλαιά λάστιχα. Από τα στοιχεία της τηλεματικής προκύπτει ότι κινείτο το συγκεκριμένο
+όχημα με 32 χιλιόμετρα». Όπως επεσήμανε, σύμφωνα με τον νέο ΚΟΚ που ψηφίστηκε από τη Βουλή πρόσφατα, για πρώτη φορά επιτρέπεται στις εισαγγελικές Αρχές να
+ερευνήσουν όταν έχουμε ένα τέτοιο τροχαίο όπως αυτό στην Βούλα με σοβαρούς τραυματισμούς και να προβούν σε άρση του τηλεφωνικού απορρήτου προκειμένου να
+εξετάσουν εάν η οδηγός μιλούσε εκείνη την ώρα στο κινητό της και αυτό θα το κάνουν γιατί αυτό είναι το αυτονόητο. Για τα δικαιώματα των επιβατών τραυματιών των
+δύο λεωφορείων, ο κ. Κυρανάκης ανέφερε ότι η Κοινοπραξία Συγκοινωνιών Αττικής δημιούργησε τηλεφωνική γραμμή υποστήριξης στο διαδίκτυο ώστε να λάβουν γνώση για
+τις αποζημιώσεις και τα νόμιμα δικαιώματά τους. Όσον αφορά τη σύμβαση που έχει υπογράψει ο ΟΑΣΑ με την Κοινοπραξία Συγκοινωνιών Αττικής, ο αναπληρωτής υπουργός
+υπογράμμισε ότι αυτή «προβλέπει 2,7 οδηγούς ανά όχημα την ημέρα προκειμένου τα ωράρια να βγαίνουν και οι βάρδιες να μην υπερβαίνουν το νόμιμο όριο». «Σε κάθε
+περίπτωση οι 16ωρες βάρδιες είναι εντελώς παράνομες και δεν μπορεί να υπάρξει», πρόσθεσε και σημείωσε: «Οι οδηγοί της ΟΣΥ εργάζονται στη βάρδια το ανώτατο τις 7
+ώρες και 20 λεπτά». Ζήτησε, δε, όταν γίνονται καταγγελίες για εξαντλητικά ωράρια και άνω του νόμιμου ορίου να αποδεικνύονται με συγκεκριμένα στοιχεία. Επίσης,
+απέρριψε τις αιτιάσεις περί χαριστικής σύμβασης μεταξύ του ΟΑΣΑ και Κοινοπραξίας Συγκοινωνιών Αττικής που είναι «φίλοι σας», αντιτείνοντας ότι «καταρχήν εγώ
+ήμουν που εκκίνησα τη διαδικασία για να
+OPTION_1: labour
+OPTION_2: politics
+
+===== ITEM A162 | lang: id =====
+HEADLINE: Apa Itu Minyak Makan Merah yang Diklaim Jokowi Lebih Murah dan Bergizi?
+TEXT:
+Apa Itu Minyak Makan Merah yang Diklaim Jokowi Lebih Murah dan Bergizi? TEMPO.CO, Jakarta - Presiden Joko Widodo alias Jokowi meresmikan pabrik percontohan
+minyak makan merah Pagar Merbau di Kabupaten Deli Serdang, Sumatera Utara, pada Kamis, 14 Maret 2024.Jokowi menilai penggunaan minyak makan merah akan menjadi
+tren yang baik dalam urusan goreng-menggoreng makanan di waktu-waktu mendatang. "Vitamin di situ (minyak makan merah) banyak dan harga lebih murah, saya rasa
+ini akan jadi tren baik untuk urusan goreng-menggoreng," kata Jokowi.Apa itu minyak makan merah?Dilansir dari Antara, minyak makan merah atau refined palm oil
+merupakan produk dari minyak sawit mentah atau crude palm oil (CPO) yang setelah proses penyulingan tidak dilanjutkan ke proses-proses selanjutnya. Minyak ini
+memiliki karakteristik warna terang mencolok dan aroma yang kuat.Warna mencolok dari minyak makan merah berasal dari kelapa sawit yang memang berwarna merah tua
+karena selama proses produksi. Minyak makan merah tidak melalui proses penyulingan seperti minyak goreng sawit biasa.Menurut Pusat Penelitian Kelapa Sawit
+(PPKS) sebagaimana dikutip laman Kementerian Pertanian, minyak makan merah masih mempertahankan kandungan senyawa fitonutrien.Kandungan tersebut meliputi
+karoten sebagai sumber vitamin A, tokoferol dan tokotrienol sebagai vitamin E, dan squalene. Untuk itu, minyak makan merah berpotensi digunakan sebagai pangan
+fungsional, salah satunya sebagai salah satu bahan pangan yang anti stunting.Asam oleat dan asam linoleat dalam kandungan minyak makan merah berfungsi untuk
+pembentukan dan perkembangan otak, transportasi dan metabolisme pada anak. Minyak makan merah juga sesuai digunakan untuk menumis bahan pangan, salad dressing,
+bahan baku margarin dan shortening.Keuntungan minyak makan merahPresiden Jokowi mengaku senang karena kehadiran minyak makan merah ini memiliki tiga keuntungan,
+yakni harga yang lebih murah dari minyak goreng di pasaran, memiliki kandungan vitamin yang tak hilang meski dipakai untuk menggoreng apapun, serta mendorong
+kebijakan hilirisasi."Ini bagus sekali. Apalagi didukung kapasitasnya 10 ton CPO bisa menghasilkan minyak makan merah kurang lebih 7 ton per hari. Ini jumlah
+yang banyak. Artinya harus banyak yang beli kita harapkan memberikan nilai tambah lebih baik,” kata Jokowi.Dia juga mengatakan, dengan adanya pabrik minyak
+makan merah di Deli Serdang, maka tandan buah segar yang diolah menjadi CPO dapat langsung diproses menjadi minyak makan merah. "Minyak makan merah sangat
+bagus. Pertama, karena gizi nggak hilang, vitamin nggak hilang. Vitamin A, vitamin E, nutrien yang lain juga ada di situ," jelasnya.SULTAN ABDURRAHMAN | RIANI
+SANUSI PUTRI | ANTARAPilihan Editor: Resmikan Pabrik Minyak Makan Merah untuk Produk Sawit, Jokowi: Inilah Hilirisasi
+OPTION_1: health
+OPTION_2: economy, business and finance
+
