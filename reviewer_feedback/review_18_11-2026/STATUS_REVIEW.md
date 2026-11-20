@@ -17,7 +17,7 @@ Terakhir diperbarui: 18 November 2026 (malam): T1, T2, T4, T5 diterapkan ke main
 | L1 | Label editorial (JSON-LD section, kategori penerbit) belum diverifikasi per artikel; agreement dengan teacher bukan bukti kebenaran label | RM mayor 1 | Selesai | Audit selesai. Prosedur pra-registrasi: ketat 79,3% [74,4–83,9], longgar 81,9% [77,1–86,3]. Pemeriksaan ulang pasca-buka-blind (19 Nov): 0 kesalahan pemetaan, 42 ketidakcocokan rubrik nyata, 3 galat LLM (selebritas, fesyen); setelah keputusan penulis atas A027/A032/A222: ketat 80,4% [75,7–84,8], longgar 86,5% [82,6–90,4]. Peringkat model tidak berubah. Semua penyimpangan dicatat di protocol.md. |
 | L2 | Anotator kedua untuk κ antar-manusia | RM mayor 1 | Selesai | Keputusan 18 Nov: tidak ada anotator kedua; paper menyebut audit tanpa κ. |
 | L3 | MasakhaNEWS ikut diaudit atau tidak | — | Selesai | Keputusan 18 Nov: MasakhaNEWS tidak diaudit. |
-| L4 | Perbarui paper dengan hasil audit (metode, hasil, Limitations, Acknowledgment, kontribusi, supplementary, notebook, versi Indonesia) | — | Menunggu keputusan | Usulan 8 butir siap (19 Nov), menunggu persetujuan penulis. |
+| L4 | Perbarui paper dengan hasil audit (metode, hasil, Limitations, Acknowledgment, kontribusi, supplementary, notebook, versi Indonesia) | — | Selesai | Diterapkan 20 Nov (EN+ID): paragraf metode audit, hasil audit di Results, kalimat validitas lama dilunakkan, Limitations, Acknowledgment, kontribusi, paragraf Label audit di supplementary, dan cell notebook. |
 
 ## 2. Perbaikan teks paper
 
@@ -31,7 +31,7 @@ Terakhir diperbarui: 18 November 2026 (malam): T1, T2, T4, T5 diterapkan ke main
 | T6 | Beri nama eksplisit estimand macro-F1 (global 0,545 vs rerata per bahasa 0,622) | RM konsistensi 1 | Caption/header tabel hasil utama | Sudah ada | Diverifikasi 18 Nov: tabel utama sudah memisahkan Macro-F1 dan Macro-F1/language; tidak ada perubahan teks. |
 | T7 | Cascade: throughput dari model biaya; threshold dipilih di test set; jangan kesankan 0,602 lebih baik dari 0,600 | RM audit 7, mayor 5 | Results (cascade) | Selesai | Diterapkan 18 Nov (EN+ID): θ = 0,8 dipilih di development set (0,822 vs teacher 0,823); cascade setara dengan teacher dalam ±0,01 (TOST p<0,001); pengukuran end-to-end 2,18 doc/s vs rumus 2,20. |
 | T8 | Ekuivalensi dengan Model2Vec bersyarat pada test set ini | RM audit 5 | Results | Sudah ada | Diverifikasi 18 Nov: klaim selalu disebut test macro-F1; estimand kini eksplisit lewat T4; tidak ada perubahan teks. |
-| T9 | Uji validitas via teacher membandingkan sumber berbeda (domain dan kesulitan berubah) | RM konsistensi 5 | Label Validity Check | Belum | Usulan kalimat siap (dibahas 19 Nov); diterapkan bersama L4. |
+| T9 | Uji validitas via teacher membandingkan sumber berbeda (domain dan kesulitan berubah) | RM konsistensi 5 | Label Validity Check | Selesai | Diterapkan 20 Nov: kalimat pembuka Results 5.1 menyebut kedua sampel berasal dari sumber berbeda; audit tingkat artikel menjadi bukti utama. |
 
 ## 3. Sudah tertangani di paper (untuk surat jawaban)
 

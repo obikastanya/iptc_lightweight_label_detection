@@ -430,6 +430,27 @@ if len(m_pol):
 show(mapping_check.head(15), "Kategori sumber dengan kesepakatan teacher terendah (bahasa tercakup XLM-R)")
 """),
 md(r"""
+**Audit label editorial tingkat artikel.** Angka diambil dari keluaran `scripts/label_audit/analyze.py`
+(prosedur pra-registrasi) dan `scripts/label_audit/final_status.py` (setelah pemeriksaan ulang pasca-hoc dan
+keputusan penulis). Protokol dan semua penyimpangan ada di `results/label_audit/protocol.md`.
+"""),
+code(r"""
+AUDIT_DIR = FINAL_DIR.parent / "label_audit"
+aud_pre = json.loads((AUDIT_DIR / "results.json").read_text(encoding="utf8"))["estimate_interim"]
+aud = json.loads((AUDIT_DIR / "final_estimate.json").read_text(encoding="utf8"))["final"]
+aud_mc = json.loads((AUDIT_DIR / "final_model_check.json").read_text(encoding="utf8"))
+for k, e in (("audit.pre", aud_pre), ("audit", aud)):
+    for t in ("strict", "lenient"):
+        NUM.add(f"{k}.{t}", e[f"acc_{t}"], 1, percent=True)
+        NUM.add(f"{k}.{t}.ci", f"{fmt(e[f'acc_{t}_ci'][0], 1, percent=True)}--{fmt(e[f'acc_{t}_ci'][1], 1, percent=True)}")
+for s, v in aud["strata"].items():
+    NUM.add(f"audit.{s}.strict", v["acc_strict"], 1, percent=True)
+for m, k in (("StaticKD (final)", "statickd"), ("teacher", "teacher")):
+    NUM.add(f"audit.{k}.acc_section", aud_mc[m]["acc_vs_section"], 1, percent=True)
+    NUM.add(f"audit.{k}.acc_verified", aud_mc[m]["acc_vs_verified"], 1, percent=True)
+pd.DataFrame(aud_mc).T
+"""),
+md(r"""
 <a id="9"></a>
 ## 9. Ablasi, *temperature*, dan *ensemble* (RQ3)
 
