@@ -1,0 +1,119 @@
+{
+ "config": {
+  "name": "sdstyle_small_s2",
+  "seed": 2,
+  "dim": 128,
+  "buckets": 524288,
+  "hidden": 256,
+  "init_std": 0.1,
+  "dropout": 0.1,
+  "token_dropout": 0.2,
+  "temperature": 1.0,
+  "epochs": 10,
+  "batch_size": 64,
+  "lr_emb": 0.01,
+  "lr_head": 0.003,
+  "val_fraction": 0.03,
+  "sources": [
+   "emmediatopic",
+   "ccnews",
+   "ccnews_extra"
+  ],
+  "base": "minishlab/potion-multilingual-128M"
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "loss": 0.8773085790869823,
+   "val_agreement": 0.7838908963748689,
+   "seconds": 66.86999379999907
+  },
+  {
+   "epoch": 2,
+   "loss": 0.1415667374445152,
+   "val_agreement": 0.7848234059913742,
+   "seconds": 135.1472590000012
+  },
+  {
+   "epoch": 3,
+   "loss": 0.07733992245615588,
+   "val_agreement": 0.7841240237789953,
+   "seconds": 203.65707029999976
+  },
+  {
+   "epoch": 4,
+   "loss": 0.06312329469727422,
+   "val_agreement": 0.7886700081594591,
+   "seconds": 270.8837988000014
+  },
+  {
+   "epoch": 5,
+   "loss": 0.054925711415054805,
+   "val_agreement": 0.7911178459027859,
+   "seconds": 338.8250384999992
+  },
+  {
+   "epoch": 6,
+   "loss": 0.04894858407029426,
+   "val_agreement": 0.7897190814780277,
+   "seconds": 406.68892720000076
+  },
+  {
+   "epoch": 7,
+   "loss": 0.04404202976659882,
+   "val_agreement": 0.7915841007110386,
+   "seconds": 474.8658428000017
+  },
+  {
+   "epoch": 8,
+   "loss": 0.03991014909159941,
+   "val_agreement": 0.7967129036018183,
+   "seconds": 542.6467386000004
+  },
+  {
+   "epoch": 9,
+   "loss": 0.03713237744380849,
+   "val_agreement": 0.7891362629677119,
+   "seconds": 610.7526044000006
+  },
+  {
+   "epoch": 10,
+   "loss": 0.035003133233976996,
+   "val_agreement": 0.7942650658584917,
+   "seconds": 678.7378575000002
+  }
+ ],
+ "best_val_agreement": 0.7967129036018183,
+ "best_epoch": 8,
+ "train_docs": 277420,
+ "val_docs": 8579,
+ "device": "cuda",
+ "vocab_size": 500353,
+ "embedding_parameters": 131154048,
+ "head_parameters": 37393,
+ "peak_gpu_mb": 1766.9375,
+ "train_seconds": 678.7381391999988,
+ "format": "sdstyle_dan_fp16",
+ "labels": [
+  "arts, culture, entertainment and media",
+  "conflict, war and peace",
+  "crime, law and justice",
+  "disaster, accident and emergency incident",
+  "economy, business and finance",
+  "education",
+  "environment",
+  "health",
+  "human interest",
+  "labour",
+  "lifestyle and leisure",
+  "politics",
+  "religion",
+  "science and technology",
+  "society",
+  "sport",
+  "weather"
+ ],
+ "max_tokens": 1024,
+ "buckets": 524288,
+ "dim": 128
+}

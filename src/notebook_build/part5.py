@@ -410,7 +410,7 @@ fig, ax = plt.subplots(figsize=(4, 3.6))
 for s, c in (("dev", "#0072B2"), ("test", "#D55E00")):
     rel = ev.reliability(data.softmax(ev.logits_view("statickd", s)), ev.eval_view(s).y.to_numpy())
     ax.plot(rel.confidence, rel.accuracy, marker="o", color=c, label=f"{s} (ECE {calib.loc['statickd', s]:.3f})")
-ax.plot([0, 1], [0, 1], ls="--", color="#999999"); ax.set_xlabel("keyakinan StaticKD"); ax.set_ylabel("akurasi")
+ax.plot([0, 1], [0, 1], ls="--", color="#999999"); ax.set_xlabel("StaticKD confidence"); ax.set_ylabel("accuracy")
 ax.legend(fontsize=7); ax.set_title("StaticKD reliability diagram")
 viz.show_and_save(fig, "fig_calibration")
 """),

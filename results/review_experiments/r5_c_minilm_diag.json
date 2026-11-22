@@ -1,0 +1,91 @@
+{
+ "teacher_setting_dev": {
+  "onnx_fp32": {
+   "macro_f1": 0.7834064033807685,
+   "accuracy": 0.819,
+   "seconds": 26.4
+  },
+  "onnx_int8": {
+   "macro_f1": 0.5347183139642846,
+   "accuracy": 0.681,
+   "seconds": 9.8
+  },
+  "stored_pytorch_gpu": {
+   "macro_f1": 0.7846837496408137,
+   "accuracy": 0.82
+  },
+  "argmax_changes_int8_vs_onnx_fp32": 285,
+  "argmax_changes_onnx_fp32_vs_stored": 1,
+  "argmax_changes_int8_vs_stored": 284,
+  "n": 1000
+ },
+ "matmul_pc_rr": {
+  "settings": {
+   "op_types_to_quantize": [
+    "MatMul"
+   ],
+   "per_channel": true,
+   "reduce_range": true
+  },
+  "onnx_mb": 377.67,
+  "dev": {
+   "macro_f1": 0.5816736409484974,
+   "accuracy": 0.691,
+   "argmax_changes_vs_onnx_fp32": 280,
+   "seconds": 14.1
+  }
+ },
+ "all_tensor": {
+  "settings": {
+   "per_channel": false,
+   "reduce_range": false
+  },
+  "onnx_mb": 102.34,
+  "dev": {
+   "macro_f1": 0.42444987102915105,
+   "accuracy": 0.615,
+   "argmax_changes_vs_onnx_fp32": 362,
+   "seconds": 10.2
+  }
+ },
+ "matmul_tensor": {
+  "settings": {
+   "op_types_to_quantize": [
+    "MatMul"
+   ],
+   "per_channel": false,
+   "reduce_range": false
+  },
+  "onnx_mb": 377.56,
+  "dev": {
+   "macro_f1": 0.4336689203716252,
+   "accuracy": 0.627,
+   "argmax_changes_vs_onnx_fp32": 358,
+   "seconds": 10.2
+  }
+ },
+ "gather_only_pc_rr": {
+  "settings": {
+   "op_types_to_quantize": [
+    "Gather"
+   ],
+   "per_channel": true,
+   "reduce_range": true
+  },
+  "onnx_mb": 133.11,
+  "dev": {
+   "macro_f1": 0.7841905160822431,
+   "accuracy": 0.82,
+   "argmax_changes_vs_onnx_fp32": 7,
+   "seconds": 16.5
+  }
+ },
+ "best_on_dev": "gather_only_pc_rr",
+ "best_test": {
+  "macro_f1": 0.5646765147234488,
+  "accuracy": 0.6658819836785939,
+  "argmax_changes_vs_onnx_fp32": 132,
+  "n": 12744,
+  "seconds": 198.2
+ }
+}

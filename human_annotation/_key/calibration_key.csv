@@ -1,0 +1,11 @@
+item_id,doc_id,source,lang,label,source_label
+C01,u09810,ccnews_jsonld,it,"conflict, war and peace","[""Guerra"", ""Danneggiato il sito nucleare di Natanz: le immagini satellitari""]"
+C02,u07160,ccnews_jsonld,es,science and technology,"[""Ciencia""]"
+C03,u03483,ccnews_jsonld,es,society,"[""Inmigración"", ""Inmigración"", ""Arquidiócesis de Miami critica recorte de $11 millones a Caridades Católicas para menores migrantes""]"
+C04,u06726,ccnews_jsonld,id,"crime, law and justice","[""Hukum"", ""Kriminal""]"
+C05,u11411,ccnews_jsonld,es,sport,"[""Automovilismo"", ""Deportes"", ""Automovilismo""]"
+C06,u06270,ccnews_jsonld,es,politics,"[""Política"", ""Política""]"
+C07,u02193,l3cube_indic,ta,"economy, business and finance",Business
+C08,u00852,l3cube_indic,or,"economy, business and finance",business
+C09,u12222,bangla_plos,bn,education,education
+C10,u08419,indonews,id,"economy, business and finance",bisnis

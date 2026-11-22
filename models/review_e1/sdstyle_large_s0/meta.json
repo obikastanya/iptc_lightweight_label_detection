@@ -1,0 +1,95 @@
+{
+ "config": {
+  "name": "sdstyle_large_s0",
+  "seed": 0,
+  "dim": 128,
+  "buckets": 1600000,
+  "hidden": 1024,
+  "init_std": 0.1,
+  "dropout": 0.1,
+  "token_dropout": 0.2,
+  "temperature": 1.0,
+  "epochs": 6,
+  "batch_size": 64,
+  "lr_emb": 0.01,
+  "lr_head": 0.003,
+  "val_fraction": 0.03,
+  "sources": [
+   "emmediatopic",
+   "ccnews",
+   "ccnews_extra"
+  ],
+  "base": "minishlab/potion-multilingual-128M"
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "loss": 0.807841619314221,
+   "val_agreement": 0.7890196992656486,
+   "seconds": 67.04118310000194
+  },
+  {
+   "epoch": 2,
+   "loss": 0.12003047557063762,
+   "val_agreement": 0.7914675370089754,
+   "seconds": 134.3708925000028
+  },
+  {
+   "epoch": 3,
+   "loss": 0.0669563465446997,
+   "val_agreement": 0.7842405874810584,
+   "seconds": 202.48167920000196
+  },
+  {
+   "epoch": 4,
+   "loss": 0.0522621132927226,
+   "val_agreement": 0.7919337918172281,
+   "seconds": 268.2429271000001
+  },
+  {
+   "epoch": 5,
+   "loss": 0.04359012571978759,
+   "val_agreement": 0.7911178459027859,
+   "seconds": 336.0881079000028
+  },
+  {
+   "epoch": 6,
+   "loss": 0.03755949846140948,
+   "val_agreement": 0.7901853362862804,
+   "seconds": 403.0370170000024
+  }
+ ],
+ "best_val_agreement": 0.7919337918172281,
+ "best_epoch": 4,
+ "train_docs": 277420,
+ "val_docs": 8579,
+ "device": "cuda",
+ "vocab_size": 500353,
+ "embedding_parameters": 268845184,
+ "head_parameters": 149521,
+ "peak_gpu_mb": 3350.91748046875,
+ "train_seconds": 403.0373184000018,
+ "format": "sdstyle_dan_fp16",
+ "labels": [
+  "arts, culture, entertainment and media",
+  "conflict, war and peace",
+  "crime, law and justice",
+  "disaster, accident and emergency incident",
+  "economy, business and finance",
+  "education",
+  "environment",
+  "health",
+  "human interest",
+  "labour",
+  "lifestyle and leisure",
+  "politics",
+  "religion",
+  "science and technology",
+  "society",
+  "sport",
+  "weather"
+ ],
+ "max_tokens": 1024,
+ "buckets": 1600000,
+ "dim": 128
+}

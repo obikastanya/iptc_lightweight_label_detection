@@ -1,0 +1,28 @@
+{
+ "format": "token_table_fp16",
+ "labels": [
+  "arts, culture, entertainment and media",
+  "conflict, war and peace",
+  "crime, law and justice",
+  "disaster, accident and emergency incident",
+  "economy, business and finance",
+  "education",
+  "environment",
+  "health",
+  "human interest",
+  "labour",
+  "lifestyle and leisure",
+  "politics",
+  "religion",
+  "science and technology",
+  "society",
+  "sport",
+  "weather"
+ ],
+ "max_tokens": 512,
+ "ensemble_of": [
+  "m2v_lin_nonorm_folded",
+  "m2v_lin_nonorm_s1_folded",
+  "m2v_lin_nonorm_s2_folded"
+ ]
+}

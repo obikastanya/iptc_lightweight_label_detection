@@ -1,0 +1,95 @@
+{
+ "config": {
+  "name": "sdstyle_large_s1",
+  "seed": 1,
+  "dim": 128,
+  "buckets": 1600000,
+  "hidden": 1024,
+  "init_std": 0.1,
+  "dropout": 0.1,
+  "token_dropout": 0.2,
+  "temperature": 1.0,
+  "epochs": 6,
+  "batch_size": 64,
+  "lr_emb": 0.01,
+  "lr_head": 0.003,
+  "val_fraction": 0.03,
+  "sources": [
+   "emmediatopic",
+   "ccnews",
+   "ccnews_extra"
+  ],
+  "base": "minishlab/potion-multilingual-128M"
+ },
+ "history": [
+  {
+   "epoch": 1,
+   "loss": 0.8154033895669635,
+   "val_agreement": 0.7824921319501107,
+   "seconds": 68.4822239999994
+  },
+  {
+   "epoch": 2,
+   "loss": 0.12211494903064264,
+   "val_agreement": 0.7876209348408906,
+   "seconds": 137.8866474000024
+  },
+  {
+   "epoch": 3,
+   "loss": 0.06685574053961614,
+   "val_agreement": 0.7974122858141974,
+   "seconds": 208.19847780000055
+  },
+  {
+   "epoch": 4,
+   "loss": 0.052071166749533056,
+   "val_agreement": 0.7843571511831215,
+   "seconds": 276.81985740000164
+  },
+  {
+   "epoch": 5,
+   "loss": 0.04372567788946619,
+   "val_agreement": 0.7878540622450169,
+   "seconds": 345.99071110000295
+  },
+  {
+   "epoch": 6,
+   "loss": 0.037380539987495846,
+   "val_agreement": 0.7958969576873761,
+   "seconds": 415.1087839000029
+  }
+ ],
+ "best_val_agreement": 0.7974122858141974,
+ "best_epoch": 3,
+ "train_docs": 277420,
+ "val_docs": 8579,
+ "device": "cuda",
+ "vocab_size": 500353,
+ "embedding_parameters": 268845184,
+ "head_parameters": 149521,
+ "peak_gpu_mb": 3350.91748046875,
+ "train_seconds": 415.10903090000284,
+ "format": "sdstyle_dan_fp16",
+ "labels": [
+  "arts, culture, entertainment and media",
+  "conflict, war and peace",
+  "crime, law and justice",
+  "disaster, accident and emergency incident",
+  "economy, business and finance",
+  "education",
+  "environment",
+  "health",
+  "human interest",
+  "labour",
+  "lifestyle and leisure",
+  "politics",
+  "religion",
+  "science and technology",
+  "society",
+  "sport",
+  "weather"
+ ],
+ "max_tokens": 1024,
+ "buckets": 1600000,
+ "dim": 128
+}

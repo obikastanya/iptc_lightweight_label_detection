@@ -1,0 +1,187 @@
+{
+ "n": 100,
+ "human_human": {
+  "percent_agreement": 0.96,
+  "kappa": 0.9551368326603857,
+  "kappa_ci95": [
+   0.9086549440511533,
+   0.9888419319348608
+  ],
+  "krippendorff_alpha": 0.955353637332436,
+  "lenient_overlap": 1.0
+ },
+ "obi_vs_ai": {
+  "percent_agreement": 0.98,
+  "kappa": 0.9775280898876404,
+  "kappa_ci95": [
+   0.9428167869534252,
+   1.0
+  ]
+ },
+ "obi_vs_editorial_kappa": 0.7404356167475454,
+ "anan_vs_ai": {
+  "percent_agreement": 0.98,
+  "kappa": 0.9775154581225407,
+  "kappa_ci95": [
+   0.9430124739192937,
+   1.0
+  ]
+ },
+ "anan_vs_editorial_kappa": 0.7516088969176923,
+ "ai_vs_editorial_kappa": 0.762685049158097,
+ "editorial_correct_rate": {
+  "obi_strict": {
+   "weighted": 0.7571279966090633,
+   "ci95": [
+    0.6693304175278421,
+    0.8402903613373195
+   ],
+   "unweighted": 0.77,
+   "by_source": {
+    "ccnews_jsonld": 0.7761194029850746,
+    "l3cube_indic": 0.6956521739130435,
+    "bangla_plos": 0.8,
+    "indonews": 1.0
+   }
+  },
+  "obi_lenient": {
+   "weighted": 0.8557222432697033,
+   "ci95": [
+    0.7826126023564008,
+    0.922641554729494
+   ],
+   "unweighted": 0.87,
+   "by_source": {
+    "ccnews_jsonld": 0.8955223880597015,
+    "l3cube_indic": 0.7391304347826086,
+    "bangla_plos": 1.0,
+    "indonews": 1.0
+   }
+  },
+  "anan_strict": {
+   "weighted": 0.77569412550217,
+   "ci95": [
+    0.6934136196374248,
+    0.8560463481786842
+   ],
+   "unweighted": 0.78,
+   "by_source": {
+    "ccnews_jsonld": 0.8059701492537313,
+    "l3cube_indic": 0.6956521739130435,
+    "bangla_plos": 0.8,
+    "indonews": 0.8
+   }
+  },
+  "anan_lenient": {
+   "weighted": 0.8661613770804185,
+   "ci95": [
+    0.7978138960887945,
+    0.9330806885402092
+   ],
+   "unweighted": 0.88,
+   "by_source": {
+    "ccnews_jsonld": 0.9104477611940298,
+    "l3cube_indic": 0.7391304347826086,
+    "bangla_plos": 1.0,
+    "indonews": 1.0
+   }
+  },
+  "both_strict": {
+   "weighted": 0.7548158578807396,
+   "ci95": [
+    0.66609444546556,
+    0.8368163455154487
+   ],
+   "unweighted": 0.76,
+   "by_source": {
+    "ccnews_jsonld": 0.7761194029850746,
+    "l3cube_indic": 0.6956521739130435,
+    "bangla_plos": 0.8,
+    "indonews": 0.8
+   }
+  },
+  "any_lenient": {
+   "weighted": 0.8661613770804185,
+   "ci95": [
+    0.7916592708735789,
+    0.9316525190083761
+   ],
+   "unweighted": 0.88,
+   "by_source": {
+    "ccnews_jsonld": 0.9104477611940298,
+    "l3cube_indic": 0.7391304347826086,
+    "bangla_plos": 1.0,
+    "indonews": 1.0
+   }
+  },
+  "ai_strict": {
+   "weighted": 0.7780062642304937,
+   "ci95": [
+    0.6884229818487358,
+    0.8564442836083469
+   ],
+   "unweighted": 0.79,
+   "by_source": {
+    "ccnews_jsonld": 0.8059701492537313,
+    "l3cube_indic": 0.6956521739130435,
+    "bangla_plos": 0.8,
+    "indonews": 1.0
+   }
+  },
+  "ai_lenient": {
+   "weighted": 0.7988845318519241,
+   "ci95": [
+    0.7157200567906885,
+    0.8776711466542633
+   ],
+   "unweighted": 0.81,
+   "by_source": {
+    "ccnews_jsonld": 0.835820895522388,
+    "l3cube_indic": 0.6956521739130435,
+    "bangla_plos": 0.8,
+    "indonews": 1.0
+   }
+  }
+ },
+ "main_not_in_list": {
+  "obi": 0,
+  "anan": 0
+ },
+ "extension_rule_triggered": false,
+ "adjudicated": {
+  "items_adjudicated": [
+   "H003",
+   "H032",
+   "H051",
+   "H100"
+  ],
+  "final_strict": {
+   "weighted": 0.7571279966090633,
+   "ci95": [
+    0.6703742873968934,
+    0.8434974061584513
+   ],
+   "unweighted": 0.77,
+   "by_source": {
+    "bangla_plos": 0.8,
+    "ccnews_jsonld": 0.7761194029850746,
+    "indonews": 1.0,
+    "l3cube_indic": 0.6956521739130435
+   }
+  },
+  "final_lenient": {
+   "weighted": 0.8661613770804185,
+   "ci95": [
+    0.7949575570251283,
+    0.9256160551852443
+   ],
+   "unweighted": 0.88,
+   "by_source": {
+    "bangla_plos": 1.0,
+    "ccnews_jsonld": 0.9104477611940298,
+    "indonews": 1.0,
+    "l3cube_indic": 0.7391304347826086
+   }
+  }
+ }
+}

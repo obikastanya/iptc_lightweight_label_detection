@@ -1,0 +1,207 @@
+{
+ "c1_model2vec": {
+  "fp32_embedding_dtype": "float32",
+  "fp16": {
+   "saved_dir": "models\\review_r5\\model2vec_clf_fp16",
+   "size_mb": 262.61,
+   "files_mb": {
+    "config.json": 0.0,
+    "head.safetensors": 0.54,
+    "model.safetensors": 244.31,
+    "modules.json": 0.0,
+    "README.md": 0.0,
+    "tokenizer.json": 17.75,
+    "train_meta.json": 0.0
+   },
+   "loaded_embedding_dtype": "float16",
+   "loads": true,
+   "dev": {
+    "macro_f1": 0.7436318234043289,
+    "accuracy": 0.78,
+    "fp32": {
+     "macro_f1": 0.7436318234043289,
+     "accuracy": 0.78
+    },
+    "argmax_changes_vs_fp32": 0,
+    "n": 1000,
+    "max_abs_logprob_diff": 0.015043258666992188,
+    "seconds": 1.8
+   },
+   "test": {
+    "macro_f1": 0.5469023033611239,
+    "accuracy": 0.641713747645951,
+    "fp32": {
+     "macro_f1": 0.5469184758660343,
+     "accuracy": 0.641713747645951
+    },
+    "argmax_changes_vs_fp32": 1,
+    "n": 12744,
+    "max_abs_logprob_diff": 0.020402908325195312,
+    "seconds": 13.5
+   }
+  },
+  "int8": {
+   "saved_dir": "models\\review_r5\\model2vec_clf_int8",
+   "size_mb": 140.45,
+   "files_mb": {
+    "config.json": 0.0,
+    "head.safetensors": 0.54,
+    "model.safetensors": 122.16,
+    "modules.json": 0.0,
+    "README.md": 0.0,
+    "tokenizer.json": 17.75,
+    "train_meta.json": 0.0
+   },
+   "loaded_embedding_dtype": "int8",
+   "loads": true,
+   "dev": {
+    "macro_f1": 0.7343038535814943,
+    "accuracy": 0.776,
+    "fp32": {
+     "macro_f1": 0.7436318234043289,
+     "accuracy": 0.78
+    },
+    "argmax_changes_vs_fp32": 26,
+    "n": 1000,
+    "max_abs_logprob_diff": 3.535336494445801,
+    "seconds": 0.9
+   },
+   "test": {
+    "macro_f1": 0.5464389567890724,
+    "accuracy": 0.6390458254865035,
+    "fp32": {
+     "macro_f1": 0.5469184758660343,
+     "accuracy": 0.641713747645951
+    },
+    "argmax_changes_vs_fp32": 324,
+    "n": 12744,
+    "max_abs_logprob_diff": 3.4548606872558594,
+    "seconds": 16.4
+   }
+  },
+  "fp32_size_mb": 506.92
+ },
+ "c2_onnx_int8": {
+  "minilm_kd": {
+   "quantize_seconds": 4.7,
+   "fp32_onnx_mb": 408.29,
+   "int8_onnx_mb": 102.44,
+   "max_length": 256,
+   "int8_ops": {
+    "Constant": 186,
+    "Mul": 105,
+    "Add": 66,
+    "Unsqueeze": 63,
+    "Cast": 46,
+    "MatMulInteger": 38,
+    "Reshape": 29,
+    "Concat": 28,
+    "DynamicQuantizeLinear": 26,
+    "Transpose": 24,
+    "Gather": 22,
+    "Shape": 21
+   },
+   "dev": {
+    "onnx_fp32": {
+     "macro_f1": 0.7834064033807685,
+     "accuracy": 0.819,
+     "seconds": 26.4
+    },
+    "onnx_int8": {
+     "macro_f1": 0.5347183139642846,
+     "accuracy": 0.681,
+     "seconds": 9.8
+    },
+    "stored_pytorch_gpu": {
+     "macro_f1": 0.7846837496408137,
+     "accuracy": 0.82
+    },
+    "argmax_changes_int8_vs_onnx_fp32": 285,
+    "argmax_changes_onnx_fp32_vs_stored": 1,
+    "argmax_changes_int8_vs_stored": 284,
+    "n": 1000
+   },
+   "test": {
+    "onnx_fp32": {
+     "macro_f1": 0.565495118668206,
+     "accuracy": 0.6669020715630886,
+     "seconds": 201.0
+    },
+    "onnx_int8": {
+     "macro_f1": 0.4361947296098212,
+     "accuracy": 0.5441776522284997,
+     "seconds": 111.9
+    },
+    "stored_pytorch_gpu": {
+     "macro_f1": 0.5655639028175012,
+     "accuracy": 0.6669805398618958
+    },
+    "argmax_changes_int8_vs_onnx_fp32": 3963,
+    "argmax_changes_onnx_fp32_vs_stored": 1,
+    "argmax_changes_int8_vs_stored": 3964,
+    "n": 12744
+   }
+  },
+  "distilmbert_kd": {
+   "quantize_seconds": 6.9,
+   "fp32_onnx_mb": 516.38,
+   "int8_onnx_mb": 129.65,
+   "max_length": 256,
+   "int8_ops": {
+    "Constant": 177,
+    "Mul": 102,
+    "Add": 64,
+    "Unsqueeze": 61,
+    "Cast": 44,
+    "MatMulInteger": 38,
+    "Reshape": 27,
+    "DynamicQuantizeLinear": 26,
+    "Concat": 26,
+    "Transpose": 24,
+    "Gather": 19,
+    "Shape": 17
+   },
+   "dev": {
+    "onnx_fp32": {
+     "macro_f1": 0.7534344442804876,
+     "accuracy": 0.801,
+     "seconds": 50.4
+    },
+    "onnx_int8": {
+     "macro_f1": 0.7626528457842036,
+     "accuracy": 0.803,
+     "seconds": 20.7
+    },
+    "stored_pytorch_gpu": {
+     "macro_f1": 0.7534344442804876,
+     "accuracy": 0.801
+    },
+    "argmax_changes_int8_vs_onnx_fp32": 22,
+    "argmax_changes_onnx_fp32_vs_stored": 0,
+    "argmax_changes_int8_vs_stored": 22,
+    "n": 1000
+   },
+   "test": {
+    "onnx_fp32": {
+     "macro_f1": 0.5344277997448444,
+     "accuracy": 0.6230382925298179,
+     "seconds": 634.0
+    },
+    "onnx_int8": {
+     "macro_f1": 0.5297528137417375,
+     "accuracy": 0.6182517263025737,
+     "seconds": 252.9
+    },
+    "stored_pytorch_gpu": {
+     "macro_f1": 0.5344376092272586,
+     "accuracy": 0.6230382925298179
+    },
+    "argmax_changes_int8_vs_onnx_fp32": 630,
+    "argmax_changes_onnx_fp32_vs_stored": 1,
+    "argmax_changes_int8_vs_stored": 631,
+    "n": 12744
+   }
+  }
+ },
+ "seconds": 1371.3
+}

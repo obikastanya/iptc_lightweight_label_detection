@@ -1,0 +1,101 @@
+item_id,source,lang,label,final_main,final_all
+H001,ccnews_jsonld,uk,sport,sport,['sport']
+H002,ccnews_jsonld,tr,human interest,"arts, culture, entertainment and media","['arts, culture, entertainment and media']"
+H003,ccnews_jsonld,it,sport,human interest,"['human interest', 'sport']"
+H004,ccnews_jsonld,de,science and technology,science and technology,['science and technology']
+H005,ccnews_jsonld,ru,sport,sport,['sport']
+H006,ccnews_jsonld,el,environment,environment,"['crime, law and justice', 'environment', 'politics']"
+H007,ccnews_jsonld,tr,"crime, law and justice","crime, law and justice","['crime, law and justice', 'politics']"
+H008,ccnews_jsonld,el,"economy, business and finance","economy, business and finance","['economy, business and finance', 'politics']"
+H009,ccnews_jsonld,ru,"economy, business and finance","economy, business and finance","['economy, business and finance']"
+H010,ccnews_jsonld,id,politics,"crime, law and justice","['crime, law and justice', 'politics', 'society']"
+H011,ccnews_jsonld,it,health,health,['health']
+H012,ccnews_jsonld,ar,sport,sport,['sport']
+H013,ccnews_jsonld,pl,"economy, business and finance",society,"['politics', 'society']"
+H014,ccnews_jsonld,de,health,health,['health']
+H015,ccnews_jsonld,el,politics,labour,"['health', 'labour', 'politics']"
+H016,ccnews_jsonld,fa,"economy, business and finance","economy, business and finance","['economy, business and finance']"
+H017,ccnews_jsonld,el,health,health,['health']
+H018,ccnews_jsonld,ar,sport,sport,['sport']
+H019,ccnews_jsonld,ar,sport,sport,['sport']
+H020,ccnews_jsonld,de,"arts, culture, entertainment and media","arts, culture, entertainment and media","['arts, culture, entertainment and media', 'health']"
+H021,ccnews_jsonld,es,lifestyle and leisure,environment,"['environment', 'lifestyle and leisure']"
+H022,ccnews_jsonld,ru,"economy, business and finance","economy, business and finance","['economy, business and finance']"
+H023,ccnews_jsonld,th,"crime, law and justice","crime, law and justice","['crime, law and justice']"
+H024,ccnews_jsonld,it,sport,sport,['sport']
+H025,ccnews_jsonld,ru,"disaster, accident and emergency incident","disaster, accident and emergency incident","['disaster, accident and emergency incident']"
+H026,ccnews_jsonld,ro,politics,politics,['politics']
+H027,ccnews_jsonld,vi,"economy, business and finance","economy, business and finance","['economy, business and finance']"
+H028,ccnews_jsonld,it,weather,"disaster, accident and emergency incident","['disaster, accident and emergency incident', 'environment']"
+H029,ccnews_jsonld,el,"arts, culture, entertainment and media","arts, culture, entertainment and media","['arts, culture, entertainment and media']"
+H030,ccnews_jsonld,ar,politics,"conflict, war and peace","['conflict, war and peace']"
+H031,ccnews_jsonld,de,politics,"economy, business and finance","['economy, business and finance', 'environment', 'politics']"
+H032,ccnews_jsonld,es,lifestyle and leisure,politics,"['lifestyle and leisure', 'politics']"
+H033,ccnews_jsonld,ru,"arts, culture, entertainment and media","arts, culture, entertainment and media","['arts, culture, entertainment and media']"
+H034,ccnews_jsonld,it,health,health,"['health', 'science and technology']"
+H035,ccnews_jsonld,fr,"conflict, war and peace","conflict, war and peace","['conflict, war and peace', 'economy, business and finance']"
+H036,ccnews_jsonld,ru,politics,"conflict, war and peace","['conflict, war and peace', 'politics']"
+H037,ccnews_jsonld,id,health,health,"['health', 'lifestyle and leisure']"
+H038,ccnews_jsonld,pt,"arts, culture, entertainment and media","arts, culture, entertainment and media","['arts, culture, entertainment and media']"
+H039,ccnews_jsonld,ru,weather,weather,['weather']
+H040,ccnews_jsonld,it,"arts, culture, entertainment and media","arts, culture, entertainment and media","['arts, culture, entertainment and media']"
+H041,ccnews_jsonld,ar,education,education,['education']
+H042,ccnews_jsonld,ru,lifestyle and leisure,lifestyle and leisure,['lifestyle and leisure']
+H043,ccnews_jsonld,te,"arts, culture, entertainment and media","arts, culture, entertainment and media","['arts, culture, entertainment and media']"
+H044,ccnews_jsonld,pl,science and technology,science and technology,['science and technology']
+H045,ccnews_jsonld,pl,sport,sport,['sport']
+H046,ccnews_jsonld,tr,environment,weather,['weather']
+H047,ccnews_jsonld,zh,"economy, business and finance","economy, business and finance","['economy, business and finance', 'science and technology']"
+H048,ccnews_jsonld,tr,sport,sport,['sport']
+H049,ccnews_jsonld,it,politics,politics,['politics']
+H050,ccnews_jsonld,es,"economy, business and finance","economy, business and finance","['economy, business and finance']"
+H051,ccnews_jsonld,pt,politics,"arts, culture, entertainment and media","['arts, culture, entertainment and media', 'crime, law and justice', 'religion']"
+H052,ccnews_jsonld,it,sport,sport,['sport']
+H053,ccnews_jsonld,tr,"arts, culture, entertainment and media","arts, culture, entertainment and media","['arts, culture, entertainment and media']"
+H054,ccnews_jsonld,ar,health,health,['health']
+H055,ccnews_jsonld,pl,sport,sport,['sport']
+H056,ccnews_jsonld,tr,sport,sport,['sport']
+H057,ccnews_jsonld,el,health,health,['health']
+H058,ccnews_jsonld,ar,sport,sport,['sport']
+H059,ccnews_jsonld,ro,"economy, business and finance",environment,"['economy, business and finance', 'environment', 'science and technology']"
+H060,ccnews_jsonld,uk,sport,sport,['sport']
+H061,ccnews_jsonld,ml,"economy, business and finance","economy, business and finance","['economy, business and finance', 'sport']"
+H062,ccnews_jsonld,tr,"arts, culture, entertainment and media","arts, culture, entertainment and media","['arts, culture, entertainment and media']"
+H063,ccnews_jsonld,pt,sport,sport,['sport']
+H064,ccnews_jsonld,es,politics,labour,"['labour', 'politics']"
+H065,ccnews_jsonld,fa,sport,sport,['sport']
+H066,ccnews_jsonld,th,"economy, business and finance","economy, business and finance","['conflict, war and peace', 'economy, business and finance']"
+H067,ccnews_jsonld,uk,politics,politics,"['conflict, war and peace', 'politics']"
+H068,l3cube_indic,mr,"crime, law and justice","crime, law and justice","['crime, law and justice']"
+H069,l3cube_indic,ml,"crime, law and justice","crime, law and justice","['crime, law and justice']"
+H070,l3cube_indic,ta,politics,"crime, law and justice","['crime, law and justice', 'politics']"
+H071,l3cube_indic,kn,"crime, law and justice","disaster, accident and emergency incident","['disaster, accident and emergency incident']"
+H072,l3cube_indic,hi,"crime, law and justice","crime, law and justice","['crime, law and justice', 'politics']"
+H073,l3cube_indic,mr,"arts, culture, entertainment and media",lifestyle and leisure,['lifestyle and leisure']
+H074,l3cube_indic,kn,"crime, law and justice",health,"['health', 'human interest']"
+H075,l3cube_indic,mr,lifestyle and leisure,religion,['religion']
+H076,l3cube_indic,mr,sport,sport,['sport']
+H077,l3cube_indic,or,"economy, business and finance","economy, business and finance","['economy, business and finance']"
+H078,l3cube_indic,hi,politics,education,['education']
+H079,l3cube_indic,pa,"crime, law and justice","crime, law and justice","['crime, law and justice']"
+H080,l3cube_indic,mr,lifestyle and leisure,lifestyle and leisure,['lifestyle and leisure']
+H081,l3cube_indic,te,"economy, business and finance","economy, business and finance","['economy, business and finance']"
+H082,l3cube_indic,mr,education,education,['education']
+H083,l3cube_indic,mr,politics,politics,['politics']
+H084,l3cube_indic,hi,"crime, law and justice","crime, law and justice","['crime, law and justice']"
+H085,l3cube_indic,hi,politics,environment,"['economy, business and finance', 'environment', 'weather']"
+H086,l3cube_indic,mr,sport,sport,['sport']
+H087,l3cube_indic,mr,lifestyle and leisure,lifestyle and leisure,"['arts, culture, entertainment and media', 'lifestyle and leisure', 'religion']"
+H088,l3cube_indic,mr,politics,politics,['politics']
+H089,l3cube_indic,mr,education,education,['education']
+H090,l3cube_indic,mr,politics,politics,['politics']
+H091,bangla_plos,bn,education,"conflict, war and peace","['conflict, war and peace', 'crime, law and justice', 'education']"
+H092,bangla_plos,bn,education,education,['education']
+H093,bangla_plos,bn,"economy, business and finance","economy, business and finance","['economy, business and finance', 'politics']"
+H094,bangla_plos,bn,sport,sport,['sport']
+H095,bangla_plos,bn,education,education,['education']
+H096,indonews,id,sport,sport,['sport']
+H097,indonews,id,sport,sport,['sport']
+H098,indonews,id,sport,sport,['sport']
+H099,indonews,id,sport,sport,['sport']
+H100,indonews,id,"economy, business and finance","economy, business and finance","['economy, business and finance', 'politics']"

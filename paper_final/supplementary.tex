@@ -13,6 +13,8 @@
 \usepackage[hyphens]{url}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{listings}
+\lstset{basicstyle=\footnotesize\ttfamily, breaklines=true, columns=fullflexible, keepspaces=true, frame=single, xleftmargin=2pt, xrightmargin=2pt}
 \renewcommand{\thetable}{S\arabic{table}}
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thealgorithm}{S\arabic{algorithm}}
@@ -21,18 +23,7 @@
 \author{Obi~Kastanya, Ananta~Dwi~Prayoga~Alwy, Dwi~Sunaryono, and Bilqis~Amaliah}
 \maketitle
 
-The supplementary material contains Algorithm~S1, Tables~S1--S6, Figs.~S1--S7, and additional experimental details cited in the main text.
-
-\begin{algorithm}[!htbp]
-\caption{StaticKD Inference for One Article}
-\label{alg:infer}
-\begin{algorithmic}[1]
-\Require article text $d$; tokenizer; table $\bar{T}\in\mathbb{R}^{|V|\times 17}$; bias $\bar{\mathbf{b}}\in\mathbb{R}^{17}$
-\State $(t_1,\dots,t_n)\gets$ first 1,024 tokens of tokenize$(d)$, without unknown tokens
-\State $\mathbf{z}\gets\frac{1}{n}\sum_{i=1}^{n}\bar{T}_{t_i}+\bar{\mathbf{b}}$ \Comment{look up and average table rows}
-\State \Return $\arg\max_{y}\,z_y$ \Comment{one of the 17 IPTC topics}
-\end{algorithmic}
-\end{algorithm}
+The supplementary material contains Tables~S1--S14, Figs.~S1--S3, the LLM prompts of the label audit, and additional experimental details cited in the main text.
 
 \begin{table}[!htbp]
 \caption{Hyperparameters of All Models}
@@ -51,13 +42,13 @@ Component & Value \\
 \quad loss, $\tau$ & KL, $\tau=1$ \\
 \quad token dropout & 0.2 \\
 \quad optimizer embedding / head & SparseAdam $10^{-3}$ / AdamW $3\cdot 10^{-3}$, wd $10^{-4}$ \\
-\quad batch, epoch, validation & 64, 6, 3\% of data (selects the epoch) \\
+\quad batch, epochs, epoch selection & 64, 6, early-stopping split of 3\% of the data \\
 \quad ensemble & mean of 3 seed tables \\
 \multicolumn{2}{@{}l}{\textit{fastText}} \\
-\quad word tokens (chosen on dev) & dim 300, lr 1.0, 15 epoch \\
-\quad subword tokens (chosen on dev) & dim 100, lr 1.0, 15 epoch \\
-\quad grid (dev macro-F1) & lr $\{0.1, 0.5, 1.0\}$ $\times$ dim $\{100, 300\}$ $\times$ epoch $\{5, 15, 25\}$ \\
-\quad GPT-4o labels & dim 100, lr 0.5, 25 epoch \\
+\quad word tokens (chosen on dev) & dim 300, lr 1.0, 15 epochs \\
+\quad subword tokens (chosen on dev) & dim 100, lr 1.0, 15 epochs \\
+\quad grid (dev macro-F1) & lr $\{0.1, 0.5, 1.0\}$ $\times$ dim $\{100, 300\}$ $\times$ epochs $\{5, 15, 25\}$ \\
+\quad GPT-4o labels & dim 100, lr 0.5, 25 epochs \\
 \quad word n-grams, loss & 2, softmax, 2M buckets \\
 \quad tokens & words (+ character 2--5-grams) or XLM-R subwords \\
 \quad quantization & \texttt{quantize}, cutoff 300k, retrain \\
@@ -73,40 +64,18 @@ Component & Value \\
 \quad buckets / parameters & $2^{19}$ / 0.13B and 1,600,000 / 0.27B \\
 \quad head, dropout & Linear(128, $H$), ReLU, Linear($H$, 17); dropout 0.1, token dropout 0.2 \\
 \quad loss, optimizer & KL, $\tau=1$; SparseAdam (embedding), AdamW $3\cdot 10^{-3}$ (head), batch 64 \\
-\quad chosen on dev & 0.13B: lr $10^{-2}$, $H=256$, 10 epoch; 0.27B: lr $10^{-2}$, $H=1024$, max.\ 6 epoch \\
-\quad grid (dev macro-F1) & embedding lr $\{10^{-3}, 10^{-2}\}$ $\times$ $H$ $\{256, 1024\}$ $\times$ max.\ epoch $\{6, 10\}$ \\
+\quad chosen on dev & 0.13B: lr $10^{-2}$, $H=256$, 10 epochs; 0.27B: lr $10^{-2}$, $H=1024$, max.\ 6 epochs \\
+\quad grid (dev macro-F1) & embedding lr $\{10^{-3}, 10^{-2}\}$ $\times$ $H$ $\{256, 1024\}$ $\times$ max.\ epochs $\{6, 10\}$ \\
 \multicolumn{2}{@{}l}{\textit{MiniLM-L6 / DistilmBERT + KD}} \\
 \quad optimizer & AdamW $5\cdot 10^{-5}$, wd 0.01, warmup 6\%, linear, fp16 \\
-\quad batch, epoch, max. tokens & 32, 2, 256 (512 in the sensitivity check) \\
+\quad batch, epochs, max. tokens & 32, 2, 256 (512 in the sensitivity check) \\
 \quad $\tau$ & MiniLM-L6 $\{1, 2\}$ chosen on dev ($\tau=1$); DistilmBERT $\tau=1$ \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 \begin{table}[!htbp]
-\caption{Test Macro-F1 When One Source Is Left Out of the Unified Test Set (Row = Source Left Out)}
-\label{tab:loso}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3.5pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}lccccccccccc@{}}
-\toprule
-Source left out & Teacher & MiniLM & DistilmBERT & \textbf{StaticKD} & Model2Vec & TF-IDF+SVM & fastText (q) & fastText subword & fastText word & SD 0.13B & SD 0.27B \\
-\midrule
-none (full test set) & 0.598 & 0.566 & 0.534 & 0.545 & 0.547 & 0.486 & 0.439 & 0.447 & 0.445 & 0.431 & 0.430 \\
-Bangla news & 0.599 & 0.566 & 0.536 & 0.547 & 0.549 & 0.490 & 0.443 & 0.451 & 0.452 & 0.435 & 0.433 \\
-CC-NEWS 2024--2026 & 0.515 & 0.480 & 0.426 & 0.451 & 0.453 & 0.364 & 0.297 & 0.310 & 0.305 & 0.303 & 0.300 \\
-IndoNews & 0.598 & 0.566 & 0.535 & 0.545 & 0.547 & 0.486 & 0.439 & 0.447 & 0.445 & 0.431 & 0.430 \\
-L3Cube-IndicNews & 0.595 & 0.565 & 0.560 & 0.547 & 0.551 & 0.519 & 0.477 & 0.484 & 0.483 & 0.463 & 0.464 \\
-MasakhaNEWS & 0.642 & 0.621 & 0.582 & 0.609 & 0.603 & 0.538 & 0.507 & 0.513 & 0.512 & 0.491 & 0.492 \\
-MN-DS & 0.586 & 0.552 & 0.516 & 0.526 & 0.529 & 0.471 & 0.418 & 0.426 & 0.424 & 0.418 & 0.415 \\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-\begin{table}[!htbp]
-\caption{Test Macro-F1 by Source of the Unified Test Set. MN-DS Is the Only Source Annotated Directly With IPTC Topics. MasakhaNEWS Is Human-Annotated Under Its Own Scheme. Last Column: StaticKD as a Percentage of the Teacher}
+\caption{Test Macro-F1 by Source of the Test Set. MN-DS Is the Only Source Annotated Directly With IPTC Topics. MasakhaNEWS Is Human-Annotated Under Its Own Scheme. Last Column: StaticKD as a Percentage of the Teacher}
 \label{tab:sources}
 \centering
 \footnotesize
@@ -115,12 +84,12 @@ MN-DS & 0.586 & 0.552 & 0.516 & 0.526 & 0.529 & 0.471 & 0.418 & 0.426 & 0.424 & 
 \toprule
 Source & Label origin & $n$ & Lang. & Teacher & DistilmBERT & MiniLM & \textbf{StaticKD} & Model2Vec & fastText (q) & TF-IDF+SVM & \% teacher \\
 \midrule
-CC-NEWS 2024--2026 & JSON-LD section & 6,050 & 29 & 0.651 & 0.629 & 0.634 & 0.624 & 0.618 & 0.582 & 0.609 & 96\% \\
+CC-NEWS 2024--2026 & section label & 6,050 & 29 & 0.651 & 0.629 & 0.634 & 0.624 & 0.618 & 0.582 & 0.609 & 96\% \\
 MasakhaNEWS~\cite{adelani2023masakhanews} & human annotation & 3,339 & 16 & 0.695 & 0.545 & 0.582 & 0.556 & 0.562 & 0.355 & 0.434 & 80\% \\
 L3Cube-IndicNews~\cite{mirashi2023indicnews} & publisher category & 2,361 & 10 & 0.709 & 0.501 & 0.680 & 0.639 & 0.644 & 0.306 & 0.342 & 90\% \\
 MN-DS~\cite{petukhova2023mnds} & human annotation & 755 & 1 & 0.549 & 0.546 & 0.535 & 0.535 & 0.536 & 0.491 & 0.461 & 97\% \\
 Bangla news~\cite{hossain2025banglanews} & publisher category & 139 & 1 & 0.835 & 0.730 & 0.817 & 0.748 & 0.716 & 0.191 & 0.010 & 90\% \\
-IndoNews & publisher category & 100 & 1 & 0.885 & 0.846 & 0.856 & 0.862 & 0.849 & 0.839 & 0.873 & 97\% \\
+IndoNews~\cite{indonews2021} & publisher category & 100 & 1 & 0.885 & 0.846 & 0.856 & 0.862 & 0.849 & 0.839 & 0.873 & 97\% \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -168,7 +137,7 @@ CC-News 2019--2021, CC-NEWS 2024--2026 & Common Crawl terms of use \\
 \midrule
 StaticKD code (release) & MIT \\
 StaticKD models (release) & CC BY-SA 4.0 (inherited from the teacher) \\
-Test-set manifest (release) & CC BY-SA 4.0 \\
+Test-set manifest (release) & CC BY-SA 4.0, except rows derived from MasakhaNEWS (CC BY-NC 4.0) \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -191,63 +160,348 @@ Variant & $\Delta$ test macro-F1 [95\% CI] & $p$ (Holm) & 90\% interval & TOST $
 \end{tabular}
 \end{table}
 
+\begin{table}[!htbp]
+\caption{Equivalence Claims at Three Margins. Each Claim Uses the Same 90\% Bootstrap Interval. The Last Two Columns Give the TOST $p$-Value at $\pm$0.01 Before and After Holm Correction Over the Eleven Main Equivalence Claims}
+\label{tab:margins}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+Comparison & $\Delta$ test macro-F1 & 90\% interval & $\pm$0.005 & $\pm$0.01 & $\pm$0.02 & TOST $p$ & $p$ (Holm) \\
+\midrule
+\multicolumn{8}{@{}l}{\textit{Model comparisons (StaticKD $-$ model)}} \\
+\quad Model2Vec classifier + KD & $-$0.002 & [$-$0.008, +0.008] & no & yes & yes & 0.025 & 0.051 \\
+\quad DistilmBERT + KD & +0.010 & [$-$0.023, +0.036] & no & no & no & 0.428 & -- \\
+\quad Cascade $\theta=0.8$ $-$ teacher ONNX int8 & +0.002 & [$-$0.002, +0.006] & no & yes & yes & $<$0.001 & $<$0.001 \\
+\multicolumn{8}{@{}l}{\textit{Ablations and additions (variant $-$ final recipe)}} \\
+\quad Hard teacher labels & +0.005 & [$-$0.001, +0.009] & no & yes & yes & 0.017 & 0.051 \\
+\quad 130k documents & $-$0.002 & [$-$0.007, +0.002] & no & yes & yes & 0.004 & 0.018 \\
+\quad No token dropout & +0.001 & [$-$0.000, +0.003] & yes & yes & yes & $<$0.001 & $<$0.001 \\
+\quad $\tau=0.5$ & +0.004 & [$-$0.001, +0.007] & no & yes & yes & $<$0.001 & $<$0.001 \\
+\quad $\tau=2$ & $-$0.005 & [$-$0.009, +0.006] & no & yes & yes & 0.032 & 0.051 \\
+\quad $\tau=4$ & $-$0.014 & [$-$0.019, $-$0.001] & no & no & yes & 0.636 & -- \\
+\quad 512-unit MLP head & +0.009 & [+0.001, +0.012] & no & no & yes & 0.199 & -- \\
+\quad Frozen embedding & +0.014 & [$-$0.001, +0.022] & no & no & no & 0.642 & -- \\
+\quad + bigram hashing $2^{21}$ & +0.002 & [$-$0.000, +0.003] & yes & yes & yes & $<$0.001 & $<$0.001 \\
+\quad + idf$^{0.5}$-weighted pooling & $-$0.001 & [$-$0.003, +0.001] & yes & yes & yes & $<$0.001 & $<$0.001 \\
+\quad + document weight = teacher confidence & +0.000 & [$-$0.001, +0.001] & yes & yes & yes & $<$0.001 & $<$0.001 \\
+\quad + cross-entropy on GPT-4o labels & $-$0.004 & [$-$0.007, +0.002] & no & yes & yes & $<$0.001 & $<$0.001 \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}{\footnotesize yes = the 90\% interval lies inside the margin (TOST $p<0.05$). The SD-style baselines, the transformers with 512-token inputs, EMMediaTopic only, and random initialization are not equivalent at any of the three margins. The Holm correction covers the eleven comparisons that are equivalent at $\pm$0.01 without correction. The conservative bootstrap estimate $(k+1)/(B+1)$ with tail count $k$ and $B=2{,}000$ resamples changes the three Holm $p$-values of 0.051 to 0.052.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Languages of the Test Set by Region}
+\label{tab:langs}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lp{0.72\textwidth}@{}}
+\toprule
+Region & Code and language \\
+\midrule
+Europe (16) & bg Bulgarian, ca Catalan, cs Czech, de German, el Greek, en English, es Spanish, fr French, it Italian, nl Dutch, pl Polish, pt Portuguese, ro Romanian, ru Russian, tr Turkish, uk Ukrainian \\
+South Asia (10) & bn Bengali, gu Gujarati, hi Hindi, kn Kannada, ml Malayalam, mr Marathi, or Odia, pa Punjabi, ta Tamil, te Telugu \\
+Africa (14) & am Amharic, ha Hausa, ig Igbo, lg Luganda, ln Lingala, om Oromo, pcm Nigerian Pidgin, rn Kirundi, sn Shona, so Somali, sw Swahili, ti Tigrinya, xh isiXhosa, yo Yoruba \\
+East/Southeast Asia \& Middle East (7) & ar Arabic, fa Persian, id Indonesian, ko Korean, th Thai, vi Vietnamese, zh Chinese \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}{\footnotesize Codes follow ISO 639-1 except pcm, which follows ISO 639-3.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Category Mappings of the Public Datasets}
+\label{tab:catmap}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lp{0.42\textwidth}p{0.36\textwidth}@{}}
+\toprule
+Dataset & Source categories & IPTC topic \\
+\midrule
+MasakhaNEWS & business & economy, business and finance \\
+ & health / politics / religion & health / politics / religion \\
+ & sports & sport \\
+ & entertainment, technology & dropped (ambiguous) \\
+MN-DS & level-1 IPTC field & same topic \\
+ & religion and belief & religion \\
+L3Cube-IndicNews & business & economy, business and finance \\
+ & crime, crime-news-hindi & crime, law and justice \\
+ & politics / education / religious & politics / education / religion \\
+ & sports, khel & sport \\
+ & health, health-news-hindi, Covid & health \\
+ & cinema, fashion, literature & arts, culture, entertainment and media \\
+ & cuisine, travel & lifestyle and leisure \\
+ & career & labour \\
+ & entertainment, lifestyle, technology, national, state, world, international, editorial, opinion, auto, astro, bhakti, spirituals, jobs, city names & dropped \\
+Bangla news & economy & economy, business and finance \\
+ & education / politics & education / politics \\
+ & sports & sport \\
+ & entertainment, international, state, technology & dropped \\
+IndoNews & bisnis & economy, business and finance \\
+ & bola & sport \\
+ & news, otomotif, tekno & dropped \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Share of Correct Editorial Labels in the Blind Double Annotation (\%), per Annotator and After Adjudication}
+\label{tab:human}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lrcccccc@{}}
+\toprule
+ & & \multicolumn{2}{c}{Annotator 1} & \multicolumn{2}{c}{Annotator 2} & \multicolumn{2}{c}{Adjudicated} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Source & $n$ & strict & lenient & strict & lenient & strict & lenient \\
+\midrule
+CC-NEWS 2024--2026 & 67 & 77.6 & 89.6 & 80.6 & 91.0 & 77.6 & 91.0 \\
+L3Cube-IndicNews & 23 & 69.6 & 73.9 & 69.6 & 73.9 & 69.6 & 73.9 \\
+Bangla news & 5 & 80.0 & 100.0 & 80.0 & 100.0 & 80.0 & 100.0 \\
+IndoNews & 5 & 100.0 & 100.0 & 80.0 & 100.0 & 100.0 & 100.0 \\
+\midrule
+All (weighted) & 100 & 75.7 & 85.6 & 77.6 & 86.6 & 75.7 & 86.6 \\
+\quad 95\% interval & & 66.9--84.0 & 78.3--92.3 & 69.3--85.6 & 79.8--93.3 & 67.0--84.3 & 79.5--92.6 \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}{\footnotesize Strict = the editorial label is the main topic chosen by the annotator. Lenient = the editorial label is among the topics that the annotator marked as central as the main topic. The overall shares weight each source by its share of the 8,650 editorial labels as in the audit.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Test Results With Predictions Restricted to the Label Inventory of the Source of Each Article}
+\label{tab:restricted}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Unrestricted} & \multicolumn{4}{c}{Restricted} & \multicolumn{2}{c}{Mean of per-source macro-F1} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-7}\cmidrule(lr){8-9}
+Model & Macro-F1 & Accuracy & Macro-F1 [95\% CI] & Accuracy & $\Delta$macro-F1 [95\% CI] & $p$ (Holm) & unrestricted & restricted \\
+\midrule
+Teacher XLM-R-large & 0.598 & 0.700 & 0.658 [0.635--0.672] & 0.754 & $-$0.039 [$-$0.050, $-$0.025] & $<$0.001 & 0.721 / 0.671 & 0.757 / 0.689 \\
+MiniLM-L6 + KD & 0.566 & 0.667 & 0.625 [0.605--0.644] & 0.720 & $-$0.006 [$-$0.027, +0.009] & 0.606 & 0.684 / 0.627 & 0.728 / 0.648 \\
+\textbf{StaticKD (proposed)} & 0.545 & 0.641 & 0.619 [0.596--0.635] & 0.707 & -- & -- & 0.661 / 0.607 & 0.699 / 0.632 \\
+Model2Vec classifier + KD & 0.547 & 0.642 & 0.611 [0.587--0.627] & 0.696 & +0.008 [+0.001, +0.015] & 0.069 & 0.654 / 0.606 & 0.705 / 0.625 \\
+DistilmBERT + KD & 0.534 & 0.623 & 0.597 [0.568--0.634] & 0.675 & +0.023 [$-$0.019, +0.044] & 0.606 & 0.633 / 0.581 & 0.683 / 0.607 \\
+TF-IDF + SVM + KD & 0.486 & 0.567 & 0.534 [0.492--0.597] & 0.607 & +0.085 [+0.019, +0.121] & $<$0.001 & 0.455 / 0.501 & 0.494 / 0.518 \\
+fastText + KD, subword & 0.447 & 0.527 & 0.510 [0.464--0.579] & 0.574 & +0.109 [+0.040, +0.148] & $<$0.001 & 0.461 / 0.471 & 0.518 / 0.495 \\
+SD-style + KD, 0.13B & 0.431 & 0.502 & 0.491 [0.445--0.552] & 0.562 & +0.128 [+0.063, +0.166] & $<$0.001 & 0.442 / 0.450 & 0.490 / 0.481 \\
+\bottomrule
+\end{tabular}}
+\par\vspace{2pt}{\footnotesize $\Delta$ = StaticKD $-$ model on the restricted predictions. The Holm correction covers the 14 comparisons of the main significance table. The last two columns give the mean of the six per-source macro-F1 values without weights / weighted by the number of articles.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Paired Difference in Test Macro-F1 Between StaticKD and Three Models Within Each Source ($\Delta$ = StaticKD $-$ Model [95\% CI])}
+\label{tab:source-delta}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lrrcccc@{}}
+\toprule
+Source & $n$ & Effective clusters & StaticKD & $\Delta$ vs teacher & $\Delta$ vs MiniLM-L6 & $\Delta$ vs Model2Vec \\
+\midrule
+CC-NEWS 2024--2026 & 6,050 & 221.3 & 0.624 & $-$0.028 [$-$0.041, $-$0.015] & $-$0.010 [$-$0.022, +0.002] & +0.006 [$-$0.003, +0.014] \\
+MasakhaNEWS & 3,339 & 1.9 & 0.556 & $-$0.139 [$-$0.322, $-$0.105] & $-$0.026 [$-$0.270, +0.016] & $-$0.006 [$-$0.037, +0.001] \\
+L3Cube-IndicNews & 2,361 & 1.0 & 0.639 & $-$0.069 [$-$0.091, $-$0.048] & $-$0.041 [$-$0.063, $-$0.018] & $-$0.005 [$-$0.021, +0.010] \\
+MN-DS & 755 & 32.7 & 0.535 & $-$0.014 [$-$0.037, +0.007] & $-$0.000 [$-$0.025, +0.028] & $-$0.001 [$-$0.016, +0.014] \\
+Bangla news & 139 & 1.0 & 0.748 & $-$0.087 [$-$0.163, $-$0.017] & $-$0.070 [$-$0.137, $-$0.004] & +0.031 [$-$0.005, +0.070] \\
+IndoNews & 100 & 1.0 & 0.862 & $-$0.023 [$-$0.068, +0.017] & +0.005 [$-$0.035, +0.048] & +0.013 [+0.000, +0.035] \\
+\bottomrule
+\end{tabular}}
+\par\vspace{2pt}{\footnotesize Paired bootstrap with 2,000 resamples of site clusters where the source has site information and of articles otherwise, without multiplicity correction.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Results of the Two fastText Models Trained Only on the GPT-4o Labels of EMMediaTopic}
+\label{tab:gpt}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{dev (4 languages)} & held-out & \multicolumn{4}{c}{test (47 languages)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-4}\cmidrule(lr){5-8}
+Model & Macro-F1 [95\% CI] & Accuracy & Agreement & Macro-F1 [95\% CI] & Accuracy & Macro-F1/language & \% teacher \\
+\midrule
+fastText, GPT-4o labels, subword & 0.665 [0.613--0.700] & 0.729 & 0.260 & 0.086 [0.069--0.119] & 0.150 & 0.118 & 14.4\% \\
+fastText, GPT-4o labels, word & 0.651 [0.601--0.693] & 0.738 & 0.307 & 0.106 [0.085--0.150] & 0.181 & 0.142 & 17.7\% \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Precision (P), Recall (R), and F1 per Label on the Test Set}
+\label{tab:perlabel}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lrccccccccc@{}}
+\toprule
+ & & \multicolumn{3}{c}{StaticKD} & \multicolumn{3}{c}{Teacher XLM-R-large} & \multicolumn{3}{c}{MiniLM-L6 + KD} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}\cmidrule(lr){9-11}
+Label & $n$ & P & R & F1 & P & R & F1 & P & R & F1 \\
+\midrule
+arts, culture, entertainment and media & 767 & 0.471 & 0.621 & 0.535 & 0.626 & 0.608 & 0.616 & 0.528 & 0.598 & 0.561 \\
+conflict, war and peace & 160 & 0.249 & 0.719 & 0.370 & 0.256 & 0.844 & 0.392 & 0.245 & 0.819 & 0.377 \\
+crime, law and justice & 914 & 0.643 & 0.744 & 0.690 & 0.658 & 0.816 & 0.729 & 0.687 & 0.745 & 0.715 \\
+disaster, accident and emergency incident & 78 & 0.180 & 0.795 & 0.293 & 0.162 & 0.744 & 0.266 & 0.163 & 0.756 & 0.268 \\
+economy, business and finance & 1,909 & 0.816 & 0.578 & 0.677 & 0.859 & 0.656 & 0.744 & 0.818 & 0.605 & 0.696 \\
+education & 617 & 0.778 & 0.731 & 0.754 & 0.776 & 0.765 & 0.771 & 0.789 & 0.762 & 0.775 \\
+environment & 278 & 0.286 & 0.568 & 0.380 & 0.511 & 0.590 & 0.548 & 0.461 & 0.547 & 0.500 \\
+health & 1,590 & 0.840 & 0.612 & 0.708 & 0.882 & 0.670 & 0.761 & 0.805 & 0.672 & 0.733 \\
+human interest & 301 & 0.214 & 0.625 & 0.319 & 0.264 & 0.708 & 0.385 & 0.231 & 0.681 & 0.345 \\
+labour & 153 & 0.351 & 0.438 & 0.390 & 0.367 & 0.529 & 0.433 & 0.378 & 0.484 & 0.424 \\
+lifestyle and leisure & 447 & 0.597 & 0.553 & 0.574 & 0.661 & 0.640 & 0.650 & 0.603 & 0.597 & 0.600 \\
+politics & 2,022 & 0.672 & 0.598 & 0.633 & 0.718 & 0.657 & 0.686 & 0.683 & 0.625 & 0.653 \\
+religion & 516 & 0.693 & 0.345 & 0.461 & 0.821 & 0.481 & 0.606 & 0.813 & 0.287 & 0.424 \\
+science and technology & 383 & 0.707 & 0.522 & 0.601 & 0.729 & 0.540 & 0.621 & 0.749 & 0.538 & 0.626 \\
+society & 132 & 0.124 & 0.212 & 0.156 & 0.137 & 0.258 & 0.178 & 0.143 & 0.227 & 0.175 \\
+sport & 2,245 & 0.940 & 0.821 & 0.877 & 0.975 & 0.874 & 0.922 & 0.944 & 0.864 & 0.903 \\
+weather & 232 & 0.872 & 0.819 & 0.844 & 0.871 & 0.845 & 0.858 & 0.860 & 0.823 & 0.841 \\
+\midrule
+Macro-F1 &  &  &  & 0.545 &  &  & 0.598 &  &  & 0.566 \\
+Accuracy &  &  &  & 0.641 &  &  & 0.700 &  &  & 0.667 \\
+\bottomrule
+\end{tabular}}
+\par\vspace{2pt}{\footnotesize $n$ = number of test articles with the label. Precision is computed over all test articles predicted with the label.\par}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Coverage and Precision of the Predictions Kept at Thresholds on the Top Probability (Test Set)}
+\label{tab:thresholds}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+ & \multicolumn{2}{c}{StaticKD} & \multicolumn{2}{c}{Teacher XLM-R-large} & \multicolumn{2}{c}{MiniLM-L6 + KD} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Top probability $\ge$ & Coverage & Precision & Coverage & Precision & Coverage & Precision \\
+\midrule
+all articles & 100.0\% & 0.641 & 100.0\% & 0.700 & 100.0\% & 0.667 \\
+0.5 & 80.8\% & 0.732 & 98.2\% & 0.708 & 89.7\% & 0.717 \\
+0.7 & 67.4\% & 0.788 & 93.3\% & 0.728 & 77.1\% & 0.770 \\
+0.9 & 51.7\% & 0.839 & 85.1\% & 0.763 & 59.3\% & 0.843 \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}{\footnotesize Coverage = share of the 12,744 test articles whose top probability reaches the threshold. Precision = share of the kept predictions that match the reference label.\par}
+\end{table}
+
 \section*{Additional Experimental Details}
 \textit{Teacher labeling.} The teacher labeled the distillation data once in fp16 on an NVIDIA RTX~4050 Laptop GPU (6~GB) with batches sorted by text length. The throughput was 50.1 documents per second on a fixed sample of 5,000 documents.
 
 \textit{Final ensemble.} The three students of the final ensemble were trained with seeds 0, 1, and 2.
 
-\textit{LLM check set.} A set of 320 articles in 16 languages was labeled by an LLM (Claude) with the prompt of~\cite{kuzman2025llm}. The set informed only two recipe choices: the temperature $\tau=1$ and the three-seed ensemble. The teacher was trained on labels that GPT-4o produced with the same prompt. The labels of the set are therefore not independent of the teacher. No result in the main text uses the set.
+\textit{LLM check set.} An LLM (Claude) used the prompt of~\cite{kuzman2025llm} to label 320 articles in 16 languages drawn from the held-out set. The labeling ran in September 2026 through the Claude Code agent interface, and the exact model version was not recorded. The set informed only two recipe choices, the temperature $\tau=1$ and the three-seed ensemble. The development set and the agreement on the held-out set also favored $\tau=1$ over $\tau=2$. The labels of the set are not independent of the teacher because the teacher was trained on labels that GPT-4o produced with the same prompt. No reported accuracy uses the set.
 
-\textit{Held-out split.} A few multilingual sites such as bbc.com were set aside in one language but also appear in the distillation data in another language. Articles from such sites were removed from the held-out split.
+\textit{Held-out set.} A few multilingual sites such as bbc.com were set aside in one language but also appear in the distillation data in another language. Articles from such sites were removed from the held-out set.
 
-\textit{Test-set pool.} The site filter left 399,468 CC-NEWS articles from sites that occur neither in the distillation data nor in an evaluation set.
+\textit{Test-set pool.} The site filter left 399,468 CC-NEWS articles from sites that occur neither in the distillation data nor in the held-out set.
 
-\textit{Mapping table.} The section-to-IPTC mapping table holds 916 rules with 814 rules for valid mapped names and 102 rules for ambiguous, language-specific, or rejected names. The manual review covered every rule except 48 names that are identical to the target IPTC node name or its English plural and were accepted automatically.
+\textit{Site overlap.} The site filter of the test set covers CC-NEWS, so the public datasets keep their original articles. MasakhaNEWS contributes 2,394 test articles from bbc.com and MN-DS contributes 29 from bbc.co.uk, and both sites occur in the distillation data or the held-out set. None of these articles appears in the distillation data by URL. Their largest word 8-gram overlap with the training data is 0.247 and lies below the 30\% threshold of the contamination filter. The distillation data contain bbc.com documents in the language of the test article only for Amharic, Somali, and Swahili (20, 117, and 400 documents), which gives the 694 articles of the check in Section VI-B. The main text reports the same-language check instead because leaving out all 2,423 BBC articles would remove ten African languages from the test set and change the population that the test set represents. Site overlap cannot be checked for L3Cube-IndicNews, the Bangla news dataset, and IndoNews because these datasets do not provide URLs.
 
-\textit{Label audit.} The audit protocol was fixed before sampling (seed 20261118). The LLM annotator and the adjudicator saw only the title and the first 512 words of each article. Agreement between the LLM annotator and the editorial label reached 232 of the 300 articles (77.3\%) with a Cohen's $\kappa$ of 0.75. Both labels of each of the 68 disagreements reached the adjudicator in random order without their origin. A second blind LLM pass relabeled 60 agreeing articles and confirmed 59 of them. Adjudications below high confidence and the unconfirmed spot-check article (44 cases) went to the authors. An interview showed the authors a summary of each article, the two unlabeled options, and a suggested answer from the LLM.
+\textit{Mapping table.} The section-to-IPTC mapping table holds 916 rules with 814 rules for valid mapped names and 102 rules for ambiguous, language-specific, or rejected names. Two of the authors jointly reviewed and approved 868 of these rules. The other 48 rules map a name identical to its IPTC node name or its English plural and were accepted automatically.
 
-A post-hoc recheck after all decisions reread the 62 articles judged wrong or multi-topic with the origin of each label visible. It found no mapping error and three LLM errors on celebrity and fashion articles. Together with three further author decisions it moved 13 articles from wrong to correct or multi-topic. The pre-specified procedure without this recheck gives an accuracy of 79.3\% in the strict and 81.9\% in the lenient sense. A final verification by the authors confirmed the label of all 300 articles from the title and an English translation of the opening text. The protocol, all labels and decisions, and the audit scripts are released with the code.
+\textit{Category mappings.} The categories of all public datasets except MN-DS pass through the section-to-IPTC table (Table~\ref{tab:catmap}). The table drops the MasakhaNEWS categories \emph{entertainment} and \emph{technology} because each of them fits two IPTC topics. MN-DS labels come from the level-1 IPTC field of the dataset, in which only \emph{religion and belief} is renamed to \emph{religion}. Some MN-DS articles carry different level-1 labels in duplicate rows, and deduplication kept one of these rows at random for 13 test articles.
+
+\textit{Label audit.} The audit protocol was fixed before sampling (seed 20261118). The LLM annotator and the adjudicator saw only the title and the first 512 words of each article. The label of the LLM annotator matched the editorial label on 232 of the 300 articles (77.3\%) with a Cohen's $\kappa$ of 0.75. Both labels of each of the 68 mismatched articles reached the adjudicator in random order without their origin. A second blind LLM pass relabeled 60 matching articles and confirmed 59 of them. Adjudications below high confidence and the unconfirmed spot-check article (44 cases) went to the authors. An interview showed the authors a summary of each article, the two unlabeled options, and a suggested answer from the LLM.
+
+A post-hoc recheck after all decisions reread the 62 articles judged wrong or multi-topic with the origin of each label visible. It found no mapping error and three LLM errors on celebrity and fashion articles. The recheck and three further author decisions moved 13 articles from wrong to correct or multi-topic. The pre-specified procedure without this recheck gives an accuracy of 79.3\% in the strict and 81.9\% in the lenient sense. A joint verification by two of the authors confirmed the final label of all 300 articles by consensus from the title and an English translation of the opening text. The protocol, all labels and decisions, and the audit scripts are released with the code.
+
+\textit{Blind double annotation.} The 100 articles were drawn with seed 20261123 from the 8,650 test articles with editorial labels after the 300 audit articles had been removed. The 10 calibration articles come from the same population (6 CC-NEWS, 2 L3Cube-IndicNews, 1 Bangla news, and 1 IndoNews) and are not part of the analysis. Both annotators labeled them separately and then discussed them together. Each workbook showed the title, the first 512 words of the text, and the language of each article together with the 17 top-level IPTC topics and their official definitions. Claude Haiku 5.5 translated the title and text with the instruction to translate faithfully without summarizing or labeling, and the annotators could check doubtful passages with Google Translate. The analysis plan included an extension rule that would have added 50 articles drawn with seed 20261124 if Cohen's $\kappa$ between the annotators before discussion had been below 0.65. The observed $\kappa$ of 0.955 did not trigger the rule.
+
+Table~\ref{tab:human} gives the shares of correct editorial labels per source for each annotator and for the adjudicated labels. The weighted strict share is 75.7\% for annotator 1 and 77.6\% for annotator 2 with lenient shares of 85.6\% and 86.6\%. The editorial labels reach $\kappa=0.740$ and 0.752 against the two annotators and $\kappa=0.763$ against the blind LLM labels. The guidelines, both sets of labels, the adjudicated labels, the LLM labels, and the analysis script are released with the code.
+
+\textit{LLM prompts of the label audit.} Every labeling, adjudication, spot-check, and translation call of the audit went to a fresh instance of Claude Opus 5.5 with one batch file and one of the prompts below. The parts in braces were filled per batch. The placeholder \texttt{\{label\_block\}} holds one line per IPTC label in the form \texttt{<label>: <official definition>} and adds the official IPTC name ``politics and government'' in brackets to the line for \emph{politics}. The blind labeling and the spot check used the following prompt.
+\begin{lstlisting}
+You are an expert news-topic annotator. Read the file {batch_path}. It contains {n} news articles. Each article has an item_id, a language code, a headline (may be empty) and the article text (possibly truncated). Use only this file: do not open, list or search any other file or directory, and do not use web tools.
+
+For each article choose the IPTC Media Topic (top level) that best describes the MAIN subject of the article content. Judge what the article is actually about, not where a newspaper would file it or which desk wrote it.
+
+The 17 allowed labels (write them exactly as given before the colon) with their official IPTC definitions:
+{label_block}
+
+For every article output one JSON object with exactly these keys:
+- "item_id": the item_id as given
+- "primary": one label, exact string from the list
+- "secondary": a second label (exact string) or null. Give one only if the article is genuinely about two topics in substantial measure; otherwise null.
+- "confidence": "high", "medium" or "low" (your confidence in "primary")
+- "rationale": English, at most 25 words
+- "unusable": true if the text is a teaser, boilerplate (navigation, cookie or subscription text), not a news article, or too short to judge; otherwise false. Still give your best "primary" when unusable is true.
+
+Write all objects to {out_path} as JSON Lines (one object per line, UTF-8, in item order, no other text) using the Write tool. Then reply with only the number of lines written.
+\end{lstlisting}
+The blind adjudication of the mismatched articles used the following prompt.
+\begin{lstlisting}
+You are an expert news-topic annotator acting as adjudicator. Read the file {batch_path}. It contains {n} news articles. Each article has an item_id, a language code, a headline (may be empty), the article text (possibly truncated) and two candidate IPTC labels, option_1 and option_2 (a few articles have only option_1). The candidates come from different annotators and are listed in random order; neither is privileged. Use only this file: do not open, list or search any other file or directory, and do not use web tools.
+
+Decide which candidate best describes the MAIN subject of the article content. Judge what the article is actually about, not where a newspaper would file it or which desk wrote it.
+
+The 17 IPTC labels (exact strings before the colon) with their official IPTC definitions:
+{label_block}
+
+Allowed decisions:
+- "option_1": option_1 fits the main subject and option_2 does not (or fits clearly worse)
+- "option_2": option_2 fits the main subject and option_1 does not (or fits clearly worse)
+- "both_acceptable": the article is genuinely multi-topic and both labels fit its main content about equally well
+- "neither": no candidate fits; give the correct label in "correct_label"
+- "unusable": the text is a teaser, boilerplate, not a news article, or too short to judge
+For an article with only option_1, decide "option_1" (it fits), "neither" (+ correct_label) or "unusable".
+
+For every article output one JSON object with exactly these keys:
+- "item_id"
+- "decision": one of the five values above
+- "correct_label": exact label string if decision is "neither", otherwise null
+- "confidence": "high", "medium" or "low"
+- "rationale": English, at most 25 words
+
+Write all objects to {out_path} as JSON Lines (one object per line, UTF-8, in item order, no other text) using the Write tool. Then reply with only the number of lines written.
+\end{lstlisting}
+The translation of the articles routed to the authors used the following prompt.
+\begin{lstlisting}
+You are a professional translator. Read the file {batch_path}. It contains {n} news article excerpts, each with an item_id, a language code, a headline (may be empty) and a text excerpt. Use only this file: do not open, list or search any other file or directory, and do not use web tools.
+
+Translate the headline and the text excerpt of every item faithfully into English. Do not summarise, add, omit or comment; keep names and numbers as they are. If the excerpt ends mid-sentence, end the translation at the same point.
+
+For every item output one JSON object with exactly these keys: "item_id", "headline_en", "text_en". Write all objects to {out_path} as JSON Lines (one object per line, UTF-8, no other text) using the Write tool. Then reply with only the number of lines written.
+\end{lstlisting}
 
 \textit{Baseline tuning.} The grid search covered 5 configurations for TF-IDF + SVM, 18 for each fastText model, and 8 for each size of the SD-style baseline. Seed 0 of the SD-style baseline was fixed before training and gives its rows in the main tables. The quantized fastText model took the configuration of the subword model.
 
 \textit{CPU benchmark.} The thread count was pinned in OMP, MKL, OpenBLAS, ONNX Runtime, and \texttt{tokenizers}. Runs on one core used logical CPU 0 and runs on four cores used logical CPUs 0, 10, 12, and 14.
 
-\textit{Additions tested during development.} Twelve runs tested four additions to the recipe with three seeds each (Table~\ref{tab:additions}). The additions are bigram features, idf-weighted pooling, documents weighted by teacher confidence, and an extra loss on the GPT-4o labels. None of the additions differs significantly from the final recipe on the development set. No addition changes the test macro-F1 by more than 0.004. The final recipe therefore excludes the four additions. The Holm correction of the main text covers these four additions together with the 10 variants of the ablation table in the main text.
+\textit{Additions tested during development.} Twelve runs tested four additions to the recipe with three seeds each (Table~\ref{tab:additions}): bigram features, idf-weighted pooling, documents weighted by teacher confidence, and an extra loss on the GPT-4o labels. None of the additions differs significantly from the final recipe on the development set. No addition changes the test macro-F1 by more than 0.004. The final recipe therefore excludes the four additions. The Holm correction of the main text covers these four additions together with the 10 ablation variants.
+
+\textit{Source-level results.} Table~\ref{tab:sources} gives the test macro-F1 of the main models on each source, and Table~\ref{tab:source-delta} gives the paired difference between StaticKD and the teacher, MiniLM-L6, and the Model2Vec classifier within each source. The teacher is ahead of StaticKD in all six sources and MiniLM-L6 in five. StaticKD is ahead of the Model2Vec classifier on CC-NEWS, Bangla news, and IndoNews and behind it on MasakhaNEWS, L3Cube-IndicNews, and MN-DS. MasakhaNEWS has only 6 site clusters (effective number 1.9), so its site-cluster intervals are unstable. Leaving out one source at a time keeps the difference between StaticKD and the Model2Vec classifier between $-$0.003 (without L3Cube-IndicNews) and +0.006 (without MasakhaNEWS).
+
+\textit{Restricted label inventory.} The test sources cover 17 labels (CC-NEWS and MN-DS), 10 labels (L3Cube-IndicNews), 5 labels (MasakhaNEWS), 4 labels (Bangla news), or 2 labels (IndoNews). The restricted evaluation assigns each article the highest-scoring label among the labels of its source, with ties broken by the lowest label index. Table~\ref{tab:restricted} compares the restricted and unrestricted results of eight models. The different inventories also explain why the human-annotation subgroup of the main text scores lower than both of its sources. Its macro-F1 averages over all 17 labels, and the teacher assigns 1,041 of the 3,339 MasakhaNEWS articles (31.2\%) to the 12 labels that occur only in MN-DS. Each such prediction is a false positive for one of these labels and lowers its F1 in the pooled subgroup. The teacher reaches 0.695 on MasakhaNEWS alone and 0.549 on MN-DS alone but 0.463 on the pooled subgroup and 0.630 when the pooled predictions are restricted to the labels of each source.
+
+\textit{fastText models trained on GPT-4o labels.} Table~\ref{tab:gpt} gives the main results of the two fastText models trained only on the GPT-4o labels of EMMediaTopic.
+
+\textit{Equivalence margin.} Table~\ref{tab:margins} repeats the equivalence tests at margins of $\pm$0.005 and $\pm$0.02 with the same 90\% intervals as the main text. Four of the 11 equivalence claims at $\pm$0.01 also hold at $\pm$0.005, namely those for no token dropout, bigram hashing, idf-weighted pooling, and document weighting by teacher confidence. The 512-unit MLP head and $\tau=4$ become equivalent to the final recipe only at $\pm$0.02.
+
+\textit{Labels and calibration.} Fig.~\ref{fig:label} gives the F1 of each label on the test set and the confusion matrix of StaticKD, and Fig.~\ref{fig:calib} gives the reliability diagram of StaticKD.
+
+\textit{Per-label precision and recall.} Table~\ref{tab:perlabel} gives the precision, recall, and F1 of StaticKD, the teacher, and MiniLM-L6 + KD for each label of the test set. Table~\ref{tab:thresholds} gives the share of test articles whose top probability reaches 0.5, 0.7, or 0.9 (coverage) and the accuracy of the predictions kept at each threshold (precision).
+
+\textit{Language codes.} Table~\ref{tab:langs} lists the 47 languages of the test set by the region used in the main text. English and French count as European languages although part of their articles comes from African news in MasakhaNEWS.
 
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_testset_heatmap.pdf}
-\caption{Articles in the unified test set per language and label (at most 50 per language--label pair). The label origin in brackets is the dominant one for that language.}
+\caption{Articles in the test set per language and label (at most 50 per language--label pair). The label origin in brackets is the dominant one for that language.}
 \label{fig:testset}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/fig_latency_ram_size.pdf}
-\caption{Latency per article, model RAM, and file size (log scale).}
-\label{fig:latency}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/fig_temperature.pdf}
-\caption{Effect of the distillation temperature. Each dot is one seed. The line connects the means.}
-\label{fig:temperature}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.85\columnwidth]{figures/fig_ensemble_size.pdf}
-\caption{Effect of the table ensemble size (mean $\pm$ standard deviation over seed combinations).}
-\label{fig:ensemble}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.78\textwidth]{figures/fig_groups.pdf}
-\caption{Test macro-F1 by label origin (left) and by the amount of distillation data in the language of the article (right).}
-\label{fig:groups}
 \end{figure}
 
 \begin{figure}[!htbp]

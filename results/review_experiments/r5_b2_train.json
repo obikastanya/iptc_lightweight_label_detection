@@ -1,0 +1,215 @@
+{
+ "subset": {
+  "pool_docs": 265999,
+  "pool_languages": 69,
+  "subset_docs": 20000,
+  "subset_languages": 69,
+  "by_source": {
+   "ccnews_extra": 11762,
+   "ccnews": 8238
+  },
+  "top10_languages": {
+   "bg": 602,
+   "cs": 602,
+   "de": 602,
+   "el": 602,
+   "en": 602,
+   "es": 602,
+   "pl": 602,
+   "sv": 602,
+   "uk": 602,
+   "vi": 602
+  },
+  "allocation": {
+   "bg": 602,
+   "cs": 602,
+   "de": 602,
+   "el": 602,
+   "en": 602,
+   "es": 602,
+   "et": 601,
+   "fi": 601,
+   "fr": 601,
+   "hu": 601,
+   "it": 601,
+   "nl": 601,
+   "pl": 602,
+   "pt": 601,
+   "ro": 601,
+   "ru": 601,
+   "sk": 601,
+   "sv": 602,
+   "uk": 602,
+   "vi": 602,
+   "da": 557,
+   "id": 517,
+   "ca": 493,
+   "ar": 492,
+   "hr": 477,
+   "ja": 470,
+   "he": 446,
+   "no": 401,
+   "fa": 396,
+   "sr": 385,
+   "sl": 344,
+   "ko": 331,
+   "mk": 306,
+   "sq": 305,
+   "lv": 285,
+   "tr": 259,
+   "zh": 252,
+   "gl": 238,
+   "hi": 205,
+   "lt": 184,
+   "th": 104,
+   "sw": 96,
+   "tl": 72,
+   "is": 61,
+   "cy": 54,
+   "az": 41,
+   "ka": 36,
+   "mr": 31,
+   "gu": 23,
+   "te": 21,
+   "my": 15,
+   "so": 15,
+   "eu": 13,
+   "af": 9,
+   "ta": 6,
+   "bs": 4,
+   "ur": 4,
+   "ms": 3,
+   "kn": 3,
+   "ps": 3,
+   "ml": 3,
+   "be": 2,
+   "am": 1,
+   "kk": 1,
+   "ne": 1,
+   "hy": 1,
+   "ky": 2,
+   "mn": 1,
+   "or": 1
+  },
+  "sample_seed": 0,
+  "rule": "proportional to the CC-News language shares, largest remainder, >= 1 per language"
+ },
+ "runs": {
+  "ccnews20k_s0": {
+   "train_docs": 19400,
+   "best_val_agreement": 0.815,
+   "train_seconds": 21.823943499999586,
+   "device": "cuda",
+   "scores": {
+    "dev": {
+     "macro_f1": 0.6691143689401031,
+     "accuracy": 0.739
+    },
+    "heldout": {
+     "macro_f1": 0.7334252649992044,
+     "accuracy": 0.7674844671021188
+    },
+    "test": {
+     "macro_f1": 0.5324622330057387,
+     "accuracy": 0.6303358443188951
+    }
+   },
+   "wall_seconds": 111.1
+  },
+  "ccnews20k_s1": {
+   "train_docs": 19400,
+   "best_val_agreement": 0.7883333333333333,
+   "train_seconds": 23.509607599989977,
+   "device": "cuda",
+   "scores": {
+    "dev": {
+     "macro_f1": 0.6660188675564119,
+     "accuracy": 0.735
+    },
+    "heldout": {
+     "macro_f1": 0.7308882623104489,
+     "accuracy": 0.7657320375975785
+    },
+    "test": {
+     "macro_f1": 0.5337161729725466,
+     "accuracy": 0.630571249215317
+    }
+   },
+   "wall_seconds": 230.6
+  },
+  "ccnews20k_s2": {
+   "train_docs": 19400,
+   "best_val_agreement": 0.8116666666666666,
+   "train_seconds": 24.75435249999282,
+   "device": "cuda",
+   "scores": {
+    "dev": {
+     "macro_f1": 0.661600258676648,
+     "accuracy": 0.735
+    },
+    "heldout": {
+     "macro_f1": 0.7329776028827921,
+     "accuracy": 0.768281025967819
+    },
+    "test": {
+     "macro_f1": 0.5349383160544806,
+     "accuracy": 0.6320621468926554
+    }
+   },
+   "wall_seconds": 305.7
+  },
+  "ccnews20k_s3": {
+   "train_docs": 19400,
+   "best_val_agreement": 0.8016666666666666,
+   "train_seconds": 26.439598199998727,
+   "device": "cuda",
+   "scores": {
+    "dev": {
+     "macro_f1": 0.6611292467049054,
+     "accuracy": 0.738
+    },
+    "heldout": {
+     "macro_f1": 0.727117078204735,
+     "accuracy": 0.763740640433328
+    },
+    "test": {
+     "macro_f1": 0.5334288739440647,
+     "accuracy": 0.6344161958568738
+    }
+   },
+   "wall_seconds": 331.4
+  },
+  "ccnews20k_s4": {
+   "train_docs": 19400,
+   "best_val_agreement": 0.7733333333333333,
+   "train_seconds": 26.380893299996387,
+   "device": "cuda",
+   "scores": {
+    "dev": {
+     "macro_f1": 0.671054903136856,
+     "accuracy": 0.739
+    },
+    "heldout": {
+     "macro_f1": 0.7326165052160188,
+     "accuracy": 0.7666082523498486
+    },
+    "test": {
+     "macro_f1": 0.5318461240296151,
+     "accuracy": 0.6298650345260515
+    }
+   },
+   "wall_seconds": 308.5
+  }
+ },
+ "settings": {
+  "epochs": 10,
+  "seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "other": "final recipe defaults (StaticKDConfig)"
+ }
+}
