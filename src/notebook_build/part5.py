@@ -120,7 +120,7 @@ for m, r in eff.iterrows():   # a legend instead of point labels: several models
         continue
     ax.scatter(r.docs_per_sec_1c, acc_col[m], s=150 if m == "statickd" else 60, marker=MARKERS[m], color=viz.color(m),
                zorder=3, edgecolor="white", linewidth=0.6, label=an.MODELS[m][0].replace(" (proposed)", ""))
-ax.set_xscale("log"); ax.set_xlabel("throughput, 1 CPU core (documents/s, log)"); ax.set_ylabel("macro-F1, unified test set")
+ax.set_xscale("log"); ax.set_xlabel("throughput, 1 CPU core (articles/s, log)"); ax.set_ylabel("macro-F1, test set")
 ax.legend(fontsize=7, loc="lower left", ncol=2, frameon=False)
 ax.set_title("Accuracy–cost trade-off")
 viz.show_and_save(fig, "fig_tradeoff")

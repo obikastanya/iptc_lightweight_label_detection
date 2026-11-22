@@ -4,7 +4,7 @@ same files can be reused when the Indonesian version is carried back into the En
   fig_tradeoff_memory.pdf  macro-F1 against single-core throughput (a) and against model RAM (b), with Pareto frontier
   fig_testset_composition.pdf  test articles per language by label origin, grouped by distillation data
 
-Inputs are the notebook outputs (results/final/paper_generated/tab_eff.tex, tab_main.tex) and the unified test set.
+Inputs are the notebook outputs (results/final/paper_generated/tab_eff.tex, tab_main.tex) and the test set.
 Run from the project root: env/Scripts/python.exe paper_final_id/make_figures.py
 """
 import re
@@ -77,9 +77,9 @@ def fig_tradeoff_memory() -> None:
             and (q[col] != p[col] or q[2] != p[2]) for q in pts)]
         front.sort(key=lambda p: p[col])
         ax.step([p[col] for p in front], [p[2] for p in front], where=where, color="0.55", ls="--", lw=0.9, zorder=2)
-    axes[0].set_xlabel("throughput, 1 CPU core (documents/s, log)")
+    axes[0].set_xlabel("throughput, 1 CPU core (articles/s, log)")
     axes[1].set_xlabel("model RAM (MB, log)")
-    axes[0].set_ylabel("macro-F1, unified test set")
+    axes[0].set_ylabel("macro-F1, test set")
     for ax, title in zip(axes, ("(a) accuracy vs. speed", "(b) accuracy vs. memory")):
         ax.set_xscale("log")
         ax.set_title(title)
@@ -101,7 +101,7 @@ def fig_testset_composition() -> None:
     info = an.language_info(test, pool_langs)
     tiers = [("≥500 docs", lambda n: n >= 500), ("1–499 docs", lambda n: 0 < n < 500), ("none", lambda n: n == 0)]
     origins = [("human_annotation", "human annotation"), ("publisher_category", "publisher category"),
-               ("publisher_section_jsonld", "JSON-LD section")]
+               ("publisher_section_jsonld", "section label")]
     counts = test.groupby(["lang", "label_origin"]).size().unstack(fill_value=0)
     order, bounds = [], []
     for _, keep in tiers:

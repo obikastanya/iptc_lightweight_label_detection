@@ -52,7 +52,7 @@ hy id is it ja jv ka kk km kn ko ku ky la lo lt lv mg mk ml mn mr ms my ne nl no
 sl so sq sr su sv sw ta te th tl tr ug uk ur uz vi xh yi zh""".split())
 # English names of subgroup values for the paper (internal values stay Indonesian: they form number keys)
 EN = {"human_annotation": "human annotation", "publisher_category": "publisher category",
-      "publisher_section_jsonld": "JSON-LD section",
+      "publisher_section_jsonld": "section label",
       "tidak ada (0)": "none (0)", "sedikit (<500)": "few (<500)", "cukup (≥500)": "sufficient (≥500)",
       "tercakup pra-latih XLM-R": "in XLM-R pre-training", "di luar pra-latih XLM-R": "outside XLM-R pre-training",
       "beragam (≥10)": "diverse (≥10)", "sedang (3–10)": "medium (3–10)", "satu penerbit (<3)": "single publisher (<3)",

@@ -17,15 +17,15 @@
   \node[model, text width=23mm] (t)  at (4.9, 0)     {Teacher\\XLM-R-large\\559.9M parameters};
   \node[data, text width=19mm] (soft) at (7.9, 0)    {Teacher logits\\$\mathbf{z}^{T}\in\mathbb{R}^{17}$\\285,999 docs};
   \node[model, text width=27mm] (s)  at (11.2, 0)    {Student: tokenizer,\\static embeddings (potion),\\mean, linear};
-  \node[prod, text width=34mm] (tab) at (15.4, 0)    {Table $|V|\times 17$ (fp16)\\$\hat{y}=\arg\max\big(\frac{1}{n}\sum_i T_{t_i}+\mathbf{b}\big)$};
-  \node[test, text width=34mm] (ts) at (15.4, -1.75)  {Unified test set\\12,744 docs, 47 languages, editorial labels};
+  \node[prod, text width=34mm] (tab) at (15.4, 0)    {Token-logit table $|V|\times 17$ (fp16)\\$\hat{y}=\arg\max\big(\frac{1}{n}\sum_i T_{t_i}+\mathbf{b}\big)$};
+  \node[test, text width=34mm] (ts) at (15.4, -1.75)  {Test set\\12,744 articles, 47 languages, human and editorial labels};
+  \node[lab, text=gray] at (8.0, 1.3) {training};
+  \node[lab, text=gray] at (15.4, 1.3) {inference (CPU)};
   \draw[arr] (cc.east)  -- (t.160);
   \draw[arr] (emm.east) -- (t.200);
   \draw[arr] (t) -- (soft);
   \draw[arr] (soft) -- node[lab, above]{KL, $\tau$} (s);
   \draw[arr] (s) -- node[lab, above]{fold $W$} (tab);
   \draw[arr] (ts.north) -- (tab.south);
-  \node[lab, text=gray] at (8.0, 1.3) {offline, once (a GPU only speeds it up)};
-  \node[lab, text=gray] at (15.4, 1.3) {production: NumPy, CPU};
 \end{tikzpicture}
 \end{document}
