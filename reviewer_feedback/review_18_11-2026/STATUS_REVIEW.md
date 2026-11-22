@@ -8,7 +8,7 @@ Naskah yang direview masih versi dua penulis (sebelum commit `dd504a6`).
 
 Status: `Belum` · `Berjalan` · `Menunggu keputusan` · `Sudah ada` (sudah tertangani di paper, cukup dijelaskan di surat jawaban) · `Selesai`
 
-Terakhir diperbarui: 18 November 2026 (malam): T1, T2, T4, T5 diterapkan ke main.tex dan main_id.tex; E2–E4 selesai dan dimasukkan ke paper serta script notebook (notebook belum dibangun ulang).
+Terakhir diperbarui: 22 November 2026: E1 dimasukkan ke paper (EN, ID, supplementary); notebook dibangun ulang dan semua angka dicek; biografi penulis diisi; link artefak tidak dicantumkan sebelum terbit (arahan dosen pembimbing).
 
 ## 1. Validitas label (eksperimen audit)
 
@@ -50,16 +50,16 @@ Terakhir diperbarui: 18 November 2026 (malam): T1, T2, T4, T5 diterapkan ke main
 
 | ID | Temuan | Sumber | Status | Catatan |
 |---|---|---|---|---|
-| A1 | Isi [TODO]: URL GitHub dan Zenodo DOI, URL Hugging Face, biografi tiga penulis | Rm 4.1, RM 6.6 | Belum | URL GitHub = repo rilis `obikastanya/static_kd_iptc_classifier`. |
-| A2 | Repo rilis harus bisa diakses publik (reviewer mendapat HTTP 404) | RM 9 | Belum | |
+| A1 | Isi [TODO]: URL GitHub dan Zenodo DOI, URL Hugging Face, biografi tiga penulis | Rm 4.1, RM 6.6 | Selesai | 22 Nov: biografi dan foto tiga penulis diisi (EN+ID). Link tidak dicantumkan sebelum terbit sesuai arahan dosen pembimbing; bagian Code Availability menyatakan kode dan model dirilis saat terbit. |
+| A2 | Repo rilis harus bisa diakses publik (reviewer mendapat HTTP 404) | RM 9 | Saat terbit | Keputusan 22 Nov: repo dibuka saat paper terbit. |
 | A3 | Sinkronkan folder `dist/` setelah paper final | — | Belum | Menunggu aba-aba penulis. Ada sisa dua file dari 11 November: komentar kepala `paper/main.tex` dan PDF duplikat `static_kd_iptc_classfier.pdf`. |
-| A4 | Bangun ulang notebook, cek konsistensi angka di abstrak/tabel/diskusi, dan susun surat jawaban | Rm 4.3 | Belum | Sebelum sinkronisasi dist. |
+| A4 | Bangun ulang notebook, cek konsistensi angka di abstrak/tabel/diskusi, dan susun surat jawaban | Rm 4.3 | Selesai | 22 Nov: notebook dibangun ulang tanpa error; tabel lama identik, hanya baris SD-style baru; 138 angka baru (E1, audit, cascade, retensi) cocok dengan paper. Surat jawaban: draf ada, isian [E1] belum. |
 
 ## 5. Butuh eksperimen baru (belum diputuskan)
 
 | ID | Temuan | Sumber | Status | Catatan |
 |---|---|---|---|---|
-| E1 | Sparse Distillation sebagai baseline pada data dan budget sama | RM mayor 3 | Berjalan | Keputusan 20 Nov: dijalankan sebagai Sparse-Distillation-style baseline pada data dan budget yang sama (tokenizer sama, embedding n-gram dari nol, head MLP, KL, dua ukuran tabel ±0,13B dan ±0,27B, tuning setara di dev set). Agen terpisah; hasil di `results/review_experiments/e1/`. |
+| E1 | Sparse Distillation sebagai baseline pada data dan budget sama | RM mayor 3 | Selesai | Baseline gaya Sparse Distillation (tokenizer sama, embedding n-gram dari nol, head MLP, KL, tabel 0,13B dan 0,27B, tuning di dev). Test macro-F1 0,431/0,430 vs StaticKD 0,545 (Δ +0,114, p<0,001); tabel dua kali lebih besar tidak membantu (+0,004, p=0,222). Diterapkan 22 Nov ke Metode, Tabel 7–9, Hasil, Efisiensi, Diskusi, Limitations, Tabel S1–S2. |
 | E2 | Cascade diukur end-to-end (overhead routing, batching), threshold dari development set | RM mayor 5 | Selesai | Hasil di `results/review_experiments/`; data benchmark disalin ke `results/final/cascade_*.jsonl`; cell notebook ditambahkan di `src/notebook_build/part5.py`. |
 | E3 | Selisih logit maksimum dan perubahan argmax fp32 → fp16 | RM audit 4 | Selesai | Prediksi dari tabel fp16 tersimpan identik (0 label berbeda); paper: satu kalimat di bagian folding. |
 | E4 | CI berpasangan untuk rasio retensi 91,1% | RM audit 2 | Selesai | Retensi test 91,1% [88,7–94,8%], dev 92,6% [88,4–96,3%]; ditambahkan di Results; cell notebook di `src/notebook_build/part4.py`. |

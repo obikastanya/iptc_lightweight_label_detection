@@ -68,6 +68,13 @@ Component & Value \\
 \multicolumn{2}{@{}l}{\textit{Model2Vec classifier + KD}} \\
 \quad settings & library defaults: one 512-unit hidden layer, learned token weights, \\
  & fine-tuned potion embeddings, lr $10^{-3}$, early stopping, 512 tokens \\
+\multicolumn{2}{@{}l}{\textit{SD-style + KD}} \\
+\quad tokens, embedding & potion unigrams + hashed bigrams and trigrams; dim 128, random init $\mathcal{N}(0, 0.1^2)$ \\
+\quad buckets / parameters & $2^{19}$ / 0.13B and 1,600,000 / 0.27B \\
+\quad head, dropout & Linear(128, $H$), ReLU, Linear($H$, 17); dropout 0.1, token dropout 0.2 \\
+\quad loss, optimizer & KL, $\tau=1$; SparseAdam (embedding), AdamW $3\cdot 10^{-3}$ (head), batch 64 \\
+\quad chosen on dev & 0.13B: lr $10^{-2}$, $H=256$, 10 epoch; 0.27B: lr $10^{-2}$, $H=1024$, max.\ 6 epoch \\
+\quad grid (dev macro-F1) & embedding lr $\{10^{-3}, 10^{-2}\}$ $\times$ $H$ $\{256, 1024\}$ $\times$ max.\ epoch $\{6, 10\}$ \\
 \multicolumn{2}{@{}l}{\textit{MiniLM-L6 / DistilmBERT + KD}} \\
 \quad optimizer & AdamW $5\cdot 10^{-5}$, wd 0.01, warmup 6\%, linear, fp16 \\
 \quad batch, epoch, max. tokens & 32, 2, 256 (512 in the sensitivity check) \\
@@ -83,17 +90,17 @@ Component & Value \\
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}lccccccccc@{}}
+\begin{tabular}{@{}lccccccccccc@{}}
 \toprule
-Source left out & Teacher & MiniLM & DistilmBERT & \textbf{StaticKD} & Model2Vec & TF-IDF+SVM & fastText (q) & fastText subword & fastText word \\
+Source left out & Teacher & MiniLM & DistilmBERT & \textbf{StaticKD} & Model2Vec & TF-IDF+SVM & fastText (q) & fastText subword & fastText word & SD 0.13B & SD 0.27B \\
 \midrule
-none (full test set) & 0.598 & 0.566 & 0.534 & 0.545 & 0.547 & 0.486 & 0.439 & 0.447 & 0.445 \\
-Bangla news & 0.599 & 0.566 & 0.536 & 0.547 & 0.549 & 0.490 & 0.443 & 0.451 & 0.452 \\
-CC-NEWS 2024--2026 & 0.515 & 0.480 & 0.426 & 0.451 & 0.453 & 0.364 & 0.297 & 0.310 & 0.305 \\
-IndoNews & 0.598 & 0.566 & 0.535 & 0.545 & 0.547 & 0.486 & 0.439 & 0.447 & 0.445 \\
-L3Cube-IndicNews & 0.595 & 0.565 & 0.560 & 0.547 & 0.551 & 0.519 & 0.477 & 0.484 & 0.483 \\
-MasakhaNEWS & 0.642 & 0.621 & 0.582 & 0.609 & 0.603 & 0.538 & 0.507 & 0.513 & 0.512 \\
-MN-DS & 0.586 & 0.552 & 0.516 & 0.526 & 0.529 & 0.471 & 0.418 & 0.426 & 0.424 \\
+none (full test set) & 0.598 & 0.566 & 0.534 & 0.545 & 0.547 & 0.486 & 0.439 & 0.447 & 0.445 & 0.431 & 0.430 \\
+Bangla news & 0.599 & 0.566 & 0.536 & 0.547 & 0.549 & 0.490 & 0.443 & 0.451 & 0.452 & 0.435 & 0.433 \\
+CC-NEWS 2024--2026 & 0.515 & 0.480 & 0.426 & 0.451 & 0.453 & 0.364 & 0.297 & 0.310 & 0.305 & 0.303 & 0.300 \\
+IndoNews & 0.598 & 0.566 & 0.535 & 0.545 & 0.547 & 0.486 & 0.439 & 0.447 & 0.445 & 0.431 & 0.430 \\
+L3Cube-IndicNews & 0.595 & 0.565 & 0.560 & 0.547 & 0.551 & 0.519 & 0.477 & 0.484 & 0.483 & 0.463 & 0.464 \\
+MasakhaNEWS & 0.642 & 0.621 & 0.582 & 0.609 & 0.603 & 0.538 & 0.507 & 0.513 & 0.512 & 0.491 & 0.492 \\
+MN-DS & 0.586 & 0.552 & 0.516 & 0.526 & 0.529 & 0.471 & 0.418 & 0.426 & 0.424 & 0.418 & 0.415 \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -201,7 +208,7 @@ Variant & $\Delta$ test macro-F1 [95\% CI] & $p$ (Holm) & 90\% interval & TOST $
 
 A post-hoc recheck after all decisions reread the 62 articles judged wrong or multi-topic with the origin of each label visible. It found no mapping error and three LLM errors on celebrity and fashion articles. Together with three further author decisions it moved 13 articles from wrong to correct or multi-topic. The protocol, all labels and decisions, and the audit scripts are released with the code.
 
-\textit{Baseline tuning.} The grid search covered 5 configurations for TF-IDF + SVM and 18 for each fastText model. The quantized fastText model took the configuration of the subword model.
+\textit{Baseline tuning.} The grid search covered 5 configurations for TF-IDF + SVM, 18 for each fastText model, and 8 for each size of the SD-style baseline. Seed 0 of the SD-style baseline was fixed before training and gives its rows in the main tables. The quantized fastText model took the configuration of the subword model.
 
 \textit{CPU benchmark.} The thread count was pinned in OMP, MKL, OpenBLAS, ONNX Runtime, and \texttt{tokenizers}. Runs on one core used logical CPU 0 and runs on four cores used logical CPUs 0, 10, 12, and 14.
 

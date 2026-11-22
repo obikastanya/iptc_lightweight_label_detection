@@ -30,10 +30,12 @@ NAME_TO_KEY = {
     "DistilmBERT + KD": "distilmbert_kd", "MiniLM-L6 + KD": "minilm_kd", "StaticKD": "statickd",
     "StaticKD-compact": "statickd_compact", "fastText + KD, subword, quantized": "ft_kd_subword_q",
     "fastText + KD, subword": "ft_kd_subword", "TF-IDF + SVM + KD": "tfidf_svm_kd",
-    "Model2Vec classifier + KD": "model2vec_clf",
+    "Model2Vec classifier + KD": "model2vec_clf", "SD-style + KD, 0.13B": "sdstyle_small",
+    "SD-style + KD, 0.27B": "sdstyle_large",
 }
 MARKERS = {"teacher": "s", "teacher_onnx_int8": "D", "distilmbert_kd": "^", "minilm_kd": "v", "statickd": "*",
-           "statickd_compact": "P", "ft_kd_subword_q": "o", "ft_kd_subword": "X", "tfidf_svm_kd": "h", "model2vec_clf": "D"}
+           "statickd_compact": "P", "ft_kd_subword_q": "o", "ft_kd_subword": "X", "tfidf_svm_kd": "h", "model2vec_clf": "D",
+           "sdstyle_small": "<", "sdstyle_large": ">"}
 
 
 def num(s: str) -> float:

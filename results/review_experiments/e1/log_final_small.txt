@@ -1,0 +1,39 @@
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 2999.00it/s]
+[sdstyle_small_s0] n-gram ids: 439,545,093 (11s)
+[sdstyle_small_s0] epoch 1: loss=0.8847 val_agreement=0.7804 (65s)
+[sdstyle_small_s0] epoch 2: loss=0.1420 val_agreement=0.7914 (131s)
+[sdstyle_small_s0] epoch 3: loss=0.0765 val_agreement=0.7867 (196s)
+[sdstyle_small_s0] epoch 4: loss=0.0629 val_agreement=0.7832 (262s)
+[sdstyle_small_s0] epoch 5: loss=0.0549 val_agreement=0.7897 (326s)
+[sdstyle_small_s0] epoch 6: loss=0.0488 val_agreement=0.7863 (392s)
+[sdstyle_small_s0] epoch 7: loss=0.0444 val_agreement=0.7898 (458s)
+[sdstyle_small_s0] epoch 8: loss=0.0407 val_agreement=0.7910 (522s)
+[sdstyle_small_s0] epoch 9: loss=0.0379 val_agreement=0.7925 (588s)
+[sdstyle_small_s0] epoch 10: loss=0.0350 val_agreement=0.7929 (653s)
+sdstyle_small_s0: dev=0.7088/0.7660 heldout=0.6780/0.7336 test=0.4310/0.5024 (724s)
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 2726.29it/s]
+[sdstyle_small_s1] n-gram ids: 439,545,093 (11s)
+[sdstyle_small_s1] epoch 1: loss=0.8855 val_agreement=0.7817 (66s)
+[sdstyle_small_s1] epoch 2: loss=0.1442 val_agreement=0.7818 (134s)
+[sdstyle_small_s1] epoch 3: loss=0.0784 val_agreement=0.7884 (201s)
+[sdstyle_small_s1] epoch 4: loss=0.0639 val_agreement=0.7866 (268s)
+[sdstyle_small_s1] epoch 5: loss=0.0558 val_agreement=0.7894 (335s)
+[sdstyle_small_s1] epoch 6: loss=0.0497 val_agreement=0.7923 (402s)
+[sdstyle_small_s1] epoch 7: loss=0.0446 val_agreement=0.7907 (470s)
+[sdstyle_small_s1] epoch 8: loss=0.0406 val_agreement=0.7965 (536s)
+[sdstyle_small_s1] epoch 9: loss=0.0375 val_agreement=0.7889 (604s)
+[sdstyle_small_s1] epoch 10: loss=0.0352 val_agreement=0.7948 (671s)
+sdstyle_small_s1: dev=0.7229/0.7670 heldout=0.6866/0.7400 test=0.4272/0.5024 (729s)
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 2506.71it/s]
+[sdstyle_small_s2] n-gram ids: 439,545,093 (10s)
+[sdstyle_small_s2] epoch 1: loss=0.8773 val_agreement=0.7839 (67s)
+[sdstyle_small_s2] epoch 2: loss=0.1416 val_agreement=0.7848 (135s)
+[sdstyle_small_s2] epoch 3: loss=0.0773 val_agreement=0.7841 (204s)
+[sdstyle_small_s2] epoch 4: loss=0.0631 val_agreement=0.7887 (271s)
+[sdstyle_small_s2] epoch 5: loss=0.0549 val_agreement=0.7911 (339s)
+[sdstyle_small_s2] epoch 6: loss=0.0489 val_agreement=0.7897 (407s)
+[sdstyle_small_s2] epoch 7: loss=0.0440 val_agreement=0.7916 (475s)
+[sdstyle_small_s2] epoch 8: loss=0.0399 val_agreement=0.7967 (543s)
+[sdstyle_small_s2] epoch 9: loss=0.0371 val_agreement=0.7891 (611s)
+[sdstyle_small_s2] epoch 10: loss=0.0350 val_agreement=0.7943 (679s)
+sdstyle_small_s2: dev=0.7146/0.7610 heldout=0.6853/0.7415 test=0.4360/0.5049 (741s)

@@ -1,0 +1,13 @@
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 3303.82it/s]
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 2924.97it/s]
+[tune_small_lr0.001_h1024] n-gram ids: 439,545,093 (13s)
+[tune_small_lr0.001_h1024] epoch 1: loss=1.0223 val_agreement=0.7450 monitor_f1=0.6147 (67s)
+[tune_small_lr0.001_h1024] epoch 2: loss=0.2034 val_agreement=0.7645 monitor_f1=0.6457 (135s)
+[tune_small_lr0.001_h1024] epoch 3: loss=0.0968 val_agreement=0.7677 monitor_f1=0.6757 (201s)
+[tune_small_lr0.001_h1024] epoch 4: loss=0.0769 val_agreement=0.7701 monitor_f1=0.6746 (268s)
+[tune_small_lr0.001_h1024] epoch 5: loss=0.0655 val_agreement=0.7720 monitor_f1=0.6690 (334s)
+[tune_small_lr0.001_h1024] epoch 6: loss=0.0578 val_agreement=0.7710 monitor_f1=0.6941 (401s)
+[tune_small_lr0.001_h1024] epoch 7: loss=0.0512 val_agreement=0.7764 monitor_f1=0.7146 (466s)
+[tune_small_lr0.001_h1024] epoch 8: loss=0.0459 val_agreement=0.7781 monitor_f1=0.7110 (533s)
+[tune_small_lr0.001_h1024] epoch 9: loss=0.0417 val_agreement=0.7800 monitor_f1=0.7002 (602s)
+[tune_small_lr0.001_h1024] epoch 10: loss=0.0382 val_agreement=0.7756 monitor_f1=0.6919 (669s)

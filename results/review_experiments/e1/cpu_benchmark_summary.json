@@ -1,0 +1,115 @@
+{
+ "sessions": {
+  "sdstyle_large": {
+   "latency_p50_1c_ms": 2.385,
+   "latency_p95_1c_ms": 3.906,
+   "docs_per_sec_1c": 456.689,
+   "docs_per_sec_4c": 1173.185,
+   "rss_model_mb": 997.8,
+   "size_mb": 531.11,
+   "load_seconds": 1.28,
+   "num_parameters": 268994705,
+   "n_sessions": 3,
+   "deps": "numpy, tokenizers",
+   "maxdev_dps_1c": 0.007825894646028161,
+   "maxdev_dps_4c": 0.0089329474891002,
+   "maxdev_lat_p50_1c": 0.0029350104821801565,
+   "per_session_dps_1c": [
+    456.689,
+    453.735,
+    460.263
+   ],
+   "per_session_dps_4c": [
+    1183.665,
+    1173.185,
+    1162.949
+   ],
+   "per_session_lat_p50_1c": [
+    2.387,
+    2.378,
+    2.385
+   ],
+   "speed_ratio_vs_statickd_1c": 0.8361832360173503
+  },
+  "sdstyle_small": {
+   "latency_p50_1c_ms": 2.362,
+   "latency_p95_1c_ms": 3.823,
+   "docs_per_sec_1c": 455.762,
+   "docs_per_sec_4c": 1188.422,
+   "rss_model_mb": 736.8,
+   "size_mb": 268.06,
+   "load_seconds": 1.2,
+   "num_parameters": 131191441,
+   "n_sessions": 3,
+   "deps": "numpy, tokenizers",
+   "maxdev_dps_1c": 0.008234561020883676,
+   "maxdev_dps_4c": 0.01267647350856855,
+   "maxdev_lat_p50_1c": 0.020745131244707844,
+   "per_session_dps_1c": [
+    459.515,
+    455.762,
+    455.328
+   ],
+   "per_session_dps_4c": [
+    1188.422,
+    1203.487,
+    1181.985
+   ],
+   "per_session_lat_p50_1c": [
+    2.411,
+    2.314,
+    2.362
+   ],
+   "speed_ratio_vs_statickd_1c": 0.8344859280905378
+  },
+  "statickd": {
+   "latency_p50_1c_ms": 1.9769999999999999,
+   "latency_p95_1c_ms": 3.304,
+   "docs_per_sec_1c": 546.159,
+   "docs_per_sec_4c": 1940.509,
+   "rss_model_mb": 501.1,
+   "size_mb": 33.98,
+   "load_seconds": 1.12,
+   "num_parameters": 8506018,
+   "n_sessions": 3,
+   "deps": "numpy, tokenizers",
+   "maxdev_dps_1c": 0.0140453604170213,
+   "maxdev_dps_4c": 0.010202477803504133,
+   "maxdev_lat_p50_1c": 0.0060698027314112345,
+   "per_session_dps_1c": [
+    538.488,
+    552.294,
+    546.159
+   ],
+   "per_session_dps_4c": [
+    1940.509,
+    1922.16,
+    1960.307
+   ],
+   "per_session_lat_p50_1c": [
+    1.9769999999999999,
+    1.9649999999999999,
+    1.9809999999999999
+   ],
+   "speed_ratio_vs_statickd_1c": 1.0
+  }
+ },
+ "paper_statickd_median": {
+  "1": {
+   "latency_ms_p50": 2.008,
+   "latency_ms_p95": 3.315,
+   "docs_per_sec": 539.133,
+   "rss_model_mb": 501.2,
+   "size_mb": 33.98,
+   "load_seconds": 1.11
+  },
+  "4": {
+   "latency_ms_p50": 1.932,
+   "latency_ms_p95": 3.44,
+   "docs_per_sec": 1826.658,
+   "rss_model_mb": 501.0,
+   "size_mb": 33.98,
+   "load_seconds": 1.08
+  }
+ }
+}

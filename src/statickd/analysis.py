@@ -25,6 +25,9 @@ MODELS = {
     "ft_kd_word":        ("fastText + KD, word", f"fasttext:{BASELINES_DIR / 'ft_kd_word.bin'}"),
     "tfidf_svm_kd":      ("TF-IDF + SVM + KD", f"tfidf:{BASELINES_DIR / 'tfidf_svm_kd.joblib'}"),
     "model2vec_clf":     ("Model2Vec classifier + KD", f"model2vec:{BASELINES_DIR / 'model2vec_clf'}"),
+    # Sparse-Distillation-style baseline (review experiment E1); benchmarked by scripts/review_experiments/e1_benchmark.py
+    "sdstyle_small":     ("SD-style + KD, 0.13B", None),
+    "sdstyle_large":     ("SD-style + KD, 0.27B", None),
     "ft_gpt_subword":    ("fastText, GPT-4o labels, subword", f"fasttext:{BASELINES_DIR / 'ft_gpt_subword.bin'}"),
     "ft_gpt_word":       ("fastText, GPT-4o labels, word", f"fasttext:{BASELINES_DIR / 'ft_gpt_word.bin'}"),
 }

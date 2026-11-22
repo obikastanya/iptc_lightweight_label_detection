@@ -1,0 +1,40 @@
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 3000.07it/s]
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 2957.28it/s]
+[tune_small_lr0.001_h256] n-gram ids: 439,545,093 (9s)
+[tune_small_lr0.001_h256] epoch 1: loss=1.1234 val_agreement=0.7295 monitor_f1=0.5606 (66s)
+[tune_small_lr0.001_h256] epoch 2: loss=0.2738 val_agreement=0.7554 monitor_f1=0.6469 (132s)
+[tune_small_lr0.001_h256] epoch 3: loss=0.1162 val_agreement=0.7571 monitor_f1=0.6702 (198s)
+[tune_small_lr0.001_h256] epoch 4: loss=0.0882 val_agreement=0.7662 monitor_f1=0.6791 (263s)
+[tune_small_lr0.001_h256] epoch 5: loss=0.0750 val_agreement=0.7666 monitor_f1=0.6909 (329s)
+[tune_small_lr0.001_h256] epoch 6: loss=0.0652 val_agreement=0.7627 monitor_f1=0.6808 (395s)
+[tune_small_lr0.001_h256] epoch 7: loss=0.0581 val_agreement=0.7690 monitor_f1=0.6833 (460s)
+[tune_small_lr0.001_h256] epoch 8: loss=0.0525 val_agreement=0.7686 monitor_f1=0.6754 (527s)
+[tune_small_lr0.001_h256] epoch 9: loss=0.0484 val_agreement=0.7714 monitor_f1=0.6960 (594s)
+[tune_small_lr0.001_h256] epoch 10: loss=0.0449 val_agreement=0.7741 monitor_f1=0.6860 (661s)
+small lr=0.001 hidden=1024: done, skipped
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 2722.45it/s]
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 2386.43it/s]
+[tune_small_lr0.01_h256] n-gram ids: 439,545,093 (15s)
+[tune_small_lr0.01_h256] epoch 1: loss=0.8847 val_agreement=0.7804 monitor_f1=0.6793 (70s)
+[tune_small_lr0.01_h256] epoch 2: loss=0.1420 val_agreement=0.7914 monitor_f1=0.6895 (141s)
+[tune_small_lr0.01_h256] epoch 3: loss=0.0765 val_agreement=0.7867 monitor_f1=0.7065 (211s)
+[tune_small_lr0.01_h256] epoch 4: loss=0.0629 val_agreement=0.7832 monitor_f1=0.7033 (280s)
+[tune_small_lr0.01_h256] epoch 5: loss=0.0549 val_agreement=0.7897 monitor_f1=0.7140 (348s)
+[tune_small_lr0.01_h256] epoch 6: loss=0.0488 val_agreement=0.7863 monitor_f1=0.6928 (416s)
+[tune_small_lr0.01_h256] epoch 7: loss=0.0444 val_agreement=0.7898 monitor_f1=0.7045 (483s)
+[tune_small_lr0.01_h256] epoch 8: loss=0.0407 val_agreement=0.7910 monitor_f1=0.7057 (551s)
+[tune_small_lr0.01_h256] epoch 9: loss=0.0379 val_agreement=0.7925 monitor_f1=0.6987 (618s)
+[tune_small_lr0.01_h256] epoch 10: loss=0.0350 val_agreement=0.7929 monitor_f1=0.7088 (686s)
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 2851.65it/s]
+Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files: 100%|██████████| 30/30 [00:00<00:00, 3182.41it/s]
+[tune_small_lr0.01_h1024] n-gram ids: 439,545,093 (10s)
+[tune_small_lr0.01_h1024] epoch 1: loss=0.8443 val_agreement=0.7788 monitor_f1=0.6979 (68s)
+[tune_small_lr0.01_h1024] epoch 2: loss=0.1304 val_agreement=0.7861 monitor_f1=0.6980 (137s)
+[tune_small_lr0.01_h1024] epoch 3: loss=0.0761 val_agreement=0.7810 monitor_f1=0.7050 (207s)
+[tune_small_lr0.01_h1024] epoch 4: loss=0.0647 val_agreement=0.7863 monitor_f1=0.7049 (275s)
+[tune_small_lr0.01_h1024] epoch 5: loss=0.0557 val_agreement=0.7831 monitor_f1=0.7009 (345s)
+[tune_small_lr0.01_h1024] epoch 6: loss=0.0491 val_agreement=0.7872 monitor_f1=0.6981 (414s)
+[tune_small_lr0.01_h1024] epoch 7: loss=0.0444 val_agreement=0.7924 monitor_f1=0.6948 (483s)
+[tune_small_lr0.01_h1024] epoch 8: loss=0.0401 val_agreement=0.7851 monitor_f1=0.6909 (551s)
+[tune_small_lr0.01_h1024] epoch 9: loss=0.0372 val_agreement=0.7858 monitor_f1=0.7097 (620s)
+[tune_small_lr0.01_h1024] epoch 10: loss=0.0345 val_agreement=0.7877 monitor_f1=0.6895 (690s)

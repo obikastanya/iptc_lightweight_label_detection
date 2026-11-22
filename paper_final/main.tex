@@ -17,17 +17,21 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 
+\usepackage{etoolbox}
 \DeclareRobustCommand{\todo}[1]{{\color{red}[TODO: #1]}}
+\makeatletter\expandafter\patchcmd\csname\string\IEEEbiography\endcsname{\vskip \@IEEEBIOskipN plus 1fil minus 0\baselineskip}{\vskip \@IEEEBIOskipN}{}{\PackageWarning{main}{biography spacing patch failed}}\makeatother
 
 \emergencystretch=1.5em
 
 \begin{document}
 \history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
-\doi{10.1109/ACCESS.2024.0429000}
+\doi{10.1109/ACCESS.2026.0429000}
+\vol{14}
+\def\theyear{2026}
 
 \title{StaticKD: Distilling a Multilingual IPTC News Topic Classifier into a Static Token-Logit Table for Lightweight CPU Inference}
 
-\author{\uppercase{Obi Kastanya}\authorrefmark{1}, \uppercase{Ananta Dwi Prayoga Alwy}\authorrefmark{1}, AND \uppercase{Dwi Sunaryono}\authorrefmark{1}}
+\author{\uppercase{Obi Kastanya}\authorrefmark{1}, \uppercase{Ananta Dwi Prayoga Alwy}\authorrefmark{1}, AND \uppercase{Dwi Sunaryono}\authorrefmark{1}, \IEEEmembership{Member, IEEE}}
 \address[1]{Department of Informatics Engineering, Sepuluh Nopember Institute of Technology, Surabaya, Indonesia (e-mail: 6025252015@student.its.ac.id; 6025252007@student.its.ac.id; dwi.syn@its.ac.id)}
 \tfootnote{This work received no specific funding.}
 
@@ -315,11 +319,11 @@ An article-level audit measures how often an editorial label names the main topi
 \label{sec:setup}
 \subsection{Baselines}
 \label{sec:baselines}
-All baselines marked + KD used the same distillation data (285,999 documents) and targets from the same teacher. Table~\ref{tab:baselines} shows that only the two transformer baselines learn from the full teacher distribution. The three light baselines were trained on the top teacher label because their standard training procedures accept class labels but not probability distributions. The light baselines are fastText + KD~\cite{joulin2017bag}, term frequency--inverse document frequency (TF-IDF) + support vector machine (SVM) + KD, and the Model2Vec classifier + KD~\cite{tulkens2024model2vec}. TF-IDF + SVM + KD adapts the non-neural baseline of Kuzman and Ljube\v{s}i\'c to the teacher labels. The Model2Vec classifier + KD fine-tunes the same potion embeddings that StaticKD starts from and learns a weight for each token. Two further fastText models were trained only on the GPT-4o labels of the EMMediaTopic training split as a reference without KD that uses the same labeled data as the teacher~\cite{kuzman2025llm}.
+All baselines marked + KD used the same distillation data (285,999 documents) and targets from the same teacher. Table~\ref{tab:baselines} shows that only the two transformer baselines and the Sparse-Distillation-style baseline learn from the full teacher distribution. The three light baselines were trained on the top teacher label because their standard training procedures accept class labels but not probability distributions. The light baselines are fastText + KD~\cite{joulin2017bag}, term frequency--inverse document frequency (TF-IDF) + support vector machine (SVM) + KD, and the Model2Vec classifier + KD~\cite{tulkens2024model2vec}. TF-IDF + SVM + KD adapts the non-neural baseline of Kuzman and Ljube\v{s}i\'c to the teacher labels. The Model2Vec classifier + KD fine-tunes the same potion embeddings that StaticKD starts from and learns a weight for each token. Two further fastText models were trained only on the GPT-4o labels of the EMMediaTopic training split as a reference without KD that uses the same labeled data as the teacher~\cite{kuzman2025llm}.
 
 MiniLM-L6 + KD and DistilmBERT + KD are transformer baselines trained with the loss in~\eqref{eq:kd} on the full teacher distribution. MiniLM-L6 + KD uses mMiniLMv2-L6-H384 distilled from XLM-R-large~\cite{wang2021minilmv2} whereas DistilmBERT + KD uses \texttt{distilbert-base-multilingual-cased}~\cite{sanh2019distilbert}. The 256-token limit truncates 91.1\% of the test articles to about 142 words for MiniLM-L6 and 93.2\% to about 116 words for DistilmBERT. A sensitivity check of this limit retrained both models with 512 tokens (Section~\ref{sec:res-acc}).
 
-Sparse Distillation~\cite{ye2022sparse} is the prior method closest to StaticKD but was not run as a separate baseline (Section~\ref{sec:limitations}). Two other experiments still cover parts of the method. The fastText + KD baseline trained a bag-of-n-grams model with averaging and a linear head on the same teacher labels. The random-initialization ablation (Section~\ref{sec:design}) trained the embedding table from scratch as Sparse Distillation does.
+Sparse Distillation~\cite{ye2022sparse} is the prior method closest to StaticKD and was reimplemented as a baseline under the same conditions (SD-style + KD). The baseline uses the same distillation data, teacher logits, and tokenizer as StaticKD. It averages unigram embeddings and hashed bigram and trigram embeddings trained from scratch and passes the average through an MLP head trained with the KL loss in~\eqref{eq:kd}. Two table sizes of 0.13B and 0.27B parameters test whether the size of the table limits accuracy. The learning rate, the hidden size, and the number of epochs were chosen on the development set.
 
 \begin{table*}[!t]
 \caption{Baselines and Their Training}
@@ -337,6 +341,7 @@ fastText + KD, subword & mean of XLM-R subword vectors, linear head & top teache
 fastText + KD, subword, quantized & subword variant in \texttt{.ftz} format & top teacher label & from subword variant \\
 TF-IDF + SVM + KD & TF-IDF over XLM-R subwords, linear SVM & top teacher label & grid search on development set \\
 Model2Vec classifier + KD & fine-tuned potion embeddings with per-token weights, hidden layer of 512 units & top teacher label & library default settings \\
+SD-style + KD (0.13B, 0.27B) & mean of unigram and hashed bigram and trigram embeddings trained from scratch, MLP head & full teacher distribution & grid search on development set \\
 MiniLM-L6 + KD & 6-layer transformer, 256-token input & full teacher distribution & $\tau\in\{1,2\}$ on development set \\
 DistilmBERT + KD & 6-layer transformer, 256-token input & full teacher distribution & $\tau=1$ \\
 fastText, GPT-4o labels (word, subword) & as fastText + KD & EMMediaTopic GPT-4o labels & fixed settings \\
@@ -465,6 +470,8 @@ fastText + KD, subword & 0.737 [0.701--0.765] & 0.772 & 0.754 & 0.447 [0.385--0.
 fastText + KD, word & 0.750 [0.713--0.779] & 0.791 & 0.758 & 0.445 [0.380--0.563] & 0.515 & 0.474 & 74.5\% \\
 TF-IDF + SVM + KD & 0.755 [0.719--0.786] & 0.798 & 0.776 & 0.486 [0.431--0.585] & 0.567 & 0.522 & 81.3\% \\
 Model2Vec classifier + KD & 0.744 [0.701--0.772] & 0.780 & 0.805 & 0.547 [0.495--0.599] & 0.642 & 0.619 & 91.5\% \\
+SD-style + KD, 0.13B & 0.709 [0.667--0.744] & 0.766 & 0.734 & 0.431 [0.374--0.538] & 0.502 & 0.462 & 72.1\% \\
+SD-style + KD, 0.27B & 0.714 [0.670--0.746] & 0.764 & 0.741 & 0.430 [0.372--0.538] & 0.499 & 0.460 & 71.9\% \\
 \midrule
 fastText, GPT-4o labels, subword & 0.665 [0.613--0.700] & 0.729 & 0.260 & 0.086 [0.069--0.119] & 0.150 & 0.118 & 14.4\% \\
 fastText, GPT-4o labels, word & 0.651 [0.601--0.693] & 0.738 & 0.307 & 0.106 [0.085--0.150] & 0.181 & 0.142 & 17.7\% \\
@@ -494,6 +501,8 @@ fastText + KD, subword & +0.098 [+0.036, +0.134] & $<$0.001 & +0.114 & 1979/529 
 fastText + KD, word & +0.099 [+0.037, +0.141] & $<$0.001 & +0.126 & 2140/536 & $<$0.001 \\
 TF-IDF + SVM + KD & +0.059 [+0.009, +0.093] & 0.040 & +0.074 & 1667/719 & $<$0.001 \\
 Model2Vec classifier + KD & $-$0.002 [$-$0.009, +0.010] & 1.000 & $-$0.001 & 438/447 & 0.788 \\
+SD-style + KD, 0.13B & +0.114 [+0.060, +0.145] & $<$0.001 & +0.139 & 2268/501 & $<$0.001 \\
+SD-style + KD, 0.27B & +0.115 [+0.058, +0.148] & $<$0.001 & +0.142 & 2309/501 & $<$0.001 \\
 fastText, GPT-4o labels, subword & +0.458 [+0.415, +0.496] & $<$0.001 & +0.491 & 6597/344 & $<$0.001 \\
 fastText, GPT-4o labels, word & +0.439 [+0.393, +0.475] & $<$0.001 & +0.460 & 6252/391 & $<$0.001 \\
 \bottomrule
@@ -512,7 +521,9 @@ The Model2Vec classifier is the only light model that matches StaticKD. The $\De
 
 StaticKD is ahead of the quantized fastText + KD by +0.106 [+0.037, +0.145] and of TF-IDF + SVM by +0.059 [+0.009, +0.093] ($p=0.040$). The macro-F1 of StaticKD is higher than that of fastText + KD in 40 of 47 languages (Wilcoxon $p<0.001$). The advantage over TF-IDF + SVM is narrower with a higher StaticKD macro-F1 in 31 of 47 languages (Wilcoxon $p=0.003$). Per-language accuracy against TF-IDF + SVM gives a different picture because StaticKD is higher in 24 languages and lower in 22 (Wilcoxon $p=0.127$).
 
-The model ranking hardly changes when checked against the cluster structure of the test set. The subset with at most five articles per site and language--label pair keeps 8,139 articles with a score of 0.587 for StaticKD and 0.627 for the teacher. Only the order of StaticKD and the Model2Vec classifier (0.583) changes on this subset. Leaving out one source at a time places StaticKD between third and fifth of the nine models and only the Model2Vec classifier and DistilmBERT change places with it. Every fastText and TF-IDF model stays at least 0.028 below StaticKD.
+The Sparse-Distillation-style baseline reaches a test macro-F1 of 0.431 with the 0.13B table and 0.430 with the 0.27B table. StaticKD is ahead of both by +0.114 [+0.060, +0.145] and +0.115 [+0.058, +0.148] ($p<0.001$). Doubling the table brings no gain because the difference between the two sizes over three seeds is +0.004 [$-$0.003, +0.010] ($p=0.222$). The gap is widest in languages with little or no distillation data where the 0.13B baseline reaches 0.204 and 0.160 against 0.478 and 0.402 for StaticKD. Adding both baselines to the Holm correction leaves every other result in Table~\ref{tab:sig} unchanged.
+
+The model ranking hardly changes when checked against the cluster structure of the test set. The subset with at most five articles per site and language--label pair keeps 8,139 articles with a score of 0.587 for StaticKD and 0.627 for the teacher. Only the order of StaticKD and the Model2Vec classifier (0.583) changes on this subset. Leaving out one source at a time places StaticKD between third and fifth of the eleven models and only the Model2Vec classifier and DistilmBERT change places with it. Every fastText and TF-IDF model stays at least 0.028 below StaticKD.
 
 Paired test results also stay the same when the two transformers read longer inputs. Retraining with 512-token inputs raises the test macro-F1 of MiniLM-L6 and DistilmBERT to 0.580 and 0.547. MiniLM-L6 stays ahead of StaticKD ($-$0.035 [$-$0.049, $-$0.021], $p<0.001$) and DistilmBERT still does not differ significantly from StaticKD ($-$0.002 [$-$0.029, +0.022], $p=0.779$).
 
@@ -538,8 +549,11 @@ fastText + KD, subword, quantized & 1.93 / 3.21 & 545 & 1,393 & 300 & 18 & fastt
 fastText + KD, subword & 2.07 / 3.62 & 489 & 1,184 & 1,122 & 839 & fasttext, tokenizers \\
 TF-IDF + SVM + KD & 2.96 / 4.49 & 433 & 865 & 828 & 166 & scikit-learn, tokenizers \\
 Model2Vec classifier + KD & 1.99 / 3.22 & 568 & 1,822 & 1,091 & 507 & model2vec, scikit-learn \\
+SD-style + KD, 0.13B & 2.36 / 3.82 & 456 & 1,188 & 737 & 268 & numpy, tokenizers \\
+SD-style + KD, 0.27B & 2.38 / 3.91 & 457 & 1,173 & 998 & 531 & numpy, tokenizers \\
 \bottomrule
 \end{tabular}}
+\par\vspace{2pt}{\footnotesize The SD-style rows come from a later session with the same protocol in which StaticKD reached 546 doc/s on one core.\par}
 \end{table*}
 \begin{figure*}[!t]
 \centering
@@ -551,7 +565,7 @@ Table~\ref{tab:eff} shows that the teacher is too slow on CPU for a large stream
 
 The single-core speed of StaticKD exceeds that of every transformer-based model and is similar to that of the other light models. StaticKD needs 2.01~ms per article and can process 539 articles per second per core. This throughput is about 682 times that of the ONNX int8 teacher and 1,572 times that of the PyTorch teacher. The distilled MiniLM-L6 and DistilmBERT are still about 32 and 107 times slower than StaticKD. The single-core speeds of the other light models range from 433 articles per second for TF-IDF + SVM to 601 for the compact variant. Tokenization limits the speed of StaticKD because it takes 98\% of the single-thread prediction time with 579 tokens per article on average whereas the averaging of table rows that follows tokenization reaches 26,843 articles per second when measured alone.
 
-StaticKD also needs a smaller file than the teacher and a smaller file and less RAM than the Model2Vec classifier. The StaticKD file is 16 times smaller than that of the ONNX int8 teacher. The Model2Vec classifier that matches the accuracy of StaticKD needs 507~MB on disk and 1,091~MB of RAM compared with 501~MB of RAM for StaticKD. Fig.~\ref{fig:tradeoff} plots test macro-F1 against single-core throughput in panel (a) and RAM in panel (b) on log scales with the Pareto frontier as a dashed line. StaticKD and the Model2Vec classifier tie in panel (a) because their macro-F1 is equivalent and their throughputs over the three measurement sessions overlap (530--553 and 547--569 articles per second). The RAM of StaticKD is mostly taken by the tokenizer structure and falls to 277~MB in the compact variant. The quantized fastText + KD is smaller (18~MB) and uses less RAM (300~MB) than StaticKD but reaches a test macro-F1 of 0.439.
+StaticKD also needs a smaller file than the teacher and a smaller file and less RAM than the Model2Vec classifier. The StaticKD file is 16 times smaller than that of the ONNX int8 teacher. The Model2Vec classifier that matches the accuracy of StaticKD needs 507~MB on disk and 1,091~MB of RAM compared with 501~MB of RAM for StaticKD. Both tables of the Sparse-Distillation-style baseline are larger with 268 and 531~MB on disk and 737 and 998~MB of RAM. Fig.~\ref{fig:tradeoff} plots test macro-F1 against single-core throughput in panel (a) and RAM in panel (b) on log scales with the Pareto frontier as a dashed line. StaticKD and the Model2Vec classifier tie in panel (a) because their macro-F1 is equivalent and their throughputs over the three measurement sessions overlap (530--553 and 547--569 articles per second). The RAM of StaticKD is mostly taken by the tokenizer structure and falls to 277~MB in the compact variant. The quantized fastText + KD is smaller (18~MB) and uses less RAM (300~MB) than StaticKD but reaches a test macro-F1 of 0.439.
 
 \subsection{Ablation, Temperature, and Ensembling}
 \label{sec:res-abl}
@@ -708,7 +722,7 @@ A table lookup keeps about nine tenths of the teacher macro-F1 and cuts inferenc
 StaticKD scores lowest on \emph{society}, \emph{disaster}, \emph{human interest}, and \emph{conflict} but these low scores are not specific to the student. The same labels rank among the hardest for the teacher (Section~\ref{sec:res-lang}) and even human annotators find \emph{society} and \emph{human interest} difficult~\cite{kuzman2025llm}. The remaining gap to the teacher lies in other labels and in languages that are underrepresented in the distillation data (Section~\ref{sec:res-lang}).
 
 \subsection{Sources of Accuracy}
-The largest contribution comes from the pre-trained multilingual initialization and the second-largest from the multilingual distillation data labeled by the teacher. Random initialization costs 0.120 in test macro-F1 against 0.051 for removing the multilingual data. The most direct evidence for the role of the initialization comes from the compact variant on four Indian languages that hardly occur in the distillation data (Section~\ref{sec:res-lang}). Rare tokens in these languages keep embeddings close to the potion values because training rarely or never updates them. Accuracy in these languages is still close to that in other languages but falls almost to zero once the compact tokenizer removes these tokens. The drop reveals that transfer to languages without data relies on embeddings that training hardly changes. The linear head learned from data-rich languages still applies to such embeddings because the embeddings lie in the same space as the trained ones. Initialization also distinguishes StaticKD from Sparse Distillation~\cite{ye2022sparse} with its n-gram table trained from scratch. Pre-trained multilingual embeddings folded into 17 logits per token allow transfer to languages that are missing from the distillation data.
+The largest contribution comes from the pre-trained multilingual initialization and the second-largest from the multilingual distillation data labeled by the teacher. Random initialization costs 0.120 in test macro-F1 against 0.051 for removing the multilingual data. The most direct evidence for the role of the initialization comes from the compact variant on four Indian languages that hardly occur in the distillation data (Section~\ref{sec:res-lang}). Rare tokens in these languages keep embeddings close to the potion values because training rarely or never updates them. Accuracy in these languages is still close to that in other languages but falls almost to zero once the compact tokenizer removes these tokens. The drop reveals that transfer to languages without data relies on embeddings that training hardly changes. The linear head learned from data-rich languages still applies to such embeddings because the embeddings lie in the same space as the trained ones. Initialization also separates StaticKD from the Sparse-Distillation-style baseline with its n-gram table trained from scratch. This baseline trails StaticKD most in languages with little or no distillation data (Section~\ref{sec:res-acc}). Pre-trained multilingual embeddings folded into 17 logits per token allow transfer to languages that are missing from the distillation data.
 
 Freezing the embeddings raises the mean scores of languages with little or no distillation data (Table~\ref{tab:ablation-groups}). Fine-tuning moves the embeddings of tokens from the training languages whereas tokens from other languages stay at the positions assigned by potion. The head of the model has adapted to the moved embeddings and fits the unmoved tokens less well. This shift also fits the model better to the training languages. Frozen embeddings miss the shift and score lower on the development set. Fine-tuning and freezing may therefore trade fit to the training languages against the cross-lingual alignment inherited from potion. The final recipe uses fine-tuning because the development set on which it was selected is in the training languages and measures only the first side of this trade-off. Freezing gives no significant gain on the whole test set but is worth testing for a deployment that targets languages without distillation data.
 
@@ -738,7 +752,7 @@ Label coverage is uneven across languages. The median number of labels that occu
 
 Site diversity is also limited. Twenty-seven languages have fewer than 3 effective sites. Articles in these languages come mostly from MasakhaNEWS, L3Cube-IndicNews, the Bangla news dataset, or one or two CC-NEWS sites. Claims about these languages hold only for those sources. The site-cluster bootstrap widens the confidence intervals of these languages accordingly. All test-set intervals apply to the sites and languages of this test set and rest on few independent sources because the whole test set has an effective number of only 13.8 clusters. The per-language Wilcoxon tests treat languages as independent units although the 10 languages of L3Cube-IndicNews come from a single source.
 
-The choice of baselines, the tuning budget, and the input length of the transformers limit the comparison of StaticKD with other models. Sparse Distillation~\cite{ye2022sparse} was not run as a baseline. It differs from fastText + KD and from the random-initialization ablation in the hidden layers of its deep averaging network, its soft-logit targets, and its billion-parameter n-gram table designed for English. Tuning budgets differed across models. The StaticKD recipe was fixed on the development set before the test set was built and the fastText and TF-IDF baselines were tuned on the same set with small grids. The Model2Vec classifier used the library defaults and the transformer models followed a standard fine-tuning recipe in which only $\tau$ of MiniLM-L6 was searched. MiniLM-L6 and DistilmBERT also read at most 256 tokens in the main comparison and therefore see less than half of the text of most test articles. Retraining both models with 512 tokens raises the test macro-F1 by 0.014 and 0.012 without changing the outcome of the comparison with StaticKD (Section~\ref{sec:res-acc}).
+The choice of baselines, the tuning budget, and the input length of the transformers limit the comparison of StaticKD with other models. The Sparse-Distillation-style baseline is a reimplementation and not the original system of Ye et al.~\cite{ye2022sparse}. It builds n-grams from the subword tokens of StaticKD instead of English words and uses tables of 0.13B and 0.27B parameters instead of about one billion. Doubling the table did not raise its accuracy. Tuning budgets differed across models. The StaticKD recipe was fixed on the development set before the test set was built and the fastText, TF-IDF, and Sparse-Distillation-style baselines were tuned on the same set with small grids. The Model2Vec classifier used the library defaults and the transformer models followed a standard fine-tuning recipe in which only $\tau$ of MiniLM-L6 was searched. MiniLM-L6 and DistilmBERT also read at most 256 tokens in the main comparison and therefore see less than half of the text of most test articles. Retraining both models with 512 tokens raises the test macro-F1 by 0.014 and 0.012 without changing the outcome of the comparison with StaticKD (Section~\ref{sec:res-acc}).
 
 Efficiency measurements rest on one machine. The whole benchmark ran on one laptop (Section~\ref{sec:effprotocol}) and the latency of the teacher and the transformer models was measured on only 100 documents. Absolute numbers will differ on a server but ratios between models measured under the same protocol remain informative.
 
@@ -759,7 +773,7 @@ StaticKD is weakest on the labels \emph{society}, \emph{disaster}, \emph{human i
 Further work can also lower the cost of StaticKD and extend its tasks and evaluation. A faster tokenizer such as a direct word-to-table lookup is the next source of speed because tokenization takes 98\% of the inference time of StaticKD. Vocabulary pruning to shrink the model has to keep the rare tokens that languages with little or no distillation data depend on. Other open problems are cheap non-linear heads with quantized embeddings, hierarchical classification down to IPTC level 2, multi-label classification, and human IPTC annotation of a multilingual sample of the test set.
 
 \section*{Code, Model, and Data Availability}
-The code for this study is available at \todo{GitHub URL and Zenodo DOI} and covers data collection, test-set construction, teacher labeling, training, evaluation, and benchmarking. A notebook in the same location reproduces every number, table, and figure in this paper. The section-to-IPTC mapping table is also released with the code. The StaticKD models are available at \todo{Hugging Face URL}. The test set is released with its reconstruction script as a manifest of article URLs or IDs, labels, label origins, and text hashes. Article texts are not redistributed because of publisher copyright and the licenses of the source datasets. EMMediaTopic is available from the CLARIN.SI repository~\cite{emmediatopic2025}. The licenses of the assets used and released in this study are listed with the code.
+The code for this study will be released when this article is published. It covers data collection, test-set construction, teacher labeling, training, evaluation, and benchmarking. A notebook released with the code reproduces every number, table, and figure in this paper. The section-to-IPTC mapping table is also released with the code. The StaticKD models will be released at the same time. The test set is released with its reconstruction script as a manifest of article URLs or IDs, labels, label origins, and text hashes. Article texts are not redistributed because of publisher copyright and the licenses of the source datasets. EMMediaTopic is available from the CLARIN.SI repository~\cite{emmediatopic2025}. The licenses of the assets used and released in this study are listed with the code.
 
 \section*{Acknowledgment}
 The authors thank the Department of Informatics Engineering, Sepuluh Nopember Institute of Technology, for supporting this research. The authors used Claude Opus 5.5 (Anthropic) under their direction to explore design options for the method and to run the exploratory and final experiments. It also wrote the experiment code, processed data (including the first draft of the section-to-IPTC mapping table), and drafted parts of the manuscript text. The same model labeled, adjudicated, and translated the sampled articles of the label audit. The authors wrote and revised the manuscript themselves, reviewed and verified all code, data, and results, and take full responsibility for its content and claims.
@@ -767,17 +781,18 @@ The authors thank the Department of Informatics Engineering, Sepuluh Nopember In
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 
-\begin{IEEEbiographynophoto}{Obi Kastanya}
-\todo{author biography}
-\end{IEEEbiographynophoto}
+\raggedbottom
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bio_obi.png}}]{Obi Kastanya}
+was born in Bengkulu, Indonesia, in August 1998. He received the bachelor's degree in computer science from the Faculty of Information Technology, Universitas Kristen Satya Wacana (UKSW), Salatiga, Indonesia, in 2021. He is currently pursuing the master's degree in informatics engineering with the Department of Informatics, Faculty of Intelligent Electrical and Informatics Technology, Institut Teknologi Sepuluh Nopember (ITS), Surabaya, Indonesia. His research interests include applied data mining, machine learning, and natural language processing.
+\end{IEEEbiography}
 
-\begin{IEEEbiographynophoto}{Ananta Dwi Prayoga Alwy}
-\todo{author biography}
-\end{IEEEbiographynophoto}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bio_ananta.png}}]{Ananta Dwi Prayoga Alwy}
+was born in Makassar, Indonesia, in February 2001. He received the bachelor's degree in computer engineering from the Department of Informatics and Computer Engineering, Universitas Negeri Makassar, Makassar, Indonesia, in 2023. He is currently pursuing the master's degree with the Department of Informatics, Faculty of Intelligent Electrical and Informatics Technology, Institut Teknologi Sepuluh Nopember (ITS), Surabaya, Indonesia. His research interests include machine learning, deep learning, and artificial intelligence integration.
+\end{IEEEbiography}
 
-\begin{IEEEbiographynophoto}{Dwi Sunaryono}
-\todo{author biography}
-\end{IEEEbiographynophoto}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bio_dwi.png}}]{Dwi Sunaryono}
+(Member, IEEE) was born in Surabaya, Indonesia, in May 1972. He received the bachelor's degree in computer engineering, the master's degree in informatics engineering, and the Ph.D. degree in computer science from the Department of Informatics, Faculty of Intelligent Electrical and Informatics Technology, Institut Teknologi Sepuluh Nopember (ITS), Surabaya, Indonesia, in 1995, 2009, and 2023, respectively. He is currently a Lecturer with the Department of Informatics, Faculty of Intelligent Electrical and Informatics Technology, ITS. His research interests include face recognition, signal processing, the Internet of Things, intelligent systems, and management information systems.
+\end{IEEEbiography}
 
 \EOD
 

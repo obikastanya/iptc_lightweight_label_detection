@@ -26,7 +26,7 @@ Protokol ini dirancang untuk mensimulasikan server kecil tanpa GPU (`statickd.be
 """),
 code(r"""
 BENCH = [m for m in ["teacher", "teacher_onnx_int8", "distilmbert_kd", "minilm_kd", "statickd", "statickd_compact",
-                     "ft_kd_subword_q", "ft_kd_subword", "tfidf_svm_kd", "model2vec_clf"] if key(m)]
+                     "ft_kd_subword_q", "ft_kd_subword", "tfidf_svm_kd", "model2vec_clf", "sdstyle_small", "sdstyle_large"] if key(m)]
 BENCH_FILE = FINAL_DIR / "cpu_benchmark.jsonl"
 
 if RUN_BENCHMARK:   # three repetitions; one fresh process per (model, threads) in every repetition
@@ -36,6 +36,14 @@ if RUN_BENCHMARK:   # three repetitions; one fresh process per (model, threads) 
 bench_runs = pd.read_json(BENCH_FILE, lines=True)
 if "run" not in bench_runs:   # older single-session file (before the 3x repetition protocol)
     bench_runs["run"] = 0
+# E1 baseline: three later sessions with the same protocol; StaticKD was rerun there as a reference
+E1_BENCH = FINAL_DIR.parent / "review_experiments" / "e1" / "cpu_benchmark.jsonl"
+if E1_BENCH.exists():
+    e1b = pd.read_json(E1_BENCH, lines=True).drop_duplicates(["model", "threads", "run"], keep="last")
+    e1_ref = e1b[(e1b.model == "statickd") & (e1b.threads == 1)]
+    NUM.add("e1.bench.statickd.dps_1c", e1_ref.docs_per_sec.median(), 0)
+    NUM.add("e1.bench.statickd.lat_1c", e1_ref.latency_ms_p50.median(), 2)
+    bench_runs = pd.concat([bench_runs, e1b[e1b.model.str.startswith("sdstyle")]], ignore_index=True)
 bench_runs = bench_runs.drop_duplicates(["model", "threads", "run"], keep="last")
 METRICS = ["latency_ms_p50", "latency_ms_p95", "docs_per_sec", "rss_model_mb", "size_mb", "load_seconds"]
 bench = bench_runs.groupby(["model", "threads"])[METRICS].median().reset_index()   # median over repetitions
@@ -78,7 +86,8 @@ NUM.add("eff.size_ratio_onnx", eff.loc["teacher_onnx_int8", "size_mb"] / eff.loc
 NUM.add("eff.size_ratio_pt", eff.loc["teacher", "size_mb"] / eff.loc["statickd", "size_mb"], 0)
 DEPS = {"teacher": "torch, transformers", "teacher_onnx_int8": "onnxruntime, transformers", "distilmbert_kd": "onnxruntime, transformers",
         "minilm_kd": "onnxruntime, transformers", "statickd": "numpy, tokenizers", "statickd_compact": "numpy, tokenizers",
-        "ft_kd_subword_q": "fasttext, tokenizers", "ft_kd_subword": "fasttext, tokenizers", "tfidf_svm_kd": "scikit-learn, tokenizers", "model2vec_clf": "model2vec, scikit-learn"}
+        "ft_kd_subword_q": "fasttext, tokenizers", "ft_kd_subword": "fasttext, tokenizers", "tfidf_svm_kd": "scikit-learn, tokenizers", "model2vec_clf": "model2vec, scikit-learn",
+        "sdstyle_small": "numpy, tokenizers", "sdstyle_large": "numpy, tokenizers"}
 lines = []
 for m, r in eff.iterrows():
     name = an.MODELS[m][0].replace(" (proposed)", "")
@@ -103,7 +112,8 @@ show(prof[["mean_tokens", "tokenize_docs_per_sec", "pool_docs_per_sec", "tokeniz
 acc_col = main_table["test_macro"]
 from matplotlib.ticker import NullFormatter, ScalarFormatter
 MARKERS = {"teacher": "s", "teacher_onnx_int8": "D", "distilmbert_kd": "^", "minilm_kd": "v", "statickd": "*",
-           "statickd_compact": "P", "ft_kd_subword_q": "o", "ft_kd_subword": "X", "tfidf_svm_kd": "h", "model2vec_clf": "D"}
+           "statickd_compact": "P", "ft_kd_subword_q": "o", "ft_kd_subword": "X", "tfidf_svm_kd": "h", "model2vec_clf": "D",
+           "sdstyle_small": "<", "sdstyle_large": ">"}
 fig, ax = plt.subplots(figsize=(6.8, 4.0))
 for m, r in eff.iterrows():   # a legend instead of point labels: several models overlap on the log axis
     if m not in acc_col:

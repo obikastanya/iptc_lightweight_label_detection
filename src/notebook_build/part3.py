@@ -182,7 +182,7 @@ minilm_dev = {t: ev.macro_f1(ev.eval_view("dev").y, ev.pred_view(f"minilm_kd_t{t
               for t in (1, 2) if ev.has_predictions(f"minilm_kd_t{t}", "dev")}
 MINILM = f"minilm_kd_t{max(minilm_dev, key=minilm_dev.get)}" if minilm_dev else None
 print("MiniLM macro-F1 dev per temperature:", {t: round(v, 4) for t, v in minilm_dev.items()}, "-> dipakai:", MINILM)
-MODEL_KEYS = {"minilm_kd": MINILM}
+MODEL_KEYS = {"minilm_kd": MINILM, "sdstyle_small": "sdstyle_small_s0", "sdstyle_large": "sdstyle_large_s0"}   # E1: seed 0 fixed in advance
 def key(m):  # registry key -> prediction name
     return MODEL_KEYS.get(m, m)
 transformer_meta = {n: json.loads((an.BASELINES_DIR / key(n) / "train_meta.json").read_text())

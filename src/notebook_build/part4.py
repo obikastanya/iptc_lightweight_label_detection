@@ -16,7 +16,8 @@ Interval kepercayaan 95% ditulis dalam kurung siku.
 """),
 code(r"""
 MAIN = ["teacher", "teacher_onnx_int8", "distilmbert_kd", "minilm_kd", "statickd", "statickd_compact",
-        "ft_kd_subword_q", "ft_kd_subword", "ft_kd_word", "tfidf_svm_kd", "model2vec_clf", "ft_gpt_subword", "ft_gpt_word"]
+        "ft_kd_subword_q", "ft_kd_subword", "ft_kd_word", "tfidf_svm_kd", "model2vec_clf", "sdstyle_small", "sdstyle_large",
+        "ft_gpt_subword", "ft_gpt_word"]
 MAIN = [m for m in MAIN if key(m) and ev.has_predictions(key(m), "dev")]
 rows = []
 for m in MAIN:
@@ -82,7 +83,7 @@ for m, r in main_table.iterrows():
             fmt(r["test_vs_teacher"], 1, percent=True) if pd.notna(r.get("test_vs_teacher")) else "--"]
     lines.append(" & ".join(vals) + " \\\\")
     if m in ("teacher_onnx_int8", "minilm_kd", "statickd_compact",
-             "model2vec_clf" if "model2vec_clf" in main_table.index else "tfidf_svm_kd"):
+             [m for m in ("sdstyle_large", "sdstyle_small", "model2vec_clf", "tfidf_svm_kd") if m in main_table.index][0]):
         lines.append("\\midrule")
 write_table("main", lines[:-1] if lines[-1] == "\\midrule" else lines)
 """),
@@ -183,7 +184,7 @@ for m in FOREST_MODELS:
     tt = ev.tost(pb["diffs"], 0.01)
     r = st_test.loc[m]
     f_rows.append((an.MODELS[m][0], r.f1_delta, (r.f1_ci_low, r.f1_ci_high), (tt["ci90_low"], tt["ci90_high"]), r.p_boot_holm < 0.05))
-fig, ax = plt.subplots(figsize=(3.5, 2.9))
+fig, ax = plt.subplots(figsize=(3.5, 3.4))
 viz.forest(ax, *zip(*f_rows), margin=0.01, xlabel="$\\Delta$ test macro-F1 (StaticKD $-$ model)", breaks=(2, 4, 5))
 viz.show_and_save(fig, "fig_sig_forest")
 """),
@@ -204,7 +205,8 @@ NUM.add("ts.clusters.eff", ev.effective_clusters(cl), 1)
 NUM.add("ts.clusters.top2.share", csize.iloc[:2].sum() / len(cl), 1, percent=True)
 NUM.add("ts.clusters.top1.n", int(csize.iloc[0]), 0); NUM.add("ts.clusters.top2.n", int(csize.iloc[1]), 0)
 print("klaster terbesar:", csize.head(5).to_dict())
-LOSO_MODELS = [m for m in ["teacher", "minilm_kd", "distilmbert_kd", "statickd", "model2vec_clf", "tfidf_svm_kd", "ft_kd_subword_q", "ft_kd_subword", "ft_kd_word"]
+LOSO_MODELS = [m for m in ["teacher", "minilm_kd", "distilmbert_kd", "statickd", "model2vec_clf", "tfidf_svm_kd", "ft_kd_subword_q", "ft_kd_subword", "ft_kd_word",
+                              "sdstyle_small", "sdstyle_large"]
                if key(m) and ev.has_predictions(key(m), "test")]
 y_t = tv.y.to_numpy()
 loso = {}
@@ -345,6 +347,46 @@ for m in sens.index:
     NUM.add(f"sens.{m}.cap5", sens.loc[m, "cap5_macro"])
 print("pasangan yang bertukar urutan:", swaps)
 show(sens, f"Sensitivitas: set uji penuh vs subset maks. 5 artikel/situs/sel ({len(cap_idx)} artikel)")
+"""),
+md(r"""
+**Baseline gaya Sparse Distillation (E1).** Baseline ini dilatih ulang dengan data distilasi, logit *teacher*, dan
+*tokenizer* yang sama dengan StaticKD (`scripts/review_experiments/e1_*.py`, model di `models/review_e1/`). Tabel
+utama memakai seed 0 yang ditetapkan sebelum eksperimen. Sel ini menghitung rerata tiga seed, uji ekuivalensi
+terhadap StaticKD, pengaruh ukuran tabel (0,27B dikurangi 0,13B), dan skor menurut jumlah data distilasi.
+"""),
+code(r"""
+SD = {"sdstyle_small": "small", "sdstyle_large": "large"}
+SD_SEEDS = {m: [f"sdstyle_{s}_s{i}" for i in range(3) if ev.has_predictions(f"sdstyle_{s}_s{i}", "test")] for m, s in SD.items()}
+SD = {m: s for m, s in SD.items() if SD_SEEDS[m]}
+for m in SD:
+    for s in ("dev", "heldout", "test"):
+        y_s = ev.eval_view(s).y.to_numpy()
+        f1 = [ev.macro_f1(y_s, ev.pred_view(n, s)) for n in SD_SEEDS[m]]
+        acc = [float((ev.pred_view(n, s) == y_s).mean()) for n in SD_SEEDS[m]]
+        NUM.add(f"e1.{m}.{s}.macro.mean", np.mean(f1)); NUM.add(f"e1.{m}.{s}.macro.sd", np.std(f1, ddof=1))
+        NUM.add(f"e1.{m}.{s}.acc.mean", np.mean(acc))
+    pb = ev.paired_bootstrap_seeds(yf, [ev.pred_view("statickd", "test")], [ev.pred_view(key(m), "test")], clusters=clf, n_boot=2 * N_BOOT)
+    tt = ev.tost(pb["diffs"], 0.01)
+    NUM.add(f"e1.{m}.tost_p", fmt_p(tt["p"])); NUM.add(f"e1.{m}.equivalent", "yes" if tt["equivalent"] else "no")
+    print(m, "seeds:", SD_SEEDS[m], "TOST ±0.01:", tt)
+if len(SD) == 2:   # does the larger table help? seed-averaged paired difference, large minus small
+    for s in ("dev", "test"):
+        v = ev.eval_view(s); y_s = v.y.to_numpy(); c_s = v.cluster.to_numpy() if s == "test" else None
+        pb = ev.paired_bootstrap_seeds(y_s, [ev.pred_view(n, s) for n in SD_SEEDS["sdstyle_large"]],
+                                       [ev.pred_view(n, s) for n in SD_SEEDS["sdstyle_small"]], clusters=c_s, n_boot=2 * N_BOOT)
+        NUM.add(f"e1.size.{s}.delta", pb["delta"], 3, sign=True)
+        NUM.add(f"e1.size.{s}.ci", f"{fmt(pb['ci_low'], 3, sign=True)}, {fmt(pb['ci_high'], 3, sign=True)}")
+        NUM.add(f"e1.size.{s}.p", fmt_p(pb["p"]))
+        print(s, "large - small:", {k: v for k, v in pb.items() if k != "diffs"})
+sd_grp = {}
+for col in ("distil_tier", "xlmr"):
+    g = an.subgroup_scores([key(m) for m in ["teacher", "statickd", *SD]], col, test)
+    g["model"] = g["model"].map({key(m): m for m in ["teacher", "statickd", *SD]})
+    sd_grp[col] = g.pivot(index=col, columns="model", values="macro_f1")
+    for grp, r in sd_grp[col].iterrows():
+        for m in SD:
+            NUM.add(f"e1.grp.{col}.{re.sub('[^A-Za-z]', '', str(grp))[:16]}.{m}", r[m])
+    show(sd_grp[col], f"E1: macro-F1 uji menurut {col}")
 """),
 md(r"""
 ### 8.5 Validitas label silver

@@ -17,7 +17,9 @@
 \graphicspath{{../paper_final/}{./}}
 \makeatletter\def\figurename{GAMBAR}\def\tablename{TABEL}\makeatother
 
+\usepackage{etoolbox}
 \DeclareRobustCommand{\todo}[1]{{\color{red}[TODO: #1]}}
+\makeatletter\expandafter\patchcmd\csname\string\IEEEbiography\endcsname{\vskip \@IEEEBIOskipN plus 1fil minus 0\baselineskip}{\vskip \@IEEEBIOskipN}{}{\PackageWarning{main}{biography spacing patch failed}}\makeatother
 
 \emergencystretch=1.5em
 
@@ -25,19 +27,21 @@
 
 \begin{document}
 \history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
-\doi{10.1109/ACCESS.2024.0429000}
+\doi{10.1109/ACCESS.2026.0429000}
+\vol{14}
+\def\theyear{2026}
 
 \title{StaticKD: Mendistilasi Pengklasifikasi Topik Berita IPTC Multibahasa menjadi Tabel Token-Logit Statis untuk Inferensi Ringan pada CPU}
 
-\author{\uppercase{Obi Kastanya}\authorrefmark{1} AND \uppercase{Ananta Dwi Prayoga Alwy}\authorrefmark{1}}
-\address[1]{Departemen Teknik Informatika, Institut Teknologi Sepuluh Nopember, Surabaya, Indonesia (e-mail: 6025252015@student.its.ac.id; 6025252007@student.its.ac.id)}
+\author{\uppercase{Obi Kastanya}\authorrefmark{1}, \uppercase{Ananta Dwi Prayoga Alwy}\authorrefmark{1}, AND \uppercase{Dwi Sunaryono}\authorrefmark{1}, \IEEEmembership{Member, IEEE}}
+\address[1]{Departemen Teknik Informatika, Institut Teknologi Sepuluh Nopember, Surabaya, Indonesia (e-mail: 6025252015@student.its.ac.id; 6025252007@student.its.ac.id; dwi.syn@its.ac.id)}
 \tfootnote{Penelitian ini tidak menerima pendanaan khusus.}
 
 \markboth
-{Kastanya and Alwy: StaticKD, Multilingual IPTC News Topic Classification on CPU}
-{Kastanya and Alwy: StaticKD, Multilingual IPTC News Topic Classification on CPU}
+{Kastanya \headeretal: StaticKD, Multilingual IPTC News Topic Classification on CPU}
+{Kastanya \headeretal: StaticKD, Multilingual IPTC News Topic Classification on CPU}
 
-\corresp{Penulis korespondensi: Obi Kastanya (e-mail: 6025252015@student.its.ac.id).}
+\corresp{Penulis korespondensi: Dwi Sunaryono (e-mail: dwi.syn@its.ac.id).}
 
 \begin{abstract}
 Penyaringan berita berdasarkan taksonomi Media Topic dari International Press Telecommunications Council (IPTC) memerlukan pengklasifikasi yang cukup murah untuk aliran \en{pipeline} artikel multibahasa \en{real-time}. Pengklasifikasi IPTC multibahasa terbuka berbasis XLM-RoBERTa-large yang sudah ada memerlukan 1,190 hingga 2,816 milidetik per artikel pada satu \en{core} prosesor. StaticKD memakai pengklasifikasi ini sebagai \en{teacher} dan memberi setiap token kosakata satu skor untuk masing-masing dari 17 topik IPTC tingkat atas. Klasifikasi hanya memerlukan tokenisasi artikel dan perataan skor tokennya. \en{Student} diinisialisasi dari \en{embedding} statis multibahasa (satu vektor tetap per token) dan belajar dari keluaran \en{teacher} pada 285,999 artikel dalam 69 bahasa. Evaluasi memakai \en{test set} baru berisi 12,744 artikel dalam 47 bahasa. Labelnya berasal dari anotator manusia atau editor redaksi dan bukan dari model yang membaca artikel. Perbedaan antarmodel diuji dengan \en{site-cluster bootstrap} berpasangan dan koreksi Holm. StaticKD mencapai macro-F1 sebesar 0.545 (interval kepercayaan 95\% 0.490--0.605) dan mempertahankan 91.1\% skor \en{teacher} (0.598). Model berukuran 34 megabyte ini mengklasifikasikan 539 artikel per detik per \en{core} dan memiliki \en{throughput} sekitar 682 kali \en{throughput} \en{teacher} yang dikuantisasi 8-bit. Model ini lebih akurat daripada fastText (+0.098 macro-F1, $p<0.001$) dan \en{support vector machine} linear (+0.059, $p=0.040$) yang dilatih pada label yang sama. Pengklasifikasi Model2Vec yang dilatih pada label ini sama akuratnya dalam batas 0.01 macro-F1 (\en{two one-sided tests}, $p=0.025$). Pengklasifikasi tersebut memerlukan berkas 15 kali lebih besar dan memori dua kali lipat. StaticKD lemah pada bahasa yang tidak terdapat baik dalam data pelatihannya maupun dalam data prapelatihan \en{teacher}.
@@ -316,11 +320,11 @@ Audit tingkat artikel mengukur seberapa sering label editorial menyebut topik ut
 \label{sec:setup}
 \subsection{\en{Baseline}}
 \label{sec:baselines}
-Semua \en{baseline} bertanda + KD belajar dari data distilasi yang sama (285,999 dokumen) dan dari \en{teacher} yang sama. Tabel~\ref{tab:baselines} menunjukkan bahwa hanya kedua \en{baseline} \en{transformer} yang belajar dari distribusi penuh \en{teacher}. Tiga \en{baseline} ringan dilatih pada label teratas \en{teacher} karena prosedur pelatihan standarnya menerima label kelas tetapi tidak menerima distribusi probabilitas. Ketiga \en{baseline} ringan itu adalah fastText + KD~\cite{joulin2017bag}, \en{term frequency--inverse document frequency} (TF-IDF) + \en{support vector machine} (SVM) + KD, dan pengklasifikasi Model2Vec + KD~\cite{tulkens2024model2vec}. TF-IDF + SVM + KD mengadaptasi \en{baseline} nonneural dari Kuzman dan Ljube\v{s}i\'c ke label \en{teacher}. Pengklasifikasi Model2Vec + KD menerapkan \en{fine-tuning} pada \en{embedding} potion yang juga menjadi titik awal StaticKD serta mempelajari bobot untuk tiap token. Dua model fastText lain dilatih hanya pada label GPT-4o dari \en{split} pelatihan EMMediaTopic sebagai acuan tanpa KD yang memakai data berlabel yang sama dengan \en{teacher}~\cite{kuzman2025llm}.
+Semua \en{baseline} bertanda + KD belajar dari data distilasi yang sama (285,999 dokumen) dan dari \en{teacher} yang sama. Tabel~\ref{tab:baselines} menunjukkan bahwa hanya kedua \en{baseline} \en{transformer} dan \en{baseline} gaya Sparse Distillation yang belajar dari distribusi penuh \en{teacher}. Tiga \en{baseline} ringan dilatih pada label teratas \en{teacher} karena prosedur pelatihan standarnya menerima label kelas tetapi tidak menerima distribusi probabilitas. Ketiga \en{baseline} ringan itu adalah fastText + KD~\cite{joulin2017bag}, \en{term frequency--inverse document frequency} (TF-IDF) + \en{support vector machine} (SVM) + KD, dan pengklasifikasi Model2Vec + KD~\cite{tulkens2024model2vec}. TF-IDF + SVM + KD mengadaptasi \en{baseline} nonneural dari Kuzman dan Ljube\v{s}i\'c ke label \en{teacher}. Pengklasifikasi Model2Vec + KD menerapkan \en{fine-tuning} pada \en{embedding} potion yang juga menjadi titik awal StaticKD serta mempelajari bobot untuk tiap token. Dua model fastText lain dilatih hanya pada label GPT-4o dari \en{split} pelatihan EMMediaTopic sebagai acuan tanpa KD yang memakai data berlabel yang sama dengan \en{teacher}~\cite{kuzman2025llm}.
 
 MiniLM-L6 + KD dan DistilmBERT + KD adalah \en{baseline} \en{transformer} yang dilatih dengan \en{loss}~\eqref{eq:kd} pada distribusi penuh \en{teacher}. MiniLM-L6 + KD memakai mMiniLMv2-L6-H384 yang didistilasi dari XLM-R-large~\cite{wang2021minilmv2} sedangkan DistilmBERT + KD memakai \texttt{distilbert-base-multilingual-cased}~\cite{sanh2019distilbert}. Batas 256 token memotong 91.1\% artikel \en{test} menjadi sekitar 142 kata untuk MiniLM-L6 dan 93.2\% menjadi sekitar 116 kata untuk DistilmBERT. Pemeriksaan sensitivitas terhadap batas ini melatih ulang kedua model dengan 512 token (Bagian~\ref{sec:res-acc}).
 
-Sparse Distillation~\cite{ye2022sparse} adalah metode terdahulu yang paling dekat dengan StaticKD tetapi tidak dijalankan sebagai \en{baseline} tersendiri (Bagian~\ref{sec:limitations}). Sebagian dari metode tersebut tetap tercakup dalam dua eksperimen lain. \en{Baseline} fastText + KD melatih model \en{bag-of-n-grams} dengan perataan dan \en{head} linear pada label \en{teacher} yang sama. Ablasi inisialisasi acak (Bagian~\ref{sec:design}) melatih tabel \en{embedding} dari awal seperti Sparse Distillation.
+Sparse Distillation~\cite{ye2022sparse} adalah metode terdahulu yang paling dekat dengan StaticKD dan diimplementasikan ulang sebagai \en{baseline} dengan kondisi yang sama (SD-style + KD). \en{Baseline} ini memakai data distilasi, logit \en{teacher}, dan \en{tokenizer} yang sama dengan StaticKD. Model ini merata-ratakan \en{embedding} unigram serta \en{embedding} bigram dan trigram ter-\en{hash} yang dilatih dari awal lalu meneruskan rata-rata itu ke \en{head} MLP yang dilatih dengan \en{loss} KL pada~\eqref{eq:kd}. Dua ukuran tabel sebesar 0.13B dan 0.27B parameter menguji apakah ukuran tabel membatasi akurasi. \en{Learning rate}, ukuran lapisan tersembunyi, dan jumlah \en{epoch} dipilih pada \en{development set}.
 
 \begin{table*}[!t]
 \caption{\en{Baseline} dan Cara Pelatihannya}
@@ -338,6 +342,7 @@ fastText + KD, subword & rata-rata vektor subword XLM-R, head linear & label ter
 fastText + KD, subword, terkuantisasi & varian subword dalam format \texttt{.ftz} & label teratas teacher & dari varian subword \\
 TF-IDF + SVM + KD & TF-IDF atas subword XLM-R, SVM linear & label teratas teacher & grid search pada development set \\
 Pengklasifikasi Model2Vec + KD & embedding potion hasil fine-tuning dengan bobot per token, lapisan tersembunyi 512 unit & label teratas teacher & pengaturan bawaan pustaka \\
+SD-style + KD (0.13B, 0.27B) & rata-rata embedding unigram serta bigram dan trigram ter-hash yang dilatih dari awal, head MLP & distribusi penuh teacher & grid search pada development set \\
 MiniLM-L6 + KD & transformer 6 lapisan, input 256 token & distribusi penuh teacher & $\tau\in\{1,2\}$ pada development set \\
 DistilmBERT + KD & transformer 6 lapisan, input 256 token & distribusi penuh teacher & $\tau=1$ \\
 fastText, label GPT-4o (kata, subword) & seperti fastText + KD & label GPT-4o EMMediaTopic & pengaturan tetap \\
@@ -466,6 +471,8 @@ fastText + KD, subword & 0.737 [0.701--0.765] & 0.772 & 0.754 & 0.447 [0.385--0.
 fastText + KD, kata & 0.750 [0.713--0.779] & 0.791 & 0.758 & 0.445 [0.380--0.563] & 0.515 & 0.474 & 74.5\% \\
 TF-IDF + SVM + KD & 0.755 [0.719--0.786] & 0.798 & 0.776 & 0.486 [0.431--0.585] & 0.567 & 0.522 & 81.3\% \\
 Pengklasifikasi Model2Vec + KD & 0.744 [0.701--0.772] & 0.780 & 0.805 & 0.547 [0.495--0.599] & 0.642 & 0.619 & 91.5\% \\
+SD-style + KD, 0.13B & 0.709 [0.667--0.744] & 0.766 & 0.734 & 0.431 [0.374--0.538] & 0.502 & 0.462 & 72.1\% \\
+SD-style + KD, 0.27B & 0.714 [0.670--0.746] & 0.764 & 0.741 & 0.430 [0.372--0.538] & 0.499 & 0.460 & 71.9\% \\
 \midrule
 fastText, label GPT-4o, subword & 0.665 [0.613--0.700] & 0.729 & 0.260 & 0.086 [0.069--0.119] & 0.150 & 0.118 & 14.4\% \\
 fastText, label GPT-4o, kata & 0.651 [0.601--0.693] & 0.738 & 0.307 & 0.106 [0.085--0.150] & 0.181 & 0.142 & 17.7\% \\
@@ -495,6 +502,8 @@ fastText + KD, subword & +0.098 [+0.036, +0.134] & $<$0.001 & +0.114 & 1979/529 
 fastText + KD, kata & +0.099 [+0.037, +0.141] & $<$0.001 & +0.126 & 2140/536 & $<$0.001 \\
 TF-IDF + SVM + KD & +0.059 [+0.009, +0.093] & 0.040 & +0.074 & 1667/719 & $<$0.001 \\
 Pengklasifikasi Model2Vec + KD & $-$0.002 [$-$0.009, +0.010] & 1.000 & $-$0.001 & 438/447 & 0.788 \\
+SD-style + KD, 0.13B & +0.114 [+0.060, +0.145] & $<$0.001 & +0.139 & 2268/501 & $<$0.001 \\
+SD-style + KD, 0.27B & +0.115 [+0.058, +0.148] & $<$0.001 & +0.142 & 2309/501 & $<$0.001 \\
 fastText, label GPT-4o, subword & +0.458 [+0.415, +0.496] & $<$0.001 & +0.491 & 6597/344 & $<$0.001 \\
 fastText, label GPT-4o, kata & +0.439 [+0.393, +0.475] & $<$0.001 & +0.460 & 6252/391 & $<$0.001 \\
 \bottomrule
@@ -513,7 +522,9 @@ Pengklasifikasi Model2Vec adalah satu-satunya model ringan yang menyamai StaticK
 
 StaticKD unggul atas fastText + KD terkuantisasi sebesar +0.106 [+0.037, +0.145] dan atas TF-IDF + SVM sebesar +0.059 [+0.009, +0.093] ($p=0.040$). Macro-F1 StaticKD lebih tinggi daripada fastText + KD pada 40 dari 47 bahasa (Wilcoxon $p<0.001$). Keunggulan atas TF-IDF + SVM lebih sempit dengan macro-F1 StaticKD yang lebih tinggi pada 31 dari 47 bahasa (Wilcoxon $p=0.003$). Gambaran yang berbeda muncul dari akurasi per bahasa terhadap TF-IDF + SVM karena StaticKD lebih tinggi pada 24 bahasa dan lebih rendah pada 22 (Wilcoxon $p=0.127$).
 
-Peringkat model hampir tidak berubah pada pemeriksaan terhadap struktur klaster \en{test set}. \en{Subset} dengan paling banyak lima artikel per situs dan pasangan bahasa--label menyisakan 8,139 artikel dengan skor 0.587 untuk StaticKD dan 0.627 untuk \en{teacher}. Hanya urutan StaticKD dan pengklasifikasi Model2Vec (0.583) yang berubah pada \en{subset} tersebut. Pembuangan sumber satu per satu menempatkan StaticKD di antara peringkat ketiga dan kelima dari sembilan model dan hanya pengklasifikasi Model2Vec serta DistilmBERT yang bertukar posisi dengannya. Setiap model fastText dan TF-IDF tetap paling sedikit 0.028 di bawah StaticKD.
+\en{Baseline} gaya Sparse Distillation mencapai macro-F1 \en{test} 0.431 dengan tabel 0.13B dan 0.430 dengan tabel 0.27B. StaticKD unggul atas keduanya sebesar +0.114 [+0.060, +0.145] dan +0.115 [+0.058, +0.148] ($p<0.001$). Penggandaan ukuran tabel tidak menambah akurasi karena selisih kedua ukuran pada rerata tiga \en{seed} adalah +0.004 [$-$0.003, +0.010] ($p=0.222$). Selisih dengan StaticKD paling lebar pada bahasa dengan data distilasi yang sedikit atau tidak ada. Pada kelompok ini \en{baseline} 0.13B mencapai 0.204 dan 0.160 berbanding 0.478 dan 0.402 untuk StaticKD. Penambahan kedua \en{baseline} ke dalam koreksi Holm tidak mengubah hasil lain pada Tabel~\ref{tab:sig}.
+
+Peringkat model hampir tidak berubah pada pemeriksaan terhadap struktur klaster \en{test set}. \en{Subset} dengan paling banyak lima artikel per situs dan pasangan bahasa--label menyisakan 8,139 artikel dengan skor 0.587 untuk StaticKD dan 0.627 untuk \en{teacher}. Hanya urutan StaticKD dan pengklasifikasi Model2Vec (0.583) yang berubah pada \en{subset} tersebut. Pembuangan sumber satu per satu menempatkan StaticKD di antara peringkat ketiga dan kelima dari sebelas model dan hanya pengklasifikasi Model2Vec serta DistilmBERT yang bertukar posisi dengannya. Setiap model fastText dan TF-IDF tetap paling sedikit 0.028 di bawah StaticKD.
 
 Hasil uji berpasangan juga tidak berubah ketika kedua \en{transformer} membaca input yang lebih panjang. Pelatihan ulang dengan input 512 token menaikkan macro-F1 \en{test} MiniLM-L6 dan DistilmBERT menjadi 0.580 dan 0.547. MiniLM-L6 tetap unggul atas StaticKD ($-$0.035 [$-$0.049, $-$0.021], $p<0.001$) dan DistilmBERT tetap tidak berbeda signifikan dari StaticKD ($-$0.002 [$-$0.029, +0.022], $p=0.779$).
 
@@ -539,8 +550,11 @@ fastText + KD, subword, terkuantisasi & 1.93 / 3.21 & 545 & 1,393 & 300 & 18 & f
 fastText + KD, subword & 2.07 / 3.62 & 489 & 1,184 & 1,122 & 839 & fasttext, tokenizers \\
 TF-IDF + SVM + KD & 2.96 / 4.49 & 433 & 865 & 828 & 166 & scikit-learn, tokenizers \\
 Pengklasifikasi Model2Vec + KD & 1.99 / 3.22 & 568 & 1,822 & 1,091 & 507 & model2vec, scikit-learn \\
+SD-style + KD, 0.13B & 2.36 / 3.82 & 456 & 1,188 & 737 & 268 & numpy, tokenizers \\
+SD-style + KD, 0.27B & 2.38 / 3.91 & 457 & 1,173 & 998 & 531 & numpy, tokenizers \\
 \bottomrule
 \end{tabular}}
+\par\vspace{2pt}{\footnotesize Baris SD-style berasal dari sesi pengukuran berikutnya dengan protokol yang sama dan StaticKD mencapai 546 dok/s pada satu \en{core} di sesi itu.\par}
 \end{table*}
 \begin{figure*}[!t]
 \centering
@@ -552,7 +566,7 @@ Tabel~\ref{tab:eff} menunjukkan bahwa \en{teacher} terlalu lambat di CPU untuk a
 
 Kecepatan StaticKD pada satu \en{core} melampaui semua model berbasis \en{transformer} dan mirip dengan model ringan lain. StaticKD memerlukan 2.01~ms per artikel dan dapat memproses 539 artikel per detik per \en{core} atau sekitar 682 kali \en{throughput} \en{teacher} ONNX int8 dan 1,572 kali \en{throughput} \en{teacher} PyTorch. MiniLM-L6 dan DistilmBERT hasil distilasi masih sekitar 32 dan 107 kali lebih lambat daripada StaticKD. Kecepatan satu \en{core} model ringan lain berkisar dari 433 artikel per detik untuk TF-IDF + SVM hingga 601 untuk varian ringkas. Tokenisasi membatasi kecepatan StaticKD karena memakan 98\% waktu prediksi satu \en{thread} dengan rata-rata 579 token per artikel sedangkan langkah merata-ratakan baris tabel yang menyusul tokenisasi mencapai 26,843 artikel per detik bila diukur sendiri.
 
-StaticKD juga memerlukan berkas yang lebih kecil daripada \en{teacher} serta berkas dan RAM yang lebih kecil daripada pengklasifikasi Model2Vec. Berkas StaticKD 16 kali lebih kecil daripada berkas \en{teacher} ONNX int8. Pengklasifikasi Model2Vec yang menyamai akurasi StaticKD memerlukan 507~MB di \en{disk} dan 1,091~MB RAM dibandingkan dengan 501~MB RAM pada StaticKD. Gambar~\ref{fig:tradeoff} memetakan macro-F1 \en{test} terhadap \en{throughput} satu \en{core} pada panel (a) dan RAM pada panel (b) dalam skala log dengan \en{Pareto frontier} sebagai garis putus-putus. StaticKD dan pengklasifikasi Model2Vec seri pada panel (a) karena macro-F1 keduanya setara dan \en{throughput} keduanya pada tiga sesi pengukuran saling tumpang tindih (530--553 dan 547--569 artikel per detik). RAM StaticKD tersebut sebagian besar diisi struktur \en{tokenizer} dan turun menjadi 277~MB pada varian ringkas. Model fastText + KD terkuantisasi lebih kecil (18~MB) dan memakai lebih sedikit RAM (300~MB) daripada StaticKD tetapi hanya mencapai macro-F1 \en{test} 0.439.
+StaticKD juga memerlukan berkas yang lebih kecil daripada \en{teacher} serta berkas dan RAM yang lebih kecil daripada pengklasifikasi Model2Vec. Berkas StaticKD 16 kali lebih kecil daripada berkas \en{teacher} ONNX int8. Pengklasifikasi Model2Vec yang menyamai akurasi StaticKD memerlukan 507~MB di \en{disk} dan 1,091~MB RAM dibandingkan dengan 501~MB RAM pada StaticKD. Kedua tabel \en{baseline} gaya Sparse Distillation lebih besar dengan 268 dan 531~MB di \en{disk} serta 737 dan 998~MB RAM. Gambar~\ref{fig:tradeoff} memetakan macro-F1 \en{test} terhadap \en{throughput} satu \en{core} pada panel (a) dan RAM pada panel (b) dalam skala log dengan \en{Pareto frontier} sebagai garis putus-putus. StaticKD dan pengklasifikasi Model2Vec seri pada panel (a) karena macro-F1 keduanya setara dan \en{throughput} keduanya pada tiga sesi pengukuran saling tumpang tindih (530--553 dan 547--569 artikel per detik). RAM StaticKD tersebut sebagian besar diisi struktur \en{tokenizer} dan turun menjadi 277~MB pada varian ringkas. Model fastText + KD terkuantisasi lebih kecil (18~MB) dan memakai lebih sedikit RAM (300~MB) daripada StaticKD tetapi hanya mencapai macro-F1 \en{test} 0.439.
 
 \subsection{Ablasi, \en{Temperature}, dan \en{Ensemble}}
 \label{sec:res-abl}
@@ -709,7 +723,7 @@ Tingkat keyakinan StaticKD lebih terkalibrasi daripada tingkat keyakinan \en{tea
 Skor StaticKD terendah terjadi pada \emph{society}, \emph{disaster}, \emph{human interest}, dan \emph{conflict} tetapi skor rendah ini tidak khas bagi \en{student}. Label yang sama termasuk label tersulit bagi \en{teacher} (Bagian~\ref{sec:res-lang}) dan \emph{society} serta \emph{human interest} sulit bahkan bagi anotator manusia~\cite{kuzman2025llm}. Selisih yang tersisa terhadap \en{teacher} terletak pada label lain dan pada bahasa yang kurang terwakili dalam data distilasi (Bagian~\ref{sec:res-lang}).
 
 \subsection{Sumber Akurasi}
-Kontribusi terbesar berasal dari inisialisasi multibahasa hasil prapelatihan dan kontribusi terbesar kedua dari data distilasi multibahasa yang dilabeli \en{teacher}. Inisialisasi acak mengurangi macro-F1 \en{test} sebesar 0.120 berbanding 0.051 untuk penghapusan data multibahasa. Bukti paling langsung tentang peran inisialisasi berasal dari varian ringkas pada empat bahasa India yang hampir tidak muncul dalam data distilasi (Bagian~\ref{sec:res-lang}). \en{Embedding} token langka dalam bahasa-bahasa ini tetap dekat dengan nilai potion karena pelatihan jarang atau tidak pernah memperbaruinya. Akurasi StaticKD dalam bahasa-bahasa ini masih mendekati akurasinya pada bahasa lain tetapi turun hampir ke nol setelah \en{tokenizer} ringkas menghapus token-token ini. Penurunan ini mengungkap bahwa transfer ke bahasa tanpa data bergantung pada \en{embedding} yang hampir tidak diubah pelatihan. \en{Head} linear yang dipelajari dari bahasa kaya data tetap berlaku untuk \en{embedding} tersebut karena \en{embedding} ini berada dalam ruang yang sama dengan \en{embedding} yang telah dilatih. Peran inisialisasi ini juga membedakan StaticKD dari Sparse Distillation~\cite{ye2022sparse} yang melatih tabel n-gram dari awal. \en{Embedding} multibahasa hasil prapelatihan yang dilipat menjadi 17 logit per token memungkinkan transfer ke bahasa yang tidak ada dalam data distilasi.
+Kontribusi terbesar berasal dari inisialisasi multibahasa hasil prapelatihan dan kontribusi terbesar kedua dari data distilasi multibahasa yang dilabeli \en{teacher}. Inisialisasi acak mengurangi macro-F1 \en{test} sebesar 0.120 berbanding 0.051 untuk penghapusan data multibahasa. Bukti paling langsung tentang peran inisialisasi berasal dari varian ringkas pada empat bahasa India yang hampir tidak muncul dalam data distilasi (Bagian~\ref{sec:res-lang}). \en{Embedding} token langka dalam bahasa-bahasa ini tetap dekat dengan nilai potion karena pelatihan jarang atau tidak pernah memperbaruinya. Akurasi StaticKD dalam bahasa-bahasa ini masih mendekati akurasinya pada bahasa lain tetapi turun hampir ke nol setelah \en{tokenizer} ringkas menghapus token-token ini. Penurunan ini mengungkap bahwa transfer ke bahasa tanpa data bergantung pada \en{embedding} yang hampir tidak diubah pelatihan. \en{Head} linear yang dipelajari dari bahasa kaya data tetap berlaku untuk \en{embedding} tersebut karena \en{embedding} ini berada dalam ruang yang sama dengan \en{embedding} yang telah dilatih. Peran inisialisasi ini juga membedakan StaticKD dari \en{baseline} gaya Sparse Distillation yang melatih tabel n-gram dari awal. \en{Baseline} ini paling tertinggal dari StaticKD pada bahasa dengan data distilasi yang sedikit atau tidak ada (Bagian~\ref{sec:res-acc}). \en{Embedding} multibahasa hasil prapelatihan yang dilipat menjadi 17 logit per token memungkinkan transfer ke bahasa yang tidak ada dalam data distilasi.
 
 Pembekuan \en{embedding} menaikkan rata-rata skor bahasa dengan data distilasi yang sedikit atau tidak ada (Tabel~\ref{tab:ablation-groups}). \en{Fine-tuning} menggeser \en{embedding} token milik bahasa pelatihan sedangkan token dari bahasa lain tetap berada pada posisi yang diberikan oleh potion. \en{Head} model telah menyesuaikan diri dengan \en{embedding} yang bergeser dan kurang cocok dengan token yang tidak bergeser. Pergeseran yang sama membuat model lebih cocok dengan bahasa pelatihan sehingga \en{embedding} beku memberikan skor \en{development set} yang lebih rendah. \en{Fine-tuning} dan pembekuan karena itu mungkin mempertukarkan kecocokan dengan bahasa pelatihan dan penyelarasan lintas bahasa yang diwarisi dari potion. \en{Development set} dalam bahasa pelatihan hanya mengukur sisi pertama pertukaran ini sehingga resep akhir yang dipilih pada set tersebut memakai \en{fine-tuning}. Pembekuan tidak memberikan kenaikan signifikan pada seluruh \en{test set} tetapi layak diuji untuk penerapan yang menyasar bahasa tanpa data distilasi.
 
@@ -739,7 +753,7 @@ Cakupan label tidak merata antarbahasa. Median jumlah label yang muncul dalam se
 
 Keragaman situs juga terbatas. Dua puluh tujuh bahasa memiliki kurang dari 3 situs efektif. Artikel dalam bahasa tersebut sebagian besar berasal dari MasakhaNEWS, L3Cube-IndicNews, \en{dataset} berita Bangla, atau satu atau dua situs CC-NEWS. Klaim tentang bahasa-bahasa ini hanya berlaku untuk sumber-sumber tersebut. \en{Site-cluster bootstrap} melebarkan interval kepercayaan bahasa-bahasa ini secara sepadan. Semua interval \en{test set} terbatas pada situs dan bahasa di dalamnya dan bertumpu pada sejumlah kecil sumber independen karena seluruh \en{test set} hanya memiliki jumlah efektif 13.8 klaster. Uji Wilcoxon per bahasa memperlakukan bahasa sebagai unit independen walaupun 10 bahasa L3Cube-IndicNews berasal dari satu sumber.
 
-Pilihan pembanding, anggaran penyetelan, dan panjang input \en{transformer} membatasi perbandingan StaticKD dengan model lain. Sparse Distillation~\cite{ye2022sparse} tidak dijalankan sebagai \en{baseline}. Metode ini berbeda dari fastText + KD dan dari ablasi inisialisasi acak dalam lapisan tersembunyi \en{deep averaging network}-nya, target \en{soft-logit}-nya, dan tabel n-gram berskala miliar parameter yang dirancang untuk bahasa Inggris. Anggaran penyetelan tidak sama untuk semua model. Resep StaticKD ditetapkan pada \en{development set} sebelum \en{test set} dibangun dan \en{baseline} fastText serta TF-IDF disetel pada set yang sama dengan \en{grid} kecil. Pengklasifikasi Model2Vec memakai pengaturan bawaan pustaka dan model \en{transformer} mengikuti resep \en{fine-tuning} standar yang hanya mencari $\tau$ untuk MiniLM-L6. MiniLM-L6 dan DistilmBERT juga membaca paling banyak 256 token dalam perbandingan utama sehingga kedua model hanya mendapat kurang dari separuh teks sebagian besar artikel \en{test}. Pelatihan ulang kedua model dengan 512 token menaikkan macro-F1 \en{test} sebesar 0.014 dan 0.012 tanpa mengubah hasil perbandingan dengan StaticKD (Bagian~\ref{sec:res-acc}).
+Pilihan pembanding, anggaran penyetelan, dan panjang input \en{transformer} membatasi perbandingan StaticKD dengan model lain. \en{Baseline} gaya Sparse Distillation adalah implementasi ulang dan bukan sistem asli Ye dkk.~\cite{ye2022sparse}. \en{Baseline} ini membentuk n-gram dari token \en{subword} StaticKD alih-alih kata bahasa Inggris dan memakai tabel 0.13B dan 0.27B parameter alih-alih sekitar satu miliar. Penggandaan ukuran tabel tidak menaikkan akurasinya. Anggaran penyetelan tidak sama untuk semua model. Resep StaticKD ditetapkan pada \en{development set} sebelum \en{test set} dibangun dan \en{baseline} fastText, TF-IDF, dan gaya Sparse Distillation disetel pada set yang sama dengan \en{grid} kecil. Pengklasifikasi Model2Vec memakai pengaturan bawaan pustaka dan model \en{transformer} mengikuti resep \en{fine-tuning} standar yang hanya mencari $\tau$ untuk MiniLM-L6. MiniLM-L6 dan DistilmBERT juga membaca paling banyak 256 token dalam perbandingan utama sehingga kedua model hanya mendapat kurang dari separuh teks sebagian besar artikel \en{test}. Pelatihan ulang kedua model dengan 512 token menaikkan macro-F1 \en{test} sebesar 0.014 dan 0.012 tanpa mengubah hasil perbandingan dengan StaticKD (Bagian~\ref{sec:res-acc}).
 
 Pengukuran efisiensi bergantung pada satu mesin. Seluruh \en{benchmark} dijalankan pada satu laptop (Bagian~\ref{sec:effprotocol}) dan latensi \en{teacher} serta model \en{transformer} hanya diukur pada 100 dokumen. Angka absolut akan berbeda pada server tetapi rasio antarmodel yang diukur dengan protokol yang sama tetap informatif.
 
@@ -760,7 +774,7 @@ StaticKD paling lemah pada label \emph{society}, \emph{disaster}, \emph{human in
 Penelitian berikutnya juga dapat menekan biaya StaticKD dan memperluas tugas serta evaluasinya. \en{Tokenizer} yang lebih cepat seperti \en{lookup} langsung dari kata ke tabel menjadi sumber kecepatan berikutnya karena tokenisasi memakan 98\% waktu inferensi StaticKD. Pemangkasan kosakata untuk memperkecil model harus mempertahankan token langka yang menjadi sandaran bahasa dengan data distilasi yang sedikit atau tidak ada. Masalah lain yang masih terbuka adalah \en{head} nonlinear murah dengan \en{embedding} terkuantisasi, klasifikasi hierarkis hingga IPTC tingkat 2, klasifikasi multilabel, dan anotasi IPTC oleh manusia pada sampel multibahasa dari \en{test set}.
 
 \section*{Ketersediaan Kode, Model, dan Data}
-Kode untuk studi ini tersedia di \todo{URL GitHub dan DOI Zenodo} dan mencakup pengumpulan data, penyusunan \en{test set}, pelabelan oleh \en{teacher}, pelatihan, evaluasi, dan \en{benchmarking}. Lokasi yang sama menyediakan \en{notebook} yang mereproduksi setiap angka, tabel, dan gambar dalam makalah ini. Tabel pemetaan rubrik ke IPTC juga dirilis bersama kode. Model StaticKD tersedia di \todo{URL Hugging Face}. \en{Test set} dirilis bersama skrip rekonstruksinya sebagai manifes berisi URL atau ID artikel, label, asal label, dan \en{hash} teks. Teks artikel tidak didistribusikan ulang karena hak cipta penerbit dan lisensi \en{dataset} sumber. EMMediaTopic tersedia dari repositori CLARIN.SI~\cite{emmediatopic2025}. Lisensi aset yang dipakai dan dirilis dalam studi ini dicantumkan bersama kode.
+Kode untuk studi ini akan dirilis saat makalah ini terbit. Kode tersebut mencakup pengumpulan data, penyusunan \en{test set}, pelabelan oleh \en{teacher}, pelatihan, evaluasi, dan \en{benchmarking}. \en{Notebook} yang dirilis bersama kode mereproduksi setiap angka, tabel, dan gambar dalam makalah ini. Tabel pemetaan rubrik ke IPTC juga dirilis bersama kode. Model StaticKD dirilis pada saat yang sama. \en{Test set} dirilis bersama skrip rekonstruksinya sebagai manifes berisi URL atau ID artikel, label, asal label, dan \en{hash} teks. Teks artikel tidak didistribusikan ulang karena hak cipta penerbit dan lisensi \en{dataset} sumber. EMMediaTopic tersedia dari repositori CLARIN.SI~\cite{emmediatopic2025}. Lisensi aset yang dipakai dan dirilis dalam studi ini dicantumkan bersama kode.
 
 \section*{Ucapan Terima Kasih}
 Para penulis berterima kasih kepada Departemen Teknik Informatika, Institut Teknologi Sepuluh Nopember, atas dukungannya terhadap penelitian ini. Para penulis memakai Claude Opus 5.5 (Anthropic) di bawah arahan mereka untuk menjajaki pilihan desain metode dan untuk menjalankan eksperimen eksploratif dan eksperimen akhir. Model ini juga menulis kode eksperimen, mengolah data (termasuk draf pertama tabel pemetaan rubrik ke IPTC), dan menyusun draf sebagian teks naskah. Model yang sama juga melabeli, mengadjudikasi, dan menerjemahkan artikel sampel dalam audit label. Para penulis menulis dan merevisi naskah sendiri, meninjau dan memverifikasi semua kode, data, dan hasil, serta bertanggung jawab penuh atas isi dan klaim naskah.
@@ -768,12 +782,19 @@ Para penulis berterima kasih kepada Departemen Teknik Informatika, Institut Tekn
 \bibliographystyle{IEEEtran}
 \bibliography{../paper_final/references}
 
-\begin{IEEEbiographynophoto}{Obi Kastanya}
-\todo{biografi penulis}
-\end{IEEEbiographynophoto}
+\raggedbottom
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bio_obi.png}}]{Obi Kastanya}
+lahir di Bengkulu, Indonesia, pada Agustus 1998. Ia memperoleh gelar sarjana ilmu komputer dari Fakultas Teknologi Informasi, Universitas Kristen Satya Wacana (UKSW), Salatiga, Indonesia, pada tahun 2021. Saat ini ia sedang menempuh program magister teknik informatika di Departemen Teknik Informatika, Fakultas Teknologi Elektro dan Informatika Cerdas, Institut Teknologi Sepuluh Nopember (ITS), Surabaya, Indonesia. Minat penelitiannya meliputi penambangan data terapan, pembelajaran mesin, dan pemrosesan bahasa alami.
+\end{IEEEbiography}
 
-\begin{IEEEbiographynophoto}{Ananta Dwi Prayoga Alwy}
-\todo{biografi penulis}\EOD
-\end{IEEEbiographynophoto}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bio_ananta.png}}]{Ananta Dwi Prayoga Alwy}
+lahir di Makassar, Indonesia, pada Februari 2001. Ia memperoleh gelar sarjana teknik komputer dari Jurusan Teknik Informatika dan Komputer, Universitas Negeri Makassar, Makassar, Indonesia, pada tahun 2023. Saat ini ia sedang menempuh program magister di Departemen Teknik Informatika, Fakultas Teknologi Elektro dan Informatika Cerdas, Institut Teknologi Sepuluh Nopember (ITS), Surabaya, Indonesia. Minat penelitiannya meliputi pembelajaran mesin, \en{deep learning}, dan integrasi kecerdasan buatan.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{bio_dwi.png}}]{Dwi Sunaryono}
+(Member, IEEE) lahir di Surabaya, Indonesia, pada Mei 1972. Ia memperoleh gelar sarjana teknik komputer, gelar magister teknik informatika, dan gelar doktor ilmu komputer dari Departemen Teknik Informatika, Fakultas Teknologi Elektro dan Informatika Cerdas, Institut Teknologi Sepuluh Nopember (ITS), Surabaya, Indonesia, masing-masing pada tahun 1995, 2009, dan 2023. Saat ini ia adalah dosen di Departemen Teknik Informatika, Fakultas Teknologi Elektro dan Informatika Cerdas, ITS. Minat penelitiannya meliputi pengenalan wajah, pemrosesan sinyal, \en{Internet of Things}, sistem cerdas, dan sistem informasi manajemen.
+\end{IEEEbiography}
+
+\EOD
 
 \end{document}
