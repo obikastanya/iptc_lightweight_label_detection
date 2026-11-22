@@ -1,0 +1,10 @@
+{
+ "n_docs": 12744,
+ "stored_equals_fp16_recomputed_argmax": 12744,
+ "ensemble_rounding_argmax_changes": 1,
+ "ensemble_rounding_max_abs_logit_diff": 0.0049152374267578125,
+ "per_seed_bound_max": 0.01889575645327568,
+ "per_seed_bound_median": 0.007280954159796238,
+ "docs_whose_argmax_could_change": 50,
+ "unit_roundoff": 0.00048828125
+}

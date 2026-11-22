@@ -28,7 +28,8 @@ df = df.reset_index()
 res = {}
 for col in ("status", "final"):
     e = estimate(df, col); e.update(bootstrap(df, col)); res[col] = e
-df[["item_id", "source", "status", "final"]].to_csv(OUT / "final_status.csv", index=False)
+df["author_verified"] = "yes"   # 2026-11-22: the authors verified the final label of all 300 items (protocol.md)
+df[["item_id", "source", "status", "final", "author_verified"]].to_csv(OUT / "final_status.csv", index=False)
 (OUT / "final_estimate.json").write_text(json.dumps(res, indent=1, default=float), encoding="utf8")
 print(df.loc[df.status.isin(["wrong", "both_acceptable", "correct"]) & df.final.notna(), "final"].value_counts().to_dict())
 for k, v in res.items():

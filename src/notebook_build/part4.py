@@ -490,6 +490,18 @@ for s, v in aud["strata"].items():
 for m, k in (("StaticKD (final)", "statickd"), ("teacher", "teacher")):
     NUM.add(f"audit.{k}.acc_section", aud_mc[m]["acc_vs_section"], 1, percent=True)
     NUM.add(f"audit.{k}.acc_verified", aud_mc[m]["acc_vs_verified"], 1, percent=True)
+import re
+from sklearn.metrics import cohen_kappa_score
+# agreement of the blind LLM annotator with the editorial label (an unusable item counts as a disagreement)
+aud_key = pd.read_csv(AUDIT_DIR / "sample_key.csv").set_index("item_id")
+aud_a = {r["item_id"]: r for r in map(json.loads, (AUDIT_DIR / "llm_labels_A.jsonl").read_text(encoding="utf8").splitlines())}
+aud_llm = ["unusable" if aud_a[i].get("unusable") else aud_a[i]["primary"] for i in aud_key.index]
+NUM.add("audit.agree.n", int((aud_key.label.to_numpy() == np.array(aud_llm)).sum()), 0)
+NUM.add("audit.kappa", cohen_kappa_score(aud_key.label, aud_llm), 2)
+for m, v in aud_mc.items():
+    k = re.sub("[^A-Za-z0-9]", "", m)
+    NUM.add(f"audit.model.{k}.verified", v["acc_vs_verified"], 1, percent=True); NUM.add(f"audit.model.{k}.section", v["acc_vs_section"], 1, percent=True)
+print("kappa:", round(cohen_kappa_score(aud_key.label, aud_llm), 3))
 pd.DataFrame(aud_mc).T
 """),
 md(r"""
